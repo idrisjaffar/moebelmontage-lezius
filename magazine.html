@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raphael Lezius | Magazine</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    
+    <link rel="stylesheet" href="assets/CSS/style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container nav-inner">
+            <div class="logo-area">
+                <div class="logo-box">
+                    <div class="flipper">
+                        <div class="front"><img src="assets/images/logo front.jpeg" alt="Logo"></div>
+                        <div class="back"><img src="assets/images/logo back.jpeg" alt="Contact"></div>
+                    </div>
+                </div>
+                <div class="brand-name">RAPHAEL <span>LEZIUS</span></div>
+            </div>
+
+            <nav class="desktop-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <div class="dropdown-wrapper">
+                    <button class="nav-link dropdown-btn">Leistungen <i class="fas fa-chevron-down"></i></button>
+                    <div class="mega-menu">
+                        <div class="mega-col">
+                            <h4>Möbel & Aufbau</h4>
+                            <a href="#">IKEA PAX Experte</a>
+                            <a href="#">Wohnwände & TV</a>
+                            <a href="#">Büro & USM Haller</a>
+                        </div>
+                        <div class="mega-col">
+                            <h4>Installation</h4>
+                            <a href="#">Küchenmontage</a>
+                            <a href="#">Lampen & Bohren</a>
+                            <a href="#">Vorhänge & Rollos</a>
+                        </div>
+                        <div class="mega-col">
+                            <h4>Tech & Smart</h4>
+                            <a href="#">TV Wandmontage</a>
+                            <a href="#">LED & Sound</a>
+                            <a href="#">Kabelmanagement</a>
+                        </div>
+                    </div>
+                </div>
+                <a href="index.html#projects" class="nav-link">Projekte</a>
+                <a href="index.html#about" class="nav-link">Profil</a>
+                <a href="magazine.html" class="nav-link">Magazine</a>
+            </nav>
+
+            <div class="nav-actions">
+                <button onclick="toggleAuth()" class="action-icon"><i class="fas fa-user"></i></button>
+                <button onclick="toggleQuote()" class="btn btn-gold desktop-only">Angebot</button>
+                <button class="hamburger" onclick="toggleMobileMenu()">
+                    <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-menu-overlay" id="mobileMenu">
+        <nav class="mobile-nav-links">
+            <a href="index.html" onclick="toggleMobileMenu()">Home</a>
+            <a href="index.html#projects" onclick="toggleMobileMenu()">Projekte</a>
+            <a href="index.html#about" onclick="toggleMobileMenu()">Profil</a>
+            <a href="magazine.html" onclick="toggleMobileMenu()">Magazine</a>
+            <button onclick="toggleQuote(); toggleMobileMenu()" class="btn btn-gold btn-block">Angebot anfordern</button>
+        </nav>
+    </div>
+
+    <section class="magazine-section section-padding bg-dark">
+        <div class="container">
+            <h1 class="section-heading center">Magazine</h1>
+            <p class="lead center">Hier finden Sie Artikel, Tipps und Neuigkeiten rund um Montage, Design und Engineering.</p>
+            <div class="magazine-grid">
+                <!-- Add your magazine articles here as cards -->
+                <div class="magazine-card glass-card">
+                    <h3>Artikel Titel 1</h3>
+                    <p>Kurze Beschreibung des Artikels...</p>
+                    <a href="article1.html" class="btn btn-gold">Lesen</a>
+                </div>
+                <div class="magazine-card glass-card">
+                    <h3>Artikel Titel 2</h3>
+                    <p>Kurze Beschreibung des Artikels...</p>
+                    <a href="article2.html" class="btn btn-gold">Lesen</a>
+                </div>
+                <!-- Fügen Sie mehr Karten hinzu, wie benötigt -->
+            </div>
+        </div>
+    </section>
+
+    <footer class="mega-footer">
+        <div class="footer-ticker">
+            <div class="ticker-track">
+                <span>ENGINEERING LEVEL QUALITY</span> <span class="divider">•</span> 
+                <span>MÖBELMONTAGE</span> <span class="divider">•</span> 
+                <span>KÜCHENINSTALLATION</span> <span class="divider">•</span> 
+                <span>BOHRARBEITEN</span> <span class="divider">•</span> 
+                <span>SMART HOME SETUP</span> <span class="divider">•</span> 
+                <span>AUGSBURG & MÜNCHEN</span> <span class="divider">•</span>
+                <span>ENGINEERING LEVEL QUALITY</span> <span class="divider">•</span> 
+                <span>MÖBELMONTAGE</span> <span class="divider">•</span> 
+                <span>KÜCHENINSTALLATION</span> <span class="divider">•</span> 
+            </div>
+        </div>
+        <div class="footer-bg-topo"></div>
+        <div class="container relative-z">
+            <div class="footer-grid">
+                <div class="f-col brand-col">
+                    <div class="footer-logo-box">
+                        <div class="flipper">
+                            <div class="front"><img src="assets/images/logo front.jpeg" alt="Logo"></div>
+                            <div class="back"><img src="assets/images/logo back.jpeg" alt="Back"></div>
+                        </div>
+                    </div>
+                    <h3>RAPHAEL <span class="gold-text">LEZIUS</span></h3>
+                    <p class="tagline">Präzision ist kein Zufall. Es ist ein Standard.</p>
+                    <div class="trust-pill"><i class="fas fa-shield-alt"></i> Betriebshaftpflicht versichert</div>
+                    <div class="social-row">
+                        <a href="https://www.instagram.com/" target="_blank" class="social-btn"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/" target="_blank" class="social-btn"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://wa.me/491608194018" target="_blank" class="social-btn"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="f-col">
+                    <h4><i class="fas fa-tools"></i> Expertise</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">IKEA PAX Systeme</a></li>
+                        <li><a href="#">Einbauküchen</a></li>
+                        <li><a href="#">Wandmontage</a></li>
+                        <li><a href="#">Büroeinrichtung</a></li>
+                    </ul>
+                </div>
+                <div class="f-col">
+                    <h4><i class="fas fa-compass"></i> Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#about">Profil</a></li>
+                        <li><a href="index.html#projects">Portfolio</a></li>
+                        <li><a href="javascript:toggleQuote()">Angebot</a></li>
+                    </ul>
+                </div>
+                <div class="f-col contact-col">
+                    <h4><i class="fas fa-map-marker-alt"></i> Kontakt</h4>
+                    <a href="tel:+491608194018" class="contact-link highlight"><i class="fas fa-phone"></i> 0160 819 4018</a>
+                    <a href="mailto:r.lezius@gmail.com" class="contact-link"><i class="fas fa-envelope"></i> r.lezius@gmail.com</a>
+                    <div class="area-box">
+                        <span>Einsatzgebiet:</span>
+                        <p>Augsburg, München, Dachau & Umgebung</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="copyright">© 2025 Lezius Montage. All Rights Reserved.</div>
+                <div class="designer-credit"><i class="fas fa-code"></i> Digital Architecture by <span class="highlight">Idris</span></div>
+                <div class="legal-links">
+                    <a href="impressum.html">Impressum</a><span class="sep">|</span><a href="datenschutz.html">Datenschutz</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div id="quoteDrawer" class="drawer-overlay">
+        <aside class="drawer-panel tech-drawer">
+            <div class="drawer-header">
+                <h3><i class="fas fa-calculator"></i> KOSTEN KALKULATOR</h3>
+                <div class="sys-id">SYS: v2.5 // ONLINE</div>
+                <button class="close-drawer" onclick="toggleQuote()"><i class="fas fa-times"></i></button>
+            </div>
+            
+            <div class="drawer-body">
+                <form id="calculatorForm">
+                    
+                    <div class="form-section">
+                        <label class="tech-label">01 // PROJEKT KATEGORIE</label>
+                        <div class="select-box">
+                            <select id="projectType" class="tech-input" onchange="updateEstimate()">
+                                <option value="0">Bitte wählen...</option>
+                                <option value="150">Möbelmontage (Start: 150€)</option>
+                                <option value="400">Küchenmontage (Start: 400€)</option>
+                                <option value="80">Bohrarbeiten (Start: 80€)</option>
+                                <option value="200">Büro & USM (Start: 200€)</option>
+                            </select>
+                            <i class="fas fa-chevron-down arrow-icon"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <label class="tech-label">02 // GESCHÄTZTE DAUER</label>
+                        <div class="range-wrapper">
+                            <input type="range" min="1" max="10" value="2" class="tech-slider" id="hourSlider" oninput="updateEstimate()">
+                            <div class="slider-readout">
+                                <span id="hourValue">2</span> STUNDEN
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="estimate-box">
+                        <span class="est-label">GESCHÄTZTE KOSTEN:</span>
+                        <div class="est-price-wrapper">
+                            <span class="est-currency">€</span>
+                            <span class="est-value" id="totalEstimate">0</span>
+                        </div>
+                        <div class="est-bar"></div> <small>*Unverbindliche Schätzung exkl. Material.</small>
+                    </div>
+
+                    <div class="form-section">
+                        <label class="tech-label">03 // KONTAKT</label>
+                        <input type="email" class="tech-input mb-2" placeholder="Ihre Email Adresse" required>
+                        <button type="submit" class="btn btn-gold btn-block">ANGEBOT ANFORDERN</button>
+                    </div>
+
+                </form>
+            </div>
+        </aside>
+    </div>
+
+    <div id="authModal" class="modal-overlay">
+        <div class="modal-card industrial-panel">
+            <button class="close-modal" onclick="toggleAuth()"><i class="fas fa-times"></i></button>
+            
+            <div class="panel-header">
+                <div class="status-light online"></div>
+                <h3>CLIENT TERMINAL</h3>
+            </div>
+
+            <div class="auth-tabs">
+                <button type="button" class="tab-btn active" onclick="switchTab('login')">LOGIN</button>
+                <button type="button" class="tab-btn" onclick="switchTab('register')">REGISTRIEREN</button>
+            </div>
+
+            <form id="loginForm" class="auth-form active">
+                <div class="input-group">
+                    <i class="fas fa-id-card"></i>
+                    <input type="email" class="tech-input" placeholder="Email" required>
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-key"></i>
+                    <input type="password" class="tech-input" placeholder="Passwort" required>
+                </div>
+                <button type="submit" class="btn btn-gold btn-block">
+                    <i class="fas fa-unlock"></i> ZUGRIFF
+                </button>
+            </form>
+
+            <form id="registerForm" class="auth-form">
+                <div class="input-group"><i class="fas fa-user"></i><input type="text" class="tech-input" placeholder="Name"></div>
+                <div class="input-group"><i class="fas fa-envelope"></i><input type="email" class="tech-input" placeholder="Email"></div>
+                <div class="input-group"><i class="fas fa-lock"></i><input type="password" class="tech-input" placeholder="Passwort wählen"></div>
+                <button type="submit" class="btn btn-gold btn-block">KONTO ERSTELLEN</button>
+            </form>
+        </div>
+    </div>
+    <a href="https://wa.me/491608194018" class="whatsapp-btn" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://www.instagram.com/" class="instagram-btn" target="_blank"><i class="fab fa-instagram"></i></a>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raphael Lezius | Engineering Level Montage</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    
+    <link rel="stylesheet" href="assets/CSS/style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container nav-inner">
+            <div class="logo-area">
+                <div class="logo-box">
+                    <div class="flipper">
+                        <div class="front"><img src="assets/images/logo front.jpeg" alt="Logo"></div>
+                        <div class="back"><img src="assets/images/logo back.jpeg" alt="Contact"></div>
+                    </div>
+                </div>
+                <div class="brand-name">RAPHAEL <span>LEZIUS</span></div>
+            </div>
+
+            <nav class="desktop-menu">
+                <a href="#" class="nav-link">Home</a>
+                <div class="dropdown-wrapper">
+                    <button class="nav-link dropdown-btn">Leistungen <i class="fas fa-chevron-down"></i></button>
+                    <div class="mega-menu">
+                        <div class="mega-col">
+                            <h4>Möbel & Aufbau</h4>
+                            <a href="#">IKEA PAX Experte</a>
+                            <a href="#">Wohnwände & TV</a>
+                            <a href="#">Büro & USM Haller</a>
+                        </div>
+                        <div class="mega-col">
+                            <h4>Installation</h4>
+                            <a href="#">Küchenmontage</a>
+                            <a href="#">Lampen & Bohren</a>
+                            <a href="#">Vorhänge & Rollos</a>
+                        </div>
+                        <div class="mega-col">
+                            <h4>Tech & Smart</h4>
+                            <a href="#">TV Wandmontage</a>
+                            <a href="#">LED & Sound</a>
+                            <a href="#">Kabelmanagement</a>
+                        </div>
+                    </div>
+                </div>
+                <a href="#projects" class="nav-link">Projekte</a>
+                <a href="#about" class="nav-link">Profil</a>
+                <a href="magazine.html" class="nav-link">Magazine</a>
+            </nav>
+
+            <div class="nav-actions">
+                <button onclick="toggleAuth()" class="action-icon"><i class="fas fa-user"></i></button>
+                <button onclick="toggleQuote()" class="btn btn-gold desktop-only">Angebot</button>
+                <button class="hamburger" onclick="toggleMobileMenu()">
+                    <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-menu-overlay" id="mobileMenu">
+        <nav class="mobile-nav-links">
+            <a href="#" onclick="toggleMobileMenu()">Home</a>
+            <a href="#projects" onclick="toggleMobileMenu()">Projekte</a>
+            <a href="#about" onclick="toggleMobileMenu()">Profil</a>
+            <a href="magazine.html" onclick="toggleMobileMenu()">Magazine</a>
+            <button onclick="toggleQuote(); toggleMobileMenu()" class="btn btn-gold btn-block">Angebot anfordern</button>
+        </nav>
+    </div>
+
+    <section class="hero">
+        <canvas id="dust-canvas"></canvas>
+        <div class="hero-video-container">
+            <video autoplay muted loop playsinline class="hero-background-video">
+                <source src="assets/video/project-landscape.mp4" type="video/mp4">
+            </video>
+            <div class="hero-warm-overlay"></div>
+        </div>
+
+        <div class="container hero-content-wrapper">
+            <div class="hero-main-text">
+                <div class="hero-status-tag" data-aos="fade-right">
+                    <i class="fas fa-ruler-combined"></i> MILLIMETER GENAU
+                </div>
+                <h1 data-aos="fade-up" data-aos-delay="200">
+                    Montage auf <br><span class="gold-text">Gold-Standard.</span>
+                </h1>
+                <p data-aos="fade-up" data-aos-delay="400">
+                    IKEA PAX. Designerküchen. Maßanfertigungen.<br>
+                    Wenn es perfekt stehen muss.
+                </p>
+                <div class="hero-action-row" data-aos="fade-up" data-aos-delay="600">
+                    <button onclick="toggleQuote()" class="btn btn-gold">Projekt Starten</button>
+                    <a href="#media-deck" class="btn-play-link-gold"><i class="fas fa-play-circle"></i> Showreel</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section-padding bg-dark">
+        <div class="container">
+            <div class="profile-layout">
+                <div class="profile-text" data-aos="fade-right">
+                    <h2 class="section-heading">Profil <span class="gold-text">Analyse</span></h2>
+                    <p class="lead">Hauptberuflich Fluggerätmechaniker. <br>Nebenberuflich Ihr Perfektionist.</p>
+                    <p class="bio">"Durch meinen Hauptberuf in der Luftfahrt liegt mir präzises Arbeiten im Blut. Sauberkeit und Ordnung sind für mich Standard. Ich baue Ihre Möbel so auf, als wären es meine eigenen."</p>
+                    
+                    <div class="trust-badges">
+                        <a href="https://www.check24.de" target="_blank" class="badge-card">
+                            <i class="fas fa-check-circle" style="color: #005ea8;"></i>
+                            <div><strong>Check24</strong><small>Top Dienstleister</small></div>
+                        </a>
+                        <a href="https://www.myhammer.de" target="_blank" class="badge-card">
+                            <i class="fas fa-hammer" style="color: #ff8c00;"></i>
+                            <div><strong>MyHammer</strong><small>5.0 Sterne</small></div>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="profile-card-wrapper" data-aos="zoom-in-up">
+                    <div class="id-card holographic">
+                        <div class="scanner"></div>
+                        <div class="id-header">
+                            <div class="id-status"><span class="status-dot pulse"></span> SYSTEM: VERIFIED PRO</div>
+                            <div class="id-serial">ID: RL-86152-AUG</div>
+                        </div>
+                        <div class="id-body">
+                            <div class="id-logo-container">
+                                <div class="flipper">
+                                    <div class="front"><img src="assets/images/logo front.jpeg" alt="Logo"></div>
+                                    <div class="back"><img src="assets/images/logo back.jpeg" alt="Back"></div>
+                                </div>
+                            </div>
+                            <div class="id-info">
+                                <h3>Raphael Lezius</h3>
+                                <p>Engineering Level Assembly</p>
+                            </div>
+                            <div class="stats-control-panel">
+                                <div class="stat-box"><strong class="counter" data-target="5.0">0</strong><span>Rating</span></div>
+                                <div class="stat-box"><strong class="counter" data-target="92">0</strong><span>Reviews</span></div>
+                                <div class="stat-box"><strong class="counter" data-target="100">0</strong><span>% Zuverlässig</span></div>
+                            </div>
+                            <div class="id-footer-tags">
+                                <span class="tag"><i class="fas fa-shield-check"></i> Haftpflichtversichert</span>
+                                <span class="tag"><i class="fas fa-tools"></i> Profi Werkzeug</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="media-deck" class="section-padding matrix-section">
+        <div class="carbon-grid"></div>
+        <div class="container relative-z">
+            <div class="section-header center">
+                <div class="matrix-badge" data-aos="fade-down"><span class="rec-dot"></span> LIVE FEED ARCHIVE</div>
+                <h2>Assembly Matrix</h2>
+                <div class="tech-line"></div>
+                <p>Videodokumentation der Arbeitsschritte.</p>
+            </div>
+
+            <div class="cinema-grid">
+                <div class="main-screen hud-frame" data-aos="zoom-in">
+                    <span class="corner tl"></span><span class="corner tr"></span>
+                    <span class="corner bl"></span><span class="corner br"></span>
+                    <div class="screen-tag"><i class="fas fa-layer-group"></i> PROJEKT ÜBERSICHT</div>
+                    <video controls loading="lazy" class="matrix-video">
+                        <source src="assets/video/project-landscape.mp4" type="video/mp4">
+                    </video>
+                </div>
+
+                <div class="reel-strip" data-aos="fade-up">
+                    <div class="reel-item hud-frame">
+                        <span class="corner tl"></span><span class="corner tr"></span>
+                        <div class="screen-tag"><i class="fas fa-search"></i> DETAIL & PRÄZISION</div>
+                        <video controls loading="lazy" class="matrix-video">
+                            <source src="assets/video/project-portrait.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="reel-item hud-frame">
+                        <span class="corner tl"></span><span class="corner tr"></span>
+                        <div class="screen-tag"><i class="fas fa-tools"></i> MONTAGE ABLAUF</div>
+                        <video controls loading="lazy" class="matrix-video">
+                            <source src="assets/video/project-portrait.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="reel-item hud-frame">
+                        <span class="corner tl"></span><span class="corner tr"></span>
+                        <div class="screen-tag"><i class="fas fa-check-circle"></i> FERTIGSTELLUNG</div>
+                        <video controls loading="lazy" class="matrix-video">
+                            <source src="assets/video/project-portrait.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="section-padding vault-section">
+        <div class="vault-bg-grid"></div>
+        <div class="vault-scanner"></div>
+        <div class="vault-giant-text">ARCHIVE</div>
+        
+        <div class="container relative-z">
+            <div class="section-header center">
+                <h2>Project Vault</h2>
+                <div class="tech-line"></div>
+                <p>Swipe durch die Kategorien.</p>
+            </div>
+
+            <div class="project-grid-wrapper">
+                <div class="project-card glass-card">
+                    <div class="card-header"><h4>Schlaf & Kids</h4><span class="index">01</span></div>
+                    <div class="carousel-container">
+                        <div class="carousel-track">
+                            <img src="assets/images/logo front.jpeg" alt="PAX">
+                            <img src="assets/images/logo back.jpeg" alt="Detail">
+                            <img src="assets/images/logo front.jpeg" alt="Baby">
+                        </div>
+                        <div class="swipe-hint">SWIPE <i class="fas fa-chevron-right"></i></div>
+                    </div>
+                </div>
+                <div class="project-card glass-card">
+                    <div class="card-header"><h4>Küche & Essen</h4><span class="index">02</span></div>
+                    <div class="carousel-container">
+                        <div class="carousel-track">
+                            <img src="assets/images/logo front.jpeg" alt="Kitchen">
+                            <img src="assets/images/logo back.jpeg" alt="Dining">
+                        </div>
+                        <div class="swipe-hint">SWIPE <i class="fas fa-chevron-right"></i></div>
+                    </div>
+                </div>
+                <div class="project-card glass-card">
+                    <div class="card-header"><h4>Wohnen & TV</h4><span class="index">03</span></div>
+                    <div class="carousel-container">
+                        <div class="carousel-track">
+                            <img src="assets/images/logo front.jpeg" alt="TV">
+                            <img src="assets/images/logo back.jpeg" alt="Mount">
+                        </div>
+                        <div class="swipe-hint">SWIPE <i class="fas fa-chevron-right"></i></div>
+                    </div>
+                </div>
+                <div class="project-card glass-card">
+                    <div class="card-header"><h4>Büro & Spezial</h4><span class="index">04</span></div>
+                    <div class="carousel-container">
+                        <div class="carousel-track">
+                            <img src="assets/images/logo front.jpeg" alt="Desk">
+                            <img src="assets/images/logo back.jpeg" alt="Storage">
+                        </div>
+                        <div class="swipe-hint">SWIPE <i class="fas fa-chevron-right"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding review-section">
+        <div class="aurora-bg"></div>
+        <div class="container relative-z">
+            <div class="review-header center">
+                <div class="score-badge" data-aos="zoom-in">
+                    <i class="fas fa-star spin-star"></i> <span>4.9</span> / 5.0
+                </div>
+                <h2 data-aos="fade-up">Kundenfeedback</h2>
+                <p data-aos="fade-up" data-aos-delay="100">Transparente Bewertungen von verifizierten Plattformen.</p>
+            </div>
+
+            <div class="review-matrix">
+                <div class="review-card glass-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
+                    <p class="review-text">"Die Küche sieht aus wie maßgeplant. Hervorragende Arbeit, absolut fair! Wir sind mehr als zufrieden."</p>
+                    <div class="review-meta">
+                        <div class="author-info"><strong>Nomen W.</strong><span class="date">März 2025</span></div>
+                        <span class="platform-badge c24"><i class="fas fa-check"></i> Check24</span>
+                    </div>
+                </div>
+                <div class="review-card glass-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
+                    <p class="review-text">"Schnelle Terminfindung, effizient und sauber. Sehr sympathisch. Hat alles notwendige Werkzeug dabei."</p>
+                    <div class="review-meta">
+                        <div class="author-info"><strong>Benedikt W.</strong><span class="date">Dez 2024</span></div>
+                        <span class="platform-badge mh"><i class="fas fa-hammer"></i> MyHammer</span>
+                    </div>
+                </div>
+                <div class="review-card glass-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
+                    <p class="review-text">"Raphael ist super zuverlässig. Bringt sein eigenes Werkzeug mit, perfekt! Immer wieder gerne."</p>
+                    <div class="review-meta">
+                        <div class="author-info"><strong>Jacqueline Z.</strong><span class="date">Okt 2024</span></div>
+                        <span class="platform-badge mh"><i class="fas fa-hammer"></i> MyHammer</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="mega-footer">
+        <div class="footer-ticker">
+            <div class="ticker-track">
+                <span>ENGINEERING LEVEL QUALITY</span> <span class="divider">•</span> 
+                <span>MÖBELMONTAGE</span> <span class="divider">•</span> 
+                <span>KÜCHENINSTALLATION</span> <span class="divider">•</span> 
+                <span>BOHRARBEITEN</span> <span class="divider">•</span> 
+                <span>SMART HOME SETUP</span> <span class="divider">•</span> 
+                <span>AUGSBURG & MÜNCHEN</span> <span class="divider">•</span>
+                <span>ENGINEERING LEVEL QUALITY</span> <span class="divider">•</span> 
+                <span>MÖBELMONTAGE</span> <span class="divider">•</span> 
+                <span>KÜCHENINSTALLATION</span> <span class="divider">•</span> 
+            </div>
+        </div>
+        <div class="footer-bg-topo"></div>
+        <div class="container relative-z">
+            <div class="footer-grid">
+                <div class="f-col brand-col">
+                    <div class="footer-logo-box"><img src="assets/images/logo front.jpeg" alt="Logo"></div>
+                    <h3>RAPHAEL <span class="gold-text">LEZIUS</span></h3>
+                    <p class="tagline">Präzision ist kein Zufall. Es ist ein Standard.</p>
+                    <div class="trust-pill"><i class="fas fa-shield-alt"></i> Betriebshaftpflicht versichert</div>
+                    <div class="social-row">
+                        <a href="https://www.instagram.com/" target="_blank" class="social-btn"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/" target="_blank" class="social-btn"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://wa.me/491608194018" target="_blank" class="social-btn"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="f-col">
+                    <h4><i class="fas fa-tools"></i> Expertise</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">IKEA PAX Systeme</a></li>
+                        <li><a href="#">Einbauküchen</a></li>
+                        <li><a href="#">Wandmontage</a></li>
+                        <li><a href="#">Büroeinrichtung</a></li>
+                    </ul>
+                </div>
+                <div class="f-col">
+                    <h4><i class="fas fa-compass"></i> Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#about">Profil</a></li>
+                        <li><a href="#projects">Portfolio</a></li>
+                        <li><a href="javascript:toggleQuote()">Angebot</a></li>
+                    </ul>
+                </div>
+                <div class="f-col contact-col">
+                    <h4><i class="fas fa-map-marker-alt"></i> Kontakt</h4>
+                    <a href="tel:+491608194018" class="contact-link highlight"><i class="fas fa-phone"></i> 0160 819 4018</a>
+                    <a href="mailto:r.lezius@gmail.com" class="contact-link"><i class="fas fa-envelope"></i> r.lezius@gmail.com</a>
+                    <div class="area-box">
+                        <span>Einsatzgebiet:</span>
+                        <p>Augsburg, München, Dachau & Umgebung</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="copyright">&copy; 2025 Raphael Lezius.</div>
+                <div class="legal-links">
+                    <a href="impressum.html">Impressum</a><span class="sep">|</span><a href="datenschutz.html">Datenschutz</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div id="quoteDrawer" class="drawer-overlay">
+        <aside class="drawer-panel tech-drawer">
+            <div class="drawer-header">
+                <h3><i class="fas fa-calculator"></i> KOSTEN KALKULATOR</h3>
+                <div class="sys-id">SYS: v2.5 // ONLINE</div>
+                <button class="close-drawer" onclick="toggleQuote()"><i class="fas fa-times"></i></button>
+            </div>
+            
+            <div class="drawer-body">
+                <form id="calculatorForm">
+                    
+                    <div class="form-section">
+                        <label class="tech-label">01 // PROJEKT KATEGORIE</label>
+                        <div class="select-box">
+                            <select id="projectType" class="tech-input" onchange="updateEstimate()">
+                                <option value="0">Bitte wählen...</option>
+                                <option value="150">Möbelmontage (Start: 150€)</option>
+                                <option value="400">Küchenmontage (Start: 400€)</option>
+                                <option value="80">Bohrarbeiten (Start: 80€)</option>
+                                <option value="200">Büro & USM (Start: 200€)</option>
+                            </select>
+                            <i class="fas fa-chevron-down arrow-icon"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <label class="tech-label">02 // GESCHÄTZTE DAUER</label>
+                        <div class="range-wrapper">
+                            <input type="range" min="1" max="10" value="2" class="tech-slider" id="hourSlider" oninput="updateEstimate()">
+                            <div class="slider-readout">
+                                <span id="hourValue">2</span> STUNDEN
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="estimate-box">
+                        <span class="est-label">GESCHÄTZTE KOSTEN:</span>
+                        <div class="est-price-wrapper">
+                            <span class="est-currency">€</span>
+                            <span class="est-value" id="totalEstimate">0</span>
+                        </div>
+                        <div class="est-bar"></div> <small>*Unverbindliche Schätzung exkl. Material.</small>
+                    </div>
+
+                    <div class="form-section">
+                        <label class="tech-label">03 // KONTAKT</label>
+                        <input type="email" class="tech-input mb-2" placeholder="Ihre Email Adresse" required>
+                        <button type="submit" class="btn btn-gold btn-block">ANGEBOT ANFORDERN</button>
+                    </div>
+
+                </form>
+            </div>
+        </aside>
+    </div>
+
+    <div id="authModal" class="modal-overlay">
+        <div class="modal-card industrial-panel">
+            <button class="close-modal" onclick="toggleAuth()"><i class="fas fa-times"></i></button>
+            
+            <div class="panel-header">
+                <div class="status-light online"></div>
+                <h3>CLIENT TERMINAL</h3>
+            </div>
+
+            <div class="auth-tabs">
+                <button type="button" class="tab-btn active" onclick="switchTab('login')">LOGIN</button>
+                <button type="button" class="tab-btn" onclick="switchTab('register')">REGISTRIEREN</button>
+            </div>
+
+            <form id="loginForm" class="auth-form active">
+                <div class="input-group">
+                    <i class="fas fa-id-card"></i>
+                    <input type="email" class="tech-input" placeholder="Email" required>
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-key"></i>
+                    <input type="password" class="tech-input" placeholder="Passwort" required>
+                </div>
+                <button type="submit" class="btn btn-gold btn-block">
+                    <i class="fas fa-unlock"></i> ZUGRIFF
+                </button>
+            </form>
+
+            <form id="registerForm" class="auth-form">
+                <div class="input-group"><i class="fas fa-user"></i><input type="text" class="tech-input" placeholder="Name"></div>
+                <div class="input-group"><i class="fas fa-envelope"></i><input type="email" class="tech-input" placeholder="Email"></div>
+                <div class="input-group"><i class="fas fa-lock"></i><input type="password" class="tech-input" placeholder="Passwort wählen"></div>
+                <button type="submit" class="btn btn-gold btn-block">KONTO ERSTELLEN</button>
+            </form>
+        </div>
+    </div>
+    <a href="https://wa.me/491608194018" class="whatsapp-btn" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://www.instagram.com/" class="instagram-btn" target="_blank"><i class="fab fa-instagram"></i></a>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
