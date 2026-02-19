@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preise, Ablauf & Kalkulation | Raphael Lezius Premium Service</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&family=Space+Grotesk:wght@500;700;800&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <style>
+        /* Transparent Hero Engine */
+        .pricing-hero {
+            position: relative; padding: 150px 0 100px; text-align: center;
+            background: radial-gradient(circle at top, rgba(212,175,55,0.1) 0%, #050505 80%);
+            border-bottom: 1px solid rgba(255,255,255,0.05); overflow: hidden;
+        }
+        .bg-grid-lines {
+            position: absolute; inset: 0; opacity: 0.2;
+            background-image: linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+            background-size: 50px 50px; pointer-events: none;
+            transform: perspective(500px) rotateX(60deg); transform-origin: top;
+        }
+
+        /* Interactive Mission Protocol (Timeline) */
+        .protocol-container { max-width: 800px; margin: 80px auto; position: relative; }
+        .protocol-line { position: absolute; left: 40px; top: 0; bottom: 0; width: 2px; background: rgba(255,255,255,0.1); }
+        .protocol-line-fill { position: absolute; left: 0; top: 0; width: 100%; background: var(--gold); box-shadow: 0 0 15px var(--gold); transition: height 1s ease; }
+        
+        .protocol-node { position: relative; padding-left: 100px; margin-bottom: 60px; opacity: 0.5; transition: 0.5s; }
+        .protocol-node:hover, .protocol-node.active { opacity: 1; transform: translateX(10px); }
+        
+        .node-marker {
+            position: absolute; left: 25px; top: 0; width: 32px; height: 32px;
+            background: #111; border: 2px solid #444; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; z-index: 2; transition: 0.4s;
+        }
+        .protocol-node:hover .node-marker, .protocol-node.active .node-marker {
+            background: var(--gold); border-color: #fff; box-shadow: 0 0 20px var(--gold);
+        }
+        .node-marker i { color: #fff; font-size: 0.8rem; opacity: 0; transition: 0.3s; }
+        .protocol-node:hover .node-marker i, .protocol-node.active .node-marker i { opacity: 1; }
+
+        .p-step { font-family: monospace; color: var(--gold); letter-spacing: 2px; font-size: 0.8rem; margin-bottom: 5px; display: block; }
+        .p-title { font-family: 'Space Grotesk'; font-size: 2rem; color: #fff; margin-bottom: 15px; }
+        .p-desc { color: #aaa; line-height: 1.7; background: rgba(20,20,20,0.6); padding: 25px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); }
+
+        /* 3D Pricing Cards */
+        .pricing-deck { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin: 60px 0; perspective: 1500px; }
+        .price-hologram {
+            background: rgba(15, 15, 15, 0.8); backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 12px;
+            padding: 40px; position: relative; transition: all 0.6s cubic-bezier(0.2, 1, 0.3, 1);
+            transform-style: preserve-3d;
+        }
+        .price-hologram:hover {
+            transform: translateY(-15px) rotateX(5deg) rotateY(-5deg);
+            border-color: var(--gold); box-shadow: -20px 30px 60px rgba(0,0,0,0.8), inset 0 0 30px rgba(212,175,55,0.1);
+        }
+        .price-hologram.featured { border: 1px solid rgba(212,175,55,0.5); background: linear-gradient(180deg, rgba(212,175,55,0.05) 0%, rgba(15,15,15,0.9) 100%); }
+        
+        .price-badge-pro { position: absolute; top: 0; right: 40px; background: var(--gold); color: #000; padding: 5px 15px; font-family: 'Space Grotesk'; font-weight: bold; font-size: 0.8rem; transform: translateY(-50%); border-radius: 20px; box-shadow: 0 5px 15px rgba(212,175,55,0.4); }
+        
+        .tier-name { color: #fff; font-family: 'Space Grotesk'; font-size: 1.5rem; margin-bottom: 5px; }
+        .tier-cost { font-size: 3.5rem; font-family: 'Space Grotesk'; color: #fff; margin: 20px 0; font-weight: 800; display: flex; align-items: baseline; gap: 5px; }
+        .tier-cost span { font-size: 1rem; color: #888; font-weight: normal; font-family: 'Inter'; }
+        
+        .tier-features { list-style: none; padding: 0; margin: 30px 0; }
+        .tier-features li { display: flex; align-items: flex-start; gap: 15px; margin-bottom: 15px; color: #ccc; font-size: 0.95rem; line-height: 1.5; }
+        .tier-features li i { color: var(--gold); margin-top: 4px; }
+
+        /* The Budget Hack (Gamified Savings) */
+        .budget-hack-zone {
+            background: linear-gradient(135deg, #111, #0a0a0a); border: 2px dashed rgba(212,175,55,0.3);
+            border-radius: 12px; padding: 50px; margin: 80px 0; position: relative;
+        }
+        .hack-item { display: flex; align-items: center; gap: 20px; background: #000; padding: 20px; border-radius: 8px; margin-bottom: 15px; border-left: 4px solid var(--gold); transition: 0.3s; }
+        .hack-item:hover { transform: translateX(10px); border-color: #39ff14; }
+        .hack-item i { font-size: 2rem; color: var(--gold); transition: 0.3s; }
+        .hack-item:hover i { color: #39ff14; }
+        
+        @media (max-width: 768px) {
+            .protocol-node { padding-left: 60px; }
+            .protocol-line { left: 20px; }
+            .node-marker { left: 5px; }
+        }
+    </style>
+</head>
+<body class="bg-darker">
+
+    <nav class="navbar">
+        <div class="container nav-inner">
+            <a href="index.html" class="logo-3d-wrapper">
+                <div class="logo-flipper">
+                    <div class="logo-face front"><img src="assets/images/raphael-lezius-logo-front.webp" alt="Logo Front"></div>
+                    <div class="logo-face back"><img src="assets/images/raphael-lezius-logo-back.webp" alt="Logo Back"></div>
+                </div>
+                <div class="brand-text">RAPHAEL <span>LEZIUS</span></div>
+            </a>
+
+            <div class="desktop-menu">
+                <div class="nav-group">
+                    <a href="index.html" class="nav-link">Startseite</a>
+                    <div class="dropdown-container">
+                        <button class="nav-link dropdown-trigger">
+                            Leistungen <i class="fas fa-chevron-down" style="font-size: 0.7em; margin-left: 5px;"></i>
+                        </button>
+                        <div class="dropdown-menu glass-panel">
+                            <a href="residential.html" class="dd-item">
+                                <i class="fas fa-couch gold-text"></i>
+                                <span>Privat & IKEA <small>PAX, Küchen, Betten</small></span>
+                            </a>
+                            <a href="office.html" class="dd-item">
+                                <i class="fas fa-building gold-text"></i>
+                                <span>Gewerbe & Office <small>USM, Konferenz, Laden</small></span>
+                            </a>
+                            <a href="tech.html" class="dd-item">
+                                <i class="fas fa-microchip gold-text"></i>
+                                <span>Tech & Smart <small>TV, LED, Kabel</small></span>
+                            </a>
+                        </div>
+                    </div>
+                    <a href="process-pricing.html" class="nav-link active">Preise & Ablauf</a>
+                    <a href="area.html" class="nav-link">Gebiet</a>
+                    <a href="gallery.html" class="nav-link">Galerie</a>
+                    <a href="magazine.html" class="nav-link">Magazin</a>
+                </div>
+            </div>
+
+            <div class="nav-actions">
+                <div class="status-pill desktop-only"><span class="status-dot"></span><span>Verfügbar</span></div>
+                <a href="javascript:void(0)" onclick="MissionOS.open()" class="btn btn-gold glow-effect nav-quote-btn">
+                    <span class="btn-text">Angebot Anfordern</span>
+                    <div class="btn-glow-pulse"></div>
+                </a>
+                <button class="hamburger" id="hamburgerBtn" aria-label="Menu"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <nav class="mobile-nav-links">
+            <a href="index.html">Startseite</a>
+            <div style="font-size: 0.8rem; color: var(--gold); margin-top: 15px; opacity: 0.7; text-transform: uppercase; letter-spacing: 1px;">Dienstleistungen</div>
+            <a href="residential.html">IKEA & Wohnen</a>
+            <a href="office.html">Büro & Gewerbe</a>
+            <a href="tech.html">TV & Smart Home</a>
+            <div style="font-size: 0.8rem; color: var(--gold); margin-top: 15px; opacity: 0.7; text-transform: uppercase; letter-spacing: 1px;">Informationen</div>
+            <a href="process-pricing.html" class="gold-text">Preise & Ablauf</a>
+            <a href="area.html">Gebiet</a>
+            <a href="gallery.html">Galerie</a>
+            <a href="magazine.html">Magazin</a>
+            <a href="javascript:void(0)" onclick="MissionOS.open(); document.getElementById('mobileMenu').classList.remove('active');" class="btn btn-gold" style="margin-top: 30px; width: 100%; text-align: center;">Angebot anfordern</a>
+        </nav>
+    </div>
+
+    <section class="pricing-hero">
+        <div class="bg-grid-lines"></div>
+        <div class="container relative-z">
+            <span class="section-tag" data-aos="fade-down" style="border-color: #fff; color: #fff;">RADICAL TRANSPARENCY</span>
+            <h1 class="glitch-header" style="font-size: 4.5rem; margin: 20px 0;" data-aos="zoom-in">
+                <span class="white">HANDWERK OHNE</span><br>
+                <span class="gold-text">BÖSE ÜBERRASCHUNGEN.</span>
+            </h1>
+            <p style="color: #ccc; font-size: 1.2rem; max-width: 700px; margin: 0 auto; line-height: 1.8;" data-aos="fade-up" data-aos-delay="200">
+                In Deutschland ist die Angst vor versteckten Handwerkerkosten groß. Wir ändern das. 
+                Klare Festpreise. Logische Stundensätze. Volle steuerliche Absetzbarkeit. 
+                <strong>Sie haben immer die Kontrolle.</strong>
+            </p>
+        </div>
+    </section>
+
+    <section class="section-padding bg-dark">
+        <div class="container">
+            <div class="section-header center" data-aos="fade-up">
+                <span class="section-tag">MISSION PROTOCOL</span>
+                <h2>Der System-<span class="gold-text">Ablauf</span></h2>
+                <p>Von Ihrer Anfrage bis zur perfekten Schlüsselübergabe.</p>
+            </div>
+
+            <div class="protocol-container">
+                <div class="protocol-line"><div class="protocol-line-fill" id="scrollProgress"></div></div>
+                
+                <div class="protocol-node active" data-aos="fade-right">
+                    <div class="node-marker"><i class="fas fa-check"></i></div>
+                    <span class="p-step">PHASE 01</span>
+                    <h3 class="p-title">Datentransfer & Analyse</h3>
+                    <div class="p-desc">
+                        <p>Sie übermitteln uns Ihr Vorhaben über unser digitales <a href="javascript:void(0)" onclick="MissionOS.open()" style="color:var(--gold);">Mission-Control System</a> oder per WhatsApp. <strong>Wichtig:</strong> Senden Sie uns Links (z.B. IKEA Planungs-Code) und Fotos vom Raum. Wir prüfen sofort Statik, Steckdosen und Raumhöhe.</p>
+                    </div>
+                </div>
+
+                <div class="protocol-node" data-aos="fade-right" data-aos-delay="100">
+                    <div class="node-marker"><i class="fas fa-check"></i></div>
+                    <span class="p-step">PHASE 02</span>
+                    <h3 class="p-title">Das Angebot (Fix vs. Cap)</h3>
+                    <div class="p-desc">
+                        <p>Innerhalb von 24 Stunden erhalten Sie unsere Kalkulation. <br><br>
+                        <i class="fas fa-lock gold-text"></i> <strong>Festpreis-Garantie:</strong> Bei Standard-Systemen (PAX, BESTA) wissen Sie vorab auf den Cent genau, was es kostet.<br>
+                        <i class="fas fa-stopwatch gold-text"></i> <strong>Cost-Cap:</strong> Bei komplexen Umbauten schätzen wir die Stunden fair ab, sodass Sie ein sicheres Budget-Limit haben.</p>
+                    </div>
+                </div>
+
+                <div class="protocol-node" data-aos="fade-right" data-aos-delay="200">
+                    <div class="node-marker"><i class="fas fa-check"></i></div>
+                    <span class="p-step">PHASE 03</span>
+                    <h3 class="p-title">Der "Surgery Day" (Montage)</h3>
+                    <div class="p-desc">
+                        <p>Wir treffen pünktlich ein. <strong>Protokoll:</strong> 1. Bodenschutzvlies auslegen. 2. Laser-Nivellierung aufbauen. 3. Systematische Montage. Wir arbeiten mit eigenem Festool/Bosch Professional Equipment und integrierter Staubabsaugung. Ihr Zuhause bleibt sauber.</p>
+                    </div>
+                </div>
+
+                <div class="protocol-node" data-aos="fade-right" data-aos-delay="300">
+                    <div class="node-marker"><i class="fas fa-check"></i></div>
+                    <span class="p-step">PHASE 04</span>
+                    <h3 class="p-title">Abnahme & White-Glove</h3>
+                    <div class="p-desc">
+                        <p>Wir verlassen das Objekt erst, wenn jede Tür im perfekten Spaltmaß sitzt und der Boden gesaugt ist. Gemeinsame Qualitätskontrolle. Sie erhalten eine <strong>Gewerbliche Rechnung</strong> (absetzbar!) und können bequem per Karte oder Überweisung zahlen.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding bg-darker" style="border-top: 1px solid #222;">
+        <div class="container">
+            <div class="section-header center" data-aos="fade-up">
+                <h2>System <span class="gold-text">Kalkulation</span></h2>
+                <p>Ehrliche Preise für ehrliches Handwerk in München & Augsburg.</p>
+            </div>
+
+            <div class="pricing-deck">
+                
+                <div class="price-hologram" data-aos="fade-up">
+                    <h3 class="tier-name">Flex-Modus</h3>
+                    <p style="color:#888; font-size:0.9rem;">Für Einzelmöbel & Tech-Setups</p>
+                    <div class="tier-cost">Stunde <span>/ Person</span></div>
+                    <ul class="tier-features">
+                        <li><i class="fas fa-check-circle"></i> Abrechnung im fairen 30-Minuten-Takt</li>
+                        <li><i class="fas fa-check-circle"></i> Inklusive aller Standard-Bohrer & Dübel</li>
+                        <li><i class="fas fa-check-circle"></i> Inklusive Laser-Nivellierung</li>
+                        <li><i class="fas fa-check-circle"></i> Ideal für Kleinmöbel, TV-Montagen oder Reparaturen</li>
+                    </ul>
+                    <button onclick="MissionOS.open()" class="btn btn-holographic" style="width:100%; justify-content:center;">Tarif anfragen</button>
+                </div>
+
+                <div class="price-hologram featured" data-aos="fade-up" data-aos-delay="100">
+                    <div class="price-badge-pro">MOST POPULAR</div>
+                    <h3 class="tier-name">System-Festpreis</h3>
+                    <p style="color:#888; font-size:0.9rem;">Für IKEA PAX, BESTA & Betten</p>
+                    <div class="tier-cost">Pauschal <span>/ Modul</span></div>
+                    <ul class="tier-features">
+                        <li><i class="fas fa-shield-alt" style="color:#39ff14;"></i> <strong>Keine versteckten Aufschläge</strong></li>
+                        <li><i class="fas fa-check-circle"></i> Gilt komplett (Korpus, Türen, Inneneinrichtung)</li>
+                        <li><i class="fas fa-check-circle"></i> Schwerlast-Wandverankerung inklusive</li>
+                        <li><i class="fas fa-check-circle"></i> Müll-Bündelung für einfache Entsorgung</li>
+                        <li><i class="fas fa-check-circle"></i> Justierung aller Scharniere & Schiebetüren</li>
+                    </ul>
+                    <button onclick="MissionOS.open()" class="btn btn-gold" style="width:100%;">Festpreis berechnen</button>
+                </div>
+
+                <div class="price-hologram" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="tier-name">Projekt-Level</h3>
+                    <p style="color:#888; font-size:0.9rem;">Für Küchen & USM / Büro</p>
+                    <div class="tier-cost">Projekt <span>/ Budget</span></div>
+                    <ul class="tier-features">
+                        <li><i class="fas fa-check-circle"></i> Maßgeschneidertes Gesamtangebot</li>
+                        <li><i class="fas fa-check-circle"></i> Festool-Sägearbeiten (Arbeitsplatten)</li>
+                        <li><i class="fas fa-check-circle"></i> Wasseranschlüsse (Spüle/Siphon)</li>
+                        <li><i class="fas fa-check-circle"></i> B2B Weekend-Warrior Service verfügbar</li>
+                    </ul>
+                    <button onclick="MissionOS.open()" class="btn btn-holographic" style="width:100%; justify-content:center;">Projekt besprechen</button>
+                </div>
+
+            </div>
+            
+            <p class="center" style="color: #666; font-size: 0.85rem; margin-top: 20px;">
+                *Alle Preise verstehen sich zzgl. gesetzlicher MwSt. Anfahrtskosten werden als transparente Pauschale (Zonensystem Aux/Muc) vorab im Angebot ausgewiesen.
+            </p>
+        </div>
+    </section>
+
+    <section class="section-padding bg-dark">
+        <div class="container">
+            <div class="budget-hack-zone" data-aos="zoom-in">
+                <span style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: #111; color: var(--gold); padding: 5px 20px; font-family: monospace; border: 1px solid var(--gold); border-radius: 20px;">[ SYSTEM HACKS ]</span>
+                
+                <div style="text-align: center; margin-bottom: 40px;">
+                    <h2 style="color: #fff; font-family: 'Space Grotesk'; font-size: 2.5rem;">Wie Sie <span class="gold-text">Kosten senken.</span></h2>
+                    <p style="color: #aaa;">Zeit ist Geld. Übernehmen Sie die unqualifizierte Vorarbeit, und wir benötigen weniger teure Montage-Stunden.</p>
+                </div>
+
+                <div class="grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                    <div class="hack-item" data-aos="fade-up" data-aos-delay="100">
+                        <i class="fas fa-box-open"></i>
+                        <div>
+                            <strong style="color:#fff; display:block;">Paket-Logistik</strong>
+                            <span style="color:#888; font-size:0.85rem;">Tragen Sie die schweren Pakete selbst in den Zielraum. Das spart uns bis zu 45 Minuten Laufzeit.</span>
+                        </div>
+                    </div>
+                    <div class="hack-item" data-aos="fade-up" data-aos-delay="200">
+                        <i class="fas fa-broom"></i>
+                        <div>
+                            <strong style="color:#fff; display:block;">Clear the Area</strong>
+                            <span style="color:#888; font-size:0.85rem;">Wir brauchen Platz. Bauen Sie alte Möbel vorher ab und schaffen Sie eine freie "Arena" für den Aufbau.</span>
+                        </div>
+                    </div>
+                    <div class="hack-item" data-aos="fade-up" data-aos-delay="300">
+                        <i class="fas fa-recycle"></i>
+                        <div>
+                            <strong style="color:#fff; display:block;">Müll-Management</strong>
+                            <span style="color:#888; font-size:0.85rem;">Wenn Sie Kartonagen selbst zum Wertstoffhof fahren, entfällt unsere kostenpflichtige Entsorgungspauschale.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 50px; padding-top: 30px; border-top: 1px dashed rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap;" data-aos="fade-in">
+                    <div style="color: #fff; font-size: 1.1rem;">
+                        Montage-Budget gespart? <br>
+                        <span style="color:#888; font-size:0.9rem;">Investieren Sie es in das Herzstück Ihres Zuhauses.</span>
+                    </div>
+                    <a href="magazine.html#nuria-shop" class="btn btn-gold" style="border-radius: 30px; padding: 10px 30px;"><i class="fas fa-shopping-bag"></i> Zur Nuria Boutique</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding bg-darker">
+        <div class="container">
+            <div class="section-header center" data-aos="fade-up">
+                <h2>Das Deutsche <span class="gold-text">Rechtssystem</span></h2>
+                <p>Volle Sicherheit für Sie als Auftraggeber.</p>
+            </div>
+            
+            <div class="service-detail-grid">
+                <div class="price-hologram" style="padding: 30px;" data-aos="fade-up">
+                    <h4 style="color:var(--cyber-green); margin-bottom:10px;"><i class="fas fa-file-invoice-dollar"></i> 20% Steuer zurück</h4>
+                    <p style="color:#aaa; font-size:0.95rem;">Sie können unsere Arbeits- und Anfahrtskosten als "Haushaltsnahe Dienstleistungen" (§ 35a EStG) direkt von Ihrer Einkommenssteuer absetzen. Die Rechnung wird exakt dafür ausgestellt.</p>
+                </div>
+                <div class="price-hologram" style="padding: 30px;" data-aos="fade-up" data-aos-delay="100">
+                    <h4 style="color:var(--gold); margin-bottom:10px;"><i class="fas fa-shield-alt"></i> Betriebshaftpflicht</h4>
+                    <p style="color:#aaa; font-size:0.95rem;">Ein Kratzer im teuren Parkett? Ein gesprungener Spiegel? Keine Panik. Wir sind ein offiziell angemeldetes Handwerksgewerbe und vollumfänglich versichert. Null Risiko für Sie.</p>
+                </div>
+                <div class="price-hologram" style="padding: 30px;" data-aos="fade-up" data-aos-delay="200">
+                    <h4 style="color:white; margin-bottom:10px;"><i class="fas fa-credit-card"></i> 100% Cashless</h4>
+                    <p style="color:#aaa; font-size:0.95rem;">Wir hantieren nicht mit Schwarzgeld. Die Bezahlung erfolgt nach erfolgreicher Montage und Abnahme hochmodern per EC-Karte (Terminal vor Ort), Apple Pay, Google Pay oder Echtzeit-Überweisung.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="mega-footer">
+        <div class="footer-ticker">
+            <div class="ticker-track">
+                <span>
+                    +++ PREMIUM MÖBELMONTAGE • AUGSBURG & MÜNCHEN • IKEA PAX EXPERTEN • BÜROEINRICHTUNG & USM HALLER • KÜCHENINSTALLATION • TV WANDMONTAGE • KEINE VERSTECKTEN KOSTEN • SAUBERKEIT GARANTIERT • ENGINEERING LEVEL QUALITY • +++
+                </span>
+                <span>
+                    +++ PREMIUM MÖBELMONTAGE • AUGSBURG & MÜNCHEN • IKEA PAX EXPERTEN • BÜROEINRICHTUNG & USM HALLER • KÜCHENINSTALLATION • TV WANDMONTAGE • KEINE VERSTECKTEN KOSTEN • SAUBERKEIT GARANTIERT • ENGINEERING LEVEL QUALITY • +++
+                </span>
+            </div>
+        </div>
+
+        <div class="container relative-z">
+            <div class="footer-grid">
+                
+                <div class="f-col brand-col">
+                    <div class="footer-logo">RAPHAEL <span>LEZIUS</span></div>
+                    <p class="tagline">Präzision ist kein Zufall.<br>Es ist ein Standard.</p>
+                    
+                    <div class="trust-badges-footer">
+                        <span class="t-badge"><i class="fas fa-shield-alt"></i> Versichert</span>
+                        <span class="t-badge"><i class="fas fa-check-circle"></i> Geprüft</span>
+                    </div>
+
+                    <div class="social-row">
+                        <a href="https://wa.me/491608194018" target="_blank" class="social-btn"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" target="_blank" class="social-btn"><i class="fab fa-instagram"></i></a>
+                        <a href="#" target="_blank" class="social-btn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <div class="f-col">
+                    <h4 class="f-heading">Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="residential.html">IKEA PAX Aufbau</a></li>
+                        <li><a href="residential.html">Küchenmontage</a></li>
+                        <li><a href="office.html">Büromöbel & USM</a></li>
+                        <li><a href="tech.html">TV Wandmontage</a></li>
+                        <li><a href="tech.html">Smart Home Setup</a></li>
+                    </ul>
+                </div>
+
+                <div class="f-col">
+                    <h4 class="f-heading">Nuria Boutique</h4>
+                    <ul class="footer-links">
+                        <li><a href="magazine.html#nuria-storage">Körbe & Ordnung</a></li>
+                        <li><a href="magazine.html#nuria-kitchen">Tisch & Küche</a></li>
+                        <li><a href="magazine.html#nuria-textiles">Textilien</a></li>
+                    </ul>
+                    <div class="payment-row">
+                        <i class="fab fa-cc-paypal"></i>
+                        <i class="fab fa-cc-visa"></i>
+                        <i class="fab fa-cc-mastercard"></i>
+                    </div>
+                </div>
+
+                <div class="f-col">
+                    <h4 class="f-heading">Rechtliches</h4>
+                    <ul class="footer-links">
+                        <li><a href="impressum.html">Impressum</a></li>
+                        <li><a href="datenschutz.html">Datenschutz</a></li>
+                        <li><a href="agb.html">AGB & Widerruf</a></li>
+                        <li><a href="https://ec.europa.eu/consumers/odr" target="_blank">Streitschlichtung</a></li>
+                    </ul>
+                </div>
+
+                <div class="f-col contact-col">
+                    <h4 class="f-heading">Zentrale</h4>
+                    <ul class="contact-list">
+                        <li>
+                            <i class="fas fa-map-marker-alt gold-icon"></i>
+                            <span class="contact-text">Am Rößlebad 9<br>86152 Augsburg</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone gold-icon"></i>
+                            <a href="tel:+491608194018" class="contact-link">0160 819 4018</a>
+                        </li>
+                        <li>
+                            <i class="far fa-envelope gold-icon"></i>
+                            <a href="mailto:r.lezius@gmail.com" class="contact-link">r.lezius@gmail.com</a>
+                        </li>
+                    </ul>
+                    
+                    <div class="op-status">
+                        <div class="status-dot-container">
+                            <div class="status-dot live"></div>
+                            <div class="status-pulse"></div>
+                        </div>
+                        <span>Team Status: <strong class="glow-text">IM EINSATZ</strong></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom-bar">
+                <div class="copyright">
+                    &copy; 2026 Raphael Lezius. <span class="hide-mobile">Alle Rechte vorbehalten.</span>
+                </div>
+                
+                <div class="developer-credit">
+                    <span class="code-bracket">&lt;/&gt;</span>
+                    <span class="dev-text">ENGINEERED BY <span class="dev-name">IDRIS</span></span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/491608194018?text=Hallo%20Raphael,%20ich%20habe%20eine%20Anfrage%20zu%20Preisen%20und%20Ablauf..." target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+        <span class="whatsapp-pulse"></span>
+        <div class="whatsapp-tooltip">Direkt-Kalkulation</div>
+    </a>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="assets/js/main.js"></script>
+    
+    <script>
+        window.addEventListener('scroll', () => {
+            const scrollPos = window.scrollY;
+            const docHeight = document.body.scrollHeight - window.innerHeight;
+            const scrollPercent = scrollPos / docHeight;
+            const fillLine = document.getElementById('scrollProgress');
+            if(fillLine) {
+                // Adjust multiplier based on where timeline is on page
+                fillLine.style.height = `${scrollPercent * 150}%`; 
+            }
+        });
+    </script>
+</body>
+</html>

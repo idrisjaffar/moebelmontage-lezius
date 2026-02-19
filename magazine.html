@@ -3,267 +3,304 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Raphael Lezius | Magazine</title>
+    <title>Magazin & Philosophie | Raphael Lezius Engineering</title>
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&family=Space+Grotesk:wght@500;700;800&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
     
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    
-    <link rel="stylesheet" href="assets/CSS/style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body>
+<body class="bg-darker" style="position: relative; overflow-x: hidden;">
 
-    <header class="navbar">
+    <div class="blueprint-universe">
+        <i class="fas fa-hammer bp-tool t-1"></i>
+        <i class="fas fa-screwdriver bp-tool t-2"></i>
+        <i class="fas fa-ruler-combined bp-tool t-3"></i>
+        <i class="fas fa-bolt bp-tool t-4"></i>
+        <i class="fas fa-drafting-compass bp-tool t-5"></i>
+        <i class="fas fa-toolbox bp-tool t-6"></i>
+        <i class="fas fa-cogs bp-tool t-7"></i>
+        <div class="bp-grid-layer"></div>
+    </div>
+
+    <nav class="navbar" style="backdrop-filter: blur(20px); border-bottom: 1px solid rgba(212,175,55,0.2);">
         <div class="container nav-inner">
-            <div class="logo-area">
-                <div class="logo-box">
-                    <div class="flipper">
-                        <div class="front"><img src="assets/images/logo front.jpeg" alt="Logo"></div>
-                        <div class="back"><img src="assets/images/logo back.jpeg" alt="Contact"></div>
-                    </div>
+            <a href="index.html" class="logo-3d-wrapper" style="pointer-events: auto;">
+                <div class="logo-flipper">
+                    <div class="logo-face front"><img src="assets/images/raphael-lezius-logo-front.webp" alt="Logo Front"></div>
+                    <div class="logo-face back"><img src="assets/images/raphael-lezius-logo-back.webp" alt="Logo Back"></div>
                 </div>
-                <div class="brand-name">RAPHAEL <span>LEZIUS</span></div>
+                <div class="brand-text">RAPHAEL <span>LEZIUS</span></div>
+            </a>
+
+            <div class="desktop-menu" style="pointer-events: auto;">
+                <div class="nav-group">
+                    <a href="index.html" class="nav-link">Startseite</a>
+                    <div class="dropdown-container">
+                        <button class="nav-link dropdown-trigger">
+                            Leistungen <i class="fas fa-chevron-down" style="font-size: 0.7em; margin-left: 5px;"></i>
+                        </button>
+                        <div class="dropdown-menu glass-panel">
+                            <a href="residential.html" class="dd-item">
+                                <i class="fas fa-couch gold-text"></i>
+                                <span>Privat & IKEA <small>PAX, Küchen, Betten</small></span>
+                            </a>
+                            <a href="office.html" class="dd-item">
+                                <i class="fas fa-building gold-text"></i>
+                                <span>Gewerbe & Office <small>USM, Konferenz, Laden</small></span>
+                            </a>
+                            <a href="tech.html" class="dd-item">
+                                <i class="fas fa-microchip gold-text"></i>
+                                <span>Tech & Smart <small>TV, LED, Kabel</small></span>
+                            </a>
+                        </div>
+                    </div>
+                    <a href="process-pricing.html" class="nav-link">Preise & Ablauf</a>
+                    <a href="area.html" class="nav-link">Gebiet</a>
+                    <a href="gallery.html" class="nav-link">Galerie</a>
+                    <a href="magazine.html" class="nav-link active">Magazin</a>
+                </div>
             </div>
 
-            <nav class="desktop-menu">
-                <a href="index.html" class="nav-link">Home</a>
-                <div class="dropdown-wrapper">
-                    <button class="nav-link dropdown-btn">Leistungen <i class="fas fa-chevron-down"></i></button>
-                    <div class="mega-menu">
-                        <div class="mega-col">
-                            <h4>Möbel & Aufbau</h4>
-                            <a href="#">IKEA PAX Experte</a>
-                            <a href="#">Wohnwände & TV</a>
-                            <a href="#">Büro & USM Haller</a>
-                        </div>
-                        <div class="mega-col">
-                            <h4>Installation</h4>
-                            <a href="#">Küchenmontage</a>
-                            <a href="#">Lampen & Bohren</a>
-                            <a href="#">Vorhänge & Rollos</a>
-                        </div>
-                        <div class="mega-col">
-                            <h4>Tech & Smart</h4>
-                            <a href="#">TV Wandmontage</a>
-                            <a href="#">LED & Sound</a>
-                            <a href="#">Kabelmanagement</a>
-                        </div>
-                    </div>
-                </div>
-                <a href="index.html#projects" class="nav-link">Projekte</a>
-                <a href="index.html#about" class="nav-link">Profil</a>
-                <a href="magazine.html" class="nav-link">Magazine</a>
-            </nav>
-
-            <div class="nav-actions">
-                <button onclick="toggleAuth()" class="action-icon"><i class="fas fa-user"></i></button>
-                <button onclick="toggleQuote()" class="btn btn-gold desktop-only">Angebot</button>
-                <button class="hamburger" onclick="toggleMobileMenu()">
-                    <span class="bar"></span><span class="bar"></span><span class="bar"></span>
-                </button>
+            <div class="nav-actions" style="pointer-events: auto;">
+                <div class="status-pill desktop-only"><span class="status-dot"></span><span>Verfügbar</span></div>
+                <a href="javascript:void(0)" onclick="MissionOS.open()" class="btn btn-gold glow-effect nav-quote-btn">
+                    <span class="btn-text">Angebot Anfordern</span>
+                    <div class="btn-glow-pulse"></div>
+                </a>
+                <button class="hamburger" id="hamburgerBtn" aria-label="Menu"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
             </div>
         </div>
-    </header>
+    </nav>
 
-    <div class="mobile-menu-overlay" id="mobileMenu">
+    <div class="mobile-menu" id="mobileMenu">
         <nav class="mobile-nav-links">
-            <a href="index.html" onclick="toggleMobileMenu()">Home</a>
-            <a href="index.html#projects" onclick="toggleMobileMenu()">Projekte</a>
-            <a href="index.html#about" onclick="toggleMobileMenu()">Profil</a>
-            <a href="magazine.html" onclick="toggleMobileMenu()">Magazine</a>
-            <button onclick="toggleQuote(); toggleMobileMenu()" class="btn btn-gold btn-block">Angebot anfordern</button>
+            <a href="index.html">Startseite</a>
+            <div style="font-size: 0.8rem; color: var(--gold); margin-top: 15px; opacity: 0.7; text-transform: uppercase; letter-spacing: 1px;">Dienstleistungen</div>
+            <a href="residential.html">IKEA & Wohnen</a>
+            <a href="office.html">Büro & Gewerbe</a>
+            <a href="tech.html">TV & Smart Home</a>
+            <div style="font-size: 0.8rem; color: var(--gold); margin-top: 15px; opacity: 0.7; text-transform: uppercase; letter-spacing: 1px;">Informationen</div>
+            <a href="process-pricing.html">Preise & Ablauf</a>
+            <a href="area.html">Gebiet</a>
+            <a href="gallery.html">Galerie</a>
+            <a href="magazine.html" class="gold-text">Magazin</a>
+            <a href="javascript:void(0)" onclick="MissionOS.open(); document.getElementById('mobileMenu').classList.remove('active');" class="btn btn-gold" style="margin-top: 30px; width: 100%; text-align: center;">Angebot anfordern</a>
         </nav>
     </div>
 
-    <section class="magazine-section section-padding bg-dark">
+    <header class="mag-hero relative-z">
+        <div class="container center" data-aos="zoom-in">
+            <div class="mag-subtitle"><i class="fas fa-pen-nib"></i> THE MAKERS JOURNAL</div>
+            <h1 class="mag-title">Wo Struktur auf <span class="gold-text">Seele</span> trifft.</h1>
+            <p style="color:#aaa; max-width:600px; margin: 0 auto; font-size:1.1rem; line-height:1.8;">
+                Einblicke in die Psychologie des Wohnens, technische Deep-Dives in die moderne Möbelmontage und die Geschichte von zwei Welten, die sich in Bayern vereinen.
+            </p>
+        </div>
+    </header>
+
+    <section class="story-section relative-z">
         <div class="container">
-            <h1 class="section-heading center">Magazine</h1>
-            <p class="lead center">Hier finden Sie Artikel, Tipps und Neuigkeiten rund um Montage, Design und Engineering.</p>
-            <div class="magazine-grid">
-                <!-- Add your magazine articles here as cards -->
-                <div class="magazine-card glass-card">
-                    <h3>Artikel Titel 1</h3>
-                    <p>Kurze Beschreibung des Artikels...</p>
-                    <a href="article1.html" class="btn btn-gold">Lesen</a>
+            <div class="glass-story-card">
+                <div class="story-split">
+                    <div class="ss-image" data-aos="fade-right">
+                        <img src="assets/images/logo back.jpeg" alt="Hands working together" style="filter: sepia(50%) contrast(1.2);">
+                        <div class="image-overlay-text">NAIROBI × AUGSBURG</div>
+                    </div>
+                    <div class="ss-content" data-aos="fade-left">
+                        <span class="story-category">PHILOSOPHIE</span>
+                        <h2>Zwei Welten. <br>Eine <span class="gold-text">Basis.</span></h2>
+                        
+                        <p class="editorial-text">
+                            Perfektion entsteht selten in der Isolation. Sie entsteht, wenn unterschiedliche Perspektiven zusammenkommen. Unser Fundament ruht auf zwei Säulen, die unterschiedlicher nicht sein könnten, sich aber in ihrer Hingabe zum Detail absolut ebenbürtig sind.
+                        </p>
+                        <p class="editorial-text">
+                            Auf der einen Seite steht die Wärme, die Lebensfreude und die tiefe handwerkliche Seele Kenias. Auf der anderen Seite die unerbittliche Struktur, die Logik und die Ingenieurskunst Bayerns. 
+                        </p>
+                        <blockquote class="story-quote">
+                            "Wir sind mehr als nur Kollegen. Wir sind eine Partnerschaft auf Augenhöhe. Ein Bund, der auf blindem Vertrauen, Respekt und dem gemeinsamen Streben nach Perfektion basiert."
+                        </blockquote>
+                        <p class="editorial-text">
+                            Diese tiefe Verbundenheit fließt in jeden Raum ein, den wir betreten. Wir glauben daran, dass echte Qualität inklusiv ist. Sie fragt nicht nach Herkunft oder Identität – sie fragt nur nach Hingabe. Wenn wir Ihr Zuhause einrichten, bringen wir genau diese Balance mit: Die Präzision, dass jede Schraube auf den Millimeter sitzt, und die Seele, dass aus Möbeln ein echtes Zuhause wird.
+                        </p>
+                    </div>
                 </div>
-                <div class="magazine-card glass-card">
-                    <h3>Artikel Titel 2</h3>
-                    <p>Kurze Beschreibung des Artikels...</p>
-                    <a href="article2.html" class="btn btn-gold">Lesen</a>
-                </div>
-                <!-- Fügen Sie mehr Karten hinzu, wie benötigt -->
             </div>
         </div>
     </section>
 
-    <footer class="mega-footer">
-        <div class="footer-ticker">
-            <div class="ticker-track">
-                <span>ENGINEERING LEVEL QUALITY</span> <span class="divider">•</span> 
-                <span>MÖBELMONTAGE</span> <span class="divider">•</span> 
-                <span>KÜCHENINSTALLATION</span> <span class="divider">•</span> 
-                <span>BOHRARBEITEN</span> <span class="divider">•</span> 
-                <span>SMART HOME SETUP</span> <span class="divider">•</span> 
-                <span>AUGSBURG & MÜNCHEN</span> <span class="divider">•</span>
-                <span>ENGINEERING LEVEL QUALITY</span> <span class="divider">•</span> 
-                <span>MÖBELMONTAGE</span> <span class="divider">•</span> 
-                <span>KÜCHENINSTALLATION</span> <span class="divider">•</span> 
+    <section class="story-section relative-z" style="margin-top: -40px;">
+        <div class="container">
+            <div class="glass-story-card reverse">
+                <div class="story-split">
+                    <div class="ss-content" data-aos="fade-right">
+                        <span class="story-category">TECHNICAL DEEP DIVE</span>
+                        <h2>Der Geist in der <span class="gold-text">Maschine.</span></h2>
+                        
+                        <p class="editorial-text">
+                            In der modernen Montage prallen Epochen aufeinander. Ein USM Haller Regal aus den 60er Jahren wird mit einem 18V Bosch Professional Brushless Schrauber demontiert. Ein massiver, traditioneller Eichentisch wird durch unsichtbare LED-Matrix-Bänder ins 21. Jahrhundert geholt.
+                        </p>
+                        <ul class="mag-list">
+                            <li><strong>Das traditionelle Auge:</strong> Keine Maschine ersetzt das Gefühl dafür, ob ein Schrank im Raum "atmen" kann oder erdrückend wirkt.</li>
+                            <li><strong>Die moderne Kraft:</strong> Wir nutzen Kreuzlinienlaser, um das menschliche Auge bei 4-Meter PAX-Schränken zu überstimmen.</li>
+                        </ul>
+                        <p class="editorial-text">
+                            Es ist die Synthese aus altem Handwerksstolz und modernster Technologie, die den "Raphael Lezius" Standard definiert. Wir ehren das Holz und beherrschen die Elektronik.
+                        </p>
+                    </div>
+                    <div class="ss-image" data-aos="fade-left">
+                        <div class="laser-scanner"></div>
+                        <img src="assets/images/logo front.jpeg" alt="Tools">
+                        <div class="image-overlay-text">BOSCH × FESTOOL</div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="footer-bg-topo"></div>
-        <div class="container relative-z">
+    </section>
+
+    <section class="section-padding relative-z">
+        <div class="container">
+            <div class="section-header center" data-aos="fade-up">
+                <span class="section-tag" style="border-color:var(--gold); color:var(--gold);">ARCHIVE DATABASE</span>
+                <h2>Wissen & <span style="color:#fff;">Taktik</span></h2>
+            </div>
+
+            <div class="mag-masonry">
+                
+                <article class="mag-article-card" data-aos="fade-up">
+                    <div class="mac-image"><img src="assets/images/logo back.jpeg" alt="Kitchen"></div>
+                    <div class="mac-content">
+                        <span class="mac-tag">KÜCHEN PSYCHOLOGIE</span>
+                        <h3>Das Dreieck der Effizienz.</h3>
+                        <p>Warum Spüle, Herd und Kühlschrank immer ein magisches Dreieck bilden müssen. Ein Guide zur Vermeidung von Laufwegen bei der IKEA METOD Planung.</p>
+                        <a href="javascript:void(0)" onclick="MissionOS.open()" class="mac-link">Planung anfragen <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <article class="mag-article-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="mac-image"><img src="assets/images/logo front.jpeg" alt="Altbau"></div>
+                    <div class="mac-content">
+                        <span class="mac-tag">MÜNCHEN REALITÄT</span>
+                        <h3>Der Altbau-Kampf.</h3>
+                        <p>3,20m hohe Decken, bröckelnder Stuck und Wände aus Sand. Wie wir mit Injektionsdübeln und chemischen Ankern auch schwere TV-Geräte sicher in Münchener Altbauten befestigen.</p>
+                        <a href="javascript:void(0)" onclick="MissionOS.open()" class="mac-link">Altbau Check <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <article class="mag-article-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="mac-image"><img src="assets/images/logo back.jpeg" alt="Cable Management"></div>
+                    <div class="mac-content">
+                        <span class="mac-tag">SMART HOME</span>
+                        <h3>Tod dem Kabelsalat.</h3>
+                        <p>Psychologische Studien zeigen: Sichtbare Kabel erzeugen unterbewussten Stress. Unser "Zero-Cable Protocol" für das Wohnzimmer erklärt.</p>
+                        <a href="tech.html" class="mac-link">Zum Tech-Setup <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <article class="mag-article-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="mac-image"><img src="assets/images/logo front.jpeg" alt="Business"></div>
+                    <div class="mac-content">
+                        <span class="mac-tag">B2B LOGISTIK</span>
+                        <h3>Wochenend-Einsätze.</h3>
+                        <p>Warum es Sie mehr kostet, Ihre eigenen Mitarbeiter am Freitag Nachmittag Schreibtische aufbauen zu lassen, als unser Profi-Team am Wochenende zu buchen.</p>
+                        <a href="office.html" class="mac-link">B2B Tarife <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding relative-z" style="background: linear-gradient(135deg, var(--gold), #b89600); text-align: center; color: #000; margin-top: 50px;">
+        <div class="container" data-aos="zoom-in">
+            <h2 style="font-family: 'Space Grotesk'; font-size: 3rem; font-weight: 800; margin-bottom: 15px; letter-spacing: -1px;">BEREIT FÜR DIE UMSETZUNG?</h2>
+            <p style="font-size: 1.1rem; font-weight: 600; margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto;">
+                Sie haben die Vision gelesen. Jetzt lassen Sie uns Ihr Projekt in die Realität umsetzen.
+            </p>
+            <button onclick="MissionOS.open()" class="btn" style="background: #000; color: var(--gold); font-size: 1.1rem; padding: 20px 50px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+                <i class="fas fa-bolt"></i> ANFRAGE STARTEN
+            </button>
+        </div>
+    </section>
+
+    <footer class="mega-footer relative-z">
+        <div class="footer-ticker">
+            <div class="ticker-track">
+                <span>
+                    +++ PREMIUM MÖBELMONTAGE • AUGSBURG & MÜNCHEN • IKEA PAX EXPERTEN • BÜROEINRICHTUNG & USM HALLER • KÜCHENINSTALLATION • TV WANDMONTAGE • KEINE VERSTECKTEN KOSTEN • SAUBERKEIT GARANTIERT • ENGINEERING LEVEL QUALITY • +++
+                </span>
+                <span>
+                    +++ PREMIUM MÖBELMONTAGE • AUGSBURG & MÜNCHEN • IKEA PAX EXPERTEN • BÜROEINRICHTUNG & USM HALLER • KÜCHENINSTALLATION • TV WANDMONTAGE • KEINE VERSTECKTEN KOSTEN • SAUBERKEIT GARANTIERT • ENGINEERING LEVEL QUALITY • +++
+                </span>
+            </div>
+        </div>
+
+        <div class="container">
             <div class="footer-grid">
+                
                 <div class="f-col brand-col">
-                    <div class="footer-logo-box">
-                        <div class="flipper">
-                            <div class="front"><img src="assets/images/logo front.jpeg" alt="Logo"></div>
-                            <div class="back"><img src="assets/images/logo back.jpeg" alt="Back"></div>
-                        </div>
+                    <div class="footer-logo">RAPHAEL <span>LEZIUS</span></div>
+                    <p class="tagline">Präzision ist kein Zufall.<br>Es ist ein Standard.</p>
+                    <div class="trust-badges-footer">
+                        <span class="t-badge"><i class="fas fa-shield-alt"></i> Versichert</span>
+                        <span class="t-badge"><i class="fas fa-check-circle"></i> Geprüft</span>
                     </div>
-                    <h3>RAPHAEL <span class="gold-text">LEZIUS</span></h3>
-                    <p class="tagline">Präzision ist kein Zufall. Es ist ein Standard.</p>
-                    <div class="trust-pill"><i class="fas fa-shield-alt"></i> Betriebshaftpflicht versichert</div>
                     <div class="social-row">
-                        <a href="https://www.instagram.com/" target="_blank" class="social-btn"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.facebook.com/" target="_blank" class="social-btn"><i class="fab fa-facebook-f"></i></a>
                         <a href="https://wa.me/491608194018" target="_blank" class="social-btn"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" target="_blank" class="social-btn"><i class="fab fa-instagram"></i></a>
+                        <a href="#" target="_blank" class="social-btn"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
+
                 <div class="f-col">
-                    <h4><i class="fas fa-tools"></i> Expertise</h4>
+                    <h4 class="f-heading">Services</h4>
                     <ul class="footer-links">
-                        <li><a href="#">IKEA PAX Systeme</a></li>
-                        <li><a href="#">Einbauküchen</a></li>
-                        <li><a href="#">Wandmontage</a></li>
-                        <li><a href="#">Büroeinrichtung</a></li>
+                        <li><a href="residential.html">IKEA PAX Aufbau</a></li>
+                        <li><a href="residential.html">Küchenmontage</a></li>
+                        <li><a href="office.html">Büromöbel & USM</a></li>
+                        <li><a href="tech.html">TV Wandmontage</a></li>
+                        <li><a href="tech.html">Smart Home Setup</a></li>
                     </ul>
                 </div>
+
                 <div class="f-col">
-                    <h4><i class="fas fa-compass"></i> Navigation</h4>
+                    <h4 class="f-heading">Wissen</h4>
                     <ul class="footer-links">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="index.html#about">Profil</a></li>
-                        <li><a href="index.html#projects">Portfolio</a></li>
-                        <li><a href="javascript:toggleQuote()">Angebot</a></li>
+                        <li><a href="magazine.html">Magazin & Story</a></li>
+                        <li><a href="gallery.html">Projekt Archiv</a></li>
+                        <li><a href="process-pricing.html">Preise & Ablauf</a></li>
                     </ul>
                 </div>
+
                 <div class="f-col contact-col">
-                    <h4><i class="fas fa-map-marker-alt"></i> Kontakt</h4>
-                    <a href="tel:+491608194018" class="contact-link highlight"><i class="fas fa-phone"></i> 0160 819 4018</a>
-                    <a href="mailto:r.lezius@gmail.com" class="contact-link"><i class="fas fa-envelope"></i> r.lezius@gmail.com</a>
-                    <div class="area-box">
-                        <span>Einsatzgebiet:</span>
-                        <p>Augsburg, München, Dachau & Umgebung</p>
+                    <h4 class="f-heading">Zentrale</h4>
+                    <ul class="contact-list">
+                        <li><i class="fas fa-map-marker-alt gold-icon"></i><span class="contact-text">Am Rößlebad 9<br>86152 Augsburg</span></li>
+                        <li><i class="fas fa-phone gold-icon"></i><a href="tel:+491608194018" class="contact-link">0160 819 4018</a></li>
+                        <li><i class="far fa-envelope gold-icon"></i><a href="mailto:r.lezius@gmail.com" class="contact-link">r.lezius@gmail.com</a></li>
+                    </ul>
+                    <div class="op-status">
+                        <div class="status-dot-container"><div class="status-dot live"></div><div class="status-pulse"></div></div>
+                        <span>Team Status: <strong class="glow-text">IM EINSATZ</strong></span>
                     </div>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <div class="copyright">© 2025 Lezius Montage. All Rights Reserved.</div>
-                <div class="designer-credit"><i class="fas fa-code"></i> Digital Architecture by <span class="highlight">Idris</span></div>
-                <div class="legal-links">
-                    <a href="impressum.html">Impressum</a><span class="sep">|</span><a href="datenschutz.html">Datenschutz</a>
-                </div>
+
+            <div class="footer-bottom-bar">
+                <div class="copyright">&copy; 2026 Raphael Lezius. <span class="hide-mobile">Alle Rechte vorbehalten.</span></div>
+                <div class="developer-credit"><span class="code-bracket">&lt;/&gt;</span><span class="dev-text">ENGINEERED BY <span class="dev-name">IDRIS</span></span></div>
             </div>
         </div>
     </footer>
 
-    <div id="quoteDrawer" class="drawer-overlay">
-        <aside class="drawer-panel tech-drawer">
-            <div class="drawer-header">
-                <h3><i class="fas fa-calculator"></i> KOSTEN KALKULATOR</h3>
-                <div class="sys-id">SYS: v2.5 // ONLINE</div>
-                <button class="close-drawer" onclick="toggleQuote()"><i class="fas fa-times"></i></button>
-            </div>
-            
-            <div class="drawer-body">
-                <form id="calculatorForm">
-                    
-                    <div class="form-section">
-                        <label class="tech-label">01 // PROJEKT KATEGORIE</label>
-                        <div class="select-box">
-                            <select id="projectType" class="tech-input" onchange="updateEstimate()">
-                                <option value="0">Bitte wählen...</option>
-                                <option value="150">Möbelmontage (Start: 150€)</option>
-                                <option value="400">Küchenmontage (Start: 400€)</option>
-                                <option value="80">Bohrarbeiten (Start: 80€)</option>
-                                <option value="200">Büro & USM (Start: 200€)</option>
-                            </select>
-                            <i class="fas fa-chevron-down arrow-icon"></i>
-                        </div>
-                    </div>
+    <a href="https://wa.me/491608194018?text=Hallo%20Raphael,%20ich%20habe%20euer%20Magazin%20gelesen..." target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+        <span class="whatsapp-pulse"></span>
+        <div class="whatsapp-tooltip">Direkter Draht</div>
+    </a>
 
-                    <div class="form-section">
-                        <label class="tech-label">02 // GESCHÄTZTE DAUER</label>
-                        <div class="range-wrapper">
-                            <input type="range" min="1" max="10" value="2" class="tech-slider" id="hourSlider" oninput="updateEstimate()">
-                            <div class="slider-readout">
-                                <span id="hourValue">2</span> STUNDEN
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="estimate-box">
-                        <span class="est-label">GESCHÄTZTE KOSTEN:</span>
-                        <div class="est-price-wrapper">
-                            <span class="est-currency">€</span>
-                            <span class="est-value" id="totalEstimate">0</span>
-                        </div>
-                        <div class="est-bar"></div> <small>*Unverbindliche Schätzung exkl. Material.</small>
-                    </div>
-
-                    <div class="form-section">
-                        <label class="tech-label">03 // KONTAKT</label>
-                        <input type="email" class="tech-input mb-2" placeholder="Ihre Email Adresse" required>
-                        <button type="submit" class="btn btn-gold btn-block">ANGEBOT ANFORDERN</button>
-                    </div>
-
-                </form>
-            </div>
-        </aside>
-    </div>
-
-    <div id="authModal" class="modal-overlay">
-        <div class="modal-card industrial-panel">
-            <button class="close-modal" onclick="toggleAuth()"><i class="fas fa-times"></i></button>
-            
-            <div class="panel-header">
-                <div class="status-light online"></div>
-                <h3>CLIENT TERMINAL</h3>
-            </div>
-
-            <div class="auth-tabs">
-                <button type="button" class="tab-btn active" onclick="switchTab('login')">LOGIN</button>
-                <button type="button" class="tab-btn" onclick="switchTab('register')">REGISTRIEREN</button>
-            </div>
-
-            <form id="loginForm" class="auth-form active">
-                <div class="input-group">
-                    <i class="fas fa-id-card"></i>
-                    <input type="email" class="tech-input" placeholder="Email" required>
-                </div>
-                <div class="input-group">
-                    <i class="fas fa-key"></i>
-                    <input type="password" class="tech-input" placeholder="Passwort" required>
-                </div>
-                <button type="submit" class="btn btn-gold btn-block">
-                    <i class="fas fa-unlock"></i> ZUGRIFF
-                </button>
-            </form>
-
-            <form id="registerForm" class="auth-form">
-                <div class="input-group"><i class="fas fa-user"></i><input type="text" class="tech-input" placeholder="Name"></div>
-                <div class="input-group"><i class="fas fa-envelope"></i><input type="email" class="tech-input" placeholder="Email"></div>
-                <div class="input-group"><i class="fas fa-lock"></i><input type="password" class="tech-input" placeholder="Passwort wählen"></div>
-                <button type="submit" class="btn btn-gold btn-block">KONTO ERSTELLEN</button>
-            </form>
-        </div>
-    </div>
-    <a href="https://wa.me/491608194018" class="whatsapp-btn" target="_blank"><i class="fab fa-whatsapp"></i></a>
-    <a href="https://www.instagram.com/" class="instagram-btn" target="_blank"><i class="fab fa-instagram"></i></a>
-
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="assets/js/main.js"></script>
 </body>
 </html>

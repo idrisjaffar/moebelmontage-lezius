@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Einsatzgebiet Augsburg & München | Raphael Lezius Tactical</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+    
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <style>
+        :root {
+            --radar-green: #39ff14;
+            --radar-glow: rgba(57, 255, 20, 0.4);
+            --neo-red: #ff003c;
+            --neo-gold: #ffd700;
+        }
+
+        /* 1. Tactical Hero & Particle Engine */
+        .tactical-hero {
+            position: relative; height: 95vh; min-height: 750px;
+            background: #050505; display: flex; align-items: center; justify-content: center; overflow: hidden;
+            border-bottom: 2px solid var(--gold);
+        }
+        
+        .iso-map-bg {
+            position: absolute; inset: -50%; 
+            background-image: 
+                linear-gradient(rgba(57, 255, 20, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(57, 255, 20, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            transform: perspective(1000px) rotateX(70deg) rotateZ(20deg);
+            animation: panMap 20s linear infinite; z-index: 0;
+        }
+        @keyframes panMap { from { transform: perspective(1000px) rotateX(70deg) rotateZ(20deg) translateY(0); } to { transform: perspective(1000px) rotateX(70deg) rotateZ(20deg) translateY(50px); } }
+
+        .radar-sweep {
+            position: absolute; top: 50%; left: 50%; width: 150vw; height: 150vw;
+            background: conic-gradient(from 0deg, transparent 70%, rgba(57, 255, 20, 0.1) 95%, rgba(57, 255, 20, 0.6) 100%);
+            border-radius: 50%; transform: translate(-50%, -50%);
+            animation: radarSpin 3s linear infinite; z-index: 1; pointer-events: none;
+        }
+        @keyframes radarSpin { from { transform: translate(-50%, -50%) rotate(0deg); } to { transform: translate(-50%, -50%) rotate(360deg); } }
+
+        .particles {
+            position: absolute; inset: 0; pointer-events: none; z-index: 2;
+            background-image: radial-gradient(rgba(57, 255, 20, 0.4) 1px, transparent 1px);
+            background-size: 80px 80px; animation: particleDrift 15s linear infinite;
+        }
+        @keyframes particleDrift { from { background-position: 0 0; } to { background-position: 80px 80px; } }
+
+        /* 2. The Animated Dual Ribbon (Bavaria + Germany) */
+        .dual-ribbon-container { position: relative; width: 100%; background: #000; overflow: hidden; padding-bottom: 25px; z-index: 20; }
+        .bavarian-line {
+            height: 4px; width: 100%;
+            background: repeating-linear-gradient(45deg, #0066b2, #0066b2 20px, #ffffff 20px, #ffffff 40px);
+            box-shadow: 0 0 15px rgba(0, 102, 178, 0.5);
+            animation: slideBavaria 10s linear infinite;
+        }
+        .german-line {
+            height: 4px; width: 100%;
+            background: linear-gradient(90deg, #000 0%, #000 33%, #ff0000 33%, #ff0000 66%, #ffcc00 66%, #ffcc00 100%);
+            background-size: 300% 100%;
+            animation: slideGermany 6s linear infinite;
+            margin-top: 2px;
+        }
+        .ribbon-text {
+            position: absolute; bottom: 5px; width: 100%; text-align: center;
+            font-family: 'Space Grotesk', sans-serif; font-size: 0.8rem; letter-spacing: 5px; color: #aaa;
+        }
+        @keyframes slideBavaria { 0% { background-position: 0 0; } 100% { background-position: 100px 0; } }
+        @keyframes slideGermany { 0% { background-position: 100% 0; } 100% { background-position: 0 0; } }
+
+        /* 3. Live PLZ Data Marquee */
+        .data-stream-marquee { background: #000; border-bottom: 1px solid #333; padding: 10px 0; overflow: hidden; white-space: nowrap; position: relative; z-index: 15; }
+        .plz-track { display: inline-block; font-family: monospace; color: var(--gold); font-size: 0.85rem; letter-spacing: 2px; animation: streamPLZ 30s linear infinite; }
+        .plz-track span { margin: 0 15px; }
+        @keyframes streamPLZ { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        /* 4. Neo-German 3D Pillars */
+        .neo-german-engine { display: flex; gap: 20px; height: 500px; margin: 60px 0; }
+        .pillar {
+            flex: 1; border-radius: 8px; position: relative; overflow: hidden; transition: 0.6s cubic-bezier(0.2, 1, 0.3, 1);
+            display: flex; align-items: flex-end; padding: 30px; cursor: crosshair;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .pillar-black { background: linear-gradient(0deg, #000 0%, #1a1a1a 100%); }
+        .pillar-red { background: linear-gradient(0deg, #330000 0%, #110000 100%); border-color: rgba(255,0,0,0.3); }
+        .pillar-gold { background: linear-gradient(0deg, #332800 0%, #110d00 100%); border-color: rgba(255,215,0,0.3); }
+
+        .pillar:hover { flex: 3; }
+        .pillar:hover.pillar-black { box-shadow: inset 0 0 50px rgba(255,255,255,0.1); }
+        .pillar:hover.pillar-red { box-shadow: inset 0 0 50px rgba(255,0,0,0.5), 0 0 30px rgba(255,0,0,0.2); }
+        .pillar:hover.pillar-gold { box-shadow: inset 0 0 50px rgba(255,215,0,0.5), 0 0 30px rgba(255,215,0,0.2); }
+
+        .pillar-content { opacity: 0; transform: translateY(20px); transition: 0.4s; transition-delay: 0.1s; }
+        .pillar:hover .pillar-content { opacity: 1; transform: translateY(0); }
+        .pillar h3 { font-family: 'Space Grotesk'; font-size: 2rem; color: #fff; margin-bottom: 10px; }
+        .pillar p { font-family: 'Inter'; color: #ccc; font-size: 0.95rem; line-height: 1.6; }
+        .pillar-vertical-title { position: absolute; top: 30px; left: 50%; transform: translateX(-50%); font-family: 'Space Grotesk'; font-size: 1.5rem; color: rgba(255,255,255,0.3); letter-spacing: 10px; writing-mode: vertical-rl; transition: 0.4s; }
+        .pillar:hover .pillar-vertical-title { opacity: 0; }
+
+        /* 5. Hyper-Interactive Holo-Map (Autobahn) */
+        .holo-map-container {
+            position: relative; width: 100%; max-width: 1100px; height: 600px; margin: 80px auto;
+            background: radial-gradient(circle, rgba(10,10,10,0.9) 0%, #000 100%);
+            border: 1px solid #333; border-radius: 12px; box-shadow: inset 0 0 50px rgba(0,0,0,0.9), 0 20px 50px rgba(0,0,0,0.8);
+            overflow: hidden; pointer-events: auto;
+        }
+        
+        /* Map Scanner Line */
+        .map-scanner { position: absolute; top: -10%; left: 0; width: 100%; height: 2px; background: #39ff14; box-shadow: 0 0 20px 5px rgba(57,255,20,0.3); animation: mapScan 6s linear infinite; z-index: 20; pointer-events: none; opacity: 0.6; }
+        @keyframes mapScan { 0% { top: -10%; } 100% { top: 110%; } }
+
+        .a8-highway { position: absolute; top: 50%; left: 15%; right: 15%; height: 2px; background: rgba(255,255,255,0.1); transform: translateY(-50%) rotate(-5deg); z-index: 1; border-top: 1px dashed rgba(212,175,55,0.3); }
+        .a8-pulse { position: absolute; top: -3px; left: 0; width: 60px; height: 6px; background: var(--gold); box-shadow: 0 0 20px var(--gold); border-radius: 10px; opacity: 0; }
+        .a8-p1 { animation: driveA8 4s cubic-bezier(0.4, 0, 0.2, 1) infinite; animation-delay: 0s; }
+        .a8-p2 { animation: driveA8 4s cubic-bezier(0.4, 0, 0.2, 1) infinite; animation-delay: 1.2s; width: 40px; background: #fff; box-shadow: 0 0 10px #fff; }
+        .a8-p3 { animation: driveA8 4s cubic-bezier(0.4, 0, 0.2, 1) infinite; animation-delay: 2.8s; }
+        @keyframes driveA8 { 0% { left: 0; opacity: 0; transform: scaleX(0.5); } 10% { opacity: 1; transform: scaleX(1); } 90% { opacity: 1; transform: scaleX(1); } 100% { left: 100%; opacity: 0; transform: scaleX(0.5); } }
+
+        /* Munich Mittlerer Ring Animation */
+        .muc-ring {
+            position: absolute; top: 60%; right: 15%; width: 120px; height: 120px;
+            border: 1px dashed rgba(0, 224, 255, 0.3); border-radius: 50%;
+            transform: translate(50%, -50%) rotateX(60deg); z-index: 2;
+            animation: ringSpin 10s linear infinite; pointer-events: none;
+        }
+        .muc-ring::after { content: ''; position: absolute; top: -2px; left: 50%; width: 10px; height: 10px; background: #00e0ff; border-radius: 50%; box-shadow: 0 0 15px #00e0ff; }
+        @keyframes ringSpin { 100% { transform: translate(50%, -50%) rotateX(60deg) rotateZ(360deg); } }
+
+        /* Map Nodes */
+        .map-node { position: absolute; width: 30px; height: 30px; background: #000; border: 2px solid var(--radar-green); border-radius: 50%; z-index: 5; cursor: crosshair; transition: 0.3s; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 15px rgba(0,0,0,0.5); }
+        .map-node::before { content: ''; position: absolute; inset: -15px; border: 1px solid var(--radar-green); border-radius: 50%; opacity: 0; animation: pingNode 2s infinite; }
+        @keyframes pingNode { 0% { transform: scale(0.5); opacity: 1; } 100% { transform: scale(2.5); opacity: 0; } }
+        
+        .node-hq { top: 40%; left: 15%; border-color: var(--gold); } .node-hq::before { border-color: var(--gold); }
+        .node-muc { top: 60%; right: 15%; border-color: #00e0ff; } .node-muc::before { border-color: #00e0ff; }
+        .node-ffb { top: 48%; left: 40%; border-color: #fff; width: 20px; height: 20px; }
+
+        /* Dynamic Data Panel */
+        .data-panel {
+            position: absolute; top: 20px; left: 20px; background: rgba(5,5,5,0.95);
+            border: 1px solid var(--radar-green); padding: 20px; width: 300px;
+            font-family: monospace; color: var(--radar-green); opacity: 0; transition: 0.3s;
+            box-shadow: 0 0 30px rgba(57,255,20,0.15); backdrop-filter: blur(10px); z-index: 10; pointer-events: none;
+        }
+        .map-node:hover ~ .data-panel { opacity: 1; }
+        
+        /* 6. Scanning Laser Zone Cards */
+        .zone-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; margin: 50px 0; }
+        .zone-card { background: rgba(10,10,10,0.8); border: 1px solid #222; padding: 40px; position: relative; transition: 0.4s; overflow: hidden; backdrop-filter: blur(10px); cursor: pointer; }
+        .zone-card::after { content: ''; position: absolute; top: -100%; left: 0; width: 100%; height: 3px; background: var(--radar-green); box-shadow: 0 0 20px 5px var(--radar-glow); opacity: 0.5; animation: laserScan 5s ease-in-out infinite; pointer-events: none; }
+        @keyframes laserScan { 0% { top: -10%; opacity: 0; } 10% { opacity: 0.6; } 50% { top: 110%; opacity: 0.6; } 100% { top: 110%; opacity: 0; } }
+
+        .zone-card:hover { border-color: var(--gold); transform: translateY(-10px) scale(1.02); box-shadow: 0 20px 50px rgba(0,0,0,0.8); }
+        .zone-card:hover::after { background: var(--gold); box-shadow: 0 0 20px 5px rgba(212,175,55,0.5); }
+        
+        .crosshair { position: absolute; width: 20px; height: 20px; border: 2px solid rgba(255,255,255,0.1); transition: 0.4s; }
+        .tl { top: 10px; left: 10px; border-right: none; border-bottom: none; } .tr { top: 10px; right: 10px; border-left: none; border-bottom: none; }
+        .bl { bottom: 10px; left: 10px; border-right: none; border-top: none; } .br { bottom: 10px; right: 10px; border-left: none; border-top: none; }
+        .zone-card:hover .crosshair { border-color: var(--gold); width: 40px; height: 40px; }
+
+        .metric-box { border-left: 3px solid var(--gold); padding: 20px; margin: 20px 0; background: rgba(255,215,0,0.03); transition: 0.3s; }
+        .zone-card:hover .metric-box { background: rgba(255,215,0,0.1); }
+
+        @media (max-width: 900px) {
+            .neo-german-engine { flex-direction: column; height: auto; }
+            .pillar { height: 200px; }
+            .pillar:hover { height: 350px; }
+            .holo-map-container { height: 400px; }
+            .data-panel { top: auto; bottom: 10px; left: 10px; right: 10px; width: auto; }
+        }
+    </style>
+</head>
+<body class="bg-darker">
+
+    <nav class="navbar">
+        <div class="container nav-inner">
+            <a href="index.html" class="logo-3d-wrapper" style="pointer-events: auto;">
+                <div class="logo-flipper">
+                    <div class="logo-face front"><img src="assets/images/raphael-lezius-logo-front.webp" alt="Logo Front"></div>
+                    <div class="logo-face back"><img src="assets/images/raphael-lezius-logo-back.webp" alt="Logo Back"></div>
+                </div>
+                <div class="brand-text">RAPHAEL <span>LEZIUS</span></div>
+            </a>
+
+            <div class="desktop-menu" style="pointer-events: auto;">
+                <div class="nav-group">
+                    <a href="index.html" class="nav-link">Startseite</a>
+                    <div class="dropdown-container">
+                        <button class="nav-link dropdown-trigger">
+                            Leistungen <i class="fas fa-chevron-down" style="font-size: 0.7em; margin-left: 5px;"></i>
+                        </button>
+                        <div class="dropdown-menu glass-panel">
+                            <a href="residential.html" class="dd-item">
+                                <i class="fas fa-couch gold-text"></i>
+                                <span>Privat & IKEA <small>PAX, Küchen, Betten</small></span>
+                            </a>
+                            <a href="office.html" class="dd-item">
+                                <i class="fas fa-building gold-text"></i>
+                                <span>Gewerbe & Office <small>USM, Konferenz, Laden</small></span>
+                            </a>
+                            <a href="tech.html" class="dd-item">
+                                <i class="fas fa-microchip gold-text"></i>
+                                <span>Tech & Smart <small>TV, LED, Kabel</small></span>
+                            </a>
+                        </div>
+                    </div>
+                    <a href="process-pricing.html" class="nav-link">Preise & Ablauf</a>
+                    <a href="area.html" class="nav-link active">Gebiet</a>
+                    <a href="gallery.html" class="nav-link">Galerie</a>
+                    <a href="magazine.html" class="nav-link">Magazin</a>
+                </div>
+            </div>
+
+            <div class="nav-actions" style="pointer-events: auto;">
+                <div class="status-pill desktop-only"><span class="status-dot"></span><span>Verfügbar</span></div>
+                <a href="javascript:void(0)" onclick="MissionOS.open()" class="btn btn-gold glow-effect nav-quote-btn">
+                    <span class="btn-text">Angebot Anfordern</span>
+                    <div class="btn-glow-pulse"></div>
+                </a>
+                <button class="hamburger" id="hamburgerBtn" aria-label="Menu"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <nav class="mobile-nav-links">
+            <a href="index.html">Startseite</a>
+            <div style="font-size: 0.8rem; color: var(--gold); margin-top: 15px; opacity: 0.7; text-transform: uppercase; letter-spacing: 1px;">Dienstleistungen</div>
+            <a href="residential.html">IKEA & Wohnen</a>
+            <a href="office.html">Büro & Gewerbe</a>
+            <a href="tech.html">TV & Smart Home</a>
+            <div style="font-size: 0.8rem; color: var(--gold); margin-top: 15px; opacity: 0.7; text-transform: uppercase; letter-spacing: 1px;">Informationen</div>
+            <a href="process-pricing.html">Preise & Ablauf</a>
+            <a href="area.html" class="gold-text">Gebiet</a>
+            <a href="gallery.html">Galerie</a>
+            <a href="magazine.html">Magazin</a>
+            <a href="javascript:void(0)" onclick="MissionOS.open(); document.getElementById('mobileMenu').classList.remove('active');" class="btn btn-gold" style="margin-top: 30px; width: 100%; text-align: center;">Angebot anfordern</a>
+        </nav>
+    </div>
+
+    <section class="tactical-hero">
+        <div class="iso-map-bg"></div>
+        <div class="particles"></div>
+        <div class="radar-sweep"></div>
+        
+        <div class="container relative-z center" style="z-index: 10;">
+            <div class="section-tag-wrapper" data-aos="fade-down">
+                <span class="section-tag" style="border-color: var(--radar-green); color: var(--radar-green); background: rgba(0,0,0,0.8); backdrop-filter: blur(5px);"><i class="fas fa-crosshairs blink"></i> TACTICAL DEPLOYMENT ZONE</span>
+            </div>
+            
+            <h1 class="glitch-header" style="font-size: 5.5rem; margin: 20px 0; text-shadow: 0 10px 40px rgba(0,0,0,0.9);" data-aos="zoom-in">
+                <span class="white">LOGISTIK IST</span><br>
+                <span class="gold-text">UNSERE WAFFE.</span>
+            </h1>
+            
+            <p style="color: #ddd; font-size: 1.3rem; max-width: 800px; margin: 0 auto 40px auto; line-height: 1.8; background: rgba(0,0,0,0.7); padding: 25px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px);" data-aos="fade-up" data-aos-delay="200">
+                Wir sind kein lokaler Bastler. Wir sind ein hochmobiles, schwer ausgerüstetes Montage-Kommando. Unser Operationsgebiet umfasst das <strong>Augsburger HQ</strong>, den kritischen <strong>A8 Autobahn-Korridor</strong> und die hochverdichtete <strong>Metropolregion München (50km Radius)</strong>.
+            </p>
+
+            <button onclick="MissionOS.open()" class="btn btn-gold" data-aos="fade-up" data-aos-delay="400" style="padding: 20px 50px; font-size: 1.1rem; box-shadow: 0 0 30px rgba(212,175,55,0.5);">
+                <i class="fas fa-bolt"></i> KAPAZITÄT IM SEKTOR PRÜFEN
+            </button>
+        </div>
+    </section>
+
+    <div class="dual-ribbon-container">
+        <div class="bavarian-line"></div>
+        <div class="german-line"></div>
+        <div class="ribbon-text"><i class="fas fa-shield-alt" style="color:var(--gold);"></i> BAVARIAN ROOTS. GERMAN ENGINEERING.</div>
+    </div>
+
+    <div class="data-stream-marquee">
+        <div class="plz-track">
+            <span>SYS_SCAN // PLZ: 86150 (AUGSBURG)</span>
+            <span>SYS_SCAN // PLZ: 80331 (MÜNCHEN CITY)</span>
+            <span>SYS_SCAN // PLZ: 82319 (STARNBERG)</span>
+            <span>SYS_SCAN // PLZ: 85221 (DACHAU)</span>
+            <span>SYS_SCAN // PLZ: 86368 (GERSTHOFEN)</span>
+            <span>SYS_SCAN // PLZ: 80802 (SCHWABING)</span>
+            <span>SYS_SCAN // PLZ: 82194 (GRÖBENZELL)</span>
+            <span>SYS_SCAN // PLZ: 80469 (GLOCKENBACH)</span>
+            <span>SYS_SCAN // PLZ: 86150 (AUGSBURG)</span>
+            <span>SYS_SCAN // PLZ: 80331 (MÜNCHEN CITY)</span>
+            <span>SYS_SCAN // PLZ: 82319 (STARNBERG)</span>
+            <span>SYS_SCAN // PLZ: 85221 (DACHAU)</span>
+            <span>SYS_SCAN // PLZ: 86368 (GERSTHOFEN)</span>
+            <span>SYS_SCAN // PLZ: 80802 (SCHWABING)</span>
+            <span>SYS_SCAN // PLZ: 82194 (GRÖBENZELL)</span>
+            <span>SYS_SCAN // PLZ: 80469 (GLOCKENBACH)</span>
+        </div>
+    </div>
+
+    <section class="section-padding bg-darker">
+        <div class="container">
+            <div class="section-header center" data-aos="fade-up">
+                <span class="section-tag" style="border-color:var(--gold); color:var(--gold);">ZERTIFIZIERTER STANDARD</span>
+                <h2>Deutsches <span class="gold-text">Handwerksrecht</span></h2>
+                <p style="color:#aaa;">Bavarian Quality. Hover über die Säulen für System-Protokolle.</p>
+            </div>
+
+            <div class="neo-german-engine" data-aos="zoom-in">
+                <div class="pillar pillar-black">
+                    <div class="pillar-vertical-title">OFFIZIELL</div>
+                    <div class="pillar-content">
+                        <h3>Eingetragenes Gewerbe.</h3>
+                        <p>Wir agieren nicht im Schatten. Als offiziell in Bayern gemeldetes Handwerksunternehmen garantieren wir Ihnen absolute Rechtssicherheit. Keine Schwarzgeld-Fallen, keine verschwundenen Auftragnehmer.</p>
+                    </div>
+                </div>
+                <div class="pillar pillar-red">
+                    <div class="pillar-vertical-title">GESICHERT</div>
+                    <div class="pillar-content">
+                        <h3 style="color: #ff4444; text-shadow: 0 0 10px rgba(255,0,0,0.5);">100% Haftpflicht.</h3>
+                        <p>Ein Kratzer im 5.000€ Parkett? Ein Fehler beim USM Umbau? Fehler passieren den Besten. Aber bei uns sind Sie vollständig durch eine gewerbliche Betriebshaftpflicht geschützt. Null finanzielles Risiko.</p>
+                    </div>
+                </div>
+                <div class="pillar pillar-gold">
+                    <div class="pillar-vertical-title">ABSETZBAR</div>
+                    <div class="pillar-content">
+                        <h3 style="color: var(--gold); text-shadow: 0 0 10px rgba(255,215,0,0.5);">20% Steuer-Rücklauf.</h3>
+                        <p>Dank unserer digitalen Rechnungsstellung (mit ausgewiesener MwSt. und Arbeitszeit) können Sie 20% unserer Montage- und Anfahrtskosten als "Haushaltsnahe Dienstleistungen" direkt vom Finanzamt zurückholen.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding bg-dark">
+        <div class="container">
+            <div class="section-header center" data-aos="fade-up">
+                <h2>Bavarian <span class="gold-text">Logistics Radar</span></h2>
+                <p>Das Autobahn-Netzwerk. Maus über Knotenpunkte bewegen.</p>
+            </div>
+
+            <div class="holo-map-container" data-aos="zoom-in">
+                <div class="map-scanner"></div>
+
+                <div class="a8-highway">
+                    <div class="a8-pulse a8-p1"></div>
+                    <div class="a8-pulse a8-p2"></div>
+                    <div class="a8-pulse a8-p3"></div>
+                </div>
+                
+                <div style="position:absolute; top:20px; right:20px; font-family:monospace; color:#333; font-size:8rem; opacity:0.1; font-weight:900;">A8</div>
+                
+                <div class="muc-ring"></div>
+                
+                <div class="map-node node-hq" onmouseover="updateRadar('HQ: AUGSBURG & LAND', '0 - 15 Min', 'Priority Deployment, IKEA PAX, Küchen', 'Optimal. Keine Parkgebühren.', '100%')">
+                    <i class="fas fa-satellite-dish" style="color: var(--gold); font-size: 0.8rem; animation: pulseSlow 2s infinite;"></i>
+                </div>
+
+                <div class="map-node node-ffb" onmouseover="updateRadar('SEKTOR: FFB / DACHAU', '25 - 40 Min', 'Einfamilienhäuser, Großprojekte, Neubau', 'Gut (Eigene Einfahrt meist vorhanden)', '85%')"></div>
+
+                <div class="map-node node-muc" onmouseover="updateRadar('CRITICAL: MÜNCHEN CITY', '45 - 60 Min', 'Altbau (Maxvorstadt), USM Haller, Lofts', 'Kritisch. Halteverbot / Park-Apps nötig.', '95%')">
+                    <i class="fas fa-city" style="color: #00e0ff; font-size: 0.8rem;"></i>
+                </div>
+
+                <div class="data-panel" id="radarData">
+                    <div style="font-size:0.75rem; color:#888; margin-bottom:5px; animation: blink 1s infinite;">[ SENSOR LOCK ACQUIRED ]</div>
+                    <div class="dp-title" id="r-zone" style="font-size:1.3rem; margin-bottom:15px; color:#fff; border-bottom:1px dashed var(--radar-green); padding-bottom:5px;">SYSTEM STANDBY...</div>
+                    
+                    <div style="display:flex; justify-content:space-between; margin-bottom:10px; background:rgba(255,255,255,0.05); padding:5px;">
+                        <span style="color:#888;">ETA (Anfahrt):</span> <strong id="r-eta" style="color:var(--gold);">--</strong>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; margin-bottom:10px; background:rgba(255,255,255,0.05); padding:5px;">
+                        <span style="color:#888;">Mission:</span> <span id="r-mission" style="color:#fff; text-align:right; max-width:60%;">--</span>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; margin-bottom:20px; background:rgba(255,255,255,0.05); padding:5px;">
+                        <span style="color:#888;">Park-Status:</span> <span id="r-park" style="color:#fff; text-align:right; max-width:60%;">--</span>
+                    </div>
+                    
+                    <div style="font-size:0.7rem; color:#888; margin-bottom:5px;">SEKTOR ABDECKUNG:</div>
+                    <div style="width:100%; background:#111; height:6px; border-radius:3px; overflow:hidden; border:1px solid #333;">
+                        <div id="r-bar" style="width:0%; height:100%; background:var(--radar-green); transition:width 1s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s;"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <script>
+                function updateRadar(zone, eta, mission, park, bar) {
+                    document.getElementById('r-zone').innerText = zone;
+                    document.getElementById('r-eta').innerText = eta;
+                    document.getElementById('r-mission').innerText = mission;
+                    
+                    const parkEl = document.getElementById('r-park');
+                    parkEl.innerText = park;
+                    parkEl.style.color = park.includes('Kritisch') ? '#ff4444' : (park.includes('Gut') ? 'var(--radar-green)' : '#fff');
+                    
+                    const barEl = document.getElementById('r-bar');
+                    barEl.style.width = bar;
+                    barEl.style.background = park.includes('Kritisch') ? '#00e0ff' : 'var(--radar-green)';
+                }
+            </script>
+        </div>
+    </section>
+
+    <section class="section-padding bg-darker">
+        <div class="container">
+            <div class="section-header center" data-aos="fade-up">
+                <h2>Die Matrix <span class="gold-text">der Städte</span></h2>
+                <p>Klicken Sie auf Ihren Sektor für ein sofortiges Angebot.</p>
+            </div>
+
+            <div class="zone-grid">
+                <div class="zone-card scan-card" onclick="MissionOS.open()" data-aos="fade-up">
+                    <div class="crosshair tl"></div><div class="crosshair tr"></div><div class="crosshair bl"></div><div class="crosshair br"></div>
+                    <h3 style="color:#fff; font-family:'Space Grotesk'; font-size:1.8rem; margin-bottom:15px;"><i class="fas fa-map-marker-alt gold-text"></i> 01 // AUGSBURG HQ</h3>
+                    <p style="color: #bbb; line-height: 1.8; margin-bottom: 20px;">Die Fuggerstadt ist unsere Basis. Vom <strong>Ulrichsviertel</strong> mit seinen historischen, extrem schwierigen Altbauwänden, bis hin zu den endlosen Neubaugebieten in <strong>Haunstetten und Königsbrunn</strong>. Wir kennen die Bausubstanz.</p>
+                    <div class="metric-box">
+                        <strong style="color:var(--gold); display:block; font-size:1.1rem;">Reaktionszeit: Maximal</strong>
+                        <span style="color:#888; font-size:0.9rem;">Aufgrund der Nähe bieten wir hier oft 48h-Express-Termine an. Keine massiven Anfahrtskosten.</span>
+                    </div>
+                    <button class="btn btn-holographic" style="width:100%; justify-content:center; pointer-events:none;">HQ DEPLOYMENT STARTEN</button>
+                </div>
+
+                <div class="zone-card scan-card" onclick="MissionOS.open()" data-aos="fade-up" data-aos-delay="100">
+                    <div class="crosshair tl"></div><div class="crosshair tr"></div><div class="crosshair bl"></div><div class="crosshair br"></div>
+                    <h3 style="color:#00e0ff; font-family:'Space Grotesk'; font-size:1.8rem; margin-bottom:15px;"><i class="fas fa-city" style="color:#00e0ff;"></i> 02 // MÜNCHEN CITY</h3>
+                    <p style="color: #bbb; line-height: 1.8; margin-bottom: 20px;">Die teuerste Fläche Deutschlands verzeiht keine Platzverschwendung. In <strong>Schwabing, Lehel und im Glockenbachviertel</strong> kämpfen wir täglich mit 3,20m Decken und extremen Parkplatz-Engpässen. Wir bringen Park-Apps und Nerven aus Stahl mit.</p>
+                    <div class="metric-box" style="border-color:#00e0ff; background:rgba(0,224,255,0.05);">
+                        <strong style="color:#00e0ff; display:block; font-size:1.1rem;">Vertical Assembly Protocol</strong>
+                        <span style="color:#888; font-size:0.9rem;">Oft fehlt der Platz am Boden. Wir bauen große PAX Systeme direkt vertikal (stehend) auf.</span>
+                    </div>
+                    <button class="btn btn-holographic" style="width:100%; justify-content:center; border-color:#00e0ff; color:#00e0ff; pointer-events:none;">MUC DEPLOYMENT STARTEN</button>
+                </div>
+
+                <div class="zone-card scan-card" onclick="MissionOS.open()" data-aos="fade-up" data-aos-delay="200">
+                    <div class="crosshair tl"></div><div class="crosshair tr"></div><div class="crosshair bl"></div><div class="crosshair br"></div>
+                    <h3 style="color:#39ff14; font-family:'Space Grotesk'; font-size:1.8rem; margin-bottom:15px;"><i class="fas fa-tree" style="color:#39ff14;"></i> 03 // SUBURBAN MATRIX</h3>
+                    <p style="color: #bbb; line-height: 1.8; margin-bottom: 20px;">Der A8-Korridor (Dachau, FFB) und das <strong>Fünfseenland (Starnberg)</strong>. Hier rüsten wir komplette Einfamilienhäuser aus. Küchen im Erdgeschoss, verwinkelte PLATSA Systeme unter dem Dach. Wir buchen hier oft Mehrtages-Einsätze.</p>
+                    <div class="metric-box" style="border-color:#39ff14; background:rgba(57,255,20,0.05);">
+                        <strong style="color:#39ff14; display:block; font-size:1.1rem;">Heavy Duty Logistics</strong>
+                        <span style="color:#888; font-size:0.9rem;">Ausreichend Parkfläche erlaubt den Einsatz mit schwerem Gerät und vollem Werkstatt-Wagen.</span>
+                    </div>
+                    <button class="btn btn-holographic" style="width:100%; justify-content:center; border-color:#39ff14; color:#39ff14; pointer-events:none;">A8 DEPLOYMENT STARTEN</button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding" style="background: linear-gradient(135deg, var(--gold), #b89600); text-align: center; color: #000;">
+        <div class="container" data-aos="zoom-in">
+            <h2 style="font-family: 'Space Grotesk'; font-size: 3.5rem; font-weight: 900; margin-bottom: 15px; letter-spacing: -2px;">LIEGT IHR OBJEKT IM RASTER?</h2>
+            <p style="font-size: 1.2rem; font-weight: 700; margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto;">Starten Sie die Missions-Anfrage. Wir berechnen die exakte Anfahrtspauschale transparent vorab.</p>
+            <button onclick="MissionOS.open()" class="btn" style="background: #000; color: var(--gold); font-size: 1.1rem; font-weight: bold; padding: 20px 50px; box-shadow: 0 15px 40px rgba(0,0,0,0.4);">
+                <i class="fas fa-satellite-dish"></i> SIGNAL SENDEN (ANFRAGE)
+            </button>
+        </div>
+    </section>
+
+    <footer class="mega-footer">
+        <div class="footer-ticker">
+            <div class="ticker-track">
+                <span>
+                    +++ PREMIUM MÖBELMONTAGE • AUGSBURG & MÜNCHEN • IKEA PAX EXPERTEN • BÜROEINRICHTUNG & USM HALLER • KÜCHENINSTALLATION • TV WANDMONTAGE • KEINE VERSTECKTEN KOSTEN • SAUBERKEIT GARANTIERT • ENGINEERING LEVEL QUALITY • +++
+                </span>
+                <span>
+                    +++ PREMIUM MÖBELMONTAGE • AUGSBURG & MÜNCHEN • IKEA PAX EXPERTEN • BÜROEINRICHTUNG & USM HALLER • KÜCHENINSTALLATION • TV WANDMONTAGE • KEINE VERSTECKTEN KOSTEN • SAUBERKEIT GARANTIERT • ENGINEERING LEVEL QUALITY • +++
+                </span>
+            </div>
+        </div>
+
+        <div class="container relative-z">
+            <div class="footer-grid">
+                
+                <div class="f-col brand-col">
+                    <div class="footer-logo">RAPHAEL <span>LEZIUS</span></div>
+                    <p class="tagline">Präzision ist kein Zufall.<br>Es ist ein Standard.</p>
+                    
+                    <div class="trust-badges-footer">
+                        <span class="t-badge"><i class="fas fa-shield-alt"></i> Versichert</span>
+                        <span class="t-badge"><i class="fas fa-check-circle"></i> Geprüft</span>
+                    </div>
+
+                    <div class="social-row">
+                        <a href="https://wa.me/491608194018" target="_blank" class="social-btn"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" target="_blank" class="social-btn"><i class="fab fa-instagram"></i></a>
+                        <a href="#" target="_blank" class="social-btn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <div class="f-col">
+                    <h4 class="f-heading">Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="residential.html">IKEA PAX Aufbau</a></li>
+                        <li><a href="residential.html">Küchenmontage</a></li>
+                        <li><a href="office.html">Büromöbel & USM</a></li>
+                        <li><a href="tech.html">TV Wandmontage</a></li>
+                        <li><a href="tech.html">Smart Home Setup</a></li>
+                    </ul>
+                </div>
+
+                <div class="f-col">
+                    <h4 class="f-heading">Nuria Boutique</h4>
+                    <ul class="footer-links">
+                        <li><a href="magazine.html#nuria-storage">Körbe & Ordnung</a></li>
+                        <li><a href="magazine.html#nuria-kitchen">Tisch & Küche</a></li>
+                        <li><a href="magazine.html#nuria-textiles">Textilien</a></li>
+                    </ul>
+                    <div class="payment-row">
+                        <i class="fab fa-cc-paypal"></i>
+                        <i class="fab fa-cc-visa"></i>
+                        <i class="fab fa-cc-mastercard"></i>
+                    </div>
+                </div>
+
+                <div class="f-col">
+                    <h4 class="f-heading">Rechtliches</h4>
+                    <ul class="footer-links">
+                        <li><a href="impressum.html">Impressum</a></li>
+                        <li><a href="datenschutz.html">Datenschutz</a></li>
+                        <li><a href="agb.html">AGB & Widerruf</a></li>
+                        <li><a href="https://ec.europa.eu/consumers/odr" target="_blank">Streitschlichtung</a></li>
+                    </ul>
+                </div>
+
+                <div class="f-col contact-col">
+                    <h4 class="f-heading">Zentrale</h4>
+                    <ul class="contact-list">
+                        <li>
+                            <i class="fas fa-map-marker-alt gold-icon"></i>
+                            <span class="contact-text">Am Rößlebad 9<br>86152 Augsburg</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone gold-icon"></i>
+                            <a href="tel:+491608194018" class="contact-link">0160 819 4018</a>
+                        </li>
+                        <li>
+                            <i class="far fa-envelope gold-icon"></i>
+                            <a href="mailto:r.lezius@gmail.com" class="contact-link">r.lezius@gmail.com</a>
+                        </li>
+                    </ul>
+                    
+                    <div class="op-status">
+                        <div class="status-dot-container">
+                            <div class="status-dot live"></div>
+                            <div class="status-pulse"></div>
+                        </div>
+                        <span>Team Status: <strong class="glow-text">IM EINSATZ</strong></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom-bar">
+                <div class="copyright">
+                    &copy; 2026 Raphael Lezius. <span class="hide-mobile">Alle Rechte vorbehalten.</span>
+                </div>
+                
+                <div class="developer-credit">
+                    <span class="code-bracket">&lt;/&gt;</span>
+                    <span class="dev-text">ENGINEERED BY <span class="dev-name">IDRIS</span></span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/491608194018?text=Hallo%20Raphael,%20arbeitet%20ihr%20auch%20in%20meiner%20Stadt?..." target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+        <span class="whatsapp-pulse"></span>
+        <div class="whatsapp-tooltip">Gebiet anfragen</div>
+    </a>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

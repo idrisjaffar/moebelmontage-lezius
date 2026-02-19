@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TV Montage, Smart Home & LED | Raphael Lezius Tech</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <style>
+        :root {
+            --cyber-green: #39ff14;
+            --cyber-glow: rgba(57, 255, 20, 0.3);
+        }
+
+        /* Tech Marquee */
+        .tech-marquee {
+            background: #050505; color: var(--cyber-green); padding: 15px 0;
+            overflow: hidden; white-space: nowrap; position: relative;
+            border-top: 1px solid var(--cyber-glow); border-bottom: 1px solid var(--cyber-glow);
+            box-shadow: 0 0 30px rgba(57, 255, 20, 0.1); margin: 0;
+        }
+        .tech-track {
+            display: inline-block; font-family: monospace; font-weight: 600; font-size: 1rem; letter-spacing: 3px;
+            animation: scrollTech 30s linear infinite;
+        }
+        .tech-track span { margin: 0 30px; }
+        @keyframes scrollTech { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        /* Cyber-Glass Architecture */
+        .cyber-glass {
+            background: linear-gradient(135deg, rgba(15,15,15,0.8) 0%, rgba(5,5,5,0.95) 100%);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-left: 2px solid var(--cyber-green);
+            border-radius: 8px; padding: 40px; position: relative; overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+        }
+        .cyber-glass::before {
+            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+            background: radial-gradient(circle, var(--cyber-glow) 0%, transparent 60%);
+            opacity: 0; transition: 0.6s; pointer-events: none; transform: scale(0.5);
+        }
+        .cyber-glass:hover {
+            transform: translateY(-8px); border-color: var(--cyber-green);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.8), 0 0 30px rgba(57, 255, 20, 0.15);
+        }
+        .cyber-glass:hover::before { opacity: 1; transform: scale(1); }
+
+        .cg-icon { font-size: 2.5rem; color: #fff; margin-bottom: 20px; transition: 0.4s; }
+        .cyber-glass:hover .cg-icon { color: var(--cyber-green); filter: drop-shadow(0 0 10px var(--cyber-green)); transform: scale(1.1); }
+        
+        .cg-title { font-family: 'Space Grotesk', sans-serif; font-size: 1.6rem; color: #fff; margin-bottom: 15px; }
+        .cg-desc { color: #aaa; line-height: 1.7; font-size: 1rem; margin-bottom: 25px; }
+        
+        .tech-specs { list-style: none; padding: 0; margin: 0; }
+        .tech-specs li { display: flex; align-items: center; gap: 10px; color: #ddd; font-family: monospace; font-size: 0.85rem; padding: 10px 0; border-bottom: 1px dashed rgba(255,255,255,0.1); }
+        .tech-specs li i { color: var(--cyber-green); }
+
+        /* The Grid */
+        .cyber-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-top: 50px; }
+
+        /* Smart Home Matrix Hub */
+        .matrix-hub {
+            background: #0a0a0a; border: 1px solid #222; border-radius: 50%;
+            width: 350px; height: 350px; display: flex; align-items: center; justify-content: center;
+            position: relative; margin: 0 auto; box-shadow: inset 0 0 50px rgba(57,255,20,0.05);
+        }
+        .matrix-core { width: 120px; height: 120px; background: var(--cyber-green); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 3rem; color: #000; box-shadow: 0 0 40px var(--cyber-green); z-index: 10; animation: pulseCore 3s infinite; }
+        .matrix-node { position: absolute; background: #111; border: 1px solid var(--gold); color: #fff; padding: 10px 20px; border-radius: 30px; font-family: 'Space Grotesk'; font-size: 0.9rem; z-index: 5; transition: 0.3s; }
+        .matrix-node:hover { background: var(--gold); color: #000; transform: scale(1.1); }
+        
+        @keyframes pulseCore { 0% { box-shadow: 0 0 20px var(--cyber-green); } 50% { box-shadow: 0 0 60px var(--cyber-green), 0 0 10px #fff; } 100% { box-shadow: 0 0 20px var(--cyber-green); } }
+
+        /* Node Positions */
+        .n-1 { top: -20px; left: 50%; transform: translateX(-50%); }
+        .n-2 { bottom: -20px; left: 50%; transform: translateX(-50%); }
+        .n-3 { left: -40px; top: 50%; transform: translateY(-50%); }
+        .n-4 { right: -40px; top: 50%; transform: translateY(-50%); border-color: var(--cyber-green); color: var(--cyber-green); }
+        
+        @media (max-width: 768px) { .matrix-hub { width: 280px; height: 280px; } .matrix-node { font-size: 0.7rem; padding: 5px 10px; } }
+    </style>
+</head>
+<body class="bg-darker">
+
+    <nav class="navbar">
+        <div class="container nav-inner">
+            <a href="index.html" class="logo-3d-wrapper">
+                <div class="logo-flipper">
+                    <div class="logo-face front"><img src="assets/images/raphael-lezius-logo-front.webp" alt="Logo Front"></div>
+                    <div class="logo-face back"><img src="assets/images/raphael-lezius-logo-back.webp" alt="Logo Back"></div>
+                </div>
+                <div class="brand-text">RAPHAEL <span>LEZIUS</span></div>
+            </a>
+
+            <div class="desktop-menu">
+                <div class="nav-group">
+                    <a href="index.html" class="nav-link">Startseite</a>
+                    <div class="dropdown-container">
+                        <button class="nav-link dropdown-trigger">
+                            Leistungen <i class="fas fa-chevron-down" style="font-size: 0.7em; margin-left: 5px;"></i>
+                        </button>
+                        <div class="dropdown-menu glass-panel">
+                            <a href="residential.html" class="dd-item">
+                                <i class="fas fa-couch gold-text"></i>
+                                <span>Privat & IKEA <small>PAX, Küchen, Betten</small></span>
+                            </a>
+                            <a href="office.html" class="dd-item">
+                                <i class="fas fa-building gold-text"></i>
+                                <span>Gewerbe & Office <small>USM, Konferenz, Laden</small></span>
+                            </a>
+                            <a href="tech.html" class="dd-item">
+                                <i class="fas fa-microchip gold-text"></i>
+                                <span>Tech & Smart <small>TV, LED, Kabel</small></span>
+                            </a>
+                        </div>
+                    </div>
+                    <a href="process-pricing.html" class="nav-link">Preise & Ablauf</a>
+                    <a href="area.html" class="nav-link">Gebiet</a>
+                    <a href="gallery.html" class="nav-link">Galerie</a>
+                    <a href="magazine.html" class="nav-link">Magazin</a>
+                </div>
+            </div>
+
+            <div class="nav-actions">
+                <div class="status-pill desktop-only"><span class="status-dot"></span><span>Verfügbar</span></div>
+                <a href="javascript:void(0)" onclick="MissionOS.open()" class="btn btn-gold glow-effect nav-quote-btn">
+                    <span class="btn-text">Angebot Anfordern</span>
+                    <div class="btn-glow-pulse"></div>
+                </a>
+                <button class="hamburger" id="hamburgerBtn" aria-label="Menu"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <nav class="mobile-nav-links">
+            <a href="index.html">Startseite</a>
+            <div style="font-size: 0.8rem; color: var(--gold); margin-top: 15px; opacity: 0.7; text-transform: uppercase; letter-spacing: 1px;">Dienstleistungen</div>
+            <a href="residential.html">IKEA & Wohnen</a>
+            <a href="office.html">Büro & Gewerbe</a>
+            <a href="tech.html" class="gold-text">TV & Smart Home</a>
+            <div style="font-size: 0.8rem; color: var(--gold); margin-top: 15px; opacity: 0.7; text-transform: uppercase; letter-spacing: 1px;">Informationen</div>
+            <a href="process-pricing.html">Preise & Ablauf</a>
+            <a href="area.html">Gebiet</a>
+            <a href="gallery.html">Galerie</a>
+            <a href="magazine.html">Magazin</a>
+            <a href="javascript:void(0)" onclick="MissionOS.open(); document.getElementById('mobileMenu').classList.remove('active');" class="btn btn-gold" style="margin-top: 30px; width: 100%; text-align: center;">Angebot anfordern</a>
+        </nav>
+    </div>
+
+    <section class="hero-section" style="height: 85vh; min-height: 650px; display: flex; align-items: center; justify-content: center; position: relative;">
+        <div class="video-bg-container" style="position: absolute; inset: 0; z-index: 0;">
+            <video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; filter: brightness(0.15) contrast(1.3);">
+                <source src="assets/video/project-landscape.mp4" type="video/mp4">
+            </video>
+            <div style="position: absolute; inset: 0; background: radial-gradient(circle at center, transparent 0%, #050505 100%);"></div>
+        </div>
+
+        <div class="container relative-z" style="z-index: 5; text-align: center; width: 100%;">
+            <div class="section-tag-wrapper" style="justify-content: center;" data-aos="fade-down">
+                <span class="section-tag" style="border-color: var(--cyber-green); color: var(--cyber-green);"><i class="fas fa-satellite-dish blink"></i> SMART HOME & AV INTEGRATION</span>
+            </div>
+            
+            <h1 class="glitch-header" style="font-size: 4.8rem; margin: 20px 0; line-height: 1.1;" data-aos="zoom-in" data-aos-delay="100">
+                <span class="white">INTELLIGENTE RÄUME.</span><br>
+                <span style="color: var(--cyber-green); text-shadow: 0 0 30px rgba(57,255,20,0.4);">UNSICHTBARE TECHNIK.</span>
+            </h1>
+            
+            <p style="color: #ccc; font-size: 1.25rem; max-width: 750px; margin: 0 auto 40px auto; line-height: 1.8;" data-aos="fade-up" data-aos-delay="200">
+                Wir befreien Ihr Wohnzimmer von Kabelsalat. Ultraslim TV-Wandmontagen, versteckte Sound-Systeme und lückenlose Smart Home Vernetzung. <strong>Technik, die man fühlt, aber nicht sieht.</strong>
+            </p>
+            
+            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;" data-aos="fade-up" data-aos-delay="300">
+                <button onclick="MissionOS.open()" class="btn" style="background: var(--cyber-green); color: #000; font-weight: 800; font-size: 1rem; padding: 20px 45px; box-shadow: 0 0 20px rgba(57,255,20,0.3);">
+                    <i class="fas fa-power-off"></i> SYSTEM-UPGRADE STARTEN
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <div class="tech-marquee">
+        <div class="tech-track">
+            <span><i class="fas fa-bolt"></i> SAMSUNG THE FRAME</span>
+            <span><i class="fas fa-bolt"></i> SONOS ARCHITECTURE</span>
+            <span><i class="fas fa-bolt"></i> PHILIPS HUE SYNC</span>
+            <span><i class="fas fa-bolt"></i> IKEA DIRIGERA</span>
+            <span><i class="fas fa-bolt"></i> APPLE HOMEKIT</span>
+            <span><i class="fas fa-bolt"></i> INVISIBLE CABLES</span>
+            <span><i class="fas fa-bolt"></i> SAMSUNG THE FRAME</span>
+            <span><i class="fas fa-bolt"></i> SONOS ARCHITECTURE</span>
+            <span><i class="fas fa-bolt"></i> PHILIPS HUE SYNC</span>
+            <span><i class="fas fa-bolt"></i> IKEA DIRIGERA</span>
+            <span><i class="fas fa-bolt"></i> APPLE HOMEKIT</span>
+            <span><i class="fas fa-bolt"></i> INVISIBLE CABLES</span>
+        </div>
+    </div>
+
+    <section class="section-padding bg-darker">
+        <div class="container">
+            <div class="split-layout" style="align-items: center;">
+                <div class="text-col" data-aos="fade-right">
+                    <h2 class="section-heading">Das <span class="gold-text">Zero-Cable</span> Protocol.</h2>
+                    <p style="color: #aaa; font-size: 1.1rem; line-height: 1.8; margin-bottom: 20px;">
+                        Sie investieren tausende Euro in einen OLED TV und Premium-Audio. Aber herabhängende HDMI-Kabel und sichtbare Steckdosenleisten zerstören die gesamte Ästhetik. <strong>Das muss nicht sein.</strong>
+                    </p>
+                    <div style="background: #111; padding: 25px; border-left: 3px solid var(--cyber-green); border-radius: 4px;">
+                        <ul class="tech-specs" style="color: #fff; font-size: 1rem;">
+                            <li><i class="fas fa-check-circle"></i> <strong>In-Wall Routing:</strong> Kabelverschwinden in Rigips-Wänden.</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>Camouflage Kanäle:</strong> Lackierbare Profile für Betonwände.</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>Clean Board:</strong> Maßgeschneiderte Kabelführung hinter Ihrem Sideboard (BESTA/USM).</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="image-col" data-aos="fade-left">
+                    <div class="cyber-glass" style="padding: 10px; border-color: #333; display: flex; justify-content: center;">
+                        <i class="fas fa-tv" style="font-size: 15rem; color: #111; text-shadow: 0 0 30px rgba(57,255,20,0.2);"></i>
+                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #000; border: 1px solid var(--cyber-green); color: var(--cyber-green); padding: 10px 20px; font-family: monospace; font-weight: bold; font-size: 1.2rem; white-space: nowrap;">
+                            [ VISUAL: CLEAN WALL ]
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding" style="background: #080808; position: relative;">
+        <div style="position: absolute; inset: 0; opacity: 0.03; background-image: radial-gradient(var(--cyber-green) 1px, transparent 1px); background-size: 40px 40px;"></div>
+
+        <div class="container relative-z">
+            <div class="section-header center" data-aos="fade-up">
+                <span class="section-tag" style="border-color: var(--cyber-green); color: var(--cyber-green);">CORE INTEGRATIONS</span>
+                <h2>Unsere <span style="color: #fff;">Spezialgebiete</span></h2>
+            </div>
+
+            <div class="cyber-grid">
+                
+                <div class="cyber-glass" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fas fa-expand cg-icon"></i>
+                    <h3 class="cg-title">Heavy Duty TV-Montage</h3>
+                    <p class="cg-desc">Ob 85 Zoll an einer porösen Altbauwand oder eine extrem flache "The Frame" Installation. Wir berechnen die Statik und garantieren lebenslangen Halt.</p>
+                    <ul class="tech-specs">
+                        <li><i class="fas fa-angle-right"></i> Samsung The Frame (Gapless)</li>
+                        <li><i class="fas fa-angle-right"></i> Schwenk- & Neigbare Halterungen</li>
+                        <li><i class="fas fa-angle-right"></i> Hohlraum- & Betonanker-Experten</li>
+                    </ul>
+                </div>
+
+                <div class="cyber-glass" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-wave-square cg-icon"></i>
+                    <h3 class="cg-title">Acoustic Integration</h3>
+                    <p class="cg-desc">Der perfekte Sound erfordert geometrische Präzision. Wir montieren Ihre Soundbar millimetergenau unter dem TV und kalibrieren Ihr Surround-System.</p>
+                    <ul class="tech-specs">
+                        <li><i class="fas fa-angle-right"></i> Sonos Arc / Beam Wandmontage</li>
+                        <li><i class="fas fa-angle-right"></i> IKEA Symfonisk Einrichtung</li>
+                        <li><i class="fas fa-angle-right"></i> Verdeckte Audio-Verkabelung</li>
+                    </ul>
+                </div>
+
+                <div class="cyber-glass" data-aos="fade-up" data-aos-delay="300">
+                    <i class="fas fa-lightbulb cg-icon"></i>
+                    <h3 class="cg-title">Cinematic Illumination</h3>
+                    <p class="cg-desc">Indirektes Licht verwandelt Räume. Wir installieren nahtlose LED-Profile hinter Möbeln und synchronisieren sie mit Ihrem TV-Bild.</p>
+                    <ul class="tech-specs">
+                        <li><i class="fas fa-angle-right"></i> Philips Hue Sync Box Setup</li>
+                        <li><i class="fas fa-angle-right"></i> PAX & METOD Schrankbeleuchtung</li>
+                        <li><i class="fas fa-angle-right"></i> Blendfreie LED-Strip Montage</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding bg-darker">
+        <div class="container">
+            <div class="section-header center" data-aos="zoom-in">
+                <h2>Der Smart Home <span class="gold-text">Hub</span></h2>
+                <p style="color: #aaa;">Wir vernetzen die Systeme, damit Sie nur noch eine App (oder Ihre Stimme) brauchen.</p>
+            </div>
+
+            <div style="margin-top: 80px; margin-bottom: 50px;" data-aos="zoom-in" data-aos-delay="200">
+                <div class="matrix-hub">
+                    <div class="matrix-node n-1"><i class="fas fa-lightbulb"></i> Beleuchtung</div>
+                    <div class="matrix-node n-3"><i class="fas fa-tv"></i> Entertainment</div>
+                    
+                    <div class="matrix-core">
+                        <i class="fas fa-wifi"></i>
+                    </div>
+                    
+                    <div class="matrix-node n-4"><i class="fas fa-mobile-alt"></i> IKEA Dirigera Hub</div>
+                    <div class="matrix-node n-2"><i class="fas fa-blinds"></i> FYRTUR Rollos</div>
+                </div>
+            </div>
+            
+            <p class="center" style="color: #888; max-width: 600px; margin: 0 auto;" data-aos="fade-up" data-aos-delay="400">
+                Apple HomeKit • Google Home • Amazon Alexa • IKEA Home Smart • Philips Hue
+            </p>
+        </div>
+    </section>
+
+    <section class="section-padding" style="background: linear-gradient(135deg, #050505, #111); text-align: center; border-top: 1px solid var(--cyber-green);">
+        <div class="container" data-aos="fade-up">
+            <h2 style="font-family: 'Space Grotesk'; font-size: 3rem; font-weight: 800; color: #fff; margin-bottom: 15px;">BEREIT FÜR DAS UPGRADE?</h2>
+            <p style="font-size: 1.1rem; color: #aaa; margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto;">Keine offenen Kabel. Perfekter Halt. Smarte Steuerung. Buchen Sie jetzt Ihren Tech-Installations-Slot.</p>
+            <button onclick="MissionOS.open()" class="btn" style="background: var(--cyber-green); color: #000; font-size: 1.1rem; font-weight: bold; padding: 20px 50px; box-shadow: 0 0 30px rgba(57,255,20,0.4);">
+                <i class="fas fa-fingerprint"></i> INITIATE SETUP
+            </button>
+        </div>
+    </section>
+
+    <footer class="mega-footer">
+        <div class="footer-ticker">
+            <div class="ticker-track">
+                <span>
+                    +++ PREMIUM MÖBELMONTAGE • AUGSBURG & MÜNCHEN • IKEA PAX EXPERTEN • BÜROEINRICHTUNG & USM HALLER • KÜCHENINSTALLATION • TV WANDMONTAGE • KEINE VERSTECKTEN KOSTEN • SAUBERKEIT GARANTIERT • ENGINEERING LEVEL QUALITY • +++
+                </span>
+                <span>
+                    +++ PREMIUM MÖBELMONTAGE • AUGSBURG & MÜNCHEN • IKEA PAX EXPERTEN • BÜROEINRICHTUNG & USM HALLER • KÜCHENINSTALLATION • TV WANDMONTAGE • KEINE VERSTECKTEN KOSTEN • SAUBERKEIT GARANTIERT • ENGINEERING LEVEL QUALITY • +++
+                </span>
+            </div>
+        </div>
+
+        <div class="container relative-z">
+            <div class="footer-grid">
+                
+                <div class="f-col brand-col">
+                    <div class="footer-logo">RAPHAEL <span>LEZIUS</span></div>
+                    <p class="tagline">Präzision ist kein Zufall.<br>Es ist ein Standard.</p>
+                    
+                    <div class="trust-badges-footer">
+                        <span class="t-badge"><i class="fas fa-shield-alt"></i> Versichert</span>
+                        <span class="t-badge"><i class="fas fa-check-circle"></i> Geprüft</span>
+                    </div>
+
+                    <div class="social-row">
+                        <a href="https://wa.me/491608194018" target="_blank" class="social-btn"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" target="_blank" class="social-btn"><i class="fab fa-instagram"></i></a>
+                        <a href="#" target="_blank" class="social-btn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <div class="f-col">
+                    <h4 class="f-heading">Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="residential.html">IKEA PAX Aufbau</a></li>
+                        <li><a href="residential.html">Küchenmontage</a></li>
+                        <li><a href="office.html">Büromöbel & USM</a></li>
+                        <li><a href="tech.html">TV Wandmontage</a></li>
+                        <li><a href="tech.html">Smart Home Setup</a></li>
+                    </ul>
+                </div>
+
+                <div class="f-col">
+                    <h4 class="f-heading">Nuria Boutique</h4>
+                    <ul class="footer-links">
+                        <li><a href="magazine.html#nuria-storage">Körbe & Ordnung</a></li>
+                        <li><a href="magazine.html#nuria-kitchen">Tisch & Küche</a></li>
+                        <li><a href="magazine.html#nuria-textiles">Textilien</a></li>
+                    </ul>
+                    <div class="payment-row">
+                        <i class="fab fa-cc-paypal"></i>
+                        <i class="fab fa-cc-visa"></i>
+                        <i class="fab fa-cc-mastercard"></i>
+                    </div>
+                </div>
+
+                <div class="f-col">
+                    <h4 class="f-heading">Rechtliches</h4>
+                    <ul class="footer-links">
+                        <li><a href="impressum.html">Impressum</a></li>
+                        <li><a href="datenschutz.html">Datenschutz</a></li>
+                        <li><a href="agb.html">AGB & Widerruf</a></li>
+                        <li><a href="https://ec.europa.eu/consumers/odr" target="_blank">Streitschlichtung</a></li>
+                    </ul>
+                </div>
+
+                <div class="f-col contact-col">
+                    <h4 class="f-heading">Zentrale</h4>
+                    <ul class="contact-list">
+                        <li>
+                            <i class="fas fa-map-marker-alt gold-icon"></i>
+                            <span class="contact-text">Am Rößlebad 9<br>86152 Augsburg</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone gold-icon"></i>
+                            <a href="tel:+491608194018" class="contact-link">0160 819 4018</a>
+                        </li>
+                        <li>
+                            <i class="far fa-envelope gold-icon"></i>
+                            <a href="mailto:r.lezius@gmail.com" class="contact-link">r.lezius@gmail.com</a>
+                        </li>
+                    </ul>
+                    
+                    <div class="op-status">
+                        <div class="status-dot-container">
+                            <div class="status-dot live"></div>
+                            <div class="status-pulse"></div>
+                        </div>
+                        <span>Team Status: <strong class="glow-text">IM EINSATZ</strong></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom-bar">
+                <div class="copyright">
+                    &copy; 2026 Raphael Lezius. <span class="hide-mobile">Alle Rechte vorbehalten.</span>
+                </div>
+                
+                <div class="developer-credit">
+                    <span class="code-bracket">&lt;/&gt;</span>
+                    <span class="dev-text">ENGINEERED BY <span class="dev-name">IDRIS</span></span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/491608194018?text=Hallo%20Raphael,%20ich%20habe%20eine%20Anfrage%20zur%20Tech-Installation..." target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+        <span class="whatsapp-pulse"></span>
+        <div class="whatsapp-tooltip">Schnelle Antwort</div>
+    </a>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

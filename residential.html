@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wohnen & IKEA Montage | Raphael Lezius Premium Service</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <style>
+        .infinite-catalog {
+            background: var(--gold); color: #000; padding: 20px 0;
+            overflow: hidden; white-space: nowrap; position: relative;
+            border-top: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1);
+            transform: rotate(-1deg) scale(1.05); margin: 60px 0; box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+        .catalog-track {
+            display: inline-block; font-family: 'Space Grotesk', sans-serif;
+            font-weight: 800; font-size: 1.2rem; letter-spacing: 2px;
+            animation: scrollCatalog 40s linear infinite;
+        }
+        .catalog-track span { margin: 0 30px; }
+        .catalog-track span i { font-size: 0.8rem; margin-right: 10px; opacity: 0.5; }
+        @keyframes scrollCatalog { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        .asymmetric-section { padding: 100px 0; position: relative; overflow: hidden; }
+        .a-row { display: flex; align-items: center; justify-content: space-between; gap: 60px; margin-bottom: 120px; }
+        .a-row.reverse { flex-direction: row-reverse; }
+        
+        .a-text { flex: 1; position: relative; }
+        .a-title { font-family: 'Space Grotesk', sans-serif; font-size: 3rem; color: #fff; margin-bottom: 20px; line-height: 1.1; }
+        .a-title span { color: var(--gold); }
+        .a-desc { color: #aaa; font-size: 1.1rem; line-height: 1.8; margin-bottom: 30px; border-left: 3px solid var(--gold); padding-left: 20px; }
+        
+        .a-visual { flex: 1; position: relative; }
+        .a-glass-box {
+            background: rgba(15, 15, 15, 0.8); backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 215, 0, 0.3); border-radius: 8px;
+            padding: 40px; box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+            transform: perspective(1000px) rotateY(-5deg); transition: 0.5s;
+        }
+        .a-row.reverse .a-glass-box { transform: perspective(1000px) rotateY(5deg); }
+        .a-glass-box:hover { transform: perspective(1000px) rotateY(0deg) translateY(-10px); border-color: var(--neon-green); }
+
+        .tech-list { list-style: none; padding: 0; }
+        .tech-list li { display: flex; justify-content: space-between; border-bottom: 1px dashed rgba(255,255,255,0.1); padding: 15px 0; color: #ddd; font-family: monospace; font-size: 0.9rem; }
+        .tech-list li:last-child { border-bottom: none; }
+        .tech-list li .stat { color: var(--gold); font-weight: bold; }
+
+        @media (max-width: 900px) {
+            .a-row, .a-row.reverse { flex-direction: column; gap: 40px; margin-bottom: 80px; }
+            .a-title { font-size: 2.2rem; }
+            .a-glass-box { transform: none !important; }
+        }
+    </style>
+</head>
+<body class="bg-darker">
+
+    <nav class="navbar">
+        <div class="container nav-inner">
+            
+            <a href="index.html" class="logo-3d-wrapper">
+                <div class="logo-flipper">
+                    <div class="logo-face front">
+                        <img src="assets/images/raphael-lezius-logo-front.webp" alt="Logo Front">
+                    </div>
+                    <div class="logo-face back">
+                        <img src="assets/images/raphael-lezius-logo-back.webp" alt="Logo Back">
+                    </div>
+                </div>
+                <div class="brand-text">RAPHAEL <span>LEZIUS</span></div>
+            </a>
+
+            <div class="desktop-menu">
+                <div class="nav-group">
+                    <a href="index.html" class="nav-link">Startseite</a>
+                    
+                    <div class="dropdown-container">
+                        <button class="nav-link dropdown-trigger">
+                            Leistungen <i class="fas fa-chevron-down" style="font-size: 0.7em; margin-left: 5px;"></i>
+                        </button>
+                        <div class="dropdown-menu glass-panel">
+                            <a href="residential.html" class="dd-item">
+                                <i class="fas fa-couch gold-text"></i>
+                                <span>Privat & IKEA <small>PAX, Küchen, Betten</small></span>
+                            </a>
+                            <a href="office.html" class="dd-item">
+                                <i class="fas fa-building gold-text"></i>
+                                <span>Gewerbe & Office <small>USM, Konferenz, Laden</small></span>
+                            </a>
+                            <a href="tech.html" class="dd-item">
+                                <i class="fas fa-microchip gold-text"></i>
+                                <span>Tech & Smart <small>TV, LED, Kabel</small></span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <a href="process-pricing.html" class="nav-link">Preise & Ablauf</a>
+                    <a href="area.html" class="nav-link">Gebiet</a>
+                    <a href="gallery.html" class="nav-link">Galerie</a>
+                    <a href="magazine.html" class="nav-link">Magazin</a>
+                </div>
+            </div>
+
+            <div class="nav-actions">
+                <div class="status-pill desktop-only">
+                    <span class="status-dot"></span>
+                    <span>Verfügbar</span>
+                </div>
+                <a href="javascript:void(0)" onclick="MissionOS.open()" class="btn btn-gold glow-effect nav-quote-btn">
+                    <span class="btn-text">Angebot Anfordern</span>
+                    <div class="btn-glow-pulse"></div>
+                </a>
+                <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+                    <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <nav class="mobile-nav-links">
+            <a href="index.html">Startseite</a>
+            
+            <div style="font-size: 0.8rem; color: var(--gold); margin-top: 15px; opacity: 0.7; text-transform: uppercase; letter-spacing: 1px;">Dienstleistungen</div>
+            <a href="residential.html">IKEA & Wohnen</a>
+            <a href="residential.html">Küchenmontage</a>
+            <a href="office.html">Büro & Gewerbe</a>
+            <a href="tech.html">TV & Smart Home</a>
+            
+            <div style="font-size: 0.8rem; color: var(--gold); margin-top: 15px; opacity: 0.7; text-transform: uppercase; letter-spacing: 1px;">Informationen</div>
+            <a href="process-pricing.html">Preise & Ablauf</a>
+            <a href="area.html">Gebiet</a>
+            <a href="gallery.html">Galerie</a>
+            <a href="magazine.html">Magazin</a>
+            
+            <a href="javascript:void(0)" onclick="MissionOS.open(); document.getElementById('mobileMenu').classList.remove('active');" class="btn btn-gold" style="margin-top: 30px; width: 100%; text-align: center;">Angebot anfordern</a>
+        </nav>
+    </div>
+
+    <section class="hero-section" style="height: 85vh; min-height: 650px; display: flex; align-items: center; justify-content: center; position: relative;">
+        <div class="video-bg-container" style="position: absolute; inset: 0; z-index: 0;">
+            <video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; filter: brightness(0.2) contrast(1.2);">
+                <source src="assets/video/project-landscape.mp4" type="video/mp4">
+            </video>
+            <div style="position: absolute; inset: 0; background: linear-gradient(180deg, transparent 50%, #050505 100%);"></div>
+        </div>
+
+        <div class="container relative-z" style="z-index: 5; text-align: center; width: 100%;">
+            <div class="section-tag-wrapper" style="justify-content: center;" data-aos="fade-down">
+                <span class="section-tag">IKEA & PREMIUM FURNITURE DEPLOYMENT</span>
+            </div>
+            
+            <h1 class="glitch-header" style="font-size: 5rem; margin: 20px 0;" data-aos="zoom-in">
+                <span class="white">WIR BAUEN ALLES.</span><br>
+                <span class="gold-text">OHNE KOMPROMISSE.</span>
+            </h1>
+            
+            <p style="color: #ccc; font-size: 1.2rem; max-width: 800px; margin: 0 auto 40px auto; line-height: 1.8;" data-aos="fade-up" data-aos-delay="100">
+                Sie haben die Vision. Wir haben die Engineering-DNA. Wir montieren das <strong>gesamte IKEA-Sortiment</strong> und alle Premium-Hersteller mit chirurgischer Präzision.
+            </p>
+            
+            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;" data-aos="fade-up" data-aos-delay="200">
+                <button onclick="MissionOS.open()" class="btn btn-gold" style="font-size: 1rem; padding: 20px 45px;">
+                    <i class="fas fa-rocket"></i> MISSION STARTEN
+                </button>
+                <a href="#database" class="btn-holographic">
+                    <i class="fas fa-sitemap"></i> SYSTEM DATENBANK
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <div class="infinite-catalog" id="database" data-aos="fade-up">
+        <div class="catalog-track">
+            <span><i class="fas fa-cube"></i> IKEA PAX KORPUS</span>
+            <span><i class="fas fa-utensils"></i> METOD KÜCHEN</span>
+            <span><i class="fas fa-tv"></i> BESTA WOHNWAND</span>
+            <span><i class="fas fa-bed"></i> MALM BETTEN</span>
+            <span><i class="fas fa-boxes"></i> KALLAX SYSTEME</span>
+            <span><i class="fas fa-layer-group"></i> PLATSA SCHRÄNKE</span>
+            <span><i class="fas fa-couch"></i> VIMLE & KIVIK SOFAS</span>
+            <span><i class="fas fa-child"></i> SMÅSTAD KINDERZIMMER</span>
+            <span><i class="fas fa-sink"></i> GODMORGON BAD</span>
+            <span><i class="fas fa-chair"></i> NORDLI KOMMODEN</span>
+            <span><i class="fas fa-table"></i> BEKANT BÜRO</span>
+            <span><i class="fas fa-door-open"></i> KOMPLEMENT INNENLEBEN</span>
+            <span><i class="fas fa-cube"></i> IKEA PAX KORPUS</span>
+            <span><i class="fas fa-utensils"></i> METOD KÜCHEN</span>
+            <span><i class="fas fa-tv"></i> BESTA WOHNWAND</span>
+            <span><i class="fas fa-bed"></i> MALM BETTEN</span>
+            <span><i class="fas fa-boxes"></i> KALLAX SYSTEME</span>
+        </div>
+    </div>
+
+    <section class="asymmetric-section container">
+        
+        <div class="a-row">
+            <div class="a-text" data-aos="fade-right">
+                <div class="section-tag-wrapper"><span class="section-tag" style="border-color:var(--gold); color:var(--gold);">MODUL 01</span></div>
+                <h2 class="a-title">PAX & <span>STORAGE</span></h2>
+                <p class="a-desc">Die Meisterklasse der Möbelmontage. Ein 3-Meter PAX Schrank wiegt über 250kg. Wir garantieren kippsichere Wandverankerung, absolut waagerechte Ausrichtung (selbst in Altbauten) und millimetergenau eingestellte Schiebetüren.</p>
+                <button onclick="MissionOS.open()" class="btn-holographic" style="border-color: #333;"><i class="fas fa-plus"></i> PAX ANFRAGEN</button>
+            </div>
+            <div class="a-visual" data-aos="fade-left">
+                <div class="a-glass-box">
+                    <h3 style="color:#fff; border-bottom:1px solid #333; padding-bottom:10px; margin-bottom:20px;"><i class="fas fa-database gold-text"></i> System Kompatibilität</h3>
+                    <ul class="tech-list">
+                        <li><span>PAX Korpusse (Alle Höhen)</span> <span class="stat">SUPPORTED</span></li>
+                        <li><span>Schiebetüren (Hasvik, Mehamn)</span> <span class="stat">SUPPORTED</span></li>
+                        <li><span>KOMPLEMENT Inneneinrichtung</span> <span class="stat">SUPPORTED</span></li>
+                        <li><span>Sockelleisten-Ausschnitt</span> <span class="stat" style="color:var(--neon-green);">EXPERT</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="a-row reverse">
+            <div class="a-text" data-aos="fade-left">
+                <div class="section-tag-wrapper"><span class="section-tag" style="border-color:var(--gold); color:var(--gold);">MODUL 02</span></div>
+                <h2 class="a-title">METOD <span>KÜCHEN</span></h2>
+                <p class="a-desc">Eine Küche verzeiht keine Fehler. Mit unserer Festool Tauchsäge garantieren wir perfekte Arbeitsplatten-Ausschnitte. Wir übernehmen die Korpus-Montage, Spülenausschnitte und die nahtlose Integration Ihrer Geräte.</p>
+                <button onclick="MissionOS.open()" class="btn-holographic" style="border-color: #333;"><i class="fas fa-plus"></i> KÜCHE ANFRAGEN</button>
+            </div>
+            <div class="a-visual" data-aos="fade-right">
+                <div class="a-glass-box" style="border-color: rgba(57, 255, 20, 0.4);">
+                    <h3 style="color:#fff; border-bottom:1px solid #333; padding-bottom:10px; margin-bottom:20px;"><i class="fas fa-utensils" style="color:var(--neon-green);"></i> High-Risk Operations</h3>
+                    <ul class="tech-list">
+                        <li><span>METOD Unterschränke</span> <span class="stat">SUPPORTED</span></li>
+                        <li><span>Arbeitsplatten (Festool Cut)</span> <span class="stat">SUPPORTED</span></li>
+                        <li><span>Spülen & Siphon Installation</span> <span class="stat">SUPPORTED</span></li>
+                        <li><span>Wand-Schienensystem (Hängend)</span> <span class="stat" style="color:var(--neon-green);">EXPERT</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="a-row">
+            <div class="a-text" data-aos="fade-right">
+                <div class="section-tag-wrapper"><span class="section-tag" style="border-color:var(--gold); color:var(--gold);">MODUL 03</span></div>
+                <h2 class="a-title">BESTA & <span>LIVING</span></h2>
+                <p class="a-desc">Schwebende TV-Boards sind das Highlight im Wohnzimmer – wenn sie halten. Wir prüfen die Wandbeschaffenheit, bohren mit Laser-Präzision und verankern Ihr BESTA-System so, dass es schwere TVs problemlos trägt.</p>
+                <button onclick="MissionOS.open()" class="btn-holographic" style="border-color: #333;"><i class="fas fa-plus"></i> WOHNWAND ANFRAGEN</button>
+            </div>
+            <div class="a-visual" data-aos="fade-left">
+                <div class="a-glass-box">
+                    <h3 style="color:#fff; border-bottom:1px solid #333; padding-bottom:10px; margin-bottom:20px;"><i class="fas fa-tv gold-text"></i> Wall-Mount Architecture</h3>
+                    <ul class="tech-list">
+                        <li><span>BESTA Schwebend (Wandmontage)</span> <span class="stat">SUPPORTED</span></li>
+                        <li><span>EKET Würfelsysteme (Laser-Level)</span> <span class="stat">SUPPORTED</span></li>
+                        <li><span>BILLY Regale (Über Eck)</span> <span class="stat">SUPPORTED</span></li>
+                        <li><span>Heavy Duty TV Halterungen</span> <span class="stat" style="color:var(--neon-green);">EXPERT</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="section-padding" style="background: linear-gradient(135deg, var(--gold), #b89600); text-align: center; color: #000;">
+        <div class="container" data-aos="zoom-in">
+            <h2 style="font-family: 'Space Grotesk'; font-size: 3.5rem; font-weight: 800; margin-bottom: 15px; letter-spacing: -2px;">MISSION ACCEPTED.</h2>
+            <p style="font-size: 1.2rem; font-weight: 600; margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto;">Verschwenden Sie nicht Ihr Wochenende. Übergeben Sie uns das Kommando. Wir bringen die Werkzeuge, Sie genießen das Ergebnis.</p>
+            <button onclick="MissionOS.open()" class="btn" style="background: #000; color: var(--gold); font-size: 1.1rem; padding: 20px 50px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+                <i class="fas fa-bolt"></i> KAPAZITÄT PRÜFEN
+            </button>
+        </div>
+    </section>
+
+    <footer class="mega-footer">
+        <div class="footer-ticker">
+            <div class="ticker-track">
+                <span>
+                    +++ PREMIUM MÖBELMONTAGE • AUGSBURG & MÜNCHEN • IKEA PAX EXPERTEN • BÜROEINRICHTUNG & USM HALLER • KÜCHENINSTALLATION • TV WANDMONTAGE • KEINE VERSTECKTEN KOSTEN • SAUBERKEIT GARANTIERT • ENGINEERING LEVEL QUALITY • +++
+                </span>
+                <span>
+                    +++ PREMIUM MÖBELMONTAGE • AUGSBURG & MÜNCHEN • IKEA PAX EXPERTEN • BÜROEINRICHTUNG & USM HALLER • KÜCHENINSTALLATION • TV WANDMONTAGE • KEINE VERSTECKTEN KOSTEN • SAUBERKEIT GARANTIERT • ENGINEERING LEVEL QUALITY • +++
+                </span>
+            </div>
+        </div>
+
+        <div class="container relative-z">
+            <div class="footer-grid">
+                
+                <div class="f-col brand-col">
+                    <div class="footer-logo">RAPHAEL <span>LEZIUS</span></div>
+                    <p class="tagline">Präzision ist kein Zufall.<br>Es ist ein Standard.</p>
+                    
+                    <div class="trust-badges-footer">
+                        <span class="t-badge"><i class="fas fa-shield-alt"></i> Versichert</span>
+                        <span class="t-badge"><i class="fas fa-check-circle"></i> Geprüft</span>
+                    </div>
+
+                    <div class="social-row">
+                        <a href="https://wa.me/491608194018" target="_blank" class="social-btn"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" target="_blank" class="social-btn"><i class="fab fa-instagram"></i></a>
+                        <a href="#" target="_blank" class="social-btn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <div class="f-col">
+                    <h4 class="f-heading">Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="residential.html">IKEA PAX Aufbau</a></li>
+                        <li><a href="residential.html">Küchenmontage</a></li>
+                        <li><a href="office.html">Büromöbel & USM</a></li>
+                        <li><a href="tech.html">TV Wandmontage</a></li>
+                        <li><a href="tech.html">Smart Home Setup</a></li>
+                    </ul>
+                </div>
+
+                <div class="f-col">
+                    <h4 class="f-heading">Nuria Boutique</h4>
+                    <ul class="footer-links">
+                        <li><a href="magazine.html#nuria-storage">Körbe & Ordnung</a></li>
+                        <li><a href="magazine.html#nuria-kitchen">Tisch & Küche</a></li>
+                        <li><a href="magazine.html#nuria-textiles">Textilien</a></li>
+                    </ul>
+                    <div class="payment-row">
+                        <i class="fab fa-cc-paypal"></i>
+                        <i class="fab fa-cc-visa"></i>
+                        <i class="fab fa-cc-mastercard"></i>
+                    </div>
+                </div>
+
+                <div class="f-col">
+                    <h4 class="f-heading">Rechtliches</h4>
+                    <ul class="footer-links">
+                        <li><a href="impressum.html">Impressum</a></li>
+                        <li><a href="datenschutz.html">Datenschutz</a></li>
+                        <li><a href="agb.html">AGB & Widerruf</a></li>
+                        <li><a href="https://ec.europa.eu/consumers/odr" target="_blank">Streitschlichtung</a></li>
+                    </ul>
+                </div>
+
+                <div class="f-col contact-col">
+                    <h4 class="f-heading">Zentrale</h4>
+                    <ul class="contact-list">
+                        <li>
+                            <i class="fas fa-map-marker-alt gold-icon"></i>
+                            <span class="contact-text">Am Rößlebad 9<br>86152 Augsburg</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone gold-icon"></i>
+                            <a href="tel:+491608194018" class="contact-link">0160 819 4018</a>
+                        </li>
+                        <li>
+                            <i class="far fa-envelope gold-icon"></i>
+                            <a href="mailto:r.lezius@gmail.com" class="contact-link">r.lezius@gmail.com</a>
+                        </li>
+                    </ul>
+                    
+                    <div class="op-status">
+                        <div class="status-dot-container">
+                            <div class="status-dot live"></div>
+                            <div class="status-pulse"></div>
+                        </div>
+                        <span>Team Status: <strong class="glow-text">IM EINSATZ</strong></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom-bar">
+                <div class="copyright">
+                    &copy; 2026 Raphael Lezius. <span class="hide-mobile">Alle Rechte vorbehalten.</span>
+                </div>
+                
+                <div class="developer-credit">
+                    <span class="code-bracket">&lt;/&gt;</span>
+                    <span class="dev-text">ENGINEERED BY <span class="dev-name">IDRIS</span></span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

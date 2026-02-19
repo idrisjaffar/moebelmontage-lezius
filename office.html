@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Büro, Gewerbe & USM Montage | Raphael Lezius Engineering</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+    
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <style>
+        /* Dual Infinite Tracks for massive catalog illusion */
+        .b2b-matrix-container {
+            background: #050505; padding: 40px 0; overflow: hidden; position: relative;
+            border-top: 1px solid rgba(212,175,55,0.2); border-bottom: 1px solid rgba(212,175,55,0.2);
+            box-shadow: inset 0 0 50px rgba(0,0,0,0.8);
+        }
+        .matrix-track {
+            display: flex; white-space: nowrap; font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700; font-size: 1.5rem; color: #333; letter-spacing: 2px;
+            width: max-content;
+        }
+        .track-left { animation: scrollLeft 50s linear infinite; margin-bottom: 15px; }
+        .track-right { animation: scrollRight 45s linear infinite; color: rgba(212,175,55,0.3); }
+        .matrix-track span { margin: 0 40px; display: inline-flex; align-items: center; gap: 15px; }
+        .matrix-track span i { font-size: 1rem; color: var(--gold); }
+        
+        @keyframes scrollLeft { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        @keyframes scrollRight { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
+
+        /* B2B Glassmorphic Grid */
+        .b2b-glass-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 30px; margin-top: 50px;
+        }
+        .b2b-glass-card {
+            background: rgba(10, 10, 10, 0.7); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.05); border-top: 2px solid #333;
+            border-radius: 12px; padding: 40px; position: relative; overflow: hidden;
+            transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        .b2b-glass-card::after {
+            content: ''; position: absolute; inset: 0;
+            background: radial-gradient(circle at top right, rgba(212,175,55,0.1), transparent 50%);
+            opacity: 0; transition: 0.6s; pointer-events: none;
+        }
+        .b2b-glass-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-top-color: var(--gold);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.6), 0 0 40px rgba(212,175,55,0.1);
+        }
+        .b2b-glass-card:hover::after { opacity: 1; }
+
+        .b2b-icon-wrapper {
+            width: 60px; height: 60px; border-radius: 12px; background: rgba(212,175,55,0.1);
+            display: flex; align-items: center; justify-content: center; margin-bottom: 25px;
+            border: 1px solid rgba(212,175,55,0.3); font-size: 1.8rem; color: var(--gold);
+        }
+        
+        /* USM Blueprint Section */
+        .usm-blueprint {
+            background: #080808; border: 1px solid var(--gold); border-radius: 12px;
+            position: relative; overflow: hidden; margin: 80px 0;
+        }
+        .usm-bg-grid {
+            position: absolute; inset: 0; opacity: 0.15;
+            background-image: linear-gradient(var(--gold) 1px, transparent 1px), linear-gradient(90deg, var(--gold) 1px, transparent 1px);
+            background-size: 40px 40px; pointer-events: none;
+        }
+        
+        /* B2B Feature List */
+        .b2b-feature-list { list-style: none; padding: 0; margin: 0; }
+        .b2b-feature-list li {
+            padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.05);
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .b2b-feature-list li:last-child { border: none; }
+        .b2b-feature-list .f-name { color: #ddd; font-weight: 500; }
+        .b2b-feature-list .f-status { font-family: monospace; font-size: 0.8rem; background: rgba(57, 255, 20, 0.1); color: var(--neon-green); padding: 4px 10px; border-radius: 4px; border: 1px solid rgba(57, 255, 20, 0.3); }
+
+        /* Pulse Animation for specific elements */
+        .animate-pulse-slow { animation: pulseSlow 3s infinite; }
+        @keyframes pulseSlow { 0% { opacity: 0.6; } 50% { opacity: 1; } 100% { opacity: 0.6; } }
+    </style>
+</head>
+<body class="bg-darker">
+
+    <nav class="navbar">
+        <div class="container nav-inner">
+            
+            <a href="index.html" class="logo-3d-wrapper">
+                <div class="logo-flipper">
+                    <div class="logo-face front">
+                        <img src="assets/images/raphael-lezius-logo-front.webp" alt="Logo Front">
+                    </div>
+                    <div class="logo-face back">
+                        <img src="assets/images/raphael-lezius-logo-back.webp" alt="Logo Back">
+                    </div>
+                </div>
+                <div class="brand-text">RAPHAEL <span>LEZIUS</span></div>
+            </a>
+
+            <div class="desktop-menu">
+                <div class="nav-group">
+                    <a href="index.html" class="nav-link">Startseite</a>
+                    
+                    <div class="dropdown-container">
+                        <button class="nav-link dropdown-trigger">
+                            Leistungen <i class="fas fa-chevron-down" style="font-size: 0.7em; margin-left: 5px;"></i>
+                        </button>
+                        <div class="dropdown-menu glass-panel">
+                            <a href="residential.html" class="dd-item">
+                                <i class="fas fa-couch gold-text"></i>
+                                <span>Privat & IKEA <small>PAX, Küchen, Betten</small></span>
+                            </a>
+                            <a href="office.html" class="dd-item">
+                                <i class="fas fa-building gold-text"></i>
+                                <span>Gewerbe & Office <small>USM, Konferenz, Laden</small></span>
+                            </a>
+                            <a href="tech.html" class="dd-item">
+                                <i class="fas fa-microchip gold-text"></i>
+                                <span>Tech & Smart <small>TV, LED, Kabel</small></span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <a href="process-pricing.html" class="nav-link">Preise & Ablauf</a>
+                    <a href="area.html" class="nav-link">Gebiet</a>
+                    <a href="gallery.html" class="nav-link">Galerie</a>
+                    <a href="magazine.html" class="nav-link">Magazin</a>
+                </div>
+            </div>
+
+            <div class="nav-actions">
+                <div class="status-pill desktop-only">
+                    <span class="status-dot"></span>
+                    <span>Verfügbar</span>
+                </div>
+                <a href="javascript:void(0)" onclick="MissionOS.open()" class="btn btn-gold glow-effect nav-quote-btn">
+                    <span class="btn-text">Angebot Anfordern</span>
+                    <div class="btn-glow-pulse"></div>
+                </a>
+                <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+                    <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <nav class="mobile-nav-links">
+            <a href="index.html">Startseite</a>
+            
+            <div style="font-size: 0.8rem; color: var(--gold); margin-top: 15px; opacity: 0.7; text-transform: uppercase; letter-spacing: 1px;">Dienstleistungen</div>
+            <a href="residential.html">IKEA & Wohnen</a>
+            <a href="office.html">Büro & Gewerbe</a>
+            <a href="tech.html">TV & Smart Home</a>
+            
+            <div style="font-size: 0.8rem; color: var(--gold); margin-top: 15px; opacity: 0.7; text-transform: uppercase; letter-spacing: 1px;">Informationen</div>
+            <a href="process-pricing.html">Preise & Ablauf</a>
+            <a href="area.html">Gebiet</a>
+            <a href="gallery.html">Galerie</a>
+            <a href="magazine.html">Magazin</a>
+            
+            <a href="javascript:void(0)" onclick="MissionOS.open(); document.getElementById('mobileMenu').classList.remove('active');" class="btn btn-gold" style="margin-top: 30px; width: 100%; text-align: center;">Angebot anfordern</a>
+        </nav>
+    </div>
+
+    <section class="hero-section" style="height: 85vh; min-height: 650px; display: flex; align-items: center; justify-content: center; position: relative;">
+        <div class="video-bg-container" style="position: absolute; inset: 0; z-index: 0;">
+            <video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; filter: brightness(0.2) contrast(1.1) grayscale(0.5);">
+                <source src="assets/video/project-landscape.mp4" type="video/mp4">
+            </video>
+            <div style="position: absolute; inset: 0; background: linear-gradient(135deg, rgba(5,5,5,0.9) 0%, transparent 100%);"></div>
+        </div>
+
+        <div class="container relative-z" style="z-index: 5; text-align: left; width: 100%;">
+            <div class="section-tag-wrapper" data-aos="fade-right">
+                <span class="section-tag" style="border-color: var(--neon-green); color: var(--neon-green);">B2B CORPORATE DEPLOYMENT</span>
+            </div>
+            
+            <h1 class="glitch-header" style="font-size: 4.5rem; margin: 20px 0; line-height: 1.1;" data-aos="fade-up" data-aos-delay="100">
+                <span class="white">EFFIZIENZ.</span><br>
+                <span class="gold-text">PRODUKTIVITÄT.</span><br>
+                <span class="white">NULL DOWNTIME.</span>
+            </h1>
+            
+            <p style="color: #ccc; font-size: 1.2rem; max-width: 600px; margin: 0 0 40px 0; line-height: 1.8;" data-aos="fade-up" data-aos-delay="200">
+                Lassen Sie Ihre Mitarbeiter arbeiten. Wir übernehmen die Einrichtung. 
+                Von High-End <strong>USM Haller Setups</strong> bis zur kompletten <strong>Großraumbüro-Montage</strong>. 
+                Inklusive Kabelmanagement und Wochenend-Service.
+            </p>
+            
+            <div style="display: flex; gap: 20px; flex-wrap: wrap;" data-aos="fade-up" data-aos-delay="300">
+                <button onclick="MissionOS.open()" class="btn btn-gold" style="font-size: 1rem; padding: 20px 45px;">
+                    <i class="fas fa-briefcase"></i> FIRMEN-ANGEBOT ANFORDERN
+                </button>
+            </div>
+            
+            <div style="display: flex; gap: 30px; margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; max-width: 600px;" data-aos="fade-in" data-aos-delay="500">
+                <div style="color: #888; font-size: 0.85rem;"><i class="fas fa-file-invoice gold-text"></i> Steuerlich absetzbar</div>
+                <div style="color: #888; font-size: 0.85rem;"><i class="fas fa-shield-alt gold-text"></i> Voll versichert (B2B)</div>
+                <div style="color: #888; font-size: 0.85rem;"><i class="fas fa-calendar-check gold-text"></i> Weekend-Warrior Service</div>
+            </div>
+        </div>
+    </section>
+
+    <div class="b2b-matrix-container" data-aos="fade-in">
+        <div class="matrix-track track-left">
+            <span><i class="fas fa-check-circle"></i> USM HALLER</span>
+            <span><i class="fas fa-check-circle"></i> VITRA</span>
+            <span><i class="fas fa-check-circle"></i> HERMAN MILLER</span>
+            <span><i class="fas fa-check-circle"></i> STEELCASE</span>
+            <span><i class="fas fa-check-circle"></i> SEDUS</span>
+            <span><i class="fas fa-check-circle"></i> KINNARPS</span>
+            <span><i class="fas fa-check-circle"></i> ERGOTRON</span>
+            <span><i class="fas fa-check-circle"></i> IKEA BUSINESS</span>
+            <span><i class="fas fa-check-circle"></i> USM HALLER</span>
+            <span><i class="fas fa-check-circle"></i> VITRA</span>
+            <span><i class="fas fa-check-circle"></i> HERMAN MILLER</span>
+            <span><i class="fas fa-check-circle"></i> STEELCASE</span>
+            <span><i class="fas fa-check-circle"></i> SEDUS</span>
+            <span><i class="fas fa-check-circle"></i> KINNARPS</span>
+            <span><i class="fas fa-check-circle"></i> ERGOTRON</span>
+            <span><i class="fas fa-check-circle"></i> IKEA BUSINESS</span>
+        </div>
+        <div class="matrix-track track-right">
+            <span><i class="fas fa-layer-group"></i> SCHWERLASTREGALE</span>
+            <span><i class="fas fa-desktop"></i> HÖHENVERSTELLBARE TISCHE</span>
+            <span><i class="fas fa-plug"></i> KABELMANAGEMENT</span>
+            <span><i class="fas fa-volume-mute"></i> AKUSTIK-KABINEN</span>
+            <span><i class="fas fa-users"></i> KONFERENZANLAGEN</span>
+            <span><i class="fas fa-lock"></i> SPIND-SYSTEME</span>
+            <span><i class="fas fa-couch"></i> LOUNGE-MÖBEL</span>
+            <span><i class="fas fa-layer-group"></i> SCHWERLASTREGALE</span>
+            <span><i class="fas fa-desktop"></i> HÖHENVERSTELLBARE TISCHE</span>
+            <span><i class="fas fa-plug"></i> KABELMANAGEMENT</span>
+            <span><i class="fas fa-volume-mute"></i> AKUSTIK-KABINEN</span>
+            <span><i class="fas fa-users"></i> KONFERENZANLAGEN</span>
+            <span><i class="fas fa-lock"></i> SPIND-SYSTEME</span>
+            <span><i class="fas fa-couch"></i> LOUNGE-MÖBEL</span>
+        </div>
+    </div>
+
+    <section class="section-padding">
+        <div class="container">
+            <div class="section-header center" data-aos="fade-up">
+                <span class="section-tag">OFFICE ARCHITECTURE</span>
+                <h2>Gewerbliche <span class="gold-text">Lösungen</span></h2>
+                <p>Systematische Integration für moderne Arbeitswelten.</p>
+            </div>
+
+            <div class="b2b-glass-grid">
+                
+                <div class="b2b-glass-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="b2b-icon-wrapper"><i class="fas fa-desktop"></i></div>
+                    <h3 style="color:#fff; font-family:'Space Grotesk'; margin-bottom:15px; font-size:1.4rem;">Ergonomic Workspaces</h3>
+                    <p style="color:#aaa; font-size:0.95rem; margin-bottom:25px; line-height:1.6;">Montage von Sitz-Steh-Tischen inklusive Untertisch-Kabelmanagement. Keine sichtbaren Kabel, maximale Sicherheit.</p>
+                    <ul class="b2b-feature-list">
+                        <li data-aos="fade-right" data-aos-delay="200"><span class="f-name">Dual-Monitor Arms</span> <span class="f-status">INTEGRATED</span></li>
+                        <li data-aos="fade-right" data-aos-delay="300"><span class="f-name">Cable Trays (Untertisch)</span> <span class="f-status">INTEGRATED</span></li>
+                        <li data-aos="fade-right" data-aos-delay="400"><span class="f-name">Akustik-Trennwände</span> <span class="f-status">INTEGRATED</span></li>
+                    </ul>
+                </div>
+
+                <div class="b2b-glass-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="b2b-icon-wrapper"><i class="fas fa-users"></i></div>
+                    <h3 style="color:#fff; font-family:'Space Grotesk'; margin-bottom:15px; font-size:1.4rem;">Conference & Boardroom</h3>
+                    <p style="color:#aaa; font-size:0.95rem; margin-bottom:25px; line-height:1.6;">Zusammenbau massiver Konferenztische und Einrichtung von Präsentationsräumen. Vorbereitung für Medientechnik.</p>
+                    <ul class="b2b-feature-list">
+                        <li data-aos="fade-right" data-aos-delay="300"><span class="f-name">Massivholz / Glas Tische</span> <span class="f-status">HEAVY LIFT</span></li>
+                        <li data-aos="fade-right" data-aos-delay="400"><span class="f-name">Tisch-Steckdosen (Bodentank)</span> <span class="f-status">ROUTED</span></li>
+                        <li data-aos="fade-right" data-aos-delay="500"><span class="f-name">Whiteboards / Smartboards</span> <span class="f-status">MOUNTED</span></li>
+                    </ul>
+                </div>
+
+                <div class="b2b-glass-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="b2b-icon-wrapper"><i class="fas fa-archive"></i></div>
+                    <h3 style="color:#fff; font-family:'Space Grotesk'; margin-bottom:15px; font-size:1.4rem;">Storage & Archive</h3>
+                    <p style="color:#aaa; font-size:0.95rem; margin-bottom:25px; line-height:1.6;">Diebstahlsichere Spind-Systeme für Mitarbeiter und Schwerlastregale für Lager & Archiv. Kippsicher verankert.</p>
+                    <ul class="b2b-feature-list">
+                        <li data-aos="fade-right" data-aos-delay="400"><span class="f-name">Locker-Systeme (Reihe)</span> <span class="f-status">SECURED</span></li>
+                        <li data-aos="fade-right" data-aos-delay="500"><span class="f-name">Schwerlast-Archivregale</span> <span class="f-status">ANCHORED</span></li>
+                        <li data-aos="fade-right" data-aos-delay="600"><span class="f-name">Rollcontainer & Caddies</span> <span class="f-status">ASSEMBLED</span></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <div class="usm-blueprint" data-aos="zoom-in">
+            <div class="usm-bg-grid"></div>
+            
+            <div style="position: relative; z-index: 5; padding: 60px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 40px;">
+                
+                <div style="flex: 1; min-width: 300px;">
+                    <div style="display: inline-block; border: 1px solid var(--gold); color: var(--gold); padding: 5px 15px; font-size: 0.8rem; font-weight: bold; margin-bottom: 20px; letter-spacing: 2px;">CERTIFIED SKILLS</div>
+                    <h2 style="color: #fff; font-size: 3rem; font-family: 'Space Grotesk'; margin-bottom: 20px; line-height: 1.1;">USM Haller<br><span style="color: #888; font-weight: 300;">Engineering</span></h2>
+                    <p style="color: #ccc; font-size: 1.1rem; line-height: 1.8; margin-bottom: 30px;">
+                        Das Schweizer Meisterwerk verzeiht keine Gewalt. Ein Fehler bei der Demontage kann die Konnektoren zerstören. Wir nutzen <strong>Original-Spezialwerkzeug</strong> für den Aufbau, Umbau und Umzug Ihrer USM-Landschaft.
+                    </p>
+                    
+                    <ul style="list-style: none; padding: 0; color: #fff;">
+                        <li style="margin-bottom: 10px;" data-aos="fade-up" data-aos-delay="100"><i class="fas fa-circle-notch animate-pulse-slow" style="color:var(--gold); margin-right:15px; font-size: 0.8rem;"></i> Fachgerechte Neumontage</li>
+                        <li style="margin-bottom: 10px;" data-aos="fade-up" data-aos-delay="200"><i class="fas fa-circle-notch animate-pulse-slow" style="color:var(--gold); margin-right:15px; font-size: 0.8rem;"></i> Zerstörungsfreier Abbau & Umzug</li>
+                        <li style="margin-bottom: 10px;" data-aos="fade-up" data-aos-delay="300"><i class="fas fa-circle-notch animate-pulse-slow" style="color:var(--gold); margin-right:15px; font-size: 0.8rem;"></i> Umbau & Erweiterung (Gen 2/3)</li>
+                        <li style="margin-bottom: 10px;" data-aos="fade-up" data-aos-delay="400"><i class="fas fa-circle-notch animate-pulse-slow" style="color:var(--gold); margin-right:15px; font-size: 0.8rem;"></i> Klappen- & Schloss-Justierung</li>
+                    </ul>
+                </div>
+
+                <div style="flex: 1; min-width: 300px; display: flex; justify-content: center; position: relative;">
+                    <div style="width: 300px; height: 300px; border-radius: 50%; border: 1px dashed rgba(212,175,55,0.5); display: flex; align-items: center; justify-content: center; animation: spin 20s linear infinite;">
+                        <div style="width: 260px; height: 260px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.1);"></div>
+                    </div>
+                    <i class="fas fa-cube" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 5rem; color: var(--gold); filter: drop-shadow(0 0 20px rgba(212,175,55,0.5));"></i>
+                    
+                    <div style="position: absolute; top: 20%; left: 10%; background: #111; border: 1px solid #333; padding: 5px 10px; font-family: monospace; font-size: 0.7rem; color: #fff;" data-aos="fade-right" data-aos-delay="500">TENSION: CALIBRATED</div>
+                    <div style="position: absolute; bottom: 20%; right: 10%; background: #111; border: 1px solid #333; padding: 5px 10px; font-family: monospace; font-size: 0.7rem; color: #fff;" data-aos="fade-left" data-aos-delay="600">TOOL: USM_T-HANDLE</div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding" style="background: linear-gradient(135deg, var(--gold), #b89600); text-align: center; color: #000;">
+        <div class="container" data-aos="zoom-in">
+            <h2 style="font-family: 'Space Grotesk'; font-size: 3rem; font-weight: 800; margin-bottom: 15px; letter-spacing: -1px;">ZEIT IST KAPITAL.</h2>
+            <p style="font-size: 1.1rem; font-weight: 600; margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto;">Jede Stunde, in der Ihr Team Möbel aufbaut, ist eine Stunde ohne Umsatz. Überlassen Sie die Hardware den Ingenieuren.</p>
+            <button onclick="MissionOS.open()" class="btn" style="background: #000; color: var(--gold); font-size: 1.1rem; padding: 20px 50px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+                <i class="fas fa-envelope"></i> B2B ANFRAGE STARTEN
+            </button>
+        </div>
+    </section>
+
+    <footer class="mega-footer">
+        <div class="footer-ticker">
+            <div class="ticker-track">
+                <span>
+                    +++ PREMIUM MÖBELMONTAGE • AUGSBURG & MÜNCHEN • IKEA PAX EXPERTEN • BÜROEINRICHTUNG & USM HALLER • KÜCHENINSTALLATION • TV WANDMONTAGE • KEINE VERSTECKTEN KOSTEN • SAUBERKEIT GARANTIERT • ENGINEERING LEVEL QUALITY • +++
+                </span>
+                <span>
+                    +++ PREMIUM MÖBELMONTAGE • AUGSBURG & MÜNCHEN • IKEA PAX EXPERTEN • BÜROEINRICHTUNG & USM HALLER • KÜCHENINSTALLATION • TV WANDMONTAGE • KEINE VERSTECKTEN KOSTEN • SAUBERKEIT GARANTIERT • ENGINEERING LEVEL QUALITY • +++
+                </span>
+            </div>
+        </div>
+
+        <div class="container relative-z">
+            <div class="footer-grid">
+                
+                <div class="f-col brand-col">
+                    <div class="footer-logo">RAPHAEL <span>LEZIUS</span></div>
+                    <p class="tagline">Präzision ist kein Zufall.<br>Es ist ein Standard.</p>
+                    
+                    <div class="trust-badges-footer">
+                        <span class="t-badge"><i class="fas fa-shield-alt"></i> Versichert</span>
+                        <span class="t-badge"><i class="fas fa-check-circle"></i> Geprüft</span>
+                    </div>
+
+                    <div class="social-row">
+                        <a href="https://wa.me/491608194018" target="_blank" class="social-btn"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" target="_blank" class="social-btn"><i class="fab fa-instagram"></i></a>
+                        <a href="#" target="_blank" class="social-btn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <div class="f-col">
+                    <h4 class="f-heading">Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="residential.html">IKEA PAX Aufbau</a></li>
+                        <li><a href="residential.html">Küchenmontage</a></li>
+                        <li><a href="office.html">Büromöbel & USM</a></li>
+                        <li><a href="tech.html">TV Wandmontage</a></li>
+                        <li><a href="tech.html">Smart Home Setup</a></li>
+                    </ul>
+                </div>
+
+                <div class="f-col">
+                    <h4 class="f-heading">Nuria Boutique</h4>
+                    <ul class="footer-links">
+                        <li><a href="magazine.html#nuria-storage">Körbe & Ordnung</a></li>
+                        <li><a href="magazine.html#nuria-kitchen">Tisch & Küche</a></li>
+                        <li><a href="magazine.html#nuria-textiles">Textilien</a></li>
+                    </ul>
+                    <div class="payment-row">
+                        <i class="fab fa-cc-paypal"></i>
+                        <i class="fab fa-cc-visa"></i>
+                        <i class="fab fa-cc-mastercard"></i>
+                    </div>
+                </div>
+
+                <div class="f-col">
+                    <h4 class="f-heading">Rechtliches</h4>
+                    <ul class="footer-links">
+                        <li><a href="impressum.html">Impressum</a></li>
+                        <li><a href="datenschutz.html">Datenschutz</a></li>
+                        <li><a href="agb.html">AGB & Widerruf</a></li>
+                        <li><a href="https://ec.europa.eu/consumers/odr" target="_blank">Streitschlichtung</a></li>
+                    </ul>
+                </div>
+
+                <div class="f-col contact-col">
+                    <h4 class="f-heading">Zentrale</h4>
+                    <ul class="contact-list">
+                        <li>
+                            <i class="fas fa-map-marker-alt gold-icon"></i>
+                            <span class="contact-text">Am Rößlebad 9<br>86152 Augsburg</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone gold-icon"></i>
+                            <a href="tel:+491608194018" class="contact-link">0160 819 4018</a>
+                        </li>
+                        <li>
+                            <i class="far fa-envelope gold-icon"></i>
+                            <a href="mailto:r.lezius@gmail.com" class="contact-link">r.lezius@gmail.com</a>
+                        </li>
+                    </ul>
+                    
+                    <div class="op-status">
+                        <div class="status-dot-container">
+                            <div class="status-dot live"></div>
+                            <div class="status-pulse"></div>
+                        </div>
+                        <span>Team Status: <strong class="glow-text">IM EINSATZ</strong></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom-bar">
+                <div class="copyright">
+                    &copy; 2026 Raphael Lezius. <span class="hide-mobile">Alle Rechte vorbehalten.</span>
+                </div>
+                
+                <div class="developer-credit">
+                    <span class="code-bracket">&lt;/&gt;</span>
+                    <span class="dev-text">ENGINEERED BY <span class="dev-name">IDRIS</span></span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/491608194018?text=Hallo%20Raphael,%20ich%20habe%20eine%20B2B%20Anfrage%20zur%20Montage..." target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+        <span class="whatsapp-pulse"></span>
+        <div class="whatsapp-tooltip">B2B Support</div>
+    </a>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
