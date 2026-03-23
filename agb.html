@@ -2,203 +2,193 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AGB & Kundeninformationen | Raphael Lezius</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Impressum | Raphael Lezius</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
 
     <style>
-        /* AGB Specific Industrial Design */
-        body { background: #0b0b0b; color: #ccc; }
-        
-        .legal-header { text-align: center; margin-bottom: 60px; border-bottom: 1px solid #222; padding-bottom: 40px; }
-        .legal-header h1 { font-family: 'Space Grotesk'; font-size: 3rem; color: white; margin-bottom: 10px; }
-        .legal-header p { color: var(--gold); text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; }
-
-        /* Accordion Style for Readability */
-        .agb-accordion { max-width: 900px; margin: 0 auto; }
-        .agb-item { border-bottom: 1px solid #222; margin-bottom: 10px; }
-        .agb-trigger {
-            width: 100%; text-align: left; padding: 20px; background: #111; border: none;
-            color: white; font-family: 'Space Grotesk'; font-size: 1.1rem; cursor: pointer;
-            display: flex; justify-content: space-between; align-items: center; transition: 0.3s;
+        .legal-document {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: clamp(30px, 5vw, 60px);
+            background: rgba(10, 11, 14, 0.95);
+            border-top: 4px solid var(--neon-gold);
+            color: #ccc;
+            font-family: var(--font-body);
         }
-        .agb-trigger:hover { background: #1a1a1a; color: var(--gold); }
-        .agb-trigger::after { content: '+'; font-size: 1.5rem; color: var(--gold); }
-        .agb-trigger.active::after { content: '-'; }
-        
-        .agb-content {
-            display: none; padding: 20px 30px; background: rgba(255,255,255,0.02); line-height: 1.7; font-size: 0.95rem;
-        }
-        .agb-content ul { padding-left: 20px; margin: 15px 0; }
-        .agb-content li { margin-bottom: 10px; }
-        .highlight-clause { color: white; font-weight: 600; }
-
-        .legal-footer { margin-top: 80px; text-align: center; font-size: 0.8rem; color: #555; }
+        .legal-document h1 { color: #fff; font-size: clamp(2rem, 4vw, 2.5rem); margin-bottom: 30px; font-family: var(--font-head); }
+        .legal-document h2 { color: var(--neon-gold); font-size: clamp(1.3rem, 2.5vw, 1.5rem); margin-top: 40px; margin-bottom: 15px; font-family: var(--font-head); }
+        .legal-document h3 { color: #fff; font-size: 1.2rem; margin-top: 30px; margin-bottom: 10px; font-family: var(--font-head); }
+        .legal-document p, .legal-document ul { margin-bottom: 20px; line-height: 1.8; font-size: 1.05rem; }
+        .legal-document ul { padding-left: 20px; }
+        .legal-document li { margin-bottom: 10px; }
+        .legal-document a { color: var(--neon-cyan); text-decoration: none; border-bottom: 1px solid var(--neon-cyan); transition: 0.3s; }
+        .legal-document a:hover { color: #fff; border-color: #fff; }
     </style>
 </head>
-<body>
+<body class="is-dark">
 
-    <header class="navbar">
-        <div class="container nav-inner">
-            <div class="brand-name">RAPHAEL <span>LEZIUS</span></div>
-            <nav class="desktop-menu">
-                <a href="index.html" class="nav-link">Zurück zur Startseite</a>
-            </nav>
-        </div>
+    <header class="nav-wrapper">
+        <nav class="cyber-navbar glass-panel">
+            <div class="nav-inner">
+                <a href="index.html" class="brand-cluster">
+                    <div class="logo-flipper">
+                        <div class="logo-face front"><img src="assets/images/raphael-lezius-logo-front.webp" alt="Raphael Lezius" onerror="this.style.display='none';"></div>
+                        <div class="logo-face back"><img src="assets/images/raphael-lezius-logo-back.webp" alt="Premium Montage" onerror="this.style.display='none';"></div>
+                    </div>
+                    <div class="brand-typography">
+                        <span class="brand-first">RAPHAEL</span>
+                        <span class="brand-last">LEZIUS</span>
+                    </div>
+                </a>
+
+                <div class="desktop-menu">
+                    <a href="index.html" class="cyber-link">Start</a>
+                    <div class="dropdown-wrapper">
+                        <button class="cyber-link dropdown-btn">Expertise <i class="fas fa-chevron-down drop-icon"></i></button>
+                        <div class="mega-menu-2077 glass-panel">
+                            <div class="mega-grid">
+                                <a href="residential.html" class="mega-node"><div class="node-icon cyan-glow"><i class="fas fa-couch"></i></div><div class="node-content"><h4 class="node-title">Interieur & Living</h4><p class="node-desc">PAX, Küchen & Premium-Möbel</p></div></a>
+                                <a href="outdoor.html" class="mega-node"><div class="node-icon gold-glow"><i class="fas fa-tree"></i></div><div class="node-content"><h4 class="node-title">Outdoor Holzbau</h4><p class="node-desc">Gartenhäuser & Gerätehütten</p></div></a>
+                                <a href="office.html" class="mega-node"><div class="node-icon pink-glow"><i class="fas fa-building"></i></div><div class="node-content"><h4 class="node-title">Gewerbe & Office</h4><p class="node-desc">USM Haller & Praxiseinrichtung</p></div></a>
+                                <a href="tech.html" class="mega-node"><div class="node-icon green-glow"><i class="fas fa-tv"></i></div><div class="node-content"><h4 class="node-title">Tech & Media</h4><p class="node-desc">Schwerlast-TV & Smart Home</p></div></a>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="process-pricing.html" class="cyber-link">Konditionen</a>
+                    <a href="area.html" class="cyber-link">Region</a>
+                    <a href="gallery.html" class="cyber-link">Referenzen</a>
+                    <a href="magazine.html" class="cyber-link">Magazin</a>
+                </div>
+
+                <div class="nav-actions">
+                    <button onclick="MissionOS.open();" class="btn btn-gold reactive-btn desktop-only">Projekt anfragen</button>
+                    <button class="cyber-hamburger" id="hamburgerBtn"><span class="bar top-bar"></span><span class="bar mid-bar"></span><span class="bar bot-bar"></span></button>
+                </div>
+            </div>
+        </nav>
     </header>
 
-    <section class="section-padding" style="padding-top: 150px;">
+    <div class="mobile-menu" id="mobileMenu">
+        <nav class="mobile-nav-links">
+            <a href="index.html" class="mobile-cyber-link">Startseite</a>
+            <div class="mobile-divider cyan-divider">// EXPERTISE</div>
+            <a href="residential.html" class="mobile-sub-link">Interieur & Küchen</a>
+            <a href="outdoor.html" class="mobile-sub-link">Outdoor & Gartenbau</a>
+            <a href="process-pricing.html" class="mobile-sub-link">Konditionen & Ablauf</a>
+            <a href="impressum.html" class="mobile-sub-link gold-text">Impressum</a>
+            <button onclick="MissionOS.open();" class="btn btn-gold btn-block mobile-cta-btn">Jetzt anfragen</button>
+        </nav>
+    </div>
+
+    <section class="section-padding bg-darker" style="padding-top: clamp(150px, 20vh, 200px); min-height: 80vh;">
         <div class="container">
             
-            <div class="legal-header">
-                <h1>Allgemeine Geschäftsbedingungen</h1>
-                <p>Stand: Februar 2026 • Für Montage & Online Shop</p>
-            </div>
-
-            <div class="agb-accordion">
-
-                <div class="agb-item">
-                    <button class="agb-trigger">§ 1 Geltungsbereich & Anbieter</button>
-                    <div class="agb-content">
-                        <p>1. Diese Allgemeinen Geschäftsbedingungen (nachfolgend "AGB") gelten für alle Verträge, die zwischen Raphael Lezius (nachfolgend "Anbieter") und dem Kunden (Verbraucher oder Unternehmer) abgeschlossen werden.</p>
-                        <p>2. Das Angebot umfasst:</p>
-                        <ul>
-                            <li>Dienstleistungen im Bereich Möbelmontage, Küchenaufbau und Technik-Installation.</li>
-                            <li>Den Verkauf von Waren über den "Nuria" Online-Bereich (Dekorationsartikel).</li>
-                        </ul>
-                        <p>3. Entgegenstehende Bedingungen des Kunden werden nicht anerkannt, es sei denn, der Anbieter stimmt ihrer Geltung ausdrücklich schriftlich zu.</p>
-                    </div>
-                </div>
-
-                <div class="agb-item">
-                    <button class="agb-trigger">§ 2 Vertragsschluss (Montage & Shop)</button>
-                    <div class="agb-content">
-                        <p><strong>1. Für Montagedienstleistungen:</strong><br>
-                        Ein Vertrag kommt zustande durch die Annahme eines Angebots des Anbieters durch den Kunden. Die Annahme kann schriftlich, per E-Mail, WhatsApp oder konkludent durch Terminvereinbarung erfolgen.</p>
-                        <p><strong>2. Für den Nuria Shop:</strong><br>
-                        Die Präsentation der Waren auf der Website stellt kein rechtlich bindendes Angebot dar. Durch die Übermittlung einer Bestellung (via WhatsApp/E-Mail-Button) gibt der Kunde ein verbindliches Angebot ab. Der Vertrag kommt erst zustande, wenn der Anbieter die Bestellung und Verfügbarkeit ausdrücklich bestätigt (Auftragsbestätigung).</p>
-                    </div>
-                </div>
-
-                <div class="agb-item">
-                    <button class="agb-trigger">§ 3 Preise & Zahlungsbedingungen</button>
-                    <div class="agb-content">
-                        <p>1. Es gelten die zum Zeitpunkt des Vertragsschlusses vereinbarten Preise. Alle Preise sind Endpreise (zzgl. Versandkosten bei Warenlieferungen).</p>
-                        <p>2. <span class="highlight-clause">Fälligkeit bei Montage:</span> Die Vergütung für Montageleistungen ist unmittelbar nach Erbringung der Leistung fällig. Die Zahlung erfolgt vor Ort per EC-Karte (SumUp), Echtzeit-Überweisung oder Barzahlung.</p>
-                        <p>3. <span class="highlight-clause">Vorkasse bei Shop-Artikeln:</span> Bei Versandware (Nuria) erfolgt die Lieferung erst nach Zahlungseingang (PayPal / Überweisung).</p>
-                        <p>4. Kommt der Kunde in Zahlungsverzug, ist der Anbieter berechtigt, Verzugszinsen in gesetzlicher Höhe zu fordern.</p>
-                    </div>
-                </div>
-
-                <div class="agb-item">
-                    <button class="agb-trigger">§ 4 Mitwirkungspflichten des Kunden (Montage)</button>
-                    <div class="agb-content">
-                        <p>Um eine reibungslose Montage zu gewährleisten, verpflichtet sich der Kunde:</p>
-                        <ul>
-                            <li><strong>Zugang:</strong> Der Montageort muss frei zugänglich sein.</li>
-                            <li><strong>Baufreiheit:</strong> Der Arbeitsbereich muss von alten Möbeln geräumt sein (außer Demontage wurde gebucht).</li>
-                            <li><strong>Material:</strong> Die zu montierenden Pakete müssen sich im Montage-Raum befinden, sofern kein "Paket-Trageservice" vereinbart wurde.</li>
-                            <li><strong>Leitungen:</strong> Bei Wandbohrungen hat der Kunde über den Verlauf von Strom- und Wasserleitungen Auskunft zu geben.</li>
-                        </ul>
-                        <p><em>Verzögerungen, die durch Verletzung dieser Pflichten entstehen, gehen zu Lasten des Kunden und werden nach Stundenaufwand berechnet.</em></p>
-                    </div>
-                </div>
-
-                <div class="agb-item">
-                    <button class="agb-trigger">§ 5 Stornierung & Ausfallhonorar</button>
-                    <div class="agb-content">
-                        <p>Vereinbarte Montagetermine sind für beide Parteien bindend. Sagt der Kunde einen Termin ab, gelten folgende Regelungen:</p>
-                        <ul>
-                            <li>Bis 48 Stunden vor Termin: Kostenfrei.</li>
-                            <li>24 bis 48 Stunden vor Termin: 30% des Auftragswertes.</li>
-                            <li><span class="highlight-clause">Weniger als 24 Stunden vor Termin:</span> 50% des Auftragswertes als Ausfallentschädigung.</li>
-                        </ul>
-                        <p>Trifft der Monteur den Kunden zum vereinbarten Termin nicht an (Leerfahrt), wird die Anfahrt sowie die erste Arbeitsstunde voll berechnet.</p>
-                    </div>
-                </div>
-
-                <div class="agb-item">
-                    <button class="agb-trigger">§ 6 Lieferung & Versand (Nuria Shop)</button>
-                    <div class="agb-content">
-                        <p>1. Die Lieferung von Waren erfolgt nur innerhalb Deutschlands (und Österreich auf Anfrage).</p>
-                        <p>2. Die Lieferzeit beträgt, sofern nicht anders angegeben, 3-5 Werktage nach Zahlungseingang.</p>
-                        <p>3. Sollte ein Artikel (z.B. handgefertigte Unikate) nicht mehr verfügbar sein, wird der Kunde unverzüglich informiert und bereits geleistete Zahlungen erstattet.</p>
-                    </div>
-                </div>
-
-                <div class="agb-item">
-                    <button class="agb-trigger">§ 7 Eigentumsvorbehalt</button>
-                    <div class="agb-content">
-                        <p>Die Ware bleibt bis zur vollständigen Bezahlung Eigentum des Anbieters.</p>
-                    </div>
-                </div>
-
-                <div class="agb-item">
-                    <button class="agb-trigger">§ 8 Widerrufsrecht & Rücksendung</button>
-                    <div class="agb-content">
-                        <p><strong>Für Waren (Nuria Shop):</strong><br>
-                        Verbraucher haben das Recht, binnen 14 Tagen ohne Angabe von Gründen diesen Vertrag zu widerrufen. Die Frist beträgt 14 Tage ab dem Tag, an dem Sie die Waren in Besitz genommen haben. Die unmittelbaren Kosten der Rücksendung trägt der Käufer.</p>
-                        
-                        <p><strong>Für Dienstleistungen (Montage):</strong><br>
-                        Das Widerrufsrecht erlischt bei einer Dienstleistung, wenn der Anbieter die Dienstleistung vollständig erbracht hat und mit der Ausführung der Dienstleistung erst begonnen hat, nachdem der Verbraucher dazu seine ausdrückliche Zustimmung gegeben hat.</p>
-                    </div>
-                </div>
-
-                <div class="agb-item">
-                    <button class="agb-trigger">§ 9 Gewährleistung & Haftung</button>
-                    <div class="agb-content">
-                        <p>1. <strong>Montage:</strong> Der Anbieter gewährleistet eine fachgerechte Ausführung nach anerkannten Regeln der Technik. Mängel sind unverzüglich, spätestens jedoch innerhalb von 7 Tagen nach Montage, anzuzeigen.</p>
-                        <p>2. <strong>Waren:</strong> Es gelten die gesetzlichen Gewährleistungsrechte bei Sachmängeln (2 Jahre).</p>
-                        <p>3. <strong>Haftungsbeschränkung:</strong> Der Anbieter haftet unbeschränkt für Vorsatz und grobe Fahrlässigkeit sowie für Schäden aus der Verletzung des Lebens, des Körpers oder der Gesundheit. Für leichte Fahrlässigkeit haftet der Anbieter nur bei Verletzung wesentlicher Vertragspflichten (Kardinalpflichten), begrenzt auf den vertragstypischen, vorhersehbaren Schaden.</p>
-                        <p>4. Für Bohrungen: Der Anbieter haftet nicht für Schäden an Leitungen, die nicht fachgerecht verlegt wurden oder auf die der Kunde nicht hingewiesen hat.</p>
-                    </div>
-                </div>
-
-                <div class="agb-item">
-                    <button class="agb-trigger">§ 10 Streitbeilegung (EU ODR)</button>
-                    <div class="agb-content">
-                        <p>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit, die Sie hier finden: <a href="https://ec.europa.eu/consumers/odr/" target="_blank" style="color:var(--gold);">https://ec.europa.eu/consumers/odr/</a>.</p>
-                        <p>Zur Teilnahme an einem Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle sind wir nicht verpflichtet und nicht bereit.</p>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="legal-footer">
+            <div class="legal-document glass-panel">
+                
+                <h1>Impressum</h1>
+                
+                <h2>Angaben gemäß § 5 TMG</h2>
                 <p>
-                    <strong>Anbieterkennung:</strong><br>
                     Raphael Lezius<br>
-                    Am Rößlebad 9, 86152 Augsburg<br>
-                    E-Mail: r.lezius@gmail.com<br>
-                    [<strong>Hier ggf. USt-IdNr ergänzen</strong>]
+                    Premium Montage Service<br>
+                    Am Rößlebad 9<br>
+                    86152 Augsburg
                 </p>
-            </div>
+
+                <h2>Kontakt</h2>
+                <p>
+                    Telefon: +49 (0) 160 819 4018<br>
+                    E-Mail: <a href="mailto:r.lezius@gmail.com">r.lezius@gmail.com</a>
+                </p>
+
+                <h2>Umsatzsteuer-ID</h2>
+                <p>
+                    Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:<br>
+                    DE999999999 </p>
+
+                <h2>EU-Streitschlichtung</h2>
+                <p>
+                    Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <br>
+                    <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer">https://ec.europa.eu/consumers/odr/</a>.<br>
+                    Unsere E-Mail-Adresse finden Sie oben im Impressum.
+                </p>
+
+                <h2>Verbraucher­streit­beilegung/Universal­schlichtungs­stelle</h2>
+                <p>
+                    Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
+                </p>
+
+                </div>
 
         </div>
     </section>
 
-    <footer class="mega-footer">
-        <div class="footer-bottom">
-            <p>&copy; 2026 Raphael Lezius. Alle Rechte vorbehalten.</p>
+    <footer class="mega-footer circuit-bg">
+        <div class="container relative-z">
+            <div class="footer-grid">
+                <div class="f-col brand-col">
+                    <div class="brand-text" style="font-size:2rem; font-family: var(--font-head); font-weight: 800; color: #fff;">
+                        RAPHAEL <span class="gold-text">LEZIUS</span>
+                    </div>
+                    <p style="color:#888; font-size:0.95rem; margin-top:15px;">Präzision. Qualität. Zuverlässigkeit.</p>
+                </div>
+
+                <div class="f-col">
+                    <h4 class="f-heading">Informationen</h4>
+                    <ul class="footer-links">
+                        <li><a href="process-pricing.html">Konditionen & Ablauf</a></li>
+                        <li><a href="area.html">Einsatzgebiet</a></li>
+                        <li><a href="gallery.html">Referenzen Galerie</a></li>
+                    </ul>
+                </div>
+
+                <div class="f-col">
+                    <h4 class="f-heading">Rechtliches</h4>
+                    <ul class="footer-links">
+                        <li><a href="impressum.html" class="gold-text">Impressum</a></li>
+                        <li><a href="datenschutz.html">Datenschutz</a></li>
+                        <li><a href="agb.html">AGB & Widerruf</a></li>
+                    </ul>
+                </div>
+
+                <div class="f-col contact-col">
+                    <h4 class="f-heading">Kontakt</h4>
+                    <ul class="contact-list">
+                        <li><i class="fas fa-map-marker-alt gold-icon"></i><span class="contact-text">86152 Augsburg</span></li>
+                        <li><i class="fas fa-phone gold-icon"></i><a href="tel:+491608194018" class="contact-link">0160 819 4018</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom-bar" style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #222; padding-top: 30px; margin-top: 30px;">
+                <div class="copyright" style="color: #666; font-size: 0.85rem; font-family: var(--font-mono);">
+                    &copy; <span id="copyright-year">2026</span> RAPHAEL LEZIUS. ALLE RECHTE VORBEHALTEN.
+                </div>
+                <div class="developer-credit">
+                    <span class="code-bracket">&lt;/&gt;</span> <span class="dev-text" style="color: #666;">SYS_DEV <span class="dev-name" style="color: var(--neon-gold);">IDRIS</span></span>
+                </div>
+            </div>
         </div>
     </footer>
 
+    <div id="missionOS" class="os-overlay">
+        <div class="os-backdrop" onclick="MissionOS.close()"></div>
+        <div class="case-container" style="display:flex; align-items:center; justify-content:center; flex-direction:column; background:#fff; padding:50px; border-radius:20px; max-width:600px; margin:auto; position:relative; z-index:100;">
+            <button class="case-close" onclick="MissionOS.close()" style="position:absolute; top:20px; right:30px; font-size:2rem; background:none; border:none; cursor:pointer;">&times;</button>
+            <h2 style="color:#000; font-family:var(--font-head); margin-bottom:20px;">Projekt Anfrage</h2>
+            <p style="color:#666; text-align:center; margin-bottom:30px;">Bitte nutzen Sie für Anfragen aktuell WhatsApp.</p>
+            <a href="https://wa.me/491608194018" class="btn btn-gold" style="width:100%; margin-bottom:15px;"><i class="fab fa-whatsapp"></i> ZU WHATSAPP</a>
+        </div>
+    </div>
+
+    <script src="assets/js/main.js"></script>
     <script>
-        const triggers = document.querySelectorAll('.agb-trigger');
-        triggers.forEach(trigger => {
-            trigger.addEventListener('click', () => {
-                trigger.classList.toggle('active');
-                const content = trigger.nextElementSibling;
-                if (content.style.display === "block") {
-                    content.style.display = "none";
-                } else {
-                    content.style.display = "block";
-                }
-            });
-        });
+        const yearElement = document.getElementById('copyright-year');
+        if (yearElement) yearElement.innerText = new Date().getFullYear();
     </script>
 </body>
 </html>

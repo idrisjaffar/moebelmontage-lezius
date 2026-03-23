@@ -2,395 +2,324 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Büro, Gewerbe & USM Montage | Raphael Lezius Engineering</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Büro, Gewerbe & USM Montage | Raphael Lezius Premium Service</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
+    <meta name="description" content="Professionelle B2B Objekteinrichtung. Montage von Büromöbeln, USM Haller Systemen und Konferenzräumen in Augsburg und München. Zero Downtime Service.">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
-    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
-
-    <style>
-        /* Dual Infinite Tracks for massive catalog illusion */
-        .b2b-matrix-container {
-            background: #050505; padding: 40px 0; overflow: hidden; position: relative;
-            border-top: 1px solid rgba(212,175,55,0.2); border-bottom: 1px solid rgba(212,175,55,0.2);
-            box-shadow: inset 0 0 50px rgba(0,0,0,0.8);
-        }
-        .matrix-track {
-            display: flex; white-space: nowrap; font-family: 'Space Grotesk', sans-serif;
-            font-weight: 700; font-size: 1.5rem; color: #333; letter-spacing: 2px;
-            width: max-content;
-        }
-        .track-left { animation: scrollLeft 50s linear infinite; margin-bottom: 15px; }
-        .track-right { animation: scrollRight 45s linear infinite; color: rgba(212,175,55,0.3); }
-        .matrix-track span { margin: 0 40px; display: inline-flex; align-items: center; gap: 15px; }
-        .matrix-track span i { font-size: 1rem; color: var(--gold); }
-        
-        @keyframes scrollLeft { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-        @keyframes scrollRight { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
-
-        /* B2B Glassmorphic Grid */
-        .b2b-glass-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 30px; margin-top: 50px;
-        }
-        .b2b-glass-card {
-            background: rgba(10, 10, 10, 0.7); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
-            border: 1px solid rgba(255, 255, 255, 0.05); border-top: 2px solid #333;
-            border-radius: 12px; padding: 40px; position: relative; overflow: hidden;
-            transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
-        }
-        .b2b-glass-card::after {
-            content: ''; position: absolute; inset: 0;
-            background: radial-gradient(circle at top right, rgba(212,175,55,0.1), transparent 50%);
-            opacity: 0; transition: 0.6s; pointer-events: none;
-        }
-        .b2b-glass-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            border-top-color: var(--gold);
-            box-shadow: 0 30px 60px rgba(0,0,0,0.6), 0 0 40px rgba(212,175,55,0.1);
-        }
-        .b2b-glass-card:hover::after { opacity: 1; }
-
-        .b2b-icon-wrapper {
-            width: 60px; height: 60px; border-radius: 12px; background: rgba(212,175,55,0.1);
-            display: flex; align-items: center; justify-content: center; margin-bottom: 25px;
-            border: 1px solid rgba(212,175,55,0.3); font-size: 1.8rem; color: var(--gold);
-        }
-        
-        /* USM Blueprint Section */
-        .usm-blueprint {
-            background: #080808; border: 1px solid var(--gold); border-radius: 12px;
-            position: relative; overflow: hidden; margin: 80px 0;
-        }
-        .usm-bg-grid {
-            position: absolute; inset: 0; opacity: 0.15;
-            background-image: linear-gradient(var(--gold) 1px, transparent 1px), linear-gradient(90deg, var(--gold) 1px, transparent 1px);
-            background-size: 40px 40px; pointer-events: none;
-        }
-        
-        /* B2B Feature List */
-        .b2b-feature-list { list-style: none; padding: 0; margin: 0; }
-        .b2b-feature-list li {
-            padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.05);
-            display: flex; justify-content: space-between; align-items: center;
-        }
-        .b2b-feature-list li:last-child { border: none; }
-        .b2b-feature-list .f-name { color: #ddd; font-weight: 500; }
-        .b2b-feature-list .f-status { font-family: monospace; font-size: 0.8rem; background: rgba(57, 255, 20, 0.1); color: var(--neon-green); padding: 4px 10px; border-radius: 4px; border: 1px solid rgba(57, 255, 20, 0.3); }
-
-        /* Pulse Animation for specific elements */
-        .animate-pulse-slow { animation: pulseSlow 3s infinite; }
-        @keyframes pulseSlow { 0% { opacity: 0.6; } 50% { opacity: 1; } 100% { opacity: 0.6; } }
-    </style>
 </head>
-<body class="bg-darker">
+<body class="is-dark">
 
-    <nav class="navbar">
-        <div class="container nav-inner">
-            
-            <a href="index.html" class="logo-3d-wrapper">
-                <div class="logo-flipper">
-                    <div class="logo-face front">
-                        <img src="assets/images/raphael-lezius-logo-front.webp" alt="Logo Front">
+    <header class="nav-wrapper">
+        <nav class="cyber-navbar glass-panel">
+            <div class="nav-inner">
+                
+                <a href="index.html" class="brand-cluster" onmouseenter="if(window.vibrateDevice) window.vibrateDevice([15, 30]);">
+                    <div class="logo-flipper">
+                        <div class="logo-face front">
+                            <img src="assets/images/raphael-lezius-logo-front.webp" alt="Raphael Lezius" onerror="this.style.display='none';">
+                        </div>
+                        <div class="logo-face back">
+                            <img src="assets/images/raphael-lezius-logo-back.webp" alt="Premium Montage" onerror="this.style.display='none';">
+                        </div>
                     </div>
-                    <div class="logo-face back">
-                        <img src="assets/images/raphael-lezius-logo-back.webp" alt="Logo Back">
+                    <div class="brand-typography">
+                        <span class="brand-first" data-text="RAPHAEL">RAPHAEL</span>
+                        <span class="brand-last">LEZIUS</span>
                     </div>
-                </div>
-                <div class="brand-text">RAPHAEL <span>LEZIUS</span></div>
-            </a>
+                </a>
 
-            <div class="desktop-menu">
-                <div class="nav-group">
-                    <a href="index.html" class="nav-link">Startseite</a>
+                <div class="desktop-menu">
+                    <a href="index.html" class="cyber-link">Start</a>
                     
-                    <div class="dropdown-container">
-                        <button class="nav-link dropdown-trigger">
-                            Leistungen <i class="fas fa-chevron-down" style="font-size: 0.7em; margin-left: 5px;"></i>
+                    <div class="dropdown-wrapper">
+                        <button class="cyber-link dropdown-btn active">
+                            Expertise <i class="fas fa-chevron-down drop-icon" style="font-size: 0.7em; margin-left: 5px;"></i>
                         </button>
-                        <div class="dropdown-menu glass-panel">
-                            <a href="residential.html" class="dd-item">
-                                <i class="fas fa-couch gold-text"></i>
-                                <span>Privat & IKEA <small>PAX, Küchen, Betten</small></span>
-                            </a>
-                            <a href="office.html" class="dd-item">
-                                <i class="fas fa-building gold-text"></i>
-                                <span>Gewerbe & Office <small>USM, Konferenz, Laden</small></span>
-                            </a>
-                            <a href="tech.html" class="dd-item">
-                                <i class="fas fa-microchip gold-text"></i>
-                                <span>Tech & Smart <small>TV, LED, Kabel</small></span>
-                            </a>
+                        
+                        <div class="mega-menu-2077 glass-panel">
+                            <div class="mega-grid">
+                                <a href="residential.html" class="mega-node" onmouseenter="if(window.vibrateDevice) window.vibrateDevice(10);">
+                                    <div class="node-icon cyan-glow"><i class="fas fa-couch"></i></div>
+                                    <div class="node-content">
+                                        <h4 class="node-title">Interieur & Living</h4>
+                                        <p class="node-desc">PAX, Küchen & Premium-Möbel</p>
+                                    </div>
+                                </a>
+                                <a href="outdoor.html" class="mega-node" onmouseenter="if(window.vibrateDevice) window.vibrateDevice(10);">
+                                    <div class="node-icon gold-glow"><i class="fas fa-tree"></i></div>
+                                    <div class="node-content">
+                                        <h4 class="node-title">Outdoor Holzbau</h4>
+                                        <p class="node-desc">Gartenhäuser & Gerätehütten</p>
+                                    </div>
+                                </a>
+                                <a href="office.html" class="mega-node" style="background: rgba(255,0,127,0.1); border-color: var(--neon-pink);" onmouseenter="if(window.vibrateDevice) window.vibrateDevice(10);">
+                                    <div class="node-icon pink-glow"><i class="fas fa-building"></i></div>
+                                    <div class="node-content">
+                                        <h4 class="node-title pink-text">Gewerbe & Office</h4>
+                                        <p class="node-desc">USM Haller & Praxiseinrichtung</p>
+                                    </div>
+                                </a>
+                                <a href="tech.html" class="mega-node" onmouseenter="if(window.vibrateDevice) window.vibrateDevice(10);">
+                                    <div class="node-icon green-glow"><i class="fas fa-tv"></i></div>
+                                    <div class="node-content">
+                                        <h4 class="node-title">Special Tech</h4>
+                                        <p class="node-desc">Schwerlast-TV & Smart Home</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="mega-footer-bar">
+                                <span class="tech-font cyan-text blink">>> SYSTEM BEREIT ZUR AUSWAHL</span>
+                            </div>
                         </div>
                     </div>
 
-                    <a href="process-pricing.html" class="nav-link">Preise & Ablauf</a>
-                    <a href="area.html" class="nav-link">Gebiet</a>
-                    <a href="gallery.html" class="nav-link">Galerie</a>
-                    <a href="magazine.html" class="nav-link">Magazin</a>
+                    <a href="process-pricing.html" class="cyber-link">Konditionen</a>
+                    <a href="area.html" class="cyber-link">Region</a>
+                    <a href="gallery.html" class="cyber-link">Referenzen</a>
+                    <a href="magazine.html" class="cyber-link">Magazin</a>
                 </div>
-            </div>
 
-            <div class="nav-actions">
-                <div class="status-pill desktop-only">
-                    <span class="status-dot"></span>
-                    <span>Verfügbar</span>
+                <div class="nav-actions">
+                    <div class="status-pill desktop-only" title="System Status: Live">
+                        <span class="status-dot-container">
+                            <span class="status-dot"></span>
+                            <span class="status-pulse"></span>
+                        </span>
+                        <span class="status-text">Verfügbar</span>
+                    </div>
+                    
+                    <button onclick="if(window.vibrateDevice) window.vibrateDevice([30, 50, 30]); MissionOS.open();" class="btn btn-gold reactive-btn desktop-only">
+                        Projekt anfragen
+                    </button>
+                    
+                    <button class="cyber-hamburger" id="hamburgerBtn" aria-label="Menü öffnen" onclick="if(window.vibrateDevice) window.vibrateDevice(20);">
+                        <span class="bar top-bar"></span>
+                        <span class="bar mid-bar"></span>
+                        <span class="bar bot-bar"></span>
+                    </button>
                 </div>
-                <a href="javascript:void(0)" onclick="MissionOS.open()" class="btn btn-gold glow-effect nav-quote-btn">
-                    <span class="btn-text">Angebot Anfordern</span>
-                    <div class="btn-glow-pulse"></div>
-                </a>
-                <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
-                    <span class="bar"></span><span class="bar"></span><span class="bar"></span>
-                </button>
+
             </div>
-        </div>
-    </nav>
+        </nav>
+    </header>
 
     <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-bg-glow"></div>
         <nav class="mobile-nav-links">
-            <a href="index.html">Startseite</a>
+            <a href="index.html" class="mobile-cyber-link">Startseite</a>
             
-            <div style="font-size: 0.8rem; color: var(--gold); margin-top: 15px; opacity: 0.7; text-transform: uppercase; letter-spacing: 1px;">Dienstleistungen</div>
-            <a href="residential.html">IKEA & Wohnen</a>
-            <a href="office.html">Büro & Gewerbe</a>
-            <a href="tech.html">TV & Smart Home</a>
+            <div class="mobile-divider cyan-divider">// EXPERTISE</div>
+            <a href="residential.html" class="mobile-sub-link">Interieur & Küchen</a>
+            <a href="outdoor.html" class="mobile-sub-link">Outdoor & Gartenbau</a>
+            <a href="office.html" class="mobile-sub-link active-mobile-link" style="color: var(--neon-pink) !important; font-weight: 800 !important;">Gewerbe & USM Haller (Aktiv)</a>
+            <a href="tech.html" class="mobile-sub-link">Tech & TV-Montage</a>
             
-            <div style="font-size: 0.8rem; color: var(--gold); margin-top: 15px; opacity: 0.7; text-transform: uppercase; letter-spacing: 1px;">Informationen</div>
-            <a href="process-pricing.html">Preise & Ablauf</a>
-            <a href="area.html">Gebiet</a>
-            <a href="gallery.html">Galerie</a>
-            <a href="magazine.html">Magazin</a>
+            <div class="mobile-divider gold-divider">// PROTOKOLLE</div>
+            <a href="process-pricing.html" class="mobile-sub-link">Konditionen & Ablauf</a>
+            <a href="area.html" class="mobile-sub-link">Einsatzregion</a>
+            <a href="gallery.html" class="mobile-sub-link">Referenzen</a>
+            <a href="magazine.html" class="mobile-sub-link">Magazin</a>
             
-            <a href="javascript:void(0)" onclick="MissionOS.open(); document.getElementById('mobileMenu').classList.remove('active');" class="btn btn-gold" style="margin-top: 30px; width: 100%; text-align: center;">Angebot anfordern</a>
+            <button onclick="if(window.vibrateDevice) window.vibrateDevice([50, 50, 50]); MissionOS.open(); document.getElementById('mobileMenu').classList.remove('active'); document.getElementById('hamburgerBtn').classList.remove('active'); document.body.style.overflow = '';" class="btn btn-gold btn-block mobile-cta-btn">
+                <i class="fas fa-bolt"></i> Jetzt anfragen
+            </button>
         </nav>
     </div>
 
-    <section class="hero-section" style="height: 85vh; min-height: 650px; display: flex; align-items: center; justify-content: center; position: relative;">
-        <div class="video-bg-container" style="position: absolute; inset: 0; z-index: 0;">
-            <video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; filter: brightness(0.2) contrast(1.1) grayscale(0.5);">
-                <source src="assets/video/project-landscape.mp4" type="video/mp4">
-            </video>
-            <div style="position: absolute; inset: 0; background: linear-gradient(135deg, rgba(5,5,5,0.9) 0%, transparent 100%);"></div>
-        </div>
-
-        <div class="container relative-z" style="z-index: 5; text-align: left; width: 100%;">
-            <div class="section-tag-wrapper" data-aos="fade-right">
-                <span class="section-tag" style="border-color: var(--neon-green); color: var(--neon-green);">B2B CORPORATE DEPLOYMENT</span>
-            </div>
-            
-            <h1 class="glitch-header" style="font-size: 4.5rem; margin: 20px 0; line-height: 1.1;" data-aos="fade-up" data-aos-delay="100">
-                <span class="white">EFFIZIENZ.</span><br>
-                <span class="gold-text">PRODUKTIVITÄT.</span><br>
-                <span class="white">NULL DOWNTIME.</span>
-            </h1>
-            
-            <p style="color: #ccc; font-size: 1.2rem; max-width: 600px; margin: 0 0 40px 0; line-height: 1.8;" data-aos="fade-up" data-aos-delay="200">
-                Lassen Sie Ihre Mitarbeiter arbeiten. Wir übernehmen die Einrichtung. 
-                Von High-End <strong>USM Haller Setups</strong> bis zur kompletten <strong>Großraumbüro-Montage</strong>. 
-                Inklusive Kabelmanagement und Wochenend-Service.
-            </p>
-            
-            <div style="display: flex; gap: 20px; flex-wrap: wrap;" data-aos="fade-up" data-aos-delay="300">
-                <button onclick="MissionOS.open()" class="btn btn-gold" style="font-size: 1rem; padding: 20px 45px;">
-                    <i class="fas fa-briefcase"></i> FIRMEN-ANGEBOT ANFORDERN
-                </button>
-            </div>
-            
-            <div style="display: flex; gap: 30px; margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; max-width: 600px;" data-aos="fade-in" data-aos-delay="500">
-                <div style="color: #888; font-size: 0.85rem;"><i class="fas fa-file-invoice gold-text"></i> Steuerlich absetzbar</div>
-                <div style="color: #888; font-size: 0.85rem;"><i class="fas fa-shield-alt gold-text"></i> Voll versichert (B2B)</div>
-                <div style="color: #888; font-size: 0.85rem;"><i class="fas fa-calendar-check gold-text"></i> Weekend-Warrior Service</div>
-            </div>
-        </div>
-    </section>
-
-    <div class="b2b-matrix-container" data-aos="fade-in">
-        <div class="matrix-track track-left">
-            <span><i class="fas fa-check-circle"></i> USM HALLER</span>
-            <span><i class="fas fa-check-circle"></i> VITRA</span>
-            <span><i class="fas fa-check-circle"></i> HERMAN MILLER</span>
-            <span><i class="fas fa-check-circle"></i> STEELCASE</span>
-            <span><i class="fas fa-check-circle"></i> SEDUS</span>
-            <span><i class="fas fa-check-circle"></i> KINNARPS</span>
-            <span><i class="fas fa-check-circle"></i> ERGOTRON</span>
-            <span><i class="fas fa-check-circle"></i> IKEA BUSINESS</span>
-            <span><i class="fas fa-check-circle"></i> USM HALLER</span>
-            <span><i class="fas fa-check-circle"></i> VITRA</span>
-            <span><i class="fas fa-check-circle"></i> HERMAN MILLER</span>
-            <span><i class="fas fa-check-circle"></i> STEELCASE</span>
-            <span><i class="fas fa-check-circle"></i> SEDUS</span>
-            <span><i class="fas fa-check-circle"></i> KINNARPS</span>
-            <span><i class="fas fa-check-circle"></i> ERGOTRON</span>
-            <span><i class="fas fa-check-circle"></i> IKEA BUSINESS</span>
-        </div>
-        <div class="matrix-track track-right">
-            <span><i class="fas fa-layer-group"></i> SCHWERLASTREGALE</span>
-            <span><i class="fas fa-desktop"></i> HÖHENVERSTELLBARE TISCHE</span>
-            <span><i class="fas fa-plug"></i> KABELMANAGEMENT</span>
-            <span><i class="fas fa-volume-mute"></i> AKUSTIK-KABINEN</span>
-            <span><i class="fas fa-users"></i> KONFERENZANLAGEN</span>
-            <span><i class="fas fa-lock"></i> SPIND-SYSTEME</span>
-            <span><i class="fas fa-couch"></i> LOUNGE-MÖBEL</span>
-            <span><i class="fas fa-layer-group"></i> SCHWERLASTREGALE</span>
-            <span><i class="fas fa-desktop"></i> HÖHENVERSTELLBARE TISCHE</span>
-            <span><i class="fas fa-plug"></i> KABELMANAGEMENT</span>
-            <span><i class="fas fa-volume-mute"></i> AKUSTIK-KABINEN</span>
-            <span><i class="fas fa-users"></i> KONFERENZANLAGEN</span>
-            <span><i class="fas fa-lock"></i> SPIND-SYSTEME</span>
-            <span><i class="fas fa-couch"></i> LOUNGE-MÖBEL</span>
-        </div>
-    </div>
-
-    <section class="section-padding">
-        <div class="container">
-            <div class="section-header center" data-aos="fade-up">
-                <span class="section-tag">OFFICE ARCHITECTURE</span>
-                <h2>Gewerbliche <span class="gold-text">Lösungen</span></h2>
-                <p>Systematische Integration für moderne Arbeitswelten.</p>
+    <main>
+        
+        <section class="b2b-hero-section">
+            <div class="video-bg-container">
+                <video autoplay muted loop playsinline class="hero-video" poster="assets/images/ikea-bekant-schreibtisch-hoehenverstellbar-aufbau.webp">
+                    <source src="assets/video/raphael-assembly-action.mp4" type="video/mp4">
+                </video>
+                <div class="hero-vignette dark-vignette"></div>
             </div>
 
-            <div class="b2b-glass-grid">
+            <div class="container relative-z center b2b-hero-content">
+                <div class="section-tag-wrapper center-flex" data-aos="fade-down">
+                    <span class="section-tag b2b-tag">B2B OBJEKTEINRICHTUNG</span>
+                </div>
                 
-                <div class="b2b-glass-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="b2b-icon-wrapper"><i class="fas fa-desktop"></i></div>
-                    <h3 style="color:#fff; font-family:'Space Grotesk'; margin-bottom:15px; font-size:1.4rem;">Ergonomic Workspaces</h3>
-                    <p style="color:#aaa; font-size:0.95rem; margin-bottom:25px; line-height:1.6;">Montage von Sitz-Steh-Tischen inklusive Untertisch-Kabelmanagement. Keine sichtbaren Kabel, maximale Sicherheit.</p>
-                    <ul class="b2b-feature-list">
-                        <li data-aos="fade-right" data-aos-delay="200"><span class="f-name">Dual-Monitor Arms</span> <span class="f-status">INTEGRATED</span></li>
-                        <li data-aos="fade-right" data-aos-delay="300"><span class="f-name">Cable Trays (Untertisch)</span> <span class="f-status">INTEGRATED</span></li>
-                        <li data-aos="fade-right" data-aos-delay="400"><span class="f-name">Akustik-Trennwände</span> <span class="f-status">INTEGRATED</span></li>
-                    </ul>
+                <h1 class="glitch-header b2b-glitch-title" data-text="EFFIZIENZ" data-aos="zoom-in">
+                    <span class="white">IHR BÜRO. EINSATZBEREIT.</span><br>
+                    <span class="pink-text">OHNE DOWNTIME.</span>
+                </h1>
+                
+                <p class="hero-deep-copy b2b-hero-copy" data-aos="fade-up">
+                    Zeit ist Ihr wertvollstes Kapital. Lassen Sie Ihre Mitarbeiter arbeiten – wir übernehmen die Montage. Wir richten Ihre Kanzlei, Ihr Großraumbüro oder Ihre Praxisräume fachgerecht und absolut termintreu ein. Inklusive Kabelmanagement und unserem exklusiven <strong>Wochenend-Service</strong>.
+                </p>
+                
+                <div class="magnetic-btn-group center-flex">
+                    <button onclick="if(window.vibrateDevice) window.vibrateDevice([30, 50]); MissionOS.open()" class="btn btn-gold reactive-btn btn-magnetic">
+                        FIRMEN-ANGEBOT ANFORDERN
+                    </button>
                 </div>
-
-                <div class="b2b-glass-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="b2b-icon-wrapper"><i class="fas fa-users"></i></div>
-                    <h3 style="color:#fff; font-family:'Space Grotesk'; margin-bottom:15px; font-size:1.4rem;">Conference & Boardroom</h3>
-                    <p style="color:#aaa; font-size:0.95rem; margin-bottom:25px; line-height:1.6;">Zusammenbau massiver Konferenztische und Einrichtung von Präsentationsräumen. Vorbereitung für Medientechnik.</p>
-                    <ul class="b2b-feature-list">
-                        <li data-aos="fade-right" data-aos-delay="300"><span class="f-name">Massivholz / Glas Tische</span> <span class="f-status">HEAVY LIFT</span></li>
-                        <li data-aos="fade-right" data-aos-delay="400"><span class="f-name">Tisch-Steckdosen (Bodentank)</span> <span class="f-status">ROUTED</span></li>
-                        <li data-aos="fade-right" data-aos-delay="500"><span class="f-name">Whiteboards / Smartboards</span> <span class="f-status">MOUNTED</span></li>
-                    </ul>
+                
+                <div class="b2b-trust-badges" data-aos="fade-in">
+                    <div class="b2b-trust-item"><i class="fas fa-file-invoice gold-text"></i> Ordentliche Rechnung</div>
+                    <div class="b2b-trust-item"><i class="fas fa-shield-alt gold-text"></i> Gewerblich versichert</div>
+                    <div class="b2b-trust-item"><i class="fas fa-calendar-check pink-text"></i> Weekend Service</div>
                 </div>
+            </div>
+        </section>
 
-                <div class="b2b-glass-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="b2b-icon-wrapper"><i class="fas fa-archive"></i></div>
-                    <h3 style="color:#fff; font-family:'Space Grotesk'; margin-bottom:15px; font-size:1.4rem;">Storage & Archive</h3>
-                    <p style="color:#aaa; font-size:0.95rem; margin-bottom:25px; line-height:1.6;">Diebstahlsichere Spind-Systeme für Mitarbeiter und Schwerlastregale für Lager & Archiv. Kippsicher verankert.</p>
-                    <ul class="b2b-feature-list">
-                        <li data-aos="fade-right" data-aos-delay="400"><span class="f-name">Locker-Systeme (Reihe)</span> <span class="f-status">SECURED</span></li>
-                        <li data-aos="fade-right" data-aos-delay="500"><span class="f-name">Schwerlast-Archivregale</span> <span class="f-status">ANCHORED</span></li>
-                        <li data-aos="fade-right" data-aos-delay="600"><span class="f-name">Rollcontainer & Caddies</span> <span class="f-status">ASSEMBLED</span></li>
-                    </ul>
-                </div>
-
+        <div class="b2b-matrix-container">
+            <div class="matrix-track track-left">
+                <span><i class="fas fa-check-circle"></i> USM HALLER SYSTEME</span>
+                <span><i class="fas fa-check-circle"></i> VITRA</span>
+                <span><i class="fas fa-check-circle"></i> HERMAN MILLER</span>
+                <span><i class="fas fa-check-circle"></i> STEELCASE</span>
+                <span><i class="fas fa-check-circle"></i> SEDUS</span>
+                <span><i class="fas fa-check-circle"></i> IKEA BUSINESS</span>
+                
+                <span><i class="fas fa-check-circle"></i> USM HALLER SYSTEME</span>
+                <span><i class="fas fa-check-circle"></i> VITRA</span>
+                <span><i class="fas fa-check-circle"></i> HERMAN MILLER</span>
+                <span><i class="fas fa-check-circle"></i> STEELCASE</span>
+                <span><i class="fas fa-check-circle"></i> SEDUS</span>
+                <span><i class="fas fa-check-circle"></i> IKEA BUSINESS</span>
             </div>
         </div>
-    </section>
 
-    <section class="container">
-        <div class="usm-blueprint" data-aos="zoom-in">
-            <div class="usm-bg-grid"></div>
-            
-            <div style="position: relative; z-index: 5; padding: 60px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 40px;">
-                
-                <div style="flex: 1; min-width: 300px;">
-                    <div style="display: inline-block; border: 1px solid var(--gold); color: var(--gold); padding: 5px 15px; font-size: 0.8rem; font-weight: bold; margin-bottom: 20px; letter-spacing: 2px;">CERTIFIED SKILLS</div>
-                    <h2 style="color: #fff; font-size: 3rem; font-family: 'Space Grotesk'; margin-bottom: 20px; line-height: 1.1;">USM Haller<br><span style="color: #888; font-weight: 300;">Engineering</span></h2>
-                    <p style="color: #ccc; font-size: 1.1rem; line-height: 1.8; margin-bottom: 30px;">
-                        Das Schweizer Meisterwerk verzeiht keine Gewalt. Ein Fehler bei der Demontage kann die Konnektoren zerstören. Wir nutzen <strong>Original-Spezialwerkzeug</strong> für den Aufbau, Umbau und Umzug Ihrer USM-Landschaft.
-                    </p>
-                    
-                    <ul style="list-style: none; padding: 0; color: #fff;">
-                        <li style="margin-bottom: 10px;" data-aos="fade-up" data-aos-delay="100"><i class="fas fa-circle-notch animate-pulse-slow" style="color:var(--gold); margin-right:15px; font-size: 0.8rem;"></i> Fachgerechte Neumontage</li>
-                        <li style="margin-bottom: 10px;" data-aos="fade-up" data-aos-delay="200"><i class="fas fa-circle-notch animate-pulse-slow" style="color:var(--gold); margin-right:15px; font-size: 0.8rem;"></i> Zerstörungsfreier Abbau & Umzug</li>
-                        <li style="margin-bottom: 10px;" data-aos="fade-up" data-aos-delay="300"><i class="fas fa-circle-notch animate-pulse-slow" style="color:var(--gold); margin-right:15px; font-size: 0.8rem;"></i> Umbau & Erweiterung (Gen 2/3)</li>
-                        <li style="margin-bottom: 10px;" data-aos="fade-up" data-aos-delay="400"><i class="fas fa-circle-notch animate-pulse-slow" style="color:var(--gold); margin-right:15px; font-size: 0.8rem;"></i> Klappen- & Schloss-Justierung</li>
-                    </ul>
+        <section class="section-padding bg-dark">
+            <div class="container relative-z">
+                <div class="section-header center" data-aos="fade-up">
+                    <div class="pre-title cyan-text">WORKSPACE ARCHITECTURE</div>
+                    <h2 class="section-heading">Gewerbliche <span class="cyan-text">Lösungen</span></h2>
                 </div>
 
-                <div style="flex: 1; min-width: 300px; display: flex; justify-content: center; position: relative;">
-                    <div style="width: 300px; height: 300px; border-radius: 50%; border: 1px dashed rgba(212,175,55,0.5); display: flex; align-items: center; justify-content: center; animation: spin 20s linear infinite;">
-                        <div style="width: 260px; height: 260px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.1);"></div>
+                <div class="b2b-glass-grid">
+                    <div class="b2b-glass-card" data-aos="fade-up">
+                        <div class="b2b-icon-wrapper"><i class="fas fa-desktop"></i></div>
+                        <h3>Ergonomic Workspaces</h3>
+                        <p>Montage komplexer Sitz-Steh-Tische und Monitor-Arme. Wir garantieren ein sauberes Kabelmanagement ohne Stolperfallen.</p>
+                        <ul class="b2b-feature-list">
+                            <li><span class="f-name">Tisch-Justierung</span> <span class="f-status">INKLUSIVE</span></li>
+                            <li><span class="f-name">Kabel-Routing</span> <span class="f-status">INKLUSIVE</span></li>
+                        </ul>
                     </div>
-                    <i class="fas fa-cube" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 5rem; color: var(--gold); filter: drop-shadow(0 0 20px rgba(212,175,55,0.5));"></i>
-                    
-                    <div style="position: absolute; top: 20%; left: 10%; background: #111; border: 1px solid #333; padding: 5px 10px; font-family: monospace; font-size: 0.7rem; color: #fff;" data-aos="fade-right" data-aos-delay="500">TENSION: CALIBRATED</div>
-                    <div style="position: absolute; bottom: 20%; right: 10%; background: #111; border: 1px solid #333; padding: 5px 10px; font-family: monospace; font-size: 0.7rem; color: #fff;" data-aos="fade-left" data-aos-delay="600">TOOL: USM_T-HANDLE</div>
+
+                    <div class="b2b-glass-card card-pink" data-aos="fade-up" data-aos-delay="100">
+                        <div class="b2b-icon-wrapper icon-pink"><i class="fas fa-users"></i></div>
+                        <h3>Konferenz & Meeting</h3>
+                        <p>Massive Tischlandschaften und Vorbereitung für Medientechnik. Millimetergenaue Ausrichtung für repräsentative Räume.</p>
+                        <ul class="b2b-feature-list">
+                            <li><span class="f-name">Medienintegration</span> <span class="f-status status-pink">ROUTED</span></li>
+                            <li><span class="f-name">Smartboards</span> <span class="f-status status-pink">MOUNTED</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="b2b-glass-card card-gold" data-aos="fade-up" data-aos-delay="200">
+                        <div class="b2b-icon-wrapper icon-gold"><i class="fas fa-archive"></i></div>
+                        <h3>Praxis & Empfang</h3>
+                        <p>Tresen-Systeme für Praxen, Spinde für Mitarbeiter oder Schwerlastregale im Archiv. Verankert nach Arbeitsschutz-Norm.</p>
+                        <ul class="b2b-feature-list">
+                            <li><span class="f-name">Spind-Systeme</span> <span class="f-status status-gold">SECURED</span></li>
+                            <li><span class="f-name">Schwerlastregale</span> <span class="f-status status-gold">ANCHORED</span></li>
+                        </ul>
+                    </div>
                 </div>
-
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="section-padding" style="background: linear-gradient(135deg, var(--gold), #b89600); text-align: center; color: #000;">
-        <div class="container" data-aos="zoom-in">
-            <h2 style="font-family: 'Space Grotesk'; font-size: 3rem; font-weight: 800; margin-bottom: 15px; letter-spacing: -1px;">ZEIT IST KAPITAL.</h2>
-            <p style="font-size: 1.1rem; font-weight: 600; margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto;">Jede Stunde, in der Ihr Team Möbel aufbaut, ist eine Stunde ohne Umsatz. Überlassen Sie die Hardware den Ingenieuren.</p>
-            <button onclick="MissionOS.open()" class="btn" style="background: #000; color: var(--gold); font-size: 1.1rem; padding: 20px 50px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
-                <i class="fas fa-envelope"></i> B2B ANFRAGE STARTEN
-            </button>
-        </div>
-    </section>
+        <section class="container section-padding usm-section">
+            <div class="usm-blueprint" data-aos="zoom-in">
+                <div class="usm-bg-grid"></div>
+                <div class="usm-content-wrapper">
+                    <div class="usm-text-col">
+                        <div class="usm-badge">ZERTIFIZIERTE SYSTEMMONTAGE</div>
+                        <h2 class="usm-title">USM Haller<br><span class="gold-text">Spezialisten</span></h2>
+                        <p class="usm-desc">Das Schweizer Design-System verzeiht keine Fehler. Wir nutzen Original-Spezialwerkzeug für den kratzfreien Aufbau, Umbau und die Erweiterung Ihrer USM-Landschaft.</p>
+                        <ul class="usm-feature-list">
+                            <li><i class="fas fa-circle-notch animate-pulse-slow gold-text"></i> Fachgerechte Neumontage</li>
+                            <li><i class="fas fa-circle-notch animate-pulse-slow gold-text"></i> Zerstörungsfreier Abbau & Umzug</li>
+                            <li><i class="fas fa-circle-notch animate-pulse-slow gold-text"></i> System-Erweiterung (Gen 2/3)</li>
+                        </ul>
+                    </div>
 
-    <footer class="mega-footer">
-        <div class="footer-ticker">
-            <div class="ticker-track">
-                <span>
-                    +++ PREMIUM MÖBELMONTAGE • AUGSBURG & MÜNCHEN • IKEA PAX EXPERTEN • BÜROEINRICHTUNG & USM HALLER • KÜCHENINSTALLATION • TV WANDMONTAGE • KEINE VERSTECKTEN KOSTEN • SAUBERKEIT GARANTIERT • ENGINEERING LEVEL QUALITY • +++
-                </span>
-                <span>
-                    +++ PREMIUM MÖBELMONTAGE • AUGSBURG & MÜNCHEN • IKEA PAX EXPERTEN • BÜROEINRICHTUNG & USM HALLER • KÜCHENINSTALLATION • TV WANDMONTAGE • KEINE VERSTECKTEN KOSTEN • SAUBERKEIT GARANTIERT • ENGINEERING LEVEL QUALITY • +++
-                </span>
+                    <div class="usm-visual-col">
+                        <div class="usm-radar"><div class="usm-radar-inner"></div></div>
+                        <i class="fas fa-gem usm-center-icon"></i>
+                        <div class="usm-hud-label label-left">TENSION: <span class="green-text">CALIBRATED</span></div>
+                        <div class="usm-hud-label label-right">TOOL: <span class="cyan-text">USM_SPECIAL</span></div>
+                    </div>
+                </div>
             </div>
-        </div>
+        </section>
 
+        <section class="b2b-value-section section-padding" style="border-bottom: 1px solid rgba(0,0,0,0.1);">
+            <div class="container" data-aos="zoom-in">
+                <h2 class="b2b-value-title">ZEIT IST <span>KAPITAL.</span></h2>
+                <p class="b2b-value-desc" style="margin-bottom: 20px;">
+                    Jede Stunde, in der Ihr Team Möbel aufbaut oder im Baustellen-Chaos sitzt, ist eine Stunde ohne Umsatz. Nutzen Sie unseren exklusiven <strong>Weekend-Warrior Service</strong>: Wir montieren freitags abends und am Wochenende. Am Montagmorgen ist Ihr Büro voll einsatzbereit.
+                </p>
+            </div>
+        </section>
+
+        <section class="section-padding b2b-value-section">
+            <div class="container" data-aos="fade-up">
+                <h2 class="b2b-value-title" style="font-size: clamp(2rem, 4vw, 3.5rem);">BEREIT FÜR DEN <span>ROLLOUT?</span></h2>
+                <p class="b2b-value-desc">Vom Einzelbüro bis zum kompletten Stockwerk. Wir liefern Präzision im Zeitplan. Fordern Sie jetzt Ihr gewerbliches Angebot an.</p>
+                <div class="center-wrapper">
+                    <button onclick="if(window.vibrateDevice) window.vibrateDevice([50, 50, 50]); MissionOS.open()" class="btn b2b-value-btn reactive-btn">
+                        <i class="fas fa-envelope"></i> PROJEKT-ANFRAGE SENDEN
+                    </button>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+
+    <footer class="mega-footer circuit-bg">
         <div class="container relative-z">
+
             <div class="footer-grid">
                 
                 <div class="f-col brand-col">
-                    <div class="footer-logo">RAPHAEL <span>LEZIUS</span></div>
-                    <p class="tagline">Präzision ist kein Zufall.<br>Es ist ein Standard.</p>
+                    <div class="brand-text" style="font-size:2rem; letter-spacing: -1px; font-family: var(--font-head); font-weight: 800; color: #fff;">
+                        RAPHAEL <span class="gold-text">LEZIUS</span>
+                    </div>
+                    <p style="color:#888; font-size:0.95rem; margin-top:15px; font-weight: 300; line-height: 1.6;">
+                        Präzision. Qualität. Zuverlässigkeit.<br>Ihr zertifizierter Montage-Experte für Premium-Einrichtungen in Bayern.
+                    </p>
                     
-                    <div class="trust-badges-footer">
-                        <span class="t-badge"><i class="fas fa-shield-alt"></i> Versichert</span>
-                        <span class="t-badge"><i class="fas fa-check-circle"></i> Geprüft</span>
+                    <div style="display:flex; gap:20px; margin-top:25px; font-size:0.8rem; color:#bbb; font-weight: 700; font-family: var(--font-mono); letter-spacing: 1px;">
+                        <span><i class="fas fa-shield-alt gold-text"></i> VERSICHERT</span>
+                        <span><i class="fas fa-check-circle green-text"></i> GEPRÜFT</span>
                     </div>
 
-                    <div class="social-row">
-                        <a href="https://wa.me/491608194018" target="_blank" class="social-btn"><i class="fab fa-whatsapp"></i></a>
-                        <a href="#" target="_blank" class="social-btn"><i class="fab fa-instagram"></i></a>
-                        <a href="#" target="_blank" class="social-btn"><i class="fab fa-linkedin-in"></i></a>
+                    <div class="social-row" style="margin-top: 35px;">
+                        <a href="https://wa.me/491608194018" target="_blank" class="social-btn reactive-btn" onclick="if(window.vibrateDevice) window.vibrateDevice(10);"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" target="_blank" class="social-btn reactive-btn" onclick="if(window.vibrateDevice) window.vibrateDevice(10);"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
 
                 <div class="f-col">
-                    <h4 class="f-heading">Services</h4>
+                    <h4 class="f-heading">Leistungen</h4>
                     <ul class="footer-links">
-                        <li><a href="residential.html">IKEA PAX Aufbau</a></li>
-                        <li><a href="residential.html">Küchenmontage</a></li>
-                        <li><a href="office.html">Büromöbel & USM</a></li>
-                        <li><a href="tech.html">TV Wandmontage</a></li>
-                        <li><a href="tech.html">Smart Home Setup</a></li>
+                        <li><a href="residential.html">IKEA PAX Systemaufbau</a></li>
+                        <li><a href="residential.html">Küchenmontage & Schnitt</a></li>
+                        <li><a href="outdoor.html">Gartenhäuser & Outdoor</a></li>
+                        <li><a href="office.html">USM Haller & Gewerbe</a></li>
+                        <li><a href="tech.html">Schwerlast-Wandmontage</a></li>
+                        <li><a href="tech.html">Akustikpaneele & Design</a></li>
                     </ul>
                 </div>
 
                 <div class="f-col">
-                    <h4 class="f-heading">Nuria Boutique</h4>
+                    <h4 class="f-heading">Informationen</h4>
                     <ul class="footer-links">
-                        <li><a href="magazine.html#nuria-storage">Körbe & Ordnung</a></li>
-                        <li><a href="magazine.html#nuria-kitchen">Tisch & Küche</a></li>
-                        <li><a href="magazine.html#nuria-textiles">Textilien</a></li>
+                        <li><a href="process-pricing.html">Konditionen & Ablauf</a></li>
+                        <li><a href="area.html">Einsatzgebiet</a></li>
+                        <li><a href="gallery.html">Referenzen Galerie</a></li>
+                        <li><a href="magazine.html">Magazin & Blog</a></li>
+                        <li><a href="index.html#faq-smart">Häufige Fragen (FAQ)</a></li>
                     </ul>
-                    <div class="payment-row">
-                        <i class="fab fa-cc-paypal"></i>
-                        <i class="fab fa-cc-visa"></i>
-                        <i class="fab fa-cc-mastercard"></i>
-                    </div>
                 </div>
 
                 <div class="f-col">
@@ -399,12 +328,12 @@
                         <li><a href="impressum.html">Impressum</a></li>
                         <li><a href="datenschutz.html">Datenschutz</a></li>
                         <li><a href="agb.html">AGB & Widerruf</a></li>
-                        <li><a href="https://ec.europa.eu/consumers/odr" target="_blank">Streitschlichtung</a></li>
+                        <li><a href="#" onclick="event.preventDefault();">Cookie-Einstellungen</a></li>
                     </ul>
                 </div>
 
                 <div class="f-col contact-col">
-                    <h4 class="f-heading">Zentrale</h4>
+                    <h4 class="f-heading">Kontakt</h4>
                     <ul class="contact-list">
                         <li>
                             <i class="fas fa-map-marker-alt gold-icon"></i>
@@ -420,34 +349,188 @@
                         </li>
                     </ul>
                     
-                    <div class="op-status">
-                        <div class="status-dot-container">
-                            <div class="status-dot live"></div>
-                            <div class="status-pulse"></div>
+                    <div class="op-status" style="margin-top: 25px; padding: 15px; background: rgba(0,0,0,0.4); border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); display: inline-block;">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <div class="status-dot-container">
+                                <div class="status-dot"></div>
+                                <div class="status-pulse"></div>
+                            </div>
+                            <span style="font-family: var(--font-mono); font-size: 0.75rem; color: #888; text-transform: uppercase; letter-spacing: 1px;">System Status: <strong class="green-text">LIVE</strong></span>
                         </div>
-                        <span>Team Status: <strong class="glow-text">IM EINSATZ</strong></span>
                     </div>
                 </div>
             </div>
 
-            <div class="footer-bottom-bar">
-                <div class="copyright">
-                    &copy; 2026 Raphael Lezius. <span class="hide-mobile">Alle Rechte vorbehalten.</span>
+            <div class="footer-bottom-bar" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+                <div class="copyright" style="color: #666; font-size: 0.85rem; font-family: var(--font-mono);">
+                    &copy; <span id="copyright-year">2026</span> RAPHAEL LEZIUS. <span class="hide-mobile">ALLE RECHTE VORBEHALTEN.</span>
                 </div>
                 
-                <div class="developer-credit">
+                <div class="footer-payments" style="display: flex; gap: 20px; font-size: 1.8rem; color: #444;">
+                    <i class="fab fa-apple" title="Apple Pay" style="transition: 0.3s; cursor: pointer;" onmouseover="this.style.color='#FFD700'" onmouseout="this.style.color='#444'"></i>
+                    <i class="fab fa-google" title="Google Pay" style="transition: 0.3s; cursor: pointer;" onmouseover="this.style.color='#FFD700'" onmouseout="this.style.color='#444'"></i>
+                    <i class="fab fa-cc-paypal" title="PayPal" style="transition: 0.3s; cursor: pointer;" onmouseover="this.style.color='#FFD700'" onmouseout="this.style.color='#444'"></i>
+                    <i class="fab fa-cc-visa" title="Visa" style="transition: 0.3s; cursor: pointer;" onmouseover="this.style.color='#FFD700'" onmouseout="this.style.color='#444'"></i>
+                    <i class="fab fa-cc-mastercard" title="Mastercard" style="transition: 0.3s; cursor: pointer;" onmouseover="this.style.color='#FFD700'" onmouseout="this.style.color='#444'"></i>
+                    <i class="fas fa-credit-card" title="Klarna / Girocard" style="transition: 0.3s; cursor: pointer;" onmouseover="this.style.color='#FFD700'" onmouseout="this.style.color='#444'"></i>
+                </div>
+                
+                <div class="developer-credit" onclick="if(window.vibrateDevice) window.vibrateDevice(20);">
                     <span class="code-bracket">&lt;/&gt;</span>
-                    <span class="dev-text">ENGINEERED BY <span class="dev-name">IDRIS</span></span>
+                    <span class="dev-text" style="color: #666;">SYS_DEV <span class="dev-name" style="color: var(--neon-gold);">IDRIS</span></span>
                 </div>
             </div>
         </div>
     </footer>
 
-    <a href="https://wa.me/491608194018?text=Hallo%20Raphael,%20ich%20habe%20eine%20B2B%20Anfrage%20zur%20Montage..." target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
+    <a href="https://wa.me/491608194018" target="_blank" class="whatsapp-float reactive-btn" aria-label="WhatsApp Contact" onclick="if(window.vibrateDevice) window.vibrateDevice([30, 50, 30]);">
+        <div class="whatsapp-pulse"></div>
         <i class="fab fa-whatsapp"></i>
-        <span class="whatsapp-pulse"></span>
-        <div class="whatsapp-tooltip">B2B Support</div>
     </a>
+
+    <div id="missionOS" class="os-overlay">
+        <div class="os-backdrop" onclick="MissionOS.close()"></div>
+        
+        <div class="case-container">
+            <aside class="case-sidebar">
+                <div class="sidebar-header">
+                    <div class="os-pulse" style="background: var(--neon-pink);"></div>
+                    <span class="os-ver">B2B_PORTAL_v2.6</span>
+                </div>
+                
+                <nav class="case-steps">
+                    <div class="step-link active" id="nav1" onclick="if(window.vibrateDevice) window.vibrateDevice(10); MissionOS.setPhase(1)">
+                        <div class="step-num">01</div>
+                        <div class="step-txt">FIRMEN DATEN <small>Wer sind Sie?</small></div>
+                    </div>
+                    <div class="step-link" id="nav2" onclick="if(window.vibrateDevice) window.vibrateDevice(10); MissionOS.setPhase(2)">
+                        <div class="step-num">02</div>
+                        <div class="step-txt">PROJEKT <small>Was soll gebaut werden?</small></div>
+                    </div>
+                    <div class="step-link" id="nav3" onclick="if(window.vibrateDevice) window.vibrateDevice(10); MissionOS.setPhase(3)">
+                        <div class="step-num">03</div>
+                        <div class="step-txt">LOGISTIK <small>Einsatzort & Etage</small></div>
+                    </div>
+                    <div class="step-link" id="nav4" onclick="if(window.vibrateDevice) window.vibrateDevice(10); MissionOS.setPhase(4)">
+                        <div class="step-num">04</div>
+                        <div class="step-txt">ABSCHLUSS <small>Anfrage senden</small></div>
+                    </div>
+                </nav>
+
+                <div class="live-stats">
+                    <div class="stat-box">
+                        <label style="font-size: 0.7rem; color: #888; font-weight: bold; letter-spacing: 2px; font-family: var(--font-mono);">GEWÄHLTE POSITIONEN</label>
+                        <div id="serviceCount" style="font-family: var(--font-head); font-size: 2.5rem; font-weight: 800; color: #000; line-height: 1;">00</div>
+                    </div>
+                    <div class="stat-box" style="margin-top: 30px;">
+                        <label style="font-size: 0.7rem; color: #888; font-weight: bold; letter-spacing: 2px; font-family: var(--font-mono);">SICHERHEIT</label>
+                        <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--neon-green); font-weight: bold; margin-top: 8px;">SSL_ENCRYPTED</div>
+                    </div>
+                </div>
+            </aside>
+
+            <main class="case-main">
+                <button class="case-close" aria-label="Schließen" onclick="if(window.vibrateDevice) window.vibrateDevice(20); MissionOS.close()">&times;</button>
+                
+                <form id="leziusCaseForm" action="https://formspree.io/f/YOUR_ID" method="POST">
+                    
+                    <div class="case-phase active" id="phase1">
+                        <h2 class="phase-title">B2B Anfrage initialisieren</h2>
+                        <p class="phase-hint">Geben Sie die Daten Ihres Unternehmens an.</p>
+                        <div class="input-row">
+                            <div class="tech-input full-width">
+                                <input type="text" name="company" required placeholder=" ">
+                                <label>FIRMENNAME / PRAXISNAME</label>
+                            </div>
+                        </div>
+                        <div class="input-row">
+                            <div class="tech-input">
+                                <input type="text" name="contact_person" required placeholder=" ">
+                                <label>ANSPRECHPARTNER</label>
+                            </div>
+                            <div class="tech-input">
+                                <input type="email" name="email" required placeholder=" ">
+                                <label>BUSINESS E-MAIL</label>
+                            </div>
+                        </div>
+                        <div class="input-row">
+                            <div class="tech-input full-width">
+                                <input type="tel" name="phone" required placeholder=" ">
+                                <label>TELEFONNUMMER</label>
+                            </div>
+                        </div>
+                        <div class="nav-controls">
+                            <button type="button" class="btn btn-gold reactive-btn" style="width: 100%; justify-content: space-between;" onclick="if(window.vibrateDevice) window.vibrateDevice(30); MissionOS.setPhase(2)">WEITER ZUR AUSWAHL <i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="case-phase" id="phase2">
+                        <h2 class="phase-title">Was soll aufgebaut werden?</h2>
+                        <p class="phase-hint">Suchen Sie nach Möbeln, USM-Modulen oder Schreibtischsystemen.</p>
+                        <div class="search-terminal">
+                            <div class="search-bar-wrap">
+                                <i class="fas fa-search search-icon"></i>
+                                <input type="text" id="serviceSearch" placeholder="Hier suchen..." onkeyup="MissionOS.filterServices()">
+                            </div>
+                            <div id="searchResults" class="search-dropdown-tech"></div>
+                        </div>
+                        <div class="selected-tags-container" id="selectedTags"></div>
+                        <div class="tech-input full-width" style="margin-top: 20px;">
+                            <textarea name="manual_input" placeholder=" "></textarea>
+                            <label>ZUSÄTZLICHE DETAILS ODER WÜNSCHE (OPTIONAL)</label>
+                        </div>
+                        <div class="nav-controls">
+                            <button type="button" class="btn btn-holographic reactive-btn" style="color: #000; border-color: #ccc;" onclick="if(window.vibrateDevice) window.vibrateDevice(20); MissionOS.setPhase(1)"><i class="fas fa-arrow-left"></i> ZURÜCK</button>
+                            <button type="button" class="btn btn-gold reactive-btn" onclick="if(window.vibrateDevice) window.vibrateDevice(30); MissionOS.setPhase(3)">LOGISTIK-CHECK <i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="case-phase" id="phase3">
+                        <h2 class="phase-title">Details zum Einsatzort</h2>
+                        <p class="phase-hint">Diese Daten helfen mir, die Logistik und Manpower zu kalkulieren.</p>
+                        <div class="input-row">
+                            <div class="tech-input">
+                                <input type="text" name="zip" required placeholder=" ">
+                                <label>POSTLEITZAHL (PLZ)</label>
+                            </div>
+                            <div class="tech-input">
+                                <select name="floor" required>
+                                    <option value="" disabled selected></option>
+                                    <option value="EG">Erdgeschoss / Lager</option>
+                                    <option value="OG_LIFT">Büro-Etage (mit Lastenaufzug)</option>
+                                    <option value="OG_TREPPE">Büro-Etage (ohne Aufzug)</option>
+                                </select>
+                                <label>STOCKWERK / AUFZUG</label>
+                            </div>
+                        </div>
+                        <div class="nav-controls">
+                            <button type="button" class="btn btn-holographic reactive-btn" style="color: #000; border-color: #ccc;" onclick="if(window.vibrateDevice) window.vibrateDevice(20); MissionOS.setPhase(2)"><i class="fas fa-arrow-left"></i> ZURÜCK</button>
+                            <button type="button" class="btn btn-gold reactive-btn" onclick="if(window.vibrateDevice) window.vibrateDevice(30); MissionOS.setPhase(4)">TERMIN WÄHLEN <i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="case-phase" id="phase4">
+                        <h2 class="phase-title">Wunschtermin & Abschluss</h2>
+                        <p class="phase-hint">Wann soll der Rollout / die Montage stattfinden?</p>
+                        <div class="input-row">
+                            <div class="tech-input full-width">
+                                <input type="date" name="date" required>
+                                <label>WUNSCHTERMIN (FLEXIBEL)</label>
+                            </div>
+                        </div>
+                        <div class="gdpr-glass">
+                            <input type="checkbox" id="modal_gdpr" required>
+                            <label for="modal_gdpr">Ich stimme der Datenverarbeitung gemäß DSGVO zu. Meine Daten werden nur zur Angebotserstellung verwendet.</label>
+                        </div>
+                        <div class="nav-controls">
+                            <button type="button" class="btn btn-holographic reactive-btn" style="color: #000; border-color: #ccc;" onclick="if(window.vibrateDevice) window.vibrateDevice(20); MissionOS.setPhase(3)"><i class="fas fa-arrow-left"></i> ZURÜCK</button>
+                            <button type="submit" class="btn btn-gold reactive-btn" onclick="if(window.vibrateDevice) window.vibrateDevice([50, 100, 50]);"><i class="fas fa-paper-plane" style="margin-right: 10px;"></i> ANGEBOT ANFORDERN</button>
+                        </div>
+                    </div>
+                </form>
+            </main>
+        </div>
+    </div>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="assets/js/main.js"></script>

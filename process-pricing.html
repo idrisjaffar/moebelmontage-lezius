@@ -2,410 +2,570 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Preise, Ablauf & Kalkulation | Raphael Lezius Premium Service</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Preise, Ablauf & Kalkulation | Raphael Lezius Premium Montage</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&family=Space+Grotesk:wght@500;700;800&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
+    <meta name="description" content="Absolute Transparenz ohne versteckte Kosten. Erfahren Sie alles über unsere Festpreise, den Montage-Ablauf und Ihre Steuervorteile in Augsburg und München.">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
-
-    <style>
-        /* Transparent Hero Engine */
-        .pricing-hero {
-            position: relative; padding: 150px 0 100px; text-align: center;
-            background: radial-gradient(circle at top, rgba(212,175,55,0.1) 0%, #050505 80%);
-            border-bottom: 1px solid rgba(255,255,255,0.05); overflow: hidden;
-        }
-        .bg-grid-lines {
-            position: absolute; inset: 0; opacity: 0.2;
-            background-image: linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
-            background-size: 50px 50px; pointer-events: none;
-            transform: perspective(500px) rotateX(60deg); transform-origin: top;
-        }
-
-        /* Interactive Mission Protocol (Timeline) */
-        .protocol-container { max-width: 800px; margin: 80px auto; position: relative; }
-        .protocol-line { position: absolute; left: 40px; top: 0; bottom: 0; width: 2px; background: rgba(255,255,255,0.1); }
-        .protocol-line-fill { position: absolute; left: 0; top: 0; width: 100%; background: var(--gold); box-shadow: 0 0 15px var(--gold); transition: height 1s ease; }
-        
-        .protocol-node { position: relative; padding-left: 100px; margin-bottom: 60px; opacity: 0.5; transition: 0.5s; }
-        .protocol-node:hover, .protocol-node.active { opacity: 1; transform: translateX(10px); }
-        
-        .node-marker {
-            position: absolute; left: 25px; top: 0; width: 32px; height: 32px;
-            background: #111; border: 2px solid #444; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center; z-index: 2; transition: 0.4s;
-        }
-        .protocol-node:hover .node-marker, .protocol-node.active .node-marker {
-            background: var(--gold); border-color: #fff; box-shadow: 0 0 20px var(--gold);
-        }
-        .node-marker i { color: #fff; font-size: 0.8rem; opacity: 0; transition: 0.3s; }
-        .protocol-node:hover .node-marker i, .protocol-node.active .node-marker i { opacity: 1; }
-
-        .p-step { font-family: monospace; color: var(--gold); letter-spacing: 2px; font-size: 0.8rem; margin-bottom: 5px; display: block; }
-        .p-title { font-family: 'Space Grotesk'; font-size: 2rem; color: #fff; margin-bottom: 15px; }
-        .p-desc { color: #aaa; line-height: 1.7; background: rgba(20,20,20,0.6); padding: 25px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); }
-
-        /* 3D Pricing Cards */
-        .pricing-deck { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin: 60px 0; perspective: 1500px; }
-        .price-hologram {
-            background: rgba(15, 15, 15, 0.8); backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 12px;
-            padding: 40px; position: relative; transition: all 0.6s cubic-bezier(0.2, 1, 0.3, 1);
-            transform-style: preserve-3d;
-        }
-        .price-hologram:hover {
-            transform: translateY(-15px) rotateX(5deg) rotateY(-5deg);
-            border-color: var(--gold); box-shadow: -20px 30px 60px rgba(0,0,0,0.8), inset 0 0 30px rgba(212,175,55,0.1);
-        }
-        .price-hologram.featured { border: 1px solid rgba(212,175,55,0.5); background: linear-gradient(180deg, rgba(212,175,55,0.05) 0%, rgba(15,15,15,0.9) 100%); }
-        
-        .price-badge-pro { position: absolute; top: 0; right: 40px; background: var(--gold); color: #000; padding: 5px 15px; font-family: 'Space Grotesk'; font-weight: bold; font-size: 0.8rem; transform: translateY(-50%); border-radius: 20px; box-shadow: 0 5px 15px rgba(212,175,55,0.4); }
-        
-        .tier-name { color: #fff; font-family: 'Space Grotesk'; font-size: 1.5rem; margin-bottom: 5px; }
-        .tier-cost { font-size: 3.5rem; font-family: 'Space Grotesk'; color: #fff; margin: 20px 0; font-weight: 800; display: flex; align-items: baseline; gap: 5px; }
-        .tier-cost span { font-size: 1rem; color: #888; font-weight: normal; font-family: 'Inter'; }
-        
-        .tier-features { list-style: none; padding: 0; margin: 30px 0; }
-        .tier-features li { display: flex; align-items: flex-start; gap: 15px; margin-bottom: 15px; color: #ccc; font-size: 0.95rem; line-height: 1.5; }
-        .tier-features li i { color: var(--gold); margin-top: 4px; }
-
-        /* The Budget Hack (Gamified Savings) */
-        .budget-hack-zone {
-            background: linear-gradient(135deg, #111, #0a0a0a); border: 2px dashed rgba(212,175,55,0.3);
-            border-radius: 12px; padding: 50px; margin: 80px 0; position: relative;
-        }
-        .hack-item { display: flex; align-items: center; gap: 20px; background: #000; padding: 20px; border-radius: 8px; margin-bottom: 15px; border-left: 4px solid var(--gold); transition: 0.3s; }
-        .hack-item:hover { transform: translateX(10px); border-color: #39ff14; }
-        .hack-item i { font-size: 2rem; color: var(--gold); transition: 0.3s; }
-        .hack-item:hover i { color: #39ff14; }
-        
-        @media (max-width: 768px) {
-            .protocol-node { padding-left: 60px; }
-            .protocol-line { left: 20px; }
-            .node-marker { left: 5px; }
-        }
-    </style>
 </head>
-<body class="bg-darker">
+<body class="is-dark">
 
-    <nav class="navbar">
-        <div class="container nav-inner">
-            <a href="index.html" class="logo-3d-wrapper">
-                <div class="logo-flipper">
-                    <div class="logo-face front"><img src="assets/images/raphael-lezius-logo-front.webp" alt="Logo Front"></div>
-                    <div class="logo-face back"><img src="assets/images/raphael-lezius-logo-back.webp" alt="Logo Back"></div>
-                </div>
-                <div class="brand-text">RAPHAEL <span>LEZIUS</span></div>
-            </a>
-
-            <div class="desktop-menu">
-                <div class="nav-group">
-                    <a href="index.html" class="nav-link">Startseite</a>
-                    <div class="dropdown-container">
-                        <button class="nav-link dropdown-trigger">
-                            Leistungen <i class="fas fa-chevron-down" style="font-size: 0.7em; margin-left: 5px;"></i>
-                        </button>
-                        <div class="dropdown-menu glass-panel">
-                            <a href="residential.html" class="dd-item">
-                                <i class="fas fa-couch gold-text"></i>
-                                <span>Privat & IKEA <small>PAX, Küchen, Betten</small></span>
-                            </a>
-                            <a href="office.html" class="dd-item">
-                                <i class="fas fa-building gold-text"></i>
-                                <span>Gewerbe & Office <small>USM, Konferenz, Laden</small></span>
-                            </a>
-                            <a href="tech.html" class="dd-item">
-                                <i class="fas fa-microchip gold-text"></i>
-                                <span>Tech & Smart <small>TV, LED, Kabel</small></span>
-                            </a>
+    <header class="nav-wrapper" data-aos="fade-down" data-aos-duration="1000">
+        <nav class="cyber-navbar glass-panel">
+            <div class="nav-inner">
+                
+                <a href="index.html" class="brand-cluster" onmouseenter="if(window.vibrateDevice) window.vibrateDevice([15, 30]);">
+                    <div class="logo-flipper">
+                        <div class="logo-face front">
+                            <img src="assets/images/raphael-lezius-logo-front.webp" alt="Raphael Lezius" onerror="this.style.display='none';">
+                        </div>
+                        <div class="logo-face back">
+                            <img src="assets/images/raphael-lezius-logo-back.webp" alt="Premium Montage" onerror="this.style.display='none';">
                         </div>
                     </div>
-                    <a href="process-pricing.html" class="nav-link active">Preise & Ablauf</a>
-                    <a href="area.html" class="nav-link">Gebiet</a>
-                    <a href="gallery.html" class="nav-link">Galerie</a>
-                    <a href="magazine.html" class="nav-link">Magazin</a>
-                </div>
-            </div>
-
-            <div class="nav-actions">
-                <div class="status-pill desktop-only"><span class="status-dot"></span><span>Verfügbar</span></div>
-                <a href="javascript:void(0)" onclick="MissionOS.open()" class="btn btn-gold glow-effect nav-quote-btn">
-                    <span class="btn-text">Angebot Anfordern</span>
-                    <div class="btn-glow-pulse"></div>
+                    <div class="brand-typography">
+                        <span class="brand-first" data-text="RAPHAEL">RAPHAEL</span>
+                        <span class="brand-last">LEZIUS</span>
+                    </div>
                 </a>
-                <button class="hamburger" id="hamburgerBtn" aria-label="Menu"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
+
+                <div class="desktop-menu">
+                    <a href="index.html" class="cyber-link">Start</a>
+                    
+                    <div class="dropdown-wrapper">
+                        <button class="cyber-link dropdown-btn">
+                            Expertise <i class="fas fa-chevron-down drop-icon" style="font-size: 0.7em; margin-left: 5px;"></i>
+                        </button>
+                        
+                        <div class="mega-menu-2077 glass-panel">
+                            <div class="mega-grid">
+                                <a href="residential.html" class="mega-node" onmouseenter="if(window.vibrateDevice) window.vibrateDevice(10);">
+                                    <div class="node-icon cyan-glow"><i class="fas fa-couch"></i></div>
+                                    <div class="node-content">
+                                        <h4 class="node-title">Interieur & Living</h4>
+                                        <p class="node-desc">PAX, Küchen & Premium-Möbel</p>
+                                    </div>
+                                </a>
+                                <a href="outdoor.html" class="mega-node" onmouseenter="if(window.vibrateDevice) window.vibrateDevice(10);">
+                                    <div class="node-icon gold-glow"><i class="fas fa-tree"></i></div>
+                                    <div class="node-content">
+                                        <h4 class="node-title">Outdoor Holzbau</h4>
+                                        <p class="node-desc">Gartenhäuser & Gerätehütten</p>
+                                    </div>
+                                </a>
+                                <a href="office.html" class="mega-node" onmouseenter="if(window.vibrateDevice) window.vibrateDevice(10);">
+                                    <div class="node-icon pink-glow"><i class="fas fa-building"></i></div>
+                                    <div class="node-content">
+                                        <h4 class="node-title">Gewerbe & Office</h4>
+                                        <p class="node-desc">USM Haller & Praxiseinrichtung</p>
+                                    </div>
+                                </a>
+                                <a href="tech.html" class="mega-node" onmouseenter="if(window.vibrateDevice) window.vibrateDevice(10);">
+                                    <div class="node-icon green-glow"><i class="fas fa-grip-lines-vertical"></i></div>
+                                    <div class="node-content">
+                                        <h4 class="node-title">Akustik & Spezial</h4>
+                                        <p class="node-desc">Demontage, Kunst & Home-Gym</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="mega-footer-bar">
+                                <span class="tech-font cyan-text blink">>> SYSTEM BEREIT ZUR AUSWAHL</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="process-pricing.html" class="cyber-link active">Konditionen</a>
+                    <a href="area.html" class="cyber-link">Region</a>
+                    <a href="gallery.html" class="cyber-link">Referenzen</a>
+                    <a href="magazine.html" class="cyber-link">Magazin</a>
+                </div>
+
+                <div class="nav-actions">
+                    <div class="status-pill desktop-only" title="System Status: Live">
+                        <span class="status-dot-container">
+                            <span class="status-dot"></span>
+                            <span class="status-pulse"></span>
+                        </span>
+                        <span class="status-text">Verfügbar</span>
+                    </div>
+                    
+                    <button onclick="if(window.vibrateDevice) window.vibrateDevice([30, 50, 30]); MissionOS.open();" class="btn btn-gold reactive-btn desktop-only">
+                        Projekt anfragen
+                    </button>
+                    
+                    <button class="cyber-hamburger" id="hamburgerBtn" aria-label="Menü öffnen" onclick="if(window.vibrateDevice) window.vibrateDevice(20);">
+                        <span class="bar top-bar"></span>
+                        <span class="bar mid-bar"></span>
+                        <span class="bar bot-bar"></span>
+                    </button>
+                </div>
+
             </div>
-        </div>
-    </nav>
+        </nav>
+    </header>
 
     <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-bg-glow"></div>
         <nav class="mobile-nav-links">
-            <a href="index.html">Startseite</a>
-            <div style="font-size: 0.8rem; color: var(--gold); margin-top: 15px; opacity: 0.7; text-transform: uppercase; letter-spacing: 1px;">Dienstleistungen</div>
-            <a href="residential.html">IKEA & Wohnen</a>
-            <a href="office.html">Büro & Gewerbe</a>
-            <a href="tech.html">TV & Smart Home</a>
-            <div style="font-size: 0.8rem; color: var(--gold); margin-top: 15px; opacity: 0.7; text-transform: uppercase; letter-spacing: 1px;">Informationen</div>
-            <a href="process-pricing.html" class="gold-text">Preise & Ablauf</a>
-            <a href="area.html">Gebiet</a>
-            <a href="gallery.html">Galerie</a>
-            <a href="magazine.html">Magazin</a>
-            <a href="javascript:void(0)" onclick="MissionOS.open(); document.getElementById('mobileMenu').classList.remove('active');" class="btn btn-gold" style="margin-top: 30px; width: 100%; text-align: center;">Angebot anfordern</a>
+            <a href="index.html" class="mobile-cyber-link">Startseite</a>
+            
+            <div class="mobile-divider cyan-divider">// EXPERTISE</div>
+            <a href="residential.html" class="mobile-sub-link">Interieur & Küchen</a>
+            <a href="outdoor.html" class="mobile-sub-link">Outdoor & Gartenbau</a>
+            <a href="office.html" class="mobile-sub-link">Gewerbe & USM Haller</a>
+            <a href="tech.html" class="mobile-sub-link">Akustik, Spezial & Demontage</a>
+            
+            <div class="mobile-divider gold-divider">// PROTOKOLLE</div>
+            <a href="process-pricing.html" class="mobile-sub-link active-mobile-link" style="color: var(--neon-gold) !important; font-weight: 800 !important;">Konditionen & Ablauf (Aktiv)</a>
+            <a href="area.html" class="mobile-sub-link">Einsatzregion</a>
+            <a href="gallery.html" class="mobile-sub-link">Referenzen</a>
+            <a href="magazine.html" class="mobile-sub-link">Magazin</a>
+            
+            <button onclick="if(window.vibrateDevice) window.vibrateDevice([50, 50, 50]); MissionOS.open(); document.getElementById('mobileMenu').classList.remove('active'); document.getElementById('hamburgerBtn').classList.remove('active'); document.body.style.overflow = '';" class="btn btn-gold btn-block mobile-cta-btn">
+                <i class="fas fa-bolt"></i> Jetzt anfragen
+            </button>
         </nav>
     </div>
 
-    <section class="pricing-hero">
-        <div class="bg-grid-lines"></div>
+    <main>
+        <header class="hero-section" id="pricing-hero">
+            <div class="video-bg-container">
+                <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(5,5,5,0.7) 0%, rgba(5,5,5,0.95) 100%), url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070&auto=format&fit=crop') center/cover; opacity: 0.4;"></div>
+                <canvas id="gold-bubbles"></canvas>
+                <div class="hero-vignette"></div>
+            </div>
+
+            <div class="container hero-content center" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; padding-top: 80px;">
+                <div class="hero-text" data-aos="zoom-in" data-aos-duration="1200">
+                    <div class="pre-title" data-aos="fade-down" data-aos-delay="200"><i class="fas fa-eye"></i> RADIKALE TRANSPARENZ</div>
+                    
+                    <h1 class="glitch-header" data-text="PREMIUM" data-aos="fade-up" data-aos-delay="400" style="font-size: clamp(3rem, 7vw, 5.5rem); margin: 20px 0;">
+                        <span class="white">HANDWERK OHNE</span><br>
+                        <span class="gold-text">BÖSE ÜBERRASCHUNGEN.</span>
+                    </h1>
+                    
+                    <p class="hero-deep-copy" style="border-left: none; text-align: center; margin: 0 auto 40px auto; font-size: clamp(1.1rem, 2vw, 1.4rem); max-width: 800px; padding: 0;" data-aos="fade-up" data-aos-delay="600">
+                        In Deutschland ist die Angst vor Handwerkern mit versteckten Kosten, endlosen Stundenabrechnungen und unklaren Angeboten riesig. <strong>Wir ändern das System.</strong> <br><br>
+                        Erleben Sie absolute Kalkulationssicherheit durch unsere strikten Festpreis-Garantien und logischen Projekt-Pauschalen.
+                    </p>
+
+                    <div class="magnetic-btn-group" style="justify-content: center;" data-aos="fade-up" data-aos-delay="800">
+                        <a href="#kalkulation" class="btn btn-gold btn-magnetic reactive-btn fill" onclick="if(window.vibrateDevice) window.vibrateDevice(30);" style="min-height: 60px;">
+                            <i class="fas fa-calculator"></i> ZU DEN PREISMODELLEN
+                        </a>
+                        <a href="#ablauf" class="btn-holographic reactive-btn" onclick="if(window.vibrateDevice) window.vibrateDevice(20);" style="min-height: 60px;">
+                            <i class="fas fa-project-diagram"></i> DER MONTAGE-ABLAUF
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section class="section-padding animated-grid-bg">
+            <div class="container">
+                <div class="split-layout">
+                    <div class="text-col" data-aos="fade-right">
+                        <div class="section-tag-wrapper" data-aos="fade-down" data-aos-delay="100">
+                            <span class="section-tag">UNSERE WERTE</span>
+                        </div>
+                        <h2 class="section-heading" data-aos="fade-up" data-aos-delay="200">
+                            Warum Qualität <span class="gold-text">ihren Preis hat (und spart).</span>
+                        </h2>
+                        
+                        <p class="desc-line" data-aos="fade-up" data-aos-delay="300">
+                            "Es gibt kaum etwas auf dieser Welt, das nicht irgendjemand ein wenig schlechter machen und etwas billiger verkaufen könnte." – John Ruskin
+                        </p>
+                        
+                        <div data-aos="fade-up" data-aos-delay="400">
+                            <p style="color: #aaa; font-size: 1.1rem; line-height: 1.8; margin-bottom: 20px;">
+                                Wir alle kennen die Geschichten: Der billige Handwerker aus dem Internetportalen, der stundenlang herumbastelt, kein eigenes Werkzeug mitbringt, den Dreck liegen lässt und am Ende durch "unerwartete Komplikationen" doppelt so teuer wird wie das ursprüngliche Lockangebot.
+                            </p>
+                            <p style="color: #aaa; font-size: 1.1rem; line-height: 1.8; margin-bottom: 20px;">
+                                <strong>Mein Ansatz ist diametral anders.</strong> Ich trete nicht an, um der Billigste zu sein. Ich trete an, um der <em>Beste, Zuverlässigste und Transparenteste</em> zu sein.
+                            </p>
+                            <p style="color: #aaa; font-size: 1.1rem; line-height: 1.8;">
+                                Wenn Sie mich buchen, buchen Sie kein Glücksspiel. Sie buchen modernstes Bosch Professional Werkzeug, millimetergenaue Laser-Ausrichtung, eine saubere Staubabsaugung, pünktliches Erscheinen und die absolute Garantie, dass Ihr teures Premium-Möbelstück oder Gartenhaus exakt so aufgebaut wird, wie vom Hersteller erdacht. Das sichert Ihre Investition über Jahrzehnte.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="image-col" data-aos="fade-left" data-aos-delay="300">
+                        <div class="glass-panel" style="padding: 40px; border-top: 4px solid var(--neon-cyan);">
+                            <h3 class="gold-text" style="font-size: 1.5rem; margin-bottom: 20px;" data-aos="zoom-in" data-aos-delay="400">Das unsichtbare Invest</h3>
+                            <p style="color: #888; font-size: 0.95rem; margin-bottom: 25px;" data-aos="fade-up" data-aos-delay="500">Ihre Zahlung deckt weit mehr ab als nur meine Arbeitszeit vor Ort. Sie finanzieren absolute Sicherheit.</p>
+                            
+                            <ul style="list-style: none; padding: 0;">
+                                <li data-aos="fade-up" data-aos-delay="600" style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px; color: #fff;">
+                                    <i class="fas fa-shield-alt cyan-text" style="font-size: 1.2rem;"></i> Voller Betriebshaftpflichtschutz
+                                </li>
+                                <li data-aos="fade-up" data-aos-delay="700" style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px; color: #fff;">
+                                    <i class="fas fa-tools cyan-text" style="font-size: 1.2rem;"></i> Werkzeugverschleiß & Wartung (High-End Tools)
+                                </li>
+                                <li data-aos="fade-up" data-aos-delay="800" style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px; color: #fff;">
+                                    <i class="fas fa-gas-pump cyan-text" style="font-size: 1.2rem;"></i> Transporter, Sprit & Logistik
+                                </li>
+                                <li data-aos="fade-up" data-aos-delay="900" style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px; color: #fff;">
+                                    <i class="fas fa-file-signature cyan-text" style="font-size: 1.2rem;"></i> Ordnungsgemäße Steuern & Abgaben
+                                </li>
+                                <li data-aos="fade-up" data-aos-delay="1000" style="display: flex; align-items: center; gap: 15px; color: #fff;">
+                                    <i class="fas fa-graduation-cap cyan-text" style="font-size: 1.2rem;"></i> Jahrelanges Fachwissen & Routinesicherheit
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="ablauf" class="section-padding bg-darker hex-core-bg">
+            <div class="container">
+                <div class="section-header center" data-aos="fade-up">
+                    <div class="pre-title">MISSION PROTOCOL</div>
+                    <h2 class="section-heading">Der 4-Phasen <span class="gold-text">Ablauf</span></h2>
+                    <p class="section-subtitle" style="margin: 0 auto;">Perfektion entsteht nicht durch Zufall, sondern durch strukturierte Prozesse. So läuft unsere Zusammenarbeit von der ersten Sekunde bis zur finalen Übergabe ab.</p>
+                </div>
+
+                <div class="protocol-container" style="max-width: 900px; margin: 80px auto; position: relative;" id="timelineContainer">
+                    <div style="position: absolute; left: 35px; top: 0; bottom: 0; width: 2px; background: rgba(255,215,0,0.2); z-index: 1;"></div>
+                    <div id="scrollProgress" style="position: absolute; left: 35px; top: 0; width: 2px; background: var(--neon-gold); z-index: 2; height: 0%; transition: height 0.1s ease-out; box-shadow: 0 0 10px var(--neon-gold);"></div>
+                    
+                    <div class="protocol-node" data-aos="fade-right" data-aos-offset="100" style="position: relative; padding-left: 100px; margin-bottom: 70px;">
+                        <div style="position: absolute; left: 16px; top: 0; width: 40px; height: 40px; background: var(--bg-darker); border: 2px solid var(--neon-gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 3; box-shadow: 0 0 15px rgba(255,215,0,0.4);">
+                            <span style="color: var(--neon-gold); font-family: var(--font-mono); font-weight: bold; font-size: 1.1rem;">01</span>
+                        </div>
+                        <div class="glass-panel" style="padding: 30px;">
+                            <span class="tech-font cyan-text" style="font-size: 0.8rem; letter-spacing: 3px;" data-aos="fade-up" data-aos-delay="100">DATA UPLOAD</span>
+                            <h3 style="color: #fff; font-size: 1.6rem; margin: 10px 0 15px 0; font-family: var(--font-head);" data-aos="fade-up" data-aos-delay="200">Anfrage & Erstkontakt</h3>
+                            <p style="color: #aaa; font-size: 1.05rem; line-height: 1.6;" data-aos="fade-up" data-aos-delay="300">
+                                Sie senden uns Ihre Anfrage über unser sicheres <a href="javascript:void(0)" onclick="MissionOS.open()" class="gold-text" style="text-decoration: underline;">OS-Formular</a> oder bequem per WhatsApp. Senden Sie uns Links zu den Produkten, IKEA-Planungscodes (PDFs) und idealerweise ein Foto des Raumes/Gartens. Je mehr Details wir haben, desto exakter wird unsere Kalkulation.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="protocol-node" data-aos="fade-left" data-aos-offset="100" style="position: relative; padding-left: 100px; margin-bottom: 70px;">
+                        <div style="position: absolute; left: 16px; top: 0; width: 40px; height: 40px; background: var(--bg-darker); border: 2px solid var(--neon-gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 3; box-shadow: 0 0 15px rgba(255,215,0,0.4);">
+                            <span style="color: var(--neon-gold); font-family: var(--font-mono); font-weight: bold; font-size: 1.1rem;">02</span>
+                        </div>
+                        <div class="glass-panel" style="padding: 30px; border-top-color: var(--neon-cyan);">
+                            <span class="tech-font cyan-text" style="font-size: 0.8rem; letter-spacing: 3px;" data-aos="fade-up" data-aos-delay="100">PROCESSING</span>
+                            <h3 style="color: #fff; font-size: 1.6rem; margin: 10px 0 15px 0; font-family: var(--font-head);" data-aos="fade-up" data-aos-delay="200">Kalkulation & Angebot</h3>
+                            <p style="color: #aaa; font-size: 1.05rem; line-height: 1.6;" data-aos="fade-up" data-aos-delay="300">
+                                Innerhalb von 24 Stunden werten wir Ihre Daten aus. Wir prüfen Statik-Vorgaben, berechnen Anfahrtszonen und senden Ihnen ein <strong>verbindliches Festpreisangebot</strong> oder eine transparente Budget-Schätzung (Cost-Cap) für komplexe Sonderbauten zu. Keine Lockangebote, keine Phantasiepreise.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="protocol-node" data-aos="fade-right" data-aos-offset="100" style="position: relative; padding-left: 100px; margin-bottom: 70px;">
+                        <div style="position: absolute; left: 16px; top: 0; width: 40px; height: 40px; background: var(--bg-darker); border: 2px solid var(--neon-gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 3; box-shadow: 0 0 15px rgba(255,215,0,0.4);">
+                            <span style="color: var(--neon-gold); font-family: var(--font-mono); font-weight: bold; font-size: 1.1rem;">03</span>
+                        </div>
+                        <div class="glass-panel" style="padding: 30px;">
+                            <span class="tech-font cyan-text" style="font-size: 0.8rem; letter-spacing: 3px;" data-aos="fade-up" data-aos-delay="100">SCHEDULING</span>
+                            <h3 style="color: #fff; font-size: 1.6rem; margin: 10px 0 15px 0; font-family: var(--font-head);" data-aos="fade-up" data-aos-delay="200">Termin-Fixierung</h3>
+                            <p style="color: #aaa; font-size: 1.05rem; line-height: 1.6;" data-aos="fade-up" data-aos-delay="300">
+                                Sie bestätigen unser Angebot mit einem einfachen Klick oder einer Nachricht. Wir suchen gemeinsam den perfekten Tag aus, der optimal zu Ihren Lieferterminen passt. Für Berufstätige bieten wir gegen einen fairen Aufschlag auch den begehrten <strong>Weekend-Warrior-Service</strong> am Samstag an.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="protocol-node" data-aos="fade-left" data-aos-offset="100" style="position: relative; padding-left: 100px; margin-bottom: 70px;">
+                        <div style="position: absolute; left: 16px; top: 0; width: 40px; height: 40px; background: var(--neon-gold); border: 2px solid var(--neon-gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 3; box-shadow: 0 0 20px rgba(255,215,0,0.8);">
+                            <span style="color: #000; font-family: var(--font-mono); font-weight: bold; font-size: 1.1rem;">04</span>
+                        </div>
+                        <div class="glass-panel" style="padding: 30px; border-color: var(--neon-gold); box-shadow: inset 0 0 20px rgba(255,215,0,0.1);">
+                            <span class="tech-font gold-text" style="font-size: 0.8rem; letter-spacing: 3px;" data-aos="fade-up" data-aos-delay="100">EXECUTION</span>
+                            <h3 style="color: #fff; font-size: 1.6rem; margin: 10px 0 15px 0; font-family: var(--font-head);" data-aos="fade-up" data-aos-delay="200">Der Montage-Tag</h3>
+                            <p style="color: #aaa; font-size: 1.05rem; line-height: 1.6;" data-aos="fade-up" data-aos-delay="300">
+                                Wir erscheinen pünktlich auf die Minute. Der Bereich wird mit professionellem Bodenschutzvlies ausgelegt. Mit digitaler Lasertechnik nivellieren wir Schränke und Fundamente perfekt waagerecht. Die Montage erfolgt ruhig, hochkonzentriert und dank aktiver HEPA-Absaugung absolut staubfrei. 
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="protocol-node" data-aos="fade-right" data-aos-offset="100" style="position: relative; padding-left: 100px;">
+                        <div style="position: absolute; left: 16px; top: 0; width: 40px; height: 40px; background: var(--bg-darker); border: 2px solid var(--neon-green); border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 3; box-shadow: 0 0 15px rgba(57, 255, 20, 0.4);">
+                            <span style="color: var(--neon-green); font-family: var(--font-mono); font-weight: bold; font-size: 1.1rem;"><i class="fas fa-check"></i></span>
+                        </div>
+                        <div class="glass-panel" style="padding: 30px; border-top-color: var(--neon-green);">
+                            <span class="tech-font green-text" style="font-size: 0.8rem; letter-spacing: 3px;" data-aos="fade-up" data-aos-delay="100">COMPLETION</span>
+                            <h3 style="color: #fff; font-size: 1.6rem; margin: 10px 0 15px 0; font-family: var(--font-head);" data-aos="fade-up" data-aos-delay="200">Abnahme & White-Glove</h3>
+                            <p style="color: #aaa; font-size: 1.05rem; line-height: 1.6;" data-aos="fade-up" data-aos-delay="300">
+                                Wir übergeben Ihr Projekt erst, wenn jede Schublade lautlos schließt und das kleinste Spaltmaß exakt justiert ist. Sie inspizieren die Arbeit in Ruhe. Im Anschluss erhalten Sie Ihre gewerbliche Rechnung (für Ihre Steuervorteile) und können bequem vor Ort per Karte, Apple Pay oder Echtzeit-Überweisung zahlen. Wir verlassen Ihr Zuhause besenrein.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="kalkulation" class="section-padding bg-dark animated-grid-bg">
+            <div class="container">
+                <div class="section-header center" data-aos="fade-up">
+                    <div class="pre-title">INVESTITIONS-MODELLE</div>
+                    <h2 class="section-heading">Ehrliche Preise für <span class="gold-text">ehrliches Handwerk.</span></h2>
+                    <p class="section-subtitle" style="margin: 0 auto;">Wir nutzen ein hybrides System aus Festpreisen für normierte Möbel und fairen Stundensätzen für Individualarbeiten.</p>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-top: 60px;">
+                    
+                    <div class="glass-panel" style="padding: 40px; display: flex; flex-direction: column; position: relative;" data-aos="fade-up" data-aos-delay="100">
+                        <i class="fas fa-stopwatch" style="font-size: 3rem; color: var(--neon-cyan); margin-bottom: 20px;" data-aos="zoom-in" data-aos-delay="200"></i>
+                        <h3 style="font-family: var(--font-head); color: #fff; font-size: 1.8rem; margin-bottom: 5px;">Flex-Modus</h3>
+                        <p style="color: #888; font-size: 0.9rem; font-family: var(--font-mono); margin-bottom: 20px;">FÜR EINZELMÖBEL & TECH</p>
+                        
+                        <div style="font-size: 3rem; font-family: var(--font-head); color: #fff; font-weight: 800; margin-bottom: 20px;" data-aos="fade-up" data-aos-delay="300">
+                            Stunde <span style="font-size: 1rem; color: #888; font-weight: normal; font-family: var(--font-body);">/ Monteur</span>
+                        </div>
+                        
+                        <ul style="list-style: none; padding: 0; margin-bottom: 40px; flex-grow: 1;">
+                            <li data-aos="fade-up" data-aos-delay="400" style="margin-bottom: 15px; color: #ccc; display: flex; gap: 10px;"><i class="fas fa-check cyan-text" style="margin-top: 5px;"></i> Faire 30-Minuten-Taktung nach der ersten Stunde</li>
+                            <li data-aos="fade-up" data-aos-delay="500" style="margin-bottom: 15px; color: #ccc; display: flex; gap: 10px;"><i class="fas fa-check cyan-text" style="margin-top: 5px;"></i> Inklusive Standard-Verbrauchsmaterial (Fischer Dübel etc.)</li>
+                            <li data-aos="fade-up" data-aos-delay="600" style="margin-bottom: 15px; color: #ccc; display: flex; gap: 10px;"><i class="fas fa-check cyan-text" style="margin-top: 5px;"></i> Inklusive Laser-Messtechnik Einsatz</li>
+                            <li data-aos="fade-up" data-aos-delay="700" style="margin-bottom: 15px; color: #ccc; display: flex; gap: 10px;"><i class="fas fa-check cyan-text" style="margin-top: 5px;"></i> Perfekt für: TV-Wandmontagen, Lampen-Installationen & Reparaturen</li>
+                        </ul>
+                        
+                        <button onclick="MissionOS.open()" class="btn btn-holographic" style="width: 100%; justify-content: center;" data-aos="zoom-in" data-aos-delay="800">Tarif anfragen</button>
+                    </div>
+
+                    <div class="glass-panel" style="padding: 40px; display: flex; flex-direction: column; position: relative; border-color: var(--neon-gold); background: rgba(255,215,0,0.03); transform: scale(1.05); z-index: 10; box-shadow: 0 30px 60px rgba(0,0,0,0.8), inset 0 0 20px rgba(255,215,0,0.05);" data-aos="fade-up" data-aos-delay="200">
+                        <div style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--neon-gold); color: #000; padding: 6px 20px; border-radius: 20px; font-family: var(--font-head); font-weight: 800; font-size: 0.8rem; letter-spacing: 1px; box-shadow: 0 5px 15px rgba(255,215,0,0.3);">MEIST GEBUCHT</div>
+                        
+                        <i class="fas fa-cube" style="font-size: 3rem; color: var(--neon-gold); margin-bottom: 20px;" data-aos="zoom-in" data-aos-delay="300"></i>
+                        <h3 style="font-family: var(--font-head); color: #fff; font-size: 1.8rem; margin-bottom: 5px;">System-Festpreis</h3>
+                        <p style="color: #888; font-size: 0.9rem; font-family: var(--font-mono); margin-bottom: 20px;">FÜR PAX, BESTÅ & BIOHORT</p>
+                        
+                        <div style="font-size: 3rem; font-family: var(--font-head); color: #fff; font-weight: 800; margin-bottom: 20px;" data-aos="fade-up" data-aos-delay="400">
+                            Pauschal <span style="font-size: 1rem; color: #888; font-weight: normal; font-family: var(--font-body);">/ Modul</span>
+                        </div>
+                        
+                        <ul style="list-style: none; padding: 0; margin-bottom: 40px; flex-grow: 1;">
+                            <li data-aos="fade-up" data-aos-delay="500" style="margin-bottom: 15px; color: #fff; display: flex; gap: 10px; font-weight: 600;"><i class="fas fa-shield-alt green-text" style="margin-top: 5px;"></i> Volle Festpreis-Garantie. Kein Risiko für Sie.</li>
+                            <li data-aos="fade-up" data-aos-delay="600" style="margin-bottom: 15px; color: #ccc; display: flex; gap: 10px;"><i class="fas fa-check gold-text" style="margin-top: 5px;"></i> Gilt komplett für Korpusse, Türen & gesamte Inneneinrichtung</li>
+                            <li data-aos="fade-up" data-aos-delay="700" style="margin-bottom: 15px; color: #ccc; display: flex; gap: 10px;"><i class="fas fa-check gold-text" style="margin-top: 5px;"></i> Schwerlast-Wandverankerung (Kippsicherung) immer inklusive</li>
+                            <li data-aos="fade-up" data-aos-delay="800" style="margin-bottom: 15px; color: #ccc; display: flex; gap: 10px;"><i class="fas fa-check gold-text" style="margin-top: 5px;"></i> Besenreine Müll-Bündelung für einfache Entsorgung</li>
+                            <li data-aos="fade-up" data-aos-delay="900" style="margin-bottom: 15px; color: #ccc; display: flex; gap: 10px;"><i class="fas fa-check gold-text" style="margin-top: 5px;"></i> End-Justierung aller Scharniere und Dämpfer</li>
+                        </ul>
+                        
+                        <button onclick="MissionOS.open()" class="btn btn-gold" style="width: 100%; justify-content: center;" data-aos="zoom-in" data-aos-delay="1000">Festpreis berechnen</button>
+                    </div>
+
+                    <div class="glass-panel" style="padding: 40px; display: flex; flex-direction: column; position: relative;" data-aos="fade-up" data-aos-delay="300">
+                        <i class="fas fa-project-diagram" style="font-size: 3rem; color: var(--neon-pink); margin-bottom: 20px;" data-aos="zoom-in" data-aos-delay="400"></i>
+                        <h3 style="font-family: var(--font-head); color: #fff; font-size: 1.8rem; margin-bottom: 5px;">Project-Level</h3>
+                        <p style="color: #888; font-size: 0.9rem; font-family: var(--font-mono); margin-bottom: 20px;">FÜR KÜCHEN & USM / B2B</p>
+                        
+                        <div style="font-size: 3rem; font-family: var(--font-head); color: #fff; font-weight: 800; margin-bottom: 20px;" data-aos="fade-up" data-aos-delay="500">
+                            Projekt <span style="font-size: 1rem; color: #888; font-weight: normal; font-family: var(--font-body);">/ Budget</span>
+                        </div>
+                        
+                        <ul style="list-style: none; padding: 0; margin-bottom: 40px; flex-grow: 1;">
+                            <li data-aos="fade-up" data-aos-delay="600" style="margin-bottom: 15px; color: #ccc; display: flex; gap: 10px;"><i class="fas fa-check pink-text" style="margin-top: 5px;"></i> Maßgeschneidertes Gesamtangebot nach Aufwandsschätzung</li>
+                            <li data-aos="fade-up" data-aos-delay="700" style="margin-bottom: 15px; color: #ccc; display: flex; gap: 10px;"><i class="fas fa-check pink-text" style="margin-top: 5px;"></i> Inklusive Festool-Sägearbeiten für Arbeitsplatten / Spülen</li>
+                            <li data-aos="fade-up" data-aos-delay="800" style="margin-bottom: 15px; color: #ccc; display: flex; gap: 10px;"><i class="fas fa-check pink-text" style="margin-top: 5px;"></i> Mechanische Wasseranschlüsse (Siphon, Armatur)</li>
+                            <li data-aos="fade-up" data-aos-delay="900" style="margin-bottom: 15px; color: #ccc; display: flex; gap: 10px;"><i class="fas fa-check pink-text" style="margin-top: 5px;"></i> B2B Massen-Rollouts für Praxen und Büros (USM Haller)</li>
+                        </ul>
+                        
+                        <button onclick="MissionOS.open()" class="btn btn-holographic" style="width: 100%; justify-content: center; border-color: var(--neon-pink); color: var(--neon-pink);" data-aos="zoom-in" data-aos-delay="1000">Projekt besprechen</button>
+                    </div>
+
+                </div>
+                
+                <div class="glass-panel" style="padding: 20px; text-align: center; margin-top: 50px; background: rgba(0,0,0,0.5);" data-aos="fade-up">
+                    <p style="color: #888; font-size: 0.85rem; font-family: var(--font-mono); margin: 0;">
+                        *Alle genannten Preise verstehen sich zuzüglich der gesetzlichen Mehrwertsteuer. Anfahrtskosten werden als transparente Pauschale basierend auf unserem Zonensystem (Augsburg / München / Umland) im Angebot vorab exakt ausgewiesen. Keine Kilometerzähler-Tricks.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-padding bg-darker pulse-bg">
+            <div class="container">
+                <div class="split-layout">
+                    <div class="text-col" data-aos="fade-right">
+                        <h2 class="section-heading">Das Deutsche <span class="gold-text">Rechtssystem</span> zu Ihrem Vorteil.</h2>
+                        <div class="desc-line">Wir operieren 100% legal, versichert und transparent. Das schützt nicht nur Sie, sondern bringt Ihnen echtes Geld vom Finanzamt zurück.</div>
+                        
+                        <div style="display: flex; gap: 20px; margin-top: 40px;" data-aos="fade-up" data-aos-delay="100">
+                            <i class="fas fa-file-invoice-dollar gold-text" style="font-size: 2.5rem; margin-top: 5px;"></i>
+                            <div>
+                                <h4 style="font-family: var(--font-head); font-size: 1.3rem; color: #fff; margin-bottom: 10px;">20% Steuervorteil (Legal Hack)</h4>
+                                <p style="color: #aaa; font-size: 1rem; line-height: 1.6;">Da wir ein offiziell eingetragenes Handwerksunternehmen sind, können Sie unsere Arbeits- und Anfahrtskosten als <strong>"Haushaltsnahe Handwerkerleistungen" (§ 35a EStG)</strong> direkt von Ihrer Einkommenssteuer absetzen. Der Staat erstattet Ihnen 20% unserer Arbeitskosten (bis zu 1.200€ pro Jahr). Unsere detaillierten Rechnungen sind vom Finanzamt genau dafür anerkannt.</p>
+                            </div>
+                        </div>
+                        
+                        <div style="display: flex; gap: 20px; margin-top: 40px;" data-aos="fade-up" data-aos-delay="300">
+                            <i class="fas fa-shield-alt cyan-text" style="font-size: 2.5rem; margin-top: 5px;"></i>
+                            <div>
+                                <h4 style="font-family: var(--font-head); font-size: 1.3rem; color: #fff; margin-bottom: 10px;">Vollumfängliche Betriebshaftpflicht</h4>
+                                <p style="color: #aaa; font-size: 1rem; line-height: 1.6;">Ein unachtsamer Handwerker lässt einen Akkuschrauber fallen und ruiniert Ihr 10.000€ Echtholz-Parkett? Bei Schattenwirtschaft bleiben Sie auf dem Schaden sitzen. Wir arbeiten mit absoluter Vorsicht – und für den Bruchteil eines Fehlers schützt Sie unsere gewerbliche Betriebshaftpflichtversicherung mit einer Deckungssumme in Millionenhöhe. Null Risiko für Sie.</p>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; gap: 20px; margin-top: 40px;" data-aos="fade-up" data-aos-delay="500">
+                            <i class="fas fa-credit-card green-text" style="font-size: 2.5rem; margin-top: 5px;"></i>
+                            <div>
+                                <h4 style="font-family: var(--font-head); font-size: 1.3rem; color: #fff; margin-bottom: 10px;">100% Cashless Payment</h4>
+                                <p style="color: #aaa; font-size: 1rem; line-height: 1.6;">Wir hantieren nicht mit Schwarzgeld oder "unter der Hand" Geschäften. Die Bezahlung erfolgt nach erfolgreicher Montage und Abnahme hochmodern per EC-Karte (wir bringen ein Terminal mit), Apple Pay, Google Pay oder per Echtzeit-Überweisung.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="image-col" data-aos="fade-left" data-aos-delay="200">
+                        <div class="glass-panel" style="padding: 40px; background: linear-gradient(135deg, #111, #050505); border: 2px dashed rgba(212,175,55,0.4); border-radius: 16px; position: relative; box-shadow: inset 0 0 40px rgba(212,175,55,0.05);">
+                            <span style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: #111; color: var(--neon-gold); padding: 5px 20px; font-family: var(--font-mono); border: 1px solid var(--neon-gold); border-radius: 20px; font-size: 0.8rem; font-weight: bold; letter-spacing: 2px;">[ SYSTEM HACKS ]</span>
+                            
+                            <h3 class="center" style="color: #fff; font-size: 1.8rem; margin-top: 10px; margin-bottom: 10px; font-family: var(--font-head);">Wie Sie <span class="gold-text">Kosten senken.</span></h3>
+                            <p class="center" style="color: #888; font-size: 0.95rem; margin-bottom: 40px;">Fachhandwerker-Zeit ist teuer. Übernehmen Sie die unqualifizierte Vorarbeit, und wir benötigen weniger teure Montage-Stunden.</p>
+
+                            <div style="display: flex; flex-direction: column; gap: 20px;">
+                                <div style="background: rgba(0,0,0,0.6); padding: 20px; border-radius: 8px; border-left: 3px solid var(--neon-gold); display: flex; gap: 20px; align-items: center;" data-aos="zoom-in" data-aos-delay="300">
+                                    <i class="fas fa-box-open gold-text" style="font-size: 1.8rem;"></i>
+                                    <div>
+                                        <strong style="color: #fff; font-size: 1.1rem; display: block; margin-bottom: 5px;">In-Room Logistik</strong>
+                                        <p style="color: #aaa; font-size: 0.9rem; line-height: 1.5;">Tragen Sie die schweren Möbelpakete selbst vom Flur in den exakten Zielraum. Das erspart uns das teure Kistenschleppen und wertvolle Montage-Zeit.</p>
+                                    </div>
+                                </div>
+
+                                <div style="background: rgba(0,0,0,0.6); padding: 20px; border-radius: 8px; border-left: 3px solid var(--neon-cyan); display: flex; gap: 20px; align-items: center;" data-aos="zoom-in" data-aos-delay="400">
+                                    <i class="fas fa-broom cyan-text" style="font-size: 1.8rem;"></i>
+                                    <div>
+                                        <strong style="color: #fff; font-size: 1.1rem; display: block; margin-bottom: 5px;">Clear the Arena</strong>
+                                        <p style="color: #aaa; font-size: 0.9rem; line-height: 1.5;">Wir brauchen Platz für Werkzeug und liegende Korpusse. Demontieren Sie alte Möbel vorab und schaffen Sie eine komplett freie Arbeitsfläche von min. 2x3 Metern.</p>
+                                    </div>
+                                </div>
+
+                                <div style="background: rgba(0,0,0,0.6); padding: 20px; border-radius: 8px; border-left: 3px solid var(--neon-pink); display: flex; gap: 20px; align-items: center;" data-aos="zoom-in" data-aos-delay="500">
+                                    <i class="fas fa-recycle pink-text" style="font-size: 1.8rem;"></i>
+                                    <div>
+                                        <strong style="color: #fff; font-size: 1.1rem; display: block; margin-bottom: 5px;">DIY Müll-Management</strong>
+                                        <p style="color: #aaa; font-size: 0.9rem; line-height: 1.5;">Wir bündeln alle Kartonagen besenrein in Ihrem Wohnzimmer. Wenn Sie das Altpapier selbst zum Wertstoffhof fahren, entfällt unsere kostenpflichtige Transport- und Entsorgungspauschale komplett.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq-smart" class="section-padding bg-dark animated-grid-bg">
+            <div class="container relative-z">
+                <div class="section-header center" data-aos="fade-up">
+                    <div class="pre-title">KUNDENSERVICE</div>
+                    <h2 class="section-heading">Konditionen <span class="gold-text">FAQ</span></h2>
+                    <p class="section-subtitle" style="margin-left: auto; margin-right: auto;">Die wichtigsten Fragen rund um unsere Preise und Vertragsbedingungen klären wir hier im Vorfeld.</p>
+                </div>
+
+                <div class="faq-tile-grid" data-aos="fade-up" style="max-width: 1000px; margin: 0 auto;">
+                    
+                    <div class="faq-module glass-panel" onclick="window.toggleModule(this)">
+                        <div class="module-header">
+                            <div class="m-icon"><i class="fas fa-puzzle-piece"></i></div>
+                            <div class="m-title">Fehlende Bauteile <span>(Was passiert, wenn IKEA etwas vergisst?)</span></div>
+                            <div class="m-plus">+</div>
+                        </div>
+                        <div class="module-body">
+                            <div class="faq-entry">
+                                <p>Dies ist ein häufiges Szenario, gerade bei Großlieferungen. Wenn ein Bauteil fehlt, montieren wir das System soweit es technisch und sicherheitstechnisch vertretbar ist.<br><br>Für die zweite Anfahrt zur Endmontage des fehlenden Teils (sofern dieses von Ihnen nachbeschafft wurde) berechnen wir lediglich eine stark reduzierte, faire Kulanz-Pauschale nach Aufwand und Anfahrt, jedoch nicht den vollen Preis erneut.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-module glass-panel" onclick="window.toggleModule(this)">
+                        <div class="module-header">
+                            <div class="m-icon"><i class="fas fa-car"></i></div>
+                            <div class="m-title">Anfahrt & Regionen <span>(Wie berechnen Sie die Anfahrtskosten?)</span></div>
+                            <div class="m-plus">+</div>
+                        </div>
+                        <div class="module-body">
+                            <div class="faq-entry">
+                                <p>Unsere Anfahrtskosten sind in klare, transparente Zonen gestaffelt, basierend auf unserem Startpunkt im Zentrum von Augsburg. <br><br>Zone 1 (Augsburg Stadt) ist am günstigsten. Zone 2 (Münchener Westen, Starnberg) erfordert eine mittlere Pauschale. München Zentrum und Osten bilden Zone 3 aufgrund der hohen Stau- und Fahrtzeiten. Den genauen Betrag für Ihre Postleitzahl weisen wir im Festpreisangebot exakt aus.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-module glass-panel" onclick="window.toggleModule(this)">
+                        <div class="module-header">
+                            <div class="m-icon"><i class="fas fa-wall"></i></div>
+                            <div class="m-title">Problematische Wände <span>(Altbau, Rigips, schräge Böden)</span></div>
+                            <div class="m-plus">+</div>
+                        </div>
+                        <div class="module-body">
+                            <div class="faq-entry">
+                                <p>Dafür buchen Sie einen Profi. Schiefe Böden im Altbau gleichen wir durch millimetergenaue Laser-Messung und spezielle Unterlegkeile so aus, dass die Schranktüren perfekt schließen.<br><br>Für problematische Wände (Rigips, bröseliger Altbauputz) führen wir spezielle Hohlraumdübel und Injektionsmörtel von Markenherstellern (fischer, Tox) mit, um eine sichere Schwerlastverankerung zu garantieren. Sollte der Materialaufwand extrem hoch sein, besprechen wir etwaige Zusatzkosten transparent vor Ort <em>bevor</em> wir bohren.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <div class="marquee-wrapper">
+            <div class="marquee-track">
+                <span><i class="fas fa-file-invoice-dollar gold-text"></i> 20% STEUERLICH ABSETZBAR</span>
+                <span><i class="fas fa-lock gold-text"></i> ABSOLUTE FESTPREIS GARANTIE</span>
+                <span><i class="fas fa-shield-alt gold-text"></i> BETRIEBSHAFTPFLICHT VERSICHERT</span>
+                <span><i class="fas fa-credit-card gold-text"></i> KARTENZAHLUNG VOR ORT</span>
+                <span><i class="fas fa-file-signature gold-text"></i> GEWERBLICHE RECHNUNG</span>
+                
+                <span><i class="fas fa-file-invoice-dollar gold-text"></i> 20% STEUERLICH ABSETZBAR</span>
+                <span><i class="fas fa-lock gold-text"></i> ABSOLUTE FESTPREIS GARANTIE</span>
+                <span><i class="fas fa-shield-alt gold-text"></i> BETRIEBSHAFTPFLICHT VERSICHERT</span>
+                <span><i class="fas fa-credit-card gold-text"></i> KARTENZAHLUNG VOR ORT</span>
+                <span><i class="fas fa-file-signature gold-text"></i> GEWERBLICHE RECHNUNG</span>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="mega-footer circuit-bg">
         <div class="container relative-z">
-            <span class="section-tag" data-aos="fade-down" style="border-color: #fff; color: #fff;">RADICAL TRANSPARENCY</span>
-            <h1 class="glitch-header" style="font-size: 4.5rem; margin: 20px 0;" data-aos="zoom-in">
-                <span class="white">HANDWERK OHNE</span><br>
-                <span class="gold-text">BÖSE ÜBERRASCHUNGEN.</span>
-            </h1>
-            <p style="color: #ccc; font-size: 1.2rem; max-width: 700px; margin: 0 auto; line-height: 1.8;" data-aos="fade-up" data-aos-delay="200">
-                In Deutschland ist die Angst vor versteckten Handwerkerkosten groß. Wir ändern das. 
-                Klare Festpreise. Logische Stundensätze. Volle steuerliche Absetzbarkeit. 
-                <strong>Sie haben immer die Kontrolle.</strong>
-            </p>
-        </div>
-    </section>
 
-    <section class="section-padding bg-dark">
-        <div class="container">
-            <div class="section-header center" data-aos="fade-up">
-                <span class="section-tag">MISSION PROTOCOL</span>
-                <h2>Der System-<span class="gold-text">Ablauf</span></h2>
-                <p>Von Ihrer Anfrage bis zur perfekten Schlüsselübergabe.</p>
-            </div>
-
-            <div class="protocol-container">
-                <div class="protocol-line"><div class="protocol-line-fill" id="scrollProgress"></div></div>
-                
-                <div class="protocol-node active" data-aos="fade-right">
-                    <div class="node-marker"><i class="fas fa-check"></i></div>
-                    <span class="p-step">PHASE 01</span>
-                    <h3 class="p-title">Datentransfer & Analyse</h3>
-                    <div class="p-desc">
-                        <p>Sie übermitteln uns Ihr Vorhaben über unser digitales <a href="javascript:void(0)" onclick="MissionOS.open()" style="color:var(--gold);">Mission-Control System</a> oder per WhatsApp. <strong>Wichtig:</strong> Senden Sie uns Links (z.B. IKEA Planungs-Code) und Fotos vom Raum. Wir prüfen sofort Statik, Steckdosen und Raumhöhe.</p>
-                    </div>
-                </div>
-
-                <div class="protocol-node" data-aos="fade-right" data-aos-delay="100">
-                    <div class="node-marker"><i class="fas fa-check"></i></div>
-                    <span class="p-step">PHASE 02</span>
-                    <h3 class="p-title">Das Angebot (Fix vs. Cap)</h3>
-                    <div class="p-desc">
-                        <p>Innerhalb von 24 Stunden erhalten Sie unsere Kalkulation. <br><br>
-                        <i class="fas fa-lock gold-text"></i> <strong>Festpreis-Garantie:</strong> Bei Standard-Systemen (PAX, BESTA) wissen Sie vorab auf den Cent genau, was es kostet.<br>
-                        <i class="fas fa-stopwatch gold-text"></i> <strong>Cost-Cap:</strong> Bei komplexen Umbauten schätzen wir die Stunden fair ab, sodass Sie ein sicheres Budget-Limit haben.</p>
-                    </div>
-                </div>
-
-                <div class="protocol-node" data-aos="fade-right" data-aos-delay="200">
-                    <div class="node-marker"><i class="fas fa-check"></i></div>
-                    <span class="p-step">PHASE 03</span>
-                    <h3 class="p-title">Der "Surgery Day" (Montage)</h3>
-                    <div class="p-desc">
-                        <p>Wir treffen pünktlich ein. <strong>Protokoll:</strong> 1. Bodenschutzvlies auslegen. 2. Laser-Nivellierung aufbauen. 3. Systematische Montage. Wir arbeiten mit eigenem Festool/Bosch Professional Equipment und integrierter Staubabsaugung. Ihr Zuhause bleibt sauber.</p>
-                    </div>
-                </div>
-
-                <div class="protocol-node" data-aos="fade-right" data-aos-delay="300">
-                    <div class="node-marker"><i class="fas fa-check"></i></div>
-                    <span class="p-step">PHASE 04</span>
-                    <h3 class="p-title">Abnahme & White-Glove</h3>
-                    <div class="p-desc">
-                        <p>Wir verlassen das Objekt erst, wenn jede Tür im perfekten Spaltmaß sitzt und der Boden gesaugt ist. Gemeinsame Qualitätskontrolle. Sie erhalten eine <strong>Gewerbliche Rechnung</strong> (absetzbar!) und können bequem per Karte oder Überweisung zahlen.</p>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <section class="section-padding bg-darker" style="border-top: 1px solid #222;">
-        <div class="container">
-            <div class="section-header center" data-aos="fade-up">
-                <h2>System <span class="gold-text">Kalkulation</span></h2>
-                <p>Ehrliche Preise für ehrliches Handwerk in München & Augsburg.</p>
-            </div>
-
-            <div class="pricing-deck">
-                
-                <div class="price-hologram" data-aos="fade-up">
-                    <h3 class="tier-name">Flex-Modus</h3>
-                    <p style="color:#888; font-size:0.9rem;">Für Einzelmöbel & Tech-Setups</p>
-                    <div class="tier-cost">Stunde <span>/ Person</span></div>
-                    <ul class="tier-features">
-                        <li><i class="fas fa-check-circle"></i> Abrechnung im fairen 30-Minuten-Takt</li>
-                        <li><i class="fas fa-check-circle"></i> Inklusive aller Standard-Bohrer & Dübel</li>
-                        <li><i class="fas fa-check-circle"></i> Inklusive Laser-Nivellierung</li>
-                        <li><i class="fas fa-check-circle"></i> Ideal für Kleinmöbel, TV-Montagen oder Reparaturen</li>
-                    </ul>
-                    <button onclick="MissionOS.open()" class="btn btn-holographic" style="width:100%; justify-content:center;">Tarif anfragen</button>
-                </div>
-
-                <div class="price-hologram featured" data-aos="fade-up" data-aos-delay="100">
-                    <div class="price-badge-pro">MOST POPULAR</div>
-                    <h3 class="tier-name">System-Festpreis</h3>
-                    <p style="color:#888; font-size:0.9rem;">Für IKEA PAX, BESTA & Betten</p>
-                    <div class="tier-cost">Pauschal <span>/ Modul</span></div>
-                    <ul class="tier-features">
-                        <li><i class="fas fa-shield-alt" style="color:#39ff14;"></i> <strong>Keine versteckten Aufschläge</strong></li>
-                        <li><i class="fas fa-check-circle"></i> Gilt komplett (Korpus, Türen, Inneneinrichtung)</li>
-                        <li><i class="fas fa-check-circle"></i> Schwerlast-Wandverankerung inklusive</li>
-                        <li><i class="fas fa-check-circle"></i> Müll-Bündelung für einfache Entsorgung</li>
-                        <li><i class="fas fa-check-circle"></i> Justierung aller Scharniere & Schiebetüren</li>
-                    </ul>
-                    <button onclick="MissionOS.open()" class="btn btn-gold" style="width:100%;">Festpreis berechnen</button>
-                </div>
-
-                <div class="price-hologram" data-aos="fade-up" data-aos-delay="200">
-                    <h3 class="tier-name">Projekt-Level</h3>
-                    <p style="color:#888; font-size:0.9rem;">Für Küchen & USM / Büro</p>
-                    <div class="tier-cost">Projekt <span>/ Budget</span></div>
-                    <ul class="tier-features">
-                        <li><i class="fas fa-check-circle"></i> Maßgeschneidertes Gesamtangebot</li>
-                        <li><i class="fas fa-check-circle"></i> Festool-Sägearbeiten (Arbeitsplatten)</li>
-                        <li><i class="fas fa-check-circle"></i> Wasseranschlüsse (Spüle/Siphon)</li>
-                        <li><i class="fas fa-check-circle"></i> B2B Weekend-Warrior Service verfügbar</li>
-                    </ul>
-                    <button onclick="MissionOS.open()" class="btn btn-holographic" style="width:100%; justify-content:center;">Projekt besprechen</button>
-                </div>
-
-            </div>
-            
-            <p class="center" style="color: #666; font-size: 0.85rem; margin-top: 20px;">
-                *Alle Preise verstehen sich zzgl. gesetzlicher MwSt. Anfahrtskosten werden als transparente Pauschale (Zonensystem Aux/Muc) vorab im Angebot ausgewiesen.
-            </p>
-        </div>
-    </section>
-
-    <section class="section-padding bg-dark">
-        <div class="container">
-            <div class="budget-hack-zone" data-aos="zoom-in">
-                <span style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: #111; color: var(--gold); padding: 5px 20px; font-family: monospace; border: 1px solid var(--gold); border-radius: 20px;">[ SYSTEM HACKS ]</span>
-                
-                <div style="text-align: center; margin-bottom: 40px;">
-                    <h2 style="color: #fff; font-family: 'Space Grotesk'; font-size: 2.5rem;">Wie Sie <span class="gold-text">Kosten senken.</span></h2>
-                    <p style="color: #aaa;">Zeit ist Geld. Übernehmen Sie die unqualifizierte Vorarbeit, und wir benötigen weniger teure Montage-Stunden.</p>
-                </div>
-
-                <div class="grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
-                    <div class="hack-item" data-aos="fade-up" data-aos-delay="100">
-                        <i class="fas fa-box-open"></i>
-                        <div>
-                            <strong style="color:#fff; display:block;">Paket-Logistik</strong>
-                            <span style="color:#888; font-size:0.85rem;">Tragen Sie die schweren Pakete selbst in den Zielraum. Das spart uns bis zu 45 Minuten Laufzeit.</span>
-                        </div>
-                    </div>
-                    <div class="hack-item" data-aos="fade-up" data-aos-delay="200">
-                        <i class="fas fa-broom"></i>
-                        <div>
-                            <strong style="color:#fff; display:block;">Clear the Area</strong>
-                            <span style="color:#888; font-size:0.85rem;">Wir brauchen Platz. Bauen Sie alte Möbel vorher ab und schaffen Sie eine freie "Arena" für den Aufbau.</span>
-                        </div>
-                    </div>
-                    <div class="hack-item" data-aos="fade-up" data-aos-delay="300">
-                        <i class="fas fa-recycle"></i>
-                        <div>
-                            <strong style="color:#fff; display:block;">Müll-Management</strong>
-                            <span style="color:#888; font-size:0.85rem;">Wenn Sie Kartonagen selbst zum Wertstoffhof fahren, entfällt unsere kostenpflichtige Entsorgungspauschale.</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div style="margin-top: 50px; padding-top: 30px; border-top: 1px dashed rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap;" data-aos="fade-in">
-                    <div style="color: #fff; font-size: 1.1rem;">
-                        Montage-Budget gespart? <br>
-                        <span style="color:#888; font-size:0.9rem;">Investieren Sie es in das Herzstück Ihres Zuhauses.</span>
-                    </div>
-                    <a href="magazine.html#nuria-shop" class="btn btn-gold" style="border-radius: 30px; padding: 10px 30px;"><i class="fas fa-shopping-bag"></i> Zur Nuria Boutique</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section-padding bg-darker">
-        <div class="container">
-            <div class="section-header center" data-aos="fade-up">
-                <h2>Das Deutsche <span class="gold-text">Rechtssystem</span></h2>
-                <p>Volle Sicherheit für Sie als Auftraggeber.</p>
-            </div>
-            
-            <div class="service-detail-grid">
-                <div class="price-hologram" style="padding: 30px;" data-aos="fade-up">
-                    <h4 style="color:var(--cyber-green); margin-bottom:10px;"><i class="fas fa-file-invoice-dollar"></i> 20% Steuer zurück</h4>
-                    <p style="color:#aaa; font-size:0.95rem;">Sie können unsere Arbeits- und Anfahrtskosten als "Haushaltsnahe Dienstleistungen" (§ 35a EStG) direkt von Ihrer Einkommenssteuer absetzen. Die Rechnung wird exakt dafür ausgestellt.</p>
-                </div>
-                <div class="price-hologram" style="padding: 30px;" data-aos="fade-up" data-aos-delay="100">
-                    <h4 style="color:var(--gold); margin-bottom:10px;"><i class="fas fa-shield-alt"></i> Betriebshaftpflicht</h4>
-                    <p style="color:#aaa; font-size:0.95rem;">Ein Kratzer im teuren Parkett? Ein gesprungener Spiegel? Keine Panik. Wir sind ein offiziell angemeldetes Handwerksgewerbe und vollumfänglich versichert. Null Risiko für Sie.</p>
-                </div>
-                <div class="price-hologram" style="padding: 30px;" data-aos="fade-up" data-aos-delay="200">
-                    <h4 style="color:white; margin-bottom:10px;"><i class="fas fa-credit-card"></i> 100% Cashless</h4>
-                    <p style="color:#aaa; font-size:0.95rem;">Wir hantieren nicht mit Schwarzgeld. Die Bezahlung erfolgt nach erfolgreicher Montage und Abnahme hochmodern per EC-Karte (Terminal vor Ort), Apple Pay, Google Pay oder Echtzeit-Überweisung.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="mega-footer">
-        <div class="footer-ticker">
-            <div class="ticker-track">
-                <span>
-                    +++ PREMIUM MÖBELMONTAGE • AUGSBURG & MÜNCHEN • IKEA PAX EXPERTEN • BÜROEINRICHTUNG & USM HALLER • KÜCHENINSTALLATION • TV WANDMONTAGE • KEINE VERSTECKTEN KOSTEN • SAUBERKEIT GARANTIERT • ENGINEERING LEVEL QUALITY • +++
-                </span>
-                <span>
-                    +++ PREMIUM MÖBELMONTAGE • AUGSBURG & MÜNCHEN • IKEA PAX EXPERTEN • BÜROEINRICHTUNG & USM HALLER • KÜCHENINSTALLATION • TV WANDMONTAGE • KEINE VERSTECKTEN KOSTEN • SAUBERKEIT GARANTIERT • ENGINEERING LEVEL QUALITY • +++
-                </span>
-            </div>
-        </div>
-
-        <div class="container relative-z">
             <div class="footer-grid">
                 
                 <div class="f-col brand-col">
-                    <div class="footer-logo">RAPHAEL <span>LEZIUS</span></div>
-                    <p class="tagline">Präzision ist kein Zufall.<br>Es ist ein Standard.</p>
+                    <div class="brand-text" style="font-size:2rem; letter-spacing: -1px; font-family: var(--font-head); font-weight: 800; color: #fff;">
+                        RAPHAEL <span class="gold-text">LEZIUS</span>
+                    </div>
+                    <p style="color:#888; font-size:0.95rem; margin-top:15px; font-weight: 300; line-height: 1.6;">
+                        Präzision. Qualität. Zuverlässigkeit.<br>Ihr zertifizierter Montage-Experte für Premium-Einrichtungen in Bayern.
+                    </p>
                     
-                    <div class="trust-badges-footer">
-                        <span class="t-badge"><i class="fas fa-shield-alt"></i> Versichert</span>
-                        <span class="t-badge"><i class="fas fa-check-circle"></i> Geprüft</span>
+                    <div style="display:flex; gap:20px; margin-top:25px; font-size:0.8rem; color:#bbb; font-weight: 700; font-family: var(--font-mono); letter-spacing: 1px;">
+                        <span><i class="fas fa-shield-alt gold-text"></i> VERSICHERT</span>
+                        <span><i class="fas fa-check-circle green-text"></i> GEPRÜFT</span>
                     </div>
 
-                    <div class="social-row">
-                        <a href="https://wa.me/491608194018" target="_blank" class="social-btn"><i class="fab fa-whatsapp"></i></a>
-                        <a href="#" target="_blank" class="social-btn"><i class="fab fa-instagram"></i></a>
-                        <a href="#" target="_blank" class="social-btn"><i class="fab fa-linkedin-in"></i></a>
+                    <div class="social-row" style="margin-top: 35px;">
+                        <a href="https://wa.me/491608194018" target="_blank" class="social-btn reactive-btn" onclick="if(window.vibrateDevice) window.vibrateDevice(10);"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" target="_blank" class="social-btn reactive-btn" onclick="if(window.vibrateDevice) window.vibrateDevice(10);"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
 
                 <div class="f-col">
-                    <h4 class="f-heading">Services</h4>
+                    <h4 class="f-heading">Leistungen</h4>
                     <ul class="footer-links">
-                        <li><a href="residential.html">IKEA PAX Aufbau</a></li>
-                        <li><a href="residential.html">Küchenmontage</a></li>
-                        <li><a href="office.html">Büromöbel & USM</a></li>
-                        <li><a href="tech.html">TV Wandmontage</a></li>
-                        <li><a href="tech.html">Smart Home Setup</a></li>
+                        <li><a href="residential.html">IKEA PAX Systemaufbau</a></li>
+                        <li><a href="residential.html">Küchenmontage & Schnitt</a></li>
+                        <li><a href="outdoor.html">Gartenhäuser & Outdoor</a></li>
+                        <li><a href="office.html">USM Haller & Gewerbe</a></li>
+                        <li><a href="tech.html">Akustikpaneele & Spezial</a></li>
                     </ul>
                 </div>
 
                 <div class="f-col">
-                    <h4 class="f-heading">Nuria Boutique</h4>
+                    <h4 class="f-heading">Informationen</h4>
                     <ul class="footer-links">
-                        <li><a href="magazine.html#nuria-storage">Körbe & Ordnung</a></li>
-                        <li><a href="magazine.html#nuria-kitchen">Tisch & Küche</a></li>
-                        <li><a href="magazine.html#nuria-textiles">Textilien</a></li>
+                        <li><a href="process-pricing.html" class="gold-text">Konditionen & Ablauf</a></li>
+                        <li><a href="area.html">Einsatzgebiet</a></li>
+                        <li><a href="gallery.html">Referenzen Galerie</a></li>
+                        <li><a href="magazine.html">Magazin & Blog</a></li>
+                        <li><a href="index.html#faq-smart">Häufige Fragen (FAQ)</a></li>
                     </ul>
-                    <div class="payment-row">
-                        <i class="fab fa-cc-paypal"></i>
-                        <i class="fab fa-cc-visa"></i>
-                        <i class="fab fa-cc-mastercard"></i>
-                    </div>
                 </div>
 
                 <div class="f-col">
@@ -414,12 +574,12 @@
                         <li><a href="impressum.html">Impressum</a></li>
                         <li><a href="datenschutz.html">Datenschutz</a></li>
                         <li><a href="agb.html">AGB & Widerruf</a></li>
-                        <li><a href="https://ec.europa.eu/consumers/odr" target="_blank">Streitschlichtung</a></li>
+                        <li><a href="#" onclick="event.preventDefault();">Cookie-Einstellungen</a></li>
                     </ul>
                 </div>
 
                 <div class="f-col contact-col">
-                    <h4 class="f-heading">Zentrale</h4>
+                    <h4 class="f-heading">Kontakt</h4>
                     <ul class="contact-list">
                         <li>
                             <i class="fas fa-map-marker-alt gold-icon"></i>
@@ -435,47 +595,211 @@
                         </li>
                     </ul>
                     
-                    <div class="op-status">
-                        <div class="status-dot-container">
-                            <div class="status-dot live"></div>
-                            <div class="status-pulse"></div>
+                    <div class="op-status" style="margin-top: 25px; padding: 15px; background: rgba(0,0,0,0.4); border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); display: inline-block;">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <div class="status-dot-container">
+                                <div class="status-dot"></div>
+                                <div class="status-pulse"></div>
+                            </div>
+                            <span style="font-family: var(--font-mono); font-size: 0.75rem; color: #888; text-transform: uppercase; letter-spacing: 1px;">System Status: <strong class="green-text">LIVE</strong></span>
                         </div>
-                        <span>Team Status: <strong class="glow-text">IM EINSATZ</strong></span>
                     </div>
                 </div>
             </div>
 
-            <div class="footer-bottom-bar">
-                <div class="copyright">
-                    &copy; 2026 Raphael Lezius. <span class="hide-mobile">Alle Rechte vorbehalten.</span>
+            <div class="footer-bottom-bar" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+                <div class="copyright" style="color: #666; font-size: 0.85rem; font-family: var(--font-mono);">
+                    &copy; <span id="copyright-year">2026</span> RAPHAEL LEZIUS. <span class="hide-mobile">ALLE RECHTE VORBEHALTEN.</span>
                 </div>
                 
-                <div class="developer-credit">
+                <div class="footer-payments" style="display: flex; gap: 20px; font-size: 1.8rem; color: #444;">
+                    <i class="fab fa-apple" title="Apple Pay" style="transition: 0.3s; cursor: pointer;" onmouseover="this.style.color='#FFD700'" onmouseout="this.style.color='#444'"></i>
+                    <i class="fab fa-google" title="Google Pay" style="transition: 0.3s; cursor: pointer;" onmouseover="this.style.color='#FFD700'" onmouseout="this.style.color='#444'"></i>
+                    <i class="fab fa-cc-paypal" title="PayPal" style="transition: 0.3s; cursor: pointer;" onmouseover="this.style.color='#FFD700'" onmouseout="this.style.color='#444'"></i>
+                    <i class="fab fa-cc-visa" title="Visa" style="transition: 0.3s; cursor: pointer;" onmouseover="this.style.color='#FFD700'" onmouseout="this.style.color='#444'"></i>
+                    <i class="fab fa-cc-mastercard" title="Mastercard" style="transition: 0.3s; cursor: pointer;" onmouseover="this.style.color='#FFD700'" onmouseout="this.style.color='#444'"></i>
+                    <i class="fas fa-credit-card" title="Klarna / Girocard" style="transition: 0.3s; cursor: pointer;" onmouseover="this.style.color='#FFD700'" onmouseout="this.style.color='#444'"></i>
+                </div>
+                
+                <div class="developer-credit" onclick="if(window.vibrateDevice) window.vibrateDevice(20);">
                     <span class="code-bracket">&lt;/&gt;</span>
-                    <span class="dev-text">ENGINEERED BY <span class="dev-name">IDRIS</span></span>
+                    <span class="dev-text" style="color: #666;">SYS_DEV <span class="dev-name" style="color: var(--neon-gold);">IDRIS</span></span>
                 </div>
             </div>
         </div>
     </footer>
 
-    <a href="https://wa.me/491608194018?text=Hallo%20Raphael,%20ich%20habe%20eine%20Anfrage%20zu%20Preisen%20und%20Ablauf..." target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
+    <a href="https://wa.me/491608194018" target="_blank" class="whatsapp-float reactive-btn" aria-label="WhatsApp Contact" onclick="if(window.vibrateDevice) window.vibrateDevice([30, 50, 30]);">
+        <div class="whatsapp-pulse"></div>
         <i class="fab fa-whatsapp"></i>
-        <span class="whatsapp-pulse"></span>
-        <div class="whatsapp-tooltip">Direkt-Kalkulation</div>
     </a>
+
+    <div id="missionOS" class="os-overlay">
+        <div class="os-backdrop" onclick="MissionOS.close()"></div>
+        
+        <div class="case-container">
+            <aside class="case-sidebar">
+                <div class="sidebar-header">
+                    <div class="os-pulse"></div>
+                    <span class="os-ver">SERVICE_PORTAL_v2.6</span>
+                </div>
+                
+                <nav class="case-steps">
+                    <div class="step-link active" id="nav1" onclick="if(window.vibrateDevice) window.vibrateDevice(10); MissionOS.setPhase(1)">
+                        <div class="step-num">01</div>
+                        <div class="step-txt">BASISDATEN <small>Wer sind Sie?</small></div>
+                    </div>
+                    <div class="step-link" id="nav2" onclick="if(window.vibrateDevice) window.vibrateDevice(10); MissionOS.setPhase(2)">
+                        <div class="step-num">02</div>
+                        <div class="step-txt">PROJEKT <small>Was soll gebaut werden?</small></div>
+                    </div>
+                    <div class="step-link" id="nav3" onclick="if(window.vibrateDevice) window.vibrateDevice(10); MissionOS.setPhase(3)">
+                        <div class="step-num">03</div>
+                        <div class="step-txt">LOGISTIK <small>Einsatzort & Etage</small></div>
+                    </div>
+                    <div class="step-link" id="nav4" onclick="if(window.vibrateDevice) window.vibrateDevice(10); MissionOS.setPhase(4)">
+                        <div class="step-num">04</div>
+                        <div class="step-txt">ABSCHLUSS <small>Anfrage senden</small></div>
+                    </div>
+                </nav>
+
+                <div class="live-stats">
+                    <div class="stat-box">
+                        <label style="font-size: 0.7rem; color: #888; font-weight: bold; letter-spacing: 2px; font-family: var(--font-mono);">GEWÄHLTE POSITIONEN</label>
+                        <div id="serviceCount" style="font-family: var(--font-head); font-size: 2.5rem; font-weight: 800; color: #000; line-height: 1;">00</div>
+                    </div>
+                    <div class="stat-box" style="margin-top: 30px;">
+                        <label style="font-size: 0.7rem; color: #888; font-weight: bold; letter-spacing: 2px; font-family: var(--font-mono);">SICHERHEIT</label>
+                        <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--neon-green); font-weight: bold; margin-top: 8px;">SSL_ENCRYPTED</div>
+                    </div>
+                </div>
+            </aside>
+
+            <main class="case-main">
+                <button class="case-close" aria-label="Schließen" onclick="if(window.vibrateDevice) window.vibrateDevice(20); MissionOS.close()">&times;</button>
+                
+                <form id="leziusCaseForm" action="https://formspree.io/f/YOUR_ID" method="POST">
+                    
+                    <div class="case-phase active" id="phase1">
+                        <h2 class="phase-title">Wer erteilt den Auftrag?</h2>
+                        <p class="phase-hint">Geben Sie Ihre Kontaktdaten für das unverbindliche Angebot an.</p>
+                        <div class="input-row">
+                            <div class="tech-input full-width">
+                                <input type="text" name="name" required placeholder=" ">
+                                <label>VOLLSTÄNDIGER NAME</label>
+                            </div>
+                        </div>
+                        <div class="input-row">
+                            <div class="tech-input">
+                                <input type="email" name="email" required placeholder=" ">
+                                <label>E-MAIL ADRESSE</label>
+                            </div>
+                            <div class="tech-input">
+                                <input type="tel" name="phone" required placeholder=" ">
+                                <label>TELEFONNUMMER</label>
+                            </div>
+                        </div>
+                        <div class="nav-controls">
+                            <button type="button" class="btn btn-gold reactive-btn" style="width: 100%; justify-content: space-between;" onclick="if(window.vibrateDevice) window.vibrateDevice(30); MissionOS.setPhase(2)">WEITER ZUR AUSWAHL <i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="case-phase" id="phase2">
+                        <h2 class="phase-title">Was soll aufgebaut werden?</h2>
+                        <p class="phase-hint">Suchen Sie nach Möbeln oder Gartenhäusern (z.B. PAX, Biohort, Küche).</p>
+                        <div class="search-terminal">
+                            <div class="search-bar-wrap">
+                                <i class="fas fa-search search-icon"></i>
+                                <input type="text" id="serviceSearch" placeholder="Hier suchen..." onkeyup="MissionOS.filterServices()">
+                            </div>
+                            <div id="searchResults" class="search-dropdown-tech"></div>
+                        </div>
+                        <div class="selected-tags-container" id="selectedTags"></div>
+                        <div class="tech-input full-width" style="margin-top: 20px;">
+                            <textarea name="manual_input" placeholder=" "></textarea>
+                            <label>ZUSÄTZLICHE DETAILS ODER WÜNSCHE (OPTIONAL)</label>
+                        </div>
+                        <div class="nav-controls">
+                            <button type="button" class="btn btn-holographic reactive-btn" style="color: #000; border-color: #ccc;" onclick="if(window.vibrateDevice) window.vibrateDevice(20); MissionOS.setPhase(1)"><i class="fas fa-arrow-left"></i> ZURÜCK</button>
+                            <button type="button" class="btn btn-gold reactive-btn" onclick="if(window.vibrateDevice) window.vibrateDevice(30); MissionOS.setPhase(3)">LOGISTIK-CHECK <i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="case-phase" id="phase3">
+                        <h2 class="phase-title">Details zum Einsatzort</h2>
+                        <p class="phase-hint">Diese Daten helfen mir, die Anfahrtszeit und den Transportweg zu kalkulieren.</p>
+                        <div class="input-row">
+                            <div class="tech-input">
+                                <input type="text" name="zip" required placeholder=" ">
+                                <label>POSTLEITZAHL (PLZ)</label>
+                            </div>
+                            <div class="tech-input">
+                                <select name="floor" required>
+                                    <option value="" disabled selected></option>
+                                    <option value="EG">Erdgeschoss / Garten</option>
+                                    <option value="OG_LIFT">Obergeschoss (mit Aufzug)</option>
+                                    <option value="OG_TREPPE">Obergeschoss (ohne Aufzug)</option>
+                                    <option value="HAUS">Einfamilienhaus</option>
+                                </select>
+                                <label>STOCKWERK / AUFZUG</label>
+                            </div>
+                        </div>
+                        <div class="nav-controls">
+                            <button type="button" class="btn btn-holographic reactive-btn" style="color: #000; border-color: #ccc;" onclick="if(window.vibrateDevice) window.vibrateDevice(20); MissionOS.setPhase(2)"><i class="fas fa-arrow-left"></i> ZURÜCK</button>
+                            <button type="button" class="btn btn-gold reactive-btn" onclick="if(window.vibrateDevice) window.vibrateDevice(30); MissionOS.setPhase(4)">TERMIN WÄHLEN <i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="case-phase" id="phase4">
+                        <h2 class="phase-title">Wunschtermin & Abschluss</h2>
+                        <p class="phase-hint">Wann soll die Montage ungefähr stattfinden?</p>
+                        <div class="input-row">
+                            <div class="tech-input full-width">
+                                <input type="date" name="date" required>
+                                <label>WUNSCHTERMIN (FLEXIBEL)</label>
+                            </div>
+                        </div>
+                        <div class="gdpr-glass">
+                            <input type="checkbox" id="modal_gdpr" required>
+                            <label for="modal_gdpr">Ich stimme der Datenverarbeitung gemäß DSGVO zu. Meine Daten werden nur zur Angebotserstellung verwendet.</label>
+                        </div>
+                        <div class="nav-controls">
+                            <button type="button" class="btn btn-holographic reactive-btn" style="color: #000; border-color: #ccc;" onclick="if(window.vibrateDevice) window.vibrateDevice(20); MissionOS.setPhase(3)"><i class="fas fa-arrow-left"></i> ZURÜCK</button>
+                            <button type="submit" class="btn btn-gold reactive-btn" onclick="if(window.vibrateDevice) window.vibrateDevice([50, 100, 50]);"><i class="fas fa-paper-plane" style="margin-right: 10px;"></i> ANGEBOT ANFORDERN</button>
+                        </div>
+                    </div>
+                </form>
+            </main>
+        </div>
+    </div>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="assets/js/main.js"></script>
     
     <script>
-        window.addEventListener('scroll', () => {
-            const scrollPos = window.scrollY;
-            const docHeight = document.body.scrollHeight - window.innerHeight;
-            const scrollPercent = scrollPos / docHeight;
+        // Custom Timeline Progress JS - Adjusted to not throw errors and map correctly
+        document.addEventListener('DOMContentLoaded', () => {
             const fillLine = document.getElementById('scrollProgress');
-            if(fillLine) {
-                // Adjust multiplier based on where timeline is on page
-                fillLine.style.height = `${scrollPercent * 150}%`; 
+            const timelineContainer = document.getElementById('timelineContainer');
+            
+            if(fillLine && timelineContainer) {
+                window.addEventListener('scroll', () => {
+                    // Calculate how far down the timeline container we have scrolled
+                    const containerRect = timelineContainer.getBoundingClientRect();
+                    const containerTop = containerRect.top + window.scrollY;
+                    const containerHeight = timelineContainer.offsetHeight;
+                    
+                    // Trigger scroll line when the container is in the middle of the screen
+                    const triggerPoint = window.innerHeight / 2;
+                    let scrollDistance = (window.scrollY + triggerPoint) - containerTop;
+                    
+                    // Clamp between 0 and Container Height
+                    scrollDistance = Math.max(0, Math.min(scrollDistance, containerHeight));
+                    
+                    // Convert to percentage
+                    const scrollPercent = (scrollDistance / containerHeight) * 100;
+                    fillLine.style.height = `${scrollPercent}%`; 
+                });
             }
         });
     </script>

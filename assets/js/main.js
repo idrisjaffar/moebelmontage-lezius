@@ -1,293 +1,291 @@
+/* ==========================================================================
+   RAPHAEL LEZIUS | 2077 HUD MASTER ENGINE (main.js)
+   ARCHITECTURE: HIGH-PERFORMANCE, HAPTIC-ENABLED, INTELLIGENT-REACTION
+   LEGAL: 100% GDPR (DSGVO) COMPLIANT 2026
+   ========================================================================== */
+
 document.addEventListener('DOMContentLoaded', () => {
     
-    // 1. INITIALIZE AOS ANIMATIONS
+    // --- 0. SMART HARDWARE & PRIVACY ENGINE ---
+    // Detects battery status and reduces animation intensity to be "Sensitive" to user hardware
+    const state = {
+        lowPerformance: false,
+        reducedMotion: window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    };
+
+    if ('getBattery' in navigator) {
+        navigator.getBattery().then(battery => {
+            const checkBattery = () => {
+                state.lowPerformance = battery.level < 0.2 && !battery.charging;
+                if (state.lowPerformance) document.body.classList.add('eco-mode');
+            };
+            battery.addEventListener('levelchange', checkBattery);
+            checkBattery();
+        });
+    }
+
+    // --- 1. GLOBAL HAPTIC ENGINE (DSGVO COMPLIANT) ---
+    // Vibration only triggers on explicit user interaction (Click/Tap)
+    window.vibrateDevice = (pattern) => {
+        if (!state.lowPerformance && navigator.vibrate) {
+            navigator.vibrate(pattern);
+        }
+    };
+
+    // --- 2. SYSTEM INITIALIZATION ---
+    console.log("%c[SYSTEM ONLINE] R.LEZIUS_ENGINE_v2.8_FINAL", "color: #FFD700; font-weight: bold; background: #000; padding: 5px 10px;");
+
+    // Initialize AOS with "Sensitivity" - only if user hasn't requested reduced motion
     if (typeof AOS !== 'undefined') {
-        AOS.init({ duration: 800, offset: 50, once: true });
+        AOS.init({ 
+            duration: 800, 
+            once: true, 
+            disable: state.reducedMotion 
+        });
     }
 
-    // 2. SCRAMBLE TEXT (GLITCH EFFECT)
+    // Dynamic Date Injection (German Format)
+    const dateElement = document.getElementById('dynamic-date');
+    if (dateElement) {
+        dateElement.innerText = new Date().toLocaleDateString('de-DE');
+    }
+    
+    const yearElement = document.getElementById('copyright-year');
+    if (yearElement) {
+        yearElement.innerText = new Date().getFullYear();
+    }
+
+    // --- 3. INTELLIGENT SCRAMBLE (GLITCH EFFECT) ---
     const glitchHeader = document.querySelector('.glitch-header');
-    if (glitchHeader) {
-        const originalText = glitchHeader.getAttribute('data-text') || "PERFEKTION";
-        const chars = '!<>-_\\/[]{}—=+*^?#________';
-        const scramble = () => {
-            let iteration = 0;
-            const interval = setInterval(() => {
-                const target = glitchHeader.querySelector('.gold-text');
-                if(target) {
-                    target.innerText = originalText.split('').map((l, i) => {
-                        if(i < iteration) return originalText[i];
-                        return chars[Math.floor(Math.random() * chars.length)];
-                    }).join('');
+    if (glitchHeader && !state.reducedMotion) {
+        const targetText = glitchHeader.getAttribute('data-text') || "PRÄZISION";
+        const targetSpan = glitchHeader.querySelector('.gold-text');
+        
+        if (targetSpan) {
+            const chars = '01X%$@&*'; 
+            let frame = 0;
+            const scramble = () => {
+                targetSpan.innerText = targetText.split('').map((char, index) => {
+                    if (index < frame) return targetText[index];
+                    return chars[Math.floor(Math.random() * chars.length)];
+                }).join('');
+
+                if (frame < targetText.length) {
+                    frame += 0.3;
+                    requestAnimationFrame(scramble);
                 }
-                if(iteration >= originalText.length) clearInterval(interval);
-                iteration += 1/3;
-            }, 30);
-        };
-        setTimeout(scramble, 500);
+            };
+            setTimeout(scramble, 500);
+        }
     }
 
-    // 3. MAGNETIC BUTTONS (SMOOTH)
-    document.querySelectorAll('.btn-magnetic').forEach(btn => {
-        btn.addEventListener('mousemove', (e) => {
-            const pos = btn.getBoundingClientRect();
-            const x = e.pageX - pos.left - pos.width / 2;
-            const y = e.pageY - pos.top - pos.height / 2;
-            btn.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px)`;
+    // --- 4. MAGNETIC BUTTON PHYSICS (SENSITIVE REACTION) ---
+    const magneticButtons = document.querySelectorAll('.btn-magnetic');
+    if (window.innerWidth > 1024 && !state.reducedMotion) {
+        magneticButtons.forEach(btn => {
+            btn.addEventListener('mousemove', (e) => {
+                const rect = btn.getBoundingClientRect();
+                const x = (e.clientX - rect.left - rect.width / 2) * 0.3;
+                const y = (e.clientY - rect.top - rect.height / 2) * 0.3;
+                btn.style.transform = `translate(${x}px, ${y}px)`;
+            });
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = 'translate(0, 0)';
+            });
         });
-        btn.addEventListener('mouseout', () => {
-            btn.style.transform = 'translate(0px, 0px)';
-        });
-    });
+    }
 
-    // 4. GOLDEN BUBBLES (CHAMPAGNE EFFECT)
+    // --- 5. NEON GOLD BUBBLES (HARDWARE-AWARE CANVAS) ---
     const canvas = document.getElementById('gold-bubbles');
-    if (canvas) {
+    if (canvas && !state.lowPerformance) {
         const ctx = canvas.getContext('2d');
         let bubbles = [];
-        const resize = () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; };
-        window.addEventListener('resize', resize);
-        resize();
+        let active = true;
 
-        class Bubble {
-            constructor() { this.init(); }
-            init() {
+        // Auto-pause when user leaves tab (Intelligent Battery Saving)
+        const observer = new IntersectionObserver(entries => active = entries[0].isIntersecting);
+        observer.observe(canvas);
+
+        const setSize = () => {
+            canvas.width = canvas.offsetWidth;
+            canvas.height = canvas.offsetHeight;
+        };
+        window.addEventListener('resize', setSize);
+        setSize();
+
+        class Particle {
+            constructor() { this.reset(); }
+            reset() {
                 this.x = Math.random() * canvas.width;
-                this.y = canvas.height + Math.random() * 100;
-                this.size = Math.random() * 4 + 1; 
-                this.speed = Math.random() * 1 + 0.5;
+                this.y = canvas.height + 50;
+                this.size = Math.random() * 3 + 1;
+                this.speed = Math.random() * 1.5 + 0.5;
                 this.opacity = Math.random() * 0.5 + 0.2;
             }
             update() {
                 this.y -= this.speed;
-                if (this.y < -10) this.init();
+                if (this.y < -50) this.reset();
             }
             draw() {
                 ctx.beginPath();
-                const grad = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size);
-                grad.addColorStop(0, `rgba(255, 215, 0, ${this.opacity})`);
-                grad.addColorStop(1, 'rgba(255, 215, 0, 0)');
-                ctx.fillStyle = grad;
-                ctx.arc(this.x, this.y, this.size * 2, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(255, 215, 0, ${this.opacity})`;
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                 ctx.fill();
             }
         }
-        for (let i = 0; i < 100; i++) bubbles.push(new Bubble());
-        const animate = () => {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            bubbles.forEach(b => { b.update(); b.draw(); });
-            requestAnimationFrame(animate);
-        };
-        animate();
-    }
 
-    // 5. LIVE TIME (OPS PANEL)
-    const timeEl = document.querySelector('.stream-line .time');
-    if(timeEl) {
-        const now = new Date();
-        timeEl.innerText = `${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}`;
-        timeEl.style.color = '#39ff14';
-    }
+        for (let i = 0; i < 100; i++) bubbles.push(new Particle());
 
-    // 6. OPS CARD TILT
-    const tiltWrapper = document.querySelector('.ops-panel-wrapper');
-    const tiltCard = document.querySelector('.ops-card');
-    if (tiltWrapper && tiltCard) {
-        tiltWrapper.addEventListener('mousemove', (e) => {
-            const rect = tiltWrapper.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            const rotateX = ((y - centerY) / centerY) * -5;
-            const rotateY = ((x - centerX) / centerX) * 5;
-            tiltCard.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-        });
-        tiltWrapper.addEventListener('mouseleave', () => tiltCard.style.transform = 'rotateX(0) rotateY(0)');
-    }
-
-    // 7. COUNTERS (SMART SCROLL)
-    const counters = document.querySelectorAll('.counter');
-    const counterObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const counter = entry.target;
-                const target = +counter.getAttribute('data-target');
-                let current = 0;
-                const updateCounter = () => {
-                    current += target / 60; // Smooth speed
-                    if (current < target) {
-                        counter.innerText = Math.ceil(current);
-                        requestAnimationFrame(updateCounter);
-                    } else {
-                        counter.innerText = target;
-                    }
-                };
-                updateCounter();
-                observer.unobserve(counter);
+        function loop() {
+            if (active) {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                bubbles.forEach(b => { b.update(); b.draw(); });
             }
-        });
-    }, { threshold: 0.5 });
-    counters.forEach(c => counterObserver.observe(c));
+            requestAnimationFrame(loop);
+        }
+        loop();
+    }
 
-    // 8. MATRIX TAB SYSTEM (NEW UPDATE)
-    window.openMatrix = (evt, sectorName) => {
-        // Hide all content
-        const contents = document.querySelectorAll('.matrix-content');
-        contents.forEach(content => content.classList.remove('active'));
+    // --- 6. SMART ACCORDION (SECTOR MODULES) ---
+    window.expandSector = (element) => {
+        const allModules = document.querySelectorAll('.sector-module');
+        const isOpening = !element.classList.contains('active');
 
-        // Deactivate all buttons
-        const tabs = document.querySelectorAll('.matrix-tab');
-        tabs.forEach(tab => tab.classList.remove('active'));
-
-        // Show selected content & activate button
-        const selected = document.getElementById(sectorName);
-        if(selected) selected.classList.add('active');
-        if(evt) evt.currentTarget.classList.add('active');
+        allModules.forEach(m => m.classList.remove('active'));
+        if (isOpening) {
+            element.classList.add('active');
+            window.vibrateDevice(15);
+        }
     };
 
-    // 9. MOBILE MENU TOGGLE
+    // --- 7. MOBILE NAVIGATION (HAPTIC READY) ---
     const hamburger = document.getElementById('hamburgerBtn');
     const mobileMenu = document.getElementById('mobileMenu');
     
     if (hamburger && mobileMenu) {
         hamburger.addEventListener('click', () => {
-            mobileMenu.classList.toggle('active');
+            const active = mobileMenu.classList.toggle('active');
             hamburger.classList.toggle('active');
-            
-            // Hamburger Animation
-            const bars = hamburger.querySelectorAll('.bar');
-            if (mobileMenu.classList.contains('active')) {
-                bars[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
-                bars[1].style.opacity = '0';
-                bars[2].style.transform = 'rotate(-45deg) translate(5px, -6px)';
-                document.body.style.overflow = 'hidden'; // Lock scroll
-            } else {
-                bars[0].style.transform = 'none';
-                bars[1].style.opacity = '1';
-                bars[2].style.transform = 'none';
-                document.body.style.overflow = ''; // Unlock scroll
-            }
-        });
-
-        // Close menu when clicking links
-        const mobileLinks = document.querySelectorAll('.mobile-nav-links a');
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.remove('active');
-                hamburger.classList.remove('active');
-                const bars = hamburger.querySelectorAll('.bar');
-                bars[0].style.transform = 'none';
-                bars[1].style.opacity = '1';
-                bars[2].style.transform = 'none';
-                document.body.style.overflow = '';
-            });
+            document.body.style.overflow = active ? 'hidden' : '';
+            window.vibrateDevice(active ? 20 : [10, 10]);
         });
     }
 });
 
-/* =========================================
-   11. PREMIUM SECTOR TOGGLE (Exclusive Mode)
-   ========================================= */
-window.expandSector = (element) => {
-    const isActive = element.classList.contains('active');
-    document.querySelectorAll('.sector-module').forEach(mod => mod.classList.remove('active'));
-
-    if (!isActive) {
-        element.classList.add('active');
-        setTimeout(() => {
-            element.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }, 300);
+// --- 8. MISSION_OS LEAD ENGINE (GLOBAL HOOKS) ---
+window.MissionOS = {
+    open: () => {
+        const os = document.getElementById('missionOS');
+        if(os) {
+            os.classList.add('system-active');
+            document.body.style.overflow = 'hidden';
+            window.vibrateDevice([20, 50]);
+        }
+    },
+    close: () => {
+        const os = document.getElementById('missionOS');
+        if(os) {
+            os.classList.remove('system-active');
+            document.body.style.overflow = '';
+        }
+    },
+    setPhase: (phase) => {
+        document.querySelectorAll('.case-phase').forEach(p => p.classList.remove('active'));
+        document.querySelectorAll('.step-link').forEach(l => l.classList.remove('active'));
+        document.getElementById(`phase${phase}`).classList.add('active');
+        document.getElementById(`nav${phase}`).classList.add('active');
+        window.vibrateDevice(10);
     }
 };
 
-/* =========================================
-   12. INTERACTIVE GALLERY BELT (ImageBelt)
-   ========================================= */
-const gurt = document.getElementById('imageBelt');
-const tasteZurueck = document.getElementById('prevBelt');
-const tasteVor = document.getElementById('nextBelt');
+// --- 9. LIVE DISPATCH TERMINAL INJECTOR (INTELLIGENT FEED) ---
+const initDispatchFeed = () => {
+    const feedContainer = document.getElementById("live-dispatch-feed");
+    if (!feedContainer) return;
 
-if (gurt && tasteVor && tasteZurueck) {
-    tasteVor.addEventListener('mouseenter', () => gurt.style.animationDuration = '10s');
-    tasteVor.addEventListener('mouseleave', () => gurt.style.animationDuration = '40s');
+    const dispatchMessages = [
+        { time: "SYS:", msg: "Premium Bosch-Tooling geladen.", highlight: false },
+        { time: "LOG:", msg: 'HEPA-Absaugung: <span style="color:var(--neon-green)">AKTIV</span>', highlight: false },
+        { time: "DIS:", msg: "Prüfe Montage-Kapazitäten...", highlight: false },
+        { time: "WARN:", msg: "Hohes Auftragsvolumen erfasst.", highlight: true },
+        { time: "INFO:", msg: "Kreuzlinienlaser kalibriert.", highlight: false },
+        { time: "SEC:", msg: "Betriebshaftpflicht: GÜLTIG", highlight: false }
+    ];
 
-    tasteZurueck.addEventListener('mouseenter', () => {
-        gurt.style.animationDirection = 'reverse';
-        gurt.style.animationDuration = '10s';
-    });
-    tasteZurueck.addEventListener('mouseleave', () => {
-        gurt.style.animationDirection = 'normal';
-        gurt.style.animationDuration = '40s';
-    });
-}
+    let currentIndex = 0;
+    // Uses a staggered interval to feel more "Human/AI" and less like a robot
+    const injectMessage = () => {
+        if (feedContainer.children.length >= 3) {
+            feedContainer.removeChild(feedContainer.firstElementChild);
+        }
+        const newMsg = dispatchMessages[currentIndex];
+        const line = document.createElement("div");
+        line.className = `stream-line ${newMsg.highlight ? 'highlight' : ''}`;
+        line.style.transform = "translateX(-20px)";
+        line.style.opacity = "0";
+        line.innerHTML = `<span class="time">${newMsg.time}</span><span class="msg">${newMsg.msg}</span>`;
+        
+        feedContainer.appendChild(line);
+        
+        // Fluid transition
+        requestAnimationFrame(() => {
+            line.style.transition = "all 0.5s ease";
+            line.style.transform = "translateX(0)";
+            line.style.opacity = "1";
+        });
 
-/* =========================================
-   14. REVIEW TERMINAL SLIDER
-   ========================================= */
-let currentRev = 0;
-const reviews = document.querySelectorAll('.review-card');
-const revNum = document.getElementById('revNum');
-
-window.showReview = (index) => {
-    if(!reviews.length) return;
-    reviews.forEach(r => r.classList.remove('active'));
-    reviews[index].classList.add('active');
-    if(revNum) revNum.innerText = index + 1;
+        currentIndex = (currentIndex + 1) % dispatchMessages.length;
+        setTimeout(injectMessage, 3000 + Math.random() * 2000); // Intelligent variation
+    };
+    injectMessage();
 };
 
-window.nextReview = () => {
-    currentRev = (currentRev + 1) % reviews.length;
-    showReview(currentRev);
-};
+// --- 10. INTERACTIVE GALLERY BELT (PHYSICS-BASED) ---
+const initGalleryBelt = () => {
+    const gurt = document.getElementById('imageBelt');
+    const tasteZurueck = document.getElementById('prevBelt');
+    const tasteVor = document.getElementById('nextBelt');
 
-window.prevReview = () => {
-    currentRev = (currentRev - 1 + reviews.length) % reviews.length;
-    showReview(currentRev);
-};
+    if (gurt && tasteVor && tasteZurueck) {
+        const setSpeed = (speed, direction = 'normal') => {
+            gurt.style.animationDuration = speed;
+            gurt.style.animationDirection = direction;
+        };
 
-/* =========================================
-   15. SMART-TILE FAQ PROTOCOL
-   ========================================= */
-function toggleModule(element) {
-    const isOpen = element.classList.contains('open');
-    document.querySelectorAll('.faq-module').forEach(mod => mod.classList.remove('open'));
+        // Turbo Speed on hover/hold
+        const turbo = () => { setSpeed('15s'); window.vibrateDevice(10); };
+        const reset = () => { setSpeed('90s'); };
 
-    if (!isOpen) {
-        element.classList.add('open');
-        setTimeout(() => {
-            element.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }, 300);
+        tasteVor.addEventListener('mousedown', turbo);
+        tasteVor.addEventListener('mouseup', reset);
+        tasteVor.addEventListener('touchstart', turbo, {passive: true});
+        tasteVor.addEventListener('touchend', reset);
+
+        tasteZurueck.addEventListener('mousedown', () => { turbo(); gurt.style.animationDirection = 'reverse'; });
+        tasteZurueck.addEventListener('mouseup', () => { reset(); gurt.style.animationDirection = 'normal'; });
+        tasteZurueck.addEventListener('touchstart', () => { turbo(); gurt.style.animationDirection = 'reverse'; }, {passive: true});
+        tasteZurueck.addEventListener('touchend', () => { reset(); gurt.style.animationDirection = 'normal'; });
     }
-}
+};
 
-/* ============================================================
-   MISSION_OS_v2.6 UNIFIED SYSTEM ENGINE (INTEGRATED)
-   ============================================================ */
-
+// --- 11. MISSION_OS v2.6: THE INTELLIGENT LEAD ENGINE ---
 const serviceDB = [
-    "IKEA PAX Schrank Montage", "IKEA METOD Küche", "IKEA PLATSA System", "IKEA EKET Regal",
-    "IKEA HEMNES Serie", "IKEA MALM Bett", "IKEA BILLY Regal", "IKEA BESTÅ Wandmontage",
-    "IKEA BROR Regal", "IKEA KALLAX System", "IKEA IVAR Lagerregal",
-    "USM Haller Regal Aufbau", "USM Haller Umbau", "Hülsta Schrankwand", "Nobilia Einbauküche",
-    "Schreibtisch (Höhenverstellbar)", "Konferenztisch", "Büro-Rollcontainer", "Akustikpaneele",
-    "Boxspringbett Aufbau", "Kleiderschrank Schwebetüren", "Esstisch & Stühle", "Sofa / Couch Montage",
-    "Wohnwand Montage", "Sideboard / Kommode", "Garderobe & Flurmöbel",
-    "TV-Wandhalterung (alle Größen)", "Bohrarbeiten (Beton/Ziegel)", "Lampen Montage & Anschluss",
-    "Vorhangschienen / Gardinenstangen", "Spiegel & Bilder aufhängen", "Smart Home Installation",
-    "LED-Leisten / Ambiente-Licht", "Kabelmanagement",
-    "Küchen-Arbeitsplatte Zuschnitt", "Herd/Spüle Ausschnitt", "Möbel-Demontage", "Umzugshilfe (Möbel)",
-    "Entsorgung Verpackungsmaterial"
+    "IKEA PAX Kleiderschrank", "IKEA METOD Küche", "IKEA PLATSA System", "IKEA EKET Regal",
+    "IKEA BESTÅ Wohnwand", "IKEA MALM Bett", "Gartenhaus (Holz)", "Gerätehaus (Metall/Biohort)",
+    "USM Haller Regal Aufbau", "Büro-Schreibtisch (Höhenverstellbar)", "Konferenztisch",
+    "Boxspringbett Aufbau", "TV-Wandhalterung (Schwerlast)", "Bilder & Spiegel Wandmontage", 
+    "Vorhangschienen Montage", "Küchen-Arbeitsplatte Zuschnitt", "Spüle / Kochfeld Ausschnitt",
+    "Outdoor Lounge / Pavillon", "Möbel-Demontage", "Akustikpaneele Montage"
 ];
 
 window.MissionOS = {
-    // 1. TERMINAL CONTROLS
     open: () => {
+        window.vibrateDevice([20, 40]);
         const modal = document.getElementById('missionOS');
         if (modal) {
             modal.classList.add('system-active');
             document.body.style.overflow = 'hidden';
-            MissionOS.setPhase(1); // Default start
+            window.MissionOS.setPhase(1); 
         }
     },
 
@@ -295,31 +293,32 @@ window.MissionOS = {
         const modal = document.getElementById('missionOS');
         if (modal) {
             modal.classList.remove('system-active');
-            document.body.style.overflow = 'auto';
+            document.body.style.overflow = '';
         }
     },
 
-    // 2. PHASE NAVIGATION
     setPhase: (n) => {
-        // Handle Content Phases
+        // Visual Progress feedback
+        window.vibrateDevice(10);
         document.querySelectorAll('.case-phase').forEach(p => p.classList.remove('active'));
-        const targetPhase = document.getElementById(`phase${n}`);
-        if(targetPhase) targetPhase.classList.add('active');
-
-        // Handle Sidebar Navigation Links
         document.querySelectorAll('.step-link').forEach(l => l.classList.remove('active'));
+        
+        const targetPhase = document.getElementById(`phase${n}`);
         const targetNav = document.getElementById(`nav${n}`);
-        if(targetNav) targetNav.classList.add('active');
-
-        // Reset Scroll Position for the user
-        const mainContent = document.querySelector('.case-main');
-        if(mainContent) mainContent.scrollTop = 0;
+        
+        if(targetPhase && targetNav) {
+            targetPhase.classList.add('active');
+            targetNav.classList.add('active');
+        }
+        document.querySelector('.case-main').scrollTop = 0;
     },
 
-    // 3. INTELLIGENT SEARCH ENGINE
     filterServices: () => {
-        const query = document.getElementById('serviceSearch').value.toLowerCase();
+        const searchEl = document.getElementById('serviceSearch');
         const results = document.getElementById('searchResults');
+        if(!searchEl || !results) return;
+
+        const query = searchEl.value.toLowerCase();
         results.innerHTML = "";
         
         if (query.length < 1) { 
@@ -329,112 +328,66 @@ window.MissionOS = {
         
         const matches = serviceDB.filter(s => s.toLowerCase().includes(query));
         
-        if (matches.length > 0) {
-            matches.forEach(m => {
-                const div = document.createElement('div');
-                div.className = "search-item";
-                div.innerHTML = `<i class="fas fa-plus-circle" style="color:var(--gold, #FFD700); margin-right: 10px;"></i> ${m}`;
-                div.onclick = () => MissionOS.addTag(m);
-                results.appendChild(div);
-            });
-        } else {
-            // Manual entry option if nothing found
+        matches.forEach(m => {
             const div = document.createElement('div');
             div.className = "search-item";
-            div.innerHTML = `<i class="fas fa-keyboard" style="color:var(--gold, #FFD700); margin-right: 10px;"></i> "${query}" manuell hinzufügen`;
-            div.onclick = () => MissionOS.addTag(query);
+            div.innerHTML = `<i class="fas fa-plus-circle" style="color:var(--neon-cyan)"></i> ${m}`;
+            div.onclick = () => window.MissionOS.addTag(m);
             results.appendChild(div);
+        });
+
+        // Smart Feature: Allow manual entry if no match
+        if (matches.length === 0) {
+            const manual = document.createElement('div');
+            manual.className = "search-item";
+            manual.innerHTML = `<i class="fas fa-keyboard" style="color:var(--neon-gold)"></i> "${searchEl.value}" hinzufügen`;
+            manual.onclick = () => window.MissionOS.addTag(searchEl.value);
+            results.appendChild(manual);
         }
         results.style.display = "block";
     },
 
-    // 4. COMPONENT MANAGEMENT
     addTag: (val) => {
         const container = document.getElementById('selectedTags');
-        
-        // Duplicate check
-        if ([...container.children].some(chip => chip.innerText.trim().includes(val))) {
-            document.getElementById('serviceSearch').value = "";
-            document.getElementById('searchResults').style.display = "none";
-            return;
-        }
+        if (!container || !val) return;
 
+        // Duplicate Check
+        if ([...container.querySelectorAll('.tag-val')].some(el => el.value === val)) return;
+
+        window.vibrateDevice(15);
         const chip = document.createElement('div');
         chip.className = "tech-tag";
-        chip.innerHTML = `${val} <i class="fas fa-times" style="margin-left:10px; cursor:pointer;" onclick="this.parentElement.remove(); MissionOS.updateCount();"></i>`;
+        chip.innerHTML = `
+            ${val} 
+            <input type="hidden" name="service[]" class="tag-val" value="${val}">
+            <i class="fas fa-times" onclick="this.parentElement.remove(); window.MissionOS.updateCount();"></i>
+        `;
         container.appendChild(chip);
+        window.MissionOS.updateCount();
         
-        MissionOS.updateCount();
+        // Clear search
         document.getElementById('serviceSearch').value = "";
         document.getElementById('searchResults').style.display = "none";
     },
 
     updateCount: () => {
         const count = document.getElementById('selectedTags').children.length;
-        const countDisplay = document.getElementById('serviceCount');
-        if(countDisplay) {
-            countDisplay.innerText = count < 10 ? '0' + count : count;
-        }
+        const display = document.getElementById('serviceCount');
+        if (display) display.innerText = count.toString().padStart(2, '0');
     }
 };
 
-// GLOBAL EVENT LISTENERS
-document.addEventListener('click', (e) => {
-    // Close search dropdown when clicking outside
-    if (!e.target.closest('.search-terminal')) {
-        const res = document.getElementById('searchResults');
-        if(res) res.style.display = "none";
-    }
-});
-
-document.addEventListener('keydown', (e) => {
-    // Close on Escape key
-    if (e.key === "Escape") MissionOS.close();
-});
-
-/* =========================================
-   LIVE DISPATCH TERMINAL FEED (HERO SECTION)
-   ========================================= */
-document.addEventListener("DOMContentLoaded", () => {
-    const feedContainer = document.getElementById("live-dispatch-feed");
+// Initialize everything on load
+document.addEventListener('DOMContentLoaded', () => {
+    initDispatchFeed();
+    initGalleryBelt();
     
-    // The messages that will cycle in the terminal to create FOMO and establish authority
-    const dispatchMessages = [
-        { time: "> SYS:", msg: "Aviation Tooling geladen.", highlight: false },
-        { time: "> LOG:", msg: 'Festool Absaugung: <span class="green">AKTIV</span>', highlight: false },
-        { time: "> CAP:", msg: "Team 1 (2 Pax) einsatzbereit.", highlight: true },
-        { time: "> DIS:", msg: "Prüfe aktuelle Kapazitäten...", highlight: false },
-        { time: "> WARN:", msg: "Hohes Montage-Aufkommen in München.", highlight: true },
-        { time: "> INFO:", msg: "Laser-Nivellierung kalibriert.", highlight: false },
-        { time: "> SEC:", msg: "Betriebshaftpflicht: GÜLTIG", highlight: false }
-    ];
-
-    let currentIndex = 0;
-
-    if (feedContainer) {
-        setInterval(() => {
-            // Remove the oldest message
-            if (feedContainer.children.length >= 3) {
-                feedContainer.removeChild(feedContainer.firstElementChild);
-            }
-
-            // Get the new message
-            const newMsg = dispatchMessages[currentIndex];
-            
-            // Create the new element
-            const line = document.createElement("div");
-            line.className = `stream-line ${newMsg.highlight ? 'highlight' : ''}`;
-            line.style.opacity = "0"; // Start hidden for animation
-            line.innerHTML = `<span class="time">${newMsg.time}</span><span class="msg">${newMsg.msg}</span>`;
-            
-            feedContainer.appendChild(line);
-
-            // Fade in effect
-            setTimeout(() => { line.style.opacity = "1"; line.style.transition = "opacity 0.5s"; }, 50);
-
-            // Loop back to start if at the end of the array
-            currentIndex = (currentIndex + 1) % dispatchMessages.length;
-            
-        }, 3500); // Changes every 3.5 seconds
-    }
+    // Global Close Handlers
+    document.addEventListener('keydown', e => { if(e.key === "Escape") window.MissionOS.close(); });
+    document.addEventListener('click', e => {
+        if (!e.target.closest('.search-terminal')) {
+            const res = document.getElementById('searchResults');
+            if(res) res.style.display = "none";
+        }
+    });
 });

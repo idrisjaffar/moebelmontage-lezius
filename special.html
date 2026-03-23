@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Fachgerechte Demontage & Möbelabbau | Raphael Lezius</title>
+    
+    <meta name="description" content="Zerstörungsfreier Abbau von Küchen, IKEA PAX und USM Haller in Augsburg und München. Wir zerlegen Ihre Möbel sicher und bereiten alles für Ihren Umzug vor.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&family=Space+Grotesk:wght@300;500;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <style>
+        body { opacity: 1 !important; visibility: visible !important; }
+        .no-js-override [data-aos] { opacity: 1 !important; transform: none !important; visibility: visible !important; }
+        .os-overlay { display: none; }
+        .os-overlay.system-active { display: flex !important; }
+    </style>
+</head>
+<body class="is-dark no-js-override">
+
+    <header class="nav-wrapper">
+        <nav class="cyber-navbar glass-panel">
+            <div class="nav-inner">
+                
+                <a href="index.html" class="brand-cluster">
+                    <div class="logo-flipper">
+                        <div class="logo-face front">
+                            <img src="assets/images/raphael-lezius-logo-front.webp" alt="Raphael Lezius" onerror="this.style.display='none';">
+                        </div>
+                        <div class="logo-face back">
+                            <img src="assets/images/raphael-lezius-logo-back.webp" alt="Premium Montage" onerror="this.style.display='none';">
+                        </div>
+                    </div>
+                    <div class="brand-typography">
+                        <span class="brand-first">RAPHAEL</span>
+                        <span class="brand-last">LEZIUS</span>
+                    </div>
+                </a>
+
+                <div class="desktop-menu">
+                    <a href="index.html" class="cyber-link">Start</a>
+                    
+                    <div class="dropdown-wrapper">
+                        <button class="cyber-link dropdown-btn active">
+                            Expertise <i class="fas fa-chevron-down drop-icon" style="font-size: 0.7em; margin-left: 5px;"></i>
+                        </button>
+                        
+                        <div class="mega-menu-2077 glass-panel">
+                            <div class="mega-grid">
+                                <a href="residential.html" class="mega-node">
+                                    <div class="node-icon cyan-glow"><i class="fas fa-couch"></i></div>
+                                    <div class="node-content">
+                                        <h4 class="node-title">Interieur & Living</h4>
+                                        <p class="node-desc">PAX, Küchen & Premium-Möbel</p>
+                                    </div>
+                                </a>
+                                <a href="outdoor.html" class="mega-node">
+                                    <div class="node-icon gold-glow"><i class="fas fa-tree"></i></div>
+                                    <div class="node-content">
+                                        <h4 class="node-title">Outdoor Holzbau</h4>
+                                        <p class="node-desc">Gartenhäuser & Gerätehütten</p>
+                                    </div>
+                                </a>
+                                <a href="office.html" class="mega-node">
+                                    <div class="node-icon pink-glow"><i class="fas fa-building"></i></div>
+                                    <div class="node-content">
+                                        <h4 class="node-title">Gewerbe & Office</h4>
+                                        <p class="node-desc">USM Haller & Praxiseinrichtung</p>
+                                    </div>
+                                </a>
+                                <a href="demontage.html" class="mega-node" style="background: rgba(0, 229, 255, 0.1); border-color: rgba(0, 229, 255, 0.3);">
+                                    <div class="node-icon cyan-glow"><i class="fas fa-toolbox"></i></div>
+                                    <div class="node-content">
+                                        <h4 class="node-title cyan-text">Möbel-Demontage</h4>
+                                        <p class="node-desc">Zerstörungsfreier Rückbau</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="mega-footer-bar">
+                                <span class="tech-font cyan-text blink">>> SYSTEM BEREIT ZUR AUSWAHL</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="process-pricing.html" class="cyber-link">Konditionen</a>
+                    <a href="area.html" class="cyber-link">Region</a>
+                    <a href="gallery.html" class="cyber-link">Referenzen</a>
+                </div>
+
+                <div class="nav-actions">
+                    <div class="status-pill desktop-only" title="System Status: Live">
+                        <span class="status-dot-container">
+                            <span class="status-dot"></span>
+                            <span class="status-pulse"></span>
+                        </span>
+                        <span class="status-text">Einsatzbereit</span>
+                    </div>
+                    
+                    <button onclick="MissionOS.open();" class="btn btn-gold reactive-btn desktop-only">
+                        Abbau anfragen
+                    </button>
+                    
+                    <button class="cyber-hamburger" id="hamburgerBtn" aria-label="Menü öffnen">
+                        <span class="bar top-bar"></span>
+                        <span class="bar mid-bar"></span>
+                        <span class="bar bot-bar"></span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-bg-glow"></div>
+        <nav class="mobile-nav-links">
+            <a href="index.html" class="mobile-cyber-link">Startseite</a>
+            
+            <div class="mobile-divider cyan-divider">// EXPERTISE</div>
+            <a href="residential.html" class="mobile-sub-link">Interieur & Küchen</a>
+            <a href="outdoor.html" class="mobile-sub-link">Outdoor & Gartenbau</a>
+            <a href="office.html" class="mobile-sub-link">Gewerbe & USM Haller</a>
+            <a href="demontage.html" class="mobile-sub-link active-mobile-link" style="color: var(--neon-cyan) !important; font-weight: 800 !important;">Möbel-Demontage (Aktiv)</a>
+            
+            <div class="mobile-divider gold-divider">// PROTOKOLLE</div>
+            <a href="process-pricing.html" class="mobile-sub-link">Konditionen & Ablauf</a>
+            <a href="area.html" class="mobile-sub-link">Einsatzregion</a>
+            <a href="gallery.html" class="mobile-sub-link">Referenzen</a>
+            
+            <button onclick="MissionOS.open(); document.getElementById('mobileMenu').classList.remove('active'); document.getElementById('hamburgerBtn').classList.remove('active'); document.body.style.overflow = '';" class="btn btn-gold btn-block mobile-cta-btn">
+                <i class="fas fa-bolt"></i> Abbau anfragen
+            </button>
+        </nav>
+    </div>
+
+    <main>
+        
+        <section class="hero-section" style="border-bottom: 1px solid rgba(0, 229, 255, 0.3); position: relative; height: 90vh; min-height: 800px; display: flex; align-items: center; justify-content: center; background: #020202;">
+            
+            <div style="position: absolute; inset: 0; background-image: linear-gradient(rgba(0, 229, 255, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 229, 255, 0.05) 1px, transparent 1px); background-size: 50px 50px; z-index: 0;"></div>
+            <div class="hero-vignette" style="position: absolute; inset: 0; background: radial-gradient(circle at center, transparent 0%, #000 90%); z-index: 1;"></div>
+
+            <div class="container relative-z center" style="padding-top: 80px; z-index: 5;">
+                <div class="section-tag-wrapper" data-aos="fade-down" style="display: flex; justify-content: center; margin-bottom: 20px;">
+                    <span class="section-tag" style="border-color: var(--neon-cyan); color: var(--neon-cyan); background: rgba(0, 229, 255, 0.05);">REVERSE ENGINEERING</span>
+                </div>
+                
+                <h1 class="glitch-header" data-aos="zoom-in" style="font-size: clamp(3rem, 7vw, 6rem); margin-bottom: 20px; line-height: 1.1;">
+                    <span class="white">MÖBEL ABBAUEN IST</span><br>
+                    <span class="cyan-text">PRÄZISIONSARBEIT.</span>
+                </h1>
+                
+                <p class="hero-deep-copy" data-aos="fade-up" data-aos-delay="100" style="margin: 0 auto 40px auto; border-left: none; text-align: center; max-width: 800px; padding: 0;">
+                    Ein Umzug steht an? Wer beim Abbau von Küchen und Premium-Möbeln rohe Gewalt anwendet, zerstört das Material für den Wiederaufbau. Wir zerlegen Ihre Einrichtung systematisch, lösen verklebte Verbindungen schonend und bündeln Schrauben verlustsicher. <strong>Übergeben Sie Ihrem Umzugsunternehmen transportbereite, perfekt sortierte Bauteile.</strong>
+                </p>
+                
+                <div class="magnetic-btn-group" data-aos="fade-up" data-aos-delay="200" style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                    <button onclick="MissionOS.open()" class="btn btn-gold reactive-btn">
+                        <i class="fas fa-dolly"></i> DEMONTAGE ANFRAGEN
+                    </button>
+                    <a href="#prozess" class="btn-holographic reactive-btn" style="border-color: var(--neon-cyan); color: var(--neon-cyan);">
+                        <i class="fas fa-cogs"></i> UNSER PROZESS
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <div class="marquee-wrapper" style="background: #030405; padding: 20px 0; overflow: hidden; white-space: nowrap; position: relative; border-top: 1px solid rgba(0, 229, 255, 0.2); border-bottom: 1px solid rgba(0, 229, 255, 0.2); box-shadow: inset 0 0 50px rgba(0,0,0,0.9);">
+            <div class="marquee-track" style="color: var(--neon-cyan); text-shadow: 0 0 10px rgba(0,229,255,0.4);">
+                <span><i class="fas fa-wrench"></i> KÜCHEN RÜCKBAU</span>
+                <span><i class="fas fa-box-open"></i> TRANSPORTSICHERE BÜNDELUNG</span>
+                <span><i class="fas fa-couch"></i> IKEA PAX DEMONTAGE</span>
+                <span><i class="fas fa-tags"></i> BAUTEILE MARKIERUNG</span>
+                <span><i class="fas fa-building"></i> USM HALLER ZERLEGUNG</span>
+                <span><i class="fas fa-truck-loading"></i> UMZUGSVORBEREITUNG</span>
+                
+                <span><i class="fas fa-wrench"></i> KÜCHEN RÜCKBAU</span>
+                <span><i class="fas fa-box-open"></i> TRANSPORTSICHERE BÜNDELUNG</span>
+                <span><i class="fas fa-couch"></i> IKEA PAX DEMONTAGE</span>
+                <span><i class="fas fa-tags"></i> BAUTEILE MARKIERUNG</span>
+                <span><i class="fas fa-building"></i> USM HALLER ZERLEGUNG</span>
+                <span><i class="fas fa-truck-loading"></i> UMZUGSVORBEREITUNG</span>
+            </div>
+        </div>
+
+        <section id="prozess" class="section-padding bg-darker">
+            <div class="container relative-z">
+                <div class="section-header center" data-aos="fade-up">
+                    <div class="pre-title" style="color: #fff;">UNSERE KERNKOMPETENZEN</div>
+                    <h2 class="section-heading">Was wir für Sie <span class="cyan-text">zerlegen.</span></h2>
+                    <p class="section-subtitle" style="margin: 0 auto 50px auto;">Der Abbau komplexer Systeme erfordert genauso viel Erfahrung wie die Montage. Wir bereiten Ihre wertvollsten Stücke für den unbeschadeten Transport vor.</p>
+                </div>
+
+                <div class="split-layout" style="margin-bottom: 40px;">
+                    
+                    <div class="glass-panel" data-aos="fade-right" style="padding: 40px; border-top: 3px solid var(--neon-cyan); background: rgba(10, 10, 10, 0.85);">
+                        <div style="font-size: 2.5rem; color: var(--neon-cyan); margin-bottom: 20px;"><i class="fas fa-utensils"></i></div>
+                        <h3 style="color: #fff; font-size: 1.6rem; margin-bottom: 15px; font-family: var(--font-head);">Einbauküchen & Küchenzeilen</h3>
+                        <p style="color: #aaa; line-height: 1.7; margin-bottom: 20px;">Das Trennen verleimter oder verschraubter Arbeitsplatten erfordert Fingerspitzengefühl, damit sie am neuen Ort wiederverwendet werden können. Wir bauen Hängeschränke sicher ab und entfernen Sockelleisten und Blenden zerstörungsfrei.</p>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="display: flex; gap: 15px; margin-bottom: 10px; color: #ddd;"><i class="fas fa-check cyan-text" style="margin-top: 5px;"></i> Sanftes Ablösen von Wandabschlussprofilen</li>
+                            <li style="display: flex; gap: 15px; margin-bottom: 10px; color: #ddd;"><i class="fas fa-check cyan-text" style="margin-top: 5px;"></i> Ausbau der mechanischen Einbaugeräte</li>
+                            <li style="display: flex; gap: 15px; margin-bottom: 10px; color: #ddd;"><i class="fas fa-check cyan-text" style="margin-top: 5px;"></i> Herauslösen von Spülen ohne Bruchrisiko</li>
+                        </ul>
+                        <div style="background: rgba(0, 229, 255, 0.05); padding: 15px; border-radius: 8px; border-left: 2px solid var(--neon-cyan); margin-top: 20px;">
+                            <p style="font-size: 0.85rem; color: #888; line-height: 1.5; margin: 0;"><strong>HINWEIS:</strong> Wasser- und Starkstromanschlüsse (Herd/Spüle) müssen vor unserem Eintreffen zwingend von einem Fachbetrieb getrennt werden.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-panel" data-aos="fade-left" style="padding: 40px; border-top: 3px solid var(--neon-gold); background: rgba(10, 10, 10, 0.85);">
+                        <div style="font-size: 2.5rem; color: var(--neon-gold); margin-bottom: 20px;"><i class="fas fa-door-open"></i></div>
+                        <h3 style="color: #fff; font-size: 1.6rem; margin-bottom: 15px; font-family: var(--font-head);">PAX Systeme & Schwebetüren</h3>
+                        <p style="color: #aaa; line-height: 1.7; margin-bottom: 20px;">Wer schon einmal versucht hat, die Rückwand eines IKEA PAX Schrankes herauszuziehen, kennt das Problem: Das Holz reißt aus. Wir nutzen spezielle Hebelwerkzeuge, um genagelte Rückwände zu retten und schwere Glasschwebetüren sicher auszuhängen.</p>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="display: flex; gap: 15px; margin-bottom: 10px; color: #ddd;"><i class="fas fa-check gold-text" style="margin-top: 5px;"></i> Zerstörungsfreies Lösen der Korpus-Verbindungen</li>
+                            <li style="display: flex; gap: 15px; margin-bottom: 10px; color: #ddd;"><i class="fas fa-check gold-text" style="margin-top: 5px;"></i> Fachgerechtes Aushängen sensibler Dämpfer-Systeme</li>
+                            <li style="display: flex; gap: 15px; margin-bottom: 10px; color: #ddd;"><i class="fas fa-check gold-text" style="margin-top: 5px;"></i> Sichere Demontage von Wandsicherungen</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <div class="split-layout">
+                    
+                    <div class="glass-panel" data-aos="fade-right" style="padding: 40px; border-top: 3px solid var(--neon-pink); background: rgba(10, 10, 10, 0.85);">
+                        <div style="font-size: 2.5rem; color: var(--neon-pink); margin-bottom: 20px;"><i class="fas fa-gem"></i></div>
+                        <h3 style="color: #fff; font-size: 1.6rem; margin-bottom: 15px; font-family: var(--font-head);">USM Haller & Designermöbel</h3>
+                        <p style="color: #aaa; line-height: 1.7; margin-bottom: 20px;">Premium-Möbel wie USM Haller lassen sich ohne das originale Spezialwerkzeug nicht abbauen, ohne die verchromten Rohre oder die Verbindungs-Kugeln stark zu zerkratzen. Wir bringen das Original-Werkzeug mit.</p>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="display: flex; gap: 15px; margin-bottom: 10px; color: #ddd;"><i class="fas fa-check pink-text" style="margin-top: 5px;"></i> Kratzfreie Demontage von Chrom-Verbindungen</li>
+                            <li style="display: flex; gap: 15px; margin-bottom: 10px; color: #ddd;"><i class="fas fa-check pink-text" style="margin-top: 5px;"></i> Sichern empfindlicher Glas- und Metallelemente</li>
+                        </ul>
+                    </div>
+
+                    <div class="glass-panel" data-aos="fade-left" style="padding: 40px; border-top: 3px solid #fff; background: rgba(10, 10, 10, 0.85);">
+                        <div style="font-size: 2.5rem; color: #fff; margin-bottom: 20px;"><i class="fas fa-bed"></i></div>
+                        <h3 style="color: #fff; font-size: 1.6rem; margin-bottom: 15px; font-family: var(--font-head);">Betten, Boxspring & Wohnwände</h3>
+                        <p style="color: #aaa; line-height: 1.7; margin-bottom: 20px;">Der Transport eines massiven Boxspringbettes im Ganzen ist unmöglich. Wir trennen Kopfteile, Motoren (bei elektrischen Betten) und zerlegen Hängeschränke im Wohnzimmer, ohne die Dübellöcher in der Wand unnötig aufzureißen.</p>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="display: flex; gap: 15px; margin-bottom: 10px; color: #ddd;"><i class="fas fa-check" style="color: #fff; margin-top: 5px;"></i> Trennen der Elektronik bei Motor-Betten</li>
+                            <li style="display: flex; gap: 15px; margin-bottom: 10px; color: #ddd;"><i class="fas fa-check" style="color: #fff; margin-top: 5px;"></i> Sauberes Abhängen von TV-Boards</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="section-padding bg-dark">
+            <div class="container">
+                <div class="glass-panel" data-aos="zoom-in" style="background: #050505; border: 1px solid rgba(255,255,255,0.05); border-top: 3px solid var(--neon-cyan); border-radius: 16px; position: relative; overflow: hidden; box-shadow: 0 40px 80px rgba(0,0,0,0.8);">
+                    
+                    <div style="position: absolute; inset: 0; opacity: 0.1; background-image: linear-gradient(var(--neon-cyan) 1px, transparent 1px), linear-gradient(90deg, var(--neon-cyan) 1px, transparent 1px); background-size: 40px 40px;"></div>
+                    
+                    <div style="position: relative; z-index: 5; padding: clamp(40px, 6vw, 80px); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 60px;">
+                        
+                        <div style="flex: 1; min-width: 320px;">
+                            <div style="display: inline-block; border: 1px solid var(--neon-cyan); color: var(--neon-cyan); background: rgba(0, 229, 255, 0.05); padding: 6px 15px; font-size: 0.8rem; font-weight: 800; margin-bottom: 25px; letter-spacing: 2px; border-radius: 4px;">DAS WIEDERAUFBAU-PROTOKOLL</div>
+                            
+                            <h2 style="color: #fff; font-size: clamp(2rem, 4vw, 3.5rem); font-family: var(--font-head); font-weight: 800; margin-bottom: 20px; line-height: 1.1;">Ordnung ist das <br><span class="cyan-text">halbe Leben.</span></h2>
+                            
+                            <p style="color: #ccc; font-size: 1.1rem; line-height: 1.8; margin-bottom: 35px; max-width: 500px;">Der schlimmste Moment beim Umzug ist, wenn am neuen Ort Schrauben fehlen oder niemand mehr weiß, welches Brett wohin gehört. Unsere Demontage löst dieses Problem proaktiv.</p>
+                            
+                            <ul style="list-style: none; padding: 0; color: #fff; font-size: 1.05rem; font-weight: 500;">
+                                <li data-aos="fade-up" data-aos-delay="100" style="margin-bottom: 20px; display: flex; align-items: flex-start; gap: 15px;">
+                                    <i class="fas fa-box cyan-text" style="font-size: 1.5rem; margin-top: 3px;"></i> 
+                                    <div>
+                                        <strong style="display: block; margin-bottom: 5px;">Ziploc-System für Kleinteile</strong>
+                                        <span style="color: #aaa; font-size: 0.95rem; font-weight: 300;">Alle Schrauben, Scharniere und Dübel eines Möbelstücks werden in beschrifteten Beuteln gesichert und am Hauptbauteil befestigt.</span>
+                                    </div>
+                                </li>
+                                <li data-aos="fade-up" data-aos-delay="200" style="margin-bottom: 20px; display: flex; align-items: flex-start; gap: 15px;">
+                                    <i class="fas fa-tags cyan-text" style="font-size: 1.5rem; margin-top: 3px;"></i> 
+                                    <div>
+                                        <strong style="display: block; margin-bottom: 5px;">Bauteil-Markierung</strong>
+                                        <span style="color: #aaa; font-size: 0.95rem; font-weight: 300;">Bei großen Küchen oder Schranksystemen nutzen wir rückstandsfreies Tape, um Teile (z.B. "Korpus Mitte Oben") eindeutig zu kennzeichnen.</span>
+                                    </div>
+                                </li>
+                                <li data-aos="fade-up" data-aos-delay="300" style="display: flex; align-items: flex-start; gap: 15px;">
+                                    <i class="fas fa-truck-loading cyan-text" style="font-size: 1.5rem; margin-top: 3px;"></i> 
+                                    <div>
+                                        <strong style="display: block; margin-bottom: 5px;">Transportbereite Bündelung</strong>
+                                        <span style="color: #aaa; font-size: 0.95rem; font-weight: 300;">Lange Bretter und Rückwände werden mit Stretchfolie oder Gurten handlich gebündelt, damit Ihre Spedition sie sofort sicher verladen kann.</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div style="flex: 1; min-width: 320px; display: flex; justify-content: center; position: relative;">
+                            <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(0, 229, 255, 0.2); border-radius: 12px; padding: 40px; text-align: center; width: 100%;">
+                                <i class="fas fa-cubes cyan-text" style="font-size: 5rem; margin-bottom: 20px; filter: drop-shadow(0 0 20px rgba(0, 229, 255, 0.4));"></i>
+                                <h4 style="color: #fff; font-family: var(--font-head); font-size: 1.5rem; margin-bottom: 10px;">Ready for Transport</h4>
+                                <p style="color: #888; font-size: 0.95rem; line-height: 1.6;">Wir demontieren. Die Spedition transportiert. Eine perfekte Symbiose für einen stressfreien Umzug.</p>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-padding" style="background: linear-gradient(135deg, #050505, #0a1015); text-align: center; border-top: 1px solid var(--neon-cyan);">
+            <div class="container" data-aos="fade-up">
+                <h2 style="font-family: var(--font-head); font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; color: #fff; margin-bottom: 15px; letter-spacing: -1px;">BEREIT FÜR DEN UMZUG?</h2>
+                <p style="font-size: 1.15rem; color: #aaa; margin-bottom: 35px; max-width: 600px; margin-left: auto; margin-right: auto;">Kein Stress. Kein Bruch. Perfekt sortiert. Buchen Sie jetzt Ihren Demontage-Termin.</p>
+                <button onclick="MissionOS.open()" class="btn reactive-btn" style="background: var(--neon-cyan); color: #000; font-size: 1.1rem; font-weight: bold; padding: 20px 50px; box-shadow: 0 0 30px rgba(0, 229, 255, 0.3); border: none; font-family: var(--font-head); text-transform: uppercase; letter-spacing: 1px;">
+                    <i class="fas fa-calendar-alt"></i> DEMONTAGE ANFRAGEN
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="mega-footer circuit-bg">
+        <div class="container relative-z">
+
+            <div class="footer-grid">
+                
+                <div class="f-col brand-col">
+                    <div class="brand-text" style="font-size:2rem; letter-spacing: -1px; font-family: var(--font-head); font-weight: 800; color: #fff;">
+                        RAPHAEL <span class="gold-text">LEZIUS</span>
+                    </div>
+                    <p style="color:#888; font-size:0.95rem; margin-top:15px; font-weight: 300; line-height: 1.6;">
+                        Präzision. Qualität. Zuverlässigkeit.<br>Ihr zertifizierter Montage-Experte für Premium-Einrichtungen in Bayern.
+                    </p>
+                    
+                    <div style="display:flex; gap:20px; margin-top:25px; font-size:0.8rem; color:#bbb; font-weight: 700; font-family: var(--font-mono); letter-spacing: 1px;">
+                        <span><i class="fas fa-shield-alt gold-text"></i> VERSICHERT</span>
+                        <span><i class="fas fa-check-circle green-text"></i> GEPRÜFT</span>
+                    </div>
+
+                    <div class="social-row" style="margin-top: 35px;">
+                        <a href="https://wa.me/491608194018" target="_blank" class="social-btn reactive-btn"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" target="_blank" class="social-btn reactive-btn"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <div class="f-col">
+                    <h4 class="f-heading">Leistungen</h4>
+                    <ul class="footer-links">
+                        <li><a href="residential.html">IKEA PAX Systemaufbau</a></li>
+                        <li><a href="residential.html">Küchenmontage & Schnitt</a></li>
+                        <li><a href="outdoor.html">Gartenhäuser & Outdoor</a></li>
+                        <li><a href="office.html">USM Haller & Gewerbe</a></li>
+                        <li><a href="demontage.html" class="cyan-text">Möbel-Demontage</a></li>
+                    </ul>
+                </div>
+
+                <div class="f-col">
+                    <h4 class="f-heading">Informationen</h4>
+                    <ul class="footer-links">
+                        <li><a href="process-pricing.html">Konditionen & Ablauf</a></li>
+                        <li><a href="area.html">Einsatzgebiet</a></li>
+                        <li><a href="gallery.html">Referenzen Galerie</a></li>
+                        <li><a href="magazine.html">Magazin & Blog</a></li>
+                    </ul>
+                </div>
+
+                <div class="f-col">
+                    <h4 class="f-heading">Rechtliches</h4>
+                    <ul class="footer-links">
+                        <li><a href="impressum.html">Impressum</a></li>
+                        <li><a href="datenschutz.html">Datenschutz</a></li>
+                        <li><a href="agb.html">AGB & Widerruf</a></li>
+                    </ul>
+                </div>
+
+                <div class="f-col contact-col">
+                    <h4 class="f-heading">Kontakt</h4>
+                    <ul class="contact-list">
+                        <li>
+                            <i class="fas fa-map-marker-alt gold-icon"></i>
+                            <span class="contact-text">Am Rößlebad 9<br>86152 Augsburg</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone gold-icon"></i>
+                            <a href="tel:+491608194018" class="contact-link">0160 819 4018</a>
+                        </li>
+                        <li>
+                            <i class="far fa-envelope gold-icon"></i>
+                            <a href="mailto:r.lezius@gmail.com" class="contact-link">r.lezius@gmail.com</a>
+                        </li>
+                    </ul>
+                    
+                    <div class="op-status" style="margin-top: 25px; padding: 15px; background: rgba(0,0,0,0.4); border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); display: inline-block;">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <div class="status-dot-container">
+                                <div class="status-dot"></div>
+                                <div class="status-pulse"></div>
+                            </div>
+                            <span style="font-family: var(--font-mono); font-size: 0.75rem; color: #888; text-transform: uppercase; letter-spacing: 1px;">System Status: <strong class="green-text">LIVE</strong></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom-bar" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+                <div class="copyright" style="color: #666; font-size: 0.85rem; font-family: var(--font-mono);">
+                    &copy; <span id="copyright-year">2026</span> RAPHAEL LEZIUS. <span class="hide-mobile">ALLE RECHTE VORBEHALTEN.</span>
+                </div>
+                
+                <div class="footer-payments" style="display: flex; gap: 20px; font-size: 1.8rem; color: #444;">
+                    <i class="fab fa-apple" title="Apple Pay"></i>
+                    <i class="fab fa-google" title="Google Pay"></i>
+                    <i class="fab fa-cc-paypal" title="PayPal"></i>
+                    <i class="fab fa-cc-visa" title="Visa"></i>
+                    <i class="fab fa-cc-mastercard" title="Mastercard"></i>
+                </div>
+                
+                <div class="developer-credit">
+                    <span class="code-bracket">&lt;/&gt;</span>
+                    <span class="dev-text" style="color: #666;">SYS_DEV <span class="dev-name" style="color: var(--neon-gold);">IDRIS</span></span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/491608194018" target="_blank" class="whatsapp-float reactive-btn" aria-label="WhatsApp Contact">
+        <div class="whatsapp-pulse"></div>
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <div id="missionOS" class="os-overlay">
+        <div class="os-backdrop" onclick="document.getElementById('missionOS').classList.remove('system-active'); document.body.style.overflow = '';"></div>
+        
+        <div class="case-container">
+            <aside class="case-sidebar">
+                <div class="sidebar-header">
+                    <div class="os-pulse" style="background: var(--neon-cyan);"></div>
+                    <span class="os-ver">SERVICE_PORTAL_v2.6</span>
+                </div>
+                
+                <nav class="case-steps">
+                    <div class="step-link active" id="nav1" onclick="document.querySelectorAll('.case-phase').forEach(p=>p.classList.remove('active')); document.getElementById('phase1').classList.add('active');">
+                        <div class="step-num">01</div>
+                        <div class="step-txt">BASISDATEN</div>
+                    </div>
+                    <div class="step-link" id="nav2" onclick="document.querySelectorAll('.case-phase').forEach(p=>p.classList.remove('active')); document.getElementById('phase2').classList.add('active');">
+                        <div class="step-num">02</div>
+                        <div class="step-txt">DEMONTAGE</div>
+                    </div>
+                </nav>
+            </aside>
+
+            <main class="case-main">
+                <button class="case-close" onclick="document.getElementById('missionOS').classList.remove('system-active'); document.body.style.overflow = '';">&times;</button>
+                
+                <form id="leziusCaseForm" action="https://formspree.io/f/YOUR_ID" method="POST">
+                    
+                    <div class="case-phase active" id="phase1">
+                        <h2 class="phase-title">Wer erteilt den Auftrag?</h2>
+                        <div class="input-row">
+                            <div class="tech-input full-width">
+                                <input type="text" name="name" required placeholder=" ">
+                                <label>VOLLSTÄNDIGER NAME</label>
+                            </div>
+                        </div>
+                        <div class="input-row">
+                            <div class="tech-input">
+                                <input type="tel" name="phone" required placeholder=" ">
+                                <label>TELEFONNUMMER</label>
+                            </div>
+                        </div>
+                        <div class="nav-controls">
+                            <button type="button" class="btn btn-gold reactive-btn" style="width: 100%; justify-content: space-between;" onclick="document.querySelectorAll('.case-phase').forEach(p=>p.classList.remove('active')); document.getElementById('phase2').classList.add('active');">WEITER ZU DEN DETAILS <i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="case-phase" id="phase2">
+                        <h2 class="phase-title">Was soll abgebaut werden?</h2>
+                        <div class="tech-input full-width" style="margin-top: 20px;">
+                            <textarea name="manual_input" placeholder=" " required style="min-height: 150px; width: 100%; padding: 20px; border-radius: 8px; border: 1px solid #ccc;"></textarea>
+                            <label style="top: -20px; font-size: 0.8rem; color: #888;">Geben Sie an, welche Möbel/Küchen demontiert werden sollen.</label>
+                        </div>
+                        <div class="nav-controls">
+                            <button type="button" class="btn btn-holographic reactive-btn" style="color: #000; border-color: #ccc;" onclick="document.querySelectorAll('.case-phase').forEach(p=>p.classList.remove('active')); document.getElementById('phase1').classList.add('active');"><i class="fas fa-arrow-left"></i> ZURÜCK</button>
+                            <button type="submit" class="btn btn-gold reactive-btn"><i class="fas fa-paper-plane" style="margin-right: 10px;"></i> ANFRAGE SENDEN</button>
+                        </div>
+                    </div>
+
+                </form>
+            </main>
+        </div>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+    
+    <script>
+        // Dieses Inline-Script überschreibt alle potenziellen Fehler aus main.js 
+        // und garantiert, dass die Seite lädt.
+        document.addEventListener("DOMContentLoaded", function() {
+            
+            // 1. Zwinge den Body, das "Verstecken" durch AOS aufzuheben
+            setTimeout(function() {
+                document.body.classList.remove('no-js-override');
+            }, 100);
+
+            // 2. Initialisiere AOS falls verfügbar, ansonsten ignoriere es
+            if (typeof window.AOS !== 'undefined') {
+                try {
+                    AOS.init({ duration: 800, offset: 30, once: true });
+                } catch(e) { console.log("AOS skipped."); }
+            } else {
+                // Notfall-Plan: Mach alle Animationen sofort sichtbar
+                document.querySelectorAll('[data-aos]').forEach(el => {
+                    el.style.opacity = '1';
+                    el.style.transform = 'none';
+                    el.style.visibility = 'visible';
+                });
+            }
+
+            // 3. Fallback für das Popup (MissionOS)
+            window.MissionOS = window.MissionOS || {
+                open: function() {
+                    const os = document.getElementById('missionOS');
+                    if(os) {
+                        os.classList.add('system-active');
+                        document.body.style.overflow = 'hidden';
+                    }
+                }
+            };
+            
+            // 4. Fallback für das Mobile Menü
+            const hamburger = document.getElementById('hamburgerBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            if(hamburger && mobileMenu) {
+                // Verhindere doppelte Event-Listener
+                const newHamburger = hamburger.cloneNode(true);
+                hamburger.parentNode.replaceChild(newHamburger, hamburger);
+                
+                newHamburger.addEventListener('click', function() {
+                    newHamburger.classList.toggle('active');
+                    const isActive = mobileMenu.classList.toggle('active');
+                    document.body.style.overflow = isActive ? 'hidden' : '';
+                });
+            }
+        });
+    </script>
+</body>
+</html>
