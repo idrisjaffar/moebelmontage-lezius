@@ -3,16 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Raphael Lezius | Premium Montage, Küchen & Gartenhäuser</title>
+    <title>Raphael Lezius | Premium Montage, Küchen & Demontage</title>
     
-    <meta name="description" content="Professioneller Montage-Experte für Premium-Möbel, IKEA PAX, Küchen und Gartenhäuser in Augsburg und München. Bosch Professional Ausrüstung und Festpreis-Garantie.">
+    <meta name="description" content="Professioneller Montage-Experte für Premium-Möbel, Küchen, Gartenhäuser und Demontage in Augsburg und München. Festpreis-Garantie und millimetergenaue Arbeit.">
     
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&family=Space+Grotesk:wght@300;500;700;800&family=JetBrains+Mono:wght@400;700&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
+
+    <style>
+        body { opacity: 1 !important; visibility: visible !important; }
+        .no-js-override [data-aos] { opacity: 1 !important; transform: none !important; visibility: visible !important; }
+        .os-overlay { display: none; }
+        .os-overlay.system-active { display: flex !important; }
+
+        /* Instagram-Style Swipe Carousels for Mobile */
+        .swipe-carousel {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            gap: 20px;
+            padding-bottom: 20px;
+        }
+        .swipe-carousel::-webkit-scrollbar { display: none; }
+        .swipe-item {
+            scroll-snap-align: center;
+            flex: 0 0 85%;
+            min-width: 280px;
+        }
+        
+        /* Desktop Grid Override */
+        @media (min-width: 768px) {
+            .swipe-carousel {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                overflow-x: visible;
+                gap: 30px;
+            }
+            .swipe-item { flex: unset; min-width: unset; }
+            .carousel-indicators { display: none !important; }
+        }
+
+        /* Carousel Indicators (Pagination Dots) */
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+        }
+        .dot.active {
+            background: var(--neon-gold);
+            transform: scale(1.3);
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+    </style>
 </head>
-<body class="is-dark">
+<body class="is-dark no-js-override">
 
     <header class="nav-wrapper">
         <nav class="cyber-navbar glass-panel">
@@ -28,7 +87,7 @@
                         </div>
                     </div>
                     <div class="brand-typography">
-                        <span class="brand-first" data-text="RAPHAEL">RAPHAEL</span>
+                        <span class="brand-first">RAPHAEL</span>
                         <span class="brand-last">LEZIUS</span>
                     </div>
                 </a>
@@ -46,29 +105,29 @@
                                 <a href="residential.html" class="mega-node" onmouseenter="if(window.vibrateDevice) window.vibrateDevice(10);">
                                     <div class="node-icon cyan-glow"><i class="fas fa-couch"></i></div>
                                     <div class="node-content">
-                                        <h4 class="node-title">Interieur & Living</h4>
-                                        <p class="node-desc">PAX, Küchen & Premium-Möbel</p>
+                                        <h4 class="node-title cyan-text">Interieur & Küchen</h4>
+                                        <p class="node-desc">PAX, Küchenaufbau & Living</p>
                                     </div>
                                 </a>
                                 <a href="outdoor.html" class="mega-node" onmouseenter="if(window.vibrateDevice) window.vibrateDevice(10);">
                                     <div class="node-icon gold-glow"><i class="fas fa-tree"></i></div>
                                     <div class="node-content">
-                                        <h4 class="node-title">Outdoor Holzbau</h4>
+                                        <h4 class="node-title gold-text">Outdoor Holzbau</h4>
                                         <p class="node-desc">Gartenhäuser & Gerätehütten</p>
                                     </div>
                                 </a>
                                 <a href="office.html" class="mega-node" onmouseenter="if(window.vibrateDevice) window.vibrateDevice(10);">
                                     <div class="node-icon pink-glow"><i class="fas fa-building"></i></div>
                                     <div class="node-content">
-                                        <h4 class="node-title">Gewerbe & Office</h4>
+                                        <h4 class="node-title pink-text">Gewerbe & Office</h4>
                                         <p class="node-desc">USM Haller & Praxiseinrichtung</p>
                                     </div>
                                 </a>
-                                <a href="tech.html" class="mega-node" onmouseenter="if(window.vibrateDevice) window.vibrateDevice(10);">
-                                    <div class="node-icon green-glow"><i class="fas fa-tv"></i></div>
+                                <a href="demontage.html" class="mega-node" onmouseenter="if(window.vibrateDevice) window.vibrateDevice(10);">
+                                    <div class="node-icon green-glow"><i class="fas fa-tools"></i></div>
                                     <div class="node-content">
-                                        <h4 class="node-title">Special Tech</h4>
-                                        <p class="node-desc">Schwerlast-TV & Smart Home</p>
+                                        <h4 class="node-title green-text">Demontage & Service</h4>
+                                        <p class="node-desc">Möbelabbau & Küchenrückbau</p>
                                     </div>
                                 </a>
                             </div>
@@ -93,11 +152,11 @@
                         <span class="status-text">Verfügbar</span>
                     </div>
                     
-                    <button onclick="if(window.vibrateDevice) window.vibrateDevice([30, 50, 30]); MissionOS.open();" class="btn btn-gold reactive-btn desktop-only">
+                    <button onclick="MissionOS.open();" class="btn btn-gold reactive-btn desktop-only">
                         Projekt anfragen
                     </button>
                     
-                    <button class="cyber-hamburger" id="hamburgerBtn" aria-label="Menü öffnen" onclick="if(window.vibrateDevice) window.vibrateDevice(20);">
+                    <button class="cyber-hamburger" id="hamburgerBtn" aria-label="Menü öffnen">
                         <span class="bar top-bar"></span>
                         <span class="bar mid-bar"></span>
                         <span class="bar bot-bar"></span>
@@ -111,13 +170,13 @@
     <div class="mobile-menu" id="mobileMenu">
         <div class="mobile-menu-bg-glow"></div>
         <nav class="mobile-nav-links">
-            <a href="index.html" class="mobile-cyber-link active-mobile-link">Startseite</a>
+            <a href="index.html" class="mobile-cyber-link active-mobile-link" style="color: var(--neon-gold) !important;">Startseite</a>
             
             <div class="mobile-divider cyan-divider">// EXPERTISE</div>
-            <a href="residential.html" class="mobile-sub-link">Interieur & Küchen</a>
-            <a href="outdoor.html" class="mobile-sub-link">Outdoor & Gartenbau</a>
-            <a href="office.html" class="mobile-sub-link">Gewerbe & USM Haller</a>
-            <a href="tech.html" class="mobile-sub-link">Tech & TV-Montage</a>
+            <a href="residential.html" class="mobile-sub-link">Interieur & Küchen (Blau)</a>
+            <a href="outdoor.html" class="mobile-sub-link">Outdoor & Gartenbau (Gold)</a>
+            <a href="office.html" class="mobile-sub-link">Gewerbe & USM Haller (Pink)</a>
+            <a href="demontage.html" class="mobile-sub-link">Demontage & Service (Grün)</a>
             
             <div class="mobile-divider gold-divider">// PROTOKOLLE</div>
             <a href="process-pricing.html" class="mobile-sub-link">Konditionen & Ablauf</a>
@@ -125,13 +184,14 @@
             <a href="gallery.html" class="mobile-sub-link">Referenzen</a>
             <a href="magazine.html" class="mobile-sub-link">Magazin</a>
             
-            <button onclick="if(window.vibrateDevice) window.vibrateDevice([50, 50, 50]); MissionOS.open(); document.getElementById('mobileMenu').classList.remove('active'); document.getElementById('hamburgerBtn').classList.remove('active'); document.body.style.overflow = '';" class="btn btn-gold btn-block mobile-cta-btn">
+            <button onclick="MissionOS.open(); document.getElementById('mobileMenu').classList.remove('active'); document.getElementById('hamburgerBtn').classList.remove('active'); document.body.style.overflow = '';" class="btn btn-gold btn-block mobile-cta-btn">
                 <i class="fas fa-bolt"></i> Jetzt anfragen
             </button>
         </nav>
     </div>
 
     <main>
+        
         <section class="hero-section" id="home">
             <div class="video-bg-container">
                 <video autoplay muted loop playsinline class="hero-video" poster="assets/images/Bedroom_grey_main.webp">
@@ -150,21 +210,21 @@
                             <span class="live-text">EINSATZBEREIT IN MÜNCHEN & AUGSBURG</span>
                         </div>
                         
-                        <h1 class="glitch-header" data-text="PRÄZISION">
+                        <h1 class="glitch-header">
                             <span class="white">MÖBEL KAUFEN IST SCHÖN.</span><br>
                             <span class="gold-text">DER AUFBAU MEIN JOB.</span>
                         </h1>
                         
                         <p class="hero-deep-copy">
                             <strong>Sparen Sie sich Zeit, Nerven und das Chaos endloser Schrauben.</strong><br>
-                            Sie haben in eine exklusive Küche, ein großes PAX-System oder ein massives Gartenhaus investiert. Überlassen Sie die fachgerechte Montage nicht dem Zufall. Als spezialisierter Montage-Experte sorge ich – unterstützt von routinierten Kollegen – mit modernstem <strong>Bosch Professional-Werkzeug</strong> und digitaler Laser-Nivellierung dafür, dass alles fehlerfrei steht. Keine schiefen Spaltmaße. Kein Wackeln. Absolute Sicherheit.
+                            Sie haben in eine exklusive Küche, ein großes PAX-System oder ein massives Gartenhaus investiert. Überlassen Sie die fachgerechte Montage nicht dem Zufall. Als spezialisierter Montage-Experte sorge ich mit modernstem <strong>Bosch Professional-Werkzeug</strong> und digitaler Laser-Nivellierung dafür, dass alles fehlerfrei steht. Keine schiefen Spaltmaße. Kein Wackeln. Absolute Sicherheit.
                         </p>
 
                         <div class="magnetic-btn-group">
-                            <button class="btn btn-gold btn-magnetic reactive-btn fill" onclick="if(window.vibrateDevice) window.vibrateDevice([50, 30, 50]); MissionOS.open()" style="min-height: 60px;">
+                            <button class="btn btn-gold btn-magnetic reactive-btn fill" onclick="MissionOS.open()" style="min-height: 60px;">
                                 <i class="fas fa-hammer"></i> KOSTENLOS ANFRAGEN
                             </button>
-                            <a href="#projekt-belt" class="btn-holographic reactive-btn" onclick="if(window.vibrateDevice) window.vibrateDevice(20);" style="min-height: 60px;">
+                            <a href="#projekt-belt" class="btn-holographic reactive-btn" style="min-height: 60px;">
                                 <i class="fas fa-camera"></i> MEINE ARBEITEN
                             </a>
                         </div>
@@ -182,15 +242,15 @@
                                 <ul>
                                     <li><i class="fas fa-ruler-combined"></i> <strong>Laser-Nivellierung:</strong> 100% waagerecht, selbst im Altbau.</li>
                                     <li><i class="fas fa-wind"></i> <strong>Staubfreies Arbeiten:</strong> Aktive Absaugung am Bohrpunkt.</li>
-                                    <li><i class="fas fa-cut"></i> <strong>Ausrissfreie Schnitte:</strong> Bosch Professional für Arbeitsplatten.</li>
-                                    <li><i class="fas fa-anchor"></i> <strong>Schwerlast-Sicherheit:</strong> Marken-Dübel (Fischer) für TV & Hängeschränke.</li>
+                                    <li><i class="fas fa-cut"></i> <strong>Ausrissfreie Schnitte:</strong> Festool Profil für Arbeitsplatten.</li>
+                                    <li><i class="fas fa-anchor"></i> <strong>Schwerlast-Sicherheit:</strong> Marken-Dübel (Fischer).</li>
                                 </ul>
                             </div>
 
                             <div class="stream-info-block">
                                 <i class="fas fa-user-tie shield-icon"></i>
                                 <div>
-                                    <strong class="gold-text">IHR ANSPRECHPARTNER</strong>
+                                    <strong class="gold-text">IHR EXPERTE VOR ORT</strong>
                                     <p style="font-size: 0.9rem;">Keine anonymen Hotlines. Ich kümmere mich persönlich von der Planung bis zur absolut sauberen Übergabe um Ihr Projekt.</p>
                                 </div>
                             </div>
@@ -211,24 +271,24 @@
                 <span><i class="fas fa-home"></i> GARTENHÄUSER & OUTDOOR</span>
                 <span><i class="fas fa-utensils"></i> KÜCHEN-MONTAGE</span>
                 <span><i class="fas fa-gem"></i> USM HALLER</span>
-                <span><i class="fas fa-tv"></i> SCHWERLAST WANDMONTAGE</span>
+                <span><i class="fas fa-tools"></i> FACHGERECHTE DEMONTAGE</span>
                 <span><i class="fas fa-bed"></i> BOXSPRINGBETTEN</span>
                 
                 <span><i class="fas fa-cube"></i> IKEA PAX EXPERTE</span>
                 <span><i class="fas fa-home"></i> GARTENHÄUSER & OUTDOOR</span>
                 <span><i class="fas fa-utensils"></i> KÜCHEN-MONTAGE</span>
                 <span><i class="fas fa-gem"></i> USM HALLER</span>
-                <span><i class="fas fa-tv"></i> SCHWERLAST WANDMONTAGE</span>
+                <span><i class="fas fa-tools"></i> FACHGERECHTE DEMONTAGE</span>
                 <span><i class="fas fa-bed"></i> BOXSPRINGBETTEN</span>
             </div>
         </div>
-  <section id="profile" class="section-padding bg-dark animated-grid-bg">
+
+        <section id="profile" class="section-padding bg-dark animated-grid-bg">
             <div class="container relative-z">
                 <div class="split-layout">
                     
                     <div class="image-col" data-aos="fade-right">
                         <div class="profile-card-wrapper">
-                            
                             <div class="hud-monitor">
                                 <div class="hud-header">
                                     <i class="fas fa-crosshairs blink" style="color: var(--neon-cyan);"></i> 
@@ -244,7 +304,6 @@
 
                             <div class="id-card glass-panel holographic">
                                 <div class="scan-line"></div>
-                                
                                 <div class="id-header-tech">
                                     <div class="chip"><i class="fas fa-user-tie"></i></div>
                                     <div class="id-meta-right">
@@ -256,10 +315,10 @@
                                 <div class="avatar-frame">
                                     <div class="flipper">
                                         <div class="front">
-                                            <img src="assets/images/raphael-lezius-logo-front.webp" alt="Raphael Lezius Profil">
+                                            <img src="assets/images/raphael-lezius-logo-front.webp" alt="Raphael Lezius Profil" onerror="this.src='https://via.placeholder.com/300'">
                                         </div>
                                         <div class="back">
-                                            <img src="assets/images/raphael-lezius-logo-back.webp" alt="Qualitätssiegel">
+                                            <img src="assets/images/raphael-lezius-logo-back.webp" alt="Qualitätssiegel" onerror="this.src='https://via.placeholder.com/300'">
                                         </div>
                                     </div>
                                 </div>
@@ -299,27 +358,37 @@
                             Ich biete Ihnen einen Service, den große Möbelhäuser oft nicht leisten können: absolute Zuverlässigkeit, persönliche Erreichbarkeit und eine handwerkliche Qualität, die auch bei schiefen Wänden oder komplexen Sonderwünschen nicht aufgibt. Egal ob das empfindliche Designerstück, die komplexe Einbauküche oder das massive Gartenhaus im Freien – ich baue es auf, als wäre es für mein eigenes Zuhause.
                         </p>
 
-                        <div class="tech-card-grid-2026">
-                            <div class="tech-card-v2 glass-panel">
+                        <div class="swipe-carousel" id="philosophyCarousel">
+                            <div class="tech-card-v2 glass-panel swipe-item">
                                 <div class="card-icon-v2"><i class="fas fa-drafting-compass"></i></div>
                                 <h3 class="card-title-v2">DETAILVERLIEBT</h3>
                                 <p class="card-desc-v2">Schleifende Schranktüren? Nicht bei mir. Jedes Scharnier und jede Schublade wird perfekt justiert.</p>
                             </div>
-                            <div class="tech-card-v2 glass-panel">
+                            <div class="tech-card-v2 glass-panel swipe-item">
                                 <div class="card-icon-v2"><i class="fas fa-handshake"></i></div>
                                 <h3 class="card-title-v2">TRANSPARENT</h3>
                                 <p class="card-desc-v2">Sie erhalten vor dem Start einen festen Preis. Keine Nachverhandlungen, keine bösen Überraschungen.</p>
                             </div>
+                            <div class="tech-card-v2 glass-panel swipe-item">
+                                <div class="card-icon-v2"><i class="fas fa-shield-alt"></i></div>
+                                <h3 class="card-title-v2">SICHERHEIT</h3>
+                                <p class="card-desc-v2">Ich bin vollständig haftpflichtversichert. Null Risiko für Ihre wertvolle Einrichtung und Böden.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-indicators" id="philosophyIndicators">
+                            <div class="dot active"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
                         </div>
 
-                        <div class="consultation-wrapper">
+                        <div class="consultation-wrapper" style="margin-top: 40px;">
                             <div class="consultation-info">
                                 <span class="pulse-dot-green"></span>
                                 <strong>KOSTENLOSER PROJEKT-CHECK</strong>
                                 <p>Klären Sie technische Details, Maße und Traglasten völlig unverbindlich ab, bevor Sie mich beauftragen.</p>
                             </div>
                             <div class="cta-action-row">
-                                <button onclick="if(window.vibrateDevice) window.vibrateDevice([30, 50]); MissionOS.open()" class="btn btn-gold reactive-btn">
+                                <button onclick="MissionOS.open()" class="btn btn-gold reactive-btn">
                                     <i class="fas fa-calendar-plus"></i> UNVERBINDLICH ANFRAGEN
                                 </button>
                                 <div class="signature">
@@ -347,7 +416,7 @@
                     
                     <div class="sector-module glass-panel" onclick="window.expandSector(this)">
                         <div class="sector-header">
-                            <span class="sector-id">MODUL_01</span>
+                            <span class="sector-id cyan-text">MODUL_01</span>
                             <h3 class="sector-title">IKEA PAX, Küchen & Wohnmöbel</h3>
                             <div class="sector-trigger"><i class="fas fa-plus"></i></div>
                         </div>
@@ -357,7 +426,7 @@
                             </div>
                             <div class="sector-grid">
                                 <div class="sector-group">
-                                    <h4 class="group-label"><i class="fas fa-box-open"></i> PAX & Schränke</h4>
+                                    <h4 class="group-label"><i class="fas fa-box-open cyan-text"></i> PAX & Schränke</h4>
                                     <ul>
                                         <li>Kippsichere Wandverankerung</li>
                                         <li>Laser-Ausrichtung in Altbauten</li>
@@ -366,21 +435,21 @@
                                     </ul>
                                 </div>
                                 <div class="sector-group">
-                                    <h4 class="group-label"><i class="fas fa-utensils"></i> METOD Küchen</h4>
+                                    <h4 class="group-label"><i class="fas fa-utensils cyan-text"></i> METOD Küchen</h4>
                                     <ul>
                                         <li>Korpus- und Wandschienenmontage</li>
-                                        <li>Arbeitsplatten-Zuschnitt (Bosch Prof.)</li>
+                                        <li>Arbeitsplatten-Zuschnitt (Festool)</li>
                                         <li>Ausschnitte für Spüle & Kochfeld</li>
                                         <li>Mechanische Geräte-Integration</li>
                                     </ul>
                                 </div>
                                 <div class="sector-group">
-                                    <h4 class="group-label"><i class="fas fa-couch"></i> Living & Schlafen</h4>
+                                    <h4 class="group-label"><i class="fas fa-couch cyan-text"></i> Living & Schlafen</h4>
                                     <ul>
                                         <li>BESTÅ Wandmontage (schwebend)</li>
                                         <li>Boxspringbetten & MALM Serien</li>
                                         <li>Bilder, Spiegel & Garderoben</li>
-                                        <li>Geräuschlose, stabile Konstruktion</li>
+                                        <li>Geräuschlose Konstruktion</li>
                                     </ul>
                                 </div>
                             </div>
@@ -389,40 +458,40 @@
 
                     <div class="sector-module glass-panel" onclick="window.expandSector(this)">
                         <div class="sector-header">
-                            <span class="sector-id">MODUL_02</span>
+                            <span class="sector-id gold-text">MODUL_02</span>
                             <h3 class="sector-title">Gartenhäuser & Outdoor-Strukturen</h3>
                             <div class="sector-trigger"><i class="fas fa-plus"></i></div>
                         </div>
                         <div class="sector-body">
                             <div class="sector-description">
-                                Machen Sie Ihren Garten zur Wohlfühloase. Ein Gartenhaus aus hunderten Einzelteilen aufzubauen, kann extrem frustrierend sein. Ich übernehme das schwere Heben und die wetterfeste Montage für Sie.
+                                Machen Sie Ihren Garten zur Wohlfühloase. Ein Gartenhaus aus hunderten Einzelteilen aufzubauen, kann extrem frustrierend sein. Ich übernehme das schwere Heben und die wetterfeste Montage.
                             </div>
                             <div class="sector-grid">
                                 <div class="sector-group">
-                                    <h4 class="group-label"><i class="fas fa-home"></i> Holz- & Gartenhäuser</h4>
+                                    <h4 class="group-label"><i class="fas fa-home gold-text"></i> Holz- & Gartenhäuser</h4>
                                     <ul>
                                         <li>Aufbau von Blockbohlenhäusern</li>
-                                        <li>Dacheindeckung (Bitumen/Dachpappe)</li>
+                                        <li>Dacheindeckung (Bitumen/EPDM)</li>
                                         <li>Einbau von Fenstern & Türen</li>
                                         <li>Sturmsichere Verankerung</li>
                                     </ul>
                                 </div>
                                 <div class="sector-group">
-                                    <h4 class="group-label"><i class="fas fa-toolbox"></i> Metall- & Gerätehäuser</h4>
+                                    <h4 class="group-label"><i class="fas fa-toolbox gold-text"></i> Metall- & Gerätehäuser</h4>
                                     <ul>
-                                        <li>Aufbau von Biohort & Tepro Häusern</li>
+                                        <li>Aufbau von Biohort & Tepro</li>
                                         <li>Verschraubung auf dem Fundament</li>
                                         <li>Fahrradboxen & Mülltonnenboxen</li>
                                         <li>Wetterfeste Silikon-Abdichtungen</li>
                                     </ul>
                                 </div>
                                 <div class="sector-group">
-                                    <h4 class="group-label"><i class="fas fa-umbrella-beach"></i> Outdoor Living</h4>
+                                    <h4 class="group-label"><i class="fas fa-umbrella-beach gold-text"></i> Outdoor Living</h4>
                                     <ul>
                                         <li>Aluminium- & Holzpavillons</li>
                                         <li>Große Gartenmöbel-Sets & Lounges</li>
                                         <li>Spieltürme & Schaukeln für Kinder</li>
-                                        <li>Sonnensegel & Terrassen-Überdachung</li>
+                                        <li>Sonnensegel & Terrassen</li>
                                     </ul>
                                 </div>
                             </div>
@@ -431,37 +500,60 @@
 
                     <div class="sector-module glass-panel" onclick="window.expandSector(this)">
                         <div class="sector-header">
-                            <span class="sector-id">MODUL_03</span>
-                            <h3 class="sector-title">Gewerbe, USM Haller & Tech</h3>
+                            <span class="sector-id" style="color: var(--neon-pink);">MODUL_03</span>
+                            <h3 class="sector-title">Gewerbe & USM Haller</h3>
                             <div class="sector-trigger"><i class="fas fa-plus"></i></div>
                         </div>
                         <div class="sector-body">
                             <div class="sector-description">
-                                Präzision für Ihr Business und High-Tech für Ihr Wohnzimmer. Ich montiere exklusive Designermöbel und hänge schwere TV-Geräte mit absoluter Sicherheit auf.
+                                Präzision für Ihr Business. Ich montiere exklusive Designermöbel für Anwaltskanzleien, Agenturen und Praxen, absolut kratzfrei und im Zeitplan.
                             </div>
                             <div class="sector-grid">
                                 <div class="sector-group">
-                                    <h4 class="group-label"><i class="fas fa-gem"></i> USM Haller & Design</h4>
+                                    <h4 class="group-label"><i class="fas fa-gem" style="color: var(--neon-pink);"></i> USM Haller Design</h4>
                                     <ul>
                                         <li>Nutzung von Spezialwerkzeug</li>
                                         <li>Kratzfreie Chromrohr-Montage</li>
-                                        <li>Umbau und Erweiterung von Systemen</li>
+                                        <li>Umbau und Erweiterung</li>
                                     </ul>
                                 </div>
                                 <div class="sector-group">
-                                    <h4 class="group-label"><i class="fas fa-briefcase"></i> Office Workspace</h4>
+                                    <h4 class="group-label"><i class="fas fa-briefcase" style="color: var(--neon-pink);"></i> Office Workspace</h4>
                                     <ul>
                                         <li>Höhenverstellbare Schreibtische</li>
-                                        <li>Akustik-Paneele (Wand & Decke)</li>
-                                        <li>Massen-Rollout für Großraumbüros</li>
+                                        <li>Konferenzraum-Ausstattung</li>
+                                        <li>Massen-Rollout für Büros</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sector-module glass-panel" onclick="window.expandSector(this)">
+                        <div class="sector-header">
+                            <span class="sector-id green-text">MODUL_04</span>
+                            <h3 class="sector-title">Möbel-Demontage & Rückbau</h3>
+                            <div class="sector-trigger"><i class="fas fa-plus"></i></div>
+                        </div>
+                        <div class="sector-body">
+                            <div class="sector-description">
+                                Umzug oder Renovierung? Ich zerlege Ihre wertvollen Küchen, PAX-Schränke und Systemmöbel systematisch und zerstörungsfrei, damit der Wiederaufbau problemlos gelingt.
+                            </div>
+                            <div class="sector-grid">
+                                <div class="sector-group">
+                                    <h4 class="group-label"><i class="fas fa-wrench green-text"></i> Küchen-Rückbau</h4>
+                                    <ul>
+                                        <li>Ablösen der Arbeitsplatten</li>
+                                        <li>Ausbau der Einbaugeräte</li>
+                                        <li>Sortierung der Schrauben</li>
                                     </ul>
                                 </div>
                                 <div class="sector-group">
-                                    <h4 class="group-label"><i class="fas fa-tv"></i> Tech & TV-Montage</h4>
+                                    <h4 class="group-label"><i class="fas fa-door-open green-text"></i> PAX & Systemmöbel</h4>
                                     <ul>
-                                        <li>Schwerlast-Wandhalterungen (bis 85")</li>
-                                        <li>Verstecktes Kabelmanagement</li>
-                                        <li>Installation von LED-Leisten</li>
+                                        <li>Aushängen von Schwebetüren</li>
+                                        <li>Schonendes Lösen der Rückwände</li>
+                                        <li>Transportsichere Teilebündelung</li>
                                     </ul>
                                 </div>
                             </div>
@@ -472,7 +564,7 @@
             </div>
         </section>  
 
-    <section id="integration-feeds" class="section-padding bg-darker">
+        <section id="integration-feeds" class="section-padding bg-darker">
             <div class="container relative-z">
                 
                 <div class="section-header center" data-aos="fade-up">
@@ -551,17 +643,16 @@
 
                     <div class="belt-container" data-aos="fade-left">
                         <div class="belt-track" id="imageBelt">
-                            <div class="belt-item"><img src="assets/images/Bedroom_grey_main.webp" alt="Schlafzimmer Montage" onerror="this.src='https://via.placeholder.com/600x400/111/ffd700?text=Projekt+Bild'"><div class="img-tag">IKEA PAX SCHLAFZIMMER</div></div>
-                            <div class="belt-item"><img src="assets/images/ikea-bekant-schreibtisch-hoehenverstellbar-aufbau.webp" alt="Büro Montage" onerror="this.src='https://via.placeholder.com/600x400/111/ffd700?text=Projekt+Bild'"><div class="img-tag">OFFICE SETUP</div></div>
-                            <div class="belt-item"><img src="assets/images/ikea-besta-tv-bank-wandmotage-schwebend.webp" alt="TV Wand" onerror="this.src='https://via.placeholder.com/600x400/111/ffd700?text=Projekt+Bild'"><div class="img-tag">SCHWEBENDES TV-BOARD</div></div>
-                            <div class="belt-item"><img src="assets/images/ikea-hemnes-tagesbett-ausziehbar-montage.webp" alt="Bett Montage" onerror="this.src='https://via.placeholder.com/600x400/111/ffd700?text=Projekt+Bild'"><div class="img-tag">HEMNES TAGESBETT</div></div>
-                            <div class="belt-item"><img src="assets/images/ikea-hemnea-kommode-aufbau-service.webp" alt="Kommode" onerror="this.src='https://via.placeholder.com/600x400/111/ffd700?text=Projekt+Bild'"><div class="img-tag">KOMMODEN-MONTAGE</div></div>
-                            <div class="belt-item"><img src="assets/images/ikea-malm-kommode-6-schubladeb-aufbau.webp" alt="Malm" onerror="this.src='https://via.placeholder.com/600x400/111/ffd700?text=Projekt+Bild'"><div class="img-tag">MALM SERIE</div></div>
+                            <div class="belt-item"><img src="assets/images/Bedroom_grey_main.webp" alt="Schlafzimmer Montage" onerror="this.src='https://via.placeholder.com/600x400/111/ffd700'"><div class="img-tag">IKEA PAX SCHLAFZIMMER</div></div>
+                            <div class="belt-item"><img src="assets/images/ikea-bekant-schreibtisch-hoehenverstellbar-aufbau.webp" alt="Büro Montage" onerror="this.src='https://via.placeholder.com/600x400/111/ffd700'"><div class="img-tag">OFFICE SETUP</div></div>
+                            <div class="belt-item"><img src="assets/images/ikea-besta-tv-bank-wandmotage-schwebend.webp" alt="TV Wand" onerror="this.src='https://via.placeholder.com/600x400/111/ffd700'"><div class="img-tag">SCHWEBENDES TV-BOARD</div></div>
+                            <div class="belt-item"><img src="assets/images/ikea-hemnes-tagesbett-ausziehbar-montage.webp" alt="Bett Montage" onerror="this.src='https://via.placeholder.com/600x400/111/ffd700'"><div class="img-tag">HEMNES TAGESBETT</div></div>
+                            <div class="belt-item"><img src="assets/images/ikea-hemnea-kommode-aufbau-service.webp" alt="Kommode" onerror="this.src='https://via.placeholder.com/600x400/111/ffd700'"><div class="img-tag">KOMMODEN-MONTAGE</div></div>
+                            <div class="belt-item"><img src="assets/images/ikea-malm-kommode-6-schubladeb-aufbau.webp" alt="Malm" onerror="this.src='https://via.placeholder.com/600x400/111/ffd700'"><div class="img-tag">MALM SERIE</div></div>
                             
-                            <div class="belt-item"><img src="assets/images/Bedroom_grey_main.webp" alt="Schlafzimmer Montage" onerror="this.src='https://via.placeholder.com/600x400/111/ffd700?text=Projekt+Bild'"><div class="img-tag">IKEA PAX SCHLAFZIMMER</div></div>
-                            <div class="belt-item"><img src="assets/images/ikea-bekant-schreibtisch-hoehenverstellbar-aufbau.webp" alt="Büro Montage" onerror="this.src='https://via.placeholder.com/600x400/111/ffd700?text=Projekt+Bild'"><div class="img-tag">OFFICE SETUP</div></div>
-                            <div class="belt-item"><img src="assets/images/ikea-besta-tv-bank-wandmotage-schwebend.webp" alt="TV Wand" onerror="this.src='https://via.placeholder.com/600x400/111/ffd700?text=Projekt+Bild'"><div class="img-tag">SCHWEBENDES TV-BOARD</div></div>
-                            <div class="belt-item"><img src="assets/images/ikea-hemnes-tagesbett-ausziehbar-montage.webp" alt="Bett Montage" onerror="this.src='https://via.placeholder.com/600x400/111/ffd700?text=Projekt+Bild'"><div class="img-tag">HEMNES TAGESBETT</div></div>
+                            <div class="belt-item"><img src="assets/images/Bedroom_grey_main.webp" alt="Schlafzimmer Montage" onerror="this.src='https://via.placeholder.com/600x400/111/ffd700'"><div class="img-tag">IKEA PAX SCHLAFZIMMER</div></div>
+                            <div class="belt-item"><img src="assets/images/ikea-bekant-schreibtisch-hoehenverstellbar-aufbau.webp" alt="Büro Montage" onerror="this.src='https://via.placeholder.com/600x400/111/ffd700'"><div class="img-tag">OFFICE SETUP</div></div>
+                            <div class="belt-item"><img src="assets/images/ikea-besta-tv-bank-wandmotage-schwebend.webp" alt="TV Wand" onerror="this.src='https://via.placeholder.com/600x400/111/ffd700'"><div class="img-tag">SCHWEBENDES TV-BOARD</div></div>
                         </div>
                     </div>
 
@@ -569,7 +660,7 @@
             </div>
         </section>
 
-        <section id="reviews" class="review-mainframe-bg hex-bg">
+        <section id="reviews" class="review-mainframe-bg hex-core-bg">
             <div class="reviews-grid-overlay"></div>
             <div class="reviews-glow-pulse"></div>
 
@@ -581,7 +672,7 @@
                 </div>
 
                 <div class="trust-cards-wrapper" data-aos="fade-up">
-                    <a href="https://profis.check24.de" target="_blank" class="platform-card reactive-btn" onclick="if(window.vibrateDevice) window.vibrateDevice(15);">
+                    <a href="https://profis.check24.de" target="_blank" class="platform-card reactive-btn">
                         <div class="card-inner card-blue">
                             <div class="platform-logo check24-logo">CHECK<span>24</span></div>
                             <div class="big-score">5.0</div>
@@ -590,7 +681,7 @@
                         </div>
                     </a>
 
-                    <a href="https://www.my-hammer.de" target="_blank" class="platform-card reactive-btn" onclick="if(window.vibrateDevice) window.vibrateDevice(15);">
+                    <a href="https://www.my-hammer.de" target="_blank" class="platform-card reactive-btn">
                         <div class="card-inner card-gold">
                             <div class="platform-logo hammer-logo"><i class="fas fa-hammer" style="color: #000;"></i> <span style="color: #000; font-weight: 800;">MyHammer</span></div>
                             <div class="big-score" style="color:#000;">5.0</div>
@@ -600,18 +691,18 @@
                     </a>
                 </div>
 
-                <div class="review-grid-2026" data-aos="fade-up">
+                <div class="swipe-carousel" id="reviewCarousel" data-aos="fade-up">
                     
-                    <div class="rev-card glass-panel">
+                    <div class="rev-card glass-panel swipe-item">
                         <div class="rev-header">
                             <div class="rev-user">Dr. Weber, München</div>
                             <div class="rev-source hammer">MyHammer</div>
                         </div>
-                        <p>"Raphael hat bei der Einrichtung meiner Praxis hervorragende Arbeit geleistet! Absolut präzise, sehr sauber und effizient."</p>
+                        <p>"Raphael hat bei der Einrichtung meiner Praxis hervorragende Arbeit geleistet! Absolut präzise, sehr sauber und effizient. USM Haller Spezialist!"</p>
                         <div class="rev-footer"><span class="tag">GEWERBE</span><span class="tag">TOP QUALITÄT</span></div>
                     </div>
 
-                    <div class="rev-card glass-panel">
+                    <div class="rev-card glass-panel swipe-item">
                         <div class="rev-header">
                             <div class="rev-user">Ute B., Augsburg</div>
                             <div class="rev-source check24">Check24</div>
@@ -620,7 +711,7 @@
                         <div class="rev-footer"><span class="tag">EXPERTENWISSEN</span><span class="tag">FREUNDLICH</span></div>
                     </div>
 
-                    <div class="rev-card glass-panel">
+                    <div class="rev-card glass-panel swipe-item">
                         <div class="rev-header">
                             <div class="rev-user">Benedikt W.</div>
                             <div class="rev-source hammer">MyHammer</div>
@@ -629,7 +720,7 @@
                         <div class="rev-footer"><span class="tag">IKEA PAX</span><span class="tag">FAIRER PREIS</span></div>
                     </div>
 
-                    <div class="rev-card glass-panel">
+                    <div class="rev-card glass-panel swipe-item">
                         <div class="rev-header">
                             <div class="rev-user">Jacqueline Z.</div>
                             <div class="rev-source check24">Check24</div>
@@ -638,71 +729,45 @@
                         <div class="rev-footer"><span class="tag">PROFI-WERKZEUG</span><span class="tag">SAUBERKEIT</span></div>
                     </div>
                     
-                    <div class="rev-card glass-panel">
-                        <div class="rev-header">
-                            <div class="rev-user">Carolin H.</div>
-                            <div class="rev-source hammer">MyHammer</div>
-                        </div>
-                        <p>"Unkomplizierte Kommunikation. Er hat so sorgfältig gearbeitet, als wären es seine eigenen Möbel. Jede Tür sitzt perfekt."</p>
-                        <div class="rev-footer"><span class="tag">SORGFALT</span><span class="tag">MÜNCHEN</span></div>
-                    </div>
-
-                    <div class="rev-card glass-panel">
-                        <div class="rev-header">
-                            <div class="rev-user">JL, Dachau</div>
-                            <div class="rev-source check24">Check24</div>
-                        </div>
-                        <p>"Zusammenarbeit von A-Z professionell. Er arbeitet unglaublich gewissenhaft und ist sehr sympathisch. Gerne beim nächsten Mal wieder."</p>
-                        <div class="rev-footer"><span class="tag">GEWISSENHAFT</span><span class="tag">ZUVERLÄSSIG</span></div>
-                    </div>
-
-                    <div class="rev-card glass-panel">
-                        <div class="rev-header">
-                            <div class="rev-user">Manuela T.</div>
-                            <div class="rev-source hammer">MyHammer</div>
-                        </div>
-                        <p>"Er erledigt alle Aufträge mit großem handwerklichen Geschick, sehr sauber und präzise. Auch bei schwierigen Wänden findet er eine Lösung."</p>
-                        <div class="rev-footer"><span class="tag">HANDWERKSKUNST</span><span class="tag">LÖSUNGSORIENTIERT</span></div>
-                    </div>
-
-                    <div class="rev-card glass-panel">
+                    <div class="rev-card glass-panel swipe-item">
                         <div class="rev-header">
                             <div class="rev-user">Familie S., Starnberg</div>
                             <div class="rev-source check24">Check24</div>
                         </div>
-                        <p>"Sehr pünktlich, professionell, hat alles notwendige Werkzeug dabei. Arbeitet sehr rücksichtsvoll im frisch renovierten Haus."</p>
-                        <div class="rev-footer"><span class="tag">PÜNKTLICH</span><span class="tag">RESPEKTVOLL</span></div>
+                        <p>"Wir haben ein großes Biohort Haus bestellt. Herr Lezius hat das Fundament perfekt ausgeglichen und das Haus sturmsicher aufgebaut. Wahnsinn!"</p>
+                        <div class="rev-footer"><span class="tag">OUTDOOR</span><span class="tag">BIOHORT</span></div>
                     </div>
-
-                    <div class="rev-card glass-panel">
+                    
+                    <div class="rev-card glass-panel swipe-item">
                         <div class="rev-header">
-                            <div class="rev-user">Timothy P.</div>
+                            <div class="rev-user">Michael R., Dachau</div>
                             <div class="rev-source hammer">MyHammer</div>
                         </div>
-                        <p>"Der Aufbau unseres großen Gartenhauses wurde an einem Tag schnell und sicher erledigt. Nichts hat gewackelt. Absoluter Top Service."</p>
-                        <div class="rev-footer"><span class="tag">GARTENHAUS</span><span class="tag">SICHER</span></div>
-                    </div>
-
-                    <div class="rev-card glass-panel">
-                        <div class="rev-header">
-                            <div class="rev-user">Sebastian J.</div>
-                            <div class="rev-source check24">Check24</div>
-                        </div>
-                        <p>"Super kompetent, einfach ein vertrauenswürdiger Fachmann. Wer hochwertige Möbel hat, sollte ihn buchen. Nur zu empfehlen!"</p>
-                        <div class="rev-footer"><span class="tag">VERTRAUENSWÜRDIG</span><span class="tag">KOMPETENT</span></div>
+                        <p>"Pünktlich, gewissenhaft und extrem gut ausgerüstet. Die Demontage unserer alten Küche lief absolut reibungslos. Sehr empfehlenswert."</p>
+                        <div class="rev-footer"><span class="tag">DEMONTAGE</span><span class="tag">ZUVERLÄSSIG</span></div>
                     </div>
                     
                 </div>
+                
+                <div class="carousel-indicators" id="reviewIndicators">
+                    <div class="dot active"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+
             </div>
         </section>
 
-    <section id="faq-smart" class="section-padding bg-dark animated-grid-bg">
+        <section id="faq-smart" class="section-padding bg-dark animated-grid-bg">
             <div class="container relative-z">
                 
                 <div class="section-header center" data-aos="fade-up">
                     <div class="pre-title">KUNDENSERVICE</div>
                     <h2 class="section-heading">Häufige <span class="gold-text">Fragen</span></h2>
-                    <p class="section-subtitle" style="margin-left: auto; margin-right: auto;">Transparenz ist mir wichtig. Hier finden Sie die Antworten auf die wichtigsten organisatorischen Fragen rund um meine Montage.</p>
+                    <p class="section-subtitle" style="margin-left: auto; margin-right: auto;">Transparenz ist mir wichtig. Hier finden Sie die Antworten auf die wichtigsten organisatorischen Fragen rund um meine Montage und Demontage.</p>
                 </div>
 
                 <div class="faq-tile-grid" data-aos="fade-up" style="max-width: 1000px; margin: 0 auto;">
@@ -714,35 +779,46 @@
                             <div class="m-plus">+</div>
                         </div>
                         <div class="module-body">
-                            <div class="faq-entry"><h6>Bringen Sie Ihr eigenes Werkzeug mit?</h6><p>Selbstverständlich. Ich rücke mit einer kompletten Profi-Ausrüstung (Bosch Professional, Makita) an. Sie müssen absolut nichts stellen.</p></div>
-                            <div class="faq-entry"><h6>Was ist mit dem Bohrstaub?</h6><p>Ich arbeite mit einem aktiven Absaugmobil, das direkt am Bohrpunkt angesetzt wird. Ihre Wohnung bleibt während der gesamten Montage klinisch rein.</p></div>
-                            <div class="faq-entry"><h6>Können Sie auch Arbeitsplatten sägen?</h6><p>Ja, dank meiner Führungsschiene und Tauchsäge sind millimetergenaue, ausrissfreie Zuschnitte für Spülen und Kochfelder direkt vor Ort möglich.</p></div>
+                            <div class="faq-entry"><h6>Bringen Sie Ihr eigenes Werkzeug mit?</h6><p>Selbstverständlich. Ich rücke mit einer kompletten Profi-Ausrüstung (Bosch Professional, Festool, Makita) an. Sie müssen absolut nichts stellen, nicht einmal einen Besen.</p></div>
+                            <div class="faq-entry"><h6>Was ist mit dem Bohrstaub?</h6><p>Ich arbeite mit einem aktiven Absaugmobil (Industriestaubsauger), das direkt am Bohrpunkt oder der Säge angesetzt wird. Ihre Wohnung bleibt während der gesamten Montage klinisch rein.</p></div>
+                            <div class="faq-entry"><h6>Können Sie auch Arbeitsplatten sägen?</h6><p>Ja, dank meiner Festool Führungsschiene und Tauchsäge sind millimetergenaue, absolut ausrissfreie Zuschnitte für Spülen und Kochfelder direkt vor Ort möglich.</p></div>
                         </div>
                     </div>
 
                     <div class="faq-module glass-panel" onclick="window.toggleModule(this)">
                         <div class="module-header">
                             <div class="m-icon"><i class="fas fa-euro-sign"></i></div>
-                            <div class="m-title">Kosten & Bezahlung <span>(Festpreise, Rechnung)</span></div>
+                            <div class="m-title">Kosten, Bezahlung & Steuern <span>(Festpreise, Rechnung)</span></div>
                             <div class="m-plus">+</div>
                         </div>
                         <div class="module-body">
-                            <div class="faq-entry"><h6>Arbeiten Sie nach Stundenlohn oder Festpreis?</h6><p>Um Ihnen volle Planungssicherheit zu geben, arbeite ich in der Regel mit transparenten Festpreisen, die wir vor der Montage verbindlich vereinbaren.</p></div>
-                            <div class="faq-entry"><h6>Gibt es versteckte Anfahrtskosten?</h6><p>Nein. Die Anfahrtspauschale für Augsburg, München und Umgebung wird im Angebot klar und deutlich ausgewiesen.</p></div>
-                            <div class="faq-entry"><h6>Kann ich die Rechnung steuerlich absetzen?</h6><p>Ja, Sie erhalten eine ordentliche Rechnung per E-Mail, deren Arbeitskosten Sie als haushaltsnahe Dienstleistung (gemäß § 35a EStG) von der Steuer absetzen können.</p></div>
+                            <div class="faq-entry"><h6>Arbeiten Sie nach Stundenlohn oder Festpreis?</h6><p>Um Ihnen volle Planungssicherheit zu geben, arbeite ich bei Standardsystemen (IKEA, Biohort) mit transparenten Festpreisen, die wir vor der Montage verbindlich vereinbaren.</p></div>
+                            <div class="faq-entry"><h6>Kann ich die Rechnung steuerlich absetzen?</h6><p>Ja! Ich bin ein offiziell eingetragener Handwerksbetrieb. Sie erhalten eine ordentliche Rechnung per E-Mail. Die Arbeitskosten können Sie als haushaltsnahe Dienstleistung (gemäß § 35a EStG) von der Steuer absetzen (Sie erhalten 20% vom Staat zurück).</p></div>
+                            <div class="faq-entry"><h6>Welche Zahlungsmittel akzeptieren Sie?</h6><p>Wir arbeiten 100% bargeldlos. Sie können direkt nach Abnahme bequem vor Ort per EC-Karte, Apple Pay, Google Pay oder per Echtzeit-Überweisung zahlen.</p></div>
                         </div>
                     </div>
 
                     <div class="faq-module glass-panel" onclick="window.toggleModule(this)">
                         <div class="module-header">
-                            <div class="m-icon"><i class="fas fa-calendar-alt"></i></div>
-                            <div class="m-title">Termine & Organisation <span>(Vorlaufzeit, Wochenende)</span></div>
+                            <div class="m-icon"><i class="fas fa-shield-alt"></i></div>
+                            <div class="m-title">Sicherheit & Haftung <span>(Versicherung, Altbau-Wände)</span></div>
                             <div class="m-plus">+</div>
                         </div>
                         <div class="module-body">
-                            <div class="faq-entry"><h6>Arbeiten Sie auch am Wochenende?</h6><p>Ja, nach individueller Absprache führe ich Montagen auch an Samstagen durch, damit Sie keinen Urlaub für den Möbelaufbau nehmen müssen.</p></div>
-                            <div class="faq-entry"><h6>Wie lang ist die Vorlaufzeit?</h6><p>In der Regel benötige ich 5-10 Werktage Vorlauf. Für Notfälle (Wasserschaden, spontaner Umzug) biete ich jedoch auch Express-Termine an.</p></div>
-                            <div class="faq-entry"><h6>Entsorgen Sie das Verpackungsmaterial?</h6><p>Ich sortiere alle Kartonagen und Folien besenrein für Sie vor. Eine externe Entsorgung biete ich aufgrund von Transportkapazitäten derzeit nicht an.</p></div>
+                            <div class="faq-entry"><h6>Was passiert, wenn etwas beschädigt wird?</h6><p>Das passiert bei mir äußerst selten. Dennoch bin ich für alle Fälle über eine vollumfängliche, gewerbliche Betriebshaftpflichtversicherung abgesichert. Für Sie besteht Null Risiko.</p></div>
+                            <div class="faq-entry"><h6>Meine Altbau-Wände sind sehr bröselig. Hält das?</h6><p>Ja. Im Gegensatz zu billigen Anbietern nutze ich keine Plastikdübel bei Problemwänden. Ich verwende auf Wunsch speziellen Injektionsmörtel und chemische Schwerlastanker von fischer. Damit hängt selbst im historischen Schwabinger Altbau alles sicher.</p></div>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-module glass-panel" onclick="window.toggleModule(this)">
+                        <div class="module-header">
+                            <div class="m-icon"><i class="fas fa-hammer"></i></div>
+                            <div class="m-title">Demontage & Umzug <span>(Küchen, Systemmöbel)</span></div>
+                            <div class="m-plus">+</div>
+                        </div>
+                        <div class="module-body">
+                            <div class="faq-entry"><h6>Bauen Sie alte Möbel für einen Umzug ab?</h6><p>Ja. Ich bin auf die zerstörungsfreie Demontage von großen Systemen (IKEA PAX, USM Haller) und Einbauküchen spezialisiert. Ich zerlege die Möbel so, dass sie am neuen Ort problemlos wieder aufgebaut werden können.</p></div>
+                            <div class="faq-entry"><h6>Klemmen Sie auch Wasser und Strom ab?</h6><p>Nein. Aus rechtlichen Gründen (Versicherungsschutz) müssen Wasser- und Starkstromanschlüsse (Herd/Spüle) zwingend vorab von einem autorisierten Fachbetrieb getrennt werden. Den reinen Holz- und Korpus-Rückbau übernehme ich dann komplett.</p></div>
                         </div>
                     </div>
 
@@ -768,7 +844,9 @@
             </div>
         </div>
 
-</main> <footer class="mega-footer circuit-bg">
+    </main>
+
+    <footer class="mega-footer circuit-bg">
         <div class="container relative-z">
 
             <div class="footer-grid">
@@ -787,8 +865,8 @@
                     </div>
 
                     <div class="social-row" style="margin-top: 35px;">
-                        <a href="https://wa.me/491608194018" target="_blank" class="social-btn reactive-btn" onclick="if(window.vibrateDevice) window.vibrateDevice(10);"><i class="fab fa-whatsapp"></i></a>
-                        <a href="#" target="_blank" class="social-btn reactive-btn" onclick="if(window.vibrateDevice) window.vibrateDevice(10);"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/491608194018" target="_blank" class="social-btn reactive-btn"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" target="_blank" class="social-btn reactive-btn"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
 
@@ -799,8 +877,7 @@
                         <li><a href="residential.html">Küchenmontage & Schnitt</a></li>
                         <li><a href="outdoor.html">Gartenhäuser & Outdoor</a></li>
                         <li><a href="office.html">USM Haller & Gewerbe</a></li>
-                        <li><a href="tech.html">Schwerlast-Wandmontage</a></li>
-                        <li><a href="tech.html">Akustikpaneele & Design</a></li>
+                        <li><a href="demontage.html">Möbel-Demontage & Service</a></li>
                     </ul>
                 </div>
 
@@ -821,7 +898,6 @@
                         <li><a href="impressum.html">Impressum</a></li>
                         <li><a href="datenschutz.html">Datenschutz</a></li>
                         <li><a href="agb.html">AGB & Widerruf</a></li>
-                        <li><a href="#" onclick="event.preventDefault();">Cookie-Einstellungen</a></li>
                     </ul>
                 </div>
 
@@ -860,15 +936,14 @@
                 </div>
                 
                 <div class="footer-payments" style="display: flex; gap: 20px; font-size: 1.8rem; color: #444;">
-                    <i class="fab fa-apple" title="Apple Pay" style="transition: 0.3s; cursor: pointer;" onmouseover="this.style.color='#FFD700'" onmouseout="this.style.color='#444'"></i>
-                    <i class="fab fa-google" title="Google Pay" style="transition: 0.3s; cursor: pointer;" onmouseover="this.style.color='#FFD700'" onmouseout="this.style.color='#444'"></i>
-                    <i class="fab fa-cc-paypal" title="PayPal" style="transition: 0.3s; cursor: pointer;" onmouseover="this.style.color='#FFD700'" onmouseout="this.style.color='#444'"></i>
-                    <i class="fab fa-cc-visa" title="Visa" style="transition: 0.3s; cursor: pointer;" onmouseover="this.style.color='#FFD700'" onmouseout="this.style.color='#444'"></i>
-                    <i class="fab fa-cc-mastercard" title="Mastercard" style="transition: 0.3s; cursor: pointer;" onmouseover="this.style.color='#FFD700'" onmouseout="this.style.color='#444'"></i>
-                    <i class="fas fa-credit-card" title="Klarna / Girocard" style="transition: 0.3s; cursor: pointer;" onmouseover="this.style.color='#FFD700'" onmouseout="this.style.color='#444'"></i>
+                    <i class="fab fa-apple" title="Apple Pay"></i>
+                    <i class="fab fa-google" title="Google Pay"></i>
+                    <i class="fab fa-cc-paypal" title="PayPal"></i>
+                    <i class="fab fa-cc-visa" title="Visa"></i>
+                    <i class="fab fa-cc-mastercard" title="Mastercard"></i>
                 </div>
                 
-                <div class="developer-credit" onclick="if(window.vibrateDevice) window.vibrateDevice(20);">
+                <div class="developer-credit">
                     <span class="code-bracket">&lt;/&gt;</span>
                     <span class="dev-text" style="color: #666;">SYS_DEV <span class="dev-name" style="color: var(--neon-gold);">IDRIS</span></span>
                 </div>
@@ -876,13 +951,13 @@
         </div>
     </footer>
 
-    <a href="https://wa.me/491608194018" target="_blank" class="whatsapp-float reactive-btn" aria-label="WhatsApp Contact" onclick="if(window.vibrateDevice) window.vibrateDevice([30, 50, 30]);">
+    <a href="https://wa.me/491608194018" target="_blank" class="whatsapp-float reactive-btn">
         <div class="whatsapp-pulse"></div>
         <i class="fab fa-whatsapp"></i>
     </a>
 
     <div id="missionOS" class="os-overlay">
-        <div class="os-backdrop" onclick="MissionOS.close()"></div>
+        <div class="os-backdrop" onclick="document.getElementById('missionOS').classList.remove('system-active'); document.body.style.overflow = '';"></div>
         
         <div class="case-container">
             <aside class="case-sidebar">
@@ -892,44 +967,32 @@
                 </div>
                 
                 <nav class="case-steps">
-                    <div class="step-link active" id="nav1" onclick="if(window.vibrateDevice) window.vibrateDevice(10); MissionOS.setPhase(1)">
+                    <div class="step-link active" id="nav1" onclick="document.querySelectorAll('.case-phase').forEach(p=>p.classList.remove('active')); document.getElementById('phase1').classList.add('active');">
                         <div class="step-num">01</div>
-                        <div class="step-txt">BASISDATEN <small>Wer sind Sie?</small></div>
+                        <div class="step-txt">BASISDATEN</div>
                     </div>
-                    <div class="step-link" id="nav2" onclick="if(window.vibrateDevice) window.vibrateDevice(10); MissionOS.setPhase(2)">
+                    <div class="step-link" id="nav2" onclick="document.querySelectorAll('.case-phase').forEach(p=>p.classList.remove('active')); document.getElementById('phase2').classList.add('active');">
                         <div class="step-num">02</div>
-                        <div class="step-txt">PROJEKT <small>Was soll gebaut werden?</small></div>
+                        <div class="step-txt">PROJEKT</div>
                     </div>
-                    <div class="step-link" id="nav3" onclick="if(window.vibrateDevice) window.vibrateDevice(10); MissionOS.setPhase(3)">
+                    <div class="step-link" id="nav3" onclick="document.querySelectorAll('.case-phase').forEach(p=>p.classList.remove('active')); document.getElementById('phase3').classList.add('active');">
                         <div class="step-num">03</div>
-                        <div class="step-txt">LOGISTIK <small>Einsatzort & Etage</small></div>
+                        <div class="step-txt">LOGISTIK</div>
                     </div>
-                    <div class="step-link" id="nav4" onclick="if(window.vibrateDevice) window.vibrateDevice(10); MissionOS.setPhase(4)">
+                    <div class="step-link" id="nav4" onclick="document.querySelectorAll('.case-phase').forEach(p=>p.classList.remove('active')); document.getElementById('phase4').classList.add('active');">
                         <div class="step-num">04</div>
-                        <div class="step-txt">ABSCHLUSS <small>Anfrage senden</small></div>
+                        <div class="step-txt">ABSCHLUSS</div>
                     </div>
                 </nav>
-
-                <div class="live-stats">
-                    <div class="stat-box">
-                        <label style="font-size: 0.7rem; color: #888; font-weight: bold; letter-spacing: 2px; font-family: var(--font-mono);">GEWÄHLTE POSITIONEN</label>
-                        <div id="serviceCount" style="font-family: var(--font-head); font-size: 2.5rem; font-weight: 800; color: #000; line-height: 1;">00</div>
-                    </div>
-                    <div class="stat-box" style="margin-top: 30px;">
-                        <label style="font-size: 0.7rem; color: #888; font-weight: bold; letter-spacing: 2px; font-family: var(--font-mono);">SICHERHEIT</label>
-                        <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--neon-green); font-weight: bold; margin-top: 8px;">SSL_ENCRYPTED</div>
-                    </div>
-                </div>
             </aside>
 
             <main class="case-main">
-                <button class="case-close" aria-label="Schließen" onclick="if(window.vibrateDevice) window.vibrateDevice(20); MissionOS.close()">&times;</button>
+                <button class="case-close" onclick="document.getElementById('missionOS').classList.remove('system-active'); document.body.style.overflow = '';">&times;</button>
                 
                 <form id="leziusCaseForm" action="https://formspree.io/f/YOUR_ID" method="POST">
                     
                     <div class="case-phase active" id="phase1">
                         <h2 class="phase-title">Wer erteilt den Auftrag?</h2>
-                        <p class="phase-hint">Geben Sie Ihre Kontaktdaten für das unverbindliche Angebot an.</p>
                         <div class="input-row">
                             <div class="tech-input full-width">
                                 <input type="text" name="name" required placeholder=" ">
@@ -938,83 +1001,59 @@
                         </div>
                         <div class="input-row">
                             <div class="tech-input">
-                                <input type="email" name="email" required placeholder=" ">
-                                <label>E-MAIL ADRESSE</label>
-                            </div>
-                            <div class="tech-input">
                                 <input type="tel" name="phone" required placeholder=" ">
                                 <label>TELEFONNUMMER</label>
                             </div>
+                            <div class="tech-input">
+                                <input type="email" name="email" required placeholder=" ">
+                                <label>E-MAIL ADRESSE</label>
+                            </div>
                         </div>
                         <div class="nav-controls">
-                            <button type="button" class="btn btn-gold reactive-btn" style="width: 100%; justify-content: space-between;" onclick="if(window.vibrateDevice) window.vibrateDevice(30); MissionOS.setPhase(2)">WEITER ZUR AUSWAHL <i class="fas fa-arrow-right"></i></button>
+                            <button type="button" class="btn btn-gold reactive-btn" style="width: 100%; justify-content: space-between;" onclick="document.querySelectorAll('.case-phase').forEach(p=>p.classList.remove('active')); document.getElementById('phase2').classList.add('active');">WEITER ZUR AUSWAHL <i class="fas fa-arrow-right"></i></button>
                         </div>
                     </div>
 
                     <div class="case-phase" id="phase2">
                         <h2 class="phase-title">Was soll aufgebaut werden?</h2>
-                        <p class="phase-hint">Suchen Sie nach Möbeln oder Gartenhäusern (z.B. PAX, Biohort, Küche).</p>
-                        <div class="search-terminal">
-                            <div class="search-bar-wrap">
-                                <i class="fas fa-search search-icon"></i>
-                                <input type="text" id="serviceSearch" placeholder="Hier suchen..." onkeyup="MissionOS.filterServices()">
-                            </div>
-                            <div id="searchResults" class="search-dropdown-tech"></div>
-                        </div>
-                        <div class="selected-tags-container" id="selectedTags"></div>
                         <div class="tech-input full-width" style="margin-top: 20px;">
-                            <textarea name="manual_input" placeholder=" "></textarea>
-                            <label>ZUSÄTZLICHE DETAILS ODER WÜNSCHE (OPTIONAL)</label>
+                            <textarea name="manual_input" placeholder=" " required style="min-height: 150px; width: 100%; padding: 20px; border-radius: 8px; border: 1px solid #ccc;"></textarea>
+                            <label style="top: -20px; font-size: 0.8rem; color: #888;">Geben Sie an, welche Möbel montiert oder demontiert werden sollen.</label>
                         </div>
                         <div class="nav-controls">
-                            <button type="button" class="btn btn-holographic reactive-btn" style="color: #000; border-color: #ccc;" onclick="if(window.vibrateDevice) window.vibrateDevice(20); MissionOS.setPhase(1)"><i class="fas fa-arrow-left"></i> ZURÜCK</button>
-                            <button type="button" class="btn btn-gold reactive-btn" onclick="if(window.vibrateDevice) window.vibrateDevice(30); MissionOS.setPhase(3)">LOGISTIK-CHECK <i class="fas fa-arrow-right"></i></button>
+                            <button type="button" class="btn btn-holographic reactive-btn" style="color: #000; border-color: #ccc;" onclick="document.querySelectorAll('.case-phase').forEach(p=>p.classList.remove('active')); document.getElementById('phase1').classList.add('active');"><i class="fas fa-arrow-left"></i> ZURÜCK</button>
+                            <button type="button" class="btn btn-gold reactive-btn" onclick="document.querySelectorAll('.case-phase').forEach(p=>p.classList.remove('active')); document.getElementById('phase3').classList.add('active');">LOGISTIK-CHECK <i class="fas fa-arrow-right"></i></button>
                         </div>
                     </div>
 
                     <div class="case-phase" id="phase3">
-                        <h2 class="phase-title">Details zum Einsatzort</h2>
-                        <p class="phase-hint">Diese Daten helfen mir, die Anfahrtszeit und den Transportweg zu kalkulieren.</p>
+                        <h2 class="phase-title">Einsatzort</h2>
                         <div class="input-row">
                             <div class="tech-input">
                                 <input type="text" name="zip" required placeholder=" ">
                                 <label>POSTLEITZAHL (PLZ)</label>
                             </div>
-                            <div class="tech-input">
-                                <select name="floor" required>
-                                    <option value="" disabled selected></option>
-                                    <option value="EG">Erdgeschoss / Garten</option>
-                                    <option value="OG_LIFT">Obergeschoss (mit Aufzug)</option>
-                                    <option value="OG_TREPPE">Obergeschoss (ohne Aufzug)</option>
-                                    <option value="HAUS">Einfamilienhaus</option>
-                                </select>
-                                <label>STOCKWERK / AUFZUG</label>
-                            </div>
                         </div>
                         <div class="nav-controls">
-                            <button type="button" class="btn btn-holographic reactive-btn" style="color: #000; border-color: #ccc;" onclick="if(window.vibrateDevice) window.vibrateDevice(20); MissionOS.setPhase(2)"><i class="fas fa-arrow-left"></i> ZURÜCK</button>
-                            <button type="button" class="btn btn-gold reactive-btn" onclick="if(window.vibrateDevice) window.vibrateDevice(30); MissionOS.setPhase(4)">TERMIN WÄHLEN <i class="fas fa-arrow-right"></i></button>
+                            <button type="button" class="btn btn-holographic reactive-btn" style="color: #000; border-color: #ccc;" onclick="document.querySelectorAll('.case-phase').forEach(p=>p.classList.remove('active')); document.getElementById('phase2').classList.add('active');"><i class="fas fa-arrow-left"></i> ZURÜCK</button>
+                            <button type="button" class="btn btn-gold reactive-btn" onclick="document.querySelectorAll('.case-phase').forEach(p=>p.classList.remove('active')); document.getElementById('phase4').classList.add('active');">TERMIN WÄHLEN <i class="fas fa-arrow-right"></i></button>
                         </div>
                     </div>
 
                     <div class="case-phase" id="phase4">
-                        <h2 class="phase-title">Wunschtermin & Abschluss</h2>
-                        <p class="phase-hint">Wann soll die Montage ungefähr stattfinden?</p>
+                        <h2 class="phase-title">Abschluss</h2>
                         <div class="input-row">
                             <div class="tech-input full-width">
                                 <input type="date" name="date" required>
-                                <label>WUNSCHTERMIN (FLEXIBEL)</label>
+                                <label>WUNSCHTERMIN</label>
                             </div>
                         </div>
-                        <div class="gdpr-glass">
-                            <input type="checkbox" id="modal_gdpr" required>
-                            <label for="modal_gdpr">Ich stimme der Datenverarbeitung gemäß DSGVO zu. Meine Daten werden nur zur Angebotserstellung verwendet.</label>
-                        </div>
                         <div class="nav-controls">
-                            <button type="button" class="btn btn-holographic reactive-btn" style="color: #000; border-color: #ccc;" onclick="if(window.vibrateDevice) window.vibrateDevice(20); MissionOS.setPhase(3)"><i class="fas fa-arrow-left"></i> ZURÜCK</button>
-                            <button type="submit" class="btn btn-gold reactive-btn" onclick="if(window.vibrateDevice) window.vibrateDevice([50, 100, 50]);"><i class="fas fa-paper-plane" style="margin-right: 10px;"></i> ANGEBOT ANFORDERN</button>
+                            <button type="button" class="btn btn-holographic reactive-btn" style="color: #000; border-color: #ccc;" onclick="document.querySelectorAll('.case-phase').forEach(p=>p.classList.remove('active')); document.getElementById('phase3').classList.add('active');"><i class="fas fa-arrow-left"></i> ZURÜCK</button>
+                            <button type="submit" class="btn btn-gold reactive-btn"><i class="fas fa-paper-plane" style="margin-right: 10px;"></i> ANFRAGE SENDEN</button>
                         </div>
                     </div>
+
                 </form>
             </main>
         </div>
@@ -1022,5 +1061,110 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="assets/js/main.js"></script>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            
+            // 1. Zwinge den Body, das "Verstecken" durch AOS aufzuheben
+            setTimeout(function() {
+                document.body.classList.remove('no-js-override');
+            }, 100);
+
+            // 2. Initialisiere AOS falls verfügbar
+            if (typeof window.AOS !== 'undefined') {
+                try {
+                    AOS.init({ duration: 800, offset: 30, once: true });
+                } catch(e) { console.log("AOS skipped."); }
+            } else {
+                document.querySelectorAll('[data-aos]').forEach(el => {
+                    el.style.opacity = '1';
+                    el.style.transform = 'none';
+                    el.style.visibility = 'visible';
+                });
+            }
+
+            // 3. Fallback für das Popup (MissionOS)
+            window.MissionOS = window.MissionOS || {
+                open: function() {
+                    const os = document.getElementById('missionOS');
+                    if(os) {
+                        os.classList.add('system-active');
+                        document.body.style.overflow = 'hidden';
+                    }
+                }
+            };
+            
+            // 4. Fallback für das Mobile Menü
+            const hamburger = document.getElementById('hamburgerBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            if(hamburger && mobileMenu) {
+                const newHamburger = hamburger.cloneNode(true);
+                hamburger.parentNode.replaceChild(newHamburger, hamburger);
+                
+                newHamburger.addEventListener('click', function() {
+                    newHamburger.classList.toggle('active');
+                    const isActive = mobileMenu.classList.toggle('active');
+                    document.body.style.overflow = isActive ? 'hidden' : '';
+                });
+            }
+
+            // 5. Swipe Carousel Logic (Instagram Style Dots)
+            const setupCarousel = (carouselId, indicatorsId, activeColorClass) => {
+                const carousel = document.getElementById(carouselId);
+                const indicators = document.getElementById(indicatorsId);
+                
+                if (!carousel || !indicators) return;
+
+                const items = carousel.querySelectorAll('.swipe-item');
+                const dots = indicators.querySelectorAll('.dot');
+
+                carousel.addEventListener('scroll', () => {
+                    const scrollPosition = carousel.scrollLeft;
+                    const itemWidth = items[0].offsetWidth;
+                    const activeIndex = Math.round(scrollPosition / itemWidth);
+
+                    dots.forEach((dot, index) => {
+                        if (index === activeIndex) {
+                            dot.classList.add('active', activeColorClass);
+                        } else {
+                            dot.classList.remove('active', activeColorClass);
+                        }
+                    });
+                });
+            };
+
+            setupCarousel('philosophyCarousel', 'philosophyIndicators', 'gold-active');
+            setupCarousel('reviewCarousel', 'reviewIndicators', 'gold-active');
+        });
+
+        // FAQ Accordion Logic
+        window.toggleModule = function(element) {
+            const body = element.querySelector('.module-body');
+            const icon = element.querySelector('.m-plus');
+            const isOpen = element.classList.contains('open');
+
+            document.querySelectorAll('.faq-module').forEach(mod => {
+                mod.classList.remove('open');
+                mod.querySelector('.module-body').style.maxHeight = null;
+                mod.querySelector('.m-plus').style.transform = 'rotate(0deg)';
+                mod.querySelector('.m-plus').style.color = '#555';
+            });
+
+            if (!isOpen) {
+                element.classList.add('open');
+                body.style.maxHeight = body.scrollHeight + "px";
+                icon.style.transform = 'rotate(45deg)';
+                icon.style.color = 'var(--neon-gold)'; 
+            }
+        }
+        
+        // Image Belt Controls
+        const belt = document.getElementById('imageBelt');
+        if(belt) {
+            document.getElementById('prevBelt').onclick = () => { belt.style.animationDirection = 'reverse'; };
+            document.getElementById('nextBelt').onclick = () => { belt.style.animationDirection = 'normal'; };
+        }
+    </script>
 </body>
 </html>
+

@@ -1,167 +1,161 @@
 /* ==========================================================================
-   RAPHAEL LEZIUS | 2077 HUD MASTER ENGINE (main.js)
-   ARCHITECTURE: HIGH-PERFORMANCE, HAPTIC-ENABLED, INTELLIGENT-REACTION
-   LEGAL: 100% GDPR (DSGVO) COMPLIANT 2026
+   RAPHAEL LEZIUS | 2077 HUD MASTER ENGINE (mission-control.js)
+   ARCHITECTURE: KINETIC 3D, HAPTIC-SENSITIVE, HARDWARE-AWARE
+   SYS_DEV: IDRIS | VERSION: 4.0.0_UNIFIED
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
     
-    // --- 0. SMART HARDWARE & PRIVACY ENGINE ---
-    // Detects battery status and reduces animation intensity to be "Sensitive" to user hardware
+    // --- 0. STATE & PERFORMANCE ---
     const state = {
         lowPerformance: false,
-        reducedMotion: window.matchMedia('(prefers-reduced-motion: reduce)').matches
+        reducedMotion: window.matchMedia('(prefers-reduced-motion: reduce)').matches,
+        isDesktop: window.matchMedia("(pointer: fine)").matches
     };
 
+    // Battery Awareness
     if ('getBattery' in navigator) {
         navigator.getBattery().then(battery => {
-            const checkBattery = () => {
+            const updateEcoMode = () => {
                 state.lowPerformance = battery.level < 0.2 && !battery.charging;
-                if (state.lowPerformance) document.body.classList.add('eco-mode');
+                document.body.classList.toggle('eco-mode', state.lowPerformance);
             };
-            battery.addEventListener('levelchange', checkBattery);
-            checkBattery();
+            battery.addEventListener('levelchange', updateEcoMode);
+            updateEcoMode();
         });
     }
 
-    // --- 1. GLOBAL HAPTIC ENGINE (DSGVO COMPLIANT) ---
-    // Vibration only triggers on explicit user interaction (Click/Tap)
+    // --- 1. UTILITIES ---
     window.vibrateDevice = (pattern) => {
         if (!state.lowPerformance && navigator.vibrate) {
             navigator.vibrate(pattern);
         }
     };
 
-    // --- 2. SYSTEM INITIALIZATION ---
-    console.log("%c[SYSTEM ONLINE] R.LEZIUS_ENGINE_v2.8_FINAL", "color: #FFD700; font-weight: bold; background: #000; padding: 5px 10px;");
+    // --- 2. PORTFOLIO DATA ---
+    const portfolio = [
+        // KÜCHEN
+        { id: 'k1', cat: 'kueche', title: 'Küchen-Sonderbau', files: ['kueche-1-a.webp'] },
+        { id: 'k2', cat: 'kueche', title: 'Küchenzeile L-Form', files: ['kueche-2-a.webp', 'kueche-2-b.webp'] },
+        { id: 'k3', cat: 'kueche', title: 'Premium Einbauküche', files: ['kueche-3-a.webp', 'kueche-3-b.webp'] },
+        { id: 'k4', cat: 'kueche', title: 'Arbeitsplatten-Finish', files: ['kueche-4-a.webp', 'kueche-4-b.webp'] },
+        { id: 'k5', cat: 'kueche', title: 'Design-Küchenmontage', files: ['kueche-5-a.webp', 'kueche-5-b.webp'] },
+        { id: 'k6', cat: 'kueche', title: 'IKEA METOD Spezial', files: ['kueche-6-a.webp', 'kueche-6-b.webp'] },
+        { id: 'k7', cat: 'kueche', title: 'Küchen-Installation', files: ['kueche-7-a.webp', 'kueche-7-b.webp'] },
+        { id: 'k8', cat: 'kueche', title: 'Maßküchen Aufbau', files: ['kueche-8-a.webp', 'kueche-8-c.webp'] },
+        { id: 'k9', cat: 'kueche', title: 'Geräte-Integration', files: ['kueche-9-a.webp'] },
+        { id: 'k10', cat: 'kueche', title: 'Moderne Küchenzeile', files: ['kueche-10-a.webp'] },
+        { id: 'k11', cat: 'kueche', title: 'Winkelküche Montage', files: ['kueche-11-a.webp', 'kueche-11-b.webp'] },
+        { id: 'k12', cat: 'kueche', title: 'Küchen-Setup München', files: ['kueche-12-a.webp'] },
+        { id: 'k13', cat: 'kueche', title: 'Insel-Küche Design', files: ['kueche-13-a.webp', 'kueche-13-b.webp'] },
+        { id: 'k14', cat: 'kueche', title: 'Premium Installation', files: ['kueche-14-a.webp'] },
+        { id: 'k15', cat: 'kueche', title: 'Küchen-Meisterwerk', files: ['kueche-15-a.webp'] },
+        { id: 'k16', cat: 'kueche', title: 'IKEA METOD Montage', files: ['kueche-16-a.webp', 'kueche-16-b.webp'] },
+        { id: 'k17', cat: 'kueche', title: 'High-End Küchenbau', files: ['kueche-17-a.webp', 'kueche-17-b.webp'] },
+        { id: 'k18', cat: 'kueche', title: 'Küchen-Montage Profi', files: ['kueche-18-a.webp'] },
+        { id: 'k19', cat: 'kueche', title: 'Finales Küchen-Setup', files: ['kueche-19-a.webp'] },
+        // WOHNEN
+        { id: 'w1', cat: 'wohnen', title: 'TV-Board Schwebend', files: ['wohnen-1-a.webp', 'wohnen-1-b.webp'] },
+        { id: 'w2', cat: 'wohnen', title: 'IKEA BESTÅ Kombination', files: ['wohnen-2-a.webp', 'wohnen-2-b.webp'] },
+        { id: 'w3', cat: 'wohnen', title: 'Wohnwand Massiv', files: ['wohnen-3-a.webp', 'wohnen-3-b.webp', 'wohnen-3-c.webp'] },
+        { id: 'w4', cat: 'wohnen', title: 'Entertainment Center', files: ['wohnen-4-a.webp', 'wohnen-4-b.webp'] },
+        { id: 'w5', cat: 'wohnen', title: 'Wohnzimmer Design', files: ['wohnen-5-a.webp'] },
+        { id: 'w6', cat: 'wohnen', title: 'Regalsystem Montage', files: ['wohnen-6-b.webp'] },
+        { id: 'w7', cat: 'wohnen', title: 'Designer Wohnwand', files: ['wohnen-7-a.webp', 'wohnen-7-b.webp'] },
+        { id: 'w8', cat: 'wohnen', title: 'Sideboard Ausrichtung', files: ['wohnen-8-a.webp'] },
+        { id: 'w9', cat: 'wohnen', title: 'Wohnkultur Setup', files: ['wohnen-9-a.webp'] },
+        { id: 'w10', cat: 'wohnen', title: 'Modernes Media-Board', files: ['wohnen-10-a.webp'] },
+        { id: 'w11', cat: 'wohnen', title: 'Bücherwand Montage', files: ['wohnen-11-a.webp'] },
+        { id: 'w12', cat: 'wohnen', title: 'Regalsystem Wandbau', files: ['wohnen-12-a.webp'] },
+        { id: 'w13', cat: 'wohnen', title: 'Wohn-Ambiente Profi', files: ['wohnen-13-a.webp'] },
+        { id: 'w14', cat: 'wohnen', title: 'Sideboard Montage', files: ['wohnen-14-b.webp'] },
+        { id: 'w15', cat: 'wohnen', title: 'Exklusive Wohnwand', files: ['wohnen-15-a.webp', 'wohnen-15-b.webp'] },
+        { id: 'w16', cat: 'wohnen', title: 'Designer Möbelbau', files: ['wohnen-16-a.webp'] },
+        { id: 'w17', cat: 'wohnen', title: 'Wohnzimmer Upgrade', files: ['wohnen-17-a.webp'] },
+        { id: 'w18', cat: 'wohnen', title: 'BESTÅ Maßaufbau', files: ['wohnen-18-a.webp', 'wohnen-18-b.webp'] },
+        { id: 'w19', cat: 'wohnen', title: 'Media-Setup München', files: ['wohnen-19-a.webp'] },
+        { id: 'w20', cat: 'wohnen', title: 'TV-Wandhalterung', files: ['wohnen-20-a.webp'] },
+        { id: 'w21', cat: 'wohnen', title: 'Wohnwand Montage', files: ['wohnen-21-a.webp'] },
+        { id: 'w22', cat: 'wohnen', title: 'Sideboard Design', files: ['wohnen-22-a.webp'] },
+        { id: 'w23', cat: 'wohnen', title: 'Wohnkultur Final', files: ['wohnen-23-a.webp'] },
+        // SCHLAFEN
+        { id: 's0', cat: 'schlafen', title: 'Premium Bettaufbau', files: ['schlafen-1-a.webp'] },
+        { id: 's1', cat: 'schlafen', title: 'IKEA PAX Systemwand', files: ['sz-1-a.webp', 'sz-1-b.webp'] },
+        { id: 's2', cat: 'schlafen', title: 'Schrank-Kombination', files: ['sz-2-a.webp', 'sz-2-b.webp'] },
+        { id: 's3', cat: 'schlafen', title: 'Master-Bedroom Setup', files: ['sz-3-a.webp', 'sz-3-b.webp'] },
+        { id: 's4', cat: 'schlafen', title: 'PAX Eckmontage', files: ['sz-4-a.webp', 'sz-4-b.webp'] },
+        { id: 's5', cat: 'schlafen', title: 'Designer Kleiderschrank', files: ['sz-5-a.webp', 'sz-5-b.webp'] },
+        { id: 's6', cat: 'schlafen', title: 'Exklusiver Schlafraum', files: ['sz-6-a.webp', 'sz-6-b.webp', 'sz-6-c.webp'] },
+        { id: 's7', cat: 'schlafen', title: 'PAX Maßanpassung', files: ['sz-7-a.webp', 'sz-7-b.webp'] }
+    ];
 
-    // Initialize AOS with "Sensitivity" - only if user hasn't requested reduced motion
-    if (typeof AOS !== 'undefined') {
-        AOS.init({ 
-            duration: 800, 
-            once: true, 
-            disable: state.reducedMotion 
+    // --- 3. GRID RENDERING ---
+    const grid = document.getElementById('main-gallery-grid');
+    if (grid) {
+        portfolio.forEach((proj, idx) => {
+            const item = document.createElement('div');
+            item.className = `bento-item ${proj.cat}`;
+            item.setAttribute('data-aos', 'fade-up');
+            item.setAttribute('data-aos-delay', (idx % 3) * 50);
+
+            let extras = '';
+            for(let i=1; i < proj.files.length; i++){
+                extras += `<a data-fslightbox="${proj.id}" href="./assets/images/${proj.files[i]}"></a>`;
+            }
+
+            item.innerHTML = `
+                <a data-fslightbox="${proj.id}" href="./assets/images/${proj.files[0]}" class="bento-link">
+                    <img src="./assets/images/${proj.files[0]}" alt="${proj.title}" class="bento-image" loading="lazy">
+                    <div class="bento-overlay">
+                        <div class="bento-tags">
+                            <span class="bento-tag tag-count">${proj.files.length > 1 ? proj.files.length + ' Winkel' : 'Verifiziert'}</span>
+                            <span class="bento-tag tag-premium">PRÄZISION</span>
+                        </div>
+                        <h3 class="bento-title">${proj.title}</h3>
+                        <div class="bento-action"><i class="fas fa-crosshairs"></i> INTEL-SCAN ÖFFNEN</div>
+                    </div>
+                </a>
+                ${extras}
+            `;
+            grid.appendChild(item);
+
+            // 3D Hover
+            if (state.isDesktop && !state.reducedMotion) {
+                item.addEventListener('mousemove', (e) => {
+                    const rect = item.getBoundingClientRect();
+                    const x = ((e.clientX - rect.left) / rect.width - 0.5) * 12;
+                    const y = ((e.clientY - rect.top) / rect.height - 0.5) * -12;
+                    item.style.transform = `perspective(1000px) rotateX(${y}deg) rotateY(${x}deg) scale3d(1.03, 1.03, 1.03)`;
+                });
+                item.addEventListener('mouseleave', () => {
+                    item.style.transform = `perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)`;
+                });
+            }
         });
-    }
-
-    // Dynamic Date Injection (German Format)
-    const dateElement = document.getElementById('dynamic-date');
-    if (dateElement) {
-        dateElement.innerText = new Date().toLocaleDateString('de-DE');
-    }
-    
-    const yearElement = document.getElementById('copyright-year');
-    if (yearElement) {
-        yearElement.innerText = new Date().getFullYear();
-    }
-
-    // --- 3. INTELLIGENT SCRAMBLE (GLITCH EFFECT) ---
-    const glitchHeader = document.querySelector('.glitch-header');
-    if (glitchHeader && !state.reducedMotion) {
-        const targetText = glitchHeader.getAttribute('data-text') || "PRÄZISION";
-        const targetSpan = glitchHeader.querySelector('.gold-text');
         
-        if (targetSpan) {
-            const chars = '01X%$@&*'; 
-            let frame = 0;
-            const scramble = () => {
-                targetSpan.innerText = targetText.split('').map((char, index) => {
-                    if (index < frame) return targetText[index];
-                    return chars[Math.floor(Math.random() * chars.length)];
-                }).join('');
-
-                if (frame < targetText.length) {
-                    frame += 0.3;
-                    requestAnimationFrame(scramble);
-                }
-            };
-            setTimeout(scramble, 500);
-        }
+        // Refresh Lightbox
+        setTimeout(() => { if (typeof refreshFsLightbox !== 'undefined') refreshFsLightbox(); }, 500);
     }
 
-    // --- 4. MAGNETIC BUTTON PHYSICS (SENSITIVE REACTION) ---
-    const magneticButtons = document.querySelectorAll('.btn-magnetic');
-    if (window.innerWidth > 1024 && !state.reducedMotion) {
-        magneticButtons.forEach(btn => {
-            btn.addEventListener('mousemove', (e) => {
-                const rect = btn.getBoundingClientRect();
-                const x = (e.clientX - rect.left - rect.width / 2) * 0.3;
-                const y = (e.clientY - rect.top - rect.height / 2) * 0.3;
-                btn.style.transform = `translate(${x}px, ${y}px)`;
-            });
-            btn.addEventListener('mouseleave', () => {
-                btn.style.transform = 'translate(0, 0)';
-            });
-        });
-    }
-
-    // --- 5. NEON GOLD BUBBLES (HARDWARE-AWARE CANVAS) ---
-    const canvas = document.getElementById('gold-bubbles');
-    if (canvas && !state.lowPerformance) {
-        const ctx = canvas.getContext('2d');
-        let bubbles = [];
-        let active = true;
-
-        // Auto-pause when user leaves tab (Intelligent Battery Saving)
-        const observer = new IntersectionObserver(entries => active = entries[0].isIntersecting);
-        observer.observe(canvas);
-
-        const setSize = () => {
-            canvas.width = canvas.offsetWidth;
-            canvas.height = canvas.offsetHeight;
-        };
-        window.addEventListener('resize', setSize);
-        setSize();
-
-        class Particle {
-            constructor() { this.reset(); }
-            reset() {
-                this.x = Math.random() * canvas.width;
-                this.y = canvas.height + 50;
-                this.size = Math.random() * 3 + 1;
-                this.speed = Math.random() * 1.5 + 0.5;
-                this.opacity = Math.random() * 0.5 + 0.2;
-            }
-            update() {
-                this.y -= this.speed;
-                if (this.y < -50) this.reset();
-            }
-            draw() {
-                ctx.beginPath();
-                ctx.fillStyle = `rgba(255, 215, 0, ${this.opacity})`;
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
-        }
-
-        for (let i = 0; i < 100; i++) bubbles.push(new Particle());
-
-        function loop() {
-            if (active) {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                bubbles.forEach(b => { b.update(); b.draw(); });
-            }
-            requestAnimationFrame(loop);
-        }
-        loop();
-    }
-
-    // --- 6. SMART ACCORDION (SECTOR MODULES) ---
-    window.expandSector = (element) => {
-        const allModules = document.querySelectorAll('.sector-module');
-        const isOpening = !element.classList.contains('active');
-
-        allModules.forEach(m => m.classList.remove('active'));
-        if (isOpening) {
-            element.classList.add('active');
-            window.vibrateDevice(15);
-        }
-    };
-
-    // --- 7. MOBILE NAVIGATION (HAPTIC READY) ---
+    // --- 4. NAVIGATION & MENU ---
+    const nav = document.querySelector('.cyber-navbar');
     const hamburger = document.getElementById('hamburgerBtn');
     const mobileMenu = document.getElementById('mobileMenu');
-    
+
+    // Scroll Observer
+    window.addEventListener('scroll', () => {
+        if (nav) {
+            if (window.scrollY > 50) {
+                nav.style.background = 'rgba(5, 6, 8, 0.98)';
+                nav.style.padding = '10px 0';
+            } else {
+                nav.style.background = 'rgba(5, 6, 8, 0.9)';
+                nav.style.padding = '20px 0';
+            }
+        }
+    });
+
+    // Mobile Hamburger
     if (hamburger && mobileMenu) {
         hamburger.addEventListener('click', () => {
             const active = mobileMenu.classList.toggle('active');
@@ -170,224 +164,105 @@ document.addEventListener('DOMContentLoaded', () => {
             window.vibrateDevice(active ? 20 : [10, 10]);
         });
     }
-});
 
-// --- 8. MISSION_OS LEAD ENGINE (GLOBAL HOOKS) ---
-window.MissionOS = {
-    open: () => {
-        const os = document.getElementById('missionOS');
-        if(os) {
-            os.classList.add('system-active');
-            document.body.style.overflow = 'hidden';
+    // --- 5. FILTERING ---
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            window.vibrateDevice(15);
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const val = btn.getAttribute('data-filter');
+            document.querySelectorAll('.bento-item').forEach(item => {
+                if (val === 'all' || item.classList.contains(val)) {
+                    item.style.display = 'block';
+                    setTimeout(() => { item.style.opacity = '1'; item.style.transform = 'scale(1)'; }, 10);
+                } else {
+                    item.style.opacity = '0';
+                    item.style.transform = 'scale(0.9)';
+                    setTimeout(() => { item.style.display = 'none'; }, 300);
+                }
+            });
+        });
+    });
+
+    // --- 6. MISSION_OS ---
+    window.MissionOS = {
+        open: () => {
             window.vibrateDevice([20, 50]);
+            const os = document.getElementById('missionOS');
+            if(os) {
+                os.classList.add('system-active');
+                document.body.style.overflow = 'hidden';
+                console.log("MissionOS: System Online.");
+            } else {
+                alert("SYSTEM_CHECK: Kalkulations-Modul wird geladen.");
+            }
+        },
+        close: () => {
+            const os = document.getElementById('missionOS');
+            if(os) {
+                os.classList.remove('system-active');
+                document.body.style.overflow = '';
+            }
+        },
+        setPhase: (phase) => {
+            window.vibrateDevice(10);
+            document.querySelectorAll('.case-phase').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.step-link').forEach(l => l.classList.remove('active'));
+            const targetPhase = document.getElementById(`phase${phase}`);
+            const targetNav = document.getElementById(`nav${phase}`);
+            if(targetPhase) targetPhase.classList.add('active');
+            if(targetNav) targetNav.classList.add('active');
         }
-    },
-    close: () => {
-        const os = document.getElementById('missionOS');
-        if(os) {
-            os.classList.remove('system-active');
-            document.body.style.overflow = '';
-        }
-    },
-    setPhase: (phase) => {
-        document.querySelectorAll('.case-phase').forEach(p => p.classList.remove('active'));
-        document.querySelectorAll('.step-link').forEach(l => l.classList.remove('active'));
-        document.getElementById(`phase${phase}`).classList.add('active');
-        document.getElementById(`nav${phase}`).classList.add('active');
-        window.vibrateDevice(10);
-    }
-};
-
-// --- 9. LIVE DISPATCH TERMINAL INJECTOR (INTELLIGENT FEED) ---
-const initDispatchFeed = () => {
-    const feedContainer = document.getElementById("live-dispatch-feed");
-    if (!feedContainer) return;
-
-    const dispatchMessages = [
-        { time: "SYS:", msg: "Premium Bosch-Tooling geladen.", highlight: false },
-        { time: "LOG:", msg: 'HEPA-Absaugung: <span style="color:var(--neon-green)">AKTIV</span>', highlight: false },
-        { time: "DIS:", msg: "Prüfe Montage-Kapazitäten...", highlight: false },
-        { time: "WARN:", msg: "Hohes Auftragsvolumen erfasst.", highlight: true },
-        { time: "INFO:", msg: "Kreuzlinienlaser kalibriert.", highlight: false },
-        { time: "SEC:", msg: "Betriebshaftpflicht: GÜLTIG", highlight: false }
-    ];
-
-    let currentIndex = 0;
-    // Uses a staggered interval to feel more "Human/AI" and less like a robot
-    const injectMessage = () => {
-        if (feedContainer.children.length >= 3) {
-            feedContainer.removeChild(feedContainer.firstElementChild);
-        }
-        const newMsg = dispatchMessages[currentIndex];
-        const line = document.createElement("div");
-        line.className = `stream-line ${newMsg.highlight ? 'highlight' : ''}`;
-        line.style.transform = "translateX(-20px)";
-        line.style.opacity = "0";
-        line.innerHTML = `<span class="time">${newMsg.time}</span><span class="msg">${newMsg.msg}</span>`;
-        
-        feedContainer.appendChild(line);
-        
-        // Fluid transition
-        requestAnimationFrame(() => {
-            line.style.transition = "all 0.5s ease";
-            line.style.transform = "translateX(0)";
-            line.style.opacity = "1";
-        });
-
-        currentIndex = (currentIndex + 1) % dispatchMessages.length;
-        setTimeout(injectMessage, 3000 + Math.random() * 2000); // Intelligent variation
     };
-    injectMessage();
-};
 
-// --- 10. INTERACTIVE GALLERY BELT (PHYSICS-BASED) ---
-const initGalleryBelt = () => {
-    const gurt = document.getElementById('imageBelt');
-    const tasteZurueck = document.getElementById('prevBelt');
-    const tasteVor = document.getElementById('nextBelt');
-
-    if (gurt && tasteVor && tasteZurueck) {
-        const setSpeed = (speed, direction = 'normal') => {
-            gurt.style.animationDuration = speed;
-            gurt.style.animationDirection = direction;
-        };
-
-        // Turbo Speed on hover/hold
-        const turbo = () => { setSpeed('15s'); window.vibrateDevice(10); };
-        const reset = () => { setSpeed('90s'); };
-
-        tasteVor.addEventListener('mousedown', turbo);
-        tasteVor.addEventListener('mouseup', reset);
-        tasteVor.addEventListener('touchstart', turbo, {passive: true});
-        tasteVor.addEventListener('touchend', reset);
-
-        tasteZurueck.addEventListener('mousedown', () => { turbo(); gurt.style.animationDirection = 'reverse'; });
-        tasteZurueck.addEventListener('mouseup', () => { reset(); gurt.style.animationDirection = 'normal'; });
-        tasteZurueck.addEventListener('touchstart', () => { turbo(); gurt.style.animationDirection = 'reverse'; }, {passive: true});
-        tasteZurueck.addEventListener('touchend', () => { reset(); gurt.style.animationDirection = 'normal'; });
-    }
-};
-
-// --- 11. MISSION_OS v2.6: THE INTELLIGENT LEAD ENGINE ---
-const serviceDB = [
-    "IKEA PAX Kleiderschrank", "IKEA METOD Küche", "IKEA PLATSA System", "IKEA EKET Regal",
-    "IKEA BESTÅ Wohnwand", "IKEA MALM Bett", "Gartenhaus (Holz)", "Gerätehaus (Metall/Biohort)",
-    "USM Haller Regal Aufbau", "Büro-Schreibtisch (Höhenverstellbar)", "Konferenztisch",
-    "Boxspringbett Aufbau", "TV-Wandhalterung (Schwerlast)", "Bilder & Spiegel Wandmontage", 
-    "Vorhangschienen Montage", "Küchen-Arbeitsplatte Zuschnitt", "Spüle / Kochfeld Ausschnitt",
-    "Outdoor Lounge / Pavillon", "Möbel-Demontage", "Akustikpaneele Montage"
-];
-
-window.MissionOS = {
-    open: () => {
-        window.vibrateDevice([20, 40]);
-        const modal = document.getElementById('missionOS');
-        if (modal) {
-            modal.classList.add('system-active');
-            document.body.style.overflow = 'hidden';
-            window.MissionOS.setPhase(1); 
-        }
-    },
-
-    close: () => {
-        const modal = document.getElementById('missionOS');
-        if (modal) {
-            modal.classList.remove('system-active');
-            document.body.style.overflow = '';
-        }
-    },
-
-    setPhase: (n) => {
-        // Visual Progress feedback
-        window.vibrateDevice(10);
-        document.querySelectorAll('.case-phase').forEach(p => p.classList.remove('active'));
-        document.querySelectorAll('.step-link').forEach(l => l.classList.remove('active'));
-        
-        const targetPhase = document.getElementById(`phase${n}`);
-        const targetNav = document.getElementById(`nav${n}`);
-        
-        if(targetPhase && targetNav) {
-            targetPhase.classList.add('active');
-            targetNav.classList.add('active');
-        }
-        document.querySelector('.case-main').scrollTop = 0;
-    },
-
-    filterServices: () => {
-        const searchEl = document.getElementById('serviceSearch');
-        const results = document.getElementById('searchResults');
-        if(!searchEl || !results) return;
-
-        const query = searchEl.value.toLowerCase();
-        results.innerHTML = "";
-        
-        if (query.length < 1) { 
-            results.style.display = "none"; 
-            return; 
-        }
-        
-        const matches = serviceDB.filter(s => s.toLowerCase().includes(query));
-        
-        matches.forEach(m => {
-            const div = document.createElement('div');
-            div.className = "search-item";
-            div.innerHTML = `<i class="fas fa-plus-circle" style="color:var(--neon-cyan)"></i> ${m}`;
-            div.onclick = () => window.MissionOS.addTag(m);
-            results.appendChild(div);
-        });
-
-        // Smart Feature: Allow manual entry if no match
-        if (matches.length === 0) {
-            const manual = document.createElement('div');
-            manual.className = "search-item";
-            manual.innerHTML = `<i class="fas fa-keyboard" style="color:var(--neon-gold)"></i> "${searchEl.value}" hinzufügen`;
-            manual.onclick = () => window.MissionOS.addTag(searchEl.value);
-            results.appendChild(manual);
-        }
-        results.style.display = "block";
-    },
-
-    addTag: (val) => {
-        const container = document.getElementById('selectedTags');
-        if (!container || !val) return;
-
-        // Duplicate Check
-        if ([...container.querySelectorAll('.tag-val')].some(el => el.value === val)) return;
-
-        window.vibrateDevice(15);
-        const chip = document.createElement('div');
-        chip.className = "tech-tag";
-        chip.innerHTML = `
-            ${val} 
-            <input type="hidden" name="service[]" class="tag-val" value="${val}">
-            <i class="fas fa-times" onclick="this.parentElement.remove(); window.MissionOS.updateCount();"></i>
-        `;
-        container.appendChild(chip);
-        window.MissionOS.updateCount();
-        
-        // Clear search
-        document.getElementById('serviceSearch').value = "";
-        document.getElementById('searchResults').style.display = "none";
-    },
-
-    updateCount: () => {
-        const count = document.getElementById('selectedTags').children.length;
-        const display = document.getElementById('serviceCount');
-        if (display) display.innerText = count.toString().padStart(2, '0');
-    }
-};
-
-// Initialize everything on load
-document.addEventListener('DOMContentLoaded', () => {
-    initDispatchFeed();
-    initGalleryBelt();
-    
-    // Global Close Handlers
-    document.addEventListener('keydown', e => { if(e.key === "Escape") window.MissionOS.close(); });
-    document.addEventListener('click', e => {
-        if (!e.target.closest('.search-terminal')) {
-            const res = document.getElementById('searchResults');
-            if(res) res.style.display = "none";
+    // --- 7. FAQ ACCORDION ---
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+        const trigger = item.querySelector('.faq-trigger');
+        if (trigger) {
+            trigger.addEventListener('click', () => {
+                faqItems.forEach(i => { if (i !== item) i.classList.remove('active'); });
+                item.classList.toggle('active');
+            });
         }
     });
+
+    // --- 8. TERMINAL FEED ---
+    const feedContainer = document.getElementById("live-dispatch-feed");
+    if (feedContainer) {
+        const messages = [
+            { t: "SYS:", m: "BOSCH Professional geladen." },
+            { t: "LOG:", m: "HEPA-H13 Absaugung bereit." },
+            { t: "DIS:", m: "Auftrag Augsburg erfasst." },
+            { t: "SEC:", m: "Haftpflicht-Schutz: AKTIV" }
+        ];
+        let i = 0;
+        const inject = () => {
+            if (feedContainer.children.length >= 3) feedContainer.removeChild(feedContainer.firstElementChild);
+            const line = document.createElement("div");
+            line.className = "stream-line";
+            line.innerHTML = `<span class="time">${messages[i].t}</span><span class="msg">${messages[i].m}</span>`;
+            feedContainer.appendChild(line);
+            i = (i + 1) % messages.length;
+            setTimeout(inject, 4000);
+        };
+        inject();
+    }
+
+    // --- 9. INIT EXTERNAL LIBS ---
+    if (typeof AOS !== 'undefined') {
+        AOS.init({ 
+            duration: 800, 
+            once: true, 
+            disable: state.reducedMotion,
+            offset: 100,
+            easing: 'ease-in-out-cubic'
+        });
+    }
+
+    const yearEl = document.getElementById('copyright-year');
+    if (yearEl) yearEl.innerText = new Date().getFullYear();
 });
