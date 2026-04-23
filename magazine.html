@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>MAKERS JOURNAL | High-End Interior & Montage | Raphael Lezius</title>
+    <title>THE MAKERS CODEX | 20 Phasen der Perfektion | Raphael Lezius</title>
     
     <meta name="description" content="Das exklusive Magazin für Premium-Möbelmontage, Architektur-Psychologie und Smart Home Integration in Bayern.">
     
@@ -16,11 +16,15 @@
     <link rel="stylesheet" href="assets/css/style.css">
 
     <style id="editorial-magazine-css">
+        /* 2026 Sync with Global Theme */
         :root {
-            --mag-bg: #030406;
+            --mag-bg: #030405;
             --mag-text: #a0aec0;
-            --mag-gold: #d4af37;
-            --mag-cyan: #00e5ff;
+            --mag-gold: var(--neon-gold);
+            --mag-cyan: var(--neon-cyan);
+            --mag-pink: var(--neon-pink);
+            --mag-green: var(--neon-green);
+            
             --font-ed: 'Cinzel Decorative', serif;
             --font-mod: 'Space Grotesk', sans-serif;
             --font-body: 'Inter', sans-serif;
@@ -38,8 +42,6 @@
             -webkit-font-smoothing: antialiased;
         }
         .no-js-override [data-aos] { opacity: 1 !important; transform: none !important; visibility: visible !important; }
-        .os-overlay { display: none; }
-        .os-overlay.system-active { display: flex !important; }
 
         /* Editorial Typography Utilities */
         .text-ed { font-family: var(--font-ed); color: #fff; line-height: 1.1; }
@@ -48,12 +50,13 @@
         
         .drop-cap::first-letter {
             font-family: var(--font-ed);
-            font-size: 5rem;
+            font-size: 5.5rem;
             float: left;
             line-height: 0.8;
             padding-right: 15px;
             padding-top: 5px;
             color: var(--mag-gold);
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
         }
 
         /* 1. Cinematic Hero Cover */
@@ -66,108 +69,63 @@
             justify-content: flex-end;
             padding: 5% 5% 8% 5%;
             overflow: hidden;
-            border-bottom: 1px solid rgba(212,175,55,0.2);
+            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
         }
-
-        .mag-hero-bg {
-            position: absolute;
-            inset: 0;
-            z-index: 0;
-            background: #000;
-        }
-
+        .mag-hero-bg { position: absolute; inset: 0; z-index: 0; background: #000; }
         .mag-hero-bg img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: grayscale(60%) contrast(1.2) brightness(0.4);
-            transition: filter 2s ease, transform 10s ease;
+            width: 100%; height: 100%; object-fit: cover;
+            filter: grayscale(80%) contrast(1.2) brightness(0.3);
+            transition: filter 3s ease, transform 15s ease;
         }
-
         .mag-hero:hover .mag-hero-bg img {
-            filter: grayscale(20%) contrast(1.1) brightness(0.6);
+            filter: grayscale(20%) contrast(1.1) brightness(0.5);
             transform: scale(1.05);
         }
-
         .mag-hero-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, var(--mag-bg) 0%, rgba(3,4,6,0.6) 40%, transparent 100%);
+            position: absolute; inset: 0;
+            background: linear-gradient(to top, var(--mag-bg) 0%, rgba(3,4,5,0.7) 40%, transparent 100%);
             z-index: 1;
         }
 
         /* Geometric Tech Overlay */
         .mag-hero-grid-overlay {
-            position: absolute;
-            inset: 0;
-            background-image: linear-gradient(rgba(212,175,55,0.05) 1px, transparent 1px),
-                              linear-gradient(90deg, rgba(212,175,55,0.05) 1px, transparent 1px);
-            background-size: 100px 100px;
-            z-index: 1;
-            pointer-events: none;
+            position: absolute; inset: 0;
+            background-image: linear-gradient(rgba(255, 215, 0, 0.03) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(255, 215, 0, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            z-index: 1; pointer-events: none;
         }
 
         .cover-content {
-            position: relative;
-            z-index: 2;
-            width: 100%;
-            max-width: 1600px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: end;
+            position: relative; z-index: 2; width: 100%; max-width: 1600px; margin: 0 auto;
+            display: grid; grid-template-columns: 1.2fr 1fr; gap: 50px; align-items: end;
         }
-
         .cover-title {
-            font-size: clamp(4rem, 10vw, 9rem);
-            color: #fff;
-            margin-bottom: 20px;
-            letter-spacing: -2px;
+            font-size: clamp(3.5rem, 8vw, 8rem); color: #fff; margin-bottom: 20px; letter-spacing: -2px;
         }
         .cover-title span {
-            color: transparent;
-            -webkit-text-stroke: 1px rgba(212,175,55,0.8);
-            display: block;
+            color: transparent; -webkit-text-stroke: 1.5px var(--mag-gold); display: block;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.2);
         }
-
         .cover-lead {
-            font-size: clamp(1.1rem, 2vw, 1.3rem);
-            color: #d1d5db;
-            line-height: 1.7;
-            border-left: 2px solid var(--mag-gold);
-            padding-left: 20px;
-            background: rgba(0,0,0,0.4);
-            padding-top: 10px;
-            padding-bottom: 10px;
-            backdrop-filter: blur(5px);
+            font-size: clamp(1.1rem, 2vw, 1.25rem); color: #d1d5db; line-height: 1.8;
+            border-left: 3px solid var(--mag-gold); padding-left: 25px; background: rgba(0,0,0,0.5);
+            padding-top: 15px; padding-bottom: 15px; backdrop-filter: blur(10px);
         }
 
         /* Scroll Indicator */
         .ed-scroll {
-            position: absolute;
-            right: 5%;
-            bottom: 50px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 15px;
-            z-index: 5;
+            position: absolute; right: 5%; bottom: 50px;
+            display: flex; flex-direction: column; align-items: center; gap: 15px; z-index: 5;
         }
         .ed-scroll-text {
-            writing-mode: vertical-rl;
-            font-family: var(--font-tech);
-            font-size: 0.6rem;
-            letter-spacing: 4px;
-            color: var(--mag-gold);
+            writing-mode: vertical-rl; font-family: var(--font-tech); font-size: 0.6rem;
+            letter-spacing: 4px; color: var(--mag-gold);
         }
         .ed-scroll-line {
-            width: 1px;
-            height: 80px;
-            background: linear-gradient(to bottom, var(--mag-gold), transparent);
+            width: 1px; height: 80px; background: linear-gradient(to bottom, var(--mag-gold), transparent);
             animation: scrollPulse 2s infinite;
         }
-
         @keyframes scrollPulse {
             0% { transform: scaleY(0); transform-origin: top; }
             50% { transform: scaleY(1); transform-origin: top; }
@@ -175,86 +133,40 @@
             100% { transform: scaleY(0); transform-origin: bottom; }
         }
 
+        /* The 20 Phase Index Grid */
+        .phase-index-section { padding: 100px 0; background: #050505; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .phase-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.05); }
+        .phase-index-card { background: #080a0d; padding: 30px; transition: all 0.3s ease; text-decoration: none; display: flex; flex-direction: column; }
+        .phase-index-card:hover { background: rgba(255, 215, 0, 0.05); transform: translateY(-5px); z-index: 2; box-shadow: 0 20px 40px rgba(0,0,0,0.5); border-bottom: 2px solid var(--mag-gold); }
+        .p-num { font-family: var(--font-tech); color: var(--mag-gold); font-size: 1.5rem; font-weight: 800; margin-bottom: 15px; }
+        .p-title { font-family: var(--font-head); color: #fff; font-size: 1.1rem; margin-bottom: 10px; font-weight: 700; }
+        .p-desc { font-family: var(--font-body); color: #666; font-size: 0.85rem; line-height: 1.5; }
+
+        /* Phase Content Layouts */
+        .phase-section { padding: 150px 0; border-bottom: 1px solid rgba(255,255,255,0.05); position: relative; }
+        .phase-meta { font-family: var(--font-tech); font-size: 0.8rem; letter-spacing: 3px; display: block; margin-bottom: 20px; }
+        .phase-header { font-size: clamp(2.5rem, 5vw, 4.5rem); margin-bottom: 40px; }
+        
+        .split-editorial { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+        .img-editorial { width: 100%; height: 600px; object-fit: cover; filter: grayscale(20%); border-radius: 4px; border: 1px solid rgba(255,255,255,0.1); }
+        
+        /* Interactive Reveal Logic (From previous code) */
+        .reveal-container { position: relative; width: 100%; height: 600px; overflow: hidden; border: 1px solid var(--mag-cyan); border-radius: 4px; cursor: ew-resize; }
+        .reveal-img-base { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; }
+        .reveal-overlay-box { position: absolute; top: 0; left: 50%; width: 100%; height: 100%; overflow: hidden; border-left: 2px solid var(--mag-cyan); box-shadow: -5px 0 15px rgba(0, 229, 255, 0.3); }
+        .reveal-img-top { position: absolute; top: 0; left: -50%; width: 100%; height: 100%; object-fit: cover; }
+
         @media (max-width: 992px) {
             .cover-content { grid-template-columns: 1fr; gap: 30px; }
             .ed-scroll { display: none; }
+            .split-editorial { grid-template-columns: 1fr; gap: 40px; }
+            .img-editorial { height: 400px; }
         }
     </style>
 </head>
 <body class="is-dark magazine-mode no-js-override">
 
-    <header class="nav-wrapper">
-        <nav class="cyber-navbar glass-panel" style="background: rgba(3,4,6,0.9); border-bottom: 1px solid rgba(255,255,255,0.05);">
-            <div class="nav-inner">
-                
-                <a href="index.html" class="brand-cluster">
-                    <div class="logo-flipper">
-                        <div class="logo-face front"><img src="assets/images/raphael-lezius-logo-front.webp" alt="Raphael Lezius" onerror="this.style.display='none';"></div>
-                        <div class="logo-face back"><img src="assets/images/raphael-lezius-logo-back.webp" alt="Premium Montage" onerror="this.style.display='none';"></div>
-                    </div>
-                    <div class="brand-typography">
-                        <span class="brand-first" style="font-family: var(--font-mod);">RAPHAEL</span>
-                        <span class="brand-last" style="font-family: var(--font-ed); letter-spacing: 2px;">LEZIUS</span>
-                    </div>
-                </a>
-
-                <div class="desktop-menu">
-                    <a href="index.html" class="cyber-link">Start</a>
-                    
-                    <div class="dropdown-wrapper">
-                        <button class="cyber-link dropdown-btn">
-                            Expertise <i class="fas fa-chevron-down drop-icon" style="font-size: 0.7em; margin-left: 5px;"></i>
-                        </button>
-                        <div class="mega-menu-2077 glass-panel">
-                            <div class="mega-grid">
-                                <a href="residential.html" class="mega-node"><div class="node-icon cyan-glow"><i class="fas fa-couch"></i></div><div class="node-content"><h4>Interieur & Küchen</h4><p>PAX, Küchen & Premium-Möbel</p></div></a>
-                                <a href="outdoor.html" class="mega-node"><div class="node-icon gold-glow"><i class="fas fa-tree"></i></div><div class="node-content"><h4>Outdoor Holzbau</h4><p>Gartenhäuser & Gerätehütten</p></div></a>
-                                <a href="office.html" class="mega-node"><div class="node-icon pink-glow"><i class="fas fa-building"></i></div><div class="node-content"><h4>Gewerbe & Office</h4><p>USM Haller & Praxiseinrichtung</p></div></a>
-                                <a href="demontage.html" class="mega-node"><div class="node-icon green-glow"><i class="fas fa-tools"></i></div><div class="node-content"><h4>Demontage & Service</h4><p>Möbelabbau, Bohren & Reparaturen</p></div></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <a href="process-pricing.html" class="cyber-link">Konditionen</a>
-                    <a href="area.html" class="cyber-link">Region</a>
-                    <a href="gallery.html" class="cyber-link">Referenzen</a>
-                    <a href="magazine.html" class="cyber-link active" style="color: var(--mag-gold);">Magazin</a>
-                </div>
-
-                <div class="nav-actions">
-                    <div class="status-pill desktop-only" title="System Status: Live">
-                        <span class="status-dot-container">
-                            <span class="status-dot" style="background: var(--mag-gold); box-shadow: 0 0 10px var(--mag-gold);"></span>
-                            <span class="status-pulse" style="background: var(--mag-gold);"></span>
-                        </span>
-                        <span class="status-text" style="color: var(--mag-gold);">Journal Aktiv</span>
-                    </div>
-                    <button onclick="MissionOS.open();" class="btn btn-gold reactive-btn desktop-only" style="font-family: var(--font-tech);">PROJEKT_INIT</button>
-                    <button class="cyber-hamburger" id="hamburgerBtn" aria-label="Menü öffnen">
-                        <span class="bar top-bar"></span><span class="bar mid-bar"></span><span class="bar bot-bar"></span>
-                    </button>
-                </div>
-            </div>
-        </nav>
-    </header>
-
-    <div class="mobile-menu" id="mobileMenu">
-        <div class="mobile-menu-bg-glow" style="background: radial-gradient(circle, rgba(212,175,55,0.15) 0%, transparent 70%);"></div>
-        <nav class="mobile-nav-links">
-            <a href="index.html" class="mobile-cyber-link">Startseite</a>
-            <div class="mobile-divider cyan-divider">// EXPERTISE</div>
-            <a href="residential.html" class="mobile-sub-link">Interieur & Küchen</a>
-            <a href="outdoor.html" class="mobile-sub-link">Outdoor & Gartenbau</a>
-            <a href="office.html" class="mobile-sub-link">Gewerbe & USM Haller</a>
-            <a href="demontage.html" class="mobile-sub-link">Demontage & Service</a>
-            <div class="mobile-divider gold-divider">// PROTOKOLLE</div>
-            <a href="process-pricing.html" class="mobile-sub-link">Konditionen & Ablauf</a>
-            <a href="area.html" class="mobile-sub-link">Einsatzregion</a>
-            <a href="gallery.html" class="mobile-sub-link">Referenzen</a>
-            <a href="magazine.html" class="mobile-sub-link active-mobile-link" style="color: var(--mag-gold) !important; font-family: var(--font-tech) !important;">MAGAZIN_JOURNAL (AKTIV)</a>
-            <button onclick="MissionOS.open();" class="btn btn-gold btn-block mobile-cta-btn"><i class="fas fa-bolt"></i> ANFRAGE SENDEN</button>
-        </nav>
-    </div>
+    <div id="global-nav"></div>
 
     <main id="magazine-main-content">
         
@@ -267,15 +179,15 @@
 
             <div class="cover-content">
                 <div data-aos="fade-right" data-aos-duration="1500">
-                    <div class="text-tech" style="color: var(--mag-gold); margin-bottom: 20px; font-size: 0.8rem;">[ VOL. 01 // 2026 EDITION ]</div>
+                    <div class="text-tech" style="color: var(--mag-gold); margin-bottom: 20px; font-size: 0.8rem;">[ THE 2026 MAKERS CODEX ]</div>
                     <h1 class="text-ed cover-title">
-                        Makers<br>
-                        <span>Journal.</span>
+                        Die 20 Phasen<br>
+                        <span>der Perfektion.</span>
                     </h1>
                 </div>
 
                 <div data-aos="fade-left" data-aos-duration="1500" data-aos-delay="200" style="padding-bottom: 20px;">
-                    <div style="display: flex; gap: 40px; border-top: 1px solid rgba(212,175,55,0.3); padding-top: 20px; margin-bottom: 30px;">
+                    <div style="display: flex; gap: 40px; border-top: 1px solid rgba(255, 215, 0, 0.3); padding-top: 20px; margin-bottom: 30px;">
                         <div>
                             <span class="text-tech" style="font-size: 0.6rem; color: #666; display: block; margin-bottom: 5px;">AUTHOR_ID</span>
                             <span class="text-tech" style="font-size: 0.9rem; color: #fff;">R. LEZIUS</span>
@@ -292,1145 +204,262 @@
             </div>
 
             <div class="ed-scroll">
-                <span class="ed-scroll-text">INITIALIZE</span>
+                <span class="ed-scroll-text">INITIALIZE CODEX</span>
                 <div class="ed-scroll-line"></div>
             </div>
         </section>
 
-    </main>
-
-    <script src="assets/js/main.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            setTimeout(function() { document.body.classList.remove('no-js-override'); }, 50);
-            if (typeof window.AOS !== 'undefined') {
-                try { AOS.init({ duration: 1000, once: true }); } catch(e) {}
-            }
-        });
-    </script>
-</body>
-</html>
-
-<section class="manifesto-section">
-            <div class="manifesto-grid">
-                
-                <div data-aos="fade-right">
-                    <div class="text-tech" style="color: #666; margin-bottom: 30px; font-size: 0.8rem;">
-                        <span style="color: var(--mag-gold);">//</span> SYSTEM_MANIFESTO
-                    </div>
-                    <h2 class="text-ed" style="font-size: clamp(2.5rem, 5vw, 4rem); color: #fff; margin-bottom: 30px; text-transform: none; letter-spacing: -1px;">
-                        Handwerk ist die <span style="color: var(--mag-gold); font-style: italic;">Signatur</span> des Raumes.
-                    </h2>
-                    
-                    <p class="text-body drop-cap">
-                        Wenn ich durch die Wohnungen und Penthouses meiner Kunden in München und Augsburg gehe, sehe ich oft das gleiche tragische Bild: Wunderschöne, zehntausende Euro teure Designermöbel, die von ungeschultem Personal lieblos zusammengeschustert wurden. Schiefe Spaltmaße, zerkratztes Furnier, ausreißende Scharniere und Schränke, die bei der kleinsten Berührung gefährlich wackeln. Das ist nicht nur ärgerlich – es entwertet die gesamte Investition, die Sie in Ihr Zuhause getätigt haben.
-                    </p>
-                    
-                    <p class="text-body" style="margin-top: 20px;">
-                        In diesem Journal widme ich mich der reinen Wissenschaft hinter der Montage. Wir brechen die physikalischen Barrieren des Schwabinger Altbaus auf und erklären, warum der Standard-Plastikdübel im Jahr 2026 ausgedient hat. Mein Ziel mit dieser Datenbank ist es, Ihnen zu beweisen, dass echte Handwerkskunst heute eine Symbiose aus Hightech-Werkzeug, tiefem Materialverständnis und kompromissloser Detailverliebtheit ist. <strong style="color: #fff;">Wer billig montiert, kauft zweimal.</strong>
-                    </p>
-
-                    <div class="author-block">
-                        <div class="author-avatar">
-                            <img src="assets/images/raphael-lezius-logo-front.webp" alt="Raphael Lezius" style="width: 100%; height: 100%; background: #000; object-fit: cover;">
-                        </div>
-                        <div>
-                            <strong style="color: #fff; font-family: var(--font-body); font-size: 1.2rem; display: block; font-weight: 800;">Raphael Lezius</strong>
-                            <span class="text-tech" style="color: var(--mag-gold); font-size: 0.7rem;">FOUNDER & HEAD OF ENGINEERING</span>
-                        </div>
-                    </div>
+        <section class="phase-index-section">
+            <div class="container relative-z">
+                <div style="text-align: center; margin-bottom: 60px;" data-aos="fade-up">
+                    <h2 class="text-mod" style="font-size: 2rem; color: #fff;">INHALTSVERZEICHNIS</h2>
+                    <span class="text-tech" style="color: var(--mag-gold); font-size: 0.8rem;">[ SELECT A PHASE TO INITIALIZE ]</span>
                 </div>
 
-                <div data-aos="fade-left">
-                    <div class="manifesto-img-stack">
-                        <div class="img-stack-back">
-                            <img src="assets/images/wohnen-12-a.webp" alt="Premium Wohnwand Architektur">
+                <div class="phase-grid" data-aos="fade-up" data-aos-delay="100">
+                    <a href="#phase-01" class="phase-index-card">
+                        <span class="p-num">01</span>
+                        <h3 class="p-title">Das System Manifesto</h3>
+                        <p class="p-desc">Warum Handwerk die Signatur des Raumes ist und Fehler Zehntausende Euro vernichten.</p>
+                    </a>
+                    <a href="#phase-02" class="phase-index-card">
+                        <span class="p-num">02</span>
+                        <h3 class="p-title">Spatial Geometry</h3>
+                        <p class="p-desc">Laser & Metrology: Die Physik des Münchener Altbaus bezwingen.</p>
+                    </a>
+                    <a href="#phase-03" class="phase-index-card">
+                        <span class="p-num">03</span>
+                        <h3 class="p-title">Kitchen Engineering</h3>
+                        <p class="p-desc">Die Wissenschaft der Arbeitsplatte und wasserfeste Festool-Zuschnitte.</p>
+                    </a>
+                    <a href="#phase-04" class="phase-index-card">
+                        <span class="p-num">04</span>
+                        <h3 class="p-title">Zero-Friction Kinematics</h3>
+                        <p class="p-desc">Hydraulik, Auszüge und die lautlose Mechanik von Premium-Beschlägen.</p>
+                    </a>
+                    <a href="#phase-05" class="phase-index-card">
+                        <span class="p-num">05</span>
+                        <h3 class="p-title">Zero-Cable Protocol</h3>
+                        <p class="p-desc">Smart Home, Qi-Charging und das unsichtbare Kabel-Routing im Wohnbereich.</p>
+                    </a>
+                    <div class="phase-index-card" style="opacity: 0.5; pointer-events: none;">
+                        <span class="p-num" style="color: #555;">06-20</span>
+                        <h3 class="p-title" style="color: #888;">Classified Logs</h3>
+                        <p class="p-desc">Wird in der nächsten Edition des Makers Journal freigeschaltet.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="phase-01" class="phase-section" style="background: #030405;">
+            <div class="container relative-z">
+                <div class="split-editorial">
+                    <div data-aos="fade-right">
+                        <span class="phase-meta" style="color: var(--mag-gold);">PHASE_01 // SYSTEM_MANIFESTO</span>
+                        <h2 class="text-ed phase-header">
+                            Handwerk ist die <span style="color: var(--mag-gold); font-style: italic;">Signatur</span> des Raumes.
+                        </h2>
+                        
+                        <p class="text-body drop-cap">
+                            Wenn ich durch die Wohnungen und Penthouses meiner Kunden in München und Augsburg gehe, sehe ich oft das gleiche tragische Bild: Wunderschöne, zehntausende Euro teure Designermöbel, die von ungeschultem Personal lieblos zusammengeschustert wurden. Schiefe Spaltmaße, zerkratztes Furnier, ausreißende Scharniere und Schränke, die bei der kleinsten Berührung gefährlich wackeln. Das ist nicht nur ärgerlich – es entwertet die gesamte Investition, die Sie in Ihr Zuhause getätigt haben.
+                        </p>
+                        
+                        <p class="text-body" style="margin-top: 20px; font-size: 1.1rem; color: #888;">
+                            In diesem Journal widme ich mich der reinen Wissenschaft hinter der Montage. Wir brechen die physikalischen Barrieren auf und erklären, warum der Standard-Plastikdübel im Jahr 2026 ausgedient hat. Mein Ziel mit dieser Datenbank ist es, Ihnen zu beweisen, dass echte Handwerkskunst heute eine Symbiose aus Hightech-Werkzeug, tiefem Materialverständnis und kompromissloser Detailverliebtheit ist. <strong style="color: #fff;">Wer billig montiert, kauft zweimal.</strong>
+                        </p>
+
+                        <div style="margin-top: 40px; display: flex; align-items: center; gap: 20px;">
+                            <img src="assets/images/raphael-lezius-logo-front.webp" alt="Raphael Lezius" style="width: 60px; height: 60px; border-radius: 50%; border: 2px solid var(--mag-gold);">
+                            <div>
+                                <strong style="color: #fff; font-family: var(--font-body); font-size: 1.1rem; display: block; font-weight: 800;">Raphael Lezius</strong>
+                                <span class="text-tech" style="color: var(--mag-gold); font-size: 0.65rem;">FOUNDER & HEAD OF ENGINEERING</span>
+                            </div>
                         </div>
-                        <div class="img-stack-front">
-                            <img src="assets/images/kueche-17-b.webp" alt="Küchenbau Präzision">
-                        </div>
-                        <div class="img-stack-tag">
+                    </div>
+
+                    <div data-aos="fade-left" style="position: relative;">
+                        <img src="assets/images/wohnen-12-a.webp" alt="Premium Wohnwand Architektur" class="img-editorial">
+                        <div style="position: absolute; bottom: -30px; left: -30px; background: #000; padding: 20px; border: 1px solid var(--mag-gold);">
                             <span class="text-tech" style="font-size: 0.6rem; color: #888; display: block; margin-bottom: 5px;">VISUAL_LOG // MUC_04</span>
                             <span style="font-family: var(--font-body); font-weight: 600; font-size: 0.9rem; color: #fff;">Architektonische Integration</span>
                         </div>
                     </div>
                 </div>
-
             </div>
         </section>
 
-        <section class="hover-gallery-section">
-            <div class="hg-container">
-                
-                <div style="display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 20px; margin-bottom: 40px;" data-aos="fade-up">
-                    <h2 class="text-ed" style="font-size: 2.5rem; color: #fff; margin: 0; letter-spacing: -1px;">Das Archiv</h2>
-                    <span class="text-tech" style="color: #666; font-size: 0.8rem;">[ KNOWLEDGE_BASE ]</span>
-                </div>
-
-                <div class="hover-gallery-list">
+        <section id="phase-02" class="phase-section" style="background: #050608;">
+            <div class="container relative-z">
+                <div class="split-editorial">
                     
-                    <div class="hg-item" data-aos="fade-up" data-aos-delay="100">
-                        <div style="display: flex; align-items: center; gap: 40px;">
-                            <span class="hg-number">01</span>
-                            <div>
-                                <span class="text-tech" style="color: var(--mag-cyan); font-size: 0.7rem; display: block; margin-bottom: 5px;">KÜCHEN ARCHITEKTUR</span>
-                                <h3 class="hg-title">Die Wissenschaft der Arbeitsplatte.</h3>
-                            </div>
-                        </div>
-                        <div class="text-tech" style="color: #555; font-size: 0.8rem; transition: color 0.3s ease;">READ_FILE <i class="fas fa-arrow-right"></i></div>
-                        
-                        <div class="hg-image-preview" style="border-color: var(--mag-cyan);">
-                            <img src="assets/images/kueche-4-a.webp" alt="Küchenarbeitsplatte Zuschnitt">
-                        </div>
+                    <div data-aos="fade-right" style="position: relative;">
+                        <img src="assets/images/wohnen-4-b.webp" alt="Schwerlast Montage Altbau" class="img-editorial">
+                        <img src="assets/images/wohnen-20-a.webp" alt="Präzisionsbohrung" style="position: absolute; top: -30px; right: -30px; width: 250px; height: 250px; object-fit: cover; border: 2px solid #000; box-shadow: 0 20px 40px rgba(0,0,0,0.5);">
                     </div>
 
-                    <div class="hg-item" data-aos="fade-up" data-aos-delay="200">
-                        <div style="display: flex; align-items: center; gap: 40px;">
-                            <span class="hg-number">02</span>
-                            <div>
-                                <span class="text-tech" style="color: var(--mag-gold); font-size: 0.7rem; display: block; margin-bottom: 5px;">STRUCTURAL ENGINEERING</span>
-                                <h3 class="hg-title">Die Physik des Münchener Altbaus.</h3>
+                    <div data-aos="fade-left">
+                        <span class="phase-meta" style="color: var(--mag-cyan);">PHASE_02 // SPATIAL_GEOMETRY</span>
+                        <h2 class="text-ed phase-header">
+                            Die Physik des <br><span style="color: var(--mag-cyan);">Münchener Altbaus.</span>
+                        </h2>
+                        
+                        <p class="text-body" style="font-size: 1.15rem; color: #fff; margin-bottom: 20px;">
+                            Das Szenario ist ein gefährlicher Klassiker der Raumgestaltung: Ein Kunde kauft eine luxuriöse, wandhängende Wohnwand oder einen massiven OLED-Bildschirm. Der beauftragte Allround-Handwerker greift zu den mitgelieferten 8mm Universal-Plastikdübeln und aktiviert die Schlagbohrfunktion.
+                        </p>
+                        
+                        <p class="text-body" style="color: #888; font-size: 1rem; margin-bottom: 30px;">
+                            Das Resultat? Der Bohrer zerschmettert die spröde innere Struktur des Ziegels. Das winzige Bohrloch expandiert in Sekundenbruchteilen zu einem 3 Zentimeter breiten Krater. Roter Ziegelstaub rieselt unaufhörlich, und an eine sichere Verankerung ist physikalisch nicht mehr zu denken.
+                        </p>
+
+                        <div style="background: rgba(0, 229, 255, 0.03); border: 1px solid rgba(0, 229, 255, 0.1); padding: 30px; border-radius: 4px;">
+                            <h4 class="text-tech" style="font-size: 0.8rem; color: #fff; margin-bottom: 20px;">[ ENGINEERING_SOLUTION ]</h4>
+                            <p style="font-size: 0.9rem; color: #aaa; margin-bottom: 15px;">Um dieses Problem zu lösen, greifen wir auf den <strong>Zweikomponenten-Injektionsmörtel</strong> zurück. Wir bohren ausschließlich im Rotationsmodus, um den Ziegelkern zu schneiden, nicht zu brechen.</p>
+                            <div style="display: flex; justify-content: space-between; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 15px; margin-top: 15px;">
+                                <span class="text-tech" style="font-size: 0.65rem; color: #666;">SICHERHEITS_FAKTOR</span>
+                                <span class="text-tech" style="font-size: 0.7rem; color: var(--mag-cyan);">3.5x STATIC LOAD</span>
                             </div>
                         </div>
-                        <div class="text-tech" style="color: #555; font-size: 0.8rem; transition: color 0.3s ease;">READ_FILE <i class="fas fa-arrow-right"></i></div>
-                        
-                        <div class="hg-image-preview" style="transform: translate(-50%, -50%) scale(0.8) rotate(3deg); border-color: var(--mag-gold);">
-                            <img src="assets/images/wohnen-4-a.webp" alt="Altbau Wand Montage">
-                        </div>
                     </div>
-
-                    <div class="hg-item" data-aos="fade-up" data-aos-delay="300">
-                        <div style="display: flex; align-items: center; gap: 40px;">
-                            <span class="hg-number">03</span>
-                            <div>
-                                <span class="text-tech" style="color: #ff007f; font-size: 0.7rem; display: block; margin-bottom: 5px;">KINEMATICS</span>
-                                <h3 class="hg-title">IKEA PAX: Toleranz Null.</h3>
-                            </div>
-                        </div>
-                        <div class="text-tech" style="color: #555; font-size: 0.8rem; transition: color 0.3s ease;">READ_FILE <i class="fas fa-arrow-right"></i></div>
-                        
-                        <div class="hg-image-preview" style="transform: translate(-50%, -50%) scale(0.8) rotate(-3deg); border-color: #ff007f;">
-                            <img src="assets/images/sz-1-a.webp" alt="IKEA PAX Schwebetüren">
-                        </div>
-                    </div>
-
-                    <div class="hg-item" data-aos="fade-up" data-aos-delay="400">
-                        <div style="display: flex; align-items: center; gap: 40px;">
-                            <span class="hg-number">04</span>
-                            <div>
-                                <span class="text-tech" style="color: #39ff14; font-size: 0.7rem; display: block; margin-bottom: 5px;">SMART HOME INTEGRATION</span>
-                                <h3 class="hg-title">Das Zero-Cable Protokoll.</h3>
-                            </div>
-                        </div>
-                        <div class="text-tech" style="color: #555; font-size: 0.8rem; transition: color 0.3s ease;">READ_FILE <i class="fas fa-arrow-right"></i></div>
-                        
-                        <div class="hg-image-preview" style="transform: translate(-50%, -50%) scale(0.8) rotate(4deg); border-color: #39ff14;">
-                            <img src="assets/images/wohnen-1-a.webp" alt="Zero Cable TV Wand">
-                        </div>
-                    </div>
-
                 </div>
             </div>
         </section>
 
-<section class="article-deep-dive" id="altbau-physics">
-            <div class="article-container">
-                
-                <div class="article-content-main">
-                    <header class="article-header-meta" data-aos="fade-up">
-                        <span class="article-category-label">02 // STRUCTURAL_LOGS</span>
-                        <h2 class="article-main-title">Die Physik des Münchener Altbaus.</h2>
-                        <p class="article-lead-text">
-                            Historischer Sandputz trifft auf 90-Zoll Schwerlast-Displays und freischwebende Media-Boards. Ein detaillierter Blick auf die unsichtbaren Gefahren in jahrhundertealten Wänden – und die industrielle Lösung.
+        <section id="phase-03" class="phase-section" style="background: #030405;">
+            <div class="container relative-z">
+                <div class="split-editorial">
+                    
+                    <div data-aos="fade-right">
+                        <span class="phase-meta" style="color: var(--mag-pink);">PHASE_03 // KITCHEN_ENGINEERING</span>
+                        <h2 class="text-ed phase-header">
+                            Kanten,<br><span style="color: var(--mag-pink);">Keine Kompromisse.</span>
+                        </h2>
+                        
+                        <p class="text-body" style="font-size: 1.15rem; color: #fff; margin-bottom: 20px;">
+                            Eine Küche ist das komplexeste mechanische System in Ihrem Haus. Jedes Grad Abweichung im Boden wird oben an der Arbeitsplatte zu einem massiven statischen Defizit.
                         </p>
-                    </header>
-
-                    <div class="ed-body drop-cap" data-aos="fade-up">
-                        Das Szenario ist ein gefährlicher Klassiker der Raumgestaltung: Ein Kunde kauft eine luxuriöse, wandhängende Wohnwand oder einen massiven OLED-Bildschirm. Der beauftragte Allround-Handwerker oder der Laie selbst greift zu den mitgelieferten 8mm Universal-Plastikdübeln und aktiviert die Schlagbohrfunktion seiner handelsüblichen Maschine. Das Resultat? Der Bohrer zerschmettert die spröde innere Struktur des Ziegels. Das winzige 8mm Loch expandiert in Sekundenbruchteilen zu einem 3 Zentimeter breiten Krater. Roter Ziegelstaub rieselt unaufhörlich, und an eine sichere Verankerung ist physikalisch nicht mehr zu denken.
-                    </div>
-
-                    <div class="article-image-feature">
-                        <div class="feature-img-tall" data-aos="fade-right">
-                            <img src="assets/images/wohnen-4-b.webp" alt="Schwerlast Montage Altbau">
-                        </div>
-                        <div style="display: flex; flex-direction: column; gap: 20px;">
-                            <div class="feature-img-square" data-aos="fade-left">
-                                <img src="assets/images/wohnen-20-a.webp" alt="Präzisions-Bohrung">
-                            </div>
-                            <div class="feature-img-square" data-aos="fade-left" data-aos-delay="100">
-                                <img src="assets/images/wohnen-7-a.webp" alt="Integrierte Wohnwand">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="ed-body" data-aos="fade-up">
-                        Um dieses fundamentale Problem zu lösen, greifen wir bei Premium-Montagen auf eine Technik aus dem modernen Brückenbau zurück: den **Zweikomponenten-Injektionsmörtel**. Wir bohren ausschließlich im Rotationsmodus, ohne Schlag, um den Ziegelkern zu schneiden, nicht zu brechen. Das Bohrloch wird vakuumbereinigt und mit flüssigem Harz verfüllt, das sich stoffschlüssig mit der Bausubstanz verbindet. Das Ergebnis ist kein Dübel, sondern ein monolithischer Ankerpunkt, der Belastungen standhält, die das Zehnfache des Eigengewichts betragen.
-                    </div>
-                </div>
-
-                <aside class="article-sidebar" data-aos="fade-left">
-                    <div class="tech-spec-box">
-                        <h4 class="text-tech" style="font-size: 0.8rem; color: #fff; margin-bottom: 30px;">[ TECHNICAL_SPECS ]</h4>
                         
-                        <div class="spec-item">
-                            <span class="spec-label">WAND_SUBSTRAT</span>
-                            <span class="spec-value">Ziegel / Sandputz (1910)</span>
-                        </div>
-                        
-                        <div class="spec-item">
-                            <span class="spec-label">FIXIERUNGS_MODUS</span>
-                            <span class="spec-value">Injektionstechnik (Fischer FIS)</span>
-                        </div>
+                        <p class="text-body" style="color: #888; font-size: 1rem; margin-bottom: 30px;">
+                            Der Zuschnitt der Küchenarbeitsplatte trennt Amateure von Profis. Ein falscher Schnitt mit der Baumarkt-Stichsäge, die Ränder fransen aus, Feuchtigkeit dringt ins Holz ein – die Platte quillt auf. Ich eliminiere dieses Risiko komplett durch den Einsatz von Festool Tauchsägen mit Präzisions-Führungsschienen.
+                        </p>
 
-                        <div class="spec-item">
-                            <span class="spec-label">DREHMOMENT_MAX</span>
-                            <span class="spec-value">45 Nm (Kontrolliert)</span>
-                        </div>
-
-                        <div class="spec-item">
-                            <span class="spec-label">SICHERHEITS_FAKTOR</span>
-                            <span class="spec-value" style="color: var(--mag-gold);">3.5x Static Load</span>
-                        </div>
-
-                        <div style="margin-top: 40px; padding: 20px; border: 1px solid rgba(0, 229, 255, 0.2); background: rgba(0, 229, 255, 0.02);">
-                            <span class="text-tech" style="font-size: 0.6rem; color: var(--mag-cyan);">EXPERTE_NOTIZ:</span>
-                            <p style="font-size: 0.85rem; color: #888; margin-top: 10px; font-family: var(--font-body);">
-                                "Im Altbau ist der Scanner wichtiger als der Bohrer. Wir kartografieren jede Leitung, bevor wir die thermische Struktur der Wand verändern."
-                            </p>
-                        </div>
-                    </div>
-                </aside>
-
-            </div>
-        </section>        
-
-        <section class="usm-feature-section" id="usm-logic">
-            <div class="vertical-text-bg">PRECISION DESIGN</div>
-            
-            <div class="usm-editorial-grid">
-                
-                <div class="usm-specs-card" data-aos="fade-right">
-                    <div class="usm-tool-indicator">
-                        <div class="tool-dot"></div>
-                        <span class="text-tech" style="font-size: 0.65rem; color: var(--mag-gold);">Special Tooling Required</span>
-                    </div>
-
-                    <h2 class="text-ed" style="font-size: clamp(2.5rem, 4vw, 4rem); margin-bottom: 30px;">
-                        USM Haller:<br>Toleranz <span style="color: var(--mag-gold);">Null.</span>
-                    </h2>
-
-                    <div class="ed-body" style="font-size: 1.05rem; margin-bottom: 30px;">
-                        Das Schweizer Kultmöbel ist kein gewöhnliches Einrichtungsstück – es ist ein mikromechanisches System. Jede verchromte Kugel fungiert als statischer Knotenpunkt, der nur dann seine volle Festigkeit erreicht, wenn die interne Vorspannung exakt kalibriert ist.
-                    </div>
-
-                    <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px;">
-                        <h4 class="text-mod" style="font-size: 0.8rem; color: #fff; margin-bottom: 20px;">Das Kratzfrei-Protokoll</h4>
-                        <ul class="tech-list-2026">
-                            <li><i class="fas fa-microscope"></i> <div><strong>Original USM Inbus:</strong> Wir nutzen ausschließlich die originalen Service-Tools, um die Scherkräfte innerhalb der Konnektoren zu kontrollieren.</div></li>
-                            <li><i class="fas fa-hand-sparkles"></i> <div><strong>Weißes Baumwoll-Verfahren:</strong> Montage erfolgt unter strikter Einhaltung haptischer Schutzmaßnahmen zur Vermeidung von Fingerabdrücken auf Hochglanz-Chrom.</div></li>
-                            <li><i class="fas fa-sync-alt"></i> <div><strong>Generationen-Matrix:</strong> Sicherer Umbau und Erweiterung von Systemen der Generation 2 und 3.</div></li>
+                        <ul style="list-style: none; padding: 0; color: #ccc;">
+                            <li style="margin-bottom: 15px; display: flex; align-items: center; gap: 15px;"><i class="fas fa-circle-notch" style="color: var(--mag-pink);"></i> <strong>100% ausrissfreie</strong> und millimetergenaue Schnittkanten.</li>
+                            <li style="margin-bottom: 15px; display: flex; align-items: center; gap: 15px;"><i class="fas fa-circle-notch" style="color: var(--mag-pink);"></i> <strong>Thermische Versiegelung</strong> gegen Wasserdampf (Geschirrspüler).</li>
+                            <li style="display: flex; align-items: center; gap: 15px;"><i class="fas fa-circle-notch" style="color: var(--mag-pink);"></i> <strong>360° Laser-Ausrichtung</strong> für perfekte Spaltmaße.</li>
                         </ul>
                     </div>
-                </div>
 
-                <div class="usm-collage" data-aos="fade-left">
-                    <div class="collage-main">
-                        <img src="assets/images/wohnen-12-a.webp" alt="USM Haller Office Solution">
-                    </div>
-                    <div class="collage-floating">
-                        <img src="assets/images/sz-5-b.webp" alt="USM Connector Detail">
-                        <div style="position: absolute; inset: 0; background: rgba(212,175,55,0.1); pointer-events: none;"></div>
-                    </div>
-                    
-                    <div style="position: absolute; top: 20px; left: -20px; background: #000; padding: 15px; border: 1px solid var(--mag-gold); font-family: var(--font-tech); font-size: 0.65rem; color: #fff; z-index: 6;">
-                        <span style="color: var(--mag-gold);">[SYSTEM_ANALYSIS]</span><br>
-                        DREHMOMENT: 4.5 NM<br>
-                        CHROM_INTEGRITY: 100%
+                    <div data-aos="fade-left">
+                        <img src="assets/images/kueche-4-a.webp" alt="Worktop Precision" class="img-editorial" style="border-color: var(--mag-pink);">
                     </div>
                 </div>
-
             </div>
         </section>
 
- <section class="tech-feature-section" id="cable-protocol">
-            <div class="tech-layout">
-                
-                <div class="tech-visual-col" data-aos="fade-right">
-                    <div class="data-stream-text">SCANNING_INTERNAL_CHANNELS // 0xAF44</div>
-                    <div class="tech-image-box">
-                        <div class="scanline-effect"></div>
-                        <img src="assets/images/wohnen-1-a.webp" alt="Invisible Cable Management Sideboard">
-                        
-                        <div style="position: absolute; bottom: 20px; right: 20px; background: rgba(0,0,0,0.8); padding: 15px; border-top: 2px solid var(--mag-cyan);">
-                            <span class="text-tech" style="font-size: 0.6rem; color: #fff;">MODEL: IKEA BESTÅ // CUSTOM_ROUTE</span>
+        <section id="phase-04" class="phase-section" style="background: #050608;">
+            <div class="container relative-z">
+                <div class="split-editorial">
+                    
+                    <div data-aos="fade-right">
+                        <div class="reveal-container">
+                            <img src="assets/images/wohnen-15-a.webp" class="reveal-img-base" alt="Before Cleaning">
+                            <div class="reveal-overlay-box">
+                                <img src="assets/images/wohnen-15-b.webp" class="reveal-img-top" alt="After Cleaning / Organized">
+                            </div>
+                            <div style="position: absolute; bottom: 20px; left: 20px; z-index: 6; background: #000; color: #fff; padding: 5px 15px; font-family: var(--font-tech); font-size: 0.6rem;">
+                                HOVER_TO_ACTIVATE_REVEAL
+                            </div>
                         </div>
                     </div>
-                    <div class="routing-label">
-                        <div class="pulse-dot-cyan"></div>
-                        <span>SIGNAL_INTEGRITY: OPTIMAL</span>
-                    </div>
-                </div>
 
-                <div class="tech-panel-col" data-aos="fade-left">
-                    <div class="tech-panel">
-                        <span class="text-tech" style="color: var(--mag-cyan); font-size: 0.8rem; display: block; margin-bottom: 20px;">04 // TECH_INTEGRATION</span>
-                        <h2 class="text-ed" style="font-size: clamp(2rem, 4vw, 3.5rem); margin-bottom: 30px;">
-                            Invisible<br><span style="color: var(--mag-cyan);">Infrastructure.</span>
+                    <div data-aos="fade-left">
+                        <span class="phase-meta" style="color: var(--mag-green);">PHASE_04 // ZERO_DUST_PROTOCOL</span>
+                        <h2 class="text-ed phase-header">
+                            Sauberkeit ist <br><span style="color: var(--mag-green); font-style: italic;">keine Höflichkeit.</span>
                         </h2>
-
-                        <div class="ed-body" style="font-size: 1.05rem; color: #ccc; margin-bottom: 30px;">
-                            Sichtbare Kabel sind visueller Lärm. Im Jahr 2026 ist die architektonische Verschmelzung von Hardware und Interieur kein Luxus mehr, sondern eine Notwendigkeit. Ein schwebendes Sideboard verliert seine Magie in dem Moment, in dem ein schwarzes Kabel die Wand durchschneidet.
-                        </div>
-
-                        <p class="ed-body" style="font-size: 0.95rem; color: #888; margin-bottom: 30px;">
-                            Mein "Zero-Cable Protocol" geht über das Verstecken von Kabeln hinaus. Wir planen die Zuleitungen forensisch. Durch intelligente Hohlraum-Nutzung und präzise Rückwandaussparungen kreieren wir Kanäle, die Strom- und Datenströme strikt trennen, um induktive Interferenzen bei High-End Audio-Systemen zu verhindern.
-                        </p>
-
-                        <div style="display: flex; flex-direction: column; gap: 15px;">
-                            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 10px;">
-                                <span class="text-tech" style="font-size: 0.7rem; color: #fff;">In-Wall Routing</span>
-                                <span class="text-tech" style="font-size: 0.7rem; color: var(--mag-cyan);">Implemented</span>
-                            </div>
-                            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 10px;">
-                                <span class="text-tech" style="font-size: 0.7rem; color: #fff;">Induction Barrier</span>
-                                <span class="text-tech" style="font-size: 0.7rem; color: var(--mag-cyan);">Active</span>
-                            </div>
-                            <div style="display: flex; justify-content: space-between; align-items: center;">
-                                <span class="text-tech" style="font-size: 0.7rem; color: #fff;">Thermal Venting</span>
-                                <span class="text-tech" style="font-size: 0.7rem; color: var(--mag-cyan);">Calculated</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </section> 
-        
-   <section class="ambient-section" id="photonic-lighting">
-            <div class="photonic-glow-container"></div>
-            
-            <div class="ambient-grid">
-                
-                <div class="ambient-text-col" data-aos="fade-right">
-                    <span class="text-tech" style="color: var(--mag-gold); font-size: 0.8rem; display: block; margin-bottom: 20px;">05 // AMBIENT_ENGINEERING</span>
-                    
-                    <h2 class="text-ed" style="font-size: clamp(2.5rem, 4vw, 4.5rem); margin-bottom: 30px;">
-                        Photonic<br><span>Architecture.</span>
-                    </h2>
-
-                    <div class="ed-body" style="color: #fff; font-size: 1.1rem; margin-bottom: 30px;">
-                        Licht ist kein Anhängsel der Architektur – es ist ihre Definition. In der modernen Küchenplanung verschwinden die Leuchtmittel. Was bleibt, ist eine schattenfreie Aura, die Arbeitsflächen funktional und Schrankwände skulptural wirken lässt.
-                    </div>
-
-                    <p class="ed-body" style="font-size: 0.95rem; color: #777;">
-                        Wir integrieren LED-Systeme der nächsten Generation direkt in die Korpus-Strukturen. Durch präzise gefräste Kanäle und opale Diffusoren eliminieren wir den "Perlenschnur-Effekt" vollständig. Das Licht fließt homogen über die Materialien, betont Maserungen und schafft Tiefe, wo früher nur dunkle Nischen waren.
-                    </p>
-
-                    <div class="lumen-spec-table" data-aos="fade-up" data-aos-delay="300">
-                        <div class="lumen-row">
-                            <span>FARBTEMPERATUR // KELVIN</span>
-                            <span class="lumen-val">2700K - 4000K (Adaptive)</span>
-                        </div>
-                        <div class="lumen-row">
-                            <span>FARBWIEDERGABE // CRI</span>
-                            <span class="lumen-val">> 95 (High Fidelity)</span>
-                        </div>
-                        <div class="lumen-row">
-                            <span>STEUERUNGSPROTOKOLL</span>
-                            <span class="lumen-val">DALI / Zigbee / KNX</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="image-trio">
-                    <div class="trio-img trio-1" data-aos="fade-down" data-aos-delay="100">
-                        <img src="assets/images/kueche-17-b.webp" alt="Integrated Kitchen Lighting">
-                    </div>
-                    <div class="trio-img trio-2" data-aos="fade-up" data-aos-delay="200">
-                        <img src="assets/images/kueche-13-a.webp" alt="Premium Kitchen Build">
-                    </div>
-                    <div class="trio-img trio-3" data-aos="fade-right" data-aos-delay="400">
-                        <img src="assets/images/kueche-4-a.webp" alt="Worktop Precision">
-                    </div>
-                </div>
-
-            </div>
-        </section>     
-
-<section class="tools-section" id="material-science">
-            <div class="container" style="margin-bottom: 60px;" data-aos="fade-up">
-                <div class="text-tech" style="color: #666; margin-bottom: 20px;">06 // HARDWARE_AND_SUBSTRATE</div>
-                <h2 class="text-ed" style="font-size: clamp(2.5rem, 5vw, 4rem);">Das Arsenal der <span style="color: var(--mag-gold);">Unfehlbarkeit.</span></h2>
-            </div>
-
-            <div class="tools-bento-grid">
-                
-                <div class="bento-card bento-span-8" data-aos="fade-up">
-                    <div class="bento-label">ENGINEERING_UNIT // BOSCH_BLUE</div>
-                    <div class="bento-image-fill">
-                        <img src="assets/images/wohnen-15-a.webp" alt="Staubfreies Arbeiten">
-                    </div>
-                    <div class="bento-content">
-                        <i class="fas fa-microchip"></i>
-                        <h3>Digitale Drehmoment-Kontrolle.</h3>
-                        <p style="max-width: 500px;">
-                            Wir nutzen ausschließlich die Bosch Blue Professional Serie mit "Kickback Control". In weichem MDF oder spröden Spanplatten verhindert die digitale Kupplung das Überdrehen der Gewinde – ein Fehler, der bei Amateur-Montagen oft zum sofortigen Instabilitäts-Kollaps führt.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="bento-card bento-span-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="bento-label">CUTTING_EDGE // FESTOOL</div>
-                    <div class="bento-content">
-                        <i class="fas fa-cut"></i>
-                        <h3>Ausrissfrei sägen.</h3>
-                        <p>
-                            Unsere Festool Tauchsägen mit Führungsschiene erlauben Schnitte in Manufaktur-Qualität direkt in Ihrem Wohnraum. 100% Splitterschutz für jede Kante.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="bento-card bento-span-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="bento-label">CLEAN_AIR // HEPA_M</div>
-                    <div class="bento-content">
-                        <i class="fas fa-wind"></i>
-                        <h3>Zero-Dust Protocol.</h3>
-                        <p>
-                            Jeder Bohrer ist mit einer aktiven M-Klasse Absaugung gekoppelt. Wir fangen 99,9% des Feinstaubs ab, bevor er Ihre Lunge oder Ihre Polstermöbel erreicht.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="bento-card bento-span-8" data-aos="fade-up" data-aos-delay="300" style="background: linear-gradient(90deg, rgba(0,229,255,0.05), transparent);">
-                    <div class="bento-label">METROLOGY // LASER_AXIS</div>
-                    <div class="bento-image-fill">
-                        <img src="assets/images/sz-3-a.webp" alt="Laser Nivellierung">
-                    </div>
-                    <div class="bento-content">
-                        <i class="fas fa-ruler-combined"></i>
-                        <h3>Die Nulllinie des Raumes.</h3>
-                        <p style="max-width: 450px;">
-                            Mit 360° Kreuzlinien-Lasern von Stabila kartografieren wir die Unebenheiten Ihres Bodens. Wir stellen Möbel nicht auf den Boden – wir richten sie an der absoluten physikalischen Horizontale aus.
-                        </p>
-                    </div>
-                </div>
-
-            </div>
-        </section>      
-        
- <section class="outdoor-feature" id="outdoor-journal">
-            <div class="outdoor-grid">
-                
-                <div class="outdoor-visual" data-aos="fade-right">
-                    <div class="blueprint-frame">
-                        <div class="blueprint-image">
-                            <div class="hud-overlay">
-                                <span class="hud-coord" style="top: 10%; left: 10%;">LAT_48.37 // AUGSBURG</span>
-                                <span class="hud-coord" style="bottom: 10%; right: 10%;">WIND_LOAD: CAT_12</span>
-                                
-                                <div style="position: absolute; top: 50%; left: 0; width: 100%; height: 1px; background: rgba(57, 255, 20, 0.3);"></div>
-                                <div style="position: absolute; left: 50%; top: 0; width: 1px; height: 100%; background: rgba(57, 255, 20, 0.3);"></div>
-                            </div>
-                            <img src="assets/images/45853.jpg" alt="Biohort SmartBase Engineering">
-                        </div>
-                    </div>
-
-                    <div class="outdoor-stats">
-                        <div class="stat-card-mini" data-aos="fade-up" data-aos-delay="100">
-                            <span>FUNDAMENT_LEVEL</span>
-                            <strong>0.00° Precision</strong>
-                        </div>
-                        <div class="stat-card-mini" data-aos="fade-up" data-aos-delay="200" style="border-color: #39ff14;">
-                            <span>ANCHOR_SYSTEM</span>
-                            <strong>Ground Screw / SmartBase</strong>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="outdoor-content" data-aos="fade-left">
-                    <span class="text-tech" style="color: #666; font-size: 0.8rem; display: block; margin-bottom: 20px;">07 // EXTERIOR_MECHANICS</span>
-                    
-                    <h2 class="text-ed" style="font-size: clamp(2.5rem, 4vw, 4.5rem); margin-bottom: 30px;">
-                        Gärten sind<br><span style="color: var(--mag-gold);">keine Labore.</span>
-                    </h2>
-
-                    <div class="ed-body" style="color: #fff; font-size: 1.1rem; margin-bottom: 30px;">
-                        Im Außenbereich potenziert sich jeder Montagefehler durch die unerbittliche bayerische Witterung. Ein Biohort-Haus, das auf einem "ungefähren" Fundament steht, wird nach dem ersten Bodenfrost seine Geometrie verlieren.
-                    </div>
-
-                    <p class="ed-body" style="font-size: 0.95rem; color: #888; margin-bottom: 30px;">
-                        Traditionelle Betonfundamente versiegeln den Boden dauerhaft und sind bei Fehlern nicht korrigierbar. Im Jahr 2026 setzen wir auf das <strong>SmartBase-Prinzip</strong>. Durch verzinkte Erdschrauben, die bis zu einen Meter tief in den gewachsenen Boden gebohrt werden, entkoppeln wir das Bauwerk von der Bodenfeuchtigkeit und Frostbewegungen. Jede Schraube wird einzeln nivelliert, um eine Basis zu schaffen, die sturmfest bis Windstärke 12 zertifiziert ist.
-                    </p>
-
-                    <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); padding: 30px; border-radius: 4px;">
-                        <h4 class="text-tech" style="font-size: 0.7rem; color: var(--mag-gold); margin-bottom: 15px;">Dichtungs-Architektur</h4>
-                        <p style="font-size: 0.9rem; color: #ccc; line-height: 1.7; margin: 0;">
-                            Besonderen Fokus legen wir auf die <strong>EPDM-Dachtechnik</strong> bei Weka und Karibu Blockhäusern. Während Standard-Montagen oft nur einfache Dachpappe nutzen, verkleben wir nahtlose Kautschuk-Bahnen. Das Ergebnis ist eine molekulare Verbindung, die UV-Strahlung und Starkregen über Jahrzehnte trotzt.
-                        </p>
-                    </div>
-
-                    <div style="margin-top: 40px;">
-                        <button onclick="MissionOS.open()" class="btn btn-gold reactive-btn">OUTDOOR_CONFIG STARTEN</button>
-                    </div>
-                </div>
-
-            </div>
-        </section> 
-        
- <section class="cleanliness-section" id="psychology-of-clean">
-            <div class="clean-grid">
-                
-                <div class="clean-text-content" data-aos="fade-right">
-                    <div class="vacuum-badge" data-aos="fade-up">HEPA_FILTER // M-CLASS</div>
-                    
-                    <h2 class="text-ed" style="color: #000; font-size: clamp(2.5rem, 4vw, 4.5rem); margin-bottom: 40px; text-transform: none;">
-                        Sauberkeit ist <br><span style="font-style: italic;">keine Höflichkeit.</span>
-                    </h2>
-
-                    <p class="text-body drop-cap-dark" style="color: #444; font-size: 1.15rem;">
-                        Ein fertiges Projekt ist erst dann fertig, wenn die einzige Spur meiner Anwesenheit das perfekt montierte Möbelstück ist. In der Welt der Premium-Montage ist Staub ein technisches Versagen. Feinstaub von Ziegelwänden oder MDF-Platten setzt sich in Textilien fest und belastet das Raumklima über Wochen.
-                    </p>
-
-                    <p class="text-body" style="color: #666; margin-top: 30px;">
-                        Wir praktizieren das <strong>"Zero-Dust Protocol"</strong>. Durch den Einsatz von koppelbaren Absaugmobilen, die direkt mit den Bohrern und Sägen kommunizieren, fangen wir Partikel ab, bevor sie sichtbar werden. Wir schützen Ihre Böden nicht mit billiger Pappe, sondern mit industriellem Schutzvlies, das haptisch und statisch sicher ist.
-                    </p>
-
-                    <div style="margin-top: 50px; border-top: 1px solid #eee; padding-top: 30px;">
-                        <span class="text-tech" style="font-size: 0.7rem; color: #999;">STATUS: BESENREIN_GARANTIE</span>
-                        <blockquote style="font-family: var(--font-ed); font-size: 1.5rem; color: #000; margin-top: 20px; line-height: 1.3;">
-                            "Wer den Dreck beherrscht, beherrscht das Handwerk."
-                        </blockquote>
-                    </div>
-                </div>
-
-                <div class="reveal-visual" data-aos="fade-left">
-                    <div class="reveal-container">
-                        <img src="assets/images/wohnen-15-a.webp" class="reveal-img-base" alt="Before Cleaning">
                         
-                        <div class="reveal-overlay-box">
-                            <img src="assets/images/wohnen-15-b.webp" class="reveal-img-top" alt="After Cleaning / Organized">
-                        </div>
-                        
-                        <div style="position: absolute; bottom: 20px; left: 20px; z-index: 6; background: #000; color: #fff; padding: 5px 15px; font-family: var(--font-tech); font-size: 0.6rem;">
-                            HOVER_TO_ACTIVATE_REVEAL
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </section>   
-        
-<section class="project-log-section">
-            <div class="container" style="margin-bottom: 60px;" data-aos="fade-up">
-                <div class="text-tech" style="color: #666; margin-bottom: 20px;">08 // PROJECT_ARCHIVE_MUC</div>
-                <h2 class="text-ed" style="font-size: clamp(2.5rem, 5vw, 4rem);">Living Room <span style="color: var(--mag-gold);">Logistics.</span></h2>
-                <p class="text-body" style="max-width: 700px; margin-top: 20px; color: #888;">
-                    Ein Querschnitt durch unsere jüngsten Installationen im Bereich "Wohnen". Von der schwebenden Medienwand bis zur akustisch optimierten Lounge. Jedes Bild ist ein Beweis für die Lezius-Präzision.
-                </p>
-            </div>
-
-            <div class="bento-journal-grid">
-                
-                <div class="bento-log-card log-wide log-tall" data-aos="fade-up">
-                    <img src="assets/images/wohnen-22-a.webp" alt="Akustik Paneele Montage">
-                    <div class="log-info-overlay">
-                        <span class="log-tag">#022 // AKUSTIK_ENGINEERING</span>
-                        <h3 class="log-title">Sonic Walls: Montage von Lamellenpaneelen in Starnberg.</h3>
-                    </div>
-                </div>
-
-                <div class="bento-log-card log-tall" data-aos="fade-up" data-aos-delay="100">
-                    <img src="assets/images/wohnen-12-a.webp" alt="Wohnwand Montage">
-                    <div class="log-info-overlay">
-                        <span class="log-tag">#012 // MINIMALISM</span>
-                        <h3 class="log-title">Architektonische Integration massiver Medien-Monolithe.</h3>
-                    </div>
-                </div>
-
-                <div class="bento-log-card" data-aos="fade-up" data-aos-delay="200">
-                    <img src="assets/images/wohnen-1-a.webp" alt="Schwebendes Sideboard">
-                    <div class="log-info-overlay">
-                        <span class="log-tag">#001 // ZERO_CABLE</span>
-                        <h3 class="log-title">Die schwebende BESTÅ Illusion.</h3>
-                    </div>
-                </div>
-
-                <div class="bento-log-card" data-aos="fade-up" data-aos-delay="300">
-                    <img src="assets/images/wohnen-20-a.webp" alt="Spiegelmontage">
-                    <div class="log-info-overlay">
-                        <span class="log-tag">#020 // REFLECTION</span>
-                        <h3 class="log-title">Schwerlast-Spiegel in Hohlraumwänden.</h3>
-                    </div>
-                </div>
-
-                <div class="bento-log-card log-wide" data-aos="fade-up" data-aos-delay="400">
-                    <img src="assets/images/wohnen-18-a.webp" alt="Smart Home Workspace">
-                    <div class="log-info-overlay">
-                        <span class="log-tag">#018 // TECH_HUB</span>
-                        <h3 class="log-title">Integrierte Workspaces: Wenn Wohnen auf Business trifft.</h3>
-                    </div>
-                </div>
-
-            </div>
-        </section>    
-        
-<section class="kitchen-lab-section">
-            <div class="kitchen-lab-grid">
-                
-                <div class="lab-visual-col" data-aos="fade-right">
-                    <div class="lab-visual-frame">
-                        <div class="lab-tag-overlay">UNIT_CALIBRATION // MUC_77</div>
-                        <div class="lab-image">
-                            <img src="assets/images/kueche-13-a.webp" alt="Küchenmontage Rohbau">
-                            
-                            <div class="lab-dimension-line" style="top: 50%; left: 0; width: 100%; height: 1px;"></div>
-                            <div class="lab-dimension-line" style="left: 30%; top: 0; width: 1px; height: 100%;"></div>
-                        </div>
-                    </div>
-
-                    <div class="kitchen-detail-strip" data-aos="fade-up" data-aos-delay="200">
-                        <div class="detail-tile">
-                            <img src="assets/images/kueche-2-b.webp" alt="Kitchen Detail 1">
-                        </div>
-                        <div class="detail-tile">
-                            <img src="assets/images/kueche-3-b.webp" alt="Kitchen Detail 2">
-                        </div>
-                        <div class="detail-tile">
-                            <img src="assets/images/kueche-16-b.webp" alt="Kitchen Detail 3">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="lab-text-col" data-aos="fade-left">
-                    <span class="text-tech" style="color: var(--mag-cyan); font-size: 0.8rem; display: block; margin-bottom: 20px;">09 // KITCHEN_METROLOGY</span>
-                    
-                    <h2 class="text-ed" style="font-size: clamp(2.5rem, 4vw, 4.5rem); margin-bottom: 30px;">
-                        Kanten,<br><span style="color: var(--mag-cyan);">Keine Kompromisse.</span>
-                    </h2>
-
-                    <div class="ed-body" style="color: #fff; font-size: 1.1rem; margin-bottom: 30px;">
-                        Eine Küche ist das komplexeste mechanische System in Ihrem Haus. Jedes Grad Abweichung im Boden wird oben an der Arbeitsplatte zu einem statischen Defizit.
-                    </div>
-
-                    <p class="ed-body" style="font-size: 0.95rem; color: #888; margin-bottom: 30px;">
-                        Wir begegnen dem Material mit Respekt und Technologie. Bevor die erste Front montiert wird, nutzen wir digitale Neigungsmesser, um die Unterschränke auf die Nulllinie zu bringen. In der Lezius-Klasse gibt es keine "ungefähren" Spaltmaße. Wir kalibrieren die Korpusse so, dass Auszüge und Türen jahrelang lautlos und reibungsfrei gleiten. 
-                    </p>
-
-                    <div style="background: rgba(0, 229, 255, 0.05); border: 1px solid rgba(0, 229, 255, 0.1); padding: 25px; border-radius: 4px;">
-                        <h4 class="text-tech" style="font-size: 0.7rem; color: #fff; margin-bottom: 10px;">PROJEKT-PARAMETERN</h4>
-                        <p style="font-size: 0.85rem; color: #aaa; line-height: 1.6; margin: 0;">
-                            Egal ob IKEA METOD oder exklusive Schreinerküchen: Der Schutz der Kanten gegen Wasserdampf (besonders über dem Geschirrspüler) und die thermische Entkopplung von Einbaugeräten ist unser Standard-Protokoll.
+                        <p class="text-body" style="font-size: 1.15rem; color: #fff; margin-bottom: 20px;">
+                            Ein fertiges Projekt ist erst dann fertig, wenn die einzige Spur meiner Anwesenheit das perfekt montierte Möbelstück ist. In der Welt der Premium-Montage ist Staub ein technisches Versagen.
                         </p>
-                    </div>
-                </div>
-
-            </div>
-        </section>        
-
- <section class="bedroom-feature" id="pax-engineering">
-            <div class="bedroom-grid">
-                
-                <div class="bedroom-text" data-aos="fade-right">
-                    <span class="text-tech" style="color: #666; font-size: 0.8rem; display: block; margin-bottom: 25px;">10 // SPATIAL_PLANNING</span>
-                    
-                    <div class="quote-block-sz" data-aos="fade-up">
-                        Ein Schrank ist kein Möbelstück. Es ist eine <span style="color: var(--mag-gold);">zweite Wand.</span>
-                    </div>
-
-                    <p class="ed-body drop-cap" style="color: #fff;">
-                        Nirgendwo wird Montage-Präzision so haptisch erlebbar wie im Schlafzimmer. Ein deckenhohes Schranksystem wie der IKEA PAX (236 cm) verzeiht absolut keine Neigungsfehler. In einem klassischen Münchener Altbau mit schiefen Dielenböden ist die lotgerechte Ausrichtung eine statische Herausforderung.
-                    </p>
-
-                    <p class="ed-body" style="font-size: 1rem; color: #888; margin-top: 25px;">
-                        Unser Protokoll sieht eine Laser-Nivellierung jedes einzelnen Korpus vor. Wir justieren nicht nur die Türen – wir eliminieren die Spannungen im Skelett des Schranks. Das Ergebnis sind Schwebetüren, die mit dem kleinen Finger lautlos gleiten, und eine Optik, die flächenbündig mit Ihrer Zimmerdecke verschmilzt.
-                    </p>
-
-                    <div style="margin-top: 50px; display: flex; gap: 20px;">
-                        <button onclick="MissionOS.open()" class="btn btn-gold reactive-btn">PAX_PROJEKT STARTEN</button>
-                    </div>
-                </div>
-
-                <div class="geometry-composition" data-aos="fade-left">
-                    <div class="geo-main">
-                        <img src="assets/images/sz-1-a.webp" alt="Integrierte Schrankwand Montage">
-                    </div>
-                    <div class="geo-detail">
-                        <img src="assets/images/sz-5-a.webp" alt="Internal Komplement System">
-                    </div>
-
-                    <div class="pax-logic-tag" data-aos="fade-left" data-aos-delay="400">
-                        <strong>// SYSTEM_CALIBRATION</strong>
-                        LOAD_CAPACITY: 250KG<br>
-                        TILT_ADJUST: 0.02%<br>
-                        GLIDE_FRICTION: NOMINAL
-                    </div>
-                </div>
-
-            </div>
-        </section>
-        
- <section class="special-ops-section" id="heavy-duty">
-            <div class="special-ops-grid">
-                
-                <div class="special-visual-col" data-aos="fade-right">
-                    <div class="special-visual-container">
-                        <div class="special-img-frame">
-                            <img src="assets/images/wohnen-20-a.webp" alt="Schwerlast Spiegel Montage">
-                        </div>
-
-                        <div class="load-hud" data-aos="zoom-in" data-aos-delay="400">
-                            <span class="load-hud-title">LADUNGSTRÄGER_ANALYSE</span>
-                            <div style="font-family: var(--font-tech); font-size: 1.2rem; color: #fff; margin-bottom: 5px;">65.4 <small style="color:#666">KG</small></div>
-                            <div class="load-bar-wrap"><div class="load-bar-fill"></div></div>
-                            <span style="font-family: var(--font-tech); font-size: 0.5rem; color: #00ff88;">SAFETY_MARGIN: 450%</span>
-                        </div>
-
-                        <div style="position: absolute; bottom: 40px; right: 20px; font-family: var(--font-tech); font-size: 0.6rem; color: #444; text-align: right;">
-                            PROJECT_ID: SPC_099<br>
-                            TARGET: HOLLOW_CORE_WALL<br>
-                            MOUNT: MOLLY_BOLT_MATRIX
-                        </div>
-                    </div>
-                </div>
-
-                <div class="special-content-col" data-aos="fade-left">
-                    <span class="text-tech" style="color: var(--mag-gold); font-size: 0.8rem; display: block; margin-bottom: 25px;">11 // SPECIALIST_OPERATIONS</span>
-                    
-                    <h2 class="text-ed" style="font-size: clamp(2.5rem, 4vw, 4.5rem); margin-bottom: 35px;">
-                        Schwerkraft ist<br><span>Verhandlungssache.</span>
-                    </h2>
-
-                    <div class="ed-body" style="color: #fff; font-size: 1.1rem; margin-bottom: 30px;">
-                        Ein raumhoher Kristallspiegel oder ein massives Kunstobjekt sind mehr als Dekoration – sie sind tonnenschwere Lasten, die auf die elementare Statik Ihrer Wände treffen.
-                    </div>
-
-                    <p class="ed-body" style="font-size: 0.95rem; color: #888; margin-bottom: 30px;">
-                        Besonders im modernen Trockenbau (Gipskarton) ist die Punktlast ein kritisches Risiko. Wir begegnen diesem Risiko mit dem <strong>"Load-Distribution Protocol"</strong>. Statt auf Standarddübel zu vertrauen, nutzen wir industrielle Molly-Bolts oder chemische Injektionen in den Betonkern hinter der Wand. Wir kalkulieren die Hebelkräfte forensisch, um sicherzustellen, dass Ihre Vision auch nach Jahren unerschütterlich an der Wand verbleibt.
-                    </p>
-
-                    <div class="special-specs">
-                        <div class="spec-row-alt">
-                            <span>BOHRTECHNIK</span>
-                            <span>DIAMANT_CORE_ROUTING</span>
-                        </div>
-                        <div class="spec-row-alt">
-                            <span>SENSING</span>
-                            <span>DIGITAL_PIPING_DETECTION</span>
-                        </div>
-                        <div class="spec-row-alt">
-                            <span>ANCHOR_TECH</span>
-                            <span>HEAVY_DUTY_TOGGLE</span>
-                        </div>
-                    </div>
-
-                    <div style="margin-top: 50px;">
-                        <button onclick="MissionOS.open()" class="btn btn-gold reactive-btn">SPEZIAL_ANFRAGE SENDEN</button>
-                    </div>
-                </div>
-
-            </div>
-        </section>   
-        
- <section class="aesthetic-section" id="living-alignment">
-            <div class="aesthetic-grid">
-                
-                <div class="aesthetic-spread" data-aos="zoom-out-right">
-                    <div class="spread-box box-1">
-                        <img src="assets/images/wohnen-12-a.webp" alt="High-End Living Architecture">
-                    </div>
-                    <div class="spread-box box-2" data-aos="fade-up" data-aos-delay="300">
-                        <img src="assets/images/wohnen-23-a.webp" alt="Minimalist Installation">
-                    </div>
-                    <div class="spread-box box-3" data-aos="fade-right" data-aos-delay="500">
-                        <img src="assets/images/wohnen-3-a.webp" alt="Material Texture Detail">
-                    </div>
-                    
-                    <div style="position: absolute; top: -20px; left: 20px; font-family: var(--font-tech); font-size: 0.55rem; color: #444; z-index: 10;">
-                        GRID_REFERENCE // MUC_BGN_2026
-                    </div>
-                </div>
-
-                <div class="aesthetic-text-col" data-aos="fade-left">
-                    <div class="finish-badge">PREMIUM_FINISH // 100%</div>
-                    <span class="text-tech" style="color: #666; font-size: 0.8rem; display: block; margin-bottom: 20px;">12 // SYMMETRY_AND_LIGHT</span>
-                    
-                    <h2 class="text-ed" style="font-size: clamp(2.5rem, 4vw, 4rem); margin-bottom: 30px;">
-                        Die Signatur der<br><span style="color: var(--mag-gold);">Symmetrie.</span>
-                    </h2>
-
-                    <div class="ed-body" style="color: #fff; font-size: 1.1rem; margin-bottom: 30px;">
-                        Ein Schrank im Wohnbereich ist kein Stauraum – er ist ein architektonischer Monolith. Die Qualität der Montage entscheidet darüber, ob er wie ein Fremdkörper wirkt oder organisch mit der Wand verschmilzt.
-                    </div>
-
-                    <p class="ed-body" style="font-size: 0.95rem; color: #888;">
-                        Der Unterschied liegt in den Schattenfugen. Wenn wir ein System wie USM Haller oder ein maßgefertigtes Media-Board installieren, arbeiten wir gegen die natürliche Verwerfung des Gebäudes. Durch digitale Feinjustierung der Beschläge kalibrieren wir jedes Spaltmaß auf exakt 2,5 Millimeter. Das menschliche Auge nimmt diese Symmetrie unbewusst als "Ruhe" wahr.
-                    </p>
-
-                    <div class="gap-analyzer">
-                        <span class="text-tech" style="font-size: 0.65rem; color: var(--mag-gold); display: block; margin-bottom: 20px;">ALIGNMENT_ANALYSIS [VER_01]</span>
                         
-                        <div class="analyzer-row">
-                            <span class="text-tech" style="font-size: 0.6rem; width: 80px;">X-AXIS</span>
-                            <div class="analyzer-bar"><div class="analyzer-fill"></div></div>
-                            <span class="text-tech" style="font-size: 0.6rem; color: var(--mag-cyan);">0.00°</span>
-                        </div>
-                        <div class="analyzer-row">
-                            <span class="text-tech" style="font-size: 0.6rem; width: 80px;">GAP_CONSIST.</span>
-                            <div class="analyzer-bar"><div class="analyzer-fill"></div></div>
-                            <span class="text-tech" style="font-size: 0.6rem; color: var(--mag-cyan);">99.9%</span>
-                        </div>
-                        <div class="analyzer-row">
-                            <span class="text-tech" style="font-size: 0.6rem; width: 80px;">SHADOW_L.</span>
-                            <div class="analyzer-bar"><div class="analyzer-fill" style="width: 100%;"></div></div>
-                            <span class="text-tech" style="font-size: 0.6rem; color: var(--mag-cyan);">NOMINAL</span>
-                        </div>
-                    </div>
+                        <p class="text-body" style="color: #888; font-size: 1rem; margin-bottom: 30px;">
+                            Feinstaub von Ziegelwänden oder MDF-Platten setzt sich in Textilien fest und belastet das Raumklima über Wochen. Wir praktizieren das <strong>"Zero-Dust Protocol"</strong>. Durch den Einsatz von koppelbaren Absaugmobilen (HEPA M-Klasse), die direkt mit den Bohrern und Sägen kommunizieren, fangen wir Partikel ab, bevor sie sichtbar werden.
+                        </p>
 
-                    <div style="margin-top: 50px;">
-                        <button onclick="MissionOS.open()" class="btn btn-holographic reactive-btn" style="border-color: rgba(255,255,255,0.2); color: #fff;">ARCHITEKTUR-CHECK BUCHEN</button>
-                    </div>
-                </div>
-
-            </div>
-        </section>  
-        
- <section class="hardware-focus-section" id="fixing-science">
-            <div class="hardware-grid">
-                
-                <div class="hardware-text-col" data-aos="fade-right">
-                    <span class="text-tech" style="color: #666; font-size: 0.8rem; display: block; margin-bottom: 25px;">13 // ANCHOR_TECHNOLOGY</span>
-                    
-                    <h2 class="text-ed" style="font-size: clamp(2.5rem, 4vw, 4rem); margin-bottom: 30px;">
-                        Die Unsichtbare<br><span style="color: var(--mag-gold);">Lebensversicherung.</span>
-                    </h2>
-
-                    <p class="ed-body" style="font-size: 1rem; color: #888; margin-bottom: 40px;">
-                        Ein Schrank fällt nicht wegen des Holzes von der Wand. Er fällt wegen der falschen Wahl des Ankers. In der Lezius-Klasse nutzen wir keine Universal-Dübel. Wir analysieren das Substrat – von der Porenbetonwand bis zum historischen Fachwerkgemäuer – und wählen die chemische oder mechanische Verbindung nach DIN-Norm.
-                    </p>
-
-                    <div class="anchor-card-container">
-                        <div class="anchor-spec-card" data-aos="fade-up" data-aos-delay="100">
-                            <div class="anchor-icon"><i class="fas fa-flask"></i></div>
-                            <div class="anchor-info">
-                                <h4>CHEMICAL_BOND // RESIN</h4>
-                                <p>Injektionsmörtel für stoffschlüssige Verbindungen in Altbau-Ziegeln.</p>
-                            </div>
-                        </div>
-
-                        <div class="anchor-spec-card" data-aos="fade-up" data-aos-delay="200">
-                            <div class="anchor-icon"><i class="fas fa-expand-arrows-alt"></i></div>
-                            <div class="anchor-info">
-                                <h4>MOLLY_MATRIX // TOGGLE</h4>
-                                <p>Schwerlast-Hohlraumdübel für doppelt beplankte Gipskartonwände.</p>
-                            </div>
-                        </div>
-
-                        <div class="anchor-spec-card" data-aos="fade-up" data-aos-delay="300">
-                            <div class="anchor-icon"><i class="fas fa-vector-square"></i></div>
-                            <div class="anchor-info">
-                                <h4>LEAD_DETECTION // SENSOR</h4>
-                                <p>Digitale Ortung von wasser- und stromführenden Leitungen bis 12cm Tiefe.</p>
-                            </div>
+                        <div style="border-top: 1px dashed rgba(57, 255, 20, 0.3); padding-top: 20px;">
+                            <blockquote style="font-family: var(--font-ed); font-size: 1.5rem; color: #fff; margin: 0; line-height: 1.3;">
+                                "Wer den Dreck beherrscht, beherrscht das Handwerk."
+                            </blockquote>
                         </div>
                     </div>
                 </div>
-
-                <div class="hardware-visual-col" data-aos="fade-left">
-                    <div class="hardware-visual-wrap">
-                        <img src="assets/images/wohnen-20-a.webp" class="hardware-image" alt="Technical Fixing Action">
-                        
-                        <div style="position: absolute; inset: 0; border: 1px solid rgba(212,175,55,0.2); margin: 30px; pointer-events: none;"></div>
-                        
-                        <div class="tensile-tag">
-                            TENSILE_STRENGTH: 4.2 KN // CERTIFIED
-                        </div>
-
-                        <div style="position: absolute; top: 50px; left: 50px; font-family: var(--font-tech); font-size: 0.55rem; color: var(--mag-gold); line-height: 1.6;">
-                            [FIXING_REPORT_ALPHA]<br>
-                            SUBSTRATE: BRICK_RED<br>
-                            MOISTURE: 0.12%<br>
-                            DRILL_RPM: 850 (ROTATION_ONLY)
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </section>  
-        
-       <section class="kinematics-section" id="hinge-calibration">
-            <div class="kinematics-grid">
-                
-                <div class="kinematic-visual-col" data-aos="fade-right">
-                    <div class="kinematic-focus-wrap">
-                        <div class="crosshair"></div>
-                        <img src="assets/images/sz-5-b.webp" class="kinematic-image" alt="Mechanical Calibration">
-                        
-                        <div style="position: absolute; top: 30px; left: 30px; background: rgba(0,0,0,0.8); padding: 10px 20px; border-left: 2px solid var(--mag-gold);">
-                            <span class="text-tech" style="font-size: 0.6rem; color: #fff;">SYNC_CHECK // HETTICH_BLUM_MATRIX</span>
-                        </div>
-                    </div>
-
-                    <div class="kinetic-stats" data-aos="fade-up">
-                        <div class="k-stat-item">
-                            <span class="k-stat-label">OPENING_FORCE</span>
-                            <span class="k-stat-value">0.4 N</span>
-                        </div>
-                        <div class="k-stat-item">
-                            <span class="k-stat-label">SOFT_CLOSE_DECEL.</span>
-                            <span class="k-stat-value">98%</span>
-                        </div>
-                        <div class="k-stat-item">
-                            <span class="k-stat-label">RESONANCE</span>
-                            <span class="k-stat-value" style="color: var(--mag-cyan);">ZERO</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="kinematic-text-col" data-aos="fade-left">
-                    <span class="text-tech" style="color: #666; font-size: 0.8rem; display: block; margin-bottom: 25px;">14 // MECHANICAL_INTEGRITY</span>
-                    
-                    <h2 class="text-ed" style="font-size: clamp(2.5rem, 4vw, 4.5rem); margin-bottom: 30px;">
-                        Die Stille der<br><span style="color: var(--mag-gold);">Mechanik.</span>
-                    </h2>
-
-                    <div class="ed-body" style="color: #fff; font-size: 1.1rem; margin-bottom: 30px;">
-                        Ein Möbelstück stirbt nicht an seiner Optik – es stirbt an seinem Verschleiß. Die Qualität einer Montage lässt sich am Geräusch einer schließenden Tür ablesen.
-                    </div>
-
-                    <p class="ed-body" style="font-size: 0.95rem; color: #888;">
-                        Wir betrachten Scharniere und Auszüge nicht als Eisenwaren, sondern als Präzisions-Kinematik. In der Lezius-Klasse wird jedes bewegliche Teil nach dem <strong>"Symmetry-Sync Protocol"</strong> kalibriert. Wenn eine 12 kg schwere Hochglanzfront nicht absolut synchron zum Nachbarelement schließt, entstehen Scherkräfte, die über Monate die Bohrungen im Korpus ausleihern. Unsere Justierung erfolgt auf der Mikrometerskala.
-                    </p>
-
-                    <ul class="hinge-logic-list">
-                        <li><strong>Dämpfungs-Linearität:</strong> Kalibrierung des hydraulischen Widerstands passend zum Türgewicht.</li>
-                        <li><strong>Parallellauf-Garantie:</strong> Synchronisation von Vollauszügen bei breiten Schubladenelementen (Küche/SZ).</li>
-                        <li><strong>Zero-Friction Justage:</strong> Beseitigung jeglicher Schleifpunkte an den Korpus-Kanten.</li>
-                    </ul>
-
-                    <div style="margin-top: 50px;">
-                        <button onclick="MissionOS.open()" class="btn btn-gold reactive-btn btn-magnetic">MECHANIK_CHECK BUCHEN</button>
-                    </div>
-                </div>
-
             </div>
         </section>
 
-<section class="iot-integration-section" id="iot-engineering">
-            <div class="tech-glow-circle"></div>
-            
-            <div class="iot-grid">
-                
-                <div class="iot-content" data-aos="fade-right">
-                    <span class="text-tech" style="color: #555; font-size: 0.8rem; display: block; margin-bottom: 25px;">15 // DIGITAL_ECOSYSTEM</span>
+        <section id="phase-05" class="phase-section" style="background: #030405;">
+            <div class="container relative-z">
+                <div class="split-editorial">
                     
-                    <h2 class="text-ed" style="font-size: clamp(2.5rem, 4vw, 4.5rem); margin-bottom: 30px;">
-                        Versteckte<br><span style="color: #7d00ff;">Intelligenz.</span>
-                    </h2>
+                    <div data-aos="fade-right">
+                        <span class="phase-meta" style="color: #7d00ff;">PHASE_05 // DIGITAL_ECOSYSTEM</span>
+                        <h2 class="text-ed phase-header">
+                            Versteckte <br><span style="color: #7d00ff;">Intelligenz.</span>
+                        </h2>
+                        
+                        <p class="text-body" style="font-size: 1.15rem; color: #fff; margin-bottom: 20px;">
+                            Sichtbare Kabel sind visueller Lärm. Im Jahr 2026 ist die architektonische Verschmelzung von Hardware und Interieur kein Luxus mehr, sondern eine Notwendigkeit.
+                        </p>
+                        
+                        <p class="text-body" style="color: #888; font-size: 1rem; margin-bottom: 30px;">
+                            Ein schwebendes Sideboard verliert seine Magie in dem Moment, in dem ein schwarzes Stromkabel die Wand durchschneidet. Wir planen Zuleitungen forensisch. Wir integrieren Long-Range Qi-Ladezonen unter Schreibtischoberflächen, ohne das Material zu schwächen, und bauen Hubs für Philips Hue in Schrankwände ein, die thermisch so optimiert sind, dass Ihre Hardware nie überhitzt.
+                        </p>
 
-                    <div class="ed-body" style="color: #fff; font-size: 1.1rem; margin-bottom: 30px;">
-                        Im Jahr 2026 sind Möbel keine passiven Objekte mehr. Sie sind aktive Knotenpunkte in Ihrem Smart Home Netzwerk.
+                        <button onclick="MissionOS.open()" class="btn btn-gold btn-magnetic reactive-btn" style="background: #7d00ff; color: #fff; border: none; box-shadow: 0 0 20px rgba(125, 0, 255, 0.4);">
+                            <i class="fas fa-bolt"></i> SYSTEM_UPGRADE BUCHEN
+                        </button>
                     </div>
 
-                    <p class="ed-body" style="font-size: 0.95rem; color: #888;">
-                        Die wahre Kunst liegt in der Unsichtbarkeit. Wir integrieren <strong>Long-Range Qi-Ladezonen</strong> unter Schreibtischoberflächen, ohne das Material zu schwächen. Wir bauen Hubs für Philips Hue und versteckte Datenleitungen in Schrankwände ein, die thermisch so optimiert sind, dass Ihre Hardware nie überhitzt. Technik dient dem Design – nicht umgekehrt.
-                    </p>
-
-                    <div class="iot-specs-list">
-                        <div class="iot-spec-item" data-aos="fade-up" data-aos-delay="100">
-                            <strong>Sub-Surface Charging</strong>
-                            <span>Drahtloses Laden durch bis zu 20mm Massivholz oder Stein.</span>
-                        </div>
-                        <div class="iot-spec-item" data-aos="fade-up" data-aos-delay="200">
-                            <strong>Atmospheric Sync</strong>
-                            <span>Automatisierte Lichtsteuerung gekoppelt an Türsensoren.</span>
-                        </div>
-                        <div class="iot-spec-item" data-aos="fade-up" data-aos-delay="300">
-                            <strong>Backbone Cabling</strong>
-                            <span>Verlegung von CAT8.1 Infrastruktur innerhalb von Möbelsystemen.</span>
-                        </div>
+                    <div data-aos="fade-left" style="position: relative;">
+                        <img src="assets/images/wohnen-18-a.webp" alt="Smart Home Integration" class="img-editorial" style="border-color: #7d00ff;">
+                        <div style="position: absolute; top: 30%; left: 30%; background: rgba(0,0,0,0.8); border: 1px solid #7d00ff; color: #7d00ff; padding: 5px 15px; font-family: var(--font-tech); font-size: 0.6rem;">[QI_LINK_ACTIVE]</div>
+                        <div style="position: absolute; bottom: 20%; right: 10%; background: rgba(0,0,0,0.8); border: 1px solid #7d00ff; color: #7d00ff; padding: 5px 15px; font-family: var(--font-tech); font-size: 0.6rem;">[POE_GATEWAY_HIDDEN]</div>
                     </div>
                 </div>
-
-                <div class="iot-visual" data-aos="fade-left">
-                    <div class="iot-visual-box">
-                        <div class="wiring-overlay"></div>
-                        
-                        <img src="assets/images/wohnen-18-a.webp" class="iot-image" alt="IoT Furniture Integration">
-                        
-                        <div class="circuit-tag" style="top: 25%; left: 30%;">[QI_LINK_ACTIVE]</div>
-                        <div class="circuit-tag" style="bottom: 35%; right: 20%; border-color: var(--mag-cyan); color: var(--mag-cyan);">[POE_GATEWAY]</div>
-                        
-                        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 1px solid rgba(125,0,255,0.1); pointer-events: none;"></div>
-                    </div>
-                </div>
-
             </div>
-        </section> 
-        
-<section class="surface-care-section" id="material-preservation">
-            <div class="surface-grid">
+        </section>
+
+        <section class="journal-footer-cta" style="padding: 150px 0; background: radial-gradient(circle at center, #0a0c10 0%, #000 100%); text-align: center; border-top: 1px solid rgba(255, 215, 0, 0.2);">
+            <div class="container" data-aos="zoom-in">
+                <span class="text-tech" style="color: var(--mag-gold); font-size: 0.8rem; display: block; margin-bottom: 20px;">SYSTEM_READY // INITIALIZE_PROJECT</span>
+                <h2 class="text-ed" style="font-size: clamp(2.5rem, 5vw, 4.5rem); margin-bottom: 30px; color: #fff;">Planen Sie Ihr <br><span style="color: var(--mag-gold);">Meisterwerk.</span></h2>
                 
-                <div class="surface-text" data-aos="fade-right">
-                    <span class="text-tech" style="color: #999; font-size: 0.8rem; display: block; margin-bottom: 25px;">16 // MATERIAL_INTEGRITY</span>
-                    
-                    <h2 class="text-ed" style="font-size: clamp(2.5rem, 4vw, 4.5rem); margin-bottom: 30px;">
-                        Die Haptik der<br><span>Ewigkeit.</span>
-                    </h2>
-
-                    <div class="text-body" style="font-size: 1.15rem; color: #333; margin-bottom: 30px;">
-                        Ein Fingerabdruck ist mehr als ein optischer Mangel – er ist eine chemische Belastung für sensible Oberflächen. Wir schützen die Seele Ihrer Möbel.
-                    </div>
-
-                    <p class="text-body" style="font-size: 1rem; color: #666;">
-                        Besonders matte Fronten (wie Fenix-NTM) oder offenporige Echtholzfurniere reagieren extrem empfindlich auf Hautfette und aggressive Haushaltsreiniger. Unser <strong>"Pristine-Handover Protocol"</strong> garantiert, dass wir Ihre Einrichtung nach der Montage in einen ionisierten, antistatischen Zustand versetzen, der Staub abweist und das Finish konserviert.
-                    </p>
-
-                    <div class="care-list">
-                        <div class="care-step" data-aos="fade-up" data-aos-delay="100">
-                            <div class="step-id">01</div>
-                            <div class="step-txt">
-                                <strong>Molekulare Reinigung</strong>
-                                <p>Einsatz von pH-neutralen Speziallösungen, die Rückstände von Montageklebern und Hautfetten rückstandslos entfernen.</p>
-                            </div>
-                        </div>
-                        <div class="care-step" data-aos="fade-up" data-aos-delay="200">
-                            <div class="step-id">02</div>
-                            <div class="step-txt">
-                                <strong>Antistatische Versiegelung</strong>
-                                <p>Behandlung der Oberflächen zur Reduktion der statischen Aufladung – für langanhaltende Staubfreiheit.</p>
-                            </div>
-                        </div>
-                        <div class="care-step" data-aos="fade-up" data-aos-delay="300">
-                            <div class="step-id">03</div>
-                            <div class="step-txt">
-                                <strong>Kanten-Imprägnierung</strong>
-                                <p>Zusätzlicher Schutz der Stoßkanten gegen Feuchtigkeitseintritt und mechanischen Abrieb.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="texture-showcase" data-aos="fade-left">
-                    <div class="texture-card" style="margin-top: 40px;">
-                        <img src="assets/images/kueche-5-b.webp" alt="Ultra-Matt Surface Care">
-                        <div class="texture-label">SCAN: NANO_TECH_MATT</div>
-                    </div>
-                    <div class="texture-card">
-                        <img src="assets/images/sz-3-b.webp" alt="Wood Grain Preservation">
-                        <div class="texture-label">SCAN: OPEN_PORE_WOOD</div>
-                    </div>
-                    
-                    <div style="grid-column: span 2; margin-top: 20px; border-top: 1px solid #eee; padding-top: 20px;">
-                        <span class="text-tech" style="font-size: 0.6rem; color: #ccc;">// MICROSCOPIC_SURFACE_ANALYSIS_COMPLETE</span>
-                    </div>
-                </div>
-
-            </div>
-        </section>  
-        
-<div class="mag-marquee-section">
-            <div class="mag-marquee-track">
-                <span><i class="fas fa-circle"></i> USM_HALLER_PRECISION</span>
-                <span><i class="fas fa-circle"></i> ZERO_CABLE_ROUTING</span>
-                <span><i class="fas fa-circle"></i> ANTI_STATIC_FINISH</span>
-                <span><i class="fas fa-circle"></i> SMART_HOME_BACKBONE</span>
-                <span><i class="fas fa-circle"></i> LASER_AXIS_NIVEL</span>
-                <span><i class="fas fa-circle"></i> HEPA_FILTER_ACTIVE</span>
-                <span><i class="fas fa-circle"></i> USM_HALLER_PRECISION</span>
-                <span><i class="fas fa-circle"></i> ZERO_CABLE_ROUTING</span>
-                <span><i class="fas fa-circle"></i> ANTI_STATIC_FINISH</span>
-                <span><i class="fas fa-circle"></i> SMART_HOME_BACKBONE</span>
-                <span><i class="fas fa-circle"></i> LASER_AXIS_NIVEL</span>
-                <span><i class="fas fa-circle"></i> HEPA_FILTER_ACTIVE</span>
-            </div>
-        </div>
-
-        <section class="journal-footer-cta">
-            <div class="cta-bracket-box" data-aos="zoom-in">
-                <span class="cta-sub-tech">SYSTEM_READY // INITIALIZE_PROJECT</span>
-                <h2 class="cta-title-massive">Planen Sie Ihr <br><span style="color: var(--mag-gold);">Meisterwerk.</span></h2>
-                
-                <p class="text-body" style="color: #666; margin-bottom: 50px; max-width: 600px; margin-left: auto; margin-right: auto;">
-                    Wir haben die Physik analysiert. Wir haben die Werkzeuge kalibriert. Jetzt ist es Zeit, Ihre Vision in die Realität umzusetzen. Starten Sie das Lezius-Protokoll für Ihr Zuhause.
+                <p class="text-body" style="color: #888; margin-bottom: 50px; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.7;">
+                    Die restlichen 15 Phasen (von Acoustics bis Kinematics) befinden sich derzeit in der redaktionellen Bearbeitung für die nächste Ausgabe. Wir haben die Physik analysiert. Wir haben die Werkzeuge kalibriert. Jetzt ist es Zeit, Ihre Vision in die Realität umzusetzen.
                 </p>
 
-                <button onclick="MissionOS.open()" class="cyber-btn-large">
+                <button onclick="MissionOS.open()" class="btn btn-gold btn-magnetic reactive-btn" style="padding: 20px 50px; font-size: 1.1rem; text-transform: uppercase;">
                     Projekt anfragen <i class="fas fa-bolt" style="margin-left: 15px;"></i>
                 </button>
+            </div>
+        </section>
 
-                <div style="margin-top: 60px; font-family: var(--font-tech); font-size: 0.6rem; color: #333; letter-spacing: 5px;">
-                    AUGSBURG // MÜNCHEN // STARNBERG // 2026
-                </div>
-            </div>
-        </section>        
+    </main>
 
-</main>
+    <div id="global-footer"></div>
 
-    <footer class="mega-footer">
-        <div class="footer-grid">
-            <div class="f-col">
-                <div class="text-ed" style="font-size: 1.5rem; margin-bottom: 20px;">RAPHAEL <span style="color: var(--mag-gold);">LEZIUS</span></div>
-                <p style="color: #444; font-size: 0.9rem; line-height: 1.6; max-width: 300px;">
-                    Präzision. Qualität. Transparenz.<br>
-                    Ihr Engineering-Partner für exklusive Montage-Projekte in Bayern.
-                </p>
-            </div>
-            <div class="f-col">
-                <h4>NAVIGATION</h4>
-                <ul class="footer-links">
-                    <li><a href="index.html">System-Start</a></li>
-                    <li><a href="residential.html">Expertise</a></li>
-                    <li><a href="process-pricing.html">Konditionen</a></li>
-                    <li><a href="gallery.html">Archiv</a></li>
-                </ul>
-            </div>
-            <div class="f-col">
-                <h4>RECHTLICHES</h4>
-                <ul class="footer-links">
-                    <li><a href="impressum.html">Impressum</a></li>
-                    <li><a href="datenschutz.html">Datenschutz</a></li>
-                    <li><a href="agb.html">AGB</a></li>
-                </ul>
-            </div>
-            <div class="f-col">
-                <h4>CONTACT_PORT</h4>
-                <ul class="footer-links">
-                    <li><a href="tel:+491608194018">0160 819 4018</a></li>
-                    <li><a href="mailto:r.lezius@gmail.com">r.lezius@gmail.com</a></li>
-                    <li><a href="https://wa.me/491608194018">WhatsApp Support</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <span>&copy; 2026 RAPHAEL LEZIUS // ALL_RIGHTS_RESERVED</span>
-            <span style="letter-spacing: 5px;">STAY_PRECISE</span>
-            <span>SYS_DEV: IDRIS</span>
-        </div>
-    </footer>
+    <div id="global-os"></div>
 
-    <a href="https://wa.me/491608194018" class="whatsapp-float">
+    <a href="https://wa.me/491608194018" target="_blank" class="whatsapp-float reactive-btn">
+        <div class="whatsapp-pulse"></div>
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <script src="assets/js/main.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="assets/js/main.js"></script>
+
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            // Remove Failsafe
-            setTimeout(function() { document.body.classList.remove('no-js-override'); }, 50);
-
-            // Initialize AOS
-            if (typeof window.AOS !== 'undefined') {
-                AOS.init({ 
-                    duration: 1000, 
-                    once: true, 
-                    offset: 50,
-                    easing: 'ease-out-cubic' 
-                });
-            }
-
-            // Interactive Reveal Logic (Part 9)
+            // Interactive Reveal Logic (Phase 04)
             const revealContainer = document.querySelector('.reveal-container');
             if(revealContainer) {
                 revealContainer.addEventListener('mousemove', (e) => {
@@ -1442,26 +471,816 @@
                     overlay.style.left = `${x}%`;
                     imgTop.style.left = `-${x}%`;
                 });
+                
+                // Touch support for mobile
+                revealContainer.addEventListener('touchmove', (e) => {
+                    const rect = revealContainer.getBoundingClientRect();
+                    const touch = e.touches[0];
+                    const x = ((touch.clientX - rect.left) / rect.width) * 100;
+                    const overlay = revealContainer.querySelector('.reveal-overlay-box');
+                    const imgTop = revealContainer.querySelector('.reveal-img-top');
+                    
+                    if(x >= 0 && x <= 100) {
+                        overlay.style.left = `${x}%`;
+                        imgTop.style.left = `-${x}%`;
+                    }
+                }, {passive: true});
             }
-
-            // MissionOS Fallback
-            window.MissionOS = window.MissionOS || {
-                open: function() {
-                    const os = document.getElementById('missionOS');
-                    if(os) {
-                        os.classList.add('system-active');
-                        document.body.style.overflow = 'hidden';
-                    }
-                },
-                close: function() {
-                    const os = document.getElementById('missionOS');
-                    if(os) {
-                        os.classList.remove('system-active');
-                        document.body.style.overflow = '';
-                    }
-                }
-            };
         });
     </script>
 </body>
-</html>        
+</html>
+
+<section id="phase-06" class="phase-section" style="background: #050608;">
+            <div class="container relative-z">
+                <div class="split-editorial">
+                    <div data-aos="fade-right" style="position: relative;">
+                        <img src="assets/images/sz-5-b.webp" alt="Scharnier Kinematik" class="img-editorial" style="border-color: var(--mag-gold);">
+                        <div style="position: absolute; top: -20px; left: -20px; background: var(--mag-gold); color: #000; padding: 10px; font-family: var(--font-tech); font-size: 0.65rem; font-weight: 800;">
+                            SYNC_CHECK // HETTICH_BLUM
+                        </div>
+                    </div>
+
+                    <div data-aos="fade-left">
+                        <span class="phase-meta" style="color: var(--mag-gold);">PHASE_06 // KINEMATICS</span>
+                        <h2 class="text-ed phase-header">
+                            Die Stille der <br><span style="color: var(--mag-gold);">Mechanik.</span>
+                        </h2>
+                        
+                        <p class="text-body" style="font-size: 1.15rem; color: #fff; margin-bottom: 20px;">
+                            Ein Möbelstück stirbt nicht an seiner Optik – es stirbt an seinem Verschleiß. Die Qualität einer Montage lässt sich blind am Geräusch einer schließenden Tür ablesen.
+                        </p>
+                        
+                        <p class="text-body" style="color: #888; font-size: 1rem; margin-bottom: 30px;">
+                            Wir betrachten Scharniere und Vollauszüge nicht als Eisenwaren, sondern als Präzisions-Kinematik. Wenn eine 12 kg schwere Hochglanzfront nicht absolut synchron zum Nachbarelement schließt, entstehen Scherkräfte, die über Monate die Bohrungen im Korpus ausleihern. 
+                        </p>
+
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                            <div style="border-left: 2px solid var(--mag-gold); padding-left: 15px;">
+                                <strong style="color: #fff; font-family: var(--font-mod); font-size: 0.9rem;">Dämpfungs-Linearität</strong>
+                                <p style="font-size: 0.8rem; color: #666; margin-top: 5px;">Kalibrierung des hydraulischen Widerstands passend zum exakten Türgewicht.</p>
+                            </div>
+                            <div style="border-left: 2px solid var(--mag-gold); padding-left: 15px;">
+                                <strong style="color: #fff; font-family: var(--font-mod); font-size: 0.9rem;">Zero-Friction Justage</strong>
+                                <p style="font-size: 0.8rem; color: #666; margin-top: 5px;">Beseitigung jeglicher Schleifpunkte auf der Mikrometerskala.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="phase-07" class="phase-section" style="background: #030405;">
+            <div class="container relative-z">
+                <div class="split-editorial">
+                    <div data-aos="fade-right">
+                        <span class="phase-meta" style="color: var(--mag-cyan);">PHASE_07 // ANCHOR_TECHNOLOGY</span>
+                        <h2 class="text-ed phase-header">
+                            Schwerkraft ist <br><span style="color: var(--mag-cyan);">Verhandlungssache.</span>
+                        </h2>
+                        
+                        <p class="text-body" style="font-size: 1.15rem; color: #fff; margin-bottom: 20px;">
+                            Ein raumhoher Kristallspiegel, eine Hängeschrank-Zeile oder ein 85-Zoll-Display sind mehr als Dekoration – sie sind tonnenschwere Lasten, die auf die elementare Statik Ihrer Wände treffen.
+                        </p>
+                        
+                        <p class="text-body" style="color: #888; font-size: 1rem; margin-bottom: 30px;">
+                            Besonders im modernen Trockenbau (Gipskarton) ist die Punktlast ein kritisches Risiko. Wir begegnen diesem Risiko mit dem <strong>"Load-Distribution Protocol"</strong>. Statt auf mitgelieferte Standarddübel zu vertrauen, nutzen wir industrielle Molly-Bolts oder chemische Injektionsanker, die sich tief im Mauerwerk verkrallen. Wir berechnen die Hebelkräfte forensisch.
+                        </p>
+
+                        <ul style="list-style: none; padding: 0; color: #ccc;">
+                            <li style="margin-bottom: 10px; display: flex; justify-content: space-between; border-bottom: 1px dashed rgba(0, 229, 255, 0.2); padding-bottom: 10px;">
+                                <span class="text-tech" style="font-size: 0.8rem;">MAX_TENSILE_STRENGTH</span> <span style="color: var(--mag-cyan); font-weight: bold;">4.2 KN</span>
+                            </li>
+                            <li style="margin-bottom: 10px; display: flex; justify-content: space-between; border-bottom: 1px dashed rgba(0, 229, 255, 0.2); padding-bottom: 10px;">
+                                <span class="text-tech" style="font-size: 0.8rem;">ANCHOR_TYPE</span> <span style="color: #fff;">CHEM_RESIN / TOGGLE</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div data-aos="fade-left">
+                        <img src="assets/images/wohnen-20-a.webp" alt="Schwerlast Montage" class="img-editorial" style="border-color: var(--mag-cyan);">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="phase-08" class="phase-section" style="background: #050608;">
+            <div class="container relative-z">
+                <div class="split-editorial">
+                    <div data-aos="fade-right" style="position: relative;">
+                        <img src="assets/images/wohnen-22-a.webp" alt="Akustikpaneele" class="img-editorial" style="border-color: var(--mag-pink);">
+                        <div style="position: absolute; bottom: 20px; right: 20px; background: rgba(0,0,0,0.8); border: 1px solid var(--mag-pink); color: var(--mag-pink); padding: 5px 15px; font-family: var(--font-tech); font-size: 0.6rem;">
+                            SOUND_ABSORPTION_ACTIVE
+                        </div>
+                    </div>
+
+                    <div data-aos="fade-left">
+                        <span class="phase-meta" style="color: var(--mag-pink);">PHASE_08 // ACOUSTIC_OPTIMIZATION</span>
+                        <h2 class="text-ed phase-header">
+                            Design, das man <br><span style="color: var(--mag-pink);">(nicht) hört.</span>
+                        </h2>
+                        
+                        <p class="text-body" style="font-size: 1.15rem; color: #fff; margin-bottom: 20px;">
+                            Moderne Architektur liebt harte Flächen: Beton, Glas, Parkett. Der visuelle Minimalismus erzeugt jedoch ein auditives Chaos – den Nachhall.
+                        </p>
+                        
+                        <p class="text-body" style="color: #888; font-size: 1rem; margin-bottom: 30px;">
+                            Die Integration von Akustikpaneelen (z.B. WoodUpp) in Wohn- und Gewerberäumen ist eine statische und ästhetische Herausforderung. Ein unsauberer Schnitt an der Steckdose oder ein unebener Wandabschluss ruiniert das Design. Wir verarbeiten Akustik-Filz und Holzlamellen mit Laserschnitt-Präzision und verkleben/verschrauben sie so, dass sie Frequenzen absorbieren, ohne das Auge zu stören.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="phase-09" class="phase-section" style="background: #030405;">
+            <div class="container relative-z">
+                <div class="split-editorial">
+                    
+                    <div data-aos="fade-right">
+                        <span class="phase-meta" style="color: var(--mag-green);">PHASE_09 // EXTERIOR_MECHANICS</span>
+                        <h2 class="text-ed phase-header">
+                            Gärten sind <br><span style="color: var(--mag-green);">keine Labore.</span>
+                        </h2>
+                        
+                        <p class="text-body" style="font-size: 1.15rem; color: #fff; margin-bottom: 20px;">
+                            Im Außenbereich potenziert sich jeder Montagefehler durch die unerbittliche bayerische Witterung. Ein Stahl-Gartenhaus, das auf einem "ungefähren" Fundament steht, verliert im ersten Winter seine Geometrie.
+                        </p>
+                        
+                        <p class="text-body" style="color: #888; font-size: 1rem; margin-bottom: 30px;">
+                            Wir setzen bei Biohort und Weka auf das <strong>SmartBase-Erdschrauben-Prinzip</strong>. Durch massive verzinkte Schrauben, die wir tief in den gewachsenen Boden treiben, entkoppeln wir das Bauwerk von der Bodenfeuchtigkeit und Frostbewegungen. Das Resultat ist ein Fundament, das sturmfest bis Windstärke 12 (Orkan) zertifiziert ist.
+                        </p>
+
+                        <button onclick="MissionOS.open()" class="btn btn-holographic reactive-btn" style="border-color: var(--mag-green); color: var(--mag-green);">
+                            <i class="fas fa-satellite-dish"></i> OUTDOOR LOGS ANSEHEN
+                        </button>
+                    </div>
+
+                    <div data-aos="fade-left" style="position: relative;">
+                        <img src="assets/images/45853.jpg" alt="Biohort Fundament" class="img-editorial" style="border-color: var(--mag-green); filter: grayscale(40%);">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="phase-10" class="phase-section" style="background: #050608;">
+            <div class="container relative-z">
+                <div class="split-editorial">
+                    <div data-aos="fade-right" style="position: relative; height: 600px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; flex-direction: column;">
+                        <i class="fas fa-boxes" style="font-size: 5rem; color: #fff; margin-bottom: 30px; opacity: 0.8;"></i>
+                        <div class="text-tech" style="font-size: 1.5rem; color: #fff;">REVERSE_ENGINEERING</div>
+                        <div class="text-tech" style="font-size: 0.8rem; color: #666; margin-top: 10px;">DECONSTRUCTION LOGIC APPLIED</div>
+                    </div>
+
+                    <div data-aos="fade-left">
+                        <span class="phase-meta" style="color: #fff;">PHASE_10 // DECONSTRUCTION</span>
+                        <h2 class="text-ed phase-header">
+                            Das Ziploc <br><span style="color: #aaa;">Protokoll.</span>
+                        </h2>
+                        
+                        <p class="text-body" style="font-size: 1.15rem; color: #fff; margin-bottom: 20px;">
+                            Möbel aufbauen ist Handwerk. Sie zerstörungsfrei abzubauen, damit man sie am neuen Ort stressfrei wieder aufbauen kann, ist pure Logistik.
+                        </p>
+                        
+                        <p class="text-body" style="color: #888; font-size: 1rem; margin-bottom: 30px;">
+                            Bei Küchenumzügen oder dem Abbau massiver Schrankreihen wenden wir das <strong>Ziploc-Verfahren</strong> an. Bevor das erste Werkzeug angesetzt wird, wird der Bestand fotografisch gesichert. Sämtliche Kleinteile, Scharniere und Dübel eines Moduls kommen sofort in einen beschrifteten Ziploc-Beutel, der untrennbar an das Hauptbauteil getapet wird. Kein Suchen, keine verlorenen Schrauben, kein Chaos.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="phase-11" class="phase-section" style="background: #030405;">
+            <div class="container relative-z">
+                <div class="split-editorial">
+                    <div data-aos="fade-right" style="position: relative;">
+                        <img src="assets/images/kueche-13-a.webp" alt="Integrierte LED Beleuchtung" class="img-editorial" style="border-color: var(--mag-gold);">
+                        <div style="position: absolute; top: 30px; right: -20px; background: var(--mag-gold); color: #000; padding: 5px 15px; font-family: var(--font-tech); font-size: 0.65rem; font-weight: 800; box-shadow: 0 10px 20px rgba(0,0,0,0.5);">
+                            LUMEN_SYNC: ACTIVE
+                        </div>
+                    </div>
+
+                    <div data-aos="fade-left">
+                        <span class="phase-meta" style="color: var(--mag-gold);">PHASE_11 // PHOTONIC_INTEGRATION</span>
+                        <h2 class="text-ed phase-header">
+                            Licht ist keine <br><span style="color: var(--mag-gold);">Nebensache.</span>
+                        </h2>
+                        
+                        <p class="text-body" style="font-size: 1.15rem; color: #fff; margin-bottom: 20px;">
+                            Licht ist nicht nur Dekoration – es definiert die Architektur des Raumes. Eine 30.000 Euro Küche verliert ihre gesamte Magie, wenn sie durch kaltes, punktuelles Baumarkt-Licht ausgeleuchtet wird.
+                        </p>
+                        
+                        <p class="text-body" style="color: #888; font-size: 1rem; margin-bottom: 30px;">
+                            Wir integrieren LED-Systeme der nächsten Generation direkt in die Korpus-Strukturen. Durch präzise gefräste Kanäle und opale Diffusoren eliminieren wir den billigen "Perlenschnur-Effekt" vollständig. Das Licht fließt homogen über die Materialien (2700K bis 4000K), betont Maserungen und schafft Tiefe. Sämtliche Kabel und Transformatoren werden thermisch sicher und zu 100% unsichtbar verbaut.
+                        </p>
+
+                        <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                            <span style="border: 1px solid rgba(255,255,255,0.2); padding: 5px 15px; font-family: var(--font-tech); font-size: 0.7rem; color: #ccc;">ZIGBEE_READY</span>
+                            <span style="border: 1px solid rgba(255,255,255,0.2); padding: 5px 15px; font-family: var(--font-tech); font-size: 0.7rem; color: #ccc;">HIGH_CRI_INDEX</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="phase-12" class="phase-section" style="background: #050608;">
+            <div class="container relative-z">
+                <div class="split-editorial">
+                    <div data-aos="fade-right">
+                        <span class="phase-meta" style="color: var(--mag-pink);">PHASE_12 // B2B_EXECUTION</span>
+                        <h2 class="text-ed phase-header">
+                            Downtime ist <br><span style="color: var(--mag-pink);">Umsatzverlust.</span>
+                        </h2>
+                        
+                        <p class="text-body" style="font-size: 1.15rem; color: #fff; margin-bottom: 20px;">
+                            Gewerbliche Rollouts gehorchen anderen Gesetzen. Wenn Handwerker während der Bürozeiten bohren und hämmern, kostet das Ihr Unternehmen Fokus, Nerven und bares Geld.
+                        </p>
+                        
+                        <p class="text-body" style="color: #888; font-size: 1rem; margin-bottom: 30px;">
+                            Das <strong>Weekend-Warrior Protokoll</strong> ist unsere Antwort für Praxen, Kanzleien und Agenturen. Freitag um 18:00 Uhr, wenn Ihr Team ins Wochenende geht, übernehmen wir. Wir demontieren, bauen auf, integrieren das Kabelmanagement für die höhenverstellbaren Schreibtische und richten die USM Haller Regale aus. Montag um 07:00 Uhr übergeben wir ein klinisch sauberes, zu 100% einsatzbereites Büro. Zero Downtime.
+                        </p>
+                    </div>
+
+                    <div data-aos="fade-left" style="position: relative;">
+                        <img src="assets/images/ikea-bekant-schreibtisch-hoehenverstellbar-aufbau.webp" alt="Office Rollout" class="img-editorial" style="border-color: var(--mag-pink);">
+                        <div style="position: absolute; inset: 0; background: linear-gradient(45deg, rgba(255,0,127,0.1), transparent); pointer-events: none;"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="phase-13" class="phase-section" style="background: #030405;">
+            <div class="container relative-z">
+                <div class="split-editorial">
+                    <div data-aos="fade-right" style="position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                        <img src="assets/images/kueche-5-b.webp" alt="Ultra Matt Finish" style="width: 100%; height: 300px; object-fit: cover; border: 1px solid rgba(255,255,255,0.1);">
+                        <img src="assets/images/sz-3-b.webp" alt="Echtholz Furnier" style="width: 100%; height: 300px; object-fit: cover; border: 1px solid rgba(255,255,255,0.1); margin-top: 40px;">
+                        <div style="position: absolute; top: 45%; left: 50%; transform: translate(-50%, -50%); background: #000; border: 1px solid #fff; padding: 15px; font-family: var(--font-tech); font-size: 0.7rem; color: #fff; z-index: 5; text-align: center;">
+                            HAPTIC_ANALYSIS<br><span style="color: var(--mag-cyan);">NO_TOUCH_POLICY</span>
+                        </div>
+                    </div>
+
+                    <div data-aos="fade-left">
+                        <span class="phase-meta" style="color: #fff;">PHASE_13 // SURFACE_PRESERVATION</span>
+                        <h2 class="text-ed phase-header">
+                            Die Seele der <br><span style="color: #aaa;">Oberfläche.</span>
+                        </h2>
+                        
+                        <p class="text-body" style="font-size: 1.15rem; color: #fff; margin-bottom: 20px;">
+                            Ein Fingerabdruck auf einer Fenix-NTM Front ist mehr als ein optischer Mangel – die Säuren und Fette der Haut sind eine chemische Belastung für sensible Hightech-Materialien.
+                        </p>
+                        
+                        <p class="text-body" style="color: #888; font-size: 1rem; margin-bottom: 30px;">
+                            Moderne Oberflächen erfordern modernes Handling. Unser <strong>Pristine-Handover Protocol</strong> schreibt den Einsatz von spezialisierten Handschuhen und Microfaser-Tools zwingend vor. Wir schützen hochglänzende Acrylfronten, offenporige Echtholzfurniere und kratzempfindliches Chrom. Nach der Montage werden die Oberflächen mit pH-neutralen Speziallösungen ionisiert und antistatisch versiegelt.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="phase-14" class="phase-section" style="background: #050608;">
+            <div class="container relative-z">
+                <div class="split-editorial">
+                    <div data-aos="fade-right">
+                        <span class="phase-meta" style="color: var(--mag-green);">PHASE_14 // FISCAL_PROTOCOLS</span>
+                        <h2 class="text-ed phase-header">
+                            Der legale <br><span style="color: var(--mag-green);">Steuer-Hack.</span>
+                        </h2>
+                        
+                        <p class="text-body" style="font-size: 1.15rem; color: #fff; margin-bottom: 20px;">
+                            Der größte Irrglaube im Handwerk: "Ohne Rechnung wird es billiger." Die Realität im Jahr 2026 sieht anders aus. Schwarzarbeit ist nicht nur ein massives Haftungsrisiko, sie ist oft auch teurer als der Profi.
+                        </p>
+                        
+                        <p class="text-body" style="color: #888; font-size: 1rem; margin-bottom: 30px;">
+                            Der deutsche Staat fördert qualifiziertes Handwerk. Gemäß <strong>§ 35a EStG (Haushaltsnahe Dienstleistungen)</strong> erhalten Sie 20% unserer abgerechneten Arbeits- und Fahrtkosten direkt über Ihre Einkommensteuererklärung vom Finanzamt zurück (bis zu 1.200 € im Jahr). Sie erhalten von uns eine exakt aufgeschlüsselte, digitale Rechnung. Kein Risiko. Volle Gewährleistung. Maximale Ersparnis.
+                        </p>
+                    </div>
+
+                    <div data-aos="fade-left">
+                        <div style="background: rgba(57, 255, 20, 0.05); border: 1px solid rgba(57, 255, 20, 0.2); padding: 40px; border-radius: 4px; font-family: var(--font-tech);">
+                            <div style="color: #fff; font-size: 0.8rem; margin-bottom: 20px; border-bottom: 1px dashed rgba(255,255,255,0.2); padding-bottom: 10px;">INVOICE_SIMULATION // EXAMPLE</div>
+                            
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 15px; color: #aaa; font-size: 0.9rem;">
+                                <span>Brutto Montage-Invest</span>
+                                <span>€ 500,00</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 15px; color: var(--mag-green); font-size: 0.9rem;">
+                                <span>Finanzamt-Erstattung (20%)</span>
+                                <span>- € 100,00</span>
+                            </div>
+                            
+                            <div style="display: flex; justify-content: space-between; margin-top: 30px; border-top: 1px solid var(--mag-green); padding-top: 20px; color: #fff; font-size: 1.2rem; font-weight: 800;">
+                                <span>Effektive Kosten</span>
+                                <span>€ 400,00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="phase-15" class="phase-section" style="background: #030405;">
+            <div class="container relative-z">
+                <div class="split-editorial">
+                    <div data-aos="fade-right" style="position: relative;">
+                        <img src="assets/images/wohnen-3-a.webp" alt="System Integrity" class="img-editorial" style="border-color: var(--mag-cyan); filter: none;">
+                        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(0,229,255,0.2), transparent); pointer-events: none;"></div>
+                    </div>
+
+                    <div data-aos="fade-left">
+                        <span class="phase-meta" style="color: var(--mag-cyan);">PHASE_15 // SYSTEM_INTEGRITY</span>
+                        <h2 class="text-ed phase-header">
+                            Das Ende der <br><span style="color: var(--mag-cyan);">DIY Hacks.</span>
+                        </h2>
+                        
+                        <p class="text-body" style="font-size: 1.15rem; color: #fff; margin-bottom: 20px;">
+                            Social Media ist voll von vermeintlich genialen "IKEA-Hacks" und Do-It-Yourself Tutorials. Doch was im Zeitraffer-Video perfekt aussieht, kollabiert in der Realität oft an grundlegender Statik.
+                        </p>
+                        
+                        <p class="text-body" style="color: #888; font-size: 1rem; margin-bottom: 30px;">
+                            Ein Möbelstück so zu modifizieren, dass es architektonisch anspruchsvoll aussieht, erfordert tiefes Wissen über Lastenverteilung und Zugfestigkeit. Ein durchgesägter tragender Korpus oder eine falsch berechnete Hebelwirkung an einer Trockenbauwand führt unweigerlich zu strukturellem Versagen. Wir setzen Ihre Custom-Ideen um – aber wir berechnen sie vorher. Engineering statt Hoffen.
+                        </p>
+
+                        <button onclick="MissionOS.open()" class="btn btn-holographic reactive-btn" style="border-color: var(--mag-cyan); color: var(--mag-cyan);">
+                            CUSTOM_PROJEKT BESPRECHEN
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="phase-16" class="phase-section" style="background: #050608;">
+            <div class="container relative-z">
+                <div class="split-editorial">
+                    <div data-aos="fade-right" style="position: relative;">
+                        <div style="background: #030405; border: 1px solid rgba(212, 175, 55, 0.2); height: 600px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
+                            <div style="position: absolute; inset: 0; background-image: radial-gradient(rgba(212,175,55,0.15) 2px, transparent 2px); background-size: 30px 30px; opacity: 0.5;"></div>
+                            <i class="fas fa-microchip" style="font-size: 8rem; color: var(--mag-gold); opacity: 0.1; position: absolute;"></i>
+                            <div style="z-index: 2; text-align: center;">
+                                <div style="font-family: var(--font-tech); font-size: 3rem; color: #fff; font-weight: 800;">10,000+</div>
+                                <div style="font-family: var(--font-tech); font-size: 0.8rem; color: var(--mag-gold); letter-spacing: 3px;">COMPONENTS // SORTED</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div data-aos="fade-left">
+                        <span class="phase-meta" style="color: var(--mag-gold);">PHASE_16 // CHAOS_ALGORITHM</span>
+                        <h2 class="text-ed phase-header">
+                            Herr über <br><span style="color: var(--mag-gold);">das Chaos.</span>
+                        </h2>
+                        
+                        <p class="text-body" style="font-size: 1.15rem; color: #fff; margin-bottom: 20px;">
+                            Ein durchschnittliches Biohort HighLine Gartenhaus oder eine große METOD-Küchenzeile besteht aus über 2.000 Einzelteilen. Ein USM Haller Regal aus hunderten Kugeln, Rohren und Tablaren.
+                        </p>
+                        
+                        <p class="text-body" style="color: #888; font-size: 1rem; margin-bottom: 30px;">
+                            Amateure öffnen Kartons und beginnen sofort zu schrauben – das führt unweigerlich zu Bauunterbrechungen, weil das richtige Scharnier fehlt oder Schrauben verwechselt wurden. Wir wenden das <strong>"Pre-Sort Protocol"</strong> an. Bevor das erste Werkzeug läuft, wird die gesamte Hardware forensisch sortiert, gezählt und strategisch im Raum positioniert. Das ist der Algorithmus der Effizienz. Wir suchen nicht. Wir montieren.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="phase-17" class="phase-section" style="background: #030405;">
+            <div class="container relative-z">
+                <div class="split-editorial">
+                    <div data-aos="fade-right">
+                        <span class="phase-meta" style="color: var(--mag-cyan);">PHASE_17 // ARCHITECTURAL_CALM</span>
+                        <h2 class="text-ed phase-header">
+                            Die Psychologie <br><span style="color: var(--mag-cyan);">der Symmetrie.</span>
+                        </h2>
+                        
+                        <p class="text-body" style="font-size: 1.15rem; color: #fff; margin-bottom: 20px;">
+                            Warum fühlen Sie sich in manchen Räumen sofort wohl, während andere eine unbewusste Unruhe auslösen? Das Geheimnis liegt in den Spaltmaßen.
+                        </p>
+                        
+                        <p class="text-body" style="color: #888; font-size: 1rem; margin-bottom: 30px;">
+                            Das menschliche Auge ist ein hochpräziser Sensor für Asymmetrie. Wenn die Fugen einer Küchenfront von links nach rechts um nur zwei Millimeter abweichen, registriert Ihr Unterbewusstsein "Fehler". Das Möbelstück wirkt billig, egal wie teuer es war. Wir kalibrieren Fronten, Auszüge und Schwebetüren auf den Mikrometer genau. Das Ergebnis sind perfekte, schwarze Schattenfugen, die dem Auge absolute Ruhe vermitteln. Wir installieren keine Möbel, wir installieren Frieden.
+                        </p>
+
+                        <div style="display: flex; align-items: center; gap: 15px; border-left: 2px solid var(--mag-cyan); padding-left: 15px;">
+                            <i class="fas fa-ruler-combined" style="color: var(--mag-cyan); font-size: 1.5rem;"></i>
+                            <div>
+                                <span class="text-tech" style="font-size: 0.7rem; color: #fff;">GAP_TOLERANCE_LIMIT</span>
+                                <div style="font-family: var(--font-mod); font-weight: 700; color: var(--mag-cyan);">0.5 MILLIMETER</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div data-aos="fade-left" style="position: relative;">
+                        <img src="assets/images/wohnen-3-a.webp" alt="Symmetrie Details" class="img-editorial" style="border-color: var(--mag-cyan);">
+                        <div style="position: absolute; top: 50%; left: -20px; right: -20px; height: 1px; background: var(--mag-cyan); box-shadow: 0 0 10px var(--mag-cyan);"></div>
+                        <div style="position: absolute; left: 50%; top: -20px; bottom: -20px; width: 1px; background: var(--mag-cyan); box-shadow: 0 0 10px var(--mag-cyan);"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="phase-18" class="phase-section" style="background: #050608;">
+            <div class="container relative-z">
+                <div class="split-editorial">
+                    <div data-aos="fade-right" style="position: relative;">
+                        <img src="assets/images/45853.jpg" alt="Biohort Installation" class="img-editorial" style="border-color: var(--mag-pink); filter: grayscale(50%);">
+                        <div style="position: absolute; bottom: 30px; left: 30px; background: #000; border: 1px solid var(--mag-pink); padding: 15px;">
+                            <i class="fas fa-file-contract" style="color: var(--mag-pink); font-size: 2rem; margin-bottom: 10px;"></i>
+                            <div class="text-tech" style="font-size: 0.7rem; color: #fff;">WARRANTY_STATUS: <span style="color: var(--mag-green);">SECURED</span></div>
+                        </div>
+                    </div>
+
+                    <div data-aos="fade-left">
+                        <span class="phase-meta" style="color: var(--mag-pink);">PHASE_18 // LEGAL_INTEGRITY</span>
+                        <h2 class="text-ed phase-header">
+                            Der Schutz der <br><span style="color: var(--mag-pink);">Garantie.</span>
+                        </h2>
+                        
+                        <p class="text-body" style="font-size: 1.15rem; color: #fff; margin-bottom: 20px;">
+                            Premium-Hersteller wie USM Haller, Biohort oder Küchenausstatter verknüpfen ihre 10- bis 20-jährigen Garantien mit einer entscheidenden Klausel: "Fachgerechte Montage".
+                        </p>
+                        
+                        <p class="text-body" style="color: #888; font-size: 1rem; margin-bottom: 30px;">
+                            Wenn das Dach Ihres Outdoor-Gerätehauses nach einem Jahr undicht wird, weil die EPDM-Folie bei der Eigenmontage falsch verklebt wurde, greift keine Gewährleistung der Welt. Wenn sich der lackierte Küchenkorpus verzieht, weil das Fundament nicht mit dem Laser ins Wasser gesetzt wurde, haften Sie privat. Mit dem Abnahmeprotokoll der Raphael Lezius Montage-Engine sichern Sie die juristische Gültigkeit Ihrer Herstellergarantien zu 100% ab.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="phase-19" class="phase-section" style="background: #030405;">
+            <div class="container relative-z">
+                <div class="split-editorial">
+                    <div data-aos="fade-right">
+                        <span class="phase-meta" style="color: var(--mag-green);">PHASE_19 // CLIENT_INTERFACE</span>
+                        <h2 class="text-ed phase-header">
+                            Silent <br><span style="color: var(--mag-green);">Execution.</span>
+                        </h2>
+                        
+                        <p class="text-body" style="font-size: 1.15rem; color: #fff; margin-bottom: 20px;">
+                            Ihre Privatsphäre ist unser höchstes Gut. Der klassische Handwerker mit lauter Baustellenradiomusik, dreckigen Schuhen und dauerndem Kaffeepausen-Gesprächsbedarf hat in der Premium-Einrichtung nichts verloren.
+                        </p>
+                        
+                        <p class="text-body" style="color: #888; font-size: 1rem; margin-bottom: 30px;">
+                            Wir betreten Ihr Objekt in sauberer Systembekleidung. Überziehschuhe sind Standard, Bodenschutzvlies ist obligatorisch. Wir arbeiten hochkonzentriert, zügig und extrem geräuschreduziert. Die Kommunikation erfolgt pointiert: Briefing am Morgen, technisches Update mittags, Abnahmeprotokoll am Abend. Wir integrieren uns wie ein lautloses Betriebssystem im Hintergrund Ihres Alltags.
+                        </p>
+                    </div>
+
+                    <div data-aos="fade-left" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                        <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(57, 255, 20, 0.2); padding: 30px; border-radius: 4px;">
+                            <i class="fas fa-volume-mute" style="color: var(--mag-green); font-size: 2rem; margin-bottom: 15px;"></i>
+                            <h4 style="color: #fff; font-family: var(--font-head); margin-bottom: 10px;">Acoustic Discipline</h4>
+                            <p style="font-size: 0.85rem; color: #777;">Absolute Reduktion von Lärmemissionen. Keine Störgeräusche abseits der Maschinennutzung.</p>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(57, 255, 20, 0.2); padding: 30px; border-radius: 4px; margin-top: 30px;">
+                            <i class="fas fa-shoe-prints" style="color: var(--mag-green); font-size: 2rem; margin-bottom: 15px;"></i>
+                            <h4 style="color: #fff; font-family: var(--font-head); margin-bottom: 10px;">Shoe-Cover Logic</h4>
+                            <p style="font-size: 0.85rem; color: #777;">Wir betreten Parkett und Teppiche niemals mit Straßenschuhen.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="phase-20" class="phase-section" style="background: #050608; padding-bottom: 50px;">
+            <div class="container relative-z">
+                <div class="split-editorial">
+                    
+                    <div data-aos="fade-right" style="position: relative;">
+                        <img src="assets/images/raphael-lezius-logo-back.webp" alt="The Lezius Standard" class="img-editorial" style="border-color: var(--mag-gold); filter: grayscale(20%) brightness(0.8);">
+                        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.8) 100%);"></div>
+                        <div style="position: absolute; bottom: 40px; right: 40px; text-align: right;">
+                            <span class="text-tech" style="color: var(--mag-gold); font-size: 0.8rem; display: block; margin-bottom: 5px;">SYS_STATUS: DEPLOYED</span>
+                            <img src="assets/images/raphael-lezius-logo-front.webp" alt="Siegel" style="width: 80px; height: 80px; border-radius: 50%; border: 2px solid var(--mag-gold);">
+                        </div>
+                    </div>
+
+                    <div data-aos="fade-left">
+                        <span class="phase-meta" style="color: var(--mag-gold);">PHASE_20 // FINAL_CALIBRATION</span>
+                        <h2 class="text-ed phase-header">
+                            Der Lezius <br><span style="color: var(--mag-gold);">Standard.</span>
+                        </h2>
+                        
+                        <p class="text-body" style="font-size: 1.15rem; color: #fff; margin-bottom: 20px;">
+                            Das letzte Kapitel der Montage ist die Besiegelung des Werkes. Die Maschinen sind verstaut, der Staub ist durch die HEPA-Filter eliminiert, der Boden erstrahlt makellos.
+                        </p>
+                        
+                        <p class="text-body" style="color: #888; font-size: 1rem; margin-bottom: 30px;">
+                            Gemeinsam durchschreiten wir den Raum. Ich öffne jede Schublade, schließe jede Schwebetür und belaste jedes Tablar, um Ihnen die perfekte Symmetrie und Kraftschlüssigkeit der Mechanik zu beweisen. Danach erfolgt die digitale Signatur auf dem Abnahmeprotokoll. Es ist der Moment, in dem aus Einzelteilen Architektur wird. Ihr Raum ist nun bereit.
+                        </p>
+
+                        <div style="display: flex; align-items: center; gap: 20px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px;">
+                            <i class="fas fa-check-double" style="color: var(--mag-gold); font-size: 2rem;"></i>
+                            <span class="text-tech" style="color: #fff; font-size: 1rem; letter-spacing: 4px;">MISSION_ACCOMPLISHED</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>VISUAL LOGS | Projektgalerie | Raphael Lezius</title>
+    
+    <meta name="description" content="Entdecken Sie unsere millimetergenauen Montage-Projekte: IKEA PAX, Küchen, USM Haller und Biohort Gartenhäuser in Augsburg und München.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Inter:wght@300;400;600;800&family=Space+Grotesk:wght@300;500;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <style id="gallery-custom-css">
+        /* Base Failsafe */
+        body { opacity: 1 !important; visibility: visible !important; background-color: #030405; }
+        .no-js-override [data-aos] { opacity: 1 !important; transform: none !important; visibility: visible !important; }
+
+        /* Gallery Hero */
+        .gallery-hero {
+            padding: 180px 0 60px 0;
+            text-align: center;
+            position: relative;
+            background: radial-gradient(circle at top center, rgba(212, 175, 55, 0.05) 0%, transparent 60%);
+        }
+        
+        .hero-glitch-tag { font-family: var(--font-mono); color: var(--neon-gold); font-size: 0.8rem; letter-spacing: 4px; display: block; margin-bottom: 20px; }
+        .gallery-title { font-family: var(--font-head); font-size: clamp(3rem, 6vw, 5rem); color: #fff; font-weight: 800; letter-spacing: -2px; margin-bottom: 20px; }
+        
+        /* Filter System */
+        .filter-bar {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 60px;
+        }
+        .filter-btn {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: #888;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            padding: 10px 25px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .filter-btn:hover { color: #fff; border-color: rgba(255,255,255,0.3); }
+        .filter-btn.active {
+            background: rgba(212, 175, 55, 0.1);
+            border-color: var(--neon-gold);
+            color: var(--neon-gold);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+        }
+
+        /* Asymmetric Masonry/Bento Grid */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            grid-auto-rows: 300px;
+            gap: 20px;
+            padding-bottom: 100px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.05);
+            background: #000;
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        
+        /* Spans for asymmetry */
+        .item-tall { grid-row: span 2; }
+        .item-wide { grid-column: span 2; }
+        
+        @media (max-width: 768px) {
+            .item-wide { grid-column: span 1; } /* Reset on mobile */
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(40%) contrast(1.1);
+            transition: all 0.7s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--neon-gold);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.8), 0 0 20px rgba(212, 175, 55, 0.2);
+            z-index: 2;
+        }
+        
+        .gallery-item:hover img {
+            filter: grayscale(0%) contrast(1.05);
+            transform: scale(1.05);
+        }
+
+        .item-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.2) 50%, transparent 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 30px;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        
+        .gallery-item:hover .item-overlay { opacity: 1; }
+
+        .item-tag { font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 2px; margin-bottom: 8px; }
+        .item-title { font-family: var(--font-head); color: #fff; font-size: 1.4rem; font-weight: 700; margin: 0; transform: translateY(15px); transition: transform 0.4s ease; }
+        .gallery-item:hover .item-title { transform: translateY(0); }
+
+        /* Category Colors */
+        .tag-kitchen { color: var(--neon-cyan); }
+        .tag-living { color: var(--neon-gold); }
+        .tag-outdoor { color: var(--neon-green); }
+        .tag-office { color: var(--neon-pink); }
+    </style>
+</head>
+<body class="is-dark no-js-override">
+
+    <div id="global-nav"></div>
+
+    <main>
+        <section class="gallery-hero container">
+            <span class="hero-glitch-tag" data-aos="fade-down">// VISUAL_DATABASE</span>
+            <h1 class="gallery-title" data-aos="zoom-in">Das Archiv.</h1>
+            <p style="color: #888; max-width: 600px; margin: 0 auto; font-size: 1.1rem; line-height: 1.6;" data-aos="fade-up" data-aos-delay="100">
+                Ein Querschnitt durch unsere jüngsten Installationen. Jedes Bild ist das Resultat forensischer Planung und handwerklicher Perfektion. Keine Stock-Fotos. 100% Lezius Engineering.
+            </p>
+        </section>
+
+        <section class="container relative-z">
+            
+            <div class="filter-bar" data-aos="fade-up" data-aos-delay="200">
+                <button class="filter-btn active" data-filter="all">ALL_FILES</button>
+                <button class="filter-btn" data-filter="kitchen">KITCHEN_ENG.</button>
+                <button class="filter-btn" data-filter="living">LIVING & PAX</button>
+                <button class="filter-btn" data-filter="office">B2B_OFFICE</button>
+                <button class="filter-btn" data-filter="outdoor">OUTDOOR_STRUCT</button>
+            </div>
+
+            <div class="gallery-grid" id="galleryGrid">
+                
+                <div class="gallery-item item-tall filter-kitchen" data-aos="fade-up">
+                    <img src="assets/images/kueche-13-a.webp" alt="Küchenmontage">
+                    <div class="item-overlay">
+                        <span class="item-tag tag-kitchen">KITCHEN_ENG.</span>
+                        <h3 class="item-title">Mattschwarze Systemküche</h3>
+                    </div>
+                </div>
+                
+                <div class="gallery-item filter-kitchen" data-aos="fade-up" data-aos-delay="100">
+                    <img src="assets/images/kueche-4-a.webp" alt="Arbeitsplatte Schnitt">
+                    <div class="item-overlay">
+                        <span class="item-tag tag-kitchen">KITCHEN_ENG.</span>
+                        <h3 class="item-title">Präzisions-Zuschnitt</h3>
+                    </div>
+                </div>
+
+                <div class="gallery-item item-wide filter-living" data-aos="fade-up" data-aos-delay="200">
+                    <img src="assets/images/wohnen-12-a.webp" alt="Wohnwand">
+                    <div class="item-overlay">
+                        <span class="item-tag tag-living">LIVING & PAX</span>
+                        <h3 class="item-title">Schwebende Architektur</h3>
+                    </div>
+                </div>
+
+                <div class="gallery-item filter-living" data-aos="fade-up">
+                    <img src="assets/images/sz-1-a.webp" alt="PAX Schrank">
+                    <div class="item-overlay">
+                        <span class="item-tag tag-living">LIVING & PAX</span>
+                        <h3 class="item-title">PAX Schwebetüren Kalibrierung</h3>
+                    </div>
+                </div>
+
+                <div class="gallery-item filter-living" data-aos="fade-up" data-aos-delay="100">
+                    <img src="assets/images/wohnen-1-a.webp" alt="TV Board">
+                    <div class="item-overlay">
+                        <span class="item-tag tag-living">LIVING & PAX</span>
+                        <h3 class="item-title">Zero-Cable Sideboard</h3>
+                    </div>
+                </div>
+
+                <div class="gallery-item item-tall filter-office" data-aos="fade-up" data-aos-delay="200">
+                    <img src="assets/images/ikea-bekant-schreibtisch-hoehenverstellbar-aufbau.webp" alt="Büro Rollout">
+                    <div class="item-overlay">
+                        <span class="item-tag tag-office">B2B_OFFICE</span>
+                        <h3 class="item-title">Ergonomic Workspace Rollout</h3>
+                    </div>
+                </div>
+
+                <div class="gallery-item filter-office" data-aos="fade-up">
+                    <img src="assets/images/wohnen-22-a.webp" alt="Akustik">
+                    <div class="item-overlay">
+                        <span class="item-tag tag-office">B2B_OFFICE</span>
+                        <h3 class="item-title">Akustikpaneele Kanzlei</h3>
+                    </div>
+                </div>
+
+                <div class="gallery-item item-wide filter-outdoor" data-aos="fade-up" data-aos-delay="100">
+                    <img src="assets/images/45853.jpg" alt="Biohort Fundament">
+                    <div class="item-overlay">
+                        <span class="item-tag tag-outdoor">OUTDOOR_STRUCT</span>
+                        <h3 class="item-title">Biohort SmartBase Fundament</h3>
+                    </div>
+                </div>
+
+                <div class="gallery-item filter-living" data-aos="fade-up" data-aos-delay="200">
+                    <img src="assets/images/sz-3-a.webp" alt="Schlafzimmer Laser">
+                    <div class="item-overlay">
+                        <span class="item-tag tag-living">LIVING & PAX</span>
+                        <h3 class="item-title">360° Laser-Nivellierung</h3>
+                    </div>
+                </div>
+                
+                <div class="gallery-item filter-living" data-aos="fade-up">
+                    <img src="assets/images/wohnen-20-a.webp" alt="Spiegel">
+                    <div class="item-overlay">
+                        <span class="item-tag tag-living">LIVING & PAX</span>
+                        <h3 class="item-title">Schwerlast-Montage</h3>
+                    </div>
+                </div>
+
+                <div class="gallery-item filter-kitchen" data-aos="fade-up" data-aos-delay="100">
+                    <img src="assets/images/kueche-17-b.webp" alt="Kitchen Detail">
+                    <div class="item-overlay">
+                        <span class="item-tag tag-kitchen">KITCHEN_ENG.</span>
+                        <h3 class="item-title">Spaltmaß-Analyse</h3>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="section-padding" style="background: linear-gradient(135deg, #050505, #0a0b10); text-align: center; border-top: 1px solid rgba(212, 175, 55, 0.2);">
+            <div class="container" data-aos="zoom-in">
+                <span class="hero-glitch-tag">// ADD_YOUR_PROJECT</span>
+                <h2 style="font-family: var(--font-head); font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; color: #fff; margin-bottom: 15px; letter-spacing: -1px;">BEREIT FÜR DEN AUFBAU?</h2>
+                <p style="font-size: 1.15rem; color: #aaa; margin-bottom: 35px; max-width: 600px; margin-left: auto; margin-right: auto;">Werden Sie Teil unseres Archivs makelloser Montagen. Starten Sie jetzt Ihre Projektanfrage.</p>
+                <button onclick="MissionOS.open()" class="btn btn-gold reactive-btn btn-magnetic" style="padding: 20px 50px; font-size: 1.1rem; text-transform: uppercase;">
+                    <i class="fas fa-rocket"></i> PROJEKT INITIALISIEREN
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <div id="global-footer"></div>
+
+    <div id="global-os"></div>
+
+    <a href="https://wa.me/491608194018" target="_blank" class="whatsapp-float reactive-btn">
+        <div class="whatsapp-pulse"></div>
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="assets/js/main.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    // Add active class to clicked button
+                    btn.classList.add('active');
+
+                    const filterValue = btn.getAttribute('data-filter');
+
+                    galleryItems.forEach(item => {
+                        // Reset animations
+                        item.style.display = 'block';
+                        
+                        // Force a reflow to restart CSS animations if we wanted them
+                        // void item.offsetWidth; 
+
+                        if (filterValue === 'all' || item.classList.contains('filter-' + filterValue)) {
+                            item.style.display = 'block';
+                            setTimeout(() => { item.style.opacity = '1'; item.style.transform = 'scale(1)'; }, 50);
+                        } else {
+                            item.style.opacity = '0';
+                            item.style.transform = 'scale(0.8)';
+                            setTimeout(() => { item.style.display = 'none'; }, 300); // Wait for transition
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

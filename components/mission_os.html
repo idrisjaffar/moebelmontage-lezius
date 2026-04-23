@@ -1,0 +1,90 @@
+<div id="missionOS" class="os-overlay">
+    <div class="os-backdrop js-close-os"></div>
+    
+    <div class="case-container">
+        <aside class="case-sidebar">
+            <div class="sidebar-header">
+                <div class="os-pulse"></div>
+                <span class="os-ver">MISSION_CONTROL_v2.6</span>
+            </div>
+            
+            <nav class="case-steps">
+                <div class="step-link active" data-phase="phase1">
+                    <div class="step-num">01</div>
+                    <div class="step-txt">BASISDATEN<small>Kontaktinformationen</small></div>
+                </div>
+                <div class="step-link" data-phase="phase2">
+                    <div class="step-num">02</div>
+                    <div class="step-txt">PROJEKT<small>Möbel & Umfang</small></div>
+                </div>
+                <div class="step-link" data-phase="phase3">
+                    <div class="step-num">03</div>
+                    <div class="step-txt">LOGISTIK<small>Standort & PLZ</small></div>
+                </div>
+                <div class="step-link" data-phase="phase4">
+                    <div class="step-num">04</div>
+                    <div class="step-txt">FINISH<small>Termin wählen</small></div>
+                </div>
+            </nav>
+        </aside>
+
+        <main class="case-main">
+            <button class="case-close js-close-os">&times;</button>
+            
+            <form id="leziusCaseForm" action="https://formspree.io/f/YOUR_ID" method="POST">
+                
+                <div class="case-phase active" id="phase1">
+                    <h2 class="phase-title">Wer erteilt den Auftrag?</h2>
+                    <div class="tech-input full-width">
+                        <input type="text" name="name" required placeholder=" ">
+                        <label>VOLLSTÄNDIGER NAME</label>
+                    </div>
+                    <div class="input-row">
+                        <div class="tech-input"><input type="tel" name="phone" required placeholder=" "><label>TELEFON</label></div>
+                        <div class="tech-input"><input type="email" name="email" required placeholder=" "><label>E-MAIL</label></div>
+                    </div>
+                    <div class="nav-controls">
+                        <button type="button" class="btn btn-gold js-phase-nav" data-target="phase2">WEITER <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <div class="case-phase" id="phase2">
+                    <h2 class="phase-title">Was soll aufgebaut werden?</h2>
+                    <div class="tech-input full-width">
+                        <textarea name="manual_input" placeholder=" " required></textarea>
+                        <label>DETAILS (Z.B. 3M PAX, METOD KÜCHE...)</label>
+                    </div>
+                    <div class="nav-controls">
+                        <button type="button" class="btn btn-holographic js-phase-nav" data-target="phase1">ZURÜCK</button>
+                        <button type="button" class="btn btn-gold js-phase-nav" data-target="phase3">ZUM STANDORT <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <div class="case-phase" id="phase3">
+                    <h2 class="phase-title">Einsatzort</h2>
+                    <div class="tech-input">
+                        <input type="text" name="zip" required placeholder=" ">
+                        <label>POSTLEITZAHL (AUGSBURG / MÜNCHEN)</label>
+                    </div>
+                    <div class="nav-controls">
+                        <button type="button" class="btn btn-holographic js-phase-nav" data-target="phase2">ZURÜCK</button>
+                        <button type="button" class="btn btn-gold js-phase-nav" data-target="phase4">TERMIN WÄHLEN <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <div class="case-phase" id="phase4">
+                    <h2 class="phase-title">Wunschtermin</h2>
+                    <div class="tech-input full-width">
+                        <input type="date" name="date" required>
+                        <label style="top: -10px; font-size: 0.7rem; color: var(--neon-cyan);">BITTE DATUM WÄHLEN</label>
+                    </div>
+                    <div class="nav-controls">
+                        <button type="button" class="btn btn-holographic js-phase-nav" data-target="phase3">ZURÜCK</button>
+                        <button type="submit" class="btn btn-gold"><i class="fas fa-paper-plane"></i> ANFRAGE ABSENDEN</button>
+                    </div>
+                </div>
+
+            </form>
+        </main>
+    </div>
+</div>

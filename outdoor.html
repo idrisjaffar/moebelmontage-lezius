@@ -19,8 +19,6 @@
         /* Sicherheits-Bypass */
         body { opacity: 1 !important; visibility: visible !important; background-color: #030405; }
         .no-js-override [data-aos] { opacity: 1 !important; transform: none !important; visibility: visible !important; }
-        .os-overlay { display: none; }
-        .os-overlay.system-active { display: flex !important; }
 
         /* 2026 Bento Grid for Outdoor */
         .bento-grid {
@@ -108,102 +106,7 @@
 </head>
 <body class="is-dark no-js-override">
 
-    <header class="nav-wrapper">
-        <nav class="cyber-navbar glass-panel">
-            <div class="nav-inner">
-                
-                <a href="index.html" class="brand-cluster">
-                    <div class="logo-flipper">
-                        <div class="logo-face front"><img src="assets/images/raphael-lezius-logo-front.webp" alt="Raphael Lezius" onerror="this.style.display='none';"></div>
-                        <div class="logo-face back"><img src="assets/images/raphael-lezius-logo-back.webp" alt="Premium Montage" onerror="this.style.display='none';"></div>
-                    </div>
-                    <div class="brand-typography">
-                        <span class="brand-first">RAPHAEL</span>
-                        <span class="brand-last">LEZIUS</span>
-                    </div>
-                </a>
-
-                <div class="desktop-menu">
-                    <a href="index.html" class="cyber-link">Start</a>
-                    
-                    <div class="dropdown-wrapper">
-                        <button class="cyber-link dropdown-btn active">
-                            Expertise <i class="fas fa-chevron-down drop-icon" style="font-size: 0.7em; margin-left: 5px;"></i>
-                        </button>
-                        
-                        <div class="mega-menu-2077 glass-panel">
-                            <div class="mega-grid">
-                                <a href="residential.html" class="mega-node">
-                                    <div class="node-icon cyan-glow"><i class="fas fa-couch"></i></div>
-                                    <div class="node-content"><h4>Interieur & Living</h4><p>PAX, Küchen & Premium-Möbel</p></div>
-                                </a>
-                                <a href="outdoor.html" class="mega-node" style="background: rgba(255,215,0,0.1); border-color: rgba(255,215,0,0.3);">
-                                    <div class="node-icon gold-glow"><i class="fas fa-tree"></i></div>
-                                    <div class="node-content">
-                                        <h4 class="node-title gold-text">Outdoor Holzbau</h4>
-                                        <p class="node-desc">Gartenhäuser & Gerätehütten</p>
-                                    </div>
-                                </a>
-                                <a href="office.html" class="mega-node">
-                                    <div class="node-icon pink-glow"><i class="fas fa-building"></i></div>
-                                    <div class="node-content"><h4>Gewerbe & Office</h4><p>USM Haller & Praxiseinrichtung</p></div>
-                                </a>
-                                <a href="demontage.html" class="mega-node">
-                                    <div class="node-icon green-glow"><i class="fas fa-tools"></i></div>
-                                    <div class="node-content"><h4>Demontage & Service</h4><p>Möbelabbau, Bohren & Reparaturen</p></div>
-                                </a>
-                            </div>
-                            <div class="mega-footer-bar">
-                                <span class="tech-font gold-text blink">>> SYSTEM BEREIT ZUR AUSWAHL</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <a href="process-pricing.html" class="cyber-link">Konditionen</a>
-                    <a href="area.html" class="cyber-link">Region</a>
-                    <a href="gallery.html" class="cyber-link">Referenzen</a>
-                    <a href="magazine.html" class="cyber-link">Magazin</a>
-                </div>
-
-                <div class="nav-actions">
-                    <div class="status-pill desktop-only" title="System Status: Live">
-                        <span class="status-dot-container">
-                            <span class="status-dot" style="background: var(--neon-gold);"></span>
-                            <span class="status-pulse" style="background: var(--neon-gold);"></span>
-                        </span>
-                        <span class="status-text">Einsatzbereit</span>
-                    </div>
-                    <button onclick="MissionOS.open();" class="btn btn-gold reactive-btn desktop-only">Projekt anfragen</button>
-                    <button class="cyber-hamburger" id="hamburgerBtn" aria-label="Menü öffnen">
-                        <span class="bar top-bar"></span><span class="bar mid-bar"></span><span class="bar bot-bar"></span>
-                    </button>
-                </div>
-            </div>
-        </nav>
-    </header>
-
-    <div class="mobile-menu" id="mobileMenu">
-        <div class="mobile-menu-bg-glow" style="background: radial-gradient(circle, rgba(255,215,0,0.15) 0%, transparent 70%);"></div>
-        <nav class="mobile-nav-links">
-            <a href="index.html" class="mobile-cyber-link">Startseite</a>
-            
-            <div class="mobile-divider cyan-divider">// EXPERTISE</div>
-            <a href="residential.html" class="mobile-sub-link">Interieur & Küchen</a>
-            <a href="outdoor.html" class="mobile-sub-link active-mobile-link" style="color: var(--neon-gold) !important; font-weight: 800 !important;">Outdoor & Gartenbau (Aktiv)</a>
-            <a href="office.html" class="mobile-sub-link">Gewerbe & USM Haller</a>
-            <a href="demontage.html" class="mobile-sub-link">Demontage & Service</a>
-            
-            <div class="mobile-divider gold-divider">// PROTOKOLLE</div>
-            <a href="process-pricing.html" class="mobile-sub-link">Konditionen & Ablauf</a>
-            <a href="area.html" class="mobile-sub-link">Einsatzregion</a>
-            <a href="gallery.html" class="mobile-sub-link">Referenzen</a>
-            <a href="magazine.html" class="mobile-sub-link">Magazin</a>
-            
-            <button onclick="MissionOS.open(); document.getElementById('mobileMenu').classList.remove('active'); document.getElementById('hamburgerBtn').classList.remove('active'); document.body.style.overflow = '';" class="btn btn-gold btn-block mobile-cta-btn">
-                <i class="fas fa-bolt"></i> Jetzt anfragen
-            </button>
-        </nav>
-    </div>
+    <div id="global-nav"></div>
 
     <main>
         
@@ -268,7 +171,7 @@
 
                 <div class="bento-grid">
                     
-                    <div class="bento-cell span-8" data-aos="fade-up" style="background: linear-gradient(145deg, rgba(255,215,0,0.05), #080b0e);">
+                    <div class="bento-cell bento-span-8" data-aos="fade-up" style="background: linear-gradient(145deg, rgba(255,215,0,0.05), #080b0e);">
                         <div>
                             <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px;">
                                 <i class="fas fa-warehouse" style="font-size: 3rem; color: var(--neon-gold);"></i>
@@ -284,7 +187,7 @@
                         </ul>
                     </div>
 
-                    <div class="bento-cell span-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="bento-cell bento-span-4" data-aos="fade-up" data-aos-delay="100">
                         <div>
                             <i class="fas fa-tree" style="font-size: 2.5rem; color: #fff; margin-bottom: 20px;"></i>
                             <h3 style="color: #fff; font-family: var(--font-head); font-size: 1.6rem; margin-bottom: 15px;">Weka & Karibu Holzbau</h3>
@@ -296,7 +199,7 @@
                         </ul>
                     </div>
 
-                    <div class="bento-cell span-6" data-aos="fade-up">
+                    <div class="bento-cell bento-span-6" data-aos="fade-up">
                         <div>
                             <i class="fas fa-layer-group" style="font-size: 2.5rem; color: #fff; margin-bottom: 20px;"></i>
                             <h3 style="color: #fff; font-family: var(--font-head); font-size: 1.8rem; margin-bottom: 15px;">Dach- & EPDM Isolierung</h3>
@@ -308,7 +211,7 @@
                         </ul>
                     </div>
 
-                    <div class="bento-cell span-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="bento-cell bento-span-6" data-aos="fade-up" data-aos-delay="100">
                         <div>
                             <i class="fas fa-child" style="font-size: 2.5rem; color: #fff; margin-bottom: 20px;"></i>
                             <h3 style="color: #fff; font-family: var(--font-head); font-size: 1.8rem; margin-bottom: 15px;">Spieltürme & Outdoor Living</h3>
@@ -507,278 +410,22 @@
 
     </main>
 
-    <footer class="mega-footer circuit-bg">
-        <div class="container relative-z">
+    <div id="global-footer"></div>
 
-            <div class="footer-grid">
-                
-                <div class="f-col brand-col">
-                    <div class="brand-text" style="font-size:2rem; letter-spacing: -1px; font-family: var(--font-head); font-weight: 800; color: #fff;">
-                        RAPHAEL <span class="gold-text">LEZIUS</span>
-                    </div>
-                    <p style="color:#888; font-size:0.95rem; margin-top:15px; font-weight: 300; line-height: 1.6;">
-                        Präzision. Qualität. Zuverlässigkeit.<br>Ihr zertifizierter Montage-Experte für Premium-Einrichtungen in Bayern.
-                    </p>
-                    
-                    <div style="display:flex; gap:20px; margin-top:25px; font-size:0.8rem; color:#bbb; font-weight: 700; font-family: var(--font-mono); letter-spacing: 1px;">
-                        <span><i class="fas fa-shield-alt gold-text"></i> VERSICHERT</span>
-                        <span><i class="fas fa-check-circle green-text"></i> GEPRÜFT</span>
-                    </div>
-
-                    <div class="social-row" style="margin-top: 35px;">
-                        <a href="https://wa.me/491608194018" target="_blank" class="social-btn reactive-btn"><i class="fab fa-whatsapp"></i></a>
-                        <a href="#" target="_blank" class="social-btn reactive-btn"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-
-                <div class="f-col">
-                    <h4 class="f-heading">Leistungen</h4>
-                    <ul class="footer-links">
-                        <li><a href="residential.html">IKEA PAX & Küchen</a></li>
-                        <li><a href="outdoor.html" class="gold-text">Gartenhäuser & Outdoor</a></li>
-                        <li><a href="office.html">USM Haller & Gewerbe</a></li>
-                        <li><a href="demontage.html">Möbel-Demontage & Service</a></li>
-                    </ul>
-                </div>
-
-                <div class="f-col">
-                    <h4 class="f-heading">Informationen</h4>
-                    <ul class="footer-links">
-                        <li><a href="process-pricing.html">Konditionen & Ablauf</a></li>
-                        <li><a href="area.html">Einsatzgebiet</a></li>
-                        <li><a href="gallery.html">Referenzen Galerie</a></li>
-                        <li><a href="magazine.html">Magazin & Blog</a></li>
-                    </ul>
-                </div>
-
-                <div class="f-col">
-                    <h4 class="f-heading">Rechtliches</h4>
-                    <ul class="footer-links">
-                        <li><a href="impressum.html">Impressum</a></li>
-                        <li><a href="datenschutz.html">Datenschutz</a></li>
-                        <li><a href="agb.html">AGB & Widerruf</a></li>
-                    </ul>
-                </div>
-
-                <div class="f-col contact-col">
-                    <h4 class="f-heading">Kontakt</h4>
-                    <ul class="contact-list">
-                        <li>
-                            <i class="fas fa-map-marker-alt gold-icon"></i>
-                            <span class="contact-text">Am Rößlebad 9<br>86152 Augsburg</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-phone gold-icon"></i>
-                            <a href="tel:+491608194018" class="contact-link">0160 819 4018</a>
-                        </li>
-                        <li>
-                            <i class="far fa-envelope gold-icon"></i>
-                            <a href="mailto:r.lezius@gmail.com" class="contact-link">r.lezius@gmail.com</a>
-                        </li>
-                    </ul>
-                    
-                    <div class="op-status" style="margin-top: 25px; padding: 15px; background: rgba(0,0,0,0.4); border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); display: inline-block;">
-                        <div style="display: flex; align-items: center; gap: 10px;">
-                            <div class="status-dot-container">
-                                <div class="status-dot" style="background: var(--neon-gold); box-shadow: 0 0 10px var(--neon-gold);"></div>
-                                <div class="status-pulse" style="background: var(--neon-gold);"></div>
-                            </div>
-                            <span style="font-family: var(--font-mono); font-size: 0.75rem; color: #888; text-transform: uppercase; letter-spacing: 1px;">System Status: <strong class="green-text">LIVE</strong></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="footer-bottom-bar" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
-                <div class="copyright" style="color: #666; font-size: 0.85rem; font-family: var(--font-mono);">
-                    &copy; <span id="copyright-year">2026</span> RAPHAEL LEZIUS. <span class="hide-mobile">ALLE RECHTE VORBEHALTEN.</span>
-                </div>
-                
-                <div class="footer-payments" style="display: flex; gap: 20px; font-size: 1.8rem; color: #444;">
-                    <i class="fab fa-apple" title="Apple Pay"></i>
-                    <i class="fab fa-google" title="Google Pay"></i>
-                    <i class="fab fa-cc-paypal" title="PayPal"></i>
-                    <i class="fab fa-cc-visa" title="Visa"></i>
-                    <i class="fab fa-cc-mastercard" title="Mastercard"></i>
-                </div>
-                
-                <div class="developer-credit">
-                    <span class="code-bracket">&lt;/&gt;</span>
-                    <span class="dev-text" style="color: #666;">SYS_DEV <span class="dev-name" style="color: var(--neon-gold);">IDRIS</span></span>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <div id="global-os"></div>
 
     <a href="https://wa.me/491608194018" target="_blank" class="whatsapp-float reactive-btn">
         <div class="whatsapp-pulse"></div>
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <div id="missionOS" class="os-overlay">
-        <div class="os-backdrop" onclick="document.getElementById('missionOS').classList.remove('system-active'); document.body.style.overflow = '';"></div>
-        
-        <div class="case-container">
-            <aside class="case-sidebar">
-                <div class="sidebar-header">
-                    <div class="os-pulse" style="background: var(--neon-gold);"></div>
-                    <span class="os-ver">SERVICE_PORTAL_v2.6</span>
-                </div>
-                
-                <nav class="case-steps">
-                    <div class="step-link active" id="nav1" onclick="document.querySelectorAll('.case-phase').forEach(p=>p.classList.remove('active')); document.getElementById('phase1').classList.add('active');">
-                        <div class="step-num" style="color: var(--neon-gold);">01</div>
-                        <div class="step-txt">BASISDATEN</div>
-                    </div>
-                    <div class="step-link" id="nav2" onclick="document.querySelectorAll('.case-phase').forEach(p=>p.classList.remove('active')); document.getElementById('phase2').classList.add('active');">
-                        <div class="step-num" style="color: var(--neon-gold);">02</div>
-                        <div class="step-txt">PROJEKT</div>
-                    </div>
-                    <div class="step-link" id="nav3" onclick="document.querySelectorAll('.case-phase').forEach(p=>p.classList.remove('active')); document.getElementById('phase3').classList.add('active');">
-                        <div class="step-num" style="color: var(--neon-gold);">03</div>
-                        <div class="step-txt">LOGISTIK</div>
-                    </div>
-                    <div class="step-link" id="nav4" onclick="document.querySelectorAll('.case-phase').forEach(p=>p.classList.remove('active')); document.getElementById('phase4').classList.add('active');">
-                        <div class="step-num" style="color: var(--neon-gold);">04</div>
-                        <div class="step-txt">ABSCHLUSS</div>
-                    </div>
-                </nav>
-            </aside>
-
-            <main class="case-main">
-                <button class="case-close" onclick="document.getElementById('missionOS').classList.remove('system-active'); document.body.style.overflow = '';">&times;</button>
-                
-                <form id="leziusCaseForm" action="https://formspree.io/f/YOUR_ID" method="POST">
-                    
-                    <div class="case-phase active" id="phase1">
-                        <h2 class="phase-title">Wer erteilt den Auftrag?</h2>
-                        <div class="input-row">
-                            <div class="tech-input full-width">
-                                <input type="text" name="name" required placeholder=" ">
-                                <label>VOLLSTÄNDIGER NAME</label>
-                            </div>
-                        </div>
-                        <div class="input-row">
-                            <div class="tech-input">
-                                <input type="tel" name="phone" required placeholder=" ">
-                                <label>TELEFONNUMMER</label>
-                            </div>
-                            <div class="tech-input">
-                                <input type="email" name="email" required placeholder=" ">
-                                <label>E-MAIL ADRESSE</label>
-                            </div>
-                        </div>
-                        <div class="nav-controls">
-                            <button type="button" class="btn reactive-btn" style="width: 100%; justify-content: space-between; background: var(--neon-gold); color:#000;" onclick="document.querySelectorAll('.case-phase').forEach(p=>p.classList.remove('active')); document.getElementById('phase2').classList.add('active');">WEITER ZU DEN DETAILS <i class="fas fa-arrow-right"></i></button>
-                        </div>
-                    </div>
-
-                    <div class="case-phase" id="phase2">
-                        <h2 class="phase-title">Outdoor Projekt Details</h2>
-                        <div class="tech-input full-width" style="margin-top: 20px;">
-                            <textarea name="manual_input" placeholder=" " required style="min-height: 150px; width: 100%; padding: 20px; border-radius: 8px; border: 1px solid #ccc;"></textarea>
-                            <label style="top: -20px; font-size: 0.8rem; color: #888;">Was bauen wir auf? (z.B. "Biohort HighLine H2" oder "Weka Gartenhaus")</label>
-                        </div>
-                        <div class="nav-controls">
-                            <button type="button" class="btn btn-holographic reactive-btn" style="color: #000; border-color: #ccc;" onclick="document.querySelectorAll('.case-phase').forEach(p=>p.classList.remove('active')); document.getElementById('phase1').classList.add('active');"><i class="fas fa-arrow-left"></i> ZURÜCK</button>
-                            <button type="button" class="btn reactive-btn" style="background: var(--neon-gold); color:#000;" onclick="document.querySelectorAll('.case-phase').forEach(p=>p.classList.remove('active')); document.getElementById('phase3').classList.add('active');">LOGISTIK-CHECK <i class="fas fa-arrow-right"></i></button>
-                        </div>
-                    </div>
-
-                    <div class="case-phase" id="phase3">
-                        <h2 class="phase-title">Untergrund & Einsatzort</h2>
-                        <div class="input-row">
-                            <div class="tech-input">
-                                <input type="text" name="zip" required placeholder=" ">
-                                <label>POSTLEITZAHL (PLZ)</label>
-                            </div>
-                            <div class="tech-input">
-                                <select name="floor" required>
-                                    <option value="" disabled selected></option>
-                                    <option value="WIESE">Erdboden / Wiese (Erdschrauben nötig)</option>
-                                    <option value="PFLASTER">Pflastersteine (Vorhanden)</option>
-                                    <option value="BETON">Betonfundament (Gegossen)</option>
-                                    <option value="TERRASSE">Dachterrasse / Penthouse</option>
-                                </select>
-                                <label>BESCHAFFENHEIT UNTERGRUND</label>
-                            </div>
-                        </div>
-                        <div class="nav-controls">
-                            <button type="button" class="btn btn-holographic reactive-btn" style="color: #000; border-color: #ccc;" onclick="document.querySelectorAll('.case-phase').forEach(p=>p.classList.remove('active')); document.getElementById('phase2').classList.add('active');"><i class="fas fa-arrow-left"></i> ZURÜCK</button>
-                            <button type="button" class="btn reactive-btn" style="background: var(--neon-gold); color:#000;" onclick="document.querySelectorAll('.case-phase').forEach(p=>p.classList.remove('active')); document.getElementById('phase4').classList.add('active');">TERMIN WÄHLEN <i class="fas fa-arrow-right"></i></button>
-                        </div>
-                    </div>
-
-                    <div class="case-phase" id="phase4">
-                        <h2 class="phase-title">Wunschtermin</h2>
-                        <div class="input-row">
-                            <div class="tech-input full-width">
-                                <input type="date" name="date" required>
-                                <label>WUNSCHTERMIN (WETTERABHÄNGIG)</label>
-                            </div>
-                        </div>
-                        <div class="gdpr-glass">
-                            <input type="checkbox" id="modal_gdpr" required>
-                            <label for="modal_gdpr">Ich stimme der Datenverarbeitung gemäß DSGVO zu.</label>
-                        </div>
-                        <div class="nav-controls">
-                            <button type="button" class="btn btn-holographic reactive-btn" style="color: #000; border-color: #ccc;" onclick="document.querySelectorAll('.case-phase').forEach(p=>p.classList.remove('active')); document.getElementById('phase3').classList.add('active');"><i class="fas fa-arrow-left"></i> ZURÜCK</button>
-                            <button type="submit" class="btn reactive-btn" style="background: var(--neon-gold); color:#000;"><i class="fas fa-paper-plane" style="margin-right: 10px;"></i> ANFRAGE SENDEN</button>
-                        </div>
-                    </div>
-
-                </form>
-            </main>
-        </div>
-    </div>
-
-    <script src="assets/js/main.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="assets/js/main.js"></script>
     
     <script>
-        // Bulletproof Script: Ensures the page works independently
         document.addEventListener("DOMContentLoaded", function() {
             
-            // 1. Remove Failsafe Class
-            setTimeout(function() { document.body.classList.remove('no-js-override'); }, 50);
-
-            // 2. Initialize AOS
-            if (typeof window.AOS !== 'undefined') {
-                try { AOS.init({ duration: 800, offset: 30, once: true }); } catch(e) {}
-            } else {
-                document.querySelectorAll('[data-aos]').forEach(el => {
-                    el.style.opacity = '1';
-                    el.style.transform = 'none';
-                    el.style.visibility = 'visible';
-                });
-            }
-
-            // 3. Fallback MissionOS
-            window.MissionOS = window.MissionOS || {
-                open: function() {
-                    const os = document.getElementById('missionOS');
-                    if(os) {
-                        os.classList.add('system-active');
-                        document.body.style.overflow = 'hidden';
-                    }
-                }
-            };
-            
-            // 4. Mobile Menu Toggle
-            const hamburger = document.getElementById('hamburgerBtn');
-            const mobileMenu = document.getElementById('mobileMenu');
-            if(hamburger && mobileMenu) {
-                const newHamburger = hamburger.cloneNode(true);
-                hamburger.parentNode.replaceChild(newHamburger, hamburger);
-                
-                newHamburger.addEventListener('click', function() {
-                    newHamburger.classList.toggle('active');
-                    const isActive = mobileMenu.classList.toggle('active');
-                    document.body.style.overflow = isActive ? 'hidden' : '';
-                });
-            }
-
-            // 5. Swipe Carousel Logic (Mobile)
+            // Swipe Carousel Logic (Mobile)
             const setupCarousel = (carouselId, indicatorsId) => {
                 const carousel = document.getElementById(carouselId);
                 const indicators = document.getElementById(indicatorsId);
@@ -803,12 +450,12 @@
                             dot.style.boxShadow = 'none';
                         }
                     });
-                });
+                }, { passive: true });
             };
 
             setupCarousel('outdoorReviewCarousel', 'outdoorReviewIndicators');
 
-            // 6. Custom FAQ Accordion
+            // Custom FAQ Accordion
             window.toggleModule = function(element) {
                 const body = element.querySelector('.module-body');
                 const icon = element.querySelector('.m-plus');
@@ -829,55 +476,55 @@
                     icon.style.color = 'var(--neon-gold)';
                     element.style.borderColor = 'var(--neon-gold)';
                 }
-            }
+            };
+
+            // Custom 4-Phase Workflow Logic (Outdoor Engineering)
+            const steps = {
+                1: { 
+                    title: "01. Scan & Bodenanalyse", 
+                    desc: "Bevor die erste Schraube gedreht wird, erfolgt eine digitale Vermessung des Untergrunds. Ich prüfe die Bodenbeschaffenheit (Erdreich, Beton, Pflaster) und bestimme den exakten Neigungswinkel. Nur so kann ein Biohort-Haus über Jahrzehnte hinweg verzugsfrei stehen.",
+                    icon: "fa-project-diagram"
+                },
+                2: { 
+                    title: "02. Foundation Core", 
+                    desc: "Ich setze auf modernste Fundamentlösungen. Ob Biohort SmartBase, Erdschrauben oder eine Unterkonstruktion aus Aluminium-Profilen: Ich schaffe eine Ebene, die sturmfest und frost-unempfindlich ist.",
+                    icon: "fa-layer-group"
+                },
+                3: { 
+                    title: "03. Architectural Build", 
+                    desc: "In dieser Phase entsteht die eigentliche Struktur. Ich verbaue Wandelemente, verstärke Ecken und integriere Türsysteme. Dabei achte ich penibel auf Spaltmaße, damit Schließsysteme und Fenster flüssig funktionieren.",
+                    icon: "fa-tools"
+                },
+                4: { 
+                    title: "04. Final Calibration", 
+                    desc: "Der Feinschliff: Dacheindeckung mit EPDM oder Bitumen, Montage von Regenrinnen und die finale Silikon-Abdichtung. Nach der Endreinigung erfolgt die Übergabe Ihres Projekts – bereit für die nächsten Jahrzehnte.",
+                    icon: "fa-vial"
+                }
+            };
+
+            window.updateStep = function(id) {
+                const content = document.getElementById('step-content');
+                
+                content.style.opacity = '0';
+                content.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    content.innerHTML = `
+                        <h3 class="gold-text" style="font-size: 1.8rem; margin-bottom: 15px; font-family: var(--font-head);">${steps[id].title}</h3>
+                        <p style="color: #aaa; line-height: 1.7; font-size: 1.05rem;">${steps[id].desc}</p>
+                        <div class="blueprint-visual" style="margin-top: 30px; display: flex; justify-content: center;">
+                            <i class="fas ${steps[id].icon} bp-icon-large gold-text" style="font-size: 4rem;"></i>
+                        </div>
+                    `;
+                    content.style.opacity = '1';
+                    content.style.transform = 'translateY(0)';
+                }, 300);
+
+                document.querySelectorAll('.os-step').forEach((el, index) => {
+                    el.classList.toggle('active', index === id - 1);
+                });
+            };
         });
-
-        // 7. Custom 4-Phase Workflow Logic (Outdoor Engineering)
-        const steps = {
-            1: { 
-                title: "01. Scan & Bodenanalyse", 
-                desc: "Bevor die erste Schraube gedreht wird, erfolgt eine digitale Vermessung des Untergrunds. Ich prüfe die Bodenbeschaffenheit (Erdreich, Beton, Pflaster) und bestimme den exakten Neigungswinkel. Nur so kann ein Biohort-Haus über Jahrzehnte hinweg verzugsfrei stehen.",
-                icon: "fa-project-diagram"
-            },
-            2: { 
-                title: "02. Foundation Core", 
-                desc: "Ich setze auf modernste Fundamentlösungen. Ob Biohort SmartBase, Erdschrauben oder eine Unterkonstruktion aus Aluminium-Profilen: Ich schaffe eine Ebene, die sturmfest und frost-unempfindlich ist.",
-                icon: "fa-layer-group"
-            },
-            3: { 
-                title: "03. Architectural Build", 
-                desc: "In dieser Phase entsteht die eigentliche Struktur. Ich verbaue Wandelemente, verstärke Ecken und integriere Türsysteme. Dabei achte ich penibel auf Spaltmaße, damit Schließsysteme und Fenster flüssig funktionieren.",
-                icon: "fa-tools"
-            },
-            4: { 
-                title: "04. Final Calibration", 
-                desc: "Der Feinschliff: Dacheindeckung mit EPDM oder Bitumen, Montage von Regenrinnen und die finale Silikon-Abdichtung. Nach der Endreinigung erfolgt die Übergabe Ihres Projekts – bereit für die nächsten Jahrzehnte.",
-                icon: "fa-vial"
-            }
-        };
-
-        function updateStep(id) {
-            const content = document.getElementById('step-content');
-            
-            content.style.opacity = '0';
-            content.style.transform = 'translateY(20px)';
-            
-            setTimeout(() => {
-                content.innerHTML = `
-                    <h3 class="gold-text" style="font-size: 1.8rem; margin-bottom: 15px; font-family: var(--font-head);">${steps[id].title}</h3>
-                    <p style="color: #aaa; line-height: 1.7; font-size: 1.05rem;">${steps[id].desc}</p>
-                    <div class="blueprint-visual" style="margin-top: 30px; display: flex; justify-content: center;">
-                        <i class="fas ${steps[id].icon} bp-icon-large gold-text" style="font-size: 4rem;"></i>
-                    </div>
-                `;
-                content.style.opacity = '1';
-                content.style.transform = 'translateY(0)';
-            }, 300);
-
-            document.querySelectorAll('.os-step').forEach((el, index) => {
-                el.classList.toggle('active', index === id - 1);
-            });
-        }
     </script>
 </body>
 </html>

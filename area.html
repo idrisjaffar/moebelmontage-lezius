@@ -3,556 +3,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Einsatzgebiet & Regionen | Augsburg bis München | Raphael Lezius</title>
+    <title>OPERATIONAL RADIUS | Einsatzgebiete | Raphael Lezius</title>
     
-    <meta name="description" content="Unsere Einsatzgebiete für Premium Montage: Headquarter in Augsburg, Einsatzradius 50km inklusive München, Dachau, Starnberg und Fürstenfeldbruck.">
+    <meta name="description" content="Präzisions-Montage in Augsburg, München und ganz Oberbayern. Entdecken Sie unsere aktiven Sektoren und Logistik-Zonen.">
     
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Space+Grotesk:wght@300;500;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body class="is-dark">
+<body class="is-dark no-js-override">
 
-    <header class="nav-wrapper" data-aos="fade-down" data-aos-duration="1000">
-        <nav class="cyber-navbar glass-panel">
-            <div class="nav-inner">
-                
-                <a href="index.html" class="brand-cluster" onmouseenter="if(window.vibrateDevice) window.vibrateDevice([15, 30]);">
-                    <div class="logo-flipper">
-                        <div class="logo-face front">
-                            <img src="assets/images/raphael-lezius-logo-front.webp" alt="Raphael Lezius" onerror="this.style.display='none';">
-                        </div>
-                        <div class="logo-face back">
-                            <img src="assets/images/raphael-lezius-logo-back.webp" alt="Premium Montage" onerror="this.style.display='none';">
-                        </div>
-                    </div>
-                    <div class="brand-typography">
-                        <span class="brand-first" data-text="RAPHAEL">RAPHAEL</span>
-                        <span class="brand-last">LEZIUS</span>
-                    </div>
-                </a>
-
-                <div class="desktop-menu">
-                    <a href="index.html" class="cyber-link">Start</a>
-                    
-                    <div class="dropdown-wrapper">
-                        <button class="cyber-link dropdown-btn">
-                            Expertise <i class="fas fa-chevron-down drop-icon" style="font-size: 0.7em; margin-left: 5px;"></i>
-                        </button>
-                        
-                        <div class="mega-menu-2077 glass-panel">
-                            <div class="mega-grid">
-                                <a href="residential.html" class="mega-node" onmouseenter="if(window.vibrateDevice) window.vibrateDevice(10);">
-                                    <div class="node-icon cyan-glow"><i class="fas fa-couch"></i></div>
-                                    <div class="node-content">
-                                        <h4 class="node-title">Interieur & Living</h4>
-                                        <p class="node-desc">PAX, Küchen & Premium-Möbel</p>
-                                    </div>
-                                </a>
-                                <a href="outdoor.html" class="mega-node" onmouseenter="if(window.vibrateDevice) window.vibrateDevice(10);">
-                                    <div class="node-icon gold-glow"><i class="fas fa-tree"></i></div>
-                                    <div class="node-content">
-                                        <h4 class="node-title">Outdoor Holzbau</h4>
-                                        <p class="node-desc">Gartenhäuser & Gerätehütten</p>
-                                    </div>
-                                </a>
-                                <a href="office.html" class="mega-node" onmouseenter="if(window.vibrateDevice) window.vibrateDevice(10);">
-                                    <div class="node-icon pink-glow"><i class="fas fa-building"></i></div>
-                                    <div class="node-content">
-                                        <h4 class="node-title">Gewerbe & Office</h4>
-                                        <p class="node-desc">USM Haller & Praxiseinrichtung</p>
-                                    </div>
-                                </a>
-                                <a href="tech.html" class="mega-node" onmouseenter="if(window.vibrateDevice) window.vibrateDevice(10);">
-                                    <div class="node-icon green-glow"><i class="fas fa-grip-lines-vertical"></i></div>
-                                    <div class="node-content">
-                                        <h4 class="node-title">Akustik & Spezial</h4>
-                                        <p class="node-desc">Demontage, Kunst & Home-Gym</p>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="mega-footer-bar">
-                                <span class="tech-font cyan-text blink">>> SYSTEM BEREIT ZUR AUSWAHL</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <a href="process-pricing.html" class="cyber-link">Konditionen</a>
-                    <a href="area.html" class="cyber-link active">Region</a>
-                    <a href="gallery.html" class="cyber-link">Referenzen</a>
-                    <a href="magazine.html" class="cyber-link">Magazin</a>
-                </div>
-
-                <div class="nav-actions">
-                    <div class="status-pill desktop-only" title="System Status: Live">
-                        <span class="status-dot-container">
-                            <span class="status-dot"></span>
-                            <span class="status-pulse"></span>
-                        </span>
-                        <span class="status-text">Routing Online</span>
-                    </div>
-                    
-                    <button onclick="if(window.vibrateDevice) window.vibrateDevice([30, 50, 30]); MissionOS.open();" class="btn btn-gold reactive-btn desktop-only">
-                        Projekt anfragen
-                    </button>
-                    
-                    <button class="cyber-hamburger" id="hamburgerBtn" aria-label="Menü öffnen" onclick="if(window.vibrateDevice) window.vibrateDevice(20);">
-                        <span class="bar top-bar"></span>
-                        <span class="bar mid-bar"></span>
-                        <span class="bar bot-bar"></span>
-                    </button>
-                </div>
-
-            </div>
-        </nav>
-    </header>
-
-    <div class="mobile-menu" id="mobileMenu">
-        <div class="mobile-menu-bg-glow"></div>
-        <nav class="mobile-nav-links">
-            <a href="index.html" class="mobile-cyber-link">Startseite</a>
-            
-            <div class="mobile-divider cyan-divider">// EXPERTISE</div>
-            <a href="residential.html" class="mobile-sub-link">Interieur & Küchen</a>
-            <a href="outdoor.html" class="mobile-sub-link">Outdoor & Gartenbau</a>
-            <a href="office.html" class="mobile-sub-link">Gewerbe & USM Haller</a>
-            <a href="tech.html" class="mobile-sub-link">Akustik, Spezial & Demontage</a>
-            
-            <div class="mobile-divider gold-divider">// PROTOKOLLE</div>
-            <a href="process-pricing.html" class="mobile-sub-link">Konditionen & Ablauf</a>
-            <a href="area.html" class="mobile-sub-link active-mobile-link" style="color: var(--neon-gold) !important; font-weight: 800 !important;">Einsatzregion (Aktiv)</a>
-            <a href="gallery.html" class="mobile-sub-link">Referenzen</a>
-            <a href="magazine.html" class="mobile-sub-link">Magazin</a>
-            
-            <button onclick="if(window.vibrateDevice) window.vibrateDevice([50, 50, 50]); MissionOS.open(); document.getElementById('mobileMenu').classList.remove('active'); document.getElementById('hamburgerBtn').classList.remove('active'); document.body.style.overflow = '';" class="btn btn-gold btn-block mobile-cta-btn">
-                <i class="fas fa-bolt"></i> Jetzt anfragen
-            </button>
-        </nav>
-    </div>
+    <div id="global-nav"></div>
 
     <main>
-        
-        <section class="tactical-hero" id="area-hero" style="border-bottom: 1px solid rgba(255, 215, 0, 0.3); position: relative; height: 90vh; min-height: 700px; display: flex; align-items: center; justify-content: center; overflow: hidden; background: #020202;">
-            
-            <div style="position: absolute; inset: 0; background-image: radial-gradient(rgba(255, 215, 0, 0.1) 1px, transparent 1px); background-size: 40px 40px; opacity: 0.3;"></div>
-            
-            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 800px; height: 800px; border: 1px dashed rgba(255, 215, 0, 0.1); border-radius: 50%; pointer-events: none;">
-                <div style="position: absolute; inset: 0; border-radius: 50%; border: 1px solid rgba(255, 215, 0, 0.05); transform: scale(0.6);"></div>
-                <div style="position: absolute; inset: 0; border-radius: 50%; border: 1px solid rgba(255, 215, 0, 0.02); transform: scale(0.3);"></div>
-                <div style="position: absolute; top: 50%; left: 50%; width: 100%; height: 100%; background: conic-gradient(from 0deg, transparent 70%, rgba(255, 215, 0, 0.1) 100%); transform-origin: 0 0; animation: radarSpin 6s linear infinite; border-radius: 50%; border-right: 2px solid rgba(255, 215, 0, 0.4);"></div>
-            </div>
-            <style>@keyframes radarSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }</style>
-
-            <div class="hero-vignette" style="background: radial-gradient(circle at center, transparent 20%, #020202 100%); position: absolute; inset: 0; z-index: 2;"></div>
-
-            <div class="container relative-z center" style="z-index: 5;">
-                <div class="section-tag-wrapper center-wrapper" data-aos="fade-down" data-aos-delay="100" style="justify-content: center;">
-                    <span class="section-tag gold-tag" style="border-color: var(--neon-gold); color: var(--neon-gold); background: rgba(255,215,0,0.05); box-shadow: 0 0 15px rgba(255,215,0,0.2);"><i class="fas fa-map-marked-alt blink"></i> OPERATIONAL RADIUS // 50 KM</span>
+        <section class="area-hero">
+            <div class="radar-background">
+                <div class="radar-scanner">
+                    <div class="radar-beam"></div>
+                    <div class="radar-ping hq" style="top: 50%; left: 50%;" title="HQ AUGSBURG"></div>
+                    <div class="radar-ping active-node" style="top: 65%; left: 78%;" title="SEKTOR MÜNCHEN"></div>
+                    <div class="radar-ping active-node" style="top: 40%; left: 30%;" title="SEKTOR DONAUWÖRTH"></div>
                 </div>
-                
-                <h1 class="glitch-header" data-aos="zoom-in" data-aos-delay="300" style="font-size: clamp(3rem, 7vw, 6rem); margin: 20px 0;">
-                    <span class="white">VON AUGSBURG</span><br>
-                    <span class="gold-text">BIS MÜNCHEN.</span>
-                </h1>
-                
-                <p class="hero-deep-copy center" style="border-left: none; margin: 0 auto 40px auto; max-width: 800px; font-size: clamp(1.1rem, 2vw, 1.25rem); color: #d1d5db; line-height: 1.8; padding: 0; text-align: center;" data-aos="fade-up" data-aos-delay="500">
-                    Unser Headquarter befindet sich im Herzen von Augsburg. Von hier aus operieren wir in einem präzisen <strong>50-Kilometer-Radius</strong>, der die gesamte Münchener Metropolregion, das Fünfseenland und das schwäbische Umland abdeckt. Absolute Pünktlichkeit garantiert.
+            </div>
+
+            <div class="container relative-z center">
+                <span class="cyber-badge" data-aos="fade-down">// GEOSPATIAL_HUB_v2.6</span>
+                <h1 class="gallery-title" style="font-size: clamp(3.5rem, 8vw, 7rem);" data-aos="zoom-in">Active Sektoren.</h1>
+                <p class="cyber-subtitle" style="max-width: 650px; margin: 20px auto;" data-aos="fade-up">
+                    Wir operieren in einer hochpräzisen Logistik-Matrix. Von unserem Headquarter in Augsburg erreichen wir jeden Einsatzort in Oberbayern und Schwaben innerhalb kürzester Zeit.
                 </p>
-
-                <div class="magnetic-btn-group center-wrapper" data-aos="fade-up" data-aos-delay="700" style="justify-content: center;">
-                    <a href="#zones" class="btn btn-gold reactive-btn fill" style="min-height: 60px;">
-                        <i class="fas fa-route"></i> ZU DEN ANFAHRTSZONEN
-                    </a>
-                </div>
             </div>
         </section>
 
-        <div class="data-stream-marquee" style="background: #040506; border-bottom: 1px solid rgba(255,255,255,0.05); padding: 12px 0; overflow: hidden; white-space: nowrap; position: relative; z-index: 15;">
-            <div class="plz-track" style="display: inline-block; font-family: var(--font-mono); color: #888; font-size: 0.8rem; font-weight: 700; letter-spacing: 2px; animation: streamPLZ 40s linear infinite;">
-                <span style="margin: 0 20px;">ROUTING // AUGSBURG CITY (HQ)</span>
-                <span style="margin: 0 20px;">ROUTING // MÜNCHEN ZENTRUM</span>
-                <span style="margin: 0 20px;">ROUTING // STARNBERG & SEEN</span>
-                <span style="margin: 0 20px;">ROUTING // DACHAU & FFB</span>
-                <span style="margin: 0 20px;">ROUTING // LANDSBERG AM LECH</span>
-                
-                <span style="margin: 0 20px;">ROUTING // AUGSBURG CITY (HQ)</span>
-                <span style="margin: 0 20px;">ROUTING // MÜNCHEN ZENTRUM</span>
-                <span style="margin: 0 20px;">ROUTING // STARNBERG & SEEN</span>
-                <span style="margin: 0 20px;">ROUTING // DACHAU & FFB</span>
-                <span style="margin: 0 20px;">ROUTING // LANDSBERG AM LECH</span>
-            </div>
-        </div>
-        <style>@keyframes streamPLZ { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }</style>
-
-        <section id="zones" class="section-padding bg-dark animated-grid-bg">
-            <div class="container relative-z">
-                <div class="section-header center" data-aos="fade-up">
-                    <div class="pre-title">TRANSPARENTE LOGISTIK</div>
-                    <h2 class="section-heading">Unsere <span class="gold-text">Anfahrtszonen</span></h2>
-                    <p class="section-subtitle" style="margin-left: auto; margin-right: auto;">Keine versteckten Kilometerpauschalen. Wir berechnen faire, fixe Zonen-Tarife basierend auf der Fahrtzeit von unserem Augsburger Headquarter.</p>
-                </div>
-
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px;">
+        <section class="container">
+            <div class="checker-station" data-aos="flip-up">
+                <div class="checker-card glass-panel">
+                    <div class="checker-header">
+                        <span class="text-tech" style="color: var(--neon-gold);">PROXIMITY_ANALYSIS</span>
+                        <h2 style="font-family: var(--font-head); margin-top: 10px;">Verfügbarkeit prüfen</h2>
+                    </div>
                     
-                    <div class="glass-panel" data-aos="fade-up" data-aos-delay="100" style="padding: 40px; border-top: 3px solid var(--neon-cyan); background: rgba(10, 10, 10, 0.85); display: flex; flex-direction: column;">
-                        <div style="font-family: var(--font-mono); font-size: 4rem; color: rgba(0, 229, 255, 0.1); font-weight: 900; line-height: 1; margin-bottom: -20px; text-align: right;">Z1</div>
-                        <h3 style="color: #fff; font-family: var(--font-head); font-size: 1.6rem; margin-bottom: 10px;">Home Base <span style="font-size: 1rem; color: var(--neon-cyan);">(0 - 15 km)</span></h3>
-                        <p style="color: #aaa; margin-bottom: 25px; line-height: 1.6; flex-grow: 1;">Unser direkter Einzugsbereich. Kürzeste Reaktionszeiten und minimaler Logistik-Aufwand für Ihr Projekt.</p>
-                        <div style="background: rgba(0, 229, 255, 0.05); border-left: 2px solid var(--neon-cyan); padding: 15px; border-radius: 4px;">
-                            <strong style="color: #fff; display: block; margin-bottom: 5px;">Kerngebiete:</strong>
-                            <span style="color: #ccc; font-size: 0.9rem;">Augsburg Stadt, Friedberg, Neusäß, Gersthofen, Königsbrunn, Stadtbergen.</span>
-                        </div>
+                    <div class="checker-input-wrap">
+                        <input type="text" id="zipInput" class="checker-field" placeholder="PLZ EINGEBEN" maxlength="5">
+                        <div class="input-glow"></div>
                     </div>
 
-                    <div class="glass-panel" data-aos="fade-up" data-aos-delay="200" style="padding: 40px; border-top: 3px solid var(--neon-gold); background: rgba(10, 10, 10, 0.85); transform: scale(1.05); z-index: 10; box-shadow: 0 30px 60px rgba(0,0,0,0.8), inset 0 0 20px rgba(255,215,0,0.05); display: flex; flex-direction: column;">
-                        <div style="font-family: var(--font-mono); font-size: 4rem; color: rgba(255, 215, 0, 0.1); font-weight: 900; line-height: 1; margin-bottom: -20px; text-align: right;">Z2</div>
-                        <h3 style="color: #fff; font-family: var(--font-head); font-size: 1.6rem; margin-bottom: 10px;">Extended Range <span style="font-size: 1rem; color: var(--neon-gold);">(15 - 35 km)</span></h3>
-                        <p style="color: #aaa; margin-bottom: 25px; line-height: 1.6; flex-grow: 1;">Die Brücke zwischen Augsburg und München. Moderate, faire Anfahrtspauschale für das erweiterte Umland.</p>
-                        <div style="background: rgba(255, 215, 0, 0.05); border-left: 2px solid var(--neon-gold); padding: 15px; border-radius: 4px;">
-                            <strong style="color: #fff; display: block; margin-bottom: 5px;">Kerngebiete:</strong>
-                            <span style="color: #ccc; font-size: 0.9rem;">Dachau, Fürstenfeldbruck (FFB), Landsberg am Lech, Aichach, Schwabmünchen, Mering.</span>
-                        </div>
-                    </div>
-
-                    <div class="glass-panel" data-aos="fade-up" data-aos-delay="300" style="padding: 40px; border-top: 3px solid var(--neon-pink); background: rgba(10, 10, 10, 0.85); display: flex; flex-direction: column;">
-                        <div style="font-family: var(--font-mono); font-size: 4rem; color: rgba(255, 0, 127, 0.1); font-weight: 900; line-height: 1; margin-bottom: -20px; text-align: right;">Z3</div>
-                        <h3 style="color: #fff; font-family: var(--font-head); font-size: 1.6rem; margin-bottom: 10px;">Metropolitan <span style="font-size: 1rem; color: var(--neon-pink);">(35 - 50+ km)</span></h3>
-                        <p style="color: #aaa; margin-bottom: 25px; line-height: 1.6; flex-grow: 1;">Großstadt-Einsätze erfordern mehr Zeit im Verkehr und komplexe Park-Logistik. Kalkulierbare München-Pauschale.</p>
-                        <div style="background: rgba(255, 0, 127, 0.05); border-left: 2px solid var(--neon-pink); padding: 15px; border-radius: 4px;">
-                            <strong style="color: #fff; display: block; margin-bottom: 5px;">Kerngebiete:</strong>
-                            <span style="color: #ccc; font-size: 0.9rem;">München (alle Stadtteile), Starnberg, Herrsching am Ammersee, Germering, Freising.</span>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <section id="logistics" class="section-padding bg-darker hex-core-bg" style="border-top: 1px solid rgba(255,255,255,0.05);">
-            <div class="container">
-                <div class="split-layout">
-                    <div class="image-col" data-aos="fade-right">
-                        <div class="glass-panel" style="padding: 40px; background: linear-gradient(135deg, #111, #050505); border: 2px dashed rgba(0,229,255,0.4); border-radius: 16px; position: relative; box-shadow: inset 0 0 40px rgba(0,229,255,0.05);">
-                            <span style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: #111; color: var(--neon-cyan); padding: 5px 20px; font-family: var(--font-mono); border: 1px solid var(--neon-cyan); border-radius: 20px; font-size: 0.8rem; font-weight: bold; letter-spacing: 2px;">[ MOBILE WERKSTATT ]</span>
-                            
-                            <h3 class="center" style="color: #fff; font-size: 1.8rem; margin-top: 10px; margin-bottom: 10px; font-family: var(--font-head);">Wir bringen <span class="cyan-text">alles mit.</span></h3>
-                            <p class="center" style="color: #888; font-size: 0.95rem; margin-bottom: 30px;">Sie müssen sich weder um Werkzeug noch um fehlendes Kleinmaterial kümmern.</p>
-
-                            <ul style="list-style: none; padding: 0;">
-                                <li style="margin-bottom: 20px; display: flex; gap: 15px; align-items: flex-start;">
-                                    <i class="fas fa-toolbox cyan-text" style="font-size: 1.5rem; margin-top: 3px;"></i>
-                                    <div>
-                                        <strong style="color: #fff; display: block;">Bosch Professional Setup</strong>
-                                        <span style="color: #aaa; font-size: 0.9rem;">High-End Akkuschrauber, Bohrhammer und Laser-Nivellierung immer an Bord.</span>
-                                    </div>
-                                </li>
-                                <li style="margin-bottom: 20px; display: flex; gap: 15px; align-items: flex-start;">
-                                    <i class="fas fa-screwdriver cyan-text" style="font-size: 1.5rem; margin-top: 3px;"></i>
-                                    <div>
-                                        <strong style="color: #fff; display: block;">Hardware-Backup</strong>
-                                        <span style="color: #aaa; font-size: 0.9rem;">Ein Sortiment an fischer DUOPOWER Dübeln, Spax-Schrauben und Winkeln für Notfälle.</span>
-                                    </div>
-                                </li>
-                                <li style="display: flex; gap: 15px; align-items: flex-start;">
-                                    <i class="fas fa-wind cyan-text" style="font-size: 1.5rem; margin-top: 3px;"></i>
-                                    <div>
-                                        <strong style="color: #fff; display: block;">HEPA-Absaugung</strong>
-                                        <span style="color: #aaa; font-size: 0.9rem;">Industrie-Staubsauger für absolute Reinheit bei Bohr- und Sägearbeiten.</span>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="text-col" data-aos="fade-left">
-                        <div class="section-tag-wrapper">
-                            <span class="section-tag" style="border-color: var(--neon-cyan); color: var(--neon-cyan); background: rgba(0, 229, 255, 0.05);">URBAN LOGISTICS</span>
-                        </div>
-                        <h2 class="section-heading">Das Münchener <span class="cyan-text">Park-Problem.</span></h2>
-                        
-                        <p style="color: #aaa; font-size: 1.1rem; line-height: 1.8; margin-bottom: 20px;">
-                            Wer in Schwabing, Haidhausen oder dem Glockenbachviertel wohnt, kennt es: Handwerker stornieren Aufträge, weil sie keinen Parkplatz für ihren Transporter finden.
-                        </p>
-                        <p style="color: #aaa; font-size: 1.1rem; line-height: 1.8; margin-bottom: 30px;">
-                            <strong>Wir sind darauf vorbereitet.</strong> Unsere Logistik ist so getaktet, dass wir auch in engen Großstadt-Zentren handlungsfähig bleiben. Wir planen Park- und Entladezonen proaktiv ein. Bitte teilen Sie uns bei der Anfrage in Zone 3 lediglich mit, ob ein Hinterhof, eine Einfahrt oder ein Bewohnerparkausweis verfügbar ist. Den Rest erledigen wir.
-                        </p>
-                        
-                        <div style="background: rgba(0,0,0,0.5); padding: 20px; border-left: 3px solid var(--neon-cyan); border-radius: 4px;">
-                            <strong style="color: #fff; font-family: var(--font-head); font-size: 1.1rem;">Kein Halteverbot? Kein Problem.</strong>
-                            <p style="color: #888; font-size: 0.9rem; margin-top: 10px; line-height: 1.5;">Gegen einen organisatorischen Aufpreis beantragen wir für Sie eine offizielle Halteverbotszone beim Kreisverwaltungsreferat (KVR) München für den Tag der Großmontage.</p>
-                        </div>
+                    <div id="status-display" class="text-tech">
+                        <i class="fas fa-satellite"></i> SYSTEM_IDLE: BEREIT ZUM SCAN
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="section-padding" style="background: linear-gradient(135deg, #050505, #111); text-align: center; border-top: 1px solid var(--neon-gold);">
-            <div class="container" data-aos="fade-up">
-                <h2 style="font-family: var(--font-head); font-size: clamp(2.5rem, 5vw, 3.5rem); font-weight: 800; color: #fff; margin-bottom: 15px; letter-spacing: -1px;">IST IHR ORT DABEI?</h2>
-                <p style="font-size: 1.15rem; color: #aaa; margin-bottom: 35px; max-width: 600px; margin-left: auto; margin-right: auto;">Egal ob im Zentrum Münchens oder am Starnberger See. Wir garantieren höchste Qualität an Ihrem Standort.</p>
-                <button onclick="if(window.vibrateDevice) window.vibrateDevice([50, 100, 50]); MissionOS.open()" class="btn reactive-btn" style="background: var(--neon-gold); color: #000; font-size: 1.1rem; font-weight: bold; padding: 20px 50px; box-shadow: 0 0 30px rgba(255,215,0,0.3); border: none; font-family: var(--font-head); text-transform: uppercase; letter-spacing: 1px;">
-                    <i class="fas fa-map-marker-alt"></i> STANDORT & PROJEKT ANFRAGEN
-                </button>
+        <section class="container">
+            <div class="sector-grid">
+                
+                <div class="sector-box glass-panel" data-aos="fade-up">
+                    <span class="sector-id">ZONE_01 // CORE_BASE</span>
+                    <h3 class="sector-title">Augsburg City</h3>
+                    <p class="sector-desc">Tägliche Verfügbarkeit. Unsere "Home-Zone" mit priorisierten Terminfenstern und ohne zusätzliche Logistik-Zuschläge.</p>
+                    <div class="city-cloud">
+                        <span class="city-tag">Stadtbergen</span> <span class="city-tag">Neusäß</span> <span class="city-tag">Gersthofen</span>
+                        <span class="city-tag">Friedberg</span> <span class="city-tag">Königsbrunn</span> <span class="city-tag">Haunstetten</span>
+                    </div>
+                </div>
+
+                <div class="sector-box glass-panel" data-aos="fade-up" data-aos-delay="100" style="border-top: 2px solid var(--neon-cyan);">
+                    <span class="sector-id" style="color: var(--neon-cyan);">ZONE_02 // METRO_PULSE</span>
+                    <h3 class="sector-title">München & Umland</h3>
+                    <p class="sector-desc">Wöchentliche Einsatz-Routen. Wir bedienen das gesamte Stadtgebiet München sowie die direkt angrenzenden Landkreise.</p>
+                    <div class="city-cloud">
+                        <span class="city-tag">Schwabing</span> <span class="city-tag">Bogenhausen</span> <span class="city-tag">Dachau</span>
+                        <span class="city-tag">FFB</span> <span class="city-tag">Germering</span> <span class="city-tag">Maxvorstadt</span>
+                    </div>
+                </div>
+
+                <div class="sector-box glass-panel" data-aos="fade-up" data-aos-delay="200" style="border-top: 2px solid var(--neon-pink);">
+                    <span class="sector-id" style="color: var(--neon-pink);">ZONE_03 // SOUTH_LAKE</span>
+                    <h3 class="sector-title">5-Seen-Land</h3>
+                    <p class="sector-desc">Exklusiver Service für die Seeregionen. Spezialisierte Logistik für Outdoor-Projekte und High-End Villenausbau.</p>
+                    <div class="city-cloud">
+                        <span class="city-tag">Starnberg</span> <span class="city-tag">Herrsching</span> <span class="city-tag">Landsberg</span>
+                        <span class="city-tag">Ammersee</span> <span class="city-tag">Wörthsee</span> <span class="city-tag">Tutzing</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="logistics-banner glass-panel" data-aos="zoom-in">
+                <div class="banner-content">
+                    <span class="text-tech" style="color: var(--neon-cyan);">[ MUC_PARKING_PROTOCOL ]</span>
+                    <h2 class="text-ed" style="font-size: 2.5rem; margin: 20px 0;">Kein Parkplatz? <br><span class="cyan-text">Kein Problem.</span></h2>
+                    <p style="color: #888; line-height: 1.7;">Münchener City-Lagen erfordern Planung. Wir besitzen Ausnahmegenehmigungen und planen Parkzonen proaktiv ein. Bei Bedarf organisieren wir offizielle Halteverbotszonen beim KVR für den Tag der Montage.</p>
+                </div>
+                <div class="banner-visual">
+                    <div class="tech-icon-circle"><i class="fas fa-truck-pickup"></i></div>
+                </div>
             </div>
         </section>
 
+        <section class="section-padding center">
+            <div class="container" data-aos="zoom-in">
+                <h2 class="text-ed" style="font-size: 3.5rem;">Sektor nicht <span class="gold-text">gelistet?</span></h2>
+                <p style="color: #666; margin: 20px 0 40px;">Für Großprojekte und gewerbliche Rollouts operieren wir nach Absprache bayernweit.</p>
+                <button onclick="MissionOS.open()" class="btn btn-gold reactive-btn btn-magnetic" style="padding: 20px 60px;">STANDORT ANFRAGEN</button>
+            </div>
+        </section>
     </main>
 
-    <footer class="mega-footer circuit-bg">
-        <div class="container relative-z">
+    <div id="global-footer"></div>
 
-            <div class="footer-grid">
-                
-                <div class="f-col brand-col">
-                    <div class="brand-text" style="font-size:2rem; letter-spacing: -1px; font-family: var(--font-head); font-weight: 800; color: #fff;">
-                        RAPHAEL <span class="gold-text">LEZIUS</span>
-                    </div>
-                    <p style="color:#888; font-size:0.95rem; margin-top:15px; font-weight: 300; line-height: 1.6;">
-                        Präzision. Qualität. Zuverlässigkeit.<br>Ihr zertifizierter Montage-Experte für Premium-Einrichtungen in Bayern.
-                    </p>
-                    
-                    <div style="display:flex; gap:20px; margin-top:25px; font-size:0.8rem; color:#bbb; font-weight: 700; font-family: var(--font-mono); letter-spacing: 1px;">
-                        <span><i class="fas fa-shield-alt gold-text"></i> VERSICHERT</span>
-                        <span><i class="fas fa-check-circle green-text"></i> GEPRÜFT</span>
-                    </div>
+    <div id="global-os"></div>
 
-                    <div class="social-row" style="margin-top: 35px;">
-                        <a href="https://wa.me/491608194018" target="_blank" class="social-btn reactive-btn" onclick="if(window.vibrateDevice) window.vibrateDevice(10);"><i class="fab fa-whatsapp"></i></a>
-                        <a href="#" target="_blank" class="social-btn reactive-btn" onclick="if(window.vibrateDevice) window.vibrateDevice(10);"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-
-                <div class="f-col">
-                    <h4 class="f-heading">Leistungen</h4>
-                    <ul class="footer-links">
-                        <li><a href="residential.html">IKEA PAX Systemaufbau</a></li>
-                        <li><a href="residential.html">Küchenmontage & Schnitt</a></li>
-                        <li><a href="outdoor.html">Gartenhäuser & Outdoor</a></li>
-                        <li><a href="office.html">USM Haller & Gewerbe</a></li>
-                        <li><a href="tech.html">Akustikpaneele & Spezial</a></li>
-                    </ul>
-                </div>
-
-                <div class="f-col">
-                    <h4 class="f-heading">Informationen</h4>
-                    <ul class="footer-links">
-                        <li><a href="process-pricing.html">Konditionen & Ablauf</a></li>
-                        <li><a href="area.html" class="gold-text">Einsatzgebiet</a></li>
-                        <li><a href="gallery.html">Referenzen Galerie</a></li>
-                        <li><a href="magazine.html">Magazin & Blog</a></li>
-                        <li><a href="process-pricing.html#faq-smart">Häufige Fragen (FAQ)</a></li>
-                    </ul>
-                </div>
-
-                <div class="f-col">
-                    <h4 class="f-heading">Rechtliches</h4>
-                    <ul class="footer-links">
-                        <li><a href="impressum.html">Impressum</a></li>
-                        <li><a href="datenschutz.html">Datenschutz</a></li>
-                        <li><a href="agb.html">AGB & Widerruf</a></li>
-                        <li><a href="#" onclick="event.preventDefault();">Cookie-Einstellungen</a></li>
-                    </ul>
-                </div>
-
-                <div class="f-col contact-col">
-                    <h4 class="f-heading">Kontakt</h4>
-                    <ul class="contact-list">
-                        <li>
-                            <i class="fas fa-map-marker-alt gold-icon"></i>
-                            <span class="contact-text">Am Rößlebad 9<br>86152 Augsburg</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-phone gold-icon"></i>
-                            <a href="tel:+491608194018" class="contact-link">0160 819 4018</a>
-                        </li>
-                        <li>
-                            <i class="far fa-envelope gold-icon"></i>
-                            <a href="mailto:r.lezius@gmail.com" class="contact-link">r.lezius@gmail.com</a>
-                        </li>
-                    </ul>
-                    
-                    <div class="op-status" style="margin-top: 25px; padding: 15px; background: rgba(0,0,0,0.4); border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); display: inline-block;">
-                        <div style="display: flex; align-items: center; gap: 10px;">
-                            <div class="status-dot-container">
-                                <div class="status-dot"></div>
-                                <div class="status-pulse"></div>
-                            </div>
-                            <span style="font-family: var(--font-mono); font-size: 0.75rem; color: #888; text-transform: uppercase; letter-spacing: 1px;">System Status: <strong class="green-text">LIVE</strong></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="footer-bottom-bar" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
-                <div class="copyright" style="color: #666; font-size: 0.85rem; font-family: var(--font-mono);">
-                    &copy; <span id="copyright-year">2026</span> RAPHAEL LEZIUS. <span class="hide-mobile">ALLE RECHTE VORBEHALTEN.</span>
-                </div>
-                
-                <div class="footer-payments" style="display: flex; gap: 20px; font-size: 1.8rem; color: #444;">
-                    <i class="fab fa-apple" title="Apple Pay" style="transition: 0.3s; cursor: pointer;" onmouseover="this.style.color='#FFD700'" onmouseout="this.style.color='#444'"></i>
-                    <i class="fab fa-google" title="Google Pay" style="transition: 0.3s; cursor: pointer;" onmouseover="this.style.color='#FFD700'" onmouseout="this.style.color='#444'"></i>
-                    <i class="fab fa-cc-paypal" title="PayPal" style="transition: 0.3s; cursor: pointer;" onmouseover="this.style.color='#FFD700'" onmouseout="this.style.color='#444'"></i>
-                    <i class="fab fa-cc-visa" title="Visa" style="transition: 0.3s; cursor: pointer;" onmouseover="this.style.color='#FFD700'" onmouseout="this.style.color='#444'"></i>
-                    <i class="fab fa-cc-mastercard" title="Mastercard" style="transition: 0.3s; cursor: pointer;" onmouseover="this.style.color='#FFD700'" onmouseout="this.style.color='#444'"></i>
-                    <i class="fas fa-credit-card" title="Klarna / Girocard" style="transition: 0.3s; cursor: pointer;" onmouseover="this.style.color='#FFD700'" onmouseout="this.style.color='#444'"></i>
-                </div>
-                
-                <div class="developer-credit" onclick="if(window.vibrateDevice) window.vibrateDevice(20);">
-                    <span class="code-bracket">&lt;/&gt;</span>
-                    <span class="dev-text" style="color: #666;">SYS_DEV <span class="dev-name" style="color: var(--neon-gold);">IDRIS</span></span>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <a href="https://wa.me/491608194018" target="_blank" class="whatsapp-float reactive-btn" aria-label="WhatsApp Contact" onclick="if(window.vibrateDevice) window.vibrateDevice([30, 50, 30]);">
+    <a href="https://wa.me/491608194018" target="_blank" class="whatsapp-float reactive-btn">
         <div class="whatsapp-pulse"></div>
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <div id="missionOS" class="os-overlay">
-        <div class="os-backdrop" onclick="MissionOS.close()"></div>
-        
-        <div class="case-container">
-            <aside class="case-sidebar">
-                <div class="sidebar-header">
-                    <div class="os-pulse"></div>
-                    <span class="os-ver">SERVICE_PORTAL_v2.6</span>
-                </div>
-                
-                <nav class="case-steps">
-                    <div class="step-link active" id="nav1" onclick="if(window.vibrateDevice) window.vibrateDevice(10); MissionOS.setPhase(1)">
-                        <div class="step-num">01</div>
-                        <div class="step-txt">BASISDATEN <small>Wer sind Sie?</small></div>
-                    </div>
-                    <div class="step-link" id="nav2" onclick="if(window.vibrateDevice) window.vibrateDevice(10); MissionOS.setPhase(2)">
-                        <div class="step-num">02</div>
-                        <div class="step-txt">PROJEKT <small>Was soll gebaut werden?</small></div>
-                    </div>
-                    <div class="step-link" id="nav3" onclick="if(window.vibrateDevice) window.vibrateDevice(10); MissionOS.setPhase(3)">
-                        <div class="step-num">03</div>
-                        <div class="step-txt">LOGISTIK <small>Einsatzort & Etage</small></div>
-                    </div>
-                    <div class="step-link" id="nav4" onclick="if(window.vibrateDevice) window.vibrateDevice(10); MissionOS.setPhase(4)">
-                        <div class="step-num">04</div>
-                        <div class="step-txt">ABSCHLUSS <small>Anfrage senden</small></div>
-                    </div>
-                </nav>
-
-                <div class="live-stats">
-                    <div class="stat-box">
-                        <label style="font-size: 0.7rem; color: #888; font-weight: bold; letter-spacing: 2px; font-family: var(--font-mono);">GEWÄHLTE POSITIONEN</label>
-                        <div id="serviceCount" style="font-family: var(--font-head); font-size: 2.5rem; font-weight: 800; color: #000; line-height: 1;">00</div>
-                    </div>
-                    <div class="stat-box" style="margin-top: 30px;">
-                        <label style="font-size: 0.7rem; color: #888; font-weight: bold; letter-spacing: 2px; font-family: var(--font-mono);">SICHERHEIT</label>
-                        <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--neon-green); font-weight: bold; margin-top: 8px;">SSL_ENCRYPTED</div>
-                    </div>
-                </div>
-            </aside>
-
-            <main class="case-main">
-                <button class="case-close" aria-label="Schließen" onclick="if(window.vibrateDevice) window.vibrateDevice(20); MissionOS.close()">&times;</button>
-                
-                <form id="leziusCaseForm" action="https://formspree.io/f/YOUR_ID" method="POST">
-                    
-                    <div class="case-phase active" id="phase1">
-                        <h2 class="phase-title">Wer erteilt den Auftrag?</h2>
-                        <p class="phase-hint">Geben Sie Ihre Kontaktdaten für das unverbindliche Angebot an.</p>
-                        <div class="input-row">
-                            <div class="tech-input full-width">
-                                <input type="text" name="name" required placeholder=" ">
-                                <label>VOLLSTÄNDIGER NAME</label>
-                            </div>
-                        </div>
-                        <div class="input-row">
-                            <div class="tech-input">
-                                <input type="email" name="email" required placeholder=" ">
-                                <label>E-MAIL ADRESSE</label>
-                            </div>
-                            <div class="tech-input">
-                                <input type="tel" name="phone" required placeholder=" ">
-                                <label>TELEFONNUMMER</label>
-                            </div>
-                        </div>
-                        <div class="nav-controls">
-                            <button type="button" class="btn btn-gold reactive-btn" style="width: 100%; justify-content: space-between;" onclick="if(window.vibrateDevice) window.vibrateDevice(30); MissionOS.setPhase(2)">WEITER ZUR AUSWAHL <i class="fas fa-arrow-right"></i></button>
-                        </div>
-                    </div>
-
-                    <div class="case-phase" id="phase2">
-                        <h2 class="phase-title">Was soll aufgebaut werden?</h2>
-                        <p class="phase-hint">Suchen Sie nach Möbeln oder Gartenhäusern (z.B. PAX, Biohort, Küche).</p>
-                        <div class="search-terminal">
-                            <div class="search-bar-wrap">
-                                <i class="fas fa-search search-icon"></i>
-                                <input type="text" id="serviceSearch" placeholder="Hier suchen..." onkeyup="MissionOS.filterServices()">
-                            </div>
-                            <div id="searchResults" class="search-dropdown-tech"></div>
-                        </div>
-                        <div class="selected-tags-container" id="selectedTags"></div>
-                        <div class="tech-input full-width" style="margin-top: 20px;">
-                            <textarea name="manual_input" placeholder=" "></textarea>
-                            <label>ZUSÄTZLICHE DETAILS ODER WÜNSCHE (OPTIONAL)</label>
-                        </div>
-                        <div class="nav-controls">
-                            <button type="button" class="btn btn-holographic reactive-btn" style="color: #000; border-color: #ccc;" onclick="if(window.vibrateDevice) window.vibrateDevice(20); MissionOS.setPhase(1)"><i class="fas fa-arrow-left"></i> ZURÜCK</button>
-                            <button type="button" class="btn btn-gold reactive-btn" onclick="if(window.vibrateDevice) window.vibrateDevice(30); MissionOS.setPhase(3)">LOGISTIK-CHECK <i class="fas fa-arrow-right"></i></button>
-                        </div>
-                    </div>
-
-                    <div class="case-phase" id="phase3">
-                        <h2 class="phase-title">Details zum Einsatzort</h2>
-                        <p class="phase-hint">Diese Daten helfen mir, die Anfahrtszeit und den Transportweg zu kalkulieren.</p>
-                        <div class="input-row">
-                            <div class="tech-input">
-                                <input type="text" name="zip" required placeholder=" ">
-                                <label>POSTLEITZAHL (PLZ)</label>
-                            </div>
-                            <div class="tech-input">
-                                <select name="floor" required>
-                                    <option value="" disabled selected></option>
-                                    <option value="EG">Erdgeschoss / Garten</option>
-                                    <option value="OG_LIFT">Obergeschoss (mit Aufzug)</option>
-                                    <option value="OG_TREPPE">Obergeschoss (ohne Aufzug)</option>
-                                    <option value="HAUS">Einfamilienhaus</option>
-                                </select>
-                                <label>STOCKWERK / AUFZUG</label>
-                            </div>
-                        </div>
-                        <div class="nav-controls">
-                            <button type="button" class="btn btn-holographic reactive-btn" style="color: #000; border-color: #ccc;" onclick="if(window.vibrateDevice) window.vibrateDevice(20); MissionOS.setPhase(2)"><i class="fas fa-arrow-left"></i> ZURÜCK</button>
-                            <button type="button" class="btn btn-gold reactive-btn" onclick="if(window.vibrateDevice) window.vibrateDevice(30); MissionOS.setPhase(4)">TERMIN WÄHLEN <i class="fas fa-arrow-right"></i></button>
-                        </div>
-                    </div>
-
-                    <div class="case-phase" id="phase4">
-                        <h2 class="phase-title">Wunschtermin & Abschluss</h2>
-                        <p class="phase-hint">Wann soll die Montage ungefähr stattfinden?</p>
-                        <div class="input-row">
-                            <div class="tech-input full-width">
-                                <input type="date" name="date" required>
-                                <label>WUNSCHTERMIN (FLEXIBEL)</label>
-                            </div>
-                        </div>
-                        <div class="gdpr-glass">
-                            <input type="checkbox" id="modal_gdpr" required>
-                            <label for="modal_gdpr">Ich stimme der Datenverarbeitung gemäß DSGVO zu. Meine Daten werden nur zur Angebotserstellung verwendet.</label>
-                        </div>
-                        <div class="nav-controls">
-                            <button type="button" class="btn btn-holographic reactive-btn" style="color: #000; border-color: #ccc;" onclick="if(window.vibrateDevice) window.vibrateDevice(20); MissionOS.setPhase(3)"><i class="fas fa-arrow-left"></i> ZURÜCK</button>
-                            <button type="submit" class="btn btn-gold reactive-btn" onclick="if(window.vibrateDevice) window.vibrateDevice([50, 100, 50]);"><i class="fas fa-paper-plane" style="margin-right: 10px;"></i> ANGEBOT ANFORDERN</button>
-                        </div>
-                    </div>
-                </form>
-            </main>
-        </div>
-    </div>
-
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="assets/js/main.js"></script>
-    <script>
-        if (typeof AOS !== 'undefined') { AOS.init({ duration: 800, offset: 30, once: true }); }
-    </script>
+    
 </body>
 </html>
+
