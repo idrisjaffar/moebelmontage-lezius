@@ -1624,6 +1624,155 @@ h1.glitch-header {
 .green-text { color: var(--neon-green); }
 
 /* ==========================================================================
+   PHILOSOPHIE SEKTION (MOBILE OPTIMIZED)
+   ========================================================================== */
+
+.philo-section {
+    background-color: #030406; /* Tiefes Schwarz/Carbon */
+    padding: clamp(60px, 10vw, 120px) 0;
+    position: relative;
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+/* Mobile First Grid */
+.philo-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Stapelt auf dem Handy alles untereinander */
+    gap: 50px;
+}
+
+.philo-content {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* 2026 Zitat-Design */
+.philo-quote {
+    background: rgba(255, 255, 255, 0.02);
+    border-left: 3px solid var(--neon-gold);
+    padding: clamp(20px, 5vw, 30px);
+    border-radius: 0 12px 12px 0;
+    position: relative;
+    margin: 0;
+}
+
+.quote-icon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 3rem;
+    color: rgba(212, 175, 55, 0.05);
+}
+
+.philo-quote p {
+    color: #fff;
+    font-family: var(--font-head);
+    font-size: clamp(1.1rem, 4vw, 1.4rem);
+    line-height: 1.6;
+    font-weight: 500;
+    margin-bottom: 15px;
+    position: relative;
+    z-index: 2;
+}
+
+.quote-author {
+    color: var(--neon-gold);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.philo-desc {
+    color: #aaa;
+    font-size: 1rem;
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* Mobile CTA Box */
+.philo-cta-box {
+    background: linear-gradient(135deg, rgba(255,255,255,0.05), transparent);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.cta-text h4 { color: #fff; font-family: var(--font-head); font-size: 1.1rem; margin: 0 0 5px 0; }
+.cta-text p { color: #888; font-size: 0.85rem; margin: 0; line-height: 1.4; }
+
+/* Die 3 Karten (Pillars) auf der rechten Seite */
+.philo-pillars {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.pillar-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    background: rgba(255,255,255,0.02);
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.05);
+    transition: transform 0.3s var(--nav-easing);
+}
+
+.pillar-card:hover { transform: translateY(-5px); background: rgba(255,255,255,0.04); }
+
+.pillar-icon {
+    width: clamp(45px, 10vw, 55px);
+    height: clamp(45px, 10vw, 55px);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    flex-shrink: 0;
+}
+
+/* Farbzuweisungen für Icons & Text */
+.border-cyan .pillar-icon { color: var(--neon-cyan); background: rgba(0, 229, 255, 0.1); border: 1px solid rgba(0, 229, 255, 0.2); }
+.border-pink .pillar-icon { color: var(--neon-pink); background: rgba(255, 0, 127, 0.1); border: 1px solid rgba(255, 0, 127, 0.2); }
+.border-gold .pillar-icon { color: var(--neon-gold); background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.2); }
+
+.pillar-text h4 {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+    font-weight: 800;
+}
+.pillar-text p {
+    color: #999;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* ==========================================================================
+   DESKTOP UNLOCK (Ab Tablet/PC nebeneinander)
+   ========================================================================== */
+@media (min-width: 992px) {
+    .philo-grid {
+        grid-template-columns: 1.2fr 1fr; /* Links (Text) minimal breiter als Rechts (Karten) */
+        gap: 80px;
+        align-items: center; /* Zentriert beide Seiten vertikal */
+    }
+    
+    .philo-cta-box {
+        flex-direction: row; /* CTA Text und Button nebeneinander */
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+/* ==========================================================================
    PREMIUM CINEMATIC VIDEO SCROLLER
    ========================================================================== */
 
@@ -3066,6 +3215,102 @@ h1.glitch-header {
 }
 
 /* ==========================================================================
+   MOBILE FOOTER UPGRADE (TACTILE DASHBOARD)
+   Triggers only on screens smaller than 768px
+   ========================================================================== */
+
+@media (max-width: 767px) {
+    /* 1. Restructure the Grid into a 2-Column Layout */
+    .footer-grid-2026 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px 15px; /* 30px vertical gap, 15px horizontal gap */
+    }
+
+    /* 2. Anchor the Brand Station (Top, Full Width, Centered) */
+    .footer-grid-2026 > .f-col:nth-child(1) {
+        grid-column: 1 / -1; /* Stretch across both columns */
+        text-align: center;
+        align-items: center; 
+        padding-bottom: 25px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .footer-brand-title { justify-content: center; }
+    
+    .brand-desc { 
+        text-align: center; 
+        font-size: 0.85rem; 
+        padding: 0 10px; 
+    }
+
+    /* 3. The 50/50 Menu Split (Module & Datenbank) */
+    .footer-grid-2026 > .f-col:nth-child(2) { grid-column: 1 / 2; } /* Left side */
+    .footer-grid-2026 > .f-col:nth-child(3) { grid-column: 2 / 3; } /* Right side */
+
+    /* Adjust headings for the split view so they fit perfectly */
+    .f-col:nth-child(2) .f-heading-2026,
+    .f-col:nth-child(3) .f-heading-2026 {
+        font-size: 0.7rem;
+        letter-spacing: 2px;
+        justify-content: flex-start;
+    }
+    
+    /* Make the links highly tappable */
+    .footer-links-2026 a {
+        padding: 8px 0;
+        font-size: 0.85rem;
+        display: flex;
+    }
+
+    /* 4. Comms Station (Bottom, Full Width, App Cards) */
+    .footer-grid-2026 > .f-col:nth-child(4) {
+        grid-column: 1 / -1;
+        padding-top: 10px;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .comms-list-2026 li {
+        background: rgba(255, 255, 255, 0.02); /* Glass Card background */
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 12px;
+        padding: 15px;
+        margin-bottom: 12px;
+        transition: transform 0.2s ease, background 0.2s ease;
+    }
+    
+    /* Active touch feedback for mobile */
+    .comms-list-2026 li:active {
+        background: rgba(255, 255, 255, 0.05);
+        transform: scale(0.98);
+    }
+
+    /* 5. Bottom Legal Bar Optimization */
+    .footer-bottom-bar-2026 {
+        padding: 25px 0;
+        gap: 15px;
+    }
+
+    .legal-links-2026 {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    /* Hide the // dividers on mobile and turn links into pill buttons */
+    .legal-links-2026 .divider { display: none; }
+    
+    .legal-links-2026 a {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 6px 16px;
+        border-radius: 50px;
+        font-size: 0.65rem;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+}
+
+/* ==========================================================================
    2026 VIBRANT NAVIGATION CSS ENGINE (ULTIMATE COMPILATION)
    ========================================================================== */
 
@@ -3094,7 +3339,10 @@ html, body { overflow-x: hidden !important; position: relative; }
     border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 100px;
     display: flex; justify-content: space-between; align-items: center;
     padding: 8px 15px 8px 10px; box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), inset 0 2px 5px rgba(255, 255, 255, 0.1);
-    transition: all 0.5s var(--nav-easing); overflow: hidden;
+    transition: all 0.5s var(--nav-easing); 
+    
+    /* THE CRITICAL FIX: Changed from hidden to visible so the dropdown can escape the pill */
+    overflow: visible; 
 }
 
 .floating-capsule::before {

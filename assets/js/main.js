@@ -1,41 +1,24 @@
 /* ==========================================================================
    RAPHAEL LEZIUS | 2026 QUANTUM JS ENGINE 
-   ARCHITECTURE: MODULAR COMPONENT INJECTION & HAPTIC PHYSICS
+   MASTER CONTROLLER (WITH HTML INJECTOR)
    ========================================================================== */
+
+// ==========================================================================
+// MODULE 1: GLOBAL HAPTIC ENGINE
+// ==========================================================================
+window.triggerHaptic = function(ms = 15) {
+    if (typeof window.navigator !== 'undefined' && navigator.vibrate) {
+        try { navigator.vibrate(ms); } catch(e) { /* Silent fail */ }
+    }
+};
+window.vibrateDevice = window.triggerHaptic;
 
 document.addEventListener("DOMContentLoaded", async () => {
 
     // ======================================================================
-    // 1. CORE UTILITIES & PHYSICS ENGINE
+    // MODULE 2: COMPONENT INJECTOR (THE MISSING PIECE)
+    // What it does: Fetches your nav.html and footer.html and puts them on the screen.
     // ======================================================================
-
-    // Haptic Feedback Engine (Mobile Only)
-    window.vibrateDevice = (pattern = 15) => {
-        if (typeof window.navigator.vibrate === 'function') {
-            try { window.navigator.vibrate(pattern); } catch(e) { /* Silent fail if unsupported */ }
-        }
-    };
-
-    // Magnetic Button Physics (Desktop Only)
-    const initMagneticPhysics = () => {
-        const magnets = document.querySelectorAll('.btn-magnetic');
-        magnets.forEach(magnet => {
-            magnet.addEventListener('mousemove', (e) => {
-                const rect = magnet.getBoundingClientRect();
-                const x = (e.clientX - rect.left - rect.width / 2) * 0.3; // 0.3 is the pull strength
-                const y = (e.clientY - rect.top - rect.height / 2) * 0.3;
-                magnet.style.transform = `translate(${x}px, ${y}px)`;
-            });
-            magnet.addEventListener('mouseleave', () => {
-                magnet.style.transform = `translate(0px, 0px)`;
-            });
-        });
-    };
-
-    // ======================================================================
-    // 2. COMPONENT INJECTOR (Async Load)
-    // ======================================================================
-
     async function loadGlobalComponents() {
         const components = [
             { id: 'global-nav', file: 'components/nav.html' },
@@ -47,6 +30,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             const el = document.getElementById(comp.id);
             if (el) {
                 try {
+                    // Note: You must check if the path is exactly "components/nav.html" or just "nav.html"
                     const response = await fetch(comp.file);
                     if (response.ok) {
                         el.innerHTML = await response.text();
@@ -54,281 +38,173 @@ document.addEventListener("DOMContentLoaded", async () => {
                         console.warn(`[SYSTEM] Missing module: ${comp.file}`);
                     }
                 } catch (error) {
-                    console.error(`[SYSTEM] Engine Error injecting ${comp.file}:`, error);
+                    console.error(`[SYSTEM] Error injecting ${comp.file}:`, error);
                 }
             }
         });
 
-        // Wait for all components to inject before firing up the UI
+        // Wait for ALL files to load before starting the menus
         await Promise.all(fetchPromises);
     }
 
+    // RUN THE INJECTOR FIRST!
     await loadGlobalComponents();
 
     // ======================================================================
-    // 3. UI/UX INITIALIZATION
+    // MODULE 3: UI PHYSICS & INITIALIZATION
     // ======================================================================
+    if (typeof AOS !== 'undefined') {
+        AOS.init({ duration: 800, offset: 30, once: true, easing: 'ease-out-cubic' });
+    }
 
-    const initSystem = () => {
-        // Remove Failsafe
-        setTimeout(() => document.body.classList.remove('no-js-override'), 50);
-        
-        // Init AOS Animations
-        if (typeof AOS !== 'undefined') {
-            AOS.init({ duration: 800, offset: 30, once: true, easing: 'ease-out-cubic' });
-        }
-        
-        // Auto-Update Copyright Year
-        const yearEl = document.getElementById('copyright-year');
-        if (yearEl) yearEl.textContent = new Date().getFullYear();
+    const yearEl = document.getElementById('currentYear') || document.getElementById('copyright-year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-        // Start Physics
-        initMagneticPhysics();
+    const magnets = document.querySelectorAll('.magnetic-target, .btn-magnetic');
+    magnets.forEach(magnet => {
+        magnet.addEventListener('mousemove', (e) => {
+            requestAnimationFrame(() => {
+                const rect = magnet.getBoundingClientRect();
+                const x = (e.clientX - rect.left - rect.width / 2) * 0.15;
+                const y = (e.clientY - rect.top - rect.height / 2) * 0.15;
+                magnet.style.transform = `translate(${x}px, ${y}px)`;
+            });
+        });
+        magnet.addEventListener('mouseleave', () => {
+            requestAnimationFrame(() => {
+                magnet.style.transform = `translate(0px, 0px)`;
+            });
+        });
+    });
 
-        // Developer Easter Egg (Console)
-        console.log("%c[ RAPHAEL LEZIUS // SYSTEM 2026 ONLINE ]", "color: #d4af37; font-size: 14px; font-weight: bold; background: #000; padding: 5px 10px; border: 1px solid #d4af37;");
-    };
-
-    const initNavbar = () => {
-        const nav = document.querySelector('.cyber-navbar');
-        if (!nav) return;
-
-        let lastScrollY = window.scrollY;
-        let ticking = false;
-
-        // Hardware-accelerated scroll listener
+    // ======================================================================
+    // MODULE 4: MASTER NAVIGATION SCROLL
+    // ======================================================================
+    const nav = document.getElementById('masterNav') || document.querySelector('.cyber-navbar');
+    if (nav) {
         window.addEventListener('scroll', () => {
-            lastScrollY = window.scrollY;
-            if (!ticking) {
-                window.requestAnimationFrame(() => {
-                    if (lastScrollY > 50) {
-                        nav.classList.add('is-scrolled');
-                        nav.style.background = 'rgba(3, 3, 5, 0.98)'; // Darkens on scroll
-                    } else {
-                        nav.classList.remove('is-scrolled');
-                        nav.style.background = ''; // Reverts to CSS default
-                    }
-                    ticking = false;
-                });
-                ticking = true;
-            }
-        }, { passive: true });
-    };
-
-    const initMobileMenu = () => {
-        const btn = document.getElementById('hamburgerBtn');
-        const closeBtn = document.getElementById('closeMenuBtn');
-        const menu = document.getElementById('mobileMenu');
-        const links = document.querySelectorAll('.mobile-sub-link, .mobile-cyber-link');
-
-        if (!btn || !menu) return;
-
-        const toggleMenu = () => {
-            window.vibrateDevice(15); // Haptic feedback
-            const isActive = menu.classList.contains('active');
-            
-            if (isActive) {
-                btn.classList.remove('active');
-                menu.classList.remove('active');
-                document.body.style.overflow = '';
-            } else {
-                btn.classList.add('active');
-                menu.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            }
-        };
-
-        btn.addEventListener('click', toggleMenu);
-        if (closeBtn) closeBtn.addEventListener('click', toggleMenu);
-        links.forEach(link => link.addEventListener('click', toggleMenu));
-    };
-
-    // ======================================================================
-    // 4. MISSION OS CONTROLLER (The Intelligent Form System)
-    // ======================================================================
-
-    const initMissionOS = () => {
-        const overlay = document.getElementById('missionOS');
-        if (!overlay) return;
-
-        // The Global OS Object
-        window.MissionOS = {
-            selectedServices: [],
-            
-            open: () => {
-                window.vibrateDevice([20, 40, 20]);
-                overlay.classList.add('system-active');
-                document.body.style.overflow = 'hidden';
-                // Reset to phase 1 on open
-                window.MissionOS.setPhase(1);
-            },
-            
-            close: () => {
-                window.vibrateDevice(20);
-                overlay.classList.remove('system-active');
-                document.body.style.overflow = '';
-            },
-            
-            setPhase: (phaseNumber) => {
-                // Handle UI swapping
-                document.querySelectorAll('.case-phase').forEach(p => p.classList.remove('active'));
-                const target = document.getElementById(`phase${phaseNumber}`);
-                if (target) {
-                    target.classList.add('active');
-                    // Add a tiny animation bump
-                    target.style.animation = 'none';
-                    target.offsetHeight; /* trigger reflow */
-                    target.style.animation = 'fadeInUp 0.4s ease forwards';
-                }
-
-                // Handle Sidebar Active States
-                document.querySelectorAll('.step-link').forEach((step, index) => {
-                    if (index + 1 === phaseNumber) {
-                        step.classList.add('active');
-                    } else if (index + 1 < phaseNumber) {
-                        step.classList.remove('active');
-                        step.style.color = 'var(--neon-green)'; // Mark as completed
-                    } else {
-                        step.classList.remove('active');
-                        step.style.color = '';
-                    }
-                });
-            },
-
-            // Dynamic Search Logic for Phase 2
-            filterServices: () => {
-                const input = document.getElementById('serviceSearch').value.toLowerCase();
-                const resultsBox = document.getElementById('searchResults');
-                
-                // Hardcoded 2026 Database (Expand as needed)
-                const database = [
-                    "IKEA PAX Kleiderschrank", "IKEA METOD Küche", "IKEA BESTÅ Wohnwand",
-                    "USM Haller Regal", "USM Haller Tisch", "Biohort HighLine", 
-                    "Biohort Neo", "Küchenarbeitsplatte Zuschnitt", "Wandspiegel Schwerlast",
-                    "Akustikpaneele", "Demontage Altmöbel"
-                ];
-
-                if (input.length < 2) {
-                    resultsBox.innerHTML = '';
-                    resultsBox.style.display = 'none';
-                    return;
-                }
-
-                const filtered = database.filter(item => item.toLowerCase().includes(input));
-                
-                if (filtered.length > 0) {
-                    resultsBox.style.display = 'block';
-                    resultsBox.innerHTML = filtered.map(item => `
-                        <div class="search-result-item" onclick="MissionOS.addService('${item}')">
-                            <i class="fas fa-plus-circle" style="color: var(--neon-cyan);"></i> ${item}
-                        </div>
-                    `).join('');
+            requestAnimationFrame(() => {
+                if (window.scrollY > 50) {
+                    nav.classList.add('is-scrolled');
                 } else {
-                    resultsBox.style.display = 'block';
-                    resultsBox.innerHTML = `<div class="search-result-item text-tech" style="color: #666;">// SYSTEM: KEIN EINTRAG GEFUNDEN. BITTE MANUELL UNTEN EINTRAGEN.</div>`;
+                    nav.classList.remove('is-scrolled');
                 }
-            },
-
-            addService: (serviceName) => {
-                window.vibrateDevice(15);
-                if (!window.MissionOS.selectedServices.includes(serviceName)) {
-                    window.MissionOS.selectedServices.push(serviceName);
-                    window.MissionOS.updateTags();
-                }
-                document.getElementById('serviceSearch').value = '';
-                document.getElementById('searchResults').style.display = 'none';
-            },
-
-            removeService: (serviceName) => {
-                window.vibrateDevice(10);
-                window.MissionOS.selectedServices = window.MissionOS.selectedServices.filter(s => s !== serviceName);
-                window.MissionOS.updateTags();
-            },
-
-            updateTags: () => {
-                const container = document.getElementById('selectedTags');
-                const counter = document.getElementById('serviceCount');
-                
-                // Update Sidebar Count
-                if(counter) {
-                    let count = window.MissionOS.selectedServices.length;
-                    counter.innerText = count < 10 ? `0${count}` : count;
-                }
-
-                // Render Tags
-                if(container) {
-                    container.innerHTML = window.MissionOS.selectedServices.map(service => `
-                        <span class="selected-tag">
-                            ${service} <i class="fas fa-times" onclick="MissionOS.removeService('${service}')"></i>
-                        </span>
-                    `).join('');
-                }
-            }
-        };
-
-        // Wire up static HTML buttons
-        document.querySelectorAll('.js-open-os').forEach(btn => btn.addEventListener('click', (e) => { e.preventDefault(); window.MissionOS.open(); }));
-        document.querySelectorAll('.js-close-os').forEach(btn => btn.addEventListener('click', window.MissionOS.close));
-    };
+            });
+        }, { passive: true });
+    }
 
     // ======================================================================
-    // 5. EXECUTE ENGINE
+    // MODULE 5: MENU CONTROLLERS (MOBILE & PC)
     // ======================================================================
-    initSystem();
-    initNavbar();
-    initMobileMenu();
-    initMissionOS();
+    const mobileBtn = document.getElementById('mobileMenuToggle') || document.getElementById('hamburgerBtn');
+    const mobileMenu = document.getElementById('fluidMobileMenu') || document.getElementById('mobileMenu');
+    
+    if (mobileBtn && mobileMenu) {
+        mobileBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            window.triggerHaptic(15);
+            const isActive = this.classList.toggle('is-active');
+            mobileMenu.classList.toggle('is-open');
+            document.body.style.overflow = isActive ? 'hidden' : ''; 
+        });
+    }
 
-});
+    const dropTrigger = document.getElementById('dropdownTrigger');
+    const megaPanel = document.getElementById('megaPanel');
+    let dropTimeout;
 
-document.getElementById('nextBelt').addEventListener('click', () => {
-    const track = document.getElementById('imageBelt');
-    track.style.animationPlayState = 'paused';
-    // Logic to nudge transform if manual control is needed
-});
+    if (dropTrigger && megaPanel) {
+        dropTrigger.addEventListener('mouseenter', () => {
+            clearTimeout(dropTimeout);
+            megaPanel.classList.add('is-open');
+        });
+        dropTrigger.addEventListener('mouseleave', () => {
+            dropTimeout = setTimeout(() => {
+                megaPanel.classList.remove('is-open');
+            }, 300); 
+        });
+    }
 
-document.addEventListener('DOMContentLoaded', () => {
-    const faqItems = document.querySelectorAll('.js-faq-item');
-
-    faqItems.forEach(item => {
-        const trigger = item.querySelector('.faq-trigger');
-        
-        trigger.addEventListener('click', () => {
-            const isOpen = item.classList.contains('is-active');
+    // ======================================================================
+    // MODULE 6: SMART ACCORDIONS (FAQ & SERVICES)
+    // ======================================================================
+    const accordions = document.querySelectorAll('.js-toggle-faq, .accordion-header');
+    
+    accordions.forEach(trigger => {
+        trigger.addEventListener('click', function() {
+            const isService = this.classList.contains('accordion-header');
+            const parentModule = isService ? this.parentElement : this;
+            const contentBody = isService ? this.nextElementSibling : this.querySelector('.module-body, .faq-content');
             
-            // Close others
-            faqItems.forEach(other => {
-                other.classList.remove('is-active');
-                other.querySelector('.faq-content').style.maxHeight = null;
+            const isOpen = parentModule.classList.contains('open') || parentModule.classList.contains('active');
+            
+            accordions.forEach(otherTrigger => {
+                const otherParent = otherTrigger.classList.contains('accordion-header') ? otherTrigger.parentElement : otherTrigger;
+                const otherBody = otherTrigger.classList.contains('accordion-header') ? otherTrigger.nextElementSibling : otherTrigger.querySelector('.module-body, .faq-content');
+                
+                otherParent.classList.remove('open', 'active');
+                if(otherTrigger.setAttribute) otherTrigger.setAttribute('aria-expanded', 'false');
+                if (otherBody) otherBody.style.maxHeight = null;
             });
 
-            // Toggle current
             if (!isOpen) {
-                item.classList.add('is-active');
-                const content = item.querySelector('.faq-content');
-                content.style.maxHeight = content.scrollHeight + "px";
-                triggerHaptic(15); // Optional haptic feedback
+                parentModule.classList.add('open', 'active');
+                if(this.setAttribute) this.setAttribute('aria-expanded', 'true');
+                if (contentBody) contentBody.style.maxHeight = contentBody.scrollHeight + 100 + "px";
+                window.triggerHaptic(10);
             }
         });
     });
-});
 
-document.querySelectorAll('.js-toggle-faq').forEach(module => {
-    module.addEventListener('click', function() {
-        const isOpen = this.classList.contains('open');
-        
-        // Close all others
-        document.querySelectorAll('.js-toggle-faq').forEach(other => {
-            other.classList.remove('open');
-            other.querySelector('.module-body').style.maxHeight = '0';
+    // ======================================================================
+    // MODULE 7: INFINITE PROJECT BELT
+    // ======================================================================
+    const nextBeltBtn = document.getElementById('nextBelt');
+    const prevBeltBtn = document.getElementById('prevBelt');
+    const beltTrack = document.getElementById('imageBelt');
+
+    if (nextBeltBtn && beltTrack) {
+        nextBeltBtn.addEventListener('click', () => {
+            window.triggerHaptic(10);
+            beltTrack.style.animationPlayState = 'paused';
         });
+    }
+    if (prevBeltBtn && beltTrack) {
+        prevBeltBtn.addEventListener('click', () => {
+            window.triggerHaptic(10);
+            beltTrack.style.animationPlayState = 'paused';
+        });
+    }
 
-        // Toggle current
-        if (!isOpen) {
-            this.classList.add('open');
-            const body = this.querySelector('.module-body');
-            body.style.maxHeight = body.scrollHeight + 100 + "px"; // +100 for padding safety
-            if (window.triggerHaptic) triggerHaptic(10);
+    // ======================================================================
+    // MODULE 8: MISSION OS (LEAD CAPTURE MODAL)
+    // ======================================================================
+    const osOverlay = document.getElementById('missionOS') || document.querySelector('.os-overlay');
+    
+    window.MissionOS = {
+        selectedServices: [],
+        open: () => {
+            window.triggerHaptic([20, 40, 20]);
+            if(osOverlay) osOverlay.classList.add('system-active');
+            document.body.style.overflow = 'hidden';
+        },
+        close: () => {
+            window.triggerHaptic(20);
+            if(osOverlay) osOverlay.classList.remove('system-active');
+            document.body.style.overflow = '';
         }
+    };
+
+    document.querySelectorAll('.js-open-os').forEach(btn => {
+        btn.addEventListener('click', (e) => { 
+            e.preventDefault(); 
+            window.MissionOS.open(); 
+        });
     });
+    
+    document.querySelectorAll('.js-close-os').forEach(btn => {
+        btn.addEventListener('click', window.MissionOS.close);
+    });
+
+    console.log("%c[ RAPHAEL LEZIUS // SYSTEM 2026 ONLINE & INJECTED ]", "color: #00e5ff; font-size: 12px; font-weight: bold; background: #000; padding: 5px 10px; border: 1px solid #00e5ff;");
 });
