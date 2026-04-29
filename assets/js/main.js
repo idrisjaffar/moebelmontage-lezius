@@ -4,7 +4,7 @@
    ========================================================================== */
 
 // ==========================================================================
-// MODULE 1: GLOBAL HAPTIC ENGINE
+// MODULE 1: GLOBAL HAPTIC ENGINE (Can safely stay outside)
 // ==========================================================================
 window.triggerHaptic = function(ms = 15) {
     if (typeof window.navigator !== 'undefined' && navigator.vibrate) {
@@ -13,11 +13,13 @@ window.triggerHaptic = function(ms = 15) {
 };
 window.vibrateDevice = window.triggerHaptic;
 
+// ==========================================================================
+// THE SAFETY WRAPPER: Ensures HTML is loaded before JS runs
+// ==========================================================================
 document.addEventListener("DOMContentLoaded", async () => {
 
     // ======================================================================
-    // MODULE 2: COMPONENT INJECTOR (THE MISSING PIECE)
-    // What it does: Fetches your nav.html and footer.html and puts them on the screen.
+    // MODULE 2: COMPONENT INJECTOR
     // ======================================================================
     async function loadGlobalComponents() {
         const components = [
@@ -30,7 +32,6 @@ document.addEventListener("DOMContentLoaded", async () => {
             const el = document.getElementById(comp.id);
             if (el) {
                 try {
-                    // Note: You must check if the path is exactly "components/nav.html" or just "nav.html"
                     const response = await fetch(comp.file);
                     if (response.ok) {
                         el.innerHTML = await response.text();
@@ -43,11 +44,11 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
         });
 
-        // Wait for ALL files to load before starting the menus
+        // IMPORTANT: Wait for all HTML to inject BEFORE attaching button logic
         await Promise.all(fetchPromises);
     }
 
-    // RUN THE INJECTOR FIRST!
+    // RUN THE INJECTOR
     await loadGlobalComponents();
 
     // ======================================================================
@@ -126,85 +127,222 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     // ======================================================================
-    // MODULE 6: SMART ACCORDIONS (FAQ & SERVICES)
+    // MODULE 6: UNIVERSAL ACCORDION ENGINE (FAQ & SERVICES)
     // ======================================================================
-    const accordions = document.querySelectorAll('.js-toggle-faq, .accordion-header');
-    
-    accordions.forEach(trigger => {
-        trigger.addEventListener('click', function() {
-            const isService = this.classList.contains('accordion-header');
-            const parentModule = isService ? this.parentElement : this;
-            const contentBody = isService ? this.nextElementSibling : this.querySelector('.module-body, .faq-content');
+    const accordionHeaders = document.querySelectorAll('.accordion-header, .module-header');
+
+    accordionHeaders.forEach(header => {
+        header.addEventListener('click', function() {
+            const parentModule = this.parentElement;
+            const contentBody = this.nextElementSibling; 
             
-            const isOpen = parentModule.classList.contains('open') || parentModule.classList.contains('active');
+            const isOpen = parentModule.classList.contains('active') || parentModule.classList.contains('open');
             
-            accordions.forEach(otherTrigger => {
-                const otherParent = otherTrigger.classList.contains('accordion-header') ? otherTrigger.parentElement : otherTrigger;
-                const otherBody = otherTrigger.classList.contains('accordion-header') ? otherTrigger.nextElementSibling : otherTrigger.querySelector('.module-body, .faq-content');
-                
-                otherParent.classList.remove('open', 'active');
-                if(otherTrigger.setAttribute) otherTrigger.setAttribute('aria-expanded', 'false');
-                if (otherBody) otherBody.style.maxHeight = null;
+            document.querySelectorAll('.accordion-item, .faq-module').forEach(item => {
+                item.classList.remove('active', 'open');
+                const body = item.querySelector('.accordion-content, .module-body');
+                if (body) body.style.maxHeight = null;
             });
 
             if (!isOpen) {
-                parentModule.classList.add('open', 'active');
-                if(this.setAttribute) this.setAttribute('aria-expanded', 'true');
-                if (contentBody) contentBody.style.maxHeight = contentBody.scrollHeight + 100 + "px";
-                window.triggerHaptic(10);
+                parentModule.classList.add('active', 'open');
+                if (contentBody) {
+                    contentBody.style.maxHeight = contentBody.scrollHeight + 80 + "px";
+                }
+                if(window.triggerHaptic) window.triggerHaptic(10);
             }
         });
     });
 
     // ======================================================================
-    // MODULE 7: INFINITE PROJECT BELT
+    // MODULE 7: SMART PROJECT SLIDER CONTROLS
     // ======================================================================
     const nextBeltBtn = document.getElementById('nextBelt');
     const prevBeltBtn = document.getElementById('prevBelt');
-    const beltTrack = document.getElementById('imageBelt');
+    const beltContainer = document.querySelector('.belt-container'); 
 
-    if (nextBeltBtn && beltTrack) {
+    if (nextBeltBtn && beltContainer) {
         nextBeltBtn.addEventListener('click', () => {
-            window.triggerHaptic(10);
-            beltTrack.style.animationPlayState = 'paused';
+            if(window.triggerHaptic) window.triggerHaptic(15);
+            const itemWidth = beltContainer.querySelector('.belt-item').offsetWidth + 30;
+            beltContainer.scrollBy({ left: itemWidth, behavior: 'smooth' });
         });
     }
-    if (prevBeltBtn && beltTrack) {
+
+    if (prevBeltBtn && beltContainer) {
         prevBeltBtn.addEventListener('click', () => {
-            window.triggerHaptic(10);
-            beltTrack.style.animationPlayState = 'paused';
+            if(window.triggerHaptic) window.triggerHaptic(15);
+            const itemWidth = beltContainer.querySelector('.belt-item').offsetWidth + 30;
+            beltContainer.scrollBy({ left: -itemWidth, behavior: 'smooth' });
         });
     }
 
     // ======================================================================
-    // MODULE 8: MISSION OS (LEAD CAPTURE MODAL)
+    // MODULE 8: CINEMATIC VIDEO LIGHTBOX
+    // ======================================================================
+    const videoCards = document.querySelectorAll('.js-open-lightbox');
+    const lightbox = document.getElementById('videoLightbox');
+    const lightboxVideo = document.getElementById('lightboxVideo');
+    const lightboxTitle = document.getElementById('lightboxTitle');
+    const lightboxDesc = document.getElementById('lightboxDesc');
+    const closeBtns = document.querySelectorAll('.js-close-lightbox');
+
+    if (videoCards.length > 0 && lightbox) {
+        videoCards.forEach(card => {
+            card.addEventListener('click', () => {
+                if(window.triggerHaptic) window.triggerHaptic([15, 30]); 
+                
+                const src = card.getAttribute('data-video-src');
+                const title = card.getAttribute('data-title');
+                const desc = card.getAttribute('data-desc');
+                
+                lightboxVideo.src = src;
+                lightboxTitle.textContent = title;
+                lightboxDesc.textContent = desc;
+                
+                lightbox.classList.add('is-active');
+                document.body.style.overflow = 'hidden'; 
+                
+                lightboxVideo.play().catch(e => console.warn("Autoplay prevented by browser:", e));
+            });
+        });
+
+        const closeLightbox = () => {
+            if(window.triggerHaptic) window.triggerHaptic(15);
+            lightbox.classList.remove('is-active');
+            document.body.style.overflow = ''; 
+            lightboxVideo.pause();
+            
+            setTimeout(() => { lightboxVideo.src = ''; }, 500); 
+        };
+
+        closeBtns.forEach(btn => btn.addEventListener('click', closeLightbox));
+        
+        lightbox.addEventListener('click', (e) => {
+            if(e.target === lightbox) closeLightbox();
+        });
+    }
+
+    // ======================================================================
+    // MODULE 9: MISSION OS (MULTI-STEP LEAD CAPTURE)
     // ======================================================================
     const osOverlay = document.getElementById('missionOS') || document.querySelector('.os-overlay');
     
-    window.MissionOS = {
-        selectedServices: [],
-        open: () => {
-            window.triggerHaptic([20, 40, 20]);
-            if(osOverlay) osOverlay.classList.add('system-active');
-            document.body.style.overflow = 'hidden';
-        },
-        close: () => {
-            window.triggerHaptic(20);
-            if(osOverlay) osOverlay.classList.remove('system-active');
-            document.body.style.overflow = '';
-        }
-    };
+    if (osOverlay) {
+        let currentStep = 1;
+        const totalSteps = 4;
+        const formSteps = document.querySelectorAll('.form-step');
+        const nextBtns = document.querySelectorAll('.btn-next');
+        const prevBtns = document.querySelectorAll('.btn-prev');
+        const progressBar = document.getElementById('osProgress');
+        const stepIndicators = document.querySelectorAll('.step-text');
 
-    document.querySelectorAll('.js-open-os').forEach(btn => {
-        btn.addEventListener('click', (e) => { 
-            e.preventDefault(); 
-            window.MissionOS.open(); 
+        window.MissionOS = {
+            open: () => {
+                window.triggerHaptic([20, 40, 20]);
+                osOverlay.classList.add('system-active');
+                document.body.style.overflow = 'hidden';
+            },
+            close: () => {
+                window.triggerHaptic(20);
+                osOverlay.classList.remove('system-active');
+                document.body.style.overflow = '';
+            }
+        };
+
+        const updateFormUI = () => {
+            formSteps.forEach(step => {
+                step.classList.remove('is-active');
+                if (parseInt(step.dataset.step) === currentStep) {
+                    step.classList.add('is-active');
+                }
+            });
+
+            const progressPercentage = ((currentStep - 1) / (totalSteps - 1)) * 100;
+            if (progressBar) progressBar.style.width = `${progressPercentage}%`;
+
+            stepIndicators.forEach((indicator, index) => {
+                if (index < currentStep) {
+                    indicator.classList.add('active');
+                } else {
+                    indicator.classList.remove('active');
+                }
+            });
+        };
+
+        const validateCurrentStep = () => {
+            const currentStepEl = document.querySelector(`.form-step[data-step="${currentStep}"]`);
+            const requiredInputs = currentStepEl.querySelectorAll('input[required], select[required]');
+            let isValid = true;
+
+            requiredInputs.forEach(input => {
+                if (!input.value.trim() || (input.type === 'checkbox' && !input.checked)) {
+                    isValid = false;
+                    input.style.borderColor = 'var(--neon-pink)';
+                    setTimeout(() => input.style.borderColor = '', 2000);
+                }
+            });
+            return isValid;
+        };
+
+        nextBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (validateCurrentStep()) {
+                    window.triggerHaptic(10);
+                    if (currentStep < totalSteps) {
+                        currentStep++;
+                        updateFormUI();
+                    }
+                } else {
+                    window.triggerHaptic([30, 30]); 
+                }
+            });
         });
-    });
-    
-    document.querySelectorAll('.js-close-os').forEach(btn => {
-        btn.addEventListener('click', window.MissionOS.close);
-    });
+
+        prevBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                window.triggerHaptic(10);
+                if (currentStep > 1) {
+                    currentStep--;
+                    updateFormUI();
+                }
+            });
+        });
+
+        // Trigger opening
+        document.querySelectorAll('.js-open-os').forEach(btn => {
+            btn.addEventListener('click', (e) => { 
+                e.preventDefault(); 
+                window.MissionOS.open(); 
+            });
+        });
+        
+        // Trigger closing
+        document.querySelectorAll('.js-close-os').forEach(btn => {
+            if (btn.classList.contains('os-backdrop')) return; 
+            btn.addEventListener('click', window.MissionOS.close);
+        });
+        
+        // Handle Final Submission
+        const leadForm = document.getElementById('leadForm');
+        if (leadForm) {
+            leadForm.addEventListener('submit', (e) => {
+                e.preventDefault(); 
+                window.triggerHaptic([50, 100, 50]);
+                
+                const container = document.querySelector('.case-container');
+                container.innerHTML = `
+                    <div style="text-align: center; padding: 40px 0;">
+                        <i class="fas fa-check-circle" style="font-size: 4rem; color: var(--neon-green); margin-bottom: 20px;"></i>
+                        <h3 style="color: #fff; font-family: var(--font-head); font-size: 2rem; margin-bottom: 10px;">DATEN EMPFANGEN</h3>
+                        <p style="color: #aaa;">Vielen Dank für Ihre Anfrage. Ich werde das Projektprotokoll prüfen und mich umgehend bei Ihnen melden.</p>
+                        <button class="os-btn js-close-os" style="margin-top: 30px;" onclick="window.MissionOS.close()">SYSTEM SCHLIESSEN</button>
+                    </div>
+                `;
+            });
+        }
+    }
 
     console.log("%c[ RAPHAEL LEZIUS // SYSTEM 2026 ONLINE & INJECTED ]", "color: #00e5ff; font-size: 12px; font-weight: bold; background: #000; padding: 5px 10px; border: 1px solid #00e5ff;");
-});
+
+}); // <-- CRITICAL: THIS CLOSES THE SAFETY WRAPPER AT THE VERY END!
