@@ -3,130 +3,509 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>OPERATIONAL RADIUS | Einsatzgebiete | Raphael Lezius</title>
+    <title>DEPLOYMENT SECTOR | Raphael Lezius Premium Montage</title>
     
-    <meta name="description" content="Präzisions-Montage in Augsburg, München und ganz Oberbayern. Entdecken Sie unsere aktiven Sektoren und Logistik-Zonen.">
-    
+    <meta name="description" content="Unser Einsatzgebiet für Premium-Möbelmontage in Bayern. Von Augsburg bis München – maximale Präzision in definierten Logistik-Zonen.">
+    <meta name="theme-color" content="#020203">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Space+Grotesk:wght@300;500;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700;800&display=swap" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" as="style">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&family=Space+Grotesk:wght@300;500;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <link rel="stylesheet" href="assets/css/style.css">
-</head>
-<body class="is-dark no-js-override">
 
-    <div id="global-nav"></div>
+    <noscript>
+        <style>
+            .no-js-override [data-aos] { opacity: 1 !important; transform: none !important; visibility: visible !important; }
+        </style>
+    </noscript>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HomeAndConstructionBusiness",
+      "name": "Raphael Lezius Premium Montage",
+      "image": "https://yourdomain.com/assets/img/lezius-logo.png",
+      "@id": "https://yourdomain.com",
+      "url": "https://yourdomain.com",
+      "telephone": "+49123456789",
+      "priceRange": "$$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Headquarter Straße 1",
+        "addressLocality": "Augsburg",
+        "postalCode": "86150",
+        "addressCountry": "DE"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 48.37154,
+        "longitude": 10.89779
+      },
+      "areaServed": [
+        { "@type": "City", "name": "Augsburg", "sameAs": "https://de.wikipedia.org/wiki/Augsburg" },
+        { "@type": "City", "name": "München", "sameAs": "https://de.wikipedia.org/wiki/München" },
+        { "@type": "City", "name": "Starnberg" },
+        { "@type": "City", "name": "Dachau" },
+        { "@type": "City", "name": "Fürstenfeldbruck" },
+        { "@type": "City", "name": "Landsberg am Lech" }
+      ],
+      "department": {
+        "@type": "LocalBusiness",
+        "name": "B2B Special Operations",
+        "areaServed": { "@type": "Country", "name": "Germany" }
+      }
+    }
+    </script>
+</head>
+
+<body class="is-dark pricing-theme no-js-override">
+
+    <div class="page-transition-overlay" id="transition-engine">
+        <div class="transition-scanline"></div>
+        <div class="transition-text">REROUTING_CONNECTION...</div>
+    </div>
+    
+    <div class="noise-overlay"></div>
+    <div class="crt-overlay"></div>
+
+    <div class="hud-cursor desktop-only"></div>
+    <div class="hud-cursor-trail desktop-only"></div>
+
+    <div class="coordinate-tracker desktop-only" aria-hidden="true">
+        <div class="tracker-header">
+            <span class="matrix-blink"></span> VECTOR_TRACKING
+        </div>
+        <div class="tracker-data">
+            <div class="coord-row">
+                <span class="coord-label">LAT:</span> 
+                <span id="track-lat" class="text-cyan">48.3717</span>° N
+            </div>
+            <div class="coord-row">
+                <span class="coord-label">LON:</span> 
+                <span id="track-lon" class="text-cyan">10.8983</span>° E
+            </div>
+        </div>
+        <div class="tracker-bar">
+            <div id="track-progress" class="tracker-fill"></div>
+        </div>
+    </div>
+
+    <div id="global-nav"></div>      
 
     <main>
         <section class="area-hero">
-            <div class="radar-background">
-                <div class="radar-scanner">
-                    <div class="radar-beam"></div>
-                    <div class="radar-ping hq" style="top: 50%; left: 50%;" title="HQ AUGSBURG"></div>
-                    <div class="radar-ping active-node" style="top: 65%; left: 78%;" title="SEKTOR MÜNCHEN"></div>
-                    <div class="radar-ping active-node" style="top: 40%; left: 30%;" title="SEKTOR DONAUWÖRTH"></div>
+            <div class="map-grid-bg"></div>
+            <canvas id="tacticalTerrain" class="terrain-canvas desktop-only"></canvas>
+            
+            <div class="hero-content relative-z">
+                <div data-aos="fade-down">
+                    <span class="hero-glitch-tag glitch-active" data-text="// DEPLOYMENT_SECTOR_MAP">// DEPLOYMENT_SECTOR_MAP</span>
                 </div>
-            </div>
-
-            <div class="container relative-z center">
-                <span class="cyber-badge" data-aos="fade-down">// GEOSPATIAL_HUB_v2.6</span>
-                <h1 class="gallery-title" style="font-size: clamp(3.5rem, 8vw, 7rem);" data-aos="zoom-in">Active Sektoren.</h1>
-                <p class="cyber-subtitle" style="max-width: 650px; margin: 20px auto;" data-aos="fade-up">
-                    Wir operieren in einer hochpräzisen Logistik-Matrix. Von unserem Headquarter in Augsburg erreichen wir jeden Einsatzort in Oberbayern und Schwaben innerhalb kürzester Zeit.
-                </p>
-            </div>
-        </section>
-
-        <section class="container">
-            <div class="checker-station" data-aos="flip-up">
-                <div class="checker-card glass-panel">
-                    <div class="checker-header">
-                        <span class="text-tech" style="color: var(--neon-gold);">PROXIMITY_ANALYSIS</span>
-                        <h2 style="font-family: var(--font-head); margin-top: 10px;">Verfügbarkeit prüfen</h2>
-                    </div>
-                    
-                    <div class="checker-input-wrap">
-                        <input type="text" id="zipInput" class="checker-field" placeholder="PLZ EINGEBEN" maxlength="5">
-                        <div class="input-glow"></div>
-                    </div>
-
-                    <div id="status-display" class="text-tech">
-                        <i class="fas fa-satellite"></i> SYSTEM_IDLE: BEREIT ZUM SCAN
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="container">
-            <div class="sector-grid">
                 
-                <div class="sector-box glass-panel" data-aos="fade-up">
-                    <span class="sector-id">ZONE_01 // CORE_BASE</span>
-                    <h3 class="sector-title">Augsburg City</h3>
-                    <p class="sector-desc">Tägliche Verfügbarkeit. Unsere "Home-Zone" mit priorisierten Terminfenstern und ohne zusätzliche Logistik-Zuschläge.</p>
-                    <div class="city-cloud">
-                        <span class="city-tag">Stadtbergen</span> <span class="city-tag">Neusäß</span> <span class="city-tag">Gersthofen</span>
-                        <span class="city-tag">Friedberg</span> <span class="city-tag">Königsbrunn</span> <span class="city-tag">Haunstetten</span>
+                <h1 class="hero-title-massive" data-aos="zoom-in">
+                    Einsatzgebiet<br>
+                    <span class="text-cyan">Bayern Süd.</span>
+                </h1>
+                
+                <p class="hero-description" data-aos="fade-up" data-aos-delay="100">
+                    Von unserem Headquarter in Augsburg operieren wir in einem hochpräzisen Logistik-Netzwerk. Keine Subunternehmer, keine logistischen Kompromisse. Prüfen Sie Ihren Sektor.
+                </p>
+
+                <div class="calibration-hud" data-aos="fade-up" data-aos-delay="200">
+                    <div class="hud-stat">
+                        <span class="hud-label">HQ_COORDINATES</span>
+                        <span class="hud-value">48.3717° N, 10.8983° E</span>
                     </div>
-                </div>
-
-                <div class="sector-box glass-panel" data-aos="fade-up" data-aos-delay="100" style="border-top: 2px solid var(--neon-cyan);">
-                    <span class="sector-id" style="color: var(--neon-cyan);">ZONE_02 // METRO_PULSE</span>
-                    <h3 class="sector-title">München & Umland</h3>
-                    <p class="sector-desc">Wöchentliche Einsatz-Routen. Wir bedienen das gesamte Stadtgebiet München sowie die direkt angrenzenden Landkreise.</p>
-                    <div class="city-cloud">
-                        <span class="city-tag">Schwabing</span> <span class="city-tag">Bogenhausen</span> <span class="city-tag">Dachau</span>
-                        <span class="city-tag">FFB</span> <span class="city-tag">Germering</span> <span class="city-tag">Maxvorstadt</span>
+                    <div class="hud-stat highlight-cyan">
+                        <span class="hud-label">PRIMARY_RADIUS</span>
+                        <span class="hud-value text-cyan">100 KM</span>
                     </div>
-                </div>
-
-                <div class="sector-box glass-panel" data-aos="fade-up" data-aos-delay="200" style="border-top: 2px solid var(--neon-pink);">
-                    <span class="sector-id" style="color: var(--neon-pink);">ZONE_03 // SOUTH_LAKE</span>
-                    <h3 class="sector-title">5-Seen-Land</h3>
-                    <p class="sector-desc">Exklusiver Service für die Seeregionen. Spezialisierte Logistik für Outdoor-Projekte und High-End Villenausbau.</p>
-                    <div class="city-cloud">
-                        <span class="city-tag">Starnberg</span> <span class="city-tag">Herrsching</span> <span class="city-tag">Landsberg</span>
-                        <span class="city-tag">Ammersee</span> <span class="city-tag">Wörthsee</span> <span class="city-tag">Tutzing</span>
+                    <div class="hud-stat">
+                        <span class="hud-label">LOGISTIC_STATUS</span>
+                        <span class="hud-value text-green">ACTIVE</span>
                     </div>
-                </div>
-
-            </div>
-
-            <div class="logistics-banner glass-panel" data-aos="zoom-in">
-                <div class="banner-content">
-                    <span class="text-tech" style="color: var(--neon-cyan);">[ MUC_PARKING_PROTOCOL ]</span>
-                    <h2 class="text-ed" style="font-size: 2.5rem; margin: 20px 0;">Kein Parkplatz? <br><span class="cyan-text">Kein Problem.</span></h2>
-                    <p style="color: #888; line-height: 1.7;">Münchener City-Lagen erfordern Planung. Wir besitzen Ausnahmegenehmigungen und planen Parkzonen proaktiv ein. Bei Bedarf organisieren wir offizielle Halteverbotszonen beim KVR für den Tag der Montage.</p>
-                </div>
-                <div class="banner-visual">
-                    <div class="tech-icon-circle"><i class="fas fa-truck-pickup"></i></div>
                 </div>
             </div>
         </section>
 
-        <section class="section-padding center">
-            <div class="container" data-aos="zoom-in">
-                <h2 class="text-ed" style="font-size: 3.5rem;">Sektor nicht <span class="gold-text">gelistet?</span></h2>
-                <p style="color: #666; margin: 20px 0 40px;">Für Großprojekte und gewerbliche Rollouts operieren wir nach Absprache bayernweit.</p>
-                <button onclick="MissionOS.open()" class="btn btn-gold reactive-btn btn-magnetic" style="padding: 20px 60px;">STANDORT ANFRAGEN</button>
+        <section class="sector-map-section" id="sector-data">
+            <div class="container relative-z">
+                <div class="sector-grid">
+                    
+                    <div class="map-terminal glass-panel" data-aos="fade-right">
+                        <div class="map-header">
+                            <span class="tech-id-badge">LIVE_SATELLITE_FEED // BAVARIA_SOUTH</span>
+                            <div class="status-indicator"><div class="pulse-dot"></div> SYNCED</div>
+                        </div>
+                        
+                        <div class="abstract-map-container">
+                            <div class="map-grid-overlay"></div>
+                            
+                            <div class="map-node node-hq">
+                                <div class="node-pulse"></div>
+                                <span class="node-label">AUGSBURG_HQ</span>
+                            </div>
+                            
+                            <div class="map-node node-muc">
+                                <div class="node-dot"></div>
+                                <span class="node-label">MUNICH_CORE</span>
+                            </div>
+                            
+                            <div class="map-node node-sta">
+                                <div class="node-dot"></div>
+                                <span class="node-label">STARNBERG</span>
+                            </div>
+
+                            <div class="data-link link-1"></div>
+                            <div class="data-link link-2"></div>
+                        </div>
+                    </div>
+
+                    <div class="zone-data-stack" data-aos="fade-left" data-aos-delay="200">
+                        <span class="hero-glitch-tag">// LOGISTICS_ZONES</span>
+                        <h2 class="section-title-large" style="text-align: left; margin-bottom: 30px;">
+                            Einsatz-<br><span class="text-gold">Sektoren.</span>
+                        </h2>
+
+                        <div class="zone-data-card glass-panel border-left-gold">
+                            <div class="zone-card-header">
+                                <span class="zone-id text-gold">ZONE_01 // THE_CORE</span>
+                                <span class="zone-ttt">TTT: <span class="text-white">15 MIN</span></span>
+                            </div>
+                            <h3 class="zone-title">Augsburg & Umland</h3>
+                            <p class="zone-desc">Keine Anfahrtskosten. Maximale Reaktionsgeschwindigkeit im direkten Umkreis des Headquarters.</p>
+                            <div class="zone-cities">Stadtbergen, Neusäß, Friedberg, Gersthofen</div>
+                        </div>
+
+                        <div class="zone-data-card glass-panel border-left-cyan">
+                            <div class="zone-card-header">
+                                <span class="zone-id text-cyan">ZONE_02 // TRANSIT</span>
+                                <span class="zone-ttt">TTT: <span class="text-white">45 MIN</span></span>
+                            </div>
+                            <h3 class="zone-title">München West / FFB</h3>
+                            <p class="zone-desc">Schnelle Anbindung über die A8. Standardisierte Logistikpauschale für den erweiterten Radius.</p>
+                            <div class="zone-cities">Dachau, Fürstenfeldbruck, Landsberg am Lech, Olching</div>
+                        </div>
+
+                        <div class="zone-data-card glass-panel border-left-pink">
+                            <div class="zone-card-header">
+                                <span class="zone-id text-pink">ZONE_03 // DEEP_SOUTH</span>
+                                <span class="zone-ttt">TTT: <span class="text-white">60+ MIN</span></span>
+                            </div>
+                            <h3 class="zone-title">München City & Süd</h3>
+                            <p class="zone-desc">Dedizierte Tageseinsätze. Premium-Logistik für das Stadtgebiet München und die Seenregion.</p>
+                            <div class="zone-cities">München Zentrum, Starnberg, Ammersee, Herrsching</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="fleet-telemetry-section" id="fleet-status">
+            <div class="container relative-z">
+                <div class="section-header-left" data-aos="fade-right">
+                    <span class="hero-glitch-tag">// LIVE_TELEMETRY</span>
+                    <h2 class="section-title-large">Flotten-<br><span class="text-cyan">Status.</span></h2>
+                    <p class="hero-description" style="margin: 20px 0 40px 0; text-align: left; max-width: 500px;">
+                        Echtzeit-Auslastung unserer Montage-Teams in den jeweiligen Einsatzsektoren. Kapazitäten werden dynamisch nach Auftragsvolumen kalibriert.
+                    </p>
+                </div>
+
+                <div class="telemetry-grid">
+                    <div class="telemetry-card glass-panel border-left-gold" data-aos="fade-up" data-aos-delay="100">
+                        <div class="card-top-row">
+                            <span class="sector-name">ZONE_01 // AUGSBURG</span>
+                            <span class="sector-ping text-gold"><i class="fas fa-satellite-dish"></i> ACTIVE</span>
+                        </div>
+                        <div class="capacity-readout">
+                            <span class="cap-number js-live-cap" data-base="65">65</span><span class="cap-percent">%</span>
+                        </div>
+                        <div class="cap-bar-track">
+                            <div class="cap-bar-fill fill-gold js-live-bar" style="width: 65%;"></div>
+                        </div>
+                        <div class="cap-label">RESSOURCEN_GEBUNDEN</div>
+                    </div>
+
+                    <div class="telemetry-card glass-panel border-left-cyan" data-aos="fade-up" data-aos-delay="200">
+                        <div class="card-top-row">
+                            <span class="sector-name">ZONE_02 // TRANSIT</span>
+                            <span class="sector-ping text-cyan"><i class="fas fa-satellite-dish"></i> ACTIVE</span>
+                        </div>
+                        <div class="capacity-readout">
+                            <span class="cap-number js-live-cap" data-base="42">42</span><span class="cap-percent">%</span>
+                        </div>
+                        <div class="cap-bar-track">
+                            <div class="cap-bar-fill fill-cyan js-live-bar" style="width: 42%;"></div>
+                        </div>
+                        <div class="cap-label">KAPAZITÄT_VERFÜGBAR</div>
+                    </div>
+
+                    <div class="telemetry-card glass-panel border-left-pink" data-aos="fade-up" data-aos-delay="300">
+                        <div class="card-top-row">
+                            <span class="sector-name">ZONE_03 // MÜNCHEN</span>
+                            <span class="sector-ping text-pink"><i class="fas fa-exclamation-triangle"></i> HIGH_LOAD</span>
+                        </div>
+                        <div class="capacity-readout">
+                            <span class="cap-number js-live-cap" data-base="88">88</span><span class="cap-percent">%</span>
+                        </div>
+                        <div class="cap-bar-track">
+                            <div class="cap-bar-fill fill-pink js-live-bar" style="width: 88%;"></div>
+                        </div>
+                        <div class="cap-label">KAPAZITÄTSGRENZE_NAH</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="verification-section" id="deployment-check">
+            <div class="container relative-z">
+                <div class="verification-grid">
+                    
+                    <div class="verify-terminal glass-panel" data-aos="fade-right">
+                        <div class="terminal-top-bar">
+                            <span class="dot-red"></span>
+                            <span class="dot-yellow"></span>
+                            <span class="dot-green"></span>
+                            <span class="terminal-title">SECTOR_QUERY_SYSTEM</span>
+                        </div>
+                        
+                        <div class="verify-content">
+                            <h3 class="verify-heading">Standort prüfen.</h3>
+                            <p class="verify-desc">Geben Sie Ihre Postleitzahl oder Stadt ein, um Ihre exakte Logistik-Zone und den Status für Ihr System-Setup zu berechnen.</p>
+                            
+                            <div class="search-module">
+                                <i class="fas fa-crosshairs search-icon text-cyan"></i>
+                                <input type="text" class="cyber-input search-input" placeholder="PLZ oder Stadt eingeben..." id="sectorInput">
+                                <button type="button" class="btn-terminal search-btn js-verify-sector">
+                                    SCAN <i class="fas fa-satellite-dish"></i>
+                                </button>
+                            </div>
+                            
+                            <div class="scan-result" id="scanResult"></div>
+                        </div>
+                    </div>
+
+                    <div class="out-of-bounds-panel glass-panel" data-aos="fade-left" data-aos-delay="200">
+                        <div class="warning-strip"></div>
+                        <div class="oob-content">
+                            <span class="spec-id text-pink">RESTRICTED_SECTOR // OVERRIDE</span>
+                            <h3 class="oob-title">Projekt außerhalb der Zonen?</h3>
+                            
+                            <p class="oob-desc">
+                                Für B2B-Großprojekte, komplexe USM-Haller Rollouts oder exklusive Architekten-Villen verlassen wir unser Standard-Einsatzgebiet. 
+                            </p>
+                            <p class="oob-desc">
+                                Einsätze in <strong>Nürnberg, Stuttgart, Salzburg oder der Schweiz</strong> unterliegen unserem "Extended Range Protocol". Logistik und Übernachtungen werden als individuelle Projektpauschale kalkuliert.
+                            </p>
+                            
+                            <button type="button" class="btn-price-action js-open-os" data-sector="B2B // EXTENDED RANGE" style="margin-top: 15px;">
+                                SONDERPROJEKT ANFRAGEN <i class="fas fa-lock-open"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="proof-section" id="mission-logs">
+            <div class="container relative-z">
+                
+                <div class="section-header-left" data-aos="fade-up">
+                    <span class="hero-glitch-tag">// DEPLOYMENT_ARCHIVES</span>
+                    <h2 class="section-title-large">Mission <span class="text-gold">Logs.</span></h2>
+                    <p class="hero-description" style="margin: 20px 0 20px 0; text-align: left; max-width: 600px;">
+                        Verifizierte Einsätze in unseren Kernsektoren. Kein Stock-Material. Nur reale, von uns kalibrierte System-Architekturen in Bayern.
+                    </p>
+                </div>
+
+                <div class="sector-filter-nav" data-aos="fade-up" data-aos-delay="50">
+                    <button class="filter-btn active" data-filter="all">ALL_SECTORS</button>
+                    <button class="filter-btn" data-filter="zone-1">ZONE_01 [HQ]</button>
+                    <button class="filter-btn" data-filter="zone-2">ZONE_02 [TRANSIT]</button>
+                    <button class="filter-btn" data-filter="zone-3">ZONE_03 [DEEP_SOUTH]</button>
+                </div>
+
+                <div class="proof-grid">
+                    
+                    <div class="proof-card card-large js-magnetic" data-zone="zone-3" data-aos="fade-up" data-aos-delay="100">
+                        <div class="proof-img-wrap">
+                            <img src="assets/img/log-muc.jpg" alt="USM Haller Aufbau München" class="proof-img" loading="lazy" decoding="async" onerror="this.src='https://via.placeholder.com/800x600/050608/00e5ff?text=IMAGE_DATA_MISSING'">
+                        </div>
+                        <div class="proof-overlay">
+                            <div class="proof-meta">
+                                <span class="proof-zone text-pink">ZONE_03 // MÜNCHEN ZENTRUM</span>
+                                <h3 class="proof-title">USM Haller Kanzlei-Setup</h3>
+                            </div>
+                            <div class="proof-tech">
+                                <i class="fas fa-check-circle text-gold"></i> 48 MODULE // ZERO_TOLERANCE
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="proof-card card-small js-magnetic" data-zone="zone-1" data-aos="fade-up" data-aos-delay="200">
+                        <div class="proof-img-wrap">
+                            <img src="assets/img/log-aux.jpg" alt="IKEA PAX Aufbau Augsburg" class="proof-img" loading="lazy" decoding="async" onerror="this.src='https://via.placeholder.com/600x600/050608/d4af37?text=IMAGE_DATA_MISSING'">
+                        </div>
+                        <div class="proof-overlay">
+                            <div class="proof-meta">
+                                <span class="proof-zone text-gold">ZONE_01 // AUGSBURG HQ</span>
+                                <h3 class="proof-title">IKEA PAX Custom</h3>
+                            </div>
+                            <div class="proof-tech">
+                                <i class="fas fa-check-circle text-cyan"></i> 4 LFM // LASER_LEVEL
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="proof-card card-small js-magnetic" data-zone="zone-3" data-aos="fade-up" data-aos-delay="300">
+                        <div class="proof-img-wrap">
+                            <img src="assets/img/log-sta.jpg" alt="Küchenmontage Starnberg" class="proof-img" loading="lazy" decoding="async" onerror="this.src='https://via.placeholder.com/600x600/050608/ff0080?text=IMAGE_DATA_MISSING'">
+                        </div>
+                        <div class="proof-overlay">
+                            <div class="proof-meta">
+                                <span class="proof-zone text-cyan">ZONE_03 // STARNBERG</span>
+                                <h3 class="proof-title">Premium Küchen-System</h3>
+                            </div>
+                            <div class="proof-tech">
+                                <i class="fas fa-check-circle text-gold"></i> HEPA_CLEAN // WATER_SEALED
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="faq-section" id="logistics-faq">
+            <div class="container relative-z">
+                <div class="section-header-center" data-aos="fade-up">
+                    <span class="hero-glitch-tag">// LOGISTICS_INQUIRY</span>
+                    <h2 class="section-title-large">Sektor-FAQ.</h2>
+                </div>
+
+                <div class="faq-list">
+                    <div class="accordion-item glass-panel" data-aos="fade-up" data-aos-delay="100">
+                        <button class="accordion-header" type="button">
+                            <span class="faq-question">Was passiert bei fehlenden Parkmöglichkeiten?</span>
+                            <i class="fas fa-chevron-down faq-icon"></i>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="faq-answer">
+                                In urbanen Kernzonen (z.B. München Schwabing, Maxvorstadt) übernehmen wir auf Wunsch im Vorfeld die Beantragung und Einrichtung einer offiziellen <strong>Halteverbotszone</strong>. Ansonsten navigieren unsere Logistik-Fahrzeuge so nah wie möglich an die Entladezone und nutzen hochmobile Rollsysteme für den Equipment-Transfer.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item glass-panel" data-aos="fade-up" data-aos-delay="200">
+                        <button class="accordion-header" type="button">
+                            <span class="faq-question">Fahren Sie auch in die Alpen oder Skigebiete?</span>
+                            <i class="fas fa-chevron-down faq-icon"></i>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="faq-answer">
+                                Ja. Alpine Regionen wie Garmisch-Partenkirchen, Tegernsee oder das Allgäu fallen unter unsere <strong>Zone 03 (Deep South)</strong> oder das B2B-Protokoll. Wir sind mit winterfesten Einsatzfahrzeugen ausgestattet. Bei extremer Witterung passen wir die Deployment-Zeiten in Absprache mit Ihnen flexibel an.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item glass-panel" data-aos="fade-up" data-aos-delay="300">
+                        <button class="accordion-header" type="button">
+                            <span class="faq-question">Wie wird die Anfahrt bei mehrtägigen Projekten berechnet?</span>
+                            <i class="fas fa-chevron-down faq-icon"></i>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="faq-answer">
+                                Bei Großprojekten (z.B. komplette Küchenmontage über 3 Tage) in der Zone 02 oder 03 berechnen wir die Logistikpauschale nicht täglich neu. Stattdessen wird im System-Angebot eine <strong>kombinierte Logistik-Flatrate</strong> oder ggf. eine Übernachtungspauschale ausgewiesen, die für Sie deutlich günstiger ausfällt.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="final-cta-block area-cta-override">
+            <div class="map-grid-bg" style="opacity: 0.15; z-index: 0;"></div>
+            <div class="container relative-z" data-aos="zoom-in">
+                <span class="hero-glitch-tag">SECTOR_CONFIRMED // PROCEED_TO_CALIBRATION</span>
+                <h2 class="hero-title-massive" style="margin-bottom: 20px;">
+                    Logistik gesichert.<br>
+                    <span class="text-cyan">System starten.</span>
+                </h2>
+                
+                <p class="hero-description" style="margin: 0 auto 50px auto; color: #888;">
+                    Ihr Einsatzort liegt in unserem Netzwerk. Übertragen Sie jetzt Ihre Projekt-Metriken, um Ihre exakte Kostenstruktur zu generieren.
+                </p>
+
+                <a href="pricing.html" class="btn-terminal js-magnetic">
+                    PRICING_MATRIX LADEN <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </section>
+
+        <section class="seo-matrix-section">
+            <div class="container relative-z">
+                <div class="matrix-header">
+                    <span class="matrix-blink"></span>
+                    <span class="matrix-title">RAW_DATA // EXTENDED_DEPLOYMENT_GRID</span>
+                </div>
+                
+                <div class="seo-data-matrix">
+                    <div class="matrix-column">
+                        <span class="matrix-category">[ZONE_01_NODES]</span>
+                        <ul class="matrix-list">
+                            <li>Augsburg (86150)</li>
+                            <li>Stadtbergen (86391)</li>
+                            <li>Neusäß (86356)</li>
+                            <li>Gersthofen (86368)</li>
+                            <li>Friedberg (86316)</li>
+                            <li>Königsbrunn (86343)</li>
+                            <li>Bobingen (86399)</li>
+                            <li>Diedorf (86420)</li>
+                        </ul>
+                    </div>
+
+                    <div class="matrix-column">
+                        <span class="matrix-category">[ZONE_02_NODES]</span>
+                        <ul class="matrix-list">
+                            <li>Dachau (85221)</li>
+                            <li>Fürstenfeldbruck (82256)</li>
+                            <li>Landsberg am Lech (86899)</li>
+                            <li>Olching (82140)</li>
+                            <li>Puchheim (82178)</li>
+                            <li>Germering (82110)</li>
+                            <li>Gilching (82205)</li>
+                            <li>Maisach (82216)</li>
+                        </ul>
+                    </div>
+
+                    <div class="matrix-column">
+                        <span class="matrix-category">[ZONE_03_NODES]</span>
+                        <ul class="matrix-list">
+                            <li>München Zentrum (80331)</li>
+                            <li>München Schwabing (80802)</li>
+                            <li>München Bogenhausen (81675)</li>
+                            <li>Starnberg (82319)</li>
+                            <li>Gauting (82131)</li>
+                            <li>Herrsching (82211)</li>
+                            <li>Tutzing (82327)</li>
+                            <li>Grünwald (82031)</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
 
     <div id="global-footer"></div>
-
     <div id="global-os"></div>
-
-    <a href="https://wa.me/491608194018" target="_blank" class="whatsapp-float reactive-btn">
-        <div class="whatsapp-pulse"></div>
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="assets/js/main.js"></script>
     
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+    <script src="assets/js/main.js" defer></script>
 </body>
 </html>
-

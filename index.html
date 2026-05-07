@@ -17,25 +17,38 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&family=Space+Grotesk:wght@300;500;700;800&family=JetBrains+Mono:wght@400;700&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
 
-    <style>
-        body { background: #050505; opacity: 1 !important; visibility: visible !important; }
-        .no-js-override [data-aos] { opacity: 1 !important; transform: none !important; visibility: visible !important; }
-    </style>
+    <noscript>
+        <style>
+            body { opacity: 1 !important; visibility: visible !important; }
+            .no-js-override [data-aos] { opacity: 1 !important; transform: none !important; visibility: visible !important; }
+        </style>
+    </noscript>
 </head>
 
-<body class="is-dark no-js-override">
+<body class="is-dark no-js-override is-booting">
+
+    <div id="boot-sequence" class="system-boot-overlay">
+        <div class="boot-terminal">
+            <div class="boot-log">
+                <span class="log-line delay-1">> INITIATING SYSTEM KERNEL...</span>
+                <span class="log-line delay-2">> LOADING TACTICAL ASSETS...</span>
+                <span class="log-line delay-3">> SYSTEM ONLINE</span>
+            </div>
+            <div class="boot-progress-bar"><div class="boot-progress-fill"></div></div>
+        </div>
+    </div>
+
+    <div id="transition-engine" class="page-transition-curtain"></div>
 
     <div id="global-nav"></div>
 
     <main>
         <section class="hero-section" id="home">
-            
-      <div class="video-bg-container">
+            <div class="video-bg-container">
                 <video autoplay muted loop playsinline class="hero-video" poster="assets/images/Bedroom_grey_main.webp">
                     <source src="assets/video/project-landscape.mp4" type="video/mp4">
                 </video>
@@ -125,7 +138,7 @@
             </div>
         </div>
 
-   <section id="profile" class="section-padding bg-dark animated-grid-bg">
+        <section id="profile" class="section-padding bg-dark animated-grid-bg">
             <div class="container relative-z">
                 <div class="split-layout">
                     
@@ -217,11 +230,6 @@
                                 <p class="card-desc-v2">Vollständige Betriebshaftpflicht. Null Risiko für Ihre wertvolle Einrichtung und Böden.</p>
                             </div>
                         </div>
-                        <div class="carousel-indicators" id="philosophyIndicators">
-                            <div class="dot active"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                        </div>
 
                         <div class="consultation-wrapper" style="margin-top: 40px;">
                             <div class="consultation-info">
@@ -243,359 +251,204 @@
                 </div> 
             </div> 
         </section>   
-      
-     <section id="system-integration" class="services-accordion-section">
-    <div class="container relative-z">
-        
-        <div class="section-header" data-aos="fade-up">
-            <div class="pre-title">SYSTEM_SERVICES</div>
-            <h2 class="section-heading">VON DER KÜCHE BIS ZUM <span class="cyan-text">GARTENHAUS</span></h2>
-            <p class="section-subtitle">Maßgeschneiderte Montagelösungen für Ihr gesamtes Grundstück. Höchste Präzision, termingerechte Umsetzung und absolute Sauberkeit. Klicken Sie auf ein Modul für technische Details.</p>
-        </div>
 
-        <div class="deployment-stack accordion-container" data-aos="fade-up" data-aos-delay="100">
-            
-            <div class="sector-module accordion-item border-cyan">
-                <button class="accordion-header hover-cyan" aria-expanded="false">
-                    <div class="header-left">
-                        <span class="sector-id cyan-text">MODUL_01</span>
-                        <h3 class="sector-title">IKEA PAX, Küchen & Wohnraum-Systeme</h3>
-                    </div>
-                    <div class="sector-trigger"><i class="fas fa-plus icon-cyan"></i></div>
-                </button>
-                <div class="accordion-content">
-                    <div class="accordion-body-inner">
-                        <p class="sector-description">
-                            Der fachgerechte Aufbau von Großmöbeln entscheidet über deren Langlebigkeit. Ich montiere Ihre Küchen- und Schranklandschaften millimetergenau und verankere sie absolut kippsicher – selbst in problematischen Altbauwänden.
-                        </p>
-                        <div class="sector-grid">
-                            <div class="sector-group">
-                                <h4 class="group-label"><i class="fas fa-box-open cyan-text"></i> PAX & Kleiderschränke</h4>
-                                <ul>
-                                    <li><strong>Laser-Nivellierung:</strong> 100% gerader Stand für perfekte Spaltmaße bei Schwebetüren.</li>
-                                    <li><strong>Wandverankerung:</strong> Schwerlast-Kippsicherung, spezialisiert auf Trockenbau & bröseliges Mauerwerk.</li>
-                                    <li><strong>Innenausbau:</strong> Passgenaue Installation von KOMPLEMENT Schubladen, Beleuchtung & Kleiderstangen.</li>
-                                    <li><strong>Modifikation:</strong> Saubere Ausklinkungen für Fußleisten und Steckdosen.</li>
-                                </ul>
-                            </div>
-                            <div class="sector-group">
-                                <h4 class="group-label"><i class="fas fa-utensils cyan-text"></i> METOD Küchenmontage</h4>
-                                <ul>
-                                    <li><strong>Stabilität:</strong> Traglastgerechte Aufhängung der Wandschienen (bis zu 120kg).</li>
-                                    <li><strong>Arbeitsplatten:</strong> Fugenlose, wasserdichte Verbindungen mittels Spezialfräsung.</li>
-                                    <li><strong>Ausschnitte:</strong> Präzise, versiegelte Ausschnitte für Spüle und Kochfeld zum Schutz vor Aufquellen.</li>
-                                    <li><strong>Feinjustierung:</strong> Exakte Einstellung aller UTRUSTA und MAXIMERA Mechaniken.</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="sector-module accordion-item border-gold">
-                <button class="accordion-header hover-gold" aria-expanded="false">
-                    <div class="header-left">
-                        <span class="sector-id gold-text">MODUL_02</span>
-                        <h3 class="sector-title">Gartenhäuser, Biohort & Outdoor-Holzbau</h3>
-                    </div>
-                    <div class="sector-trigger"><i class="fas fa-plus icon-gold"></i></div>
-                </button>
-                <div class="accordion-content">
-                    <div class="accordion-body-inner">
-                        <p class="sector-description">
-                            Machen Sie Ihren Garten zur langlebigen Wohlfühloase. Ich übernehme das schwere Heben und garantiere eine wetterfeste, sturmsichere Montage Ihrer Outdoor-Strukturen auf bauseits vorbereiteten Fundamenten.
-                        </p>
-                        <div class="sector-grid">
-                            <div class="sector-group">
-                                <h4 class="group-label"><i class="fas fa-home gold-text"></i> Holz-Gartenhäuser</h4>
-                                <ul>
-                                    <li><strong>Holzschutz:</strong> Fachgerechte Blockbohlenbauweise mit Rücksicht auf das natürliche Schwindverhalten.</li>
-                                    <li><strong>Dachabdichtung:</strong> Verarbeitung von hochwertigen EPDM-Folien & vollflächige Bitumen-Verklebung.</li>
-                                    <li><strong>Sturmsicherheit:</strong> Fachgerechte Setzung von Sturmleisten und Verschraubung mit dem Fundament.</li>
-                                    <li><strong>Isolierung:</strong> Optionaler Einbau von Fußbodendämmung gegen aufsteigende Kälte.</li>
-                                </ul>
-                            </div>
-                            <div class="sector-group">
-                                <h4 class="group-label"><i class="fas fa-toolbox gold-text"></i> Metall-Gerätehäuser</h4>
-                                <ul>
-                                    <li><strong>Premium-Marken:</strong> Spezialisiert auf komplexe Systeme von BIOHORT und TEPRO.</li>
-                                    <li><strong>Verankerung:</strong> Sturmsichere Befestigung mittels Schwerlastankern auf Beton oder Gehwegplatten.</li>
-                                    <li><strong>Feuchtigkeitsschutz:</strong> Professionelle Silikon-Abdichtung am Bodenprofil gegen Staunässe.</li>
-                                    <li><strong>Struktur:</strong> Verwindungssteifer Aufbau von Mülltonnenboxen, Fahrradgaragen und Hochbeeten.</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="sector-module accordion-item border-pink">
-                <button class="accordion-header hover-pink" aria-expanded="false">
-                    <div class="header-left">
-                        <span class="sector-id pink-text">MODUL_03</span>
-                        <h3 class="sector-title">Gewerbe, Office & USM Haller Systemmöbel</h3>
-                    </div>
-                    <div class="sector-trigger"><i class="fas fa-plus icon-pink"></i></div>
-                </button>
-                <div class="accordion-content">
-                    <div class="accordion-body-inner">
-                        <p class="sector-description">
-                            Kompromisslose Präzision für Ihr Business. Ich montiere exklusive Designermöbel und komplexe Arbeitsplatz-Systeme für Büros, Kanzleien und Praxen – absolut kratzfrei, diskret und streng termingerecht.
-                        </p>
-                        <div class="sector-grid">
-                            <div class="sector-group">
-                                <h4 class="group-label"><i class="fas fa-gem pink-text"></i> USM Haller Expertise</h4>
-                                <ul>
-                                    <li><strong>Zertifiziertes Werkzeug:</strong> Ausschließlich Montage mit speziellem USM-Haller Werkzeugsatz.</li>
-                                    <li><strong>Kratzfrei-Garantie:</strong> 100% beschädigungsfreie Arretierung der sensiblen Chromrohre und Connectoren.</li>
-                                    <li><strong>Lifecycle-Service:</strong> Professioneller Umbau, Erweiterungen und Neukonfiguration bestehender Systeme.</li>
-                                    <li><strong>Präzision:</strong> Fugenlose Justierung der pulverbeschichteten Tablare und Klapptüren.</li>
-                                </ul>
-                            </div>
-                            <div class="sector-group">
-                                <h4 class="group-label"><i class="fas fa-building pink-text"></i> Office Workspace</h4>
-                                <ul>
-                                    <li><strong>Ergonomie:</strong> Kalibrierung elektrisch höhenverstellbarer Schreibtischsysteme.</li>
-                                    <li><strong>Kabelmanagement:</strong> Unsichtbare und zugentlastete Führung von IT- und Stromkabeln (Clean-Desk).</li>
-                                    <li><strong>Akustik & Raum:</strong> Fachgerechte Installation von Schallschutzpaneelen und Raumteilern.</li>
-                                    <li><strong>Logistik:</strong> Effizienter Massen-Rollout für Startups und Großraumbüros am Wochenende.</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="sector-module accordion-item border-green">
-                <button class="accordion-header hover-green" aria-expanded="false">
-                    <div class="header-left">
-                        <span class="sector-id green-text">MODUL_04</span>
-                        <h3 class="sector-title">Möbel-Demontage, Umzugsservice & Rückbau</h3>
-                    </div>
-                    <div class="sector-trigger"><i class="fas fa-plus icon-green"></i></div>
-                </button>
-                <div class="accordion-content">
-                    <div class="accordion-body-inner">
-                        <p class="sector-description">
-                            Umzug oder Renovierung geplant? Ich zerlege Ihre wertvollen Schranksysteme und Küchen systematisch und zerstörungsfrei, damit der Wiederaufbau am neuen Ort schnell und völlig fehlerfrei gelingt.
-                        </p>
-                        <div class="sector-grid">
-                            <div class="sector-group">
-                                <h4 class="group-label"><i class="fas fa-wrench green-text"></i> Küchen-Rückbau</h4>
-                                <ul>
-                                    <li><strong>Beschädigungsfrei:</strong> Vorsichtiges Lösen verklebter Arbeitsplatten und Silikonfugen.</li>
-                                    <li><strong>Vorbereitung:</strong> Sichere Trennung der Korpusse (Wasser-/Stromabklemmung bauseits vorab erforderlich).</li>
-                                    <li><strong>Kleinteile-Management:</strong> Systematische Sortierung und Beschriftung aller Beschläge und Schrauben.</li>
-                                    <li><strong>Transportfähig:</strong> Sichere Bündelung und Folierung empfindlicher Teile für Ihr Speditions-Team.</li>
-                                </ul>
-                            </div>
-                            <div class="sector-group">
-                                <h4 class="group-label"><i class="fas fa-door-open green-text"></i> System-Demontage</h4>
-                                <ul>
-                                    <li><strong>Rückwand-Rettung:</strong> Sorgfältiges, ausrissfreies Entfernen von genagelten Schrankrückwänden.</li>
-                                    <li><strong>Logistik-Protokoll:</strong> Digitales/Physisches Labeling-System für einen rasanten Wiederaufbau.</li>
-                                    <li><strong>Glas & Spiegel:</strong> Fachgerechtes Aushängen und Sichern von sensiblen Schiebe- und Spiegeltüren.</li>
-                                    <li><strong>Entsorgung:</strong> Auf Wunsch fachgerechte Trennung und Entsorgung von Altmöbeln (nach Absprache).</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div> </div>
-</section>
-
- <section id="integration-feeds" class="cinematic-section">
-    <div class="container relative-z">
-        
-        <div class="section-header center" data-aos="fade-up">
-            <div class="pre-title">TRANSPARENZ IN BEWEGUNG</div>
-            <h2 class="section-heading">Einblicke in die <span class="gold-text">Montage</span></h2>
-            <p class="section-subtitle" style="margin-left: auto; margin-right: auto;">Sehen Sie mir bei der Arbeit zu. Überzeugen Sie sich von meiner strukturierten Arbeitsweise und millimetergenauen Präzision.</p>
-        </div>
-
-        <div class="cinematic-scroller" data-aos="fade-up" data-aos-delay="100">
-            
-            <div class="cinematic-card js-open-lightbox" 
-                 data-video-src="assets/video/project-portrait-timelapse.mp4"
-                 data-title="Wohnraum Konzept"
-                 data-desc="Vom Kartonchaos zur perfekten Architektur in Rekordzeit.">
+        <section id="system-integration" class="services-accordion-section">
+            <div class="container relative-z">
                 
-                <video autoplay muted loop playsinline preload="metadata" class="cinematic-video" poster="assets/images/Bedroom_grey_main.webp">
-                    <source src="assets/video/project-portrait-timelapse.mp4" type="video/mp4">
-                </video>
-                <div class="cinematic-overlay">
-                    <div class="cinematic-tag">TIMELAPSE</div>
-                    <div class="cinematic-text">
-                        <h3>Wohnraum Konzept</h3>
-                        <p>Vom Kartonchaos zur perfekten Architektur in Rekordzeit.</p>
+                <div class="section-header" data-aos="fade-up">
+                    <div class="pre-title">SYSTEM_SERVICES</div>
+                    <h2 class="section-heading">VON DER KÜCHE BIS ZUM <span class="cyan-text">GARTENHAUS</span></h2>
+                    <p class="section-subtitle">Maßgeschneiderte Montagelösungen für Ihr gesamtes Grundstück. Höchste Präzision, termingerechte Umsetzung und absolute Sauberkeit. Klicken Sie auf ein Modul für technische Details.</p>
+                </div>
+
+                <div class="deployment-stack accordion-container" data-aos="fade-up" data-aos-delay="100">
+                    
+                    <div class="sector-module accordion-item border-cyan">
+                        <button class="accordion-header hover-cyan" aria-expanded="false">
+                            <div class="header-left">
+                                <span class="sector-id cyan-text">MODUL_01</span>
+                                <h3 class="sector-title">IKEA PAX, Küchen & Wohnraum-Systeme</h3>
+                            </div>
+                            <div class="sector-trigger"><i class="fas fa-plus icon-cyan"></i></div>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body-inner">
+                                <p class="sector-description">
+                                    Der fachgerechte Aufbau von Großmöbeln entscheidet über deren Langlebigkeit. Ich montiere Ihre Küchen- und Schranklandschaften millimetergenau und verankere sie absolut kippsicher – selbst in problematischen Altbauwänden.
+                                </p>
+                                <div class="sector-grid">
+                                    <div class="sector-group">
+                                        <h4 class="group-label"><i class="fas fa-box-open cyan-text"></i> PAX & Kleiderschränke</h4>
+                                        <ul>
+                                            <li><strong>Laser-Nivellierung:</strong> 100% gerader Stand für perfekte Spaltmaße bei Schwebetüren.</li>
+                                            <li><strong>Wandverankerung:</strong> Schwerlast-Kippsicherung, spezialisiert auf Trockenbau & bröseliges Mauerwerk.</li>
+                                        </ul>
+                                    </div>
+                                    <div class="sector-group">
+                                        <h4 class="group-label"><i class="fas fa-utensils cyan-text"></i> METOD Küchenmontage</h4>
+                                        <ul>
+                                            <li><strong>Stabilität:</strong> Traglastgerechte Aufhängung der Wandschienen (bis zu 120kg).</li>
+                                            <li><strong>Arbeitsplatten:</strong> Fugenlose, wasserdichte Verbindungen mittels Spezialfräsung.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
+                    <div class="sector-module accordion-item border-gold">
+                        <button class="accordion-header hover-gold" aria-expanded="false">
+                            <div class="header-left">
+                                <span class="sector-id gold-text">MODUL_02</span>
+                                <h3 class="sector-title">Gartenhäuser, Biohort & Outdoor-Holzbau</h3>
+                            </div>
+                            <div class="sector-trigger"><i class="fas fa-plus icon-gold"></i></div>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body-inner">
+                                <p class="sector-description">
+                                    Machen Sie Ihren Garten zur langlebigen Wohlfühloase. Ich übernehme das schwere Heben und garantiere eine wetterfeste, sturmsichere Montage Ihrer Outdoor-Strukturen auf bauseits vorbereiteten Fundamenten.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sector-module accordion-item border-pink">
+                        <button class="accordion-header hover-pink" aria-expanded="false">
+                            <div class="header-left">
+                                <span class="sector-id pink-text">MODUL_03</span>
+                                <h3 class="sector-title">Gewerbe, Office & USM Haller Systemmöbel</h3>
+                            </div>
+                            <div class="sector-trigger"><i class="fas fa-plus icon-pink"></i></div>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body-inner">
+                                <p class="sector-description">
+                                    Kompromisslose Präzision für Ihr Business. Ich montiere exklusive Designermöbel und komplexe Arbeitsplatz-Systeme für Büros, Kanzleien und Praxen – absolut kratzfrei, diskret und streng termingerecht.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sector-module accordion-item border-green">
+                        <button class="accordion-header hover-green" aria-expanded="false">
+                            <div class="header-left">
+                                <span class="sector-id green-text">MODUL_04</span>
+                                <h3 class="sector-title">Möbel-Demontage, Umzugsservice & Rückbau</h3>
+                            </div>
+                            <div class="sector-trigger"><i class="fas fa-plus icon-green"></i></div>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body-inner">
+                                <p class="sector-description">
+                                    Umzug oder Renovierung geplant? Ich zerlege Ihre wertvollen Schranksysteme und Küchen systematisch und zerstörungsfrei, damit der Wiederaufbau am neuen Ort schnell und völlig fehlerfrei gelingt.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
+        </section>
 
-            <div class="cinematic-card js-open-lightbox" 
-                 data-video-src="assets/video/raphael-assembly-action.mp4"
-                 data-title="Präzision im Detail"
-                 data-desc="Jeder Handgriff sitzt. Ausgestattet mit Bosch Professional Werkzeug.">
-                 
-                <video autoplay muted loop playsinline preload="metadata" class="cinematic-video" poster="assets/images/ikea-bekant-schreibtisch-hoehenverstellbar-aufbau.webp">
-                    <source src="assets/video/raphael-assembly-action.mp4" type="video/mp4">
-                </video>
-                <div class="cinematic-overlay">
-                    <div class="cinematic-tag">ACTION CAM</div>
-                    <div class="cinematic-text">
-                        <h3>Präzision im Detail</h3>
-                        <p>Jeder Handgriff sitzt. Ausgestattet mit Bosch Professional Werkzeug.</p>
-                    </div>
+        <section id="integration-feeds" class="cinematic-section">
+            <div class="container relative-z">
+                
+                <div class="section-header center" data-aos="fade-up">
+                    <div class="pre-title">TRANSPARENZ IN BEWEGUNG</div>
+                    <h2 class="section-heading">Einblicke in die <span class="gold-text">Montage</span></h2>
+                    <p class="section-subtitle" style="margin-left: auto; margin-right: auto;">Sehen Sie mir bei der Arbeit zu. Überzeugen Sie sich von meiner strukturierten Arbeitsweise und millimetergenauen Präzision.</p>
                 </div>
-            </div>
 
-        </div>
-        
-        <div class="cinematic-scroll-indicator hide-desktop">
-            <div class="scroll-track">
-                <div class="scroll-thumb"></div>
-            </div>
-            <span class="scroll-hint">Seitlich wischen</span>
-        </div>
+                <div class="cinematic-scroller" data-aos="fade-up" data-aos-delay="100">
+                    <div class="cinematic-card js-open-lightbox" 
+                         data-video-src="assets/video/project-portrait-timelapse.mp4"
+                         data-title="Wohnraum Konzept"
+                         data-desc="Vom Kartonchaos zur perfekten Architektur in Rekordzeit.">
+                        <video autoplay muted loop playsinline preload="metadata" class="cinematic-video" poster="assets/images/Bedroom_grey_main.webp">
+                            <source src="assets/video/project-portrait-timelapse.mp4" type="video/mp4">
+                        </video>
+                        <div class="cinematic-overlay">
+                            <div class="cinematic-tag">TIMELAPSE</div>
+                            <div class="cinematic-text">
+                                <h3>Wohnraum Konzept</h3>
+                                <p>Vom Kartonchaos zur perfekten Architektur in Rekordzeit.</p>
+                            </div>
+                        </div>
+                    </div>
 
-    </div>
-
-    <div id="videoLightbox" class="cinematic-lightbox-overlay">
-        <div class="lightbox-close-btn js-close-lightbox">
-            <i class="fas fa-times"></i> SCHLIESSEN
-        </div>
-        <div class="cinematic-lightbox-content">
-            <video id="lightboxVideo" class="lightbox-main-video" controls playsinline preload="none"></video>
-            <div class="lightbox-data-panel">
-                <h2 id="lightboxTitle">Titel</h2>
-                <p id="lightboxDesc">Beschreibung</p>
-            </div>
-        </div>
-    </div>
-</section> 
-
-<div class="cinematic-lightbox-overlay" id="cinematicLightbox">
-    <div class="lightbox-close-btn" id="closeCinematicLightbox">[ SCHLIESSEN ]</div>
-    
-    <div class="cinematic-lightbox-content">
-        <video id="lightboxVideoPlayer" controls class="lightbox-main-video">
-            <source src="" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        
-        <div class="lightbox-data-panel">
-            <h2 id="lightboxTitle">Titel</h2>
-            <p id="lightboxDesc">Beschreibung</p>
-        </div>
-    </div>
-</div>
-
-    <section id="projekt-belt" style="background: #000; padding: clamp(80px, 12vw, 150px) 0; border-top: 1px solid #111;">
-    <div class="container relative-z">
-        <div class="visual-split-layout">
-           
-            <div class="visual-info-pane glass-panel" data-aos="fade-right">
-                <div class="pre-title">LIVE_REFERENZEN</div>
-                <h2 class="section-heading">Bilder sagen mehr als <span class="cyan-text">Worte.</span></h2>
-               
-                <p class="desc-line" style="border-left: none; padding-left: 0; color: #aaa; margin-bottom: 40px; background: none;">
-                    Überzeugen Sie sich von der Qualität. Jedes Bild stammt aus echten Kundenaufträgen – vom passgenauen Kleiderschrank bis zur vollintegrierten Premium-Küche.
-                </p>
-               
-                <div class="proof-box">
-                    <div class="proof-item glass-panel" style="padding: 20px; display: flex; gap: 20px; align-items: center; box-shadow: none;">
-                        <div class="proof-icon"><i class="fas fa-camera gold-text" style="font-size: 2rem;"></i></div>
-                        <div>
-                            <strong style="color: #fff; font-size: 1rem; font-family: var(--font-head); letter-spacing: 1px;">100% Echte Projekte</strong>
-                            <span style="color: #888; font-size: 0.9rem; display: block; margin-top: 5px;">Keine Stock-Fotos. Authentisches Handwerk aus Bayern.</span>
+                    <div class="cinematic-card js-open-lightbox" 
+                         data-video-src="assets/video/raphael-assembly-action.mp4"
+                         data-title="Präzision im Detail"
+                         data-desc="Jeder Handgriff sitzt. Ausgestattet mit Bosch Professional Werkzeug.">
+                        <video autoplay muted loop playsinline preload="metadata" class="cinematic-video" poster="assets/images/ikea-bekant-schreibtisch-hoehenverstellbar-aufbau.webp">
+                            <source src="assets/video/raphael-assembly-action.mp4" type="video/mp4">
+                        </video>
+                        <div class="cinematic-overlay">
+                            <div class="cinematic-tag">ACTION CAM</div>
+                            <div class="cinematic-text">
+                                <h3>Präzision im Detail</h3>
+                                <p>Jeder Handgriff sitzt. Ausgestattet mit Bosch Professional Werkzeug.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="belt-controls">
-                    <button id="prevBelt" class="nav-hud-btn"><i class="fas fa-chevron-left"></i> ZURÜCK</button>
-                    <button id="nextBelt" class="nav-hud-btn">WEITER <i class="fas fa-chevron-right"></i></button>
-                </div>
             </div>
 
-            <div class="belt-container" data-aos="fade-left">
-                <div class="belt-track" id="imageBelt">
-                    
-                    <div class="belt-item">
-                        <img src="assets/images/kueche-1-a.webp" alt="Premium Küchenmontage" onerror="this.src='https://via.placeholder.com/800x600/111/333?text=KUECHE_01_A'">
-                        <div class="img-tag">METOD_KÜCHE</div>
+            <div id="videoLightbox" class="cinematic-lightbox-overlay">
+                <div class="lightbox-close-btn js-close-lightbox">
+                    <i class="fas fa-times"></i> SCHLIESSEN
+                </div>
+                <div class="cinematic-lightbox-content">
+                    <video id="lightboxVideo" class="lightbox-main-video" controls playsinline preload="none"></video>
+                    <div class="lightbox-data-panel">
+                        <h2 id="lightboxTitle">Titel</h2>
+                        <p id="lightboxDesc">Beschreibung</p>
                     </div>
-                    <div class="belt-item">
-                        <img src="assets/images/wohnen-1-a.webp" alt="Wohnzimmer System" onerror="this.src='https://via.placeholder.com/800x600/111/333?text=WOHNEN_01_A'">
-                        <div class="img-tag">LIVING_SYSTEM</div>
-                    </div>
-                    <div class="belt-item">
-                        <img src="assets/images/sz-1-a.webp" alt="Schlafzimmer System" onerror="this.src='https://via.placeholder.com/800x600/111/333?text=SZ_01_A'">
-                        <div class="img-tag">PAX_WARDROBE</div>
+                </div>
+            </div>
+        </section> 
+
+        <section id="projekt-belt" style="background: #000; padding: clamp(80px, 12vw, 150px) 0; border-top: 1px solid #111;">
+            <div class="container relative-z">
+                <div class="visual-split-layout">
+                   
+                    <div class="visual-info-pane glass-panel" data-aos="fade-right">
+                        <div class="pre-title">LIVE_REFERENZEN</div>
+                        <h2 class="section-heading">Bilder sagen mehr als <span class="cyan-text">Worte.</span></h2>
+                        <p class="desc-line" style="border-left: none; padding-left: 0; color: #aaa; margin-bottom: 40px; background: none;">
+                            Überzeugen Sie sich von der Qualität. Jedes Bild stammt aus echten Kundenaufträgen – vom passgenauen Kleiderschrank bis zur vollintegrierten Premium-Küche.
+                        </p>
+                       
+                        <div class="proof-box">
+                            <div class="proof-item glass-panel" style="padding: 20px; display: flex; gap: 20px; align-items: center; box-shadow: none;">
+                                <div class="proof-icon"><i class="fas fa-camera gold-text" style="font-size: 2rem;"></i></div>
+                                <div>
+                                    <strong style="color: #fff; font-size: 1rem; font-family: var(--font-head); letter-spacing: 1px;">100% Echte Projekte</strong>
+                                    <span style="color: #888; font-size: 0.9rem; display: block; margin-top: 5px;">Keine Stock-Fotos. Authentisches Handwerk aus Bayern.</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="belt-controls">
+                            <button id="prevBelt" class="nav-hud-btn"><i class="fas fa-chevron-left"></i> ZURÜCK</button>
+                            <button id="nextBelt" class="nav-hud-btn">WEITER <i class="fas fa-chevron-right"></i></button>
+                        </div>
                     </div>
 
-                    <div class="belt-item">
-                        <img src="assets/images/kueche-2-a.webp" alt="Küchendetail" onerror="this.src='https://via.placeholder.com/800x600/111/333?text=KUECHE_02_A'">
-                        <div class="img-tag">KITCHEN_DETAIL</div>
-                    </div>
-                    <div class="belt-item">
-                        <img src="assets/images/wohnen-2-a.webp" alt="Wohnzimmer System" onerror="this.src='https://via.placeholder.com/800x600/111/333?text=WOHNEN_02_A'">
-                        <div class="img-tag">TV_MEDIA_WALL</div>
-                    </div>
-                    <div class="belt-item">
-                        <img src="assets/images/schlafen-1-a.webp" alt="Schlafzimmer Montage" onerror="this.src='https://via.placeholder.com/800x600/111/333?text=SCHLAFEN_01_A'">
-                        <div class="img-tag">BEDROOM_SETUP</div>
-                    </div>
-
-                    <div class="belt-item">
-                        <img src="assets/images/kueche-3-a.webp" alt="Premium Küchenmontage" onerror="this.src='https://via.placeholder.com/800x600/111/333?text=KUECHE_03_A'">
-                        <div class="img-tag">ISLAND_KITCHEN</div>
-                    </div>
-                    <div class="belt-item">
-                        <img src="assets/images/wohnen-3-a.webp" alt="Wohnzimmer System" onerror="this.src='https://via.placeholder.com/800x600/111/333?text=WOHNEN_03_A'">
-                        <div class="img-tag">SIDEBOARD_MOUNT</div>
-                    </div>
-                    <div class="belt-item">
-                        <img src="assets/images/sz-2-a.webp" alt="Schrank System" onerror="this.src='https://via.placeholder.com/800x600/111/333?text=SZ_02_A'">
-                        <div class="img-tag">CUSTOM_CLOSET</div>
-                    </div>
-
-                    <div class="belt-item">
-                        <img src="assets/images/kueche-4-b.webp" alt="Küchendetail" onerror="this.src='https://via.placeholder.com/800x600/111/333?text=KUECHE_04_B'">
-                        <div class="img-tag">WORKTOP_DETAIL</div>
-                    </div>
-                    <div class="belt-item">
-                        <img src="assets/images/wohnen-4-a.webp" alt="Wohnzimmer System" onerror="this.src='https://via.placeholder.com/800x600/111/333?text=WOHNEN_04_A'">
-                        <div class="img-tag">LIVING_SYSTEM</div>
-                    </div>
-                    <div class="belt-item">
-                        <img src="assets/images/sz-3-a.webp" alt="Schlafzimmer System" onerror="this.src='https://via.placeholder.com/800x600/111/333?text=SZ_03_A'">
-                        <div class="img-tag">SLIDING_DOORS</div>
-                    </div>
-
-                    <div class="belt-item">
-                        <img src="assets/images/kueche-5-a.webp" alt="Premium Küchenmontage" onerror="this.src='https://via.placeholder.com/800x600/111/333?text=KUECHE_05_A'">
-                        <div class="img-tag">METOD_KÜCHE</div>
-                    </div>
-                    <div class="belt-item">
-                        <img src="assets/images/wohnen-5-a.webp" alt="Wohnzimmer System" onerror="this.src='https://via.placeholder.com/800x600/111/333?text=WOHNEN_05_A'">
-                        <div class="img-tag">SHELVING_UNIT</div>
-                    </div>
-                    <div class="belt-item">
-                        <img src="assets/images/sz-4-a.webp" alt="Schrank System" onerror="this.src='https://via.placeholder.com/800x600/111/333?text=SZ_04_A'">
-                        <div class="img-tag">PAX_WARDROBE</div>
+                    <div class="belt-container" data-aos="fade-left">
+                        <div class="belt-track" id="imageBelt">
+                            <div class="belt-item"><img src="assets/images/kueche-1-a.webp" alt="Premium Küchenmontage"><div class="img-tag">METOD_KÜCHE</div></div>
+                            <div class="belt-item"><img src="assets/images/wohnen-1-a.webp" alt="Wohnzimmer System"><div class="img-tag">LIVING_SYSTEM</div></div>
+                            <div class="belt-item"><img src="assets/images/sz-1-a.webp" alt="Schlafzimmer System"><div class="img-tag">PAX_WARDROBE</div></div>
+                        </div>
                     </div>
 
                 </div>
             </div>
+        </section>
 
-        </div>
-    </div>
-</section>  
-
-     <section id="reviews" class="review-mainframe-bg hex-core-bg">
+        <section id="reviews" class="review-mainframe-bg hex-core-bg">
             <div class="reviews-grid-overlay"></div>
             <div class="reviews-glow-pulse"></div>
 
@@ -627,7 +480,6 @@
                 </div>
 
                 <div class="swipe-carousel" id="reviewCarousel" data-aos="fade-up" data-aos-delay="100">
-                    
                     <div class="rev-card glass-panel swipe-item js-vibrate-light">
                         <div class="rev-header">
                             <div class="rev-user">Dr. Weber, München</div>
@@ -645,171 +497,39 @@
                         <p>"Definitiv die beste Wahl. Er hat Dinge extrem gut erklärt und Fehler im Handumdrehen gelöst. Sehr freundlich und absolut professionell."</p>
                         <div class="rev-footer"><span class="tag">KÜCHENMONTAGE</span><span class="tag">TOP SERVICE</span></div>
                     </div>
-
-                    <div class="rev-card glass-panel swipe-item js-vibrate-light">
-                        <div class="rev-header">
-                            <div class="rev-user">Benedikt W., Landsberg</div>
-                            <div class="rev-source hammer">MyHammer</div>
-                        </div>
-                        <p>"Schnelle Terminfindung, effiziente und saubere Arbeitsweise. Der große PAX Schrank stand in Rekordzeit. Definitiv weiterzuempfehlen!"</p>
-                        <div class="rev-footer"><span class="tag">IKEA PAX</span><span class="tag">FAIRER PREIS</span></div>
-                    </div>
-
-                    <div class="rev-card glass-panel swipe-item js-vibrate-light">
-                        <div class="rev-header">
-                            <div class="rev-user">Jacqueline Z., Dachau</div>
-                            <div class="rev-source check24">Check24</div>
-                        </div>
-                        <p>"Super zuverlässig, macht die Arbeit extrem ordentlich. Bringt sein eigenes Profi-Werkzeug mit und hinterlässt keinen Dreck. Top!"</p>
-                        <div class="rev-footer"><span class="tag">PROFI-WERKZEUG</span><span class="tag">SAUBERKEIT</span></div>
-                    </div>
-                    
-                    <div class="rev-card glass-panel swipe-item js-vibrate-light">
-                        <div class="rev-header">
-                            <div class="rev-user">Familie S., Starnberg</div>
-                            <div class="rev-source check24">Check24</div>
-                        </div>
-                        <p>"Wir haben ein großes Biohort Haus bestellt. Herr Lezius hat das Fundament perfekt ausgeglichen und das Haus sturmsicher aufgebaut. Wahnsinn!"</p>
-                        <div class="rev-footer"><span class="tag">OUTDOOR</span><span class="tag">BIOHORT</span></div>
-                    </div>
-                    
-                    <div class="rev-card glass-panel swipe-item js-vibrate-light">
-                        <div class="rev-header">
-                            <div class="rev-user">Michael R., Germering</div>
-                            <div class="rev-source hammer">MyHammer</div>
-                        </div>
-                        <p>"Pünktlich, gewissenhaft und extrem gut ausgerüstet. Die Demontage unserer alten Küche lief absolut reibungslos. Sehr empfehlenswert."</p>
-                        <div class="rev-footer"><span class="tag">DEMONTAGE</span><span class="tag">PÜNKTLICH</span></div>
-                    </div>
                 </div>
-                
-                <div class="carousel-indicators" id="reviewIndicators">
-                    <div class="dot active"></div>
-                    <div class="dot"></div>
-                    <div class="dot"></div>
-                    <div class="dot"></div>
-                    <div class="dot"></div>
-                    <div class="dot"></div>
-                </div>
-
             </div>
         </section>
 
         <section id="faq-smart" class="faq-tech-section">
-    <div class="container relative-z">
-        
-        <div class="section-header center" data-aos="fade-up">
-            <div class="pre-title">SUPPORT_CENTER</div>
-            <h2 class="section-heading">Technische <span class="gold-text">Protokolle</span> & FAQ</h2>
-            <p class="section-subtitle" style="margin-left: auto; margin-right: auto; max-width: 800px;">
-                Maximale Transparenz für Ihre Planung. Hier finden Sie detaillierte Antworten zu Ausrüstung, Abrechnung, Sicherheitsstandards und unseren Garantieleistungen.
-            </p>
-        </div>
+            <div class="container relative-z">
+                <div class="section-header center" data-aos="fade-up">
+                    <div class="pre-title">SUPPORT_CENTER</div>
+                    <h2 class="section-heading">Technische <span class="gold-text">Protokolle</span> & FAQ</h2>
+                </div>
 
-        <div class="faq-tile-grid" data-aos="fade-up" data-aos-delay="100">
-            
-            <div class="faq-module glass-panel">
-                <div class="module-header">
-                    <div class="m-icon" style="color: var(--neon-cyan); border-color: rgba(0,229,255,0.2); background: rgba(0,229,255,0.05);"><i class="fas fa-microchip"></i></div>
-                    <div class="m-title-wrap">
-                        <span class="m-category" style="color: var(--neon-cyan);">WORKFLOW</span>
-                        <h4 class="m-title">Arbeitsweise & High-End Ausrüstung</h4>
-                    </div>
-                    <div class="m-plus">+</div>
-                </div>
-                <div class="module-body">
-                    <div class="faq-inner-content">
-                        <div class="faq-entry">
-                            <h6 style="color: var(--neon-cyan);">Bringen Sie Profi-Werkzeug mit?</h6>
-                            <p>Ja. Mein "Mobile Workshop" basiert kompromisslos auf <strong>Festool, Bosch Professional (BITURBO)</strong> und <strong>Makita XGT</strong>. Das bedeutet: maximale Präzision durch Führungsschienen-Systeme und drehmomentgesteuerte Verschraubungen, die Ihre empfindlichen Oberflächen schonen.</p>
+                <div class="faq-tile-grid" data-aos="fade-up" data-aos-delay="100">
+                    <div class="faq-module glass-panel">
+                        <div class="module-header">
+                            <div class="m-icon" style="color: var(--neon-cyan); border-color: rgba(0,229,255,0.2); background: rgba(0,229,255,0.05);"><i class="fas fa-microchip"></i></div>
+                            <div class="m-title-wrap">
+                                <span class="m-category" style="color: var(--neon-cyan);">WORKFLOW</span>
+                                <h4 class="m-title">Arbeitsweise & High-End Ausrüstung</h4>
+                            </div>
+                            <div class="m-plus">+</div>
                         </div>
-                        <div class="faq-entry">
-                            <h6 style="color: var(--neon-cyan);">Wie staubfrei ist die Montage in bewohnten Räumen?</h6>
-                            <p>Ich nutze aktive <strong>HEPA-Klasse M Absaugmobile</strong>. Jeder Bohrvorgang wird direkt am Entstehungspunkt abgesaugt. Zuschnitte erfolgen mit angeschlossener Absaugung – ideal für den Einsatz in bereits bezogenen Immobilien und absolut allergikerfreundlich.</p>
-                        </div>
-                        <div class="faq-entry">
-                            <h6 style="color: var(--neon-cyan);">Wie exakt erfolgt die Nivellierung?</h6>
-                            <p>Wir überlassen nichts dem Augenmaß. Schränke und Küchen werden mittels <strong>360° Kreuzlinienlaser</strong> kalibriert. So garantieren wir perfekte Spaltmaße und einen geraden Stand, selbst bei stark unebenen Böden in historischen Altbauten.</p>
+                        <div class="module-body">
+                            <div class="faq-inner-content">
+                                <div class="faq-entry">
+                                    <h6 style="color: var(--neon-cyan);">Bringen Sie Profi-Werkzeug mit?</h6>
+                                    <p>Ja. Mein "Mobile Workshop" basiert kompromisslos auf <strong>Festool, Bosch Professional (BITURBO)</strong> und <strong>Makita XGT</strong>.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </div> 
             </div>
-
-            <div class="faq-module glass-panel">
-                <div class="module-header">
-                    <div class="m-icon" style="color: var(--neon-gold); border-color: rgba(212,175,55,0.2); background: rgba(212,175,55,0.05);"><i class="fas fa-file-invoice-dollar"></i></div>
-                    <div class="m-title-wrap">
-                        <span class="m-category" style="color: var(--neon-gold);">FINANCE_OPS</span>
-                        <h4 class="m-title">Investition & Steuerliche Vorteile</h4>
-                    </div>
-                    <div class="m-plus">+</div>
-                </div>
-                <div class="module-body">
-                    <div class="faq-inner-content">
-                        <div class="faq-entry">
-                            <h6 style="color: var(--neon-gold);">Kalkulation: Festpreis vs. Regie?</h6>
-                            <p>Für definierte Module (z.B. IKEA PAX pro Meter oder BIOHORT Modelle) erhalten Sie <strong>garantierte Festpreise</strong>. Keine versteckten Kosten. Bei individuellen Projekten oder komplexen Demontagen erfolgt die Abrechnung nach transparenten Stundensätzen inklusive digitalem Zeitnachweis.</p>
-                        </div>
-                        <div class="faq-entry">
-                            <h6 style="color: var(--neon-gold);">Ihr Steuer-Vorteil (§ 35a EStG)</h6>
-                            <p>Als offiziell gemeldeter Betrieb sind meine Rechnungen voll finanzamtstauglich. Sie können <strong>20% der Lohnkosten (bis zu 1.200 € im Jahr)</strong> direkt von Ihrer Steuerschuld abziehen, da meine Leistungen als haushaltsnahe Handwerkerleistungen gelten.</p>
-                        </div>
-                        <div class="faq-entry">
-                            <h6 style="color: var(--neon-gold);">Wie erfolgt die Bezahlung?</h6>
-                            <p>Sicher, kontaktlos und digital. Nach erfolgreicher Projektübergabe und Abnahme zahlen Sie bequem vor Ort via <strong>SumUp Terminal</strong> (EC-Karte, Apple Pay, Google Pay) oder per Echtzeit-Überweisung auf Rechnung. Bargeldzahlungen werden aus Compliance-Gründen nicht akzeptiert.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="faq-module glass-panel">
-                <div class="module-header">
-                    <div class="m-icon" style="color: var(--neon-pink); border-color: rgba(255,0,127,0.2); background: rgba(255,0,127,0.05);"><i class="fas fa-shield-alt"></i></div>
-                    <div class="m-title-wrap">
-                        <span class="m-category" style="color: var(--neon-pink);">SAFETY_PROTOCOL</span>
-                        <h4 class="m-title">Haftung, Schutz & Bausubstanz</h4>
-                    </div>
-                    <div class="m-plus">+</div>
-                </div>
-                <div class="module-body">
-                    <div class="faq-inner-content">
-                        <div class="faq-entry">
-                            <h6 style="color: var(--neon-pink);">Sind meine Möbel und Böden versichert?</h6>
-                            <p>Ich arbeite mit höchster Sorgfalt und nutze Premium-Abdeckvlies. Dennoch bin ich für den Ernstfall mit einer <strong>Betriebshaftpflichtversicherung (Deckungssumme bis 5 Mio. €)</strong> bei einem deutschen Premium-Versicherer vollumfänglich abgesichert. Null Risiko für Sie.</p>
-                        </div>
-                        <div class="faq-entry">
-                            <h6 style="color: var(--neon-pink);">Montage an Trockenbau & Problemwänden?</h6>
-                            <p>Wir scannen jede Wand vorab digital auf verdeckte Strom- und Wasserleitungen. Bei Gipskarton (Rigips) nutzen wir spezielle <strong>Hohlraum-Metalldübel</strong>. Bei porösem Altbau-Mauerwerk setzen wir auf <strong>chemische Siebhülsen und Injektionsmörtel</strong> für kompromisslose Zugfestigkeit und Sicherheit.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="faq-module glass-panel">
-                <div class="module-header">
-                    <div class="m-icon" style="color: var(--neon-green); border-color: rgba(57,255,20,0.2); background: rgba(57,255,20,0.05);"><i class="fas fa-check-double"></i></div>
-                    <div class="m-title-wrap">
-                        <span class="m-category" style="color: var(--neon-green);">SERVICE_GARANTIE</span>
-                        <h4 class="m-title">Gewährleistung & After-Care</h4>
-                    </div>
-                    <div class="m-plus">+</div>
-                </div>
-                <div class="module-body">
-                    <div class="faq-inner-content">
-                        <div class="faq-entry">
-                            <h6 style="color: var(--neon-green);">Was passiert, wenn sich Türen später verziehen?</h6>
-                            <p>Holz arbeitet, besonders bei Temperaturschwankungen in Neubauten. Sollten sich Scharniere oder Spaltmaße innerhalb der ersten 12 Monate nach Montage setzen, biete ich einen <strong>kostenlosen Nachjustierungs-Service</strong> in der Region Augsburg/München an.</p>
-                        </div>
-                        <div class="faq-entry">
-                            <h6 style="color: var(--neon-green);">Entsorgen Sie auch das Verpackungsmaterial?</h6>
-                            <p>Ja. Bei umfassenden Montagen (wie Küchen oder großen Schranklandschaften) biete ich gegen eine transparente Pauschale die <strong>fachgerechte Trennung und Entsorgung</strong> sämtlicher Kartonagen, Styropor- und Folienabfälle an. Sie betreten am Ende einen besenreinen Raum.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div> </div>
-</section>
+        </section>
 
         <div class="marquee-wrapper" style="background: var(--bg-darker); border-top: 1px solid rgba(255, 215, 0, 0.15); border-bottom: 1px solid rgba(255, 215, 0, 0.15); box-shadow: inset 0 0 30px rgba(0,0,0,0.8);">
             <div class="marquee-track" style="color: #bbb;">
@@ -832,7 +552,6 @@
     </main>
 
     <div id="global-footer"></div>
-
     <div id="global-os"></div>
 
     <a href="https://wa.me/491608194018" target="_blank" class="whatsapp-float js-vibrate-heavy">
@@ -842,94 +561,6 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="assets/js/main.js"></script>
-
- <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const accordions = document.querySelectorAll('.accordion-header');
-
-    accordions.forEach(acc => {
-        acc.addEventListener('click', function() {
-            // Get the current state
-            const isOpen = this.getAttribute('aria-expanded') === 'true';
-            
-            // Close all accordions first (optional: remove this if you want multiple open at once)
-            accordions.forEach(a => {
-                a.setAttribute('aria-expanded', 'false');
-                a.parentElement.classList.remove('active');
-                a.nextElementSibling.style.maxHeight = null;
-            });
-
-            // If it wasn't open, open it
-            if (!isOpen) {
-                this.setAttribute('aria-expanded', 'true');
-                this.parentElement.classList.add('active');
-                const content = this.nextElementSibling;
-                // Set max-height to the scrollHeight to allow CSS transition
-                content.style.maxHeight = content.scrollHeight + "px";
-            }
-        });
-    });
-});
-</script>   
-
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    
-    // --- CINEMATIC LIGHTBOX LOGIC ---
-    const triggers = document.querySelectorAll('.js-lightbox-trigger');
-    const lightbox = document.getElementById('cinematicLightbox');
-    const closeBtn = document.getElementById('closeCinematicLightbox');
-    
-    const videoPlayer = document.getElementById('lightboxVideoPlayer');
-    const titleElement = document.getElementById('lightboxTitle');
-    const descElement = document.getElementById('lightboxDesc');
-
-    if (lightbox && videoPlayer) {
-        
-        triggers.forEach(card => {
-            card.addEventListener('click', function() {
-                // 1. Get Data from the clicked card
-                const hdVideoUrl = this.getAttribute('data-video-src');
-                const titleText = this.getAttribute('data-title');
-                const descText = this.getAttribute('data-desc');
-
-                // 2. Inject Data into Lightbox
-                videoPlayer.src = hdVideoUrl;
-                titleElement.textContent = titleText;
-                descElement.textContent = descText;
-
-                // 3. Open Lightbox & Play Video
-                lightbox.classList.add('is-active');
-                document.body.style.overflow = 'hidden'; // Lock background scroll
-                
-                // Play automatically when opened
-                videoPlayer.play().catch(e => console.log("Autoplay blocked:", e));
-            });
-        });
-
-        // Close function
-        const closeLightbox = () => {
-            lightbox.classList.remove('is-active');
-            document.body.style.overflow = ''; // Unlock background
-            
-            // Pause video and clear source so it doesn't keep downloading in background
-            videoPlayer.pause();
-            setTimeout(() => { videoPlayer.src = ""; }, 500); 
-        };
-
-        // Click X to close
-        if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
-        
-        // Click background to close
-        lightbox.addEventListener('click', (e) => {
-            // Close only if clicking the dark overlay background, NOT the video itself
-            if (e.target === lightbox) {
-                closeLightbox();
-            }
-        });
-    }
-});
-</script>
 
 </body>
 </html>
