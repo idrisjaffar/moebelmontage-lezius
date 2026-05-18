@@ -3,268 +3,400 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>MASTER ARCHIVE | Visual Proof 2026 | Raphael Lezius</title>
+    <title>DAS MASTER ARCHIV | Präzisionsmontage | Raphael Lezius</title>
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Montserrat:wght@700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css">
 
     <style>
+        /* ==========================================================================
+           1. MASTER VARIABLES (MASCULINE / ARCHITECTURAL)
+           ========================================================================== */
         :root {
-            --gal-gold: var(--neon-gold);
-            --gal-cyan: var(--neon-cyan);
-            --bento-gap: 15px;
+            --bg-onyx: #050505;
+            --bg-carbon: #121212;
+            --accent-brass: #C5A059; /* High-end Brushed Gold */
+            --text-steel: #888888;
+            --text-light: #F4F4F4;
+            
+            --font-head: 'Montserrat', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            
+            --grid-gap: 15px;
         }
 
-        body { background: #020203 !important; color: #fff; overflow-x: hidden; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
-        /* --- 1. EDITORIAL HERO --- */
-        .gallery-hero {
-            padding: 180px 0 80px;
-            background: radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+        body { 
+            background-color: var(--bg-onyx); 
+            color: var(--text-light); 
+            font-family: var(--font-body);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ==========================================================================
+           2. EDITORIAL HERO SECTION
+           ========================================================================== */
+        .archive-hero {
+            padding: 18vh 20px 8vh 20px;
+            background: radial-gradient(circle at 50% 0%, rgba(197, 160, 89, 0.08) 0%, var(--bg-onyx) 70%);
             text-align: center;
-        }
-        .archive-stats {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 30px;
-            font-family: var(--font-mono);
-            font-size: 0.7rem;
-            color: #444;
-        }
-        .stat-item span { color: var(--gal-gold); font-weight: 800; }
-
-        /* --- 2. SMART FILTER INTERFACE --- */
-        .filter-container {
-            position: sticky;
-            top: 100px;
-            z-index: 100;
-            padding: 20px 0;
-            background: rgba(2, 2, 3, 0.8);
-            backdrop-filter: blur(20px);
-            margin-bottom: 40px;
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
-        .filter-nav { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
-        .filter-pill {
-            background: #0a0a0c;
-            border: 1px solid #1a1a1c;
-            color: #666;
-            padding: 10px 22px;
-            border-radius: 4px;
-            font-family: var(--font-mono);
-            font-size: 0.7rem;
-            cursor: pointer;
-            transition: 0.3s;
-            text-transform: uppercase;
-        }
-        .filter-pill.active { border-color: var(--gal-gold); color: var(--gal-gold); box-shadow: 0 0 15px rgba(212,175,55,0.1); }
 
-        /* --- 3. BENTO CORE ENGINE --- */
+        .hero-tag {
+            font-family: var(--font-mono);
+            color: var(--accent-brass);
+            font-size: 0.75rem;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        .hero-title {
+            font-family: var(--font-head);
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .hero-desc {
+            color: var(--text-steel);
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            max-width: 600px;
+            margin: 0 auto 40px auto;
+            line-height: 1.6;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: clamp(15px, 4vw, 40px);
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: #666;
+            letter-spacing: 2px;
+        }
+
+        .hero-stats span {
+            color: var(--text-light);
+            font-weight: 700;
+        }
+
+        /* ==========================================================================
+           3. TACTICAL FILTER BAR
+           ========================================================================== */
+        .filter-wrapper {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(5, 5, 5, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding: 20px 0;
+        }
+
+        .filter-nav {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .filter-btn {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-steel);
+            padding: 10px 20px;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 2px;
+        }
+
+        .filter-btn:hover {
+            border-color: rgba(197, 160, 89, 0.5);
+            color: #fff;
+        }
+
+        .filter-btn.active {
+            background: var(--accent-brass);
+            border-color: var(--accent-brass);
+            color: #000;
+            font-weight: 700;
+        }
+
+        /* ==========================================================================
+           4. ASYMMETRIC BENTO GRID (2026 ARCHITECTURE)
+           ========================================================================== */
+        .gallery-container {
+            max-width: 1600px;
+            margin: 40px auto 100px auto;
+            padding: 0 20px;
+        }
+
         .bento-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             grid-auto-rows: 280px;
-            gap: var(--bento-gap);
+            gap: var(--grid-gap);
             grid-auto-flow: dense;
         }
 
-        .bento-item {
+        /* Dynamic Sizes for Storytelling */
+        .span-wide { grid-column: span 2; } /* Landscape shots */
+        .span-tall { grid-row: span 2; }    /* Portrait shots */
+        .span-large { grid-column: span 2; grid-row: span 2; } /* Hero shots */
+
+        @media (max-width: 768px) {
+            .span-wide, .span-large { grid-column: span 1; }
+        }
+
+        .bento-card {
             position: relative;
-            border-radius: 4px;
+            background: var(--bg-carbon);
+            border-radius: 2px;
             overflow: hidden;
-            background: #080a0d;
-            border: 1px solid rgba(255,255,255,0.03);
-            transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+            cursor: crosshair;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            display: block; /* For the link wrapper */
         }
 
-        /* Architectural Spanning */
-        .span-w { grid-column: span 2; }
-        .span-t { grid-row: span 2; }
-        .span-l { grid-column: span 2; grid-row: span 2; }
+        .bento-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+            z-index: 10;
+        }
 
-        @media (max-width: 900px) { .span-w, .span-l { grid-column: span 1; } }
-        @media (max-width: 600px) { .bento-grid { grid-template-columns: 1fr; } .span-t { grid-row: span 1; } }
-
-        .bento-image {
-            width: 100%; height: 100%;
+        .bento-img {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
-            filter: grayscale(100%);
-            transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+            /* High-end moody look by default */
+            filter: grayscale(80%) contrast(110%) brightness(0.8);
+            transition: all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
 
-        .bento-item:hover { border-color: var(--gal-gold); z-index: 10; transform: translateY(-5px); }
-        .bento-item:hover .bento-image { filter: grayscale(0%); transform: scale(1.05); }
+        .bento-card:hover .bento-img {
+            filter: grayscale(0%) contrast(100%) brightness(1);
+            transform: scale(1.05);
+        }
 
-        /* HUD Overlays */
+        /* Tactical Data Overlay */
         .bento-overlay {
-            position: absolute; inset: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%);
-            display: flex; flex-direction: column; justify-content: flex-end;
-            padding: 20px; opacity: 0; transition: 0.4s;
-        }
-        .bento-item:hover .bento-overlay { opacity: 1; }
-
-        .tech-tag {
-            position: absolute; top: 15px; right: 15px;
-            font-family: var(--font-mono); font-size: 0.5rem;
-            color: var(--gal-cyan); border: 1px solid var(--gal-cyan);
-            padding: 3px 8px; border-radius: 2px; background: rgba(0,0,0,0.5);
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.2) 50%, transparent 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 25px;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
         }
 
-        .item-title { font-family: var(--font-head); font-size: 1rem; color: #fff; margin: 0; }
-        .item-cat { font-family: var(--font-mono); font-size: 0.55rem; color: var(--gal-gold); text-transform: uppercase; }
+        .bento-card:hover .bento-overlay { opacity: 1; }
+
+        .spec-tag {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--accent-brass);
+            color: #000;
+            font-family: var(--font-mono);
+            font-size: 0.6rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            letter-spacing: 1px;
+            border-radius: 2px;
+            transform: translateY(-10px);
+            opacity: 0;
+            transition: all 0.4s ease 0.1s;
+        }
+
+        .bento-card:hover .spec-tag {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .card-category {
+            font-family: var(--font-mono);
+            color: var(--accent-brass);
+            font-size: 0.65rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            transform: translateY(10px);
+            transition: transform 0.4s ease;
+        }
+
+        .card-title {
+            font-family: var(--font-head);
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            color: #fff;
+            margin: 0;
+            line-height: 1.2;
+            transform: translateY(10px);
+            transition: transform 0.4s ease 0.05s;
+        }
+
+        .bento-card:hover .card-category,
+        .bento-card:hover .card-title {
+            transform: translateY(0);
+        }
     </style>
 </head>
-<body class="is-dark no-js-override">
+<body>
 
-    <div id="global-nav"></div>
-
-    <main>
-        <section class="gallery-hero container">
-            <span class="text-tech" style="color: var(--gal-gold); letter-spacing: 8px; display: block; margin-bottom: 15px;">[ VISUAL_ASSET_DATABASE ]</span>
-            <h1 class="gallery-title" data-aos="zoom-in">Master Archive.</h1>
-            
-            <div class="archive-stats" data-aos="fade-up">
-                <div class="stat-item">PROJECTS: <span>65+</span></div>
-                <div class="stat-item">STATUS: <span>VERIFIED</span></div>
-                <div class="stat-item">LOCATION: <span>BAVARIA_CORE</span></div>
-            </div>
-        </section>
-
-        <div class="filter-container">
-            <div class="container">
-                <div class="filter-nav">
-                    <button class="filter-pill active" data-filter="all">ALL_RECORDS</button>
-                    <button class="filter-pill" data-filter="kueche">KITCHEN_SYSTEMS</button>
-                    <button class="filter-pill" data-filter="wohnen">LIVING_ARCHITECTURE</button>
-                    <button class="filter-pill" data-filter="schlafen">PAX_BEDROOM</button>
-                </div>
-            </div>
+    <header class="archive-hero">
+        <span class="hero-tag">[ DATENBANK VERIFIZIERT ]</span>
+        <h1 class="hero-title" data-aos="fade-up">Visuelle Beweisführung</h1>
+        <p class="hero-desc" data-aos="fade-up" data-aos-delay="100">
+            Kompromisslose Architektur-Integration und Maßmontage. Jeder Datensatz repräsentiert höchste bayerische Handwerkspräzision.
+        </p>
+        
+        <div class="hero-stats" data-aos="fade-up" data-aos-delay="200">
+            <div class="stat">PROJEKTE: <span>65+</span></div>
+            <div class="stat">TOLERANZ: <span>< 2MM</span></div>
+            <div class="stat">EINSATZGEBIET: <span>AUGSBURG & MÜNCHEN</span></div>
         </div>
+    </header>
 
-        <section class="gallery-container container">
-            <div class="bento-grid" id="mainArchiveGrid">
-                </div>
-        </section>
+    <nav class="filter-wrapper">
+        <div class="filter-nav">
+            <button class="filter-btn active" data-filter="all">Alle Akten</button>
+            <button class="filter-btn" data-filter="kueche">Küchen-Systeme</button>
+            <button class="filter-btn" data-filter="wohnen">Wohn-Architektur</button>
+            <button class="filter-btn" data-filter="schlafen">Schlaf-Suiten</button>
+        </div>
+    </nav>
+
+    <main class="gallery-container">
+        <div class="bento-grid" id="masterGrid">
+            </div>
     </main>
-
-    <div id="global-footer"></div>
-    <div id="global-os"></div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fslightbox/3.0.9/index.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="assets/js/main.js"></script>
 
     <script>
     document.addEventListener('DOMContentLoaded', () => {
-        
-        // --- THE 2026 COMPLETE DATA OBJECT ---
-        const fullGallery = [
-            // KITCHEN (19 Assets)
-            { img: 'kueche-13-a.webp', cat: 'kueche', title: 'Küchen-Insel Design', spec: 'LEVEL_0.0', span: 'span-l' },
-            { img: 'kueche-13-b.webp', cat: 'kueche', title: 'Insel Detail', spec: 'ALIGN_OK', span: '' },
-            { img: 'kueche-1-a.webp', cat: 'kueche', title: 'Sonderbau', spec: 'CUSTOM_FIT', span: 'span-w' },
-            { img: 'kueche-1-b.webp', cat: 'kueche', title: 'Sonderbau Detail', spec: 'JOINT_PRECISION', span: '' },
-            { img: 'kueche-2-a.webp', cat: 'kueche', title: 'L-Küche Setup', spec: 'CORNER_LOCK', span: 'span-t' },
-            { img: 'kueche-2-b.webp', cat: 'kueche', title: 'L-Küche Detail', spec: 'SEALED', span: '' },
-            { img: 'kueche-3-a.webp', cat: 'kueche', title: 'Premium Einbau', spec: 'FESTOOL_CUT', span: '' },
-            { img: 'kueche-3-b.webp', cat: 'kueche', title: 'Premium Detail', spec: 'CRI_95_LIGHT', span: '' },
-            { img: 'kueche-4-a.webp', cat: 'kueche', title: 'Finish Arplate', spec: 'WATER_RESIST', span: 'span-w' },
-            { img: 'kueche-4-b.webp', cat: 'kueche', title: 'Schnittkante', spec: '0_CHIP_CUT', span: '' },
-            { img: 'kueche-5-a.webp', cat: 'kueche', title: 'Design Montage', spec: 'SYMMETRY', span: '' },
-            { img: 'kueche-5-b.webp', cat: 'kueche', title: 'Matt Surface Care', spec: 'NANO_CLEAN', span: '' },
-            { img: 'kueche-6-a.webp', cat: 'kueche', title: 'METOD Spezial', spec: 'LASER_LEVEL', span: '' },
-            { img: 'kueche-6-b.webp', cat: 'kueche', title: 'METOD Interior', spec: 'AXIS_SYNC', span: '' },
-            { img: 'kueche-7-a.webp', cat: 'kueche', title: 'System Installation', spec: 'LOAD_SAFE', span: '' },
-            { img: 'kueche-7-b.webp', cat: 'kueche', title: 'Wandschiene', spec: 'SCHWERLAST', span: '' },
-            { img: 'kueche-8-a.webp', cat: 'kueche', title: 'Maßküche', spec: 'ARCH_FIT', span: '' },
-            { img: 'kueche-8-b.webp', cat: 'kueche', title: 'Maßküche Detail', spec: 'GAP_2MM', span: '' },
-            { img: 'kueche-9-a.webp', cat: 'kueche', title: 'Geräte-Integration', spec: 'MECH_SYNC', span: '' },
-            { img: 'kueche-17-a.webp', cat: 'kueche', title: 'Architektur-Küche', spec: 'HIGH_END', span: 'span-l' },
-            { img: 'kueche-17-b.webp', cat: 'kueche', title: 'Detail Kante', spec: 'PERFECT_SEAL', span: '' },
+        // Initialize Scroll Animations
+        AOS.init({ once: true, offset: 50 });
 
-            // BEDROOM / PAX (18 Assets)
-            { img: 'bedroom_grey_main.webp', cat: 'schlafen', title: 'Grey Suite', spec: 'DESIGN_CORE', span: 'span-l' },
-            { img: 'sz-1-a.webp', cat: 'schlafen', title: 'PAX Monolith', spec: 'TOLERANCE_0', span: 'span-w' },
-            { img: 'sz-1-b.webp', cat: 'schlafen', title: 'PAX Interior', spec: 'KOMPLEMENT', span: '' },
-            { img: 'sz-2-a.webp', cat: 'schlafen', title: 'Kombination', spec: 'LEVEL_AXIS', span: '' },
-            { img: 'sz-2-b.webp', cat: 'schlafen', title: 'Kombination Detail', spec: 'FIXING_OK', span: '' },
-            { img: 'sz-3-a.webp', cat: 'schlafen', title: 'Master Setup', spec: 'LASER_SYNC', span: 'span-t' },
-            { img: 'sz-3-b.webp', cat: 'schlafen', title: 'Master Detail', spec: 'SURFACE_PRO', span: '' },
-            { img: 'sz-4-a.webp', cat: 'schlafen', title: 'PAX Ecklösung', spec: 'GEOMETRY_OK', span: '' },
-            { img: 'sz-4-b.webp', cat: 'schlafen', title: 'Eck-Detail', spec: 'GAP_SYNC', span: '' },
-            { img: 'sz-5-a.webp', cat: 'schlafen', title: 'Designer Schrank', spec: 'PREMIUM_BUILD', span: '' },
-            { img: 'sz-5-b.webp', cat: 'schlafen', title: 'Kinematik Scharnier', spec: '4.5NM_TORQUE', span: '' },
-            { img: 'sz-6-a.webp', cat: 'schlafen', title: 'Walk-in Dream', spec: 'PRO_SPACE', span: 'span-w' },
-            { img: 'sz-6-b.webp', cat: 'schlafen', title: 'Walk-in Detail', spec: 'LIGHT_INTEGR.', span: '' },
-            { img: 'sz-7-a.webp', cat: 'schlafen', title: 'Maßanpassung', spec: 'MODULAR_FIX', span: '' },
-            { img: 'sz-7-b.webp', cat: 'schlafen', title: 'Korpus-Schnitt', spec: 'CLEAN_EDGE', span: '' },
-            { img: 'ikea-hemmes-tagesbett-ausziehbar-montage.webp', cat: 'schlafen', title: 'HEMMES Bed', spec: 'MECHANICS', span: '' },
-            { img: 'schlafen-1-a.webp', cat: 'schlafen', title: 'Premium Bett', spec: 'KNARZ_FREI', span: '' },
+        // --- THE MASSIVE 2026 DATABASE ---
+        // Span Guide: 'span-large' (Giant Square), 'span-wide' (Landscape), 'span-tall' (Portrait), '' (Small Detail Box)
+        const projectData = [
+            // KITCHEN (KÜCHE)
+            { img: 'kueche-13-a.webp', cat: 'kueche', title: 'Executive Kitchen Island', spec: 'TOLERANZ_0MM', span: 'span-large' },
+            { img: 'kueche-13-b.webp', cat: 'kueche', title: 'Island Detail', spec: 'FLUSH_FIT', span: '' },
+            { img: 'kueche-1-a.webp', cat: 'kueche', title: 'Bespoke Integration', spec: 'ARCH_FIT', span: 'span-wide' },
+            { img: 'kueche-1-b.webp', cat: 'kueche', title: 'Surface Alignment', spec: 'SEAMLESS', span: '' },
+            { img: 'kueche-2-a.webp', cat: 'kueche', title: 'Minimalist L-Shape', spec: 'SYMMETRY_PRO', span: 'span-tall' },
+            { img: 'kueche-2-b.webp', cat: 'kueche', title: 'Cabinet Lines', spec: 'LEVEL_0', span: '' },
+            { img: 'kueche-3-a.webp', cat: 'kueche', title: 'Premium Appliance Mount', spec: 'INTEGRATED', span: 'span-wide' },
+            { img: 'kueche-4-a.webp', cat: 'kueche', title: 'Matte Finish Architecture', spec: 'NANO_COAT', span: 'span-wide' },
+            { img: 'kueche-6-a.webp', cat: 'kueche', title: 'Suspended Storage', spec: 'WALL_ANCHOR', span: '' },
+            { img: 'kueche-8-a.webp', cat: 'kueche', title: 'Custom Panel Sizing', spec: 'SCRIBED', span: 'span-wide' },
+            { img: 'kueche-10-a.webp', cat: 'kueche', title: 'Smart Lighting Sync', spec: 'LED_INTEGRATION', span: 'span-tall' },
+            { img: 'kueche-17-a.webp', cat: 'kueche', title: 'Architectural Build', spec: 'CUSTOM_GRID', span: 'span-large' },
+            { img: 'kueche-18-a.webp', cat: 'kueche', title: 'Final Handover', spec: 'INSPECTED', span: 'span-wide' },
 
-            // LIVING (25 Assets)
-            { img: 'wohnen-12-a.webp', cat: 'wohnen', title: 'Floating Wall', spec: 'CHEM_RESIN', span: 'span-l' },
-            { img: 'wohnen-1-a.webp', cat: 'wohnen', title: 'BESTÅ Schwebend', spec: 'ZERO_CABLE', span: 'span-w' },
-            { img: 'wohnen-1-b.webp', cat: 'wohnen', title: 'Kabel-Routing', spec: 'HIDDEN_IO', span: '' },
-            { img: 'wohnen-3-a.webp', cat: 'wohnen', title: 'Wohnwand Massiv', spec: 'STATIC_LOAD_OK', span: 'span-t' },
-            { img: 'wohnen-4-a.webp', cat: 'wohnen', title: 'Entertainment Center', spec: 'LASER_LEVEL', span: '' },
-            { img: 'wohnen-20-a.webp', cat: 'wohnen', title: 'TV-Halterung', spec: 'HEAVY_DUTY', span: '' },
-            { img: 'wohnen-22-a.webp', cat: 'wohnen', title: 'Acoustic Wall', spec: 'DECIBEL_SYNC', span: 'span-w' },
-            { img: 'wohnen-15-a.webp', cat: 'wohnen', title: 'Before Scan', spec: 'PRE_ENGINEER', span: '' },
-            { img: 'wohnen-15-b.webp', cat: 'wohnen', title: 'After Result', spec: 'FINAL_LEVEL', span: '' },
-            { img: 'wohnen-18-a.webp', cat: 'wohnen', title: 'Smart Integration', spec: 'IOT_READY', span: 'span-w' },
-            { img: 'wohnen-7-a.webp', cat: 'wohnen', title: 'Designer Board', spec: 'SYMMETRY_PRO', span: '' },
-            { img: 'wohnen-7-b.webp', cat: 'wohnen', title: 'Spaltmaß', spec: '2.0MM_FIXED', span: '' },
-            { img: 'wohnen-8-a.webp', cat: 'wohnen', title: 'Sideboard Munich', spec: 'HIGH_GLOSS', span: '' },
-            { img: 'wohnen-10-a.webp', cat: 'wohnen', title: 'Modern Media', spec: 'HILTI_FIX', span: '' },
-            { img: 'wohnen-23-a.webp', cat: 'wohnen', title: 'Aesthetic Alignment', spec: 'GOLD_STANDARD', span: '' },
-            { img: 'ikea-bekant-schreibtisch-hoehenverstellbar-aufbau.webp', cat: 'wohnen', title: 'B2B Desk', spec: 'OFF_HOUR_DEPLOY', span: '' }
+            // LIVING ROOM (WOHNEN)
+            { img: 'wohnen-12-a.webp', cat: 'wohnen', title: 'Floating Media Console', spec: 'HEAVY_LOAD', span: 'span-large' },
+            { img: 'wohnen-1-a.webp', cat: 'wohnen', title: 'BESTÅ Wall Mount', spec: 'ZERO_CABLE', span: 'span-wide' },
+            { img: 'wohnen-1-b.webp', cat: 'wohnen', title: 'Cable Routing', spec: 'HIDDEN_IO', span: '' },
+            { img: 'wohnen-3-a.webp', cat: 'wohnen', title: 'Bookshelf Wall', spec: 'FULL_HEIGHT', span: 'span-tall' },
+            { img: 'wohnen-4-a.webp', cat: 'wohnen', title: 'Acoustic Panel Setup', spec: 'SOUND_DAMP', span: 'span-wide' },
+            { img: 'wohnen-6-a.webp', cat: 'wohnen', title: 'Lowboard Design', spec: 'MINIMAL', span: 'span-wide' },
+            { img: 'wohnen-7-a.webp', cat: 'wohnen', title: 'Entertainment Wall', spec: 'CENTERED', span: 'span-large' },
+            { img: 'wohnen-15-a.webp', cat: 'wohnen', title: 'Concrete Anchor Mount', spec: 'HILTI_FIX', span: 'span-wide' },
+            { img: 'wohnen-17-a.webp', cat: 'wohnen', title: 'Bespoke Fitment', spec: 'WALL_TO_WALL', span: 'span-tall' },
+            { img: 'wohnen-22-a.webp', cat: 'wohnen', title: 'Textured Facade', spec: 'TACTILE', span: '' },
+
+            // BEDROOM (SCHLAFZIMMER)
+            { img: 'schlafen-1-a.webp', cat: 'schlafen', title: 'Master Bed Frame', spec: 'SOLID_WOOD', span: 'span-large' },
+            { img: 'sz-1-a.webp', cat: 'schlafen', title: 'PAX Wardrobe Wall', spec: 'FULL_SPAN', span: 'span-wide' },
+            { img: 'sz-1-b.webp', cat: 'schlafen', title: 'Door Alignment', spec: 'GAP_ADJUST', span: '' },
+            { img: 'sz-3-a.webp', cat: 'schlafen', title: 'Walk-In Closet Concept', spec: 'OPEN_STORAGE', span: 'span-wide' },
+            { img: 'sz-4-a.webp', cat: 'schlafen', title: 'Sliding Door Mechanics', spec: 'RAIL_SYNC', span: 'span-tall' },
+            { img: 'sz-5-a.webp', cat: 'schlafen', title: 'Custom Headboard', spec: 'WALL_ANCHOR', span: 'span-wide' },
+            { img: 'sz-7-a.webp', cat: 'schlafen', title: 'Mood Lighting Integration', spec: 'LUMEN_SYNC', span: 'span-wide' }
         ];
 
-        const grid = document.getElementById('mainArchiveGrid');
+        const grid = document.getElementById('masterGrid');
 
-        // --- RENDER ENGINE ---
-        fullGallery.forEach((item) => {
-            const card = document.createElement('div');
-            card.className = `bento-item ${item.cat} ${item.span}`;
+        // --- THE RENDER ENGINE ---
+        projectData.forEach((item, index) => {
+            // Assign proper German names for the UI tags
+            let categoryName = item.cat === 'kueche' ? 'Küchen-System' : 
+                               item.cat === 'wohnen' ? 'Wohn-Architektur' : 'Schlaf-Suite';
+
+            const card = document.createElement('a');
+            // Using fslightbox to trigger fullscreen gallery viewing
+            card.setAttribute('data-fslightbox', 'gallery');
+            card.href = `./assets/images/${item.img}`;
+            card.className = `bento-card ${item.cat} ${item.span}`;
+            
+            // Stagger animations based on index
+            let delay = (index % 4) * 100;
             card.setAttribute('data-aos', 'fade-up');
+            card.setAttribute('data-aos-delay', delay);
             
             card.innerHTML = `
-                <div class="tech-tag">[ ${item.spec} ]</div>
-                <a data-fslightbox="archive" href="./assets/images/${item.img}">
-                    <img src="./assets/images/${item.img}" class="bento-image" alt="${item.title}" loading="lazy">
-                    <div class="bento-overlay">
-                        <span class="item-cat">${item.cat}</span>
-                        <h3 class="item-title">${item.title}</h3>
-                    </div>
-                </a>
+                <img src="./assets/images/${item.img}" class="bento-img" alt="${item.title}" loading="lazy">
+                <div class="spec-tag">[ ${item.spec} ]</div>
+                <div class="bento-overlay">
+                    <span class="card-category">${categoryName}</span>
+                    <h3 class="card-title">${item.title}</h3>
+                </div>
             `;
             grid.appendChild(card);
         });
 
-        // --- FILTER LOGIC ---
-        const pills = document.querySelectorAll('.filter-pill');
-        pills.forEach(pill => {
-            pill.addEventListener('click', () => {
-                pills.forEach(p => p.classList.remove('active'));
-                pill.classList.add('active');
-                const filter = pill.dataset.filter;
+        // Initialize Lightbox dynamically
+        if(typeof refreshFsLightbox !== 'undefined') refreshFsLightbox();
+
+        // --- TACTICAL FILTER LOGIC ---
+        const buttons = document.querySelectorAll('.filter-btn');
+        buttons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                buttons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
                 
-                document.querySelectorAll('.bento-item').forEach(el => {
-                    if(filter === 'all' || el.classList.contains(filter)) {
-                        el.style.display = 'block';
-                        setTimeout(() => el.style.opacity = '1', 10);
+                const filterValue = btn.dataset.filter;
+                
+                document.querySelectorAll('.bento-card').forEach(card => {
+                    // Logic: If 'all' is selected, or if the card has the matching class
+                    if(filterValue === 'all' || card.classList.contains(filterValue)) {
+                        card.style.display = 'block';
+                        setTimeout(() => card.style.opacity = '1', 10);
                     } else {
-                        el.style.opacity = '0';
-                        setTimeout(() => el.style.display = 'none', 500);
+                        card.style.opacity = '0';
+                        setTimeout(() => card.style.display = 'none', 300);
                     }
                 });
             });
         });
-
-        if(typeof refreshFsLightbox !== 'undefined') refreshFsLightbox();
     });
     </script>
 </body>

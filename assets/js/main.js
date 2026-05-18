@@ -513,3 +513,23 @@ window.addEventListener('load', () => {
         }, 1200); 
     }
 });
+
+// Interactive Reveal Slider (Phase 04)
+const revealContainerP4 = document.getElementById('harmonySliderPhase4');
+if(revealContainerP4) {
+    const moveSliderP4 = (clientX) => {
+        const rect = revealContainerP4.getBoundingClientRect();
+        let x = ((clientX - rect.left) / rect.width) * 100;
+        if(x < 0) x = 0; if(x > 100) x = 100;
+        const overlay = revealContainerP4.querySelector('.reveal-overlay-box');
+        const imgTop = revealContainerP4.querySelector('.reveal-img-top');
+        overlay.style.left = `${x}%`;
+        imgTop.style.left = `-${x}%`;
+    };
+
+    revealContainerP4.addEventListener('mousemove', (e) => moveSliderP4(e.clientX));
+    revealContainerP4.addEventListener('touchmove', (e) => {
+        moveSliderP4(e.touches[0].clientX);
+    }, {passive: true});
+}
+
