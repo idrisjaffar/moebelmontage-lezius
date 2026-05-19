@@ -533,3 +533,72 @@ if(revealContainerP4) {
     }, {passive: true});
 }
 
+document.addEventListener("DOMContentLoaded", function() {
+    
+    // 1. Fallback-Funktionen definieren, damit keine Fehler das Skript blockieren
+    window.triggerHaptic = window.triggerHaptic || function(intensity) {
+        if (navigator.vibrate) navigator.vibrate(intensity);
+    };
+
+    window.MissionOS = window.MissionOS || {
+        open: function() {
+            alert("[SYSTEM] MissionOS Overlay wird geladen...");
+        }
+    };
+
+    // 2. Mobile Menu Logik
+    const mobileToggle = document.getElementById("mobileMenuToggle");
+    const mobileMenu = document.getElementById("fluidMobileMenu");
+    const body = document.body;
+
+    if (mobileToggle && mobileMenu) {
+        mobileToggle.addEventListener("click", function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            // Klasse "is-open" beim Menü hinzuzufügen/entfernen
+            const isOpen = mobileMenu.classList.toggle("is-open");
+            
+            // Scrollen der Webseite im Hintergrund verhindern, wenn Menü offen ist
+            if (isOpen) {
+                body.style.overflow = "hidden";
+            } else {
+                body.style.overflow = "";
+            }
+        });
+
+        // 3. Menü schließen, wenn man auf einen Link klickt
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener("click", function() {
+                mobileMenu.classList.remove("is-open");
+                body.style.overflow = "";
+            });
+        });
+    }
+
+    // 4. Logo Lightbox Logik
+    const brandLogo = document.getElementById("brandLogoTrigger");
+    const lightbox = document.getElementById("logoLightbox");
+    const closeLightbox = document.getElementById("closeLightbox");
+
+    if (brandLogo && lightbox) {
+        brandLogo.addEventListener("click", function(e) {
+            lightbox.classList.add("is-open");
+        });
+        
+        if (closeLightbox) {
+            closeLightbox.addEventListener("click", function() {
+                lightbox.classList.remove("is-open");
+            });
+        }
+    }
+});
+
+// Automatically update the copyright year in the footer
+document.addEventListener("DOMContentLoaded", function() {
+    const yearSpan = document.getElementById("currentYear");
+    if (yearSpan) {
+        yearSpan.textContent = new Date().getFullYear();
+    }
+});
