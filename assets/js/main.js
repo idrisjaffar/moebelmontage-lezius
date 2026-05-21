@@ -1,604 +1,367 @@
 /* ==========================================================================
-   RAPHAEL LEZIUS | 2026 MASTER JAVASCRIPT ENGINE
-   ARCHITECTURE: MODULAR | GPU-ACCELERATED | EVENT-DELEGATED
+   RAPHAEL LEZIUS | 2026 MASTER SYSTEM ENGINE (main.js)
+   ARCHITECTURE: ASYNC BOOT SEQUENCE | EVENT DELEGATION | CANVAS PHYSICS
+   ========================================================================== */
+/* ==========================================================================
+   RAPHAEL LEZIUS // 2026 SYSTEM LOADER
    ========================================================================== */
 
-// --------------------------------------------------------------------------
-// 01. GLOBAL HARDWARE UTILITIES
-// --------------------------------------------------------------------------
-window.triggerHaptic = function(ms = 15) {
-    if (typeof window.navigator !== 'undefined' && navigator.vibrate) {
-        try { navigator.vibrate(ms); } catch(e) { /* Silent fail */ }
-    }
-};
-
-// --------------------------------------------------------------------------
-// 02. CORE SYSTEM INITIALIZATION
-// --------------------------------------------------------------------------
 document.addEventListener("DOMContentLoaded", async () => {
-
-    // A. Component Injector (DRY HTML Routing)
-    async function loadGlobalComponents() {
-        const components = [
-            { id: 'global-nav', file: 'components/nav.html' },
-            { id: 'global-footer', file: 'components/footer.html' },
-            { id: 'global-os', file: 'components/mission_os.html' }
-        ];
-
-        const fetchPromises = components.map(async (comp) => {
-            const el = document.getElementById(comp.id);
-            if (el) {
-                try {
-                    const response = await fetch(comp.file);
-                    if (response.ok) el.innerHTML = await response.text();
-                } catch (error) {
-                    console.error(`[SYSTEM] Error injecting ${comp.file}:`, error);
-                }
-            }
-        });
-
-        // Ensure DOM is fully injected before attaching event listeners
-        await Promise.all(fetchPromises);
-    }
     
-    await loadGlobalComponents();
+    // Auto-detect if we are in the root or a sub-folder
+    // If we are in root, fetch directly. If we are in a sub-folder, add '../'
+    const isRoot = window.location.pathname.split('/').filter(Boolean).length <= 1;
+    const pathPrefix = isRoot ? '' : '../';
 
-    // B. Typography & CLS Prevention
-    if ('fonts' in document) {
-        document.fonts.ready.then(() => document.body.classList.add('typography-synced'));
-    } else {
-        document.body.classList.add('typography-synced');
-    }
+    async function loadComponent(elementId, filePath) {
+        try {
+            const container = document.getElementById(elementId);
+            if (!container) return; 
 
-    // C. Animation Library Init
-    if (typeof AOS !== 'undefined') {
-        AOS.init({ duration: 800, offset: 30, once: true, easing: 'ease-out-cubic' });
-    }
-
-    // D. Dynamic Year
-    const yearEl = document.getElementById('currentYear') || document.getElementById('copyright-year');
-    if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-    // --------------------------------------------------------------------------
-    // 03. GLOBAL UI PHYSICS & NAVIGATION
-    // --------------------------------------------------------------------------
-    
-    // Seamless Page Transitions (PJAX Simulation)
-    const transitionEngine = document.getElementById('transition-engine');
-    document.querySelectorAll('a[href$=".html"]').forEach(link => {
-        link.addEventListener('click', (e) => {
-            if (link.target === '_blank') return;
-            e.preventDefault();
-            const targetUrl = link.getAttribute('href');
+            // Construct the path dynamically
+            const fullPath = pathPrefix + 'components/' + filePath;
             
-            if (transitionEngine) transitionEngine.classList.add('is-routing');
-            if (typeof isAudioLive !== 'undefined' && isAudioLive) playTerminalSound('sawtooth', 200, 0.4, 0.05);
+            const response = await fetch(fullPath);
+            if (!response.ok) throw new Error(`Failed to load ${fullPath}`);
             
-            setTimeout(() => window.location.href = targetUrl, 600);
-        });
-    });
-
-    // Tactical Navigation Scroll State
-    const mainNav = document.querySelector('.tactical-nav');
-    if (mainNav) {
-        window.addEventListener('scroll', () => {
-            requestAnimationFrame(() => {
-                mainNav.classList.toggle('is-scrolled', window.scrollY > 50);
-            });
-        }, { passive: true });
-    }
-
-    // Mobile Off-Canvas Menu
-    document.querySelectorAll('.js-toggle-menu, .js-close-menu').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            window.triggerHaptic(15);
-            document.body.classList.toggle('menu-open');
-        });
-    });
-
-    // Kinetic UI (Magnetic Buttons)
-    if (window.matchMedia("(pointer: fine)").matches) {
-        document.querySelectorAll('.js-magnetic').forEach(btn => {
-            btn.addEventListener('mousemove', (e) => {
-                requestAnimationFrame(() => {
-                    const rect = btn.getBoundingClientRect();
-                    const x = (e.clientX - rect.left - rect.width / 2) * 0.3;
-                    const y = (e.clientY - rect.top - rect.height / 2) * 0.3;
-                    btn.style.transform = `translate(${x}px, ${y}px)`;
-                });
-            });
-            btn.addEventListener('mouseleave', () => {
-                requestAnimationFrame(() => btn.style.transform = 'translate(0px, 0px)');
-            });
-        });
-    }
-
-    // Tactical HUD Cursor
-    const cursorDot = document.querySelector('.hud-cursor');
-    const cursorTrail = document.querySelector('.hud-cursor-trail');
-    
-    if (cursorDot && cursorTrail && window.matchMedia("(pointer: fine)").matches) {
-        window.addEventListener('mousemove', (e) => {
-            cursorDot.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
-            setTimeout(() => {
-                if (!cursorTrail.classList.contains('is-locked')) {
-                    cursorTrail.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
-                } else {
-                    cursorTrail.style.left = `${e.clientX}px`;
-                    cursorTrail.style.top = `${e.clientY}px`;
-                    cursorTrail.style.transform = `translate(-50%, -50%)`;
-                }
-            }, 40);
-        });
-
-        document.querySelectorAll('a, button, input, textarea, .js-magnetic, .accordion-header').forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                cursorDot.classList.add('is-locked');
-                cursorTrail.classList.add('is-locked');
-            });
-            el.addEventListener('mouseleave', () => {
-                cursorDot.classList.remove('is-locked');
-                cursorTrail.classList.remove('is-locked');
-            });
-        });
-
-        window.addEventListener('mousedown', (e) => cursorDot.style.transform = `translate(${e.clientX}px, ${e.clientY}px) scale(0.7)`);
-        window.addEventListener('mouseup', (e) => cursorDot.style.transform = `translate(${e.clientX}px, ${e.clientY}px) scale(1)`);
-    }
-
-    // Synaptic Audio Engine (Zero-Asset)
-    const audioToggle = document.querySelector('.js-toggle-audio');
-    let audioCtx, isAudioLive = false;
-
-    window.playTerminalSound = function(type, frequency, duration, volume) {
-        if (!isAudioLive) return;
-        if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        
-        const oscillator = audioCtx.createOscillator();
-        const gainNode = audioCtx.createGain();
-        oscillator.type = type;
-        oscillator.frequency.setValueAtTime(frequency, audioCtx.currentTime);
-        gainNode.gain.setValueAtTime(volume, audioCtx.currentTime);
-        gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
-        oscillator.connect(gainNode);
-        gainNode.connect(audioCtx.destination);
-        oscillator.start();
-        oscillator.stop(audioCtx.currentTime + duration);
-    };
-
-    if (audioToggle) {
-        audioToggle.addEventListener('click', () => {
-            isAudioLive = !isAudioLive;
-            audioToggle.classList.toggle('is-live', isAudioLive);
-            audioToggle.innerHTML = isAudioLive ? '<i class="fas fa-volume-up"></i>' : '<i class="fas fa-volume-mute"></i>';
-            if (isAudioLive) playTerminalSound('triangle', 600, 0.2, 0.05);
-        });
-
-        if (window.matchMedia("(pointer: fine)").matches) {
-            document.querySelectorAll('a, button, .filter-btn, .accordion-header, .js-magnetic').forEach(el => {
-                el.addEventListener('mouseenter', () => playTerminalSound('sine', 800, 0.05, 0.02));
-                el.addEventListener('mousedown', () => playTerminalSound('square', 300, 0.1, 0.05));
-            });
+            container.innerHTML = await response.text();
+        } catch (error) {
+            console.error("Injection Error:", error);
         }
     }
 
-    // --------------------------------------------------------------------------
-    // 04. COMPONENT LOGIC (ACCORDIONS, SLIDERS, TABS, LIGHTBOX)
-    // --------------------------------------------------------------------------
+    // Run the injection
+    await Promise.all([
+        loadComponent("global-nav", "nav.html"),
+        loadComponent("global-footer", "footer.html"),
+        loadComponent("global-os", "mission_os.html")
+    ]);
+
+    console.log("SYS_UPLINK ESTABLISHED: Components Injected.");
+
+    // Now initialize your engines
+    initializeSystemEngines();
+});
+
+// ==========================================================================
+// 2. MASTER INITIALIZATION (Fires after components load)
+// ==========================================================================
+function initializeSystemEngines() {
     
-    // Universal Accordion Engine
-    document.querySelectorAll('.accordion-header').forEach(header => {
-        header.addEventListener('click', function() {
-            const parent = this.parentElement;
-            const content = this.nextElementSibling; 
-            const isOpen = parent.classList.contains('active');
-            
-            document.querySelectorAll('.accordion-item').forEach(item => {
-                item.classList.remove('active');
-                const body = item.querySelector('.accordion-content');
-                if (body) body.style.maxHeight = null;
-            });
+    // --- A. AOS ANIMATIONS ---
+    if (typeof AOS !== 'undefined') {
+        AOS.init({ duration: 800, offset: 50, once: true });
+    }
 
-            if (!isOpen) {
-                parent.classList.add('active');
-                if (content) content.style.maxHeight = content.scrollHeight + "px";
-                window.triggerHaptic(10);
+    // --- B. GLITCH TYPOGRAPHY ---
+    const glitchHeader = document.querySelector('.glitch-header');
+    if (glitchHeader) {
+        const originalText = glitchHeader.getAttribute('data-text') || "PERFEKTION";
+        const chars = '!<>-_\\/[]{}—=+*^?#________';
+        const scramble = () => {
+            let iteration = 0;
+            const interval = setInterval(() => {
+                const target = glitchHeader.querySelector('.gold-text');
+                if(target) {
+                    target.innerText = originalText.split('').map((l, i) => {
+                        if(i < iteration) return originalText[i];
+                        return chars[Math.floor(Math.random() * chars.length)];
+                    }).join('');
+                }
+                if(iteration >= originalText.length) clearInterval(interval);
+                iteration += 1/3;
+            }, 30);
+        };
+        setTimeout(scramble, 500);
+    }
+
+    // --- C. MAGNETIC BUTTON PHYSICS ---
+    document.querySelectorAll('.btn-magnetic, .magnetic-target').forEach(btn => {
+        btn.addEventListener('mousemove', (e) => {
+            const pos = btn.getBoundingClientRect();
+            const x = e.clientX - pos.left - pos.width / 2;
+            const y = e.clientY - pos.top - pos.height / 2;
+            btn.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px)`;
+        });
+        btn.addEventListener('mouseout', () => {
+            btn.style.transform = 'translate(0px, 0px)';
+        });
+    });
+
+    // --- D. GOLDEN BUBBLES (CANVAS ENGINE) ---
+    const canvas = document.getElementById('gold-bubbles');
+    if (canvas) {
+        const ctx = canvas.getContext('2d');
+        let bubbles = [];
+        const resize = () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; };
+        window.addEventListener('resize', resize);
+        resize();
+
+        class Bubble {
+            constructor() { this.init(); }
+            init() {
+                this.x = Math.random() * canvas.width;
+                this.y = canvas.height + Math.random() * 100;
+                this.size = Math.random() * 4 + 1;
+                this.speed = Math.random() * 1 + 0.5;
+                this.opacity = Math.random() * 0.5 + 0.2;
             }
+            update() {
+                this.y -= this.speed;
+                if (this.y < -10) this.init();
+            }
+            draw() {
+                ctx.beginPath();
+                const grad = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size);
+                grad.addColorStop(0, `rgba(255, 215, 0, ${this.opacity})`);
+                grad.addColorStop(1, 'rgba(255, 215, 0, 0)');
+                ctx.fillStyle = grad;
+                ctx.arc(this.x, this.y, this.size * 2, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+        for (let i = 0; i < 100; i++) bubbles.push(new Bubble());
+        const animate = () => {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            bubbles.forEach(b => { b.update(); b.draw(); });
+            requestAnimationFrame(animate);
+        };
+        animate();
+    }
+
+    // --- E. 3D OPS CARD TILT ---
+    const tiltWrapper = document.querySelector('.ops-panel-wrapper');
+    const tiltCard = document.querySelector('.ops-card');
+    if (tiltWrapper && tiltCard) {
+        tiltWrapper.addEventListener('mousemove', (e) => {
+            const rect = tiltWrapper.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const rotateX = ((y - centerY) / centerY) * -5;
+            const rotateY = ((x - centerX) / centerX) * 5;
+            tiltCard.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
         });
-    });
+        tiltWrapper.addEventListener('mouseleave', () => tiltCard.style.transform = 'rotateX(0) rotateY(0)');
+    }
 
-    // Dynamic Hover Glow (Pricing Cards)
-    document.querySelectorAll('.price-module, .metric-card').forEach(card => {
-        card.addEventListener('mousemove', e => {
-            const rect = card.getBoundingClientRect();
-            card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
-            card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+    // --- F. MOBILE MENU TOGGLE ---
+    const hamburger = document.getElementById('mobileMenuToggle'); // Matches your new ID
+    const mobileMenu = document.getElementById('fluidMobileMenu');
+    
+    if (hamburger && mobileMenu) {
+        hamburger.addEventListener('click', () => {
+            mobileMenu.classList.toggle('is-open');
+            hamburger.classList.toggle('is-active');
+            document.body.style.overflow = mobileMenu.classList.contains('is-open') ? 'hidden' : '';
         });
-    });
 
-    // Image Belt Slider Controls
-    const nextBeltBtn = document.getElementById('nextBelt');
-    const prevBeltBtn = document.getElementById('prevBelt');
-    const beltContainer = document.querySelector('.belt-container'); 
-
-    if (nextBeltBtn && beltContainer) {
-        nextBeltBtn.addEventListener('click', () => {
-            window.triggerHaptic(15);
-            const itemWidth = beltContainer.querySelector('.belt-item').offsetWidth + 30;
-            beltContainer.scrollBy({ left: itemWidth, behavior: 'smooth' });
+        // Close menu when clicking links
+        document.querySelectorAll('.m-link-massive').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('is-open');
+                hamburger.classList.remove('is-active');
+                document.body.style.overflow = '';
+            });
         });
     }
 
-    if (prevBeltBtn && beltContainer) {
-        prevBeltBtn.addEventListener('click', () => {
-            window.triggerHaptic(15);
-            const itemWidth = beltContainer.querySelector('.belt-item').offsetWidth + 30;
-            beltContainer.scrollBy({ left: -itemWidth, behavior: 'smooth' });
+    // --- G. INTERACTIVE GALLERY BELT ---
+    const gurt = document.getElementById('imageBelt');
+    const tasteZurueck = document.getElementById('prevBelt');
+    const tasteVor = document.getElementById('nextBelt');
+
+    if (gurt && tasteVor && tasteZurueck) {
+        // Smooth scroll implementation instead of animation speed
+        const scrollAmount = window.innerWidth < 768 ? window.innerWidth * 0.85 : 470;
+        
+        tasteVor.addEventListener('click', () => {
+            document.querySelector('.belt-container').scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        });
+        tasteZurueck.addEventListener('click', () => {
+            document.querySelector('.belt-container').scrollBy({ left: -scrollAmount, behavior: 'smooth' });
         });
     }
 
-    // Cinematic Video Lightbox Engine
-    const videoCards = document.querySelectorAll('.js-open-lightbox');
-    const lightbox = document.getElementById('videoLightbox');
-    const lightboxVideo = document.getElementById('lightboxVideo');
-    const lightboxTitle = document.getElementById('lightboxTitle');
-    const lightboxDesc = document.getElementById('lightboxDesc');
-    const closeBtns = document.querySelectorAll('.js-close-lightbox');
+    // --- H. CINEMATIC LIGHTBOX ---
+    const triggers = document.querySelectorAll('.js-lightbox-trigger');
+    const lightbox = document.getElementById('cinematicLightbox');
+    const closeBtn = document.getElementById('closeCinematicLightbox');
+    const videoPlayer = document.getElementById('lightboxVideoPlayer');
+    const titleElement = document.getElementById('lightboxTitle');
+    const descElement = document.getElementById('lightboxDesc');
 
-    if (videoCards.length > 0 && lightbox) {
-        videoCards.forEach(card => {
-            card.addEventListener('click', () => {
-                window.triggerHaptic([15, 30]); 
-                lightboxVideo.src = card.getAttribute('data-video-src');
-                lightboxTitle.textContent = card.getAttribute('data-title');
-                lightboxDesc.textContent = card.getAttribute('data-desc');
+    if (lightbox && videoPlayer) {
+        triggers.forEach(card => {
+            card.addEventListener('click', function() {
+                videoPlayer.src = this.getAttribute('data-video-src');
+                titleElement.textContent = this.getAttribute('data-title');
+                descElement.textContent = this.getAttribute('data-desc');
                 
                 lightbox.classList.add('is-active');
-                document.body.style.overflow = 'hidden'; 
-                lightboxVideo.play().catch(e => console.warn("Autoplay prevented:", e));
+                document.body.style.overflow = 'hidden';
+                videoPlayer.play().catch(e => console.log("Autoplay blocked:", e));
             });
         });
 
         const closeLightbox = () => {
-            window.triggerHaptic(15);
             lightbox.classList.remove('is-active');
-            document.body.style.overflow = ''; 
-            lightboxVideo.pause();
-            setTimeout(() => { lightboxVideo.src = ''; }, 500); 
+            document.body.style.overflow = '';
+            videoPlayer.pause();
+            setTimeout(() => { videoPlayer.src = ""; }, 500);
         };
 
-        closeBtns.forEach(btn => btn.addEventListener('click', closeLightbox));
-        lightbox.addEventListener('click', (e) => { if(e.target === lightbox) closeLightbox(); });
+        if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightbox();
+        });
     }
 
-    // --------------------------------------------------------------------------
-    // 05. AREA PAGE SPECIFICS (TOPOGRAPHY & TELEMETRY)
-    // --------------------------------------------------------------------------
-    
-    // Tactical Terrain Canvas (WebGL/2D Context Simulation)
-    const terrainCanvas = document.getElementById('tacticalTerrain');
-    if (terrainCanvas && window.innerWidth >= 992) {
-        const ctx = terrainCanvas.getContext('2d');
-        let w, h, scrollOffset = 0;
-        
-        const resize = () => {
-            w = terrainCanvas.width = window.innerWidth;
-            h = terrainCanvas.height = terrainCanvas.parentElement.offsetHeight;
-        };
-        window.addEventListener('resize', resize);
-        resize();
+    // --- I. LIVE DISPATCH FEED ---
+    const feedContainer = document.getElementById("live-dispatch-feed");
+    const dispatchMessages = [
+        { time: "> SYS:", msg: "Aviation Tooling geladen.", highlight: false },
+        { time: "> LOG:", msg: 'Festool Absaugung: <span style="color:var(--neon-gold)">AKTIV</span>', highlight: false },
+        { time: "> CAP:", msg: "Einsatzbereit in Augsburg.", highlight: true },
+        { time: "> DIS:", msg: "Laser-Nivellierung kalibriert.", highlight: false },
+        { time: "> SEC:", msg: "Betriebshaftpflicht: GÜLTIG", highlight: false }
+    ];
 
-        const drawTerrain = () => {
-            ctx.clearRect(0, 0, w, h);
-            ctx.strokeStyle = 'rgba(0, 229, 255, 0.4)';
-            ctx.lineWidth = 1;
-            
-            const vpX = w / 2, vpY = h * 0.15;
-            ctx.beginPath();
-            for (let x = -w; x < w * 2; x += 70) {
-                ctx.moveTo(vpX, vpY);
-                ctx.lineTo(x, h);
-            }
-            
-            scrollOffset = (scrollOffset + 1.2) % 25; 
-            for (let y = 1; y < 60; y++) {
-                const drawY = vpY + Math.pow(y - (scrollOffset / 25), 2); 
-                if (drawY > h) break; 
-                ctx.moveTo(0, drawY);
-                ctx.lineTo(w, drawY);
-            }
-            ctx.stroke();
-            requestAnimationFrame(drawTerrain);
-        };
-        drawTerrain();
-    }
-
-    // Scroll-Driven Coordinate Telemetry
-    const trackProg = document.getElementById('track-progress');
-    if (trackProg) {
-        window.addEventListener('scroll', () => {
-            const scrollTop = window.scrollY;
-            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-            let percent = Math.max(0, Math.min(1, docHeight > 0 ? (scrollTop / docHeight) : 0));
-
-            document.getElementById('track-lat').textContent = (48.3717 + ((48.1351 - 48.3717) * percent)).toFixed(4);
-            document.getElementById('track-lon').textContent = (10.8983 + ((11.5820 - 10.8983) * percent)).toFixed(4);
-            trackProg.style.height = `${percent * 100}%`;
-            
-            scrollTop < 100 ? document.body.setAttribute('data-scroll', 'top') : document.body.removeAttribute('data-scroll');
-        }, { passive: true });
-    }
-
-    // Live Fleet Telemetry Fluctuation
-    const capNumbers = document.querySelectorAll('.js-live-cap');
-    if (capNumbers.length > 0) {
+    let currentIndex = 0;
+    if (feedContainer) {
         setInterval(() => {
-            capNumbers.forEach((el, index) => {
-                let newCap = Math.max(10, Math.min(99, parseInt(el.getAttribute('data-base')) + (Math.floor(Math.random() * 5) - 2)));
-                el.innerText = newCap;
-                const bar = document.querySelectorAll('.js-live-bar')[index];
-                if(bar) bar.style.width = newCap + '%';
-            });
+            if (feedContainer.children.length >= 3) {
+                feedContainer.removeChild(feedContainer.firstElementChild);
+            }
+            const newMsg = dispatchMessages[currentIndex];
+            const line = document.createElement("div");
+            line.className = `stream-line ${newMsg.highlight ? 'highlight' : ''}`;
+            line.style.opacity = "0"; 
+            line.innerHTML = `<span class="time" style="color:var(--neon-cyan)">${newMsg.time}</span> <span class="msg">${newMsg.msg}</span>`;
+            
+            feedContainer.appendChild(line);
+            setTimeout(() => { line.style.opacity = "1"; line.style.transition = "opacity 0.5s"; }, 50);
+            currentIndex = (currentIndex + 1) % dispatchMessages.length;
         }, 3500);
     }
-
-    // Sector Scanner Simulator
-    const scanBtn = document.querySelector('.js-verify-sector');
-    if (scanBtn) {
-        scanBtn.addEventListener('click', () => {
-            const input = document.getElementById('sectorInput');
-            const res = document.getElementById('scanResult');
-            const query = input.value.trim();
-            
-            if (!query) return input.style.borderColor = "var(--neon-pink)";
-            
-            input.style.borderColor = "rgba(255,255,255,0.1)";
-            res.classList.remove('active');
-            scanBtn.innerHTML = 'CALCULATING... <i class="fas fa-spinner fa-spin"></i>';
-            scanBtn.style.opacity = "0.7";
-            scanBtn.style.pointerEvents = "none";
-
-            setTimeout(() => {
-                scanBtn.innerHTML = 'SCAN <i class="fas fa-satellite-dish"></i>';
-                scanBtn.style.opacity = "1";
-                scanBtn.style.pointerEvents = "auto";
-                res.classList.add('active');
-                res.innerHTML = `
-                    <div style="color: var(--neon-green); margin-bottom: 5px;">> COORDINATES RECEIVED</div>
-                    <div style="color: #fff; margin-bottom: 5px;">> TARGET: ${query.toUpperCase()}</div>
-                    <div style="color: var(--neon-cyan);">> STATUS: PLEASE PROCEED TO MISSION_OS TO VERIFY EXACT LOGISTICS.</div>
-                `;
-            }, 1200);
-        });
-    }
-
-    // Dynamic Sector Filtering (Mission Logs)
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    if (filterBtns.length > 0) {
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                filterBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                const target = btn.getAttribute('data-filter');
-
-                document.querySelectorAll('.proof-card').forEach(card => {
-                    card.classList.remove('is-filtered-in'); 
-                    if (target === 'all' || card.getAttribute('data-zone') === target) {
-                        card.classList.remove('is-filtered-out');
-                        void card.offsetWidth; // Force Reflow
-                        card.classList.add('is-filtered-in');
-                    } else {
-                        card.classList.add('is-filtered-out');
-                    }
-                });
-                if (typeof AOS !== 'undefined') setTimeout(() => AOS.refresh(), 100);
-            });
-        });
-    }
-
-    // --------------------------------------------------------------------------
-    // 06. MISSION OS (LEAD CAPTURE MODAL)
-    // --------------------------------------------------------------------------
-    const osOverlay = document.querySelector('.os-overlay');
-    if (osOverlay) {
-        let currentStep = 1;
-        const totalSteps = 4;
-        const formSteps = document.querySelectorAll('.form-step');
-
-        window.MissionOS = {
-            open: () => {
-                window.triggerHaptic([20, 40, 20]);
-                osOverlay.classList.add('system-active');
-                document.body.style.overflow = 'hidden';
-            },
-            close: () => {
-                window.triggerHaptic(20);
-                osOverlay.classList.remove('system-active');
-                document.body.style.overflow = '';
-            }
-        };
-
-        const updateFormUI = () => {
-            formSteps.forEach(step => step.classList.toggle('is-active', parseInt(step.dataset.step) === currentStep));
-            const bar = document.getElementById('osProgress');
-            if (bar) bar.style.width = `${((currentStep - 1) / (totalSteps - 1)) * 100}%`;
-
-            document.querySelectorAll('.step-text').forEach((ind, i) => ind.classList.toggle('active', i < currentStep));
-        };
-
-        document.querySelectorAll('.btn-next').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const currentEl = document.querySelector(`.form-step[data-step="${currentStep}"]`);
-                let isValid = true;
-                
-                currentEl.querySelectorAll('input[required], select[required]').forEach(input => {
-                    if (!input.value.trim() || (input.type === 'checkbox' && !input.checked)) {
-                        isValid = false;
-                        input.style.borderColor = 'var(--neon-pink)';
-                        setTimeout(() => input.style.borderColor = '', 2000);
-                    }
-                });
-
-                if (isValid) {
-                    window.triggerHaptic(10);
-                    if (currentStep < totalSteps) { currentStep++; updateFormUI(); }
-                } else {
-                    window.triggerHaptic([30, 30]); 
-                }
-            });
-        });
-
-        document.querySelectorAll('.btn-prev').forEach(btn => {
-            btn.addEventListener('click', () => {
-                window.triggerHaptic(10);
-                if (currentStep > 1) { currentStep--; updateFormUI(); }
-            });
-        });
-
-        // Event delegation for opening/closing
-        document.body.addEventListener('click', (e) => {
-            if (e.target.closest('.js-open-os')) { e.preventDefault(); window.MissionOS.open(); }
-            if (e.target.closest('.js-close-os') && !e.target.classList.contains('os-backdrop')) window.MissionOS.close();
-        });
-
-        // Cartography Data Injection
-        document.querySelectorAll('.js-open-os[data-sector]').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const input = document.querySelector('input[name="city"]');
-                if (input) {
-                    input.value = btn.getAttribute('data-sector');
-                    input.style.borderColor = "var(--neon-cyan)";
-                    input.style.background = "rgba(0, 229, 255, 0.1)";
-                    setTimeout(() => {
-                        input.style.borderColor = "rgba(255,255,255,0.1)";
-                        input.style.background = "rgba(0,0,0,0.4)";
-                    }, 2000);
-                }
-            });
-        });
-
-        // Submit Simulator
-        const leadForm = document.getElementById('leadForm');
-        if (leadForm) {
-            leadForm.addEventListener('submit', (e) => {
-                e.preventDefault(); 
-                window.triggerHaptic([50, 100, 50]);
-                document.querySelector('.case-container').innerHTML = `
-                    <div style="text-align: center; padding: 40px 0;">
-                        <i class="fas fa-check-circle" style="font-size: 4rem; color: var(--neon-green); margin-bottom: 20px;"></i>
-                        <h3 style="color: #fff; font-family: var(--font-head); font-size: 2rem; margin-bottom: 10px;">DATEN EMPFANGEN</h3>
-                        <p style="color: #aaa;">Vielen Dank für Ihre Anfrage. Ich werde das Projektprotokoll prüfen und mich umgehend bei Ihnen melden.</p>
-                        <button class="btn-terminal js-close-os" style="margin-top: 30px;">SYSTEM SCHLIESSEN</button>
-                    </div>
-                `;
-            });
-        }
-    }
-
-    console.log("%c[ RAPHAEL LEZIUS // SYSTEM 2026 ONLINE & CALIBRATED ]", "color: #00e5ff; font-size: 12px; font-weight: bold; background: #000; padding: 5px 10px; border: 1px solid #00e5ff;");
-
-});
-
-// --------------------------------------------------------------------------
-// 07. POST-LOAD BOOT SEQUENCE
-// --------------------------------------------------------------------------
-window.addEventListener('load', () => {
-    const bootScreen = document.getElementById('boot-sequence');
-    if (bootScreen) {
-        setTimeout(() => {
-            bootScreen.classList.add('boot-complete');
-            document.body.classList.remove('is-booting');
-            if (typeof AOS !== 'undefined') AOS.refresh();
-        }, 1200); 
-    }
-});
-
-// Interactive Reveal Slider (Phase 04)
-const revealContainerP4 = document.getElementById('harmonySliderPhase4');
-if(revealContainerP4) {
-    const moveSliderP4 = (clientX) => {
-        const rect = revealContainerP4.getBoundingClientRect();
-        let x = ((clientX - rect.left) / rect.width) * 100;
-        if(x < 0) x = 0; if(x > 100) x = 100;
-        const overlay = revealContainerP4.querySelector('.reveal-overlay-box');
-        const imgTop = revealContainerP4.querySelector('.reveal-img-top');
-        overlay.style.left = `${x}%`;
-        imgTop.style.left = `-${x}%`;
-    };
-
-    revealContainerP4.addEventListener('mousemove', (e) => moveSliderP4(e.clientX));
-    revealContainerP4.addEventListener('touchmove', (e) => {
-        moveSliderP4(e.touches[0].clientX);
-    }, {passive: true});
 }
 
-document.addEventListener("DOMContentLoaded", function() {
-    
-    // 1. Fallback-Funktionen definieren, damit keine Fehler das Skript blockieren
-    window.triggerHaptic = window.triggerHaptic || function(intensity) {
-        if (navigator.vibrate) navigator.vibrate(intensity);
-    };
 
-    window.MissionOS = window.MissionOS || {
-        open: function() {
-            alert("[SYSTEM] MissionOS Overlay wird geladen...");
+// ==========================================================================
+// 3. GLOBAL FUNCTIONS (Available anywhere, anytime)
+// ==========================================================================
+
+// Global Accordion Logic (Using Event Delegation so it works on dynamic HTML)
+document.addEventListener('click', function(e) {
+    // Handling Accordions (Services & FAQ)
+    const accordionHeader = e.target.closest('.accordion-header') || e.target.closest('.faq-trigger');
+    if (accordionHeader) {
+        const item = accordionHeader.parentElement;
+        const isOpen = item.classList.contains('active') || item.classList.contains('open');
+        
+        // Close others in the same container
+        const container = item.parentElement;
+        container.querySelectorAll('.accordion-item, .faq-module').forEach(mod => {
+            mod.classList.remove('active', 'open');
+            mod.querySelector('.accordion-content, .faq-content').style.maxHeight = null;
+        });
+
+        // Open clicked
+        if (!isOpen) {
+            item.classList.add('active', 'open');
+            const content = item.querySelector('.accordion-content, .faq-content');
+            content.style.maxHeight = content.scrollHeight + "px";
+            setTimeout(() => {
+                item.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 300);
         }
-    };
+    }
 
-    // 2. Mobile Menu Logik
-    const mobileToggle = document.getElementById("mobileMenuToggle");
-    const mobileMenu = document.getElementById("fluidMobileMenu");
-    const body = document.body;
+    // Handle OS Opening via Buttons
+    if (e.target.closest('.js-open-os')) {
+        e.preventDefault();
+        window.MissionOS.open();
+    }
+    // Handle OS Closing via Backdrop/Buttons
+    if (e.target.closest('.js-close-os')) {
+        window.MissionOS.close();
+    }
+});
 
-    if (mobileToggle && mobileMenu) {
-        mobileToggle.addEventListener("click", function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            
-            // Klasse "is-open" beim Menü hinzuzufügen/entfernen
-            const isOpen = mobileMenu.classList.toggle("is-open");
-            
-            // Scrollen der Webseite im Hintergrund verhindern, wenn Menü offen ist
-            if (isOpen) {
-                body.style.overflow = "hidden";
+// ==========================================================================
+// 4. MISSION_OS v2.6 LOGIC ENGINE
+// ==========================================================================
+window.MissionOS = {
+    currentStep: 1,
+    totalSteps: 4,
+
+    open: () => {
+        const modal = document.getElementById('missionOS');
+        if (modal) {
+            modal.classList.add('system-active');
+            document.body.style.overflow = 'hidden';
+            window.MissionOS.goToStep(1); // Reset to start
+        }
+    },
+
+    close: () => {
+        const modal = document.getElementById('missionOS');
+        if (modal) {
+            modal.classList.remove('system-active');
+            document.body.style.overflow = 'auto';
+        }
+    },
+
+    // Handles the "Next" and "Back" form logic
+    goToStep: (stepNumber) => {
+        if(stepNumber < 1 || stepNumber > window.MissionOS.totalSteps) return;
+        window.MissionOS.currentStep = stepNumber;
+
+        // Hide all steps
+        document.querySelectorAll('.form-step').forEach(step => {
+            step.classList.remove('is-active');
+            step.style.display = 'none';
+        });
+
+        // Show active step
+        const targetStep = document.querySelector(`.form-step[data-step="${stepNumber}"]`);
+        if(targetStep) {
+            targetStep.style.display = 'block';
+            setTimeout(() => targetStep.classList.add('is-active'), 50);
+        }
+
+        // Update Progress Bar
+        const progressFill = document.getElementById('osProgress');
+        if(progressFill) {
+            progressFill.style.width = `${(stepNumber / window.MissionOS.totalSteps) * 100}%`;
+        }
+
+        // Update Step Indicators
+        document.querySelectorAll('.step-text').forEach((indicator, index) => {
+            if(index + 1 === stepNumber) {
+                indicator.classList.add('active');
             } else {
-                body.style.overflow = "";
+                indicator.classList.remove('active');
             }
         });
+    },
 
-        // 3. Menü schließen, wenn man auf einen Link klickt
-        const mobileLinks = mobileMenu.querySelectorAll('a');
-        mobileLinks.forEach(link => {
-            link.addEventListener("click", function() {
-                mobileMenu.classList.remove("is-open");
-                body.style.overflow = "";
-            });
+    initFormEvents: () => {
+        // We attach these via delegation so it works after injection
+        document.addEventListener('click', (e) => {
+            if(e.target.closest('.btn-next')) {
+                window.MissionOS.goToStep(window.MissionOS.currentStep + 1);
+            }
+            if(e.target.closest('.btn-prev')) {
+                window.MissionOS.goToStep(window.MissionOS.currentStep - 1);
+            }
         });
     }
+};
 
-    // 4. Logo Lightbox Logik
-    const brandLogo = document.getElementById("brandLogoTrigger");
-    const lightbox = document.getElementById("logoLightbox");
-    const closeLightbox = document.getElementById("closeLightbox");
+// Initialize OS Events
+window.MissionOS.initFormEvents();
 
-    if (brandLogo && lightbox) {
-        brandLogo.addEventListener("click", function(e) {
-            lightbox.classList.add("is-open");
-        });
-        
-        if (closeLightbox) {
-            closeLightbox.addEventListener("click", function() {
-                lightbox.classList.remove("is-open");
-            });
-        }
-    }
-});
-
-// Automatically update the copyright year in the footer
-document.addEventListener("DOMContentLoaded", function() {
-    const yearSpan = document.getElementById("currentYear");
-    if (yearSpan) {
-        yearSpan.textContent = new Date().getFullYear();
-    }
-});
+// Add this after initializeSystemEngines();
+    document.body.classList.add('loaded');
