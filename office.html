@@ -6,139 +6,72 @@
     <title>Büro, Gewerbe & USM Montage | Raphael Lezius Premium Service</title>
     
     <meta name="description" content="Professionelle B2B Objekteinrichtung. Kratzfreie Montage von USM Haller, Büromöbeln und Konferenzräumen in Augsburg und München. Zero Downtime Service.">
-    
+    <meta name="theme-color" content="#020203">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Premium Editorial & Tech Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&family=Space+Grotesk:wght@300;500;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- CSS ARCHITECTURE -->
     <link rel="stylesheet" href="assets/css/style.css">
-
-    <style id="office-custom-css">
-        /* Failsafe to prevent blank screens */
-        body { opacity: 1 !important; visibility: visible !important; background-color: #030405; }
-        .no-js-override [data-aos] { opacity: 1 !important; transform: none !important; visibility: visible !important; }
-
-        /* B2B Theme: Neon Pink & Deep Obsidian */
-        :root {
-            --b2b-pink: #ff007f;
-            --b2b-dark: #050508;
-            --b2b-glass: rgba(15, 10, 20, 0.85);
-        }
-
-        /* 2026 Bento Grid for Office */
-        .bento-grid {
-            display: grid;
-            grid-template-columns: repeat(12, 1fr);
-            grid-auto-rows: minmax(220px, auto);
-            gap: 20px;
-            margin-top: 40px;
-        }
-        .bento-item {
-            background: var(--b2b-glass);
-            border: 1px solid rgba(255, 0, 127, 0.15);
-            border-radius: 20px;
-            padding: 35px;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
-            display: flex;
-            flex-direction: column;
-            box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.8);
-        }
-        .bento-item:hover {
-            transform: translateY(-5px);
-            border-color: var(--b2b-pink);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.8), inset 0 0 30px rgba(255, 0, 127, 0.05);
-            z-index: 10;
-        }
-        .bento-span-4 { grid-column: span 12; }
-        .bento-span-8 { grid-column: span 12; }
-        .bento-span-6 { grid-column: span 12; }
-        .bento-span-12 { grid-column: span 12; }
-
-        @media (min-width: 992px) {
-            .bento-span-4 { grid-column: span 4; }
-            .bento-span-8 { grid-column: span 8; }
-            .bento-span-6 { grid-column: span 6; }
-        }
-
-        /* Instagram-Style Swipe Carousels for Mobile */
-        .swipe-carousel {
-            display: flex;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            scrollbar-width: none; 
-            -ms-overflow-style: none;  
-            gap: 20px;
-            padding-bottom: 20px;
-        }
-        .swipe-carousel::-webkit-scrollbar { display: none; }
-        .swipe-item {
-            scroll-snap-align: center;
-            flex: 0 0 85%; 
-            min-width: 280px;
-        }
-        
-        @media (min-width: 768px) {
-            .swipe-carousel {
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-                overflow-x: visible;
-                gap: 30px;
-            }
-            .swipe-item { flex: unset; min-width: unset; }
-            .carousel-indicators { display: none !important; }
-        }
-
-        .carousel-indicators { display: flex; justify-content: center; gap: 8px; margin-top: 10px; }
-        .dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.2); transition: all 0.3s ease; }
-        .dot.active { background: var(--b2b-pink); transform: scale(1.3); box-shadow: 0 0 10px rgba(255, 0, 127, 0.5); }
-    </style>
+    <link rel="stylesheet" href="assets/css/components/mission-os.css">
+    <link rel="stylesheet" href="assets/css/components/office.css">
 </head>
-<body class="is-dark no-js-override">
 
+<body class="is-dark b2b-theme no-js-override">
+
+    <!-- GLOBAL NAVIGATION INJECTOR -->
     <div id="global-nav"></div>
 
-    <main>
+    <main class="b2b-core-wrapper">
         
-        <section class="hero-section" style="border-bottom: 1px solid rgba(255, 0, 127, 0.3); position: relative; height: 95vh; min-height: 800px; display: flex; align-items: center; justify-content: center; background: var(--b2b-dark); overflow: hidden;">
-            
-            <div class="video-bg-container" style="position: absolute; inset: 0; z-index: 0;">
-                <video autoplay muted loop playsinline class="hero-video" poster="assets/images/ikea-bekant-schreibtisch-hoehenverstellbar-aufbau.webp" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.35;">
+        <!-- ======================================================================
+             HERO: B2B WORKSPACE DEPLOYMENT
+             ====================================================================== -->
+        <section class="b2b-hero-section">
+            <div class="video-bg-container">
+                <video autoplay muted loop playsinline class="hero-video" poster="assets/images/ikea-bekant-schreibtisch-hoehenverstellbar-aufbau.webp">
                     <source src="assets/video/raphael-assembly-action.mp4" type="video/mp4">
                 </video>
-                <div class="hero-vignette" style="position: absolute; inset: 0; background: radial-gradient(circle at center, rgba(255,0,127,0.1) 0%, #000 90%);"></div>
+                <div class="hero-vignette"></div>
             </div>
 
-            <div class="container relative-z center" style="padding-top: 80px; z-index: 5;">
-                <div class="section-tag-wrapper" data-aos="fade-down" style="display: flex; justify-content: center; margin-bottom: 20px;">
-                    <span class="section-tag" style="border-color: var(--b2b-pink); color: var(--b2b-pink); background: rgba(255, 0, 127, 0.05);"><i class="fas fa-briefcase blink"></i> B2B OBJEKTEINRICHTUNG</span>
+            <div class="container relative-z center b2b-hero-content">
+                <div class="section-tag-wrapper" data-aos="fade-down">
+                    <span class="section-tag b2b-pink-tag">
+                        <i class="fas fa-briefcase blink"></i> B2B OBJEKTEINRICHTUNG
+                    </span>
                 </div>
                 
-                <h1 class="glitch-header" data-aos="zoom-in" style="font-size: clamp(3rem, 7vw, 6.5rem); margin-bottom: 20px; line-height: 1.1;">
-                    <span class="white">IHR BÜRO. EINSATZBEREIT.</span><br>
-                    <span class="pink-text" style="text-shadow: 0 0 20px rgba(255, 0, 127, 0.4);">OHNE DOWNTIME.</span>
+                <h1 class="b2b-glitch-header" data-aos="zoom-in">
+                    <span class="text-white">IHR BÜRO. EINSATZBEREIT.</span><br>
+                    <span class="pink-glow-text">OHNE DOWNTIME.</span>
                 </h1>
                 
-                <p class="hero-deep-copy" data-aos="fade-up" data-aos-delay="100" style="margin: 0 auto 40px auto; border-left: none; text-align: center; max-width: 850px; padding: 0;">
+                <p class="b2b-hero-copy" data-aos="fade-up" data-aos-delay="100">
                     Zeit ist Ihr wertvollstes Kapital. Jede Stunde, in der Ihre Mitarbeiter zwischen Kartons und Bohrlärm sitzen, kostet Sie Umsatz und Fokus. <strong>Ich richte Ihre Kanzlei, Praxis oder Ihr Großraumbüro fachgerecht ein.</strong> Von der kratzfreien Montage exklusiver USM Haller Systeme bis zum ergonomischen Schreibtisch-Rollout. Inklusive perfektem Kabelmanagement und exklusivem Wochenend-Service.
                 </p>
                 
-                <div class="magnetic-btn-group" data-aos="fade-up" data-aos-delay="200" style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-                    <button onclick="MissionOS.open()" class="btn reactive-btn btn-magnetic" style="background: var(--b2b-pink); color: #fff; box-shadow: 0 0 20px rgba(255, 0, 127, 0.3);">
+                <div class="b2b-btn-group" data-aos="fade-up" data-aos-delay="200">
+                    <button onclick="MissionOS.open()" class="btn reactive-btn btn-b2b-primary">
                         <i class="fas fa-calendar-check"></i> FIRMEN-ANGEBOT ANFORDERN
                     </button>
-                    <a href="#weekend-warrior" class="btn-holographic reactive-btn" style="border-color: var(--b2b-pink); color: var(--b2b-pink);">
+                    <a href="#weekend-warrior" class="btn-holographic reactive-btn btn-b2b-secondary">
                         <i class="fas fa-moon"></i> WEEKEND-SERVICE
                     </a>
                 </div>
             </div>
         </section>
 
-        <div class="marquee-wrapper" style="background: #030405; padding: 20px 0; overflow: hidden; white-space: nowrap; position: relative; border-top: 1px solid rgba(255, 0, 127, 0.2); border-bottom: 1px solid rgba(255, 0, 127, 0.2); box-shadow: inset 0 0 50px rgba(0,0,0,0.9);">
-            <div class="marquee-track" style="color: var(--b2b-pink); text-shadow: 0 0 10px rgba(255,0,127,0.4);">
+        <!-- ======================================================================
+             INFINITE MARQUEE: CAPABILITIES SCAN
+             ====================================================================== -->
+        <div class="b2b-marquee-wrapper">
+            <div class="b2b-marquee-track">
                 <span><i class="fas fa-gem"></i> USM HALLER SYSTEME</span>
                 <span><i class="fas fa-desktop"></i> ERGONOMIE & HÖHENVERSTELLBAR</span>
                 <span><i class="fas fa-users"></i> KONFERENZ & MEDIENTECHNIK</span>
@@ -146,6 +79,7 @@
                 <span><i class="fas fa-volume-mute"></i> AKUSTIK-OPTIMIERUNG</span>
                 <span><i class="fas fa-archive"></i> PRAXIS & EMPFANG</span>
                 
+                <!-- Duplicate for seamless loop -->
                 <span><i class="fas fa-gem"></i> USM HALLER SYSTEME</span>
                 <span><i class="fas fa-desktop"></i> ERGONOMIE & HÖHENVERSTELLBAR</span>
                 <span><i class="fas fa-users"></i> KONFERENZ & MEDIENTECHNIK</span>
@@ -155,55 +89,62 @@
             </div>
         </div>
 
-        <section class="section-padding bg-darker" id="leistungen">
+        <!-- ======================================================================
+             SERVICES BENTO GRID: WORKSPACE ARCHITECTURE
+             ====================================================================== -->
+        <section class="section-padding bg-b2b-darker" id="leistungen">
             <div class="container relative-z">
-                <div class="section-header" data-aos="fade-up">
-                    <div class="pre-title" style="color: var(--b2b-pink);">WORKSPACE ARCHITECTURE</div>
-                    <h2 class="section-heading">Gewerbliche <span class="pink-text">Lösungen.</span></h2>
-                    <p class="section-subtitle">Ich kombiniere architektonisches Verständnis mit handwerklicher Präzision für moderne Arbeitswelten in Augsburg und München.</p>
+                <div class="b2b-section-header" data-aos="fade-up">
+                    <div class="b2b-pre-title">WORKSPACE ARCHITECTURE</div>
+                    <h2 class="b2b-section-heading">Gewerbliche <span class="pink-text">Lösungen.</span></h2>
+                    <p class="b2b-section-subtitle">Ich kombiniere architektonisches Verständnis mit handwerklicher Präzision für moderne Arbeitswelten in Augsburg und München.</p>
                 </div>
 
-                <div class="bento-grid">
+                <div class="b2b-bento-grid">
                     
-                    <div class="bento-item bento-span-8" data-aos="fade-up" style="background: linear-gradient(145deg, rgba(255,0,127,0.05), #080b0e);">
-                        <div>
-                            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px;">
-                                <i class="fas fa-gem" style="font-size: 3rem; color: var(--b2b-pink);"></i>
-                                <span style="font-family: var(--font-mono); color: var(--b2b-pink); border: 1px solid rgba(255,0,127,0.3); padding: 5px 15px; border-radius: 20px; font-size: 0.8rem;">ZERTIFIZIERT</span>
+                    <!-- USM Haller Specialist -->
+                    <div class="bento-item bento-span-8 bento-usm" data-aos="fade-up">
+                        <div class="bento-content-wrap">
+                            <div class="bento-icon-header">
+                                <i class="fas fa-gem bento-icon-large pink-text"></i>
+                                <span class="bento-cert-badge">ZERTIFIZIERT</span>
                             </div>
-                            <h3 style="color: #fff; font-family: var(--font-head); font-size: 2rem; margin-bottom: 15px;">USM Haller Spezialist</h3>
-                            <p style="color: #aaa; line-height: 1.6; font-size: 1.05rem; margin-bottom: 20px;">Das Schweizer Design-System verzeiht keine Fehler. Wer hier mit Standard-Werkzeug aus dem Baumarkt arbeitet, ruiniert sofort die hochglänzenden Chromrohre und Kugeln. Ich besitze das <strong>Original USM Spezialwerkzeug</strong> für die absolut kratzfreie Montage, Demontage und Erweiterung (Generation 2 & 3) Ihrer Systemmöbel.</p>
+                            <h3 class="bento-title">USM Haller Spezialist</h3>
+                            <p class="bento-desc">Das Schweizer Design-System verzeiht keine Fehler. Wer hier mit Standard-Werkzeug aus dem Baumarkt arbeitet, ruiniert sofort die hochglänzenden Chromrohre und Kugeln. Ich besitze das <strong>Original USM Spezialwerkzeug</strong> für die absolut kratzfreie Montage, Demontage und Erweiterung (Generation 2 & 3) Ihrer Systemmöbel.</p>
                         </div>
-                        <ul class="tech-list-2026" style="list-style:none; padding:0; margin:0;">
-                            <li style="display:flex; gap:15px; margin-bottom:15px; border-bottom: 1px dashed rgba(255,255,255,0.05); padding-bottom: 15px;"><i class="fas fa-check pink-text"></i> <span style="color:#ddd;">Fachgerechte Neumontage & Justierung der Klapptüren</span></li>
-                            <li style="display:flex; gap:15px; margin-bottom:15px; border-bottom: 1px dashed rgba(255,255,255,0.05); padding-bottom: 15px;"><i class="fas fa-check pink-text"></i> <span style="color:#ddd;">Zerstörungsfreier Abbau für Kanzlei-Umzüge</span></li>
-                            <li style="display:flex; gap:15px;"><i class="fas fa-check pink-text"></i> <span style="color:#ddd;">Nivellierung der Tablare mit Original-Drehmoment</span></li>
+                        <ul class="b2b-tech-list">
+                            <li><i class="fas fa-check pink-text"></i> <span>Fachgerechte Neumontage & Justierung der Klapptüren</span></li>
+                            <li><i class="fas fa-check pink-text"></i> <span>Zerstörungsfreier Abbau für Kanzlei-Umzüge</span></li>
+                            <li><i class="fas fa-check pink-text"></i> <span>Nivellierung der Tablare mit Original-Drehmoment</span></li>
                         </ul>
                     </div>
 
-                    <div class="bento-item bento-span-4" data-aos="fade-up" data-aos-delay="100" style="background: linear-gradient(145deg, rgba(0,229,255,0.05), #080b0e); border-color: rgba(0,229,255,0.3);">
-                        <div>
-                            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px;">
-                                <i class="fas fa-network-wired" style="font-size: 3rem; color: var(--neon-cyan);"></i>
+                    <!-- Zero Cable Protocol -->
+                    <div class="bento-item bento-span-4 bento-cable" data-aos="fade-up" data-aos-delay="100">
+                        <div class="bento-content-wrap">
+                            <div class="bento-icon-header">
+                                <i class="fas fa-network-wired bento-icon-large cyan-text"></i>
                             </div>
-                            <h3 style="color: #fff; font-family: var(--font-head); font-size: 1.6rem; margin-bottom: 15px;">Zero-Cable Protocol</h3>
-                            <p style="color: #aaa; line-height: 1.6; font-size: 0.95rem;">Sichtbare Kabel und Steckerleisten auf dem Boden wirken unprofessionell und sind Stolperfallen im Büro. Ich implementiere unsichtbares Routing unter Tischen und in Kabelkanälen.</p>
+                            <h3 class="bento-title">Zero-Cable Protocol</h3>
+                            <p class="bento-desc">Sichtbare Kabel und Steckerleisten auf dem Boden wirken unprofessionell und sind Stolperfallen im Büro. Ich implementiere unsichtbares Routing unter Tischen und in Kabelkanälen.</p>
                         </div>
                     </div>
 
-                    <div class="bento-item bento-span-6" data-aos="fade-up">
-                        <div>
-                            <i class="fas fa-desktop" style="font-size: 2.5rem; color: #fff; margin-bottom: 20px;"></i>
-                            <h3 style="color: #fff; font-family: var(--font-head); font-size: 1.8rem; margin-bottom: 15px;">Ergonomic Workspaces</h3>
-                            <p style="color: #aaa; line-height: 1.6; font-size: 1.05rem;">Massen-Rollout von höhenverstellbaren Sitz-Steh-Tischen (z.B. IKEA BEKANT/IDÅSEN, Steelcase, Herman Miller) in Großraumbüros. Inklusive Montage der schweren Dual-Monitor-Arme und Tischtrennwände.</p>
+                    <!-- Ergonomic Workspaces -->
+                    <div class="bento-item bento-span-6 bento-ergo" data-aos="fade-up">
+                        <div class="bento-content-wrap">
+                            <i class="fas fa-desktop bento-icon-large white-text"></i>
+                            <h3 class="bento-title">Ergonomic Workspaces</h3>
+                            <p class="bento-desc">Massen-Rollout von höhenverstellbaren Sitz-Steh-Tischen (z.B. IKEA BEKANT/IDÅSEN, Steelcase, Herman Miller) in Großraumbüros. Inklusive Montage der schweren Dual-Monitor-Arme und Tischtrennwände.</p>
                         </div>
                     </div>
 
-                    <div class="bento-item bento-span-6" data-aos="fade-up" data-aos-delay="100">
-                        <div>
-                            <i class="fas fa-volume-mute" style="font-size: 2.5rem; color: #fff; margin-bottom: 20px;"></i>
-                            <h3 style="color: #fff; font-family: var(--font-head); font-size: 1.8rem; margin-bottom: 15px;">Acoustic Engineering</h3>
-                            <p style="color: #aaa; line-height: 1.6; font-size: 1.05rem;">Lärm in Großraumbüros zerstört die Konzentration. Ich montiere schwere Akustik-Wandpaneele und schwebende Deckensegel millimetergenau und mit Schwerlast-Verankerungen, um den Schallpegel drastisch zu senken.</p>
+                    <!-- Acoustic Engineering -->
+                    <div class="bento-item bento-span-6 bento-acoustic" data-aos="fade-up" data-aos-delay="100">
+                        <div class="bento-content-wrap">
+                            <i class="fas fa-volume-mute bento-icon-large white-text"></i>
+                            <h3 class="bento-title">Acoustic Engineering</h3>
+                            <p class="bento-desc">Lärm in Großraumbüros zerstört die Konzentration. Ich montiere schwere Akustik-Wandpaneele und schwebende Deckensegel millimetergenau und mit Schwerlast-Verankerungen, um den Schallpegel drastisch zu senken.</p>
                         </div>
                     </div>
 
@@ -211,56 +152,57 @@
             </div>
         </section>
 
-        <section id="weekend-warrior" class="section-padding bg-dark">
+        <!-- ======================================================================
+             WEEKEND WARRIOR PROTOCOL
+             ====================================================================== -->
+        <section id="weekend-warrior" class="section-padding bg-b2b-base">
             <div class="container">
-                <div class="glass-panel" data-aos="zoom-in" style="background: #050505; border: 1px solid rgba(255,0,127,0.3); border-top: 4px solid var(--b2b-pink); border-radius: 16px; position: relative; overflow: hidden; box-shadow: 0 40px 80px rgba(0,0,0,0.8), inset 0 0 40px rgba(255,0,127,0.05);">
+                <div class="weekend-warrior-card glass-panel" data-aos="zoom-in">
                     
-                    <div style="position: absolute; inset: 0; opacity: 0.1; background-image: linear-gradient(var(--b2b-pink) 1px, transparent 1px), linear-gradient(90deg, var(--b2b-pink) 1px, transparent 1px); background-size: 60px 60px;"></div>
+                    <div class="weekend-bg-grid"></div>
                     
-                    <div style="position: relative; z-index: 5; padding: clamp(40px, 6vw, 80px); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 60px;">
+                    <div class="weekend-content-wrapper">
                         
-                        <div style="flex: 1; min-width: 320px;">
-                            <div style="display: inline-block; border: 1px solid var(--b2b-pink); color: var(--b2b-pink); background: rgba(255,0,127,0.05); padding: 6px 15px; font-size: 0.8rem; font-weight: 800; margin-bottom: 25px; letter-spacing: 2px; border-radius: 4px;">EXECUTIVE SERVICE</div>
+                        <div class="weekend-text-column">
+                            <div class="weekend-badge">EXECUTIVE SERVICE</div>
                             
-                            <h2 style="color: #fff; font-size: clamp(2.5rem, 5vw, 4rem); font-family: var(--font-head); font-weight: 800; margin-bottom: 20px; line-height: 1.1; letter-spacing: -2px;">The Weekend<br><span class="pink-text">Warrior Protocol.</span></h2>
+                            <h2 class="weekend-title">The Weekend<br><span class="pink-text">Warrior Protocol.</span></h2>
                             
-                            <p style="color: #ccc; font-size: 1.1rem; line-height: 1.8; margin-bottom: 35px; max-width: 500px;">Jede Stunde, in der Ihr Team nicht arbeiten kann, kostet Ihr Unternehmen Geld. Handwerkerlärm während der Bürozeiten ist inakzeptabel. Ich biete einen exklusiven Service für Unternehmen, die keine Kompromisse machen können.</p>
+                            <p class="weekend-desc">Jede Stunde, in der Ihr Team nicht arbeiten kann, kostet Ihr Unternehmen Geld. Handwerkerlärm während der Bürozeiten ist inakzeptabel. Ich biete einen exklusiven Service für Unternehmen, die keine Kompromisse machen können.</p>
                             
-                            <ul style="list-style: none; padding: 0; color: #fff; font-size: 1.05rem; font-weight: 500;">
-                                <li data-aos="fade-up" data-aos-delay="100" style="margin-bottom: 20px; display: flex; align-items: flex-start; gap: 15px;">
-                                    <i class="fas fa-clock pink-text" style="font-size: 1.5rem; margin-top: 3px;"></i> 
-                                    <div>
-                                        <strong style="display: block; margin-bottom: 5px;">Freitag 18:00 Uhr - Start</strong>
-                                        <span style="color: #aaa; font-size: 0.95rem; font-weight: 300;">Sobald Ihre Mitarbeiter ins Wochenende gehen, beginne ich mit dem Rollout, der Demontage oder dem Aufbau.</span>
+                            <ul class="weekend-timeline-list">
+                                <li data-aos="fade-up" data-aos-delay="100">
+                                    <i class="fas fa-clock pink-text timeline-icon"></i> 
+                                    <div class="timeline-content">
+                                        <strong>Freitag 18:00 Uhr - Start</strong>
+                                        <span>Sobald Ihre Mitarbeiter ins Wochenende gehen, beginne ich mit dem Rollout, der Demontage oder dem Aufbau.</span>
                                     </div>
                                 </li>
-                                <li data-aos="fade-up" data-aos-delay="200" style="margin-bottom: 20px; display: flex; align-items: flex-start; gap: 15px;">
-                                    <i class="fas fa-tools pink-text" style="font-size: 1.5rem; margin-top: 3px;"></i> 
-                                    <div>
-                                        <strong style="display: block; margin-bottom: 5px;">Samstag & Sonntag - Execution</strong>
-                                        <span style="color: #aaa; font-size: 0.95rem; font-weight: 300;">Konzentrierter Aufbau der Arbeitsplätze, Ausrichtung der USM-Regale, Installation der Medientechnik.</span>
+                                <li data-aos="fade-up" data-aos-delay="200">
+                                    <i class="fas fa-tools pink-text timeline-icon"></i> 
+                                    <div class="timeline-content">
+                                        <strong>Samstag & Sonntag - Execution</strong>
+                                        <span>Konzentrierter Aufbau der Arbeitsplätze, Ausrichtung der USM-Regale, Installation der Medientechnik.</span>
                                     </div>
                                 </li>
-                                <li data-aos="fade-up" data-aos-delay="300" style="display: flex; align-items: flex-start; gap: 15px;">
-                                    <i class="fas fa-sun pink-text" style="font-size: 1.5rem; margin-top: 3px;"></i> 
-                                    <div>
-                                        <strong style="display: block; margin-bottom: 5px;">Montag 07:00 Uhr - Ready</strong>
-                                        <span style="color: #aaa; font-size: 0.95rem; font-weight: 300;">Ihre Kanzlei oder Ihr Büro ist makellos sauber, besenrein gesaugt und zu 100% einsatzbereit.</span>
+                                <li data-aos="fade-up" data-aos-delay="300">
+                                    <i class="fas fa-sun pink-text timeline-icon"></i> 
+                                    <div class="timeline-content">
+                                        <strong>Montag 07:00 Uhr - Ready</strong>
+                                        <span>Ihre Kanzlei oder Ihr Büro ist makellos sauber, besenrein gesaugt und zu 100% einsatzbereit.</span>
                                     </div>
                                 </li>
                             </ul>
                         </div>
 
-                        <div style="flex: 1; min-width: 320px; display: flex; justify-content: center; position: relative;">
-                            <div style="width: clamp(250px, 30vw, 350px); height: clamp(250px, 30vw, 350px); border-radius: 50%; border: 1px dashed rgba(255, 0, 127, 0.5); display: flex; align-items: center; justify-content: center; animation: spin 20s linear infinite;">
-                                <div style="width: 85%; height: 85%; border-radius: 50%; border: 2px solid rgba(255,255,255,0.05); box-shadow: inset 0 0 40px rgba(255, 0, 127, 0.1);"></div>
+                        <div class="weekend-visual-column">
+                            <div class="orbital-moon-ring">
+                                <div class="orbital-inner-ring"></div>
                             </div>
-                            <style>@keyframes spin { 100% { transform: rotate(360deg); } }</style>
+                            <i class="fas fa-moon pink-text moon-icon"></i>
                             
-                            <i class="fas fa-moon pink-text" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: clamp(4rem, 8vw, 6rem); filter: drop-shadow(0 0 25px rgba(255, 0, 127, 0.6));"></i>
-                            
-                            <div data-aos="fade-right" data-aos-delay="500" style="position: absolute; top: 10%; left: 0; background: rgba(5,5,5,0.9); border: 1px solid rgba(255,255,255,0.05); padding: 8px 15px; font-family: var(--font-mono); font-size: 0.75rem; color: #fff; border-radius: 4px;">OFF-HOURS: <span class="gold-text">ACTIVE</span></div>
-                            <div data-aos="fade-left" data-aos-delay="600" style="position: absolute; bottom: 15%; right: -5%; background: rgba(5,5,5,0.9); border: 1px solid rgba(255,255,255,0.05); padding: 8px 15px; font-family: var(--font-mono); font-size: 0.75rem; color: #fff; border-radius: 4px;">DOWNTIME: <span class="cyan-text">ZERO</span></div>
+                            <div class="hud-label-off-hours" data-aos="fade-right" data-aos-delay="500">OFF-HOURS: <span class="gold-text">ACTIVE</span></div>
+                            <div class="hud-label-downtime" data-aos="fade-left" data-aos-delay="600">DOWNTIME: <span class="cyan-text">ZERO</span></div>
                         </div>
                         
                     </div>
@@ -268,57 +210,64 @@
             </div>
         </section>
 
-        <section class="section-padding bg-darker">
+        <!-- ======================================================================
+             SWIPE CAROUSEL: B2B REVIEWS
+             ====================================================================== -->
+        <section class="section-padding bg-b2b-darker">
             <div class="container relative-z">
-                <div class="section-header center" data-aos="fade-up">
-                    <div class="pre-title">B2B REFERENZEN</div>
-                    <h2 class="section-heading">Was <span class="pink-text">Unternehmer sagen</span></h2>
+                <div class="b2b-section-header center" data-aos="fade-up">
+                    <div class="b2b-pre-title">B2B REFERENZEN</div>
+                    <h2 class="b2b-section-heading">Was <span class="pink-text">Unternehmer sagen</span></h2>
                 </div>
 
-                <div class="swipe-carousel" id="b2bReviewCarousel" data-aos="fade-up">
+                <div class="b2b-swipe-carousel" id="b2bReviewCarousel" data-aos="fade-up">
                     
-                    <div class="glass-panel swipe-item" style="padding: 35px; border-top: 3px solid var(--b2b-pink); display: flex; flex-direction: column;">
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
-                            <strong style="color: #fff; font-family: var(--font-head); font-size: 1.1rem;">Dr. Weber, Kanzlei München</strong>
-                            <span style="color: var(--neon-gold);"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                    <div class="b2b-review-card glass-panel swipe-item">
+                        <div class="review-card-header">
+                            <strong class="review-author">Dr. Weber, Kanzlei München</strong>
+                            <span class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
                         </div>
-                        <p style="color: #aaa; font-style: italic; line-height: 1.6; margin-bottom: 20px; flex-grow: 1;">"Raphael hat bei der Einrichtung unserer Kanzlei hervorragende Arbeit geleistet. Er hat am Wochenende 12 Arbeitsplätze sowie das USM Archiv aufgebaut. Absolut präzise und montags war alles einsatzbereit."</p>
-                        <span style="font-family: var(--font-mono); font-size: 0.75rem; color: #666;">VERIFIZIERT ÜBER MYHAMMER</span>
+                        <p class="review-quote">"Raphael hat bei der Einrichtung unserer Kanzlei hervorragende Arbeit geleistet. Er hat am Wochenende 12 Arbeitsplätze sowie das USM Archiv aufgebaut. Absolut präzise und montags war alles einsatzbereit."</p>
+                        <span class="review-verification">VERIFIZIERT ÜBER MYHAMMER</span>
                     </div>
 
-                    <div class="glass-panel swipe-item" style="padding: 35px; border-top: 3px solid var(--b2b-pink); display: flex; flex-direction: column;">
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
-                            <strong style="color: #fff; font-family: var(--font-head); font-size: 1.1rem;">Creative Agency, Augsburg</strong>
-                            <span style="color: var(--neon-gold);"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                    <div class="b2b-review-card glass-panel swipe-item">
+                        <div class="review-card-header">
+                            <strong class="review-author">Creative Agency, Augsburg</strong>
+                            <span class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
                         </div>
-                        <p style="color: #aaa; font-style: italic; line-height: 1.6; margin-bottom: 20px; flex-grow: 1;">"Das Kabelmanagement an unseren Stehschreibtischen ist ein Traum. Keine Kabel mehr auf dem Boden. Sehr professionelles Auftreten, bringt teures Spezialwerkzeug mit und arbeitet extrem sauber."</p>
-                        <span style="font-family: var(--font-mono); font-size: 0.75rem; color: #666;">B2B DIREKTKUNDE</span>
+                        <p class="review-quote">"Das Kabelmanagement an unseren Stehschreibtischen ist ein Traum. Keine Kabel mehr auf dem Boden. Sehr professionelles Auftreten, bringt teures Spezialwerkzeug mit und arbeitet extrem sauber."</p>
+                        <span class="review-verification">B2B DIREKTKUNDE</span>
                     </div>
 
-                    <div class="glass-panel swipe-item" style="padding: 35px; border-top: 3px solid var(--b2b-pink); display: flex; flex-direction: column;">
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
-                            <strong style="color: #fff; font-family: var(--font-head); font-size: 1.1rem;">Zahnarztpraxis T., Dachau</strong>
-                            <span style="color: var(--neon-gold);"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                    <div class="b2b-review-card glass-panel swipe-item">
+                        <div class="review-card-header">
+                            <strong class="review-author">Zahnarztpraxis T., Dachau</strong>
+                            <span class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
                         </div>
-                        <p style="color: #aaa; font-style: italic; line-height: 1.6; margin-bottom: 20px; flex-grow: 1;">"Die Montage der Akustikpaneele im Wartezimmer und der Personal-Spinde lief einwandfrei. Raphael ist sehr lösungsorientiert. Selbst schiefe Wände waren für ihn mit dem Laser kein Problem."</p>
-                        <span style="font-family: var(--font-mono); font-size: 0.75rem; color: #666;">VERIFIZIERT ÜBER CHECK24</span>
+                        <p class="review-quote">"Die Montage der Akustikpaneele im Wartezimmer und der Personal-Spinde lief einwandfrei. Raphael ist sehr lösungsorientiert. Selbst schiefe Wände waren für ihn mit dem Laser kein Problem."</p>
+                        <span class="review-verification">VERIFIZIERT ÜBER CHECK24</span>
                     </div>
 
                 </div>
                 
-                <div class="carousel-indicators" id="b2bReviewIndicators">
-                    <div class="dot active" style="background: var(--b2b-pink);"></div>
-                    <div class="dot"></div>
-                    <div class="dot"></div>
+                <!-- Mobile Carousel Indicators -->
+                <div class="b2b-carousel-indicators" id="b2bReviewIndicators">
+                    <div class="b2b-dot active"></div>
+                    <div class="b2b-dot"></div>
+                    <div class="b2b-dot"></div>
                 </div>
             </div>
         </section>
 
-        <section class="section-padding" style="background: linear-gradient(135deg, #050505, #11050a); text-align: center; border-top: 2px dashed var(--b2b-pink);">
+        <!-- ======================================================================
+             FINAL CALL TO ACTION
+             ====================================================================== -->
+        <section class="b2b-final-cta-section section-padding">
             <div class="container" data-aos="zoom-in">
-                <h2 style="font-family: var(--font-head); font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; color: #fff; margin-bottom: 15px; letter-spacing: -1px;">BEREIT FÜR DEN ROLLOUT?</h2>
-                <p style="font-size: 1.15rem; color: #aaa; margin-bottom: 35px; max-width: 600px; margin-left: auto; margin-right: auto;">Vom Einzelbüro bis zum kompletten Stockwerk. Ich liefere Präzision im Zeitplan. Fordern Sie jetzt Ihr gewerbliches Angebot an.</p>
-                <button onclick="MissionOS.open()" class="btn reactive-btn" style="background: var(--b2b-pink); color: #fff; font-size: 1.1rem; font-weight: bold; padding: 20px 50px; box-shadow: 0 0 30px rgba(255, 0, 127, 0.3); border: none; font-family: var(--font-head); text-transform: uppercase; letter-spacing: 1px;">
+                <h2 class="b2b-cta-title">BEREIT FÜR DEN ROLLOUT?</h2>
+                <p class="b2b-cta-desc">Vom Einzelbüro bis zum kompletten Stockwerk. Ich liefere Präzision im Zeitplan. Fordern Sie jetzt Ihr gewerbliches Angebot an.</p>
+                <button onclick="MissionOS.open()" class="btn reactive-btn btn-b2b-massive">
                     <i class="fas fa-building"></i> FIRMEN-ANFRAGE SENDEN
                 </button>
             </div>
@@ -326,20 +275,36 @@
 
     </main>
 
+    <!-- GLOBAL INJECTIONS -->
     <div id="global-footer"></div>
-
     <div id="global-os"></div>
 
+    <!-- WHATSAPP FLOATING BUTTON -->
     <a href="https://wa.me/491608194018?text=Guten%20Tag%20Herr%20Lezius,%20wir%20haben%20eine%20gewerbliche%20B2B%20Anfrage." target="_blank" class="whatsapp-float reactive-btn">
         <div class="whatsapp-pulse"></div>
         <i class="fab fa-whatsapp"></i>
     </a>
 
+    <!-- SCRIPTS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="assets/js/main.js"></script>
     
     <script>
         document.addEventListener("DOMContentLoaded", function() {
+            // Initialize AOS Animations
+            if (typeof AOS !== 'undefined') {
+                AOS.init({ duration: 800, once: true });
+            }
+
+            // Load Mission OS Modal
+            fetch('mission.html')
+                .then(res => res.text())
+                .then(data => {
+                    const osContainer = document.getElementById('global-os');
+                    if(osContainer) osContainer.innerHTML = data;
+                })
+                .catch(err => console.error("Mission OS failed to load:", err));
+
             // Swipe Carousel Logic (Mobile)
             const setupCarousel = (carouselId, indicatorsId) => {
                 const carousel = document.getElementById(carouselId);
@@ -347,7 +312,7 @@
                 if (!carousel || !indicators) return;
 
                 const items = carousel.querySelectorAll('.swipe-item');
-                const dots = indicators.querySelectorAll('.dot');
+                const dots = indicators.querySelectorAll('.b2b-dot');
 
                 carousel.addEventListener('scroll', () => {
                     const scrollPosition = carousel.scrollLeft;
@@ -357,12 +322,8 @@
                     dots.forEach((dot, index) => {
                         if (index === activeIndex) {
                             dot.classList.add('active');
-                            dot.style.background = 'var(--b2b-pink)';
-                            dot.style.boxShadow = '0 0 10px rgba(255, 0, 127, 0.5)';
                         } else {
                             dot.classList.remove('active');
-                            dot.style.background = 'rgba(255,255,255,0.2)';
-                            dot.style.boxShadow = 'none';
                         }
                     });
                 }, { passive: true });

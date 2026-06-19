@@ -1,0 +1,53 @@
+/* ==========================================================================
+   MISSION CONTROL // TERMINAL INTERFACE v2026
+   ========================================================================== */
+
+#missionOS.os-overlay { 
+    position: fixed !important; top: 0; left: 0; width: 100vw; height: 100vh;
+    z-index: 9999999 !important; display: none; align-items: center; justify-content: center;
+    background: rgba(2, 3, 5, 0.95) !important;
+    backdrop-filter: blur(15px); opacity: 0; transition: opacity 0.4s ease;
+}
+
+#missionOS.system-active { display: flex !important; opacity: 1; }
+
+#missionOS .case-container {
+    width: 90%; max-width: 700px; background: rgba(10, 10, 12, 0.9);
+    border: 1px solid rgba(255, 215, 0, 0.3); border-radius: 24px;
+    padding: clamp(30px, 6vw, 60px); position: relative;
+    box-shadow: 0 0 60px rgba(0,0,0,0.8), inset 0 0 20px rgba(255, 215, 0, 0.05);
+}
+
+/* Header & Progress */
+.mission-control-header { margin-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 20px; }
+.os-progress-bar { height: 4px; background: #222; border-radius: 2px; margin: 20px 0; overflow: hidden; }
+.os-progress-fill { height: 100%; background: var(--neon-gold); transition: width 0.5s ease; }
+
+/* Futuristic Inputs */
+.os-input { 
+    width: 100%; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1);
+    color: #fff; padding: 18px; border-radius: 12px; font-family: var(--font-mono);
+    font-size: 1rem; margin-bottom: 20px; transition: var(--spring);
+}
+.os-input:focus { border-color: var(--neon-cyan); outline: none; background: rgba(0,229,255,0.05); }
+
+/* Futuristic Buttons */
+.os-btn { 
+    width: 100%; padding: 18px; border-radius: 12px; border: none;
+    background: var(--neon-gold); color: #000; font-weight: 800; text-transform: uppercase;
+    cursor: pointer; transition: var(--spring); font-family: var(--font-head);
+}
+.os-btn:hover { background: #fff; box-shadow: 0 0 20px rgba(255,215,0,0.4); }
+
+/* Step Logic */
+.form-step { display: none; }
+.form-step.is-active { display: block; animation: fadeIn 0.4s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Radio Cards (The "Pro" Selection Look) */
+.radio-grid-large { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
+.radio-card-large { 
+    background: #111; border: 1px solid #333; padding: 20px; border-radius: 12px;
+    text-align: center; cursor: pointer; transition: 0.3s;
+}
+.radio-card-large:has(input:checked) { border-color: var(--neon-gold); background: rgba(255,215,0,0.05); }

@@ -1,0 +1,71 @@
+/* ==========================================================================
+   MISSION CONTROL // PREMIUM ARCHITECTURAL INTERFACE (2026 EDITION)
+   ========================================================================== */
+
+/* 1. LAYERED OVERLAY */
+#missionOS.os-overlay { 
+    position: fixed !important; inset: 0; z-index: 9999999 !important;
+    display: none; align-items: center; justify-content: center;
+    background: rgba(3, 4, 5, 0.98) !important;
+    backdrop-filter: blur(30px); /* Deep blur */
+    opacity: 0; transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+#missionOS.system-active { display: flex !important; opacity: 1; }
+
+/* 2. THE GLASS CASE (Bento-style depth) */
+#missionOS .case-container {
+    width: 90%; max-width: 600px; 
+    background: #080a0e; 
+    border: 1px solid rgba(255, 255, 255, 0.08); 
+    border-radius: 32px;
+    padding: clamp(40px, 8vw, 60px);
+    position: relative;
+    box-shadow: 0 40px 80px -20px rgba(0,0,0,0.8), inset 0 0 1px rgba(255,255,255,0.1);
+}
+
+/* 3. TYPOGRAPHY & HEADER */
+.mission-control-header { margin-bottom: 45px; }
+.mission-control-header h3 { 
+    font-family: var(--font-head); font-size: 1.5rem; letter-spacing: 2px;
+    margin: 10px 0; color: #fff; text-transform: uppercase;
+}
+
+.os-steps-indicator { display: flex; gap: 20px; margin-top: 15px; }
+.step-text { font-family: var(--font-mono); font-size: 0.65rem; color: #444; letter-spacing: 2px; }
+.step-text.active { color: var(--neon-gold); }
+
+/* 4. FORM FIELDS (The "Pro" Look) */
+.os-form { margin-top: 20px; }
+.input-group { position: relative; margin-bottom: 30px; }
+
+.os-input { 
+    width: 100%; background: transparent; border: none; border-bottom: 1px solid #333;
+    color: #fff; padding: 12px 0; font-family: var(--font-body); font-size: 1rem;
+    transition: var(--spring);
+}
+.os-input:focus { border-bottom-color: var(--neon-cyan); outline: none; }
+.os-label { 
+    position: absolute; left: 0; top: 12px; font-family: var(--font-mono);
+    font-size: 0.75rem; color: #666; pointer-events: none; transition: 0.3s;
+    text-transform: uppercase; letter-spacing: 1px;
+}
+.os-input:focus + .os-label, .os-input:not(:placeholder-shown) + .os-label { 
+    top: -15px; font-size: 0.6rem; color: var(--neon-cyan); 
+}
+
+/* 5. SELECTION MODULES */
+.radio-grid-large { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+.radio-card-large { 
+    background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05);
+    padding: 20px; border-radius: 16px; text-align: center; cursor: pointer;
+    font-family: var(--font-head); font-size: 0.8rem; transition: 0.3s;
+}
+.radio-card-large:hover { border-color: var(--neon-gold); background: rgba(255,215,0,0.05); }
+
+/* 6. ACTION BUTTONS */
+.os-btn { 
+    width: 100%; padding: 20px; background: #fff; border-radius: 12px;
+    font-family: var(--font-head); font-weight: 800; text-transform: uppercase;
+    letter-spacing: 2px; border: none; cursor: pointer; transition: 0.4s;
+}
+.os-btn:hover { background: var(--neon-gold); transform: translateY(-2px); }

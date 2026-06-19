@@ -1,0 +1,180 @@
+
+/* ==========================================================================
+   PIECE 6: KINETIC HERO ENGINE
+   VIDEO INTEGRATION | MASSIVE GOLD BUBBLES | HOLOGRAPHIC OPS PANEL
+   ========================================================================== */
+
+.hero-section { 
+    position: relative; 
+    min-height: 100dvh; 
+    width: 100%; 
+    display: flex; 
+    align-items: center; 
+    padding: clamp(120px, 15vh, 160px) 0 60px; 
+    overflow: hidden; 
+    border-bottom: 1px solid rgba(255, 215, 0, 0.3); /* Gold Base */
+}
+
+/* --- 1. IMMERSIVE VIDEO ENGINE --- */
+.video-bg-container { 
+    position: absolute; 
+    inset: 0; 
+    z-index: 0; 
+    background: #000; 
+}
+
+/* The Golden Vignette Overlay */
+.video-bg-container::after { 
+    content: ''; 
+    position: absolute; 
+    inset: 0; 
+    background: radial-gradient(circle at center, rgba(255, 215, 0, 0.15) 0%, rgba(0, 0, 0, 0.85) 100%); 
+    pointer-events: none; 
+    z-index: 1; 
+}
+
+.hero-video { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    opacity: 0.6;
+    transform: scale(1.05); 
+    filter: saturate(1.2) contrast(1.1);
+    will-change: transform;
+}
+
+/* PURE CSS MASSIVE GOLD BUBBLE ENGINE */
+#gold-bubbles { 
+    position: absolute; 
+    inset: 0; 
+    z-index: 2; 
+    pointer-events: none; 
+    overflow: hidden;
+}
+
+#gold-bubbles::before,
+#gold-bubbles::after {
+    content: ''; position: absolute; bottom: -50px; border-radius: 50%;
+    /* Create a massive matrix of gold bubbles */
+    box-shadow: 
+        10vw 10vh 4px 1px rgba(255, 215, 0, 0.6), 25vw 30vh 8px 2px rgba(255, 215, 0, 0.8),
+        40vw 15vh 3px 1px rgba(255, 215, 0, 0.4), 55vw 50vh 12px 3px rgba(255, 215, 0, 0.7),
+        70vw 25vh 5px 1px rgba(255, 215, 0, 0.5), 85vw 60vh 9px 2px rgba(255, 215, 0, 0.9),
+        15vw 80vh 6px 1px rgba(255, 215, 0, 0.6), 35vw 90vh 10px 3px rgba(255, 215, 0, 0.8),
+        65vw 75vh 4px 1px rgba(255, 215, 0, 0.5), 80vw 95vh 7px 2px rgba(255, 215, 0, 0.7),
+        5vw  40vh 5px 1px rgba(255, 215, 0, 0.8), 95vw 10vh 8px 2px rgba(255, 215, 0, 0.6);
+}
+
+#gold-bubbles::before {
+    width: 4px; height: 4px; background: rgba(255, 215, 0, 0.9);
+    animation: massiveBubbleRise 12s infinite linear;
+    will-change: transform, opacity;
+}
+
+#gold-bubbles::after {
+    width: 8px; height: 8px; background: rgba(255, 215, 0, 0.5);
+    animation: massiveBubbleRise 18s infinite linear reverse;
+    filter: blur(2px);
+    will-change: transform, opacity;
+}
+
+@keyframes massiveBubbleRise {
+    0% { transform: translateY(120vh) translateX(0) scale(1); opacity: 0; }
+    10% { opacity: 1; }
+    50% { transform: translateY(50vh) translateX(30px) scale(1.2); }
+    90% { opacity: 0.8; }
+    100% { transform: translateY(-20vh) translateX(-20px) scale(0.8); opacity: 0; }
+}
+
+/* --- 2. KINETIC LAYOUT (STRICT MOBILE-FIRST) --- */
+.kinetic-layout { 
+    display: flex; flex-direction: column; gap: 50px; width: 100%; 
+}
+
+.hero-text { position: relative; z-index: 5; max-width: 850px; }
+
+/* --- 3. GLITCH TYPOGRAPHY & COPY --- */
+.live-indicator { 
+    display: inline-flex; align-items: center; gap: 12px; 
+    background: rgba(255, 215, 0, 0.05); /* Shifted to Gold */
+    border: 1px solid rgba(255, 215, 0, 0.2); 
+    padding: 10px 18px; border-radius: 4px; margin-bottom: 2rem; 
+    backdrop-filter: var(--blur); -webkit-backdrop-filter: var(--blur);
+}
+
+.live-text { 
+    font-family: var(--font-mono); font-size: 0.75rem; 
+    color: var(--neon-gold); letter-spacing: 3px; font-weight: 700; 
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5); 
+}
+
+h1.glitch-header { 
+    font-size: clamp(2.8rem, 10vw, 6.5rem); line-height: 0.95; 
+    margin-bottom: 1.5rem; letter-spacing: -0.04em; 
+}
+
+.hero-deep-copy { 
+    font-size: clamp(1rem, 4vw, 1.25rem); color: #ddd; 
+    margin-bottom: 3rem; line-height: 1.6; font-weight: 300; 
+    border-left: 3px solid var(--neon-gold); /* Shifted to Gold */
+    padding-left: 25px; 
+}
+
+.magnetic-btn-group { display: flex; flex-direction: column; gap: 15px; }
+
+/* --- 4. HOLOGRAPHIC OPS PANEL (HIDDEN ON MOBILE) --- */
+.ops-panel-wrapper { display: none; }
+
+/* --- 5. PROGRESSIVE DESKTOP UNLOCK (MIN-WIDTH: 992px) --- */
+@media (min-width: 992px) {
+    .kinetic-layout { 
+        display: grid; grid-template-columns: 1.3fr 450px; 
+        align-items: center; gap: 60px;
+    }
+    .magnetic-btn-group { flex-direction: row; }
+
+    .ops-panel-wrapper { display: block; perspective: 1500px; z-index: 5; }
+
+    .ops-card { 
+        padding: 40px; min-height: 520px; display: flex; flex-direction: column; 
+        border-top: 3px solid var(--neon-gold); /* Shifted to Gold */
+        background: rgba(5, 5, 5, 0.8); backdrop-filter: var(--blur); -webkit-backdrop-filter: var(--blur);
+        box-shadow: 0 40px 100px rgba(0,0,0,0.8); transform: rotateY(-10deg) rotateX(5deg);
+        transition: var(--slow-spring);
+    }
+
+    .ops-panel-wrapper:hover .ops-card {
+        transform: rotateY(0deg) rotateX(0deg) scale(1.02);
+        border-top-color: var(--neon-cyan); /* Cyan interactive accent */
+        box-shadow: 0 50px 120px rgba(0,0,0,0.9), inset 0 0 20px rgba(0,229,255,0.05);
+    }
+
+    .ops-header { 
+        display: flex; justify-content: space-between; border-bottom: 1px dashed rgba(255, 255, 255, 0.1); 
+        padding-bottom: 15px; margin-bottom: 25px; color: #666; font-family: var(--font-mono); font-size: 0.8rem;
+    }
+    .status-live-text { color: var(--neon-gold); font-weight: 800; text-shadow: 0 0 10px rgba(255,215,0,0.4); }
+
+    .tech-specs-list li { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 18px; color: #eee; font-size: 1rem; }
+    .tech-specs-list li i { color: var(--neon-cyan); margin-top: 4px; text-shadow: 0 0 10px var(--glow-cyan); }
+
+    .stream-info-block { 
+        margin-top: auto; background: rgba(255, 215, 0, 0.05); 
+        padding: 20px; border-radius: 8px; border: 1px solid rgba(255, 215, 0, 0.2); 
+        display: flex; gap: 15px; 
+    }
+
+    .ops-footer { 
+        margin-top: 25px; padding-top: 15px; display: flex; justify-content: space-between; 
+        font-family: var(--font-mono); font-size: 0.75rem; border-top: 1px dashed rgba(255, 255, 255, 0.1); 
+    }
+}
+
+/* --- 6. TRUST METRICS FOOTER --- */
+.trust-metrics { 
+    display: flex; gap: clamp(30px, 5vw, 60px); 
+    border-top: 1px solid rgba(255, 255, 255, 0.05); 
+    padding-top: 40px; margin-top: 50px; flex-wrap: wrap;
+}
+.metric strong { display: block; font-size: clamp(2.2rem, 5vw, 3.2rem); color: #fff; line-height: 1; font-family: var(--font-head); letter-spacing: -2px; margin-bottom: 5px; }
+.metric span { font-size: 0.75rem; color: var(--text-mute); text-transform: uppercase; letter-spacing: 2px; font-family: var(--font-mono); }

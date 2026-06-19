@@ -1,0 +1,52 @@
+/* ==========================================================================
+   OUTDOOR-RESIDENTIAL // COMPONENT STYLES
+   ========================================================================== */
+
+/* 2026 Bento Grid */
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-auto-rows: minmax(220px, auto);
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.bento-item {
+    background: rgba(15, 12, 5, 0.85);
+    border: 1px solid rgba(255, 215, 0, 0.15);
+    border-radius: 20px;
+    padding: 35px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.8);
+}
+
+.bento-item:hover {
+    transform: translateY(-5px);
+    border-color: var(--neon-gold);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.8), inset 0 0 30px rgba(255, 215, 0, 0.05);
+    z-index: 10;
+}
+
+/* Responsive grid spans */
+.bento-span-4 { grid-column: span 12; }
+.bento-span-8 { grid-column: span 12; }
+.bento-span-6 { grid-column: span 12; }
+
+@media (min-width: 992px) {
+    .bento-span-4 { grid-column: span 4; }
+    .bento-span-8 { grid-column: span 8; }
+    .bento-span-6 { grid-column: span 6; }
+}
+
+/* Tech List inside Bento */
+.tech-list-2026 { list-style: none; padding: 0; margin-top: auto; }
+.tech-list-2026 li {
+    display: flex; align-items: flex-start; gap: 15px; margin-bottom: 12px;
+    color: #d1d5db; font-size: 0.95rem; padding-bottom: 12px;
+    border-bottom: 1px dashed rgba(255,255,255,0.05);
+}
+.tech-list-2026 i { color: var(--neon-gold); margin-top: 4px; font-size: 1.1rem; }

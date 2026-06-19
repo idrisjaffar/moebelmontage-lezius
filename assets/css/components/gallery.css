@@ -1,0 +1,276 @@
+
+/* ==========================================================================
+   PIECE 11: PREMIUM CINEMATIC VIDEO SCROLLER
+   ========================================================================== */
+
+.cinematic-section { 
+    padding: clamp(60px, 10vw, 100px) 0; 
+    background: #020203; 
+    position: relative;
+    border-top: 1px solid rgba(255, 215, 0, 0.1); /* Shifted to Gold */
+}
+
+/* --- 1. THE SCROLLING CONTAINER --- */
+.cinematic-scroller { 
+    display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; 
+    scrollbar-width: none; -ms-overflow-style: none; 
+    padding: 0 clamp(20px, 5vw, 60px) 40px clamp(20px, 5vw, 60px); 
+    -webkit-overflow-scrolling: touch; cursor: grab;
+}
+.cinematic-scroller:active { cursor: grabbing; }
+.cinematic-scroller::-webkit-scrollbar { display: none; }
+
+/* --- 2. THE CINEMATIC CARDS --- */
+.cinematic-card { 
+    flex: 0 0 85vw; aspect-ratio: 16 / 9; scroll-snap-align: center; 
+    border-radius: 16px; overflow: hidden; position: relative; background: #000; 
+    border: 1px solid rgba(255, 255, 255, 0.05); 
+    transition: transform 0.5s var(--transition), border-color 0.5s; 
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4); cursor: pointer; 
+    will-change: transform;
+}
+
+.cinematic-card:hover { 
+    transform: translateY(-5px); 
+    border-color: rgba(255, 215, 0, 0.4); /* Shifted to Gold */
+    box-shadow: 0 30px 60px rgba(0,0,0,0.6), 0 0 20px rgba(255, 215, 0, 0.1);
+}
+
+/* --- 3. VIDEO LAYERS & HOVER PHYSICS --- */
+.cinematic-video-fallback { 
+    position: absolute; inset: 0; width: 100%; height: 100%; 
+    object-fit: cover; z-index: 1; 
+}
+
+.cinematic-video { 
+    position: absolute; inset: 0; width: 100%; height: 100%; 
+    object-fit: cover; filter: brightness(0.6); 
+    transition: filter 0.8s ease, transform 0.8s ease; z-index: 2; 
+    will-change: filter, transform;
+}
+
+.cinematic-card:hover .cinematic-video { filter: brightness(1.1); transform: scale(1.05); }
+
+/* --- 4. TEXT OVERLAYS --- */
+.cinematic-overlay { 
+    position: absolute; inset: 0; z-index: 3;
+    background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.1) 60%, transparent 100%); 
+    display: flex; flex-direction: column; justify-content: space-between; 
+    padding: clamp(20px, 4vw, 30px); pointer-events: none; 
+}
+
+.cinematic-tag { 
+    align-self: flex-end; background: rgba(255, 215, 0, 0.1); 
+    backdrop-filter: blur(10px); padding: 6px 14px; border-radius: 4px; 
+    font-size: 0.7rem; font-weight: 800; letter-spacing: 2px; 
+    color: var(--neon-gold); border: 1px solid var(--neon-gold); 
+    font-family: var(--font-mono); text-transform: uppercase;
+}
+
+.cinematic-text h3 { color: #fff; font-size: clamp(1.2rem, 3vw, 1.8rem); margin: 0 0 8px 0; font-family: var(--font-head); font-weight: 800; letter-spacing: -0.5px; }
+.cinematic-text p { color: #aaa; font-size: 0.95rem; line-height: 1.4; margin: 0; font-family: var(--font-body); }
+
+/* --- 5. PROGRESSIVE GRID UNLOCK (DESKTOP) --- */
+@media (min-width: 992px) {
+    .cinematic-scroller { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; overflow: visible; padding: 0; }
+    .cinematic-card { flex: unset; min-width: 100%; aspect-ratio: 16 / 9; }
+}
+
+
+/* ==========================================================================
+   THE CINEMATIC LIGHTBOX (FULL SCREEN VIDEO OVERLAY)
+   ========================================================================== */
+
+.cinematic-lightbox-overlay { 
+    position: fixed; inset: 0; background: rgba(2,3,4,0.98); z-index: 11000; 
+    display: flex; flex-direction: column; align-items: center; justify-content: center; 
+    opacity: 0; pointer-events: none; transition: opacity 0.5s ease; 
+    backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px); padding: 20px;
+    will-change: opacity;
+}
+
+.cinematic-lightbox-overlay.is-active { opacity: 1; pointer-events: auto; }
+
+.lightbox-close-btn { 
+    position: absolute; top: 30px; right: 30px; font-family: var(--font-mono); 
+    color: #888; letter-spacing: 2px; font-size: 0.9rem; cursor: pointer; 
+    transition: 0.3s; z-index: 11001; 
+}
+.lightbox-close-btn:hover { color: var(--neon-gold); text-shadow: 0 0 10px rgba(255, 215, 0, 0.4); } /* Shifted to Gold */
+
+.cinematic-lightbox-content { 
+    position: relative; width: 100%; max-width: 1200px; display: flex; flex-direction: column; gap: 20px;
+    transform: scale(0.95) translateY(20px); transition: all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+    will-change: transform;
+}
+
+.cinematic-lightbox-overlay.is-active .cinematic-lightbox-content { transform: scale(1) translateY(0); }
+
+.lightbox-main-video { 
+    width: 100%; max-height: 70vh; border-radius: 12px; background: #000; 
+    box-shadow: 0 40px 80px rgba(0,0,0,0.8), 0 0 0 1px rgba(255, 215, 0, 0.15); /* Subtle gold border */
+    outline: none;
+}
+
+.lightbox-data-panel { text-align: center; }
+.lightbox-data-panel h2 { color: #fff; font-family: var(--font-head); font-size: clamp(1.5rem, 4vw, 2.5rem); margin: 0 0 10px 0; }
+.lightbox-data-panel p { color: #aaa; font-family: var(--font-body); font-size: 1.1rem; margin: 0; }
+
+
+/* ==========================================================================
+   PROJECT BELT FIX: LIVE REFERENZEN (IMAGE SIZING & SCROLLING)
+   GOLDEN CYBERCORE EDITION
+   ========================================================================== */
+
+/* 1. The Overall Layout */
+.visual-split-layout {
+    display: grid;
+    grid-template-columns: 1fr; /* Stack on mobile */
+    gap: 40px;
+}
+
+@media (min-width: 992px) {
+    .visual-split-layout {
+        grid-template-columns: 350px 1fr; /* Left Info Panel, Right Sliding Belt */
+        gap: 60px;
+        align-items: center;
+    }
+}
+
+/* 2. Left Info Panel Styling */
+.visual-info-pane {
+    padding: clamp(30px, 5vw, 40px);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 215, 0, 0.1); /* Shifted to subtle Gold */
+    background: rgba(10, 10, 10, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5), inset 0 2px 10px rgba(255, 215, 0, 0.02);
+}
+
+/* 3. The Navigation Buttons */
+.belt-controls {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.nav-hud-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+}
+
+/* Gold Interactive Hover */
+.nav-hud-btn:hover {
+    background: var(--neon-gold);
+    color: #000;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+    border-color: var(--neon-gold);
+    transform: translateY(-2px);
+}
+
+/* =========================================================
+   🚨 CRITICAL FIX: IMAGE SIZING AND SCROLL TRACK
+   ========================================================= */
+
+.belt-container {
+    width: 100%;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory; /* Snaps to each image like an app */
+    scrollbar-width: none; /* Hides scrollbar in Firefox */
+    -ms-overflow-style: none; /* Hides scrollbar in IE */
+    padding-bottom: 20px;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch; /* Momentum scrolling on iOS */
+}
+
+.belt-container::-webkit-scrollbar { 
+    display: none; /* Hides scrollbar in Chrome/Safari */
+}
+
+.belt-track {
+    display: flex;
+    gap: 20px;
+    width: max-content; /* Forces the track to stretch infinitely horizontally */
+    will-change: transform; /* GPU Optimization */
+}
+
+/* The Individual Image Cards */
+.belt-item {
+    position: relative;
+    flex: 0 0 85vw; /* On mobile: Take up 85% of the screen width */
+    aspect-ratio: 4 / 3; /* Perfect rectangle shape */
+    border-radius: 12px;
+    overflow: hidden;
+    scroll-snap-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: #111; /* Fallback color before image loads */
+    transition: transform 0.5s var(--transition), border-color 0.5s;
+    will-change: transform, border-color;
+    cursor: pointer;
+}
+
+@media (min-width: 768px) {
+    .belt-item {
+        flex: 0 0 450px; /* On PC/Tablet: Lock to exactly 450px wide */
+    }
+}
+
+/* Hover Physics for the Card */
+.belt-item:hover {
+    border-color: rgba(255, 215, 0, 0.5); /* Ignites in Gold */
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6), 0 0 20px rgba(255, 215, 0, 0.1);
+}
+
+/* The Actual Image Tag */
+.belt-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Forces image to fit the box without stretching! */
+    transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+    will-change: transform;
+}
+
+.belt-item:hover img {
+    transform: scale(1.08); /* Deep zoom on hover */
+}
+
+/* The Overlay Tag (e.g. "METOD_KÜCHE") */
+.img-tag {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(5, 6, 8, 0.85);
+    backdrop-filter: blur(10px);
+    color: var(--neon-gold); /* Shifted to Gold */
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 215, 0, 0.3); /* Gold border */
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    transition: color 0.3s, border-color 0.3s;
+}
+
+/* Cyber Accent on Hover */
+.belt-item:hover .img-tag {
+    color: var(--neon-cyan); /* Shifts to Cyan data-accent on hover */
+    border-color: rgba(0, 229, 255, 0.4);
+}

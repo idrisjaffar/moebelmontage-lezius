@@ -1,0 +1,177 @@
+/* ==========================================================================
+   RAPHAEL LEZIUS | COMPONENT: MEGA FOOTER 2026
+   ARCHITECTURE: TACTICAL GRID | LASER EFFECTS | MOBILE DASHBOARD
+   ========================================================================== */
+
+.mega-footer-2026 { 
+    position: relative; 
+    background-color: #020203; /* Deepest Carbon */
+    background-image: 
+        radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.05), transparent 70%),
+        linear-gradient(rgba(212, 175, 55, 0.02) 1px, transparent 1px), 
+        linear-gradient(90deg, rgba(212, 175, 55, 0.02) 1px, transparent 1px);
+    background-size: 100% 100%, 40px 40px, 40px 40px;
+    background-position: 0 0, 0 0, 0 0;
+    border-top: 1px solid rgba(212, 175, 55, 0.2);
+    overflow: hidden;
+    z-index: 10;
+    margin-top: auto;
+}
+
+/* --- Top Scanning Laser --- */
+.footer-laser-scan {
+    position: absolute; top: 0; left: 0; width: 250px; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--price-gold, #d4af37), transparent);
+    box-shadow: 0 0 15px var(--price-gold, #d4af37);
+    animation: laserScanFooter 5s linear infinite;
+    will-change: transform;
+}
+
+@keyframes laserScanFooter { 
+    0% { transform: translateX(-250px); } 
+    100% { transform: translateX(100vw); } 
+}
+
+/* --- Grid Architecture --- */
+.footer-grid-2026 { 
+    display: grid; 
+    grid-template-columns: 1fr;
+    gap: 50px; 
+    padding: clamp(60px, 10vw, 80px) clamp(15px, 5vw, 30px); 
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+    .footer-grid-2026 { grid-template-columns: 1fr 1fr; }
+}
+
+@media (min-width: 1024px) {
+    .footer-grid-2026 { 
+        grid-template-columns: 1.5fr 1fr 1fr 1.5fr; 
+        align-items: start;
+    }
+}
+
+.f-col { display: flex; flex-direction: column; }
+
+/* --- Brand Station --- */
+.footer-brand-title { 
+    display: flex; gap: 6px; font-family: var(--font-primary, sans-serif); 
+    font-size: 1.8rem; font-weight: 800; letter-spacing: 2px; margin-bottom: 15px; 
+}
+.footer-brand-title .first { color: #fff; }
+.footer-brand-title .last { color: var(--price-gold, #d4af37); text-shadow: 0 0 15px rgba(212, 175, 55, 0.3); }
+
+.brand-desc { 
+    color: #888; font-size: 0.95rem; line-height: 1.6; margin-bottom: 30px; 
+    font-family: var(--font-body, sans-serif); 
+}
+
+/* --- Live System Tracker --- */
+.system-live-tracker { 
+    display: inline-flex; align-items: center; gap: 15px; 
+    background: rgba(39, 201, 63, 0.05); border: 1px solid rgba(39, 201, 63, 0.2); 
+    padding: 12px 20px; border-radius: 8px; width: fit-content; 
+}
+.tracker-dot { position: relative; width: 10px; height: 10px; }
+.tracker-dot .pulse { 
+    position: absolute; inset: 0; background: #27c93f; 
+    border-radius: 50%; box-shadow: 0 0 15px #27c93f; animation: pulseAgent 2s infinite; 
+}
+.tracker-text { display: flex; flex-direction: column; }
+.t-top { font-family: var(--font-mono, monospace); font-size: 0.55rem; color: #777; letter-spacing: 1px; }
+.t-bot { font-family: var(--font-mono, monospace); font-size: 0.8rem; font-weight: 800; letter-spacing: 1px; color: #27c93f; }
+
+@keyframes pulseAgent {
+    0% { transform: scale(0.8); opacity: 0.8; }
+    100% { transform: scale(2.5); opacity: 0; }
+}
+
+/* --- Navigation Links & Headings --- */
+.f-heading-2026 { 
+    color: #fff; font-family: var(--font-mono, monospace); font-size: 0.85rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 4px; margin-bottom: 30px; 
+    display: flex; align-items: center; gap: 10px;
+}
+.f-heading-2026::before {
+    content: ''; width: 6px; height: 6px; background: var(--price-gold, #d4af37); 
+    border-radius: 50%; box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+}
+
+.footer-links-2026 { list-style: none; padding: 0; margin: 0; }
+.footer-links-2026 li { margin-bottom: 15px; }
+.footer-links-2026 a { 
+    color: #aaa; font-family: var(--font-body, sans-serif); font-size: 0.95rem; text-decoration: none; 
+    display: inline-flex; align-items: center; transition: all 0.3s ease; 
+}
+.f-arrow { 
+    font-family: var(--font-mono, monospace); color: var(--price-cyan, #00e5ff); opacity: 0; 
+    transform: translateX(-10px); transition: 0.3s; margin-right: 0px; font-weight: 800; 
+}
+.footer-links-2026 a:hover { color: var(--price-gold, #d4af37); transform: translateX(5px); }
+.footer-links-2026 a:hover .f-arrow { opacity: 1; transform: translateX(0); margin-right: 8px; }
+
+/* --- Comms Station --- */
+.comms-list-2026 { list-style: none; padding: 0; margin: 0; }
+.comms-list-2026 li { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; transition: transform 0.3s ease; }
+.comms-list-2026 i { 
+    font-size: 1.2rem; background: rgba(255, 255, 255, 0.03); padding: 12px; 
+    border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1); transition: 0.3s; 
+    width: 45px; height: 45px; display: flex; align-items: center; justify-content: center;
+}
+
+.gold-icon { color: var(--price-gold, #d4af37); } 
+.cyan-icon { color: var(--price-cyan, #00e5ff); } 
+.pink-icon { color: var(--price-pink, #ff2a85); } 
+
+.comms-list-2026 li:hover i.gold-icon { border-color: var(--price-gold, #d4af37); box-shadow: 0 0 15px rgba(212,175,55,0.2); background: rgba(212,175,55,0.05); }
+.comms-list-2026 li:hover i.cyan-icon { border-color: var(--price-cyan, #00e5ff); box-shadow: 0 0 15px rgba(0,229,255,0.2); background: rgba(0,229,255,0.05); }
+.comms-list-2026 li:hover i.pink-icon { border-color: var(--price-pink, #ff2a85); box-shadow: 0 0 15px rgba(255,42,133,0.2); background: rgba(255,42,133,0.05); }
+
+.comms-data { display: flex; flex-direction: column; }
+.c-label { font-family: var(--font-mono, monospace); font-size: 0.6rem; color: #666; letter-spacing: 2px; margin-bottom: 4px; }
+.comms-data a { color: #ddd; font-size: 1rem; font-weight: 700; text-decoration: none; transition: 0.3s; font-family: var(--font-primary, sans-serif); }
+.comms-data a:hover { color: var(--price-gold, #d4af37); }
+
+/* --- Legal Bottom Bar --- */
+.footer-bottom-bar-2026 { 
+    padding: 30px clamp(15px, 5vw, 30px); border-top: 1px solid rgba(212, 175, 55, 0.1); 
+    display: flex; flex-direction: column; align-items: center; gap: 20px; text-align: center;
+    max-width: 1400px; margin: 0 auto;
+}
+.copyright-zone { color: #555; font-size: 0.75rem; font-family: var(--font-mono, monospace); letter-spacing: 1px; }
+
+.legal-links-2026 a { color: #888; text-decoration: none; transition: 0.3s; font-family: var(--font-mono, monospace); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
+.legal-links-2026 a:hover { color: var(--price-gold, #d4af37); }
+.legal-links-2026 .divider { margin: 0 10px; color: var(--price-gold, #d4af37); font-family: var(--font-mono, monospace); opacity: 0.3; }
+
+@media (min-width: 768px) {
+    .footer-bottom-bar-2026 { flex-direction: row; justify-content: space-between; text-align: left; }
+}
+
+/* --- Mobile Tactile Dashboard (max-width: 767px) --- */
+@media (max-width: 767px) {
+    .footer-grid-2026 { grid-template-columns: 1fr 1fr; gap: 30px 15px; }
+    
+    .brand-col { grid-column: 1 / -1; text-align: center; align-items: center; padding-bottom: 25px; border-bottom: 1px solid rgba(212, 175, 55, 0.1); }
+    .footer-brand-title { justify-content: center; }
+    .brand-desc { text-align: center; font-size: 0.85rem; padding: 0 10px; }
+    
+    .nav-col:nth-of-type(2) { grid-column: 1 / 2; }
+    .nav-col:nth-of-type(3) { grid-column: 2 / 3; }
+    
+    .nav-col .f-heading-2026 { font-size: 0.7rem; letter-spacing: 2px; justify-content: flex-start; }
+    .footer-links-2026 a { padding: 8px 0; font-size: 0.85rem; }
+    
+    .comms-col { grid-column: 1 / -1; padding-top: 10px; border-top: 1px solid rgba(212, 175, 55, 0.1); }
+    .comms-list-2026 li { 
+        background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05); 
+        border-radius: 12px; padding: 15px; margin-bottom: 12px; 
+    }
+    .comms-list-2026 li:active { background: rgba(212, 175, 55, 0.05); border-color: rgba(212, 175, 55, 0.3); transform: scale(0.98); }
+    
+    .legal-links-2026 { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+    .legal-links-2026 .divider { display: none; }
+    .legal-links-2026 a { background: rgba(255, 255, 255, 0.03); padding: 6px 16px; border-radius: 50px; font-size: 0.65rem; border: 1px solid rgba(255, 255, 255, 0.05); }
+}

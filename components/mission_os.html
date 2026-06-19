@@ -1,23 +1,15 @@
 <div id="missionOS" class="os-overlay">
     <div class="os-backdrop js-close-os"></div>
-    
     <div class="case-container">
         <button class="os-close-btn js-close-os"><i class="fas fa-times"></i></button>
         
         <div class="mission-control-header">
-            <div class="sys-status">
-                <div class="status-dot"></div>
-                <span>SECURE_ENCLAVE // DSGVO COMPLIANT</span>
-            </div>
-            <h3>MISSION_CONTROL <span class="gold-text">v2.6</span></h3>
-            
-            <div class="os-progress-bar">
-                <div class="os-progress-fill" id="osProgress"></div>
-            </div>
+            <h3>PROJECT_INITIALIZATION <span class="gold-text">v2026</span></h3>
+            <div class="os-progress-bar"><div class="os-progress-fill" id="osProgress"></div></div>
             <div class="os-steps-indicator">
-                <span class="step-text active" id="st1">01 CLIENT</span>
+                <span class="step-text active" id="st1">01 IDENTITY</span>
                 <span class="step-text" id="st2">02 SYSTEM</span>
-                <span class="step-text" id="st3">03 LOGISTIK</span>
+                <span class="step-text" id="st3">03 TELEMETRY</span>
                 <span class="step-text" id="st4">04 DEPLOY</span>
             </div>
         </div>
@@ -25,167 +17,81 @@
         <form id="leadForm" class="os-form">
             
             <div class="form-step is-active" data-step="1">
-                <h4 class="step-heading"><i class="fas fa-user-astronaut"></i> BASISDATEN</h4>
-                <p class="step-desc">Identifikation & Kommunikationsprotokoll.</p>
-                
+                <h4 class="step-heading"><i class="fas fa-user-shield"></i> 01 // CLIENT_IDENTITY</h4>
                 <div class="input-group">
                     <input type="text" id="osName" class="os-input" required placeholder=" ">
-                    <label for="osName" class="os-label">VOLLSTÄNDIGER NAME *</label>
+                    <label class="os-label">VOLLSTÄNDIGER NAME *</label>
                 </div>
-                
-                <div class="os-row">
-                    <div class="input-group">
-                        <input type="tel" id="osPhone" class="os-input" required placeholder=" ">
-                        <label for="osPhone" class="os-label">TELEFON *</label>
-                    </div>
-                    <div class="input-group">
-                        <input type="email" id="osEmail" class="os-input" required placeholder=" ">
-                        <label for="osEmail" class="os-label">E-MAIL *</label>
-                    </div>
+                <div class="input-group">
+                    <input type="tel" id="osPhone" class="os-input" required placeholder=" ">
+                    <label class="os-label">TELEFONNUMMER *</label>
                 </div>
-
-                <div class="input-group" style="margin-top: 15px;">
-                    <span class="label-static">Bevorzugter Kontaktweg:</span>
-                    <div class="radio-grid">
-                        <label class="radio-card">
-                            <input type="radio" name="contact_method" value="WhatsApp" checked>
-                            <span class="card-content"><i class="fab fa-whatsapp"></i> WhatsApp</span>
-                        </label>
-                        <label class="radio-card">
-                            <input type="radio" name="contact_method" value="Call">
-                            <span class="card-content"><i class="fas fa-phone"></i> Anruf</span>
-                        </label>
-                        <label class="radio-card">
-                            <input type="radio" name="contact_method" value="Email">
-                            <span class="card-content"><i class="fas fa-envelope"></i> E-Mail</span>
-                        </label>
-                    </div>
-                </div>
-
-                <div class="step-actions">
-                    <button type="button" class="os-btn btn-next">SYSTEM WÄHLEN <i class="fas fa-chevron-right"></i></button>
-                </div>
+                <button type="button" class="os-btn btn-next">AUTHORIZE <i class="fas fa-arrow-right"></i></button>
             </div>
 
             <div class="form-step" data-step="2">
-                <h4 class="step-heading"><i class="fas fa-cubes"></i> PROJEKT_PARAMETER</h4>
-                <p class="step-desc">Welches System soll installiert werden?</p>
-                
+                <h4 class="step-heading"><i class="fas fa-microchip"></i> 02 // SYSTEM_CONFIGURATION</h4>
+                <p class="step-desc">Select the required installation module:</p>
                 <div class="radio-grid-large">
                     <label class="radio-card-large cyan-hover">
-                        <input type="radio" name="project_type" value="Küche">
-                        <div class="card-content-large">
-                            <i class="fas fa-utensils"></i>
-                            <strong>IKEA METOD / KÜCHE</strong>
-                            <span>Inkl. Arbeitsplatte & Spülen-Ausschnitt</span>
-                        </div>
+                        <input type="radio" name="project" value="Küche" checked>
+                        <div class="card-content-large"><i class="fas fa-utensils"></i><strong>KÜCHE</strong></div>
                     </label>
                     <label class="radio-card-large gold-hover">
-                        <input type="radio" name="project_type" value="PAX">
-                        <div class="card-content-large">
-                            <i class="fas fa-door-open"></i>
-                            <strong>IKEA PAX / SCHRANK</strong>
-                            <span>Schwebetüren, Beleuchtung & Innenausbau</span>
-                        </div>
+                        <input type="radio" name="project" value="PAX">
+                        <div class="card-content-large"><i class="fas fa-door-open"></i><strong>PAX</strong></div>
                     </label>
                     <label class="radio-card-large pink-hover">
-                        <input type="radio" name="project_type" value="B2B">
-                        <div class="card-content-large">
-                            <i class="fas fa-gem"></i>
-                            <strong>USM HALLER / OFFICE</strong>
-                            <span>Kratzfreie Montage & Kabelmanagement</span>
-                        </div>
-                    </label>
-                    <label class="radio-card-large green-hover">
-                        <input type="radio" name="project_type" value="Outdoor_Demontage">
-                        <div class="card-content-large">
-                            <i class="fas fa-tools"></i>
-                            <strong>OUTDOOR & DEMONTAGE</strong>
-                            <span>Biohort, Gartenhäuser oder Rückbau</span>
-                        </div>
+                        <input type="radio" name="project" value="USM">
+                        <div class="card-content-large"><i class="fas fa-gem"></i><strong>USM</strong></div>
                     </label>
                 </div>
-
                 <div class="input-group" style="margin-top: 20px;">
                     <input type="text" id="osPlan" class="os-input" placeholder=" ">
-                    <label for="osPlan" class="os-label">IKEA Planungs-Code (Optional)</label>
+                    <label class="os-label">IKEA PLANUNGS-CODE (OPTIONAL)</label>
                 </div>
-
                 <div class="step-actions split">
-                    <button type="button" class="os-btn-ghost btn-prev"><i class="fas fa-chevron-left"></i> ZURÜCK</button>
-                    <button type="button" class="os-btn btn-next">LOGISTIK PRÜFEN <i class="fas fa-chevron-right"></i></button>
+                    <button type="button" class="os-btn-ghost btn-prev">BACK</button>
+                    <button type="button" class="os-btn btn-next">NEXT <i class="fas fa-arrow-right"></i></button>
                 </div>
             </div>
 
             <div class="form-step" data-step="3">
-                <h4 class="step-heading"><i class="fas fa-truck-loading"></i> STANDORT_LOGISTIK</h4>
-                <p class="step-desc">Essenzielle Daten für Werkzeug- und Zeitplanung.</p>
-
-                <div class="os-row">
-                    <div class="input-group">
-                        <input type="text" id="osPlz" class="os-input" required placeholder=" ">
-                        <label for="osPlz" class="os-label">PLZ & ORT *</label>
-                    </div>
-                    <div class="input-group select-wrapper">
-                        <select id="osFloor" class="os-select" required>
-                            <option value="" disabled selected>Etage & Aufzug</option>
-                            <option value="EG">Erdgeschoss</option>
-                            <option value="Aufzug">Mit Aufzug (Material passt rein)</option>
-                            <option value="Ohne_Aufzug">Ohne Aufzug (Treppenhaus)</option>
-                        </select>
-                    </div>
+                <h4 class="step-heading"><i class="fas fa-map-marked-alt"></i> 03 // SITE_TELEMETRY</h4>
+                <div class="input-group">
+                    <input type="text" id="osPlz" class="os-input" required placeholder=" ">
+                    <label class="os-label">PLZ & ORT *</label>
                 </div>
-
-                <div class="input-group" style="margin-top: 15px;">
-                    <span class="label-static">Wandbeschaffenheit (Wichtig für Hängeschränke/Kippsicherung):</span>
-                    <div class="radio-grid">
-                        <label class="radio-card">
-                            <input type="radio" name="wall_type" value="Massiv">
-                            <span class="card-content">Ziegel/Beton</span>
-                        </label>
-                        <label class="radio-card">
-                            <input type="radio" name="wall_type" value="Rigips">
-                            <span class="card-content">Rigips (Trockenbau)</span>
-                        </label>
-                        <label class="radio-card">
-                            <input type="radio" name="wall_type" value="Unbekannt" checked>
-                            <span class="card-content">Weiß ich nicht</span>
-                        </label>
-                    </div>
+                <div class="input-group">
+                    <select id="osFloor" class="os-input">
+                        <option value="EG">Erdgeschoss</option>
+                        <option value="Lift">Aufzug (Material passt)</option>
+                        <option value="Stairs">Treppenaufgang</option>
+                    </select>
                 </div>
-
                 <div class="step-actions split">
-                    <button type="button" class="os-btn-ghost btn-prev"><i class="fas fa-chevron-left"></i> ZURÜCK</button>
-                    <button type="button" class="os-btn btn-next">ZUM FINISH <i class="fas fa-chevron-right"></i></button>
+                    <button type="button" class="os-btn-ghost btn-prev">BACK</button>
+                    <button type="button" class="os-btn btn-next">FINALIZE <i class="fas fa-arrow-right"></i></button>
                 </div>
             </div>
 
             <div class="form-step" data-step="4">
-                <h4 class="step-heading"><i class="fas fa-calendar-check"></i> DEPLOYMENT</h4>
-                <p class="step-desc">Zeitplan und Datenfreigabe.</p>
-
+                <h4 class="step-heading"><i class="fas fa-rocket"></i> 04 // DATA_DEPLOYMENT</h4>
                 <div class="input-group">
-                    <textarea id="osDetails" class="os-textarea" placeholder=" "></textarea>
-                    <label for="osDetails" class="os-label">Weitere Details, Besonderheiten oder Wunschtermine?</label>
+                    <textarea id="osDetails" class="os-input" rows="3" placeholder=" "></textarea>
+                    <label class="os-label">PROJECT_NOTES // BESONDERHEITEN</label>
                 </div>
-
                 <div class="dsgvo-box">
                     <label class="custom-checkbox">
-                        <input type="checkbox" id="dsgvoCheck" required>
-                        <span class="checkmark"></span>
-                        <p class="dsgvo-text">Ich stimme zu, dass meine Daten zur Bearbeitung meines Anliegens gespeichert und verarbeitet werden. Weitere Informationen finden Sie in der <a href="#">Datenschutzerklärung</a>. *</p>
+                        <input type="checkbox" required>
+                        <span class="dsgvo-text">Datenfreigabe zur System-Initialisierung erfolgt gemäß DSGVO.</span>
                     </label>
                 </div>
-
                 <div class="step-actions split">
-                    <button type="button" class="os-btn-ghost btn-prev"><i class="fas fa-chevron-left"></i> ZURÜCK</button>
-                    <button type="submit" class="os-btn-submit">
-                        <span class="btn-text">DATEN ÜBERMITTELN</span>
-                        <i class="fas fa-paper-plane"></i>
-                    </button>
+                    <button type="button" class="os-btn-ghost btn-prev">BACK</button>
+                    <button type="submit" class="os-btn">INITIATE REQUEST <i class="fas fa-paper-plane"></i></button>
                 </div>
             </div>
-
         </form>
     </div>
 </div>

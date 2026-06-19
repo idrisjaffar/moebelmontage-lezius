@@ -1,8 +1,6 @@
-
-
 <header class="lezius-nav-2026" id="masterNav">
     <div class="floating-capsule">
-       
+        
         <div class="nav-brand magnetic-target" id="brandLogoTrigger" onclick="triggerHaptic(15)">
             <div class="brand-pedestal">
                 <div class="logo-flipper">
@@ -21,22 +19,20 @@
             </div>
         </div>
 
-
         <nav class="nav-desktop">
             <a href="index.html" class="capsule-link">
                 <span class="link-text-main">Start</span>
                 <span class="link-text-sub"><span class="sub-dot"></span> HAUPTSYSTEM</span>
             </a>
-           
+            
             <div class="nav-dropdown-trigger" id="dropdownTrigger">
                 <button class="capsule-link drop-btn">
                     <span class="link-text-main">Leistungen <i class="fas fa-chevron-down drop-arrow"></i></span>
                     <span class="link-text-sub"><span class="sub-dot"></span> MODULE</span>
                 </button>
-               
+                
                 <div class="mega-quantum-shield" id="megaPanel">
                     <div class="mega-layout-split">
-                       
                         <div class="mega-sidebar">
                             <span class="sidebar-label">AKTIVE_MODULE</span>
                             <h3 class="sidebar-title">Engineering<br><span style="color: var(--neon-gold);">System</span></h3>
@@ -46,7 +42,6 @@
                                 <div class="data-row"><span>ENERGIE:</span> <span style="color: var(--neon-green);">OPTIMAL</span></div>
                             </div>
                         </div>
-
 
                         <div class="mega-panel-inner">
                             <a href="residential.html" class="mega-card hover-cyan magnetic-target">
@@ -82,15 +77,16 @@
                 </div>
             </div>
 
-
             <a href="process-pricing.html" class="capsule-link">
                 <span class="link-text-main">Prozess & Preise</span>
                 <span class="link-text-sub"><span class="sub-dot"></span> SYSTEM_INFO</span>
             </a>
+            
             <a href="area.html" class="capsule-link">
                 <span class="link-text-main">Einsatzgebiet</span>
                 <span class="link-text-sub"><span class="sub-dot"></span> REGION</span>
             </a>
+            
             <a href="gallery.html" class="capsule-link">
                 <span class="link-text-main">Projektgalerie</span>
                 <span class="link-text-sub"><span class="sub-dot"></span> ARCHIV</span>
@@ -101,28 +97,25 @@
             </a>
         </nav>
 
-
         <div class="nav-actions">
             <div class="agent-node desktop-only" title="Sichere Verbindung aktiv">
                 <div class="agent-radar"><div class="agent-core"></div><div class="agent-sweep"></div></div>
                 <span class="agent-text">SYSTEM_SICHER</span>
             </div>
-           
-            <button onclick="MissionOS.open()" class="action-btn magnetic-target desktop-only" onmouseenter="triggerHaptic(10)">
-                <span class="btn-glare"></span>
-                <span class="btn-text">ANFRAGE</span> <i class="fas fa-bolt"></i>
-            </button>
-
+            
+           <button class="action-btn magnetic-target desktop-only js-open-os" onmouseenter="triggerHaptic(10)">
+    <span class="btn-glare"></span>
+    <span class="btn-text">ANFRAGE</span> <i class="fas fa-bolt"></i>
+</button>
 
             <button class="mobile-toggle magnetic-target" id="mobileMenuToggle" aria-label="Menu" onclick="triggerHaptic(20)">
                 <div class="toggle-lines"><span class="line line-1"></span><span class="line line-2"></span></div>
             </button>
         </div>
-       
+        
         <div class="nav-laser-track"><div class="laser-beam"></div></div>
     </div>
 </header>
-
 
 <div class="logo-lightbox-overlay" id="logoLightbox">
     <div class="lightbox-close-btn" id="closeLightbox">[ SCHLIESSEN ]</div>
@@ -132,17 +125,15 @@
     </div>
 </div>
 
-
 <div class="fluid-mobile-menu" id="fluidMobileMenu">
     <div class="mobile-prismatic-backdrop"></div>
     <div class="mobile-crt-scanline"></div>
-   
+    
     <div class="mobile-menu-content">
         <div class="mobile-header">
             <span class="sys-text">SYS_UPLINK // ESTABLISHED</span>
             <span class="mob-clock-display">SYNCING...</span>
         </div>
-
 
         <nav class="mobile-main-nav">
             <a href="index.html" class="m-link-massive" style="--boot-delay: 0.1s;">START <i class="fas fa-arrow-right"></i></a>
@@ -151,7 +142,6 @@
             <a href="gallery.html" class="m-link-massive" style="--boot-delay: 0.4s;">PROJEKTGALERIE <i class="fas fa-arrow-right"></i></a>
             <a href="magazine.html" class="m-link-massive" style="--boot-delay: 0.5s;">MAGAZIN <i class="fas fa-arrow-right"></i></a>
         </nav>
-
 
         <div class="mobile-services-grid" style="--boot-delay: 0.6s;">
             <div class="m-grid-label">LEISTUNGEN (MODULE)</div>
@@ -163,7 +153,6 @@
             </div>
         </div>
 
-
         <div class="mobile-footer-action" style="--boot-delay: 0.7s;">
             <button onclick="MissionOS.open(); document.getElementById('mobileMenuToggle').click();" class="action-btn full-width magnetic-target" aria-label="Projekt Starten">
                 <span class="btn-glare"></span>
@@ -172,6 +161,3 @@
         </div>
     </div>
 </div>
-<script>
-
-

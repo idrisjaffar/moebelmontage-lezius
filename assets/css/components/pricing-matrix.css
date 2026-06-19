@@ -1,0 +1,377 @@
+/* ==========================================================================
+   PRICING MATRIX & CALIBRATION ENGINE (v2026.4)
+   HIGH-END INTERIOR TECH AESTHETIC
+   ========================================================================== */
+
+/* --- 0. ROOT VARIABLES & UTILITIES --- */
+:root {
+    --neon-gold: #FFD700;
+    --neon-cyan: #00E5FF;
+    --neon-pink: #FF007F;
+    --neon-green: #39FF14;
+    --bg-dark: #020203;
+    --bg-panel: rgba(10, 12, 16, 0.65);
+    --border-dim: rgba(255, 255, 255, 0.05);
+    --glass-blur: blur(24px);
+    --spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.text-gold { color: var(--neon-gold) !important; }
+.text-cyan { color: var(--neon-cyan) !important; }
+.text-pink { color: var(--neon-pink) !important; }
+.text-green { color: var(--neon-green) !important; }
+
+.pricing-theme {
+    background-color: var(--bg-dark);
+    color: #fff;
+    overflow-x: hidden;
+}
+
+/* Glass Panel Base */
+.glass-panel {
+    background: var(--bg-panel);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--border-dim);
+    border-radius: 16px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(255, 255, 255, 0.02);
+    transition: transform 0.4s var(--spring), border-color 0.4s ease;
+}
+.glass-panel:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* --- 11. ATMOSPHERE OVERLAYS --- */
+.noise-overlay {
+    position: fixed; inset: 0; pointer-events: none; z-index: 10; opacity: 0.04;
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyBAMAAADsEZWCAAAAGFBMVEVNTU3////5+fn4+Pj29vb19fX09PTy8vL98hJAAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAEElEQVQ4y2NgGAWjYBSMAgAAAUAAAQ2rLwAAAAAASUVORK5CYII=');
+}
+.crt-overlay {
+    position: fixed; inset: 0; pointer-events: none; z-index: 9; opacity: 0.15;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+    background-size: 100% 4px;
+}
+
+/* --- 1. HERO & HUD --- */
+.price-hero {
+    position: relative; min-height: 90vh; display: flex; align-items: center; 
+    padding: 180px 0 100px 0; border-bottom: 1px solid var(--border-dim);
+}
+.industrial-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background: radial-gradient(circle at 50% 30%, rgba(255, 215, 0, 0.05) 0%, transparent 60%), var(--bg-dark);
+}
+.hero-content { max-width: 900px; margin: 0 auto; text-align: center; }
+
+.hero-glitch-tag {
+    display: inline-block; font-family: var(--font-mono); font-size: 0.8rem;
+    color: var(--neon-gold); border: 1px solid rgba(255, 215, 0, 0.3);
+    padding: 6px 15px; border-radius: 4px; margin-bottom: 25px; letter-spacing: 2px;
+    background: rgba(255, 215, 0, 0.05); text-transform: uppercase;
+}
+.hero-title-massive {
+    font-family: var(--font-head); font-size: clamp(3rem, 8vw, 6rem);
+    line-height: 1.05; font-weight: 800; margin-bottom: 25px; letter-spacing: -2px;
+}
+.hero-description {
+    font-size: clamp(1.1rem, 2vw, 1.25rem); color: #a0aec0; line-height: 1.7;
+    margin-bottom: 50px; max-width: 700px; margin-left: auto; margin-right: auto;
+}
+
+.calibration-hud {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px;
+    background: rgba(5, 7, 10, 0.8); border: 1px solid var(--border-dim);
+    padding: 25px; border-radius: 12px; backdrop-filter: var(--glass-blur);
+    text-align: left;
+}
+@media (min-width: 768px) { .calibration-hud { grid-template-columns: repeat(4, 1fr); } }
+.hud-stat { display: flex; flex-direction: column; gap: 5px; padding: 10px; border-left: 2px solid #333; }
+.hud-stat.highlight-cyan { border-left-color: var(--neon-cyan); background: rgba(0, 229, 255, 0.03); }
+.hud-label { font-family: var(--font-mono); font-size: 0.65rem; color: #666; letter-spacing: 1px; }
+.hud-value { font-family: var(--font-head); font-size: 1.1rem; color: #fff; font-weight: 700; }
+
+/* --- 2. PRICING MATRIX --- */
+.pricing-matrix-section { padding: 120px 0; }
+.section-header-center { text-align: center; margin-bottom: 60px; }
+.section-title-large { font-family: var(--font-head); font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; margin-bottom: 15px; }
+.section-subtitle-mono { font-family: var(--font-mono); font-size: 0.8rem; color: #666; letter-spacing: 2px; }
+
+.pricing-swipe-track {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;
+}
+.price-module { padding: 40px; display: flex; flex-direction: column; }
+.price-module.module-active { border-color: var(--neon-gold); background: rgba(255,215,0,0.03); transform: scale(1.02); }
+.price-module.module-active:hover { transform: scale(1.03) translateY(-5px); }
+
+.recommended-badge {
+    position: absolute; top: 0; left: 50%; transform: translate(-50%, -50%);
+    background: var(--neon-gold); color: #000; font-family: var(--font-mono);
+    font-size: 0.7rem; font-weight: 800; padding: 5px 15px; border-radius: 20px; letter-spacing: 1px;
+}
+.module-tag { font-family: var(--font-mono); font-size: 0.75rem; color: #888; display: block; margin-bottom: 10px; }
+.module-header h3 { font-family: var(--font-head); font-size: 2rem; }
+
+.price-display { margin: 30px 0; display: flex; align-items: baseline; gap: 5px; }
+.currency { font-size: 1.5rem; font-weight: 600; color: #666; }
+.amount { font-family: var(--font-head); font-size: 3.5rem; font-weight: 800; line-height: 1; }
+.metric { font-family: var(--font-mono); font-size: 0.75rem; color: #666; letter-spacing: 1px; }
+
+.feature-list { list-style: none; padding: 0; margin: 0 0 40px 0; flex-grow: 1; }
+.feature-list li { margin-bottom: 15px; font-size: 0.95rem; display: flex; align-items: center; gap: 12px; color: #bbb; }
+.muted-feature { opacity: 0.4; text-decoration: line-through; }
+
+.btn-price-action {
+    width: 100%; padding: 18px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-dim);
+    color: #fff; font-family: var(--font-mono); font-weight: 700; border-radius: 8px;
+    cursor: pointer; transition: 0.3s; letter-spacing: 1px;
+}
+.btn-price-action:hover { background: #fff; color: #000; }
+.active-btn { background: var(--neon-gold); color: #000; border: none; }
+.active-btn:hover { box-shadow: 0 0 25px rgba(255, 215, 0, 0.4); }
+
+.price-disclaimer { margin-top: 40px; text-align: center; font-family: var(--font-mono); font-size: 0.65rem; color: #555; }
+
+/* --- 17. LOGISTICS ENGINE & RADAR MAP --- */
+.logistics-section { padding: 100px 0; background: #030406; border-top: 1px solid var(--border-dim); }
+.logistics-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+@media (max-width: 992px) { .logistics-grid { grid-template-columns: 1fr; } }
+
+.zone-stack { display: flex; flex-direction: column; gap: 15px; }
+.zone-item { display: flex; justify-content: space-between; align-items: center; padding: 20px 25px; }
+.border-left-gold { border-left: 4px solid var(--neon-gold); }
+.border-left-cyan { border-left: 4px solid var(--neon-cyan); }
+.border-left-pink { border-left: 4px solid var(--neon-pink); }
+.zone-info { display: flex; flex-direction: column; gap: 5px; }
+.zone-id { font-family: var(--font-mono); font-size: 0.7rem; font-weight: 700; letter-spacing: 1px; }
+.zone-name { font-size: 1.1rem; color: #fff; }
+.zone-detail { font-size: 0.85rem; color: #777; }
+.zone-price { font-family: var(--font-head); font-size: 1.5rem; font-weight: 800; color: #fff; }
+
+.map-visualizer {
+    position: relative; width: 100%; aspect-ratio: 1/1; border-radius: 50%;
+    background: radial-gradient(circle at center, #050810, #010203);
+    border: 1px solid var(--border-dim); overflow: hidden;
+    box-shadow: 0 0 60px rgba(0, 229, 255, 0.05);
+}
+.map-grid-overlay {
+    position: absolute; inset: 0;
+    background-image: linear-gradient(rgba(0, 229, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 229, 255, 0.1) 1px, transparent 1px);
+    background-size: 40px 40px; opacity: 0.3;
+}
+.radar-sweep {
+    position: absolute; top: 50%; left: 50%; width: 50%; height: 50%;
+    background: conic-gradient(from 0deg, transparent 70%, rgba(0, 229, 255, 0.4) 100%);
+    transform-origin: 0% 0%; animation: radarSpin 4s linear infinite;
+}
+@keyframes radarSpin { 100% { transform: rotate(360deg); } }
+.radar-ring {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    border: 1px solid rgba(0, 229, 255, 0.2); border-radius: 50%;
+}
+.ring-1 { width: 30%; height: 30%; }
+.ring-2 { width: 60%; height: 60%; }
+.ring-3 { width: 90%; height: 90%; }
+.hq-ping { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+.ping-core { width: 8px; height: 8px; background: var(--neon-cyan); border-radius: 50%; box-shadow: 0 0 10px var(--neon-cyan); }
+.ping-wave {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    width: 30px; height: 30px; border: 2px solid var(--neon-cyan); border-radius: 50%;
+    animation: pingAnim 2s infinite ease-out;
+}
+@keyframes pingAnim { 0% { width: 8px; height: 8px; opacity: 1; } 100% { width: 60px; height: 60px; opacity: 0; } }
+.tactical-readout {
+    position: absolute; bottom: 20px; left: 20px; font-family: var(--font-mono);
+    font-size: 0.65rem; color: #888; line-height: 1.5; background: rgba(0,0,0,0.6); padding: 10px; border-radius: 6px;
+}
+
+/* --- 18. EXECUTION PIPELINE --- */
+.pipeline-section { padding: 120px 0; }
+.pipeline-wrapper { position: relative; margin-top: 60px; padding: 20px 0; }
+.laser-track { position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; background: rgba(255,255,255,0.05); transform: translateX(-50%); }
+.laser-beam { position: absolute; top: 0; left: 0; width: 100%; height: 150px; background: linear-gradient(to bottom, transparent, var(--neon-cyan), transparent); animation: laserDrop 4s infinite linear; }
+@keyframes laserDrop { 0% { top: -150px; } 100% { top: 100%; } }
+
+.pipeline-step { display: flex; align-items: center; justify-content: space-between; width: 100%; margin-bottom: 60px; position: relative; }
+.pipeline-step.step-left { flex-direction: row-reverse; }
+.step-card { width: 45%; padding: 35px; }
+.step-node {
+    position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+    width: 40px; height: 40px; background: var(--bg-dark); border: 2px solid var(--neon-cyan);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; color: #fff; box-shadow: 0 0 20px rgba(0,229,255,0.3); z-index: 2;
+}
+@media (max-width: 768px) {
+    .laser-track { left: 20px; }
+    .pipeline-step { flex-direction: column !important; align-items: flex-start; padding-left: 60px; }
+    .step-card { width: 100%; }
+    .step-node { left: 20px; top: 30px; }
+}
+.step-label { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 1px; display: block; margin-bottom: 10px; }
+.step-title { font-family: var(--font-head); font-size: 1.5rem; margin-bottom: 15px; color: #fff; }
+.step-desc { color: #aaa; line-height: 1.6; font-size: 0.95rem; }
+
+/* --- 3. FISCAL PROTOCOL & TAX ADVANTAGE --- */
+.fiscal-section { padding: 100px 0; background: #030406; border-top: 1px dashed rgba(255,255,255,0.05); }
+.fiscal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+@media (max-width: 992px) { .fiscal-grid { grid-template-columns: 1fr; } }
+.law-badge { display: inline-flex; align-items: center; gap: 10px; background: rgba(255,215,0,0.05); padding: 8px 15px; border-radius: 6px; border: 1px solid rgba(255,215,0,0.2); font-family: var(--font-mono); font-size: 0.7rem; color: #fff; margin-bottom: 25px; }
+.fiscal-text-block { background: rgba(255,255,255,0.02); padding: 25px; border-left: 3px solid var(--neon-cyan); border-radius: 0 12px 12px 0; color: #bbb; line-height: 1.7; font-size: 1rem; }
+
+.fiscal-card { padding: 40px; }
+.engine-label { font-family: var(--font-mono); font-size: 0.7rem; color: #666; margin-bottom: 30px; text-align: right; }
+.fiscal-row { display: flex; justify-content: space-between; margin-bottom: 20px; color: #aaa; font-size: 1rem; }
+.row-value { font-family: var(--font-mono); color: #fff; }
+.price-decimal { font-size: 0.75em; opacity: 0.6; }
+.highlight-row { border-top: 1px solid var(--border-dim); padding-top: 20px; color: var(--neon-green); }
+.highlight-row .row-value { color: var(--neon-green); }
+.savings-highlight { background: rgba(0, 229, 255, 0.05); border: 1px solid rgba(0, 229, 255, 0.2); padding: 30px; border-radius: 12px; margin-top: 30px; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.savings-amount { font-family: var(--font-head); font-size: 3rem; font-weight: 800; color: #fff; line-height: 1; }
+.savings-label { font-family: var(--font-mono); font-size: 0.8rem; color: var(--neon-cyan); letter-spacing: 1px; text-transform: uppercase; }
+.fiscal-disclaimer { margin-top: 25px; font-family: var(--font-mono); font-size: 0.65rem; color: #666; display: flex; gap: 10px; align-items: center; }
+
+/* --- 4. MODULAR QUOTE SECTION --- */
+.modular-quote-section { padding: 120px 0; }
+.section-header-left { margin-bottom: 60px; max-width: 700px; }
+.metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+.metric-card { padding: 30px; display: flex; flex-direction: column; }
+.metric-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
+.metric-title { font-family: var(--font-head); font-size: 1.4rem; color: #fff; }
+.icon-gold-muted { font-size: 1.5rem; color: rgba(255, 215, 0, 0.5); }
+.unit-logic-box { background: rgba(255,255,255,0.03); padding: 15px; border-radius: 8px; display: flex; flex-direction: column; gap: 5px; margin-bottom: 20px; }
+.logic-label { font-family: var(--font-mono); font-size: 0.65rem; color: #666; text-transform: uppercase; }
+.logic-value { font-family: var(--font-mono); font-size: 0.9rem; font-weight: 700; }
+.metric-desc { color: #aaa; font-size: 0.95rem; line-height: 1.6; flex-grow: 1; margin-bottom: 25px; }
+.metric-footer { border-top: 1px dashed var(--border-dim); padding-top: 15px; font-family: var(--font-mono); font-size: 0.65rem; color: #555; }
+
+/* --- 5. MICRO-SERVICES --- */
+.addon-section { padding: 100px 0; background: #030406; border-top: 1px solid var(--border-dim); }
+.addon-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+.addon-card { padding: 30px; }
+.addon-id { font-family: var(--font-mono); font-size: 0.65rem; color: #555; display: block; margin-bottom: 20px; }
+.addon-header { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
+.addon-icon-box { width: 45px; height: 45px; background: rgba(255,215,0,0.05); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
+.addon-title { font-family: var(--font-head); font-size: 1.3rem; color: #fff; }
+.addon-desc { color: #999; font-size: 0.95rem; line-height: 1.6; margin-bottom: 30px; min-height: 70px; }
+.addon-price-tag { display: inline-flex; flex-direction: column; padding: 12px 20px; border-radius: 8px; border: 1px solid var(--border-dim); background: rgba(0,0,0,0.4); }
+.tag-label { font-family: var(--font-mono); font-size: 0.6rem; color: #666; margin-bottom: 4px; }
+.tag-value { font-family: var(--font-head); font-size: 1.1rem; color: #fff; }
+.tag-cyan { border-left: 3px solid var(--neon-cyan); }
+.tag-gold { border-left: 3px solid var(--neon-gold); }
+
+/* --- 6. SECURITY AUDIT --- */
+.security-audit-section { padding: 120px 0; }
+.security-header-box { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 60px; }
+.tech-id-badge { font-family: var(--font-mono); font-size: 0.75rem; color: #888; text-align: right; background: rgba(255,255,255,0.02); padding: 15px; border-radius: 8px; border: 1px solid var(--border-dim); line-height: 1.8; }
+.security-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 50px; }
+.security-spec-card { padding: 40px 30px; position: relative; }
+.bg-icon { position: absolute; right: 30px; top: 30px; font-size: 4rem; opacity: 0.05; }
+.spec-id { font-family: var(--font-mono); font-size: 0.7rem; display: block; margin-bottom: 20px; }
+.spec-title { font-family: var(--font-head); font-size: 1.5rem; color: #fff; margin-bottom: 15px; }
+.spec-desc { color: #aaa; font-size: 0.95rem; line-height: 1.6; margin-bottom: 30px; }
+.spec-metric { display: flex; flex-direction: column; gap: 5px; }
+.spec-value { font-family: var(--font-head); font-size: 1.8rem; font-weight: 800; color: #fff; }
+.spec-label { font-family: var(--font-mono); font-size: 0.7rem; }
+.premium-notice { display: flex; gap: 20px; align-items: flex-start; padding: 25px; border-left: 3px solid var(--neon-cyan); color: #bbb; font-size: 0.95rem; line-height: 1.6; }
+
+/* --- 7. HARDWARE INVENTORY --- */
+.equipment-section { padding: 100px 0; background: #030406; border-top: 1px dashed rgba(255,255,255,0.05); }
+.equipment-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+.tool-spec-card { padding: 40px 30px; }
+.tool-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
+.tool-brand { font-family: var(--font-mono); font-size: 0.7rem; color: #fff; background: rgba(255,255,255,0.05); padding: 6px 12px; border-radius: 4px; border: 1px solid var(--border-dim); }
+.border-gold { border-color: rgba(255,215,0,0.3); color: var(--neon-gold); }
+.tool-title { font-family: var(--font-head); font-size: 1.8rem; color: #fff; margin-bottom: 25px; }
+.tool-stats { list-style: none; padding: 0; margin: 0 0 30px 0; display: flex; flex-direction: column; gap: 15px; }
+.tool-stats li { display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-dim); padding-bottom: 10px; }
+.stat-label { font-family: var(--font-mono); font-size: 0.7rem; color: #666; }
+.stat-value { font-family: var(--font-mono); font-size: 0.8rem; color: #fff; font-weight: 700; }
+.tool-desc { color: #999; font-size: 0.95rem; line-height: 1.6; }
+
+/* --- 8. ECOLOGICAL INTEGRITY --- */
+.eco-section { padding: 120px 0; }
+.eco-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+@media (max-width: 992px) { .eco-grid { grid-template-columns: 1fr; } }
+.eco-feature-box { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 40px; }
+.eco-mini-card { padding: 25px; text-align: left; }
+.eco-mini-card i { font-size: 1.8rem; margin-bottom: 15px; }
+.eco-mini-card h4 { font-family: var(--font-head); color: #fff; font-size: 1.1rem; margin-bottom: 10px; }
+.eco-mini-card p { color: #888; font-size: 0.85rem; line-height: 1.5; }
+
+.disposal-matrix { padding: 40px; border-left: 3px solid var(--neon-green); }
+.matrix-label { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 1px; display: block; margin-bottom: 30px; }
+.data-bar-group { margin-bottom: 25px; }
+.data-bar-header { display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.8rem; color: #fff; margin-bottom: 10px; }
+.data-bar-track { height: 6px; background: rgba(255,255,255,0.05); border-radius: 3px; overflow: hidden; }
+.data-bar-fill { height: 100%; border-radius: 3px; }
+.fill-green { background: var(--neon-green); box-shadow: 0 0 10px rgba(57,255,20,0.5); }
+.eco-guarantee { margin-top: 40px; padding-top: 30px; border-top: 1px dashed var(--border-dim); color: #aaa; font-size: 0.95rem; line-height: 1.6; }
+
+/* --- 9. FINAL PROTOCOL (HANDOVER) --- */
+.handover-section { padding: 100px 0; background: #030406; border-top: 1px solid var(--border-dim); }
+.handover-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+@media (max-width: 992px) { .handover-grid { grid-template-columns: 1fr; } .handover-visual { order: 2; } .handover-content { order: 1; } }
+.handover-visual-wrap { padding: 40px; display: flex; justify-content: center; position: relative; }
+.report-ui-mockup { width: 100%; max-width: 350px; background: rgba(255,255,255,0.02); border: 1px solid var(--border-dim); border-radius: 8px; padding: 25px; }
+.report-header { display: flex; justify-content: space-between; margin-bottom: 30px; border-bottom: 1px solid var(--border-dim); padding-bottom: 15px; }
+.report-title { font-family: var(--font-mono); font-size: 0.7rem; color: #888; line-height: 1.5; }
+.verified-stamp { font-family: var(--font-mono); font-size: 0.7rem; color: var(--neon-gold); border: 1px solid var(--neon-gold); padding: 4px 8px; border-radius: 4px; transform: rotate(-5deg); }
+.doc-line { height: 4px; background: rgba(255,255,255,0.05); border-radius: 2px; margin-bottom: 12px; }
+.report-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 20px; }
+.project-id { font-family: var(--font-mono); font-size: 0.6rem; color: #555; }
+.signature-box { font-family: 'Mrs Saint Delafield', cursive; font-size: 1.5rem; color: var(--neon-cyan); opacity: 0.8; }
+.integrity-badge { position: absolute; bottom: 20px; right: -20px; background: var(--bg-dark); border: 1px solid var(--neon-cyan); color: var(--neon-cyan); font-family: var(--font-mono); font-size: 0.7rem; padding: 8px 15px; border-radius: 4px; box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
+
+.handover-features { display: flex; flex-direction: column; gap: 30px; }
+.hf-item { display: flex; gap: 20px; align-items: flex-start; }
+.hf-icon-box { width: 50px; height: 50px; background: rgba(255,255,255,0.03); border: 1px solid var(--border-dim); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: #fff; flex-shrink: 0; }
+.hf-text h4 { font-family: var(--font-head); font-size: 1.2rem; color: #fff; margin-bottom: 8px; }
+.hf-text p { color: #999; font-size: 0.95rem; line-height: 1.5; margin: 0; }
+
+/* --- 10. SYSTEM-INTEGRITY FAQ --- */
+.faq-section { padding: 120px 0; }
+.faq-list { max-width: 800px; margin: 0 auto 50px auto; display: flex; flex-direction: column; gap: 15px; }
+.accordion-item { border-left: 2px solid transparent; transition: 0.3s; }
+.accordion-header { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 25px 30px; background: transparent; border: none; cursor: pointer; color: #fff; font-family: var(--font-head); font-size: 1.1rem; text-align: left; }
+.faq-icon { font-size: 1rem; color: #666; transition: 0.3s; }
+.faq-answer { color: #aaa; line-height: 1.6; font-size: 0.95rem; }
+.integrity-bar { display: flex; justify-content: center; flex-wrap: wrap; gap: 30px; padding: 30px; background: rgba(255,255,255,0.02); border-radius: 12px; max-width: 800px; margin: 0 auto; }
+.integrity-item { display: flex; align-items: center; gap: 10px; font-family: var(--font-mono); font-size: 0.8rem; color: #fff; letter-spacing: 1px; }
+
+/* --- THE FINAL CTA --- */
+.final-cta-block { padding: 120px 0; background: linear-gradient(to top, rgba(255,215,0,0.05), transparent); text-align: center; border-top: 1px solid var(--border-dim); }
+.btn-terminal { background: #fff; color: #000; font-family: var(--font-head); font-size: 1.1rem; font-weight: 800; padding: 20px 40px; border-radius: 8px; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; box-shadow: 0 0 30px rgba(255,255,255,0.1); }
+.btn-terminal:hover { background: var(--neon-gold); box-shadow: 0 0 40px rgba(255,215,0,0.4); transform: translateY(-3px); }
+
+/* --- 19. SECTION TRACKER (Side Nav) --- */
+.section-tracker { position: fixed; right: 30px; top: 50%; transform: translateY(-50%); z-index: 50; }
+.tracker-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 20px; }
+.tracker-dot { width: 8px; height: 8px; background: rgba(255,255,255,0.2); border-radius: 50%; display: block; position: relative; transition: 0.3s; }
+.tracker-dot:hover, .tracker-dot.active { background: var(--neon-gold); box-shadow: 0 0 10px var(--neon-gold); transform: scale(1.5); }
+.tracker-dot::before { content: attr(data-label); position: absolute; right: 20px; top: 50%; transform: translateY(-50%); font-family: var(--font-mono); font-size: 0.6rem; color: #fff; opacity: 0; pointer-events: none; transition: 0.3s; white-space: nowrap; background: rgba(0,0,0,0.8); padding: 4px 8px; border-radius: 4px; }
+.tracker-dot:hover::before { opacity: 1; right: 25px; }
+
+/* --- 16. MOBILE STICKY CTA --- */
+.mobile-sticky-cta { position: fixed; bottom: 20px; left: 20px; right: 20px; z-index: 99; padding: 15px 20px; border-radius: 16px; border: 1px solid var(--border-dim); display: none; }
+@media (max-width: 768px) { .mobile-sticky-cta { display: block; } .desktop-only { display: none !important; } }
+.sticky-cta-content { display: flex; justify-content: space-between; align-items: center; }
+.sticky-price-info { display: flex; flex-direction: column; }
+.sticky-label { font-family: var(--font-mono); font-size: 0.65rem; }
+.sticky-price { font-family: var(--font-head); font-size: 1.1rem; font-weight: 800; color: #fff; }
+.btn-sticky-action { padding: 12px 25px; font-size: 0.9rem; }
+
+/* --- 14. MISSION OS MODAL (Overrides for Pricing context) --- */
+/* The base structural CSS for MissionOS is handled in mission-os.css, 
+   but specific pricing module form logic (cyber inputs) is styled here */
+.cyber-input { width: 100%; background: rgba(0,0,0,0.5); border: 1px solid var(--border-dim); color: #fff; padding: 15px; border-radius: 8px; font-family: var(--font-body); transition: 0.3s; margin-bottom: 15px; }
+.cyber-input:focus { border-color: var(--neon-cyan); outline: none; box-shadow: 0 0 15px rgba(0,229,255,0.1); }
+.input-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+.cyber-checkbox-label { display: flex; align-items: flex-start; gap: 15px; cursor: pointer; }
+.cb-text { font-size: 0.85rem; color: #aaa; line-height: 1.5; }
+.btn-text { background: transparent; border: none; color: #888; font-family: var(--font-mono); font-size: 0.8rem; cursor: pointer; transition: 0.3s; }
+.btn-text:hover { color: #fff; }
+.split { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+.right { display: flex; justify-content: flex-end; width: 100%; }

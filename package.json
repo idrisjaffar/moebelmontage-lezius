@@ -1,0 +1,24 @@
+{
+  "name": "moebelmontage-lezius",
+  "version": "1.0.0",
+  "description": "Professional furniture assembly website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/idrisjaffar/moebelmontage-lezius.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/idrisjaffar/moebelmontage-lezius/issues"
+  },
+  "homepage": "https://github.com/idrisjaffar/moebelmontage-lezius#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}

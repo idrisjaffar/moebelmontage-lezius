@@ -1,0 +1,88 @@
+/* ==========================================================================
+   PIECE 10: PHILOSOPHIE SEKTION (MOBILE OPTIMIZED)
+   ========================================================================== */
+
+.philo-section {
+    background-color: #030406;
+    padding: clamp(60px, 10vw, 120px) 0;
+    position: relative;
+    border-top: 1px solid rgba(255, 215, 0, 0.1); /* Shifted to Gold */
+}
+
+/* --- 1. MOBILE FIRST GRID --- */
+.philo-grid { display: grid; grid-template-columns: 1fr; gap: 50px; }
+.philo-content { display: flex; flex-direction: column; gap: 30px; }
+
+/* --- 2. 2026 QUOTE DESIGN --- */
+.philo-quote {
+    background: rgba(255, 255, 255, 0.02);
+    border-left: 3px solid var(--neon-gold);
+    padding: clamp(20px, 5vw, 30px);
+    border-radius: 0 12px 12px 0;
+    position: relative; margin: 0;
+}
+
+.quote-icon {
+    position: absolute; top: 20px; right: 20px; font-size: 3rem;
+    color: rgba(255, 215, 0, 0.08); /* Gold */
+}
+
+.philo-quote p {
+    color: #fff; font-family: var(--font-head); font-size: clamp(1.1rem, 4vw, 1.4rem);
+    line-height: 1.6; font-weight: 500; margin-bottom: 15px; position: relative; z-index: 2;
+}
+
+.quote-author {
+    color: var(--neon-gold); font-family: var(--font-mono); font-size: 0.8rem;
+    letter-spacing: 2px; text-transform: uppercase;
+}
+
+.philo-desc { color: #aaa; font-size: 1rem; line-height: 1.7; margin: 0; }
+
+/* --- 3. MOBILE CTA BOX --- */
+.philo-cta-box {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.05), transparent); /* Gold Hint */
+    border: 1px solid rgba(255, 215, 0, 0.1); /* Gold Border */
+    border-radius: 12px; padding: 25px;
+    display: flex; flex-direction: column; gap: 20px;
+}
+
+.cta-text h4 { color: #fff; font-family: var(--font-head); font-size: 1.1rem; margin: 0 0 5px 0; }
+.cta-text p { color: #888; font-size: 0.85rem; margin: 0; line-height: 1.4; }
+
+/* --- 4. THE 3 PILLAR CARDS (RIGHT SIDE) --- */
+.philo-pillars { display: flex; flex-direction: column; gap: 20px; }
+
+.pillar-card {
+    display: flex; align-items: flex-start; gap: 20px;
+    background: rgba(255,255,255,0.02); padding: 25px;
+    border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);
+    transition: transform 0.3s var(--transition), border-color 0.3s;
+}
+
+.pillar-card:hover { 
+    transform: translateY(-5px); 
+    background: rgba(255,255,255,0.04); 
+    border-color: rgba(255, 215, 0, 0.2); /* Unified gold hover */
+}
+
+.pillar-icon {
+    width: clamp(45px, 10vw, 55px); height: clamp(45px, 10vw, 55px);
+    border-radius: 12px; display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem; flex-shrink: 0;
+}
+
+/* Color assignments for Pillar Icons */
+.border-cyan .pillar-icon { color: var(--neon-cyan); background: rgba(0, 229, 255, 0.1); border: 1px solid rgba(0, 229, 255, 0.2); }
+.border-pink .pillar-icon { color: var(--neon-pink); background: rgba(255, 0, 127, 0.1); border: 1px solid rgba(255, 0, 127, 0.2); }
+.border-gold .pillar-icon { color: var(--neon-gold); background: rgba(255, 215, 0, 0.1); border: 1px solid rgba(255, 215, 0, 0.2); }
+
+.pillar-text h4 { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 2px; margin-bottom: 8px; font-weight: 800; color: #fff; }
+.pillar-text p { color: #999; font-size: 0.95rem; line-height: 1.5; margin: 0; }
+
+/* --- 5. PROGRESSIVE DESKTOP UNLOCK --- */
+@media (min-width: 992px) {
+    .philo-grid { grid-template-columns: 1.2fr 1fr; gap: 80px; align-items: center; }
+    .philo-cta-box { flex-direction: row; align-items: center; justify-content: space-between; }
+}
+

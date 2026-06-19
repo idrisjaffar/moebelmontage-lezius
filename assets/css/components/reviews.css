@@ -1,0 +1,143 @@
+
+/* ==========================================================================
+   PHASE 12: REVIEWS & TRUST SYSTEM
+   PLATFORM CARDS | SWIPEABLE TESTIMONIALS | NEON GRID OVERLAYS (GOLD THEME)
+   ========================================================================== */
+
+/* --- 1. AMBIENT SECTION BACKGROUND --- */
+.review-mainframe-bg { 
+    position: relative;
+    overflow: hidden;
+    background-color: var(--bg-darker);
+}
+
+.reviews-grid-overlay { 
+    position: absolute; 
+    inset: 0; 
+    /* Ambient grid shifted to Gold */
+    background-image: linear-gradient(rgba(255, 215, 0, 0.04) 1px, transparent 1px), 
+                      linear-gradient(90deg, rgba(255, 215, 0, 0.04) 1px, transparent 1px); 
+    background-size: 80px 80px; 
+    mask-image: radial-gradient(circle at center, black, transparent 80%); 
+    -webkit-mask-image: radial-gradient(circle at center, black, transparent 80%); 
+    pointer-events: none;
+}
+
+/* --- 2. PLATFORM TRUST NODES (STRICT MOBILE-FIRST) --- */
+.trust-cards-wrapper { 
+    display: grid; 
+    grid-template-columns: 1fr; /* Stack on mobile */
+    gap: 30px; 
+    margin-bottom: 80px; 
+}
+
+.platform-card { 
+    display: block;
+    text-decoration: none; 
+    border-radius: 20px; 
+    padding: 2px; 
+    transition: var(--spring); 
+    will-change: transform;
+}
+
+.card-inner { 
+    background: rgba(10, 10, 10, 0.9); 
+    padding: clamp(40px, 8vw, 60px) 30px; 
+    height: 100%; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    text-align: center; 
+    border-radius: 18px; 
+    backdrop-filter: var(--blur); 
+    -webkit-backdrop-filter: var(--blur);
+}
+
+/* Platform-specific styles */
+.card-blue { 
+    background: linear-gradient(135deg, #004fb6 0%, #001a3d 100%); 
+    box-shadow: 0 20px 40px rgba(0, 79, 182, 0.2); 
+}
+.card-gold { 
+    background: linear-gradient(135deg, var(--neon-gold) 0%, #3d3400 100%); 
+    box-shadow: 0 20px 40px rgba(255, 215, 0, 0.2); 
+}
+
+.big-score { 
+    font-family: var(--font-head); 
+    font-size: clamp(4rem, 10vw, 6.5rem); 
+    font-weight: 900; 
+    line-height: 1; 
+    margin: 20px 0; 
+    letter-spacing: -4px; 
+}
+
+.card-blue .big-score { color: #fff; }
+.card-gold .big-score { color: #000; }
+
+.score-label { 
+    font-family: var(--font-mono); 
+    text-transform: uppercase; 
+    letter-spacing: 4px; 
+    font-weight: 800; 
+    font-size: 0.9rem; 
+}
+
+/* --- 3. SWIPEABLE REVIEW CARDS --- */
+.rev-card { 
+    padding: clamp(30px, 5vw, 45px); 
+    background: var(--surface);
+    border-top: 2px solid var(--neon-gold); /* Default state is Gold */
+    display: flex; 
+    flex-direction: column; 
+    justify-content: space-between; 
+    min-height: 320px;
+    transition: var(--spring);
+    will-change: transform, border-color;
+}
+
+.rev-card:hover { 
+    border-top-color: var(--neon-cyan); /* Cyan interactive accent */
+    background: rgba(255, 215, 0, 0.02); /* Slight gold tint on hover */
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+}
+
+.rev-header { 
+    display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; 
+}
+.rev-user { font-family: var(--font-head); font-weight: 800; color: #fff; font-size: 1.1rem; }
+
+.rev-source { 
+    font-family: var(--font-mono); font-size: 0.65rem; text-transform: uppercase; 
+    padding: 5px 10px; border-radius: 4px; font-weight: 700; letter-spacing: 1px; 
+}
+.rev-source.check24 { border: 1px solid #004fb6; color: #004fb6; }
+.rev-source.hammer { border: 1px solid var(--neon-gold); color: var(--neon-gold); }
+
+.rev-card p { 
+    font-size: 1rem; color: #aaa; line-height: 1.7; margin: 0 0 25px 0; font-style: italic; flex-grow: 1; 
+}
+
+/* Review Tags */
+.rev-footer { display: flex; flex-wrap: wrap; gap: 8px; }
+.tag { 
+    font-size: 0.6rem; font-weight: 800; color: var(--text-mute); 
+    border: 1px solid rgba(255, 255, 255, 0.1); padding: 5px 12px; 
+    border-radius: 4px; text-transform: uppercase; letter-spacing: 1px; font-family: var(--font-mono); 
+}
+
+/* --- 4. PROGRESSIVE DESKTOP UNLOCK --- */
+@media (min-width: 768px) {
+    .trust-cards-wrapper { grid-template-columns: 1fr 1fr; }
+}
+
+@media (min-width: 1024px) {
+    .swipe-carousel { 
+        display: grid; grid-template-columns: repeat(3, 1fr); 
+        overflow: visible; gap: 30px; padding-bottom: 0; 
+    }
+    .swipe-item { flex: unset; min-width: 100%; }
+    .carousel-indicators { display: none; }
+}
+

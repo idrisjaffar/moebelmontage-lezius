@@ -15,46 +15,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
+    <!-- CSS ARCHITECTURE -->
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/components/mission-os.css">
+    <link rel="stylesheet" href="assets/css/components/pricing-matrix.css">
 </head>
 
 <body class="is-dark pricing-theme">
 
-    <div class="noise-overlay"></div>
-    <div class="crt-overlay"></div>
-
-    <div id="global-nav"></div>
-    <div id="global-os"></div>
-
-    <main>
-        </main>
-
-    <div id="global-footer"></div>
-
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="assets/js/main.js"></script>
-</body>
-</html>
-
-<body class="is-dark pricing-theme no-js-override">
-
-    <!-- ======================================================================
-         PHASE 20: SYSTEM BOOT SEQUENCE (PRELOADER)
-         ====================================================================== -->
-    <div class="system-boot-overlay" id="boot-sequence">
-        <div class="boot-terminal">
-            <div class="boot-log">
-                <span class="log-line">INITIALIZING KERNEL... <span class="text-green">OK</span></span>
-                <span class="log-line delay-1">LOADING PRICING_MATRIX_v4.0... <span class="text-green">OK</span></span>
-                <span class="log-line delay-2">BYPASSING SECURITY PROTOCOLS... <span class="text-gold">WARNING: OVERRIDE</span></span>
-                <span class="log-line delay-3">SYSTEM READY.</span>
-            </div>
-            <div class="boot-progress-bar">
-                <div class="boot-progress-fill"></div>
-            </div>
-        </div>
-    </div>
-    
     <!-- ======================================================================
          PHASE 11: GLOBAL ATMOSPHERE OVERLAYS
          ====================================================================== -->
@@ -1034,39 +1002,39 @@
                 <div class="faq-list">
                     
                     <!-- Question 1 -->
-                    <div class="accordion-item glass-panel" data-aos="fade-up" data-aos-delay="100">
+                    <div class="accordion-item glass-panel faq-module" data-aos="fade-up" data-aos-delay="100" onclick="window.toggleModule(this)">
                         <button class="accordion-header" type="button">
                             <span class="faq-question">Was passiert bei einer Planungsänderung vor Ort?</span>
-                            <i class="fas fa-chevron-down faq-icon"></i>
+                            <i class="fas fa-chevron-down faq-icon m-plus"></i>
                         </button>
-                        <div class="accordion-content">
-                            <div class="faq-answer">
+                        <div class="accordion-content module-body" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease;">
+                            <div class="faq-answer" style="padding: 20px;">
                                 Wir arbeiten nach dem <strong>Agile-Montage-Prinzip</strong>. Sollten sich während des Aufbaus spontane Änderungen ergeben (z.B. zusätzliche Module oder das Versetzen von Anschlüssen), kalkulieren wir diese absolut transparent nach unserem Modul-Katalog nach. Sie behalten jederzeit die volle Kostenkontrolle.
                             </div>
                         </div>
                     </div>
 
                     <!-- Question 2 -->
-                    <div class="accordion-item glass-panel" data-aos="fade-up" data-aos-delay="200">
+                    <div class="accordion-item glass-panel faq-module" data-aos="fade-up" data-aos-delay="200" onclick="window.toggleModule(this)">
                         <button class="accordion-header" type="button">
                             <span class="faq-question">Sind die Anfahrtskosten wirklich fix?</span>
-                            <i class="fas fa-chevron-down faq-icon"></i>
+                            <i class="fas fa-chevron-down faq-icon m-plus"></i>
                         </button>
-                        <div class="accordion-content">
-                            <div class="faq-answer">
+                        <div class="accordion-content module-body" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease;">
+                            <div class="faq-answer" style="padding: 20px;">
                                 Korrekt. Basierend auf unserem <strong>Zone-Mapping</strong> erhalten Sie eine Logistik-Pauschale. Diese deckt den Transport des Equipments, die Anfahrt und die Abfahrt ab – völlig unabhängig von Staus oder unerwarteten Verzögerungen im Verkehr.
                             </div>
                         </div>
                     </div>
 
                     <!-- Question 3 -->
-                    <div class="accordion-item glass-panel" data-aos="fade-up" data-aos-delay="300">
+                    <div class="accordion-item glass-panel faq-module" data-aos="fade-up" data-aos-delay="300" onclick="window.toggleModule(this)">
                         <button class="accordion-header" type="button">
                             <span class="faq-question">Muss ich Werkzeug oder Material bereitstellen?</span>
-                            <i class="fas fa-chevron-down faq-icon"></i>
+                            <i class="fas fa-chevron-down faq-icon m-plus"></i>
                         </button>
-                        <div class="accordion-content">
-                            <div class="faq-answer">
+                        <div class="accordion-content module-body" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease;">
+                            <div class="faq-answer" style="padding: 20px;">
                                 Nein. Wir bringen ein volles Arsenal an Profi-Werkzeug (Bosch, Festool, Hilti) sowie alle gängigen Befestigungsmittel und Spezialdübel mit. Sie müssen lediglich den freien Zugang zum Raum sicherstellen.
                             </div>
                         </div>
@@ -1215,7 +1183,7 @@
                 </div>
 
                 <!-- STEP 2: Parameters -->
-                <div class="form-step" data-step="2">
+                <div class="form-step" data-step="2" style="display: none;">
                     <h4 class="step-title">Projekt-Metriken</h4>
                     <div class="input-group">
                         <label>Geschätzter Umfang (z.B. LFM, Anzahl Schränke)</label>
@@ -1232,7 +1200,7 @@
                 </div>
 
                 <!-- STEP 3: Logistics -->
-                <div class="form-step" data-step="3">
+                <div class="form-step" data-step="3" style="display: none;">
                     <h4 class="step-title">Einsatz-Koordinaten</h4>
                     <div class="input-row">
                         <div class="input-group">
@@ -1255,7 +1223,7 @@
                 </div>
 
                 <!-- STEP 4: Final Sync -->
-                <div class="form-step case-container" data-step="4">
+                <div class="form-step case-container" data-step="4" style="display: none;">
                     <h4 class="step-title">System-Kopplung</h4>
                     <div class="input-group">
                         <label>Name / Firma</label>
@@ -1287,4 +1255,20 @@
         </div>
     </div>
 
-  
+    <!-- GLOBAL FOOTER ANCHOR -->
+    <div id="global-footer"></div>
+
+    <!-- SCRIPTS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/components/pricing-logic.js" defer></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof AOS !== 'undefined') {
+                AOS.init({ duration: 800, once: true });
+            }
+        });
+    </script>
+</body>
+</html>
