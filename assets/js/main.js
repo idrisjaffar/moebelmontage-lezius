@@ -244,3 +244,29 @@ document.addEventListener('click', function(event) {
         }
     }
 });
+
+// assets/js/main.js
+
+document.addEventListener("DOMContentLoaded", () => {
+    
+    // Function to inject HTML files into containers
+    const injectComponent = (id, file) => {
+        const container = document.getElementById(id);
+        if (container) {
+            fetch(file)
+                .then(response => {
+                    if (!response.ok) throw new Error(`Could not load ${file}`);
+                    return response.text();
+                })
+                .then(data => {
+                    container.innerHTML = data;
+                })
+                .catch(err => console.error("Injection Error:", err));
+        }
+    };
+
+    // Trigger injections for Nav, Footer, and the MissionOS Modal
+    injectComponent('global-nav', 'nav.html');
+    injectComponent('global-footer', 'footer.html');
+    injectComponent('global-os', 'mission.html');
+});

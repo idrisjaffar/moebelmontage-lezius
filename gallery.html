@@ -5,399 +5,160 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>DAS MASTER ARCHIV | Präzisionsmontage | Raphael Lezius</title>
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Montserrat:wght@700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <meta name="description" content="Digitale Beweisführung handwerklicher Exzellenz. Entdecken Sie unsere verifizierten Montage-Projekte.">
+    <meta name="theme-color" content="#020203">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Montserrat:wght@700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
-    <style>
-        /* ==========================================================================
-           1. MASTER VARIABLES (MASCULINE / ARCHITECTURAL)
-           ========================================================================== */
-        :root {
-            --bg-onyx: #050505;
-            --bg-carbon: #121212;
-            --accent-brass: #C5A059; /* High-end Brushed Gold */
-            --text-steel: #888888;
-            --text-light: #F4F4F4;
-            
-            --font-head: 'Montserrat', sans-serif;
-            --font-body: 'Inter', sans-serif;
-            --font-mono: 'JetBrains Mono', monospace;
-            
-            --grid-gap: 15px;
-        }
-
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-
-        body { 
-            background-color: var(--bg-onyx); 
-            color: var(--text-light); 
-            font-family: var(--font-body);
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        /* ==========================================================================
-           2. EDITORIAL HERO SECTION
-           ========================================================================== */
-        .archive-hero {
-            padding: 18vh 20px 8vh 20px;
-            background: radial-gradient(circle at 50% 0%, rgba(197, 160, 89, 0.08) 0%, var(--bg-onyx) 70%);
-            text-align: center;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-
-        .hero-tag {
-            font-family: var(--font-mono);
-            color: var(--accent-brass);
-            font-size: 0.75rem;
-            letter-spacing: 6px;
-            text-transform: uppercase;
-            display: block;
-            margin-bottom: 20px;
-        }
-
-        .hero-title {
-            font-family: var(--font-head);
-            font-size: clamp(2.5rem, 6vw, 5rem);
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: -2px;
-            line-height: 1.1;
-            margin-bottom: 20px;
-        }
-
-        .hero-desc {
-            color: var(--text-steel);
-            font-size: clamp(1rem, 2vw, 1.2rem);
-            max-width: 600px;
-            margin: 0 auto 40px auto;
-            line-height: 1.6;
-        }
-
-        .hero-stats {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: clamp(15px, 4vw, 40px);
-            font-family: var(--font-mono);
-            font-size: 0.75rem;
-            color: #666;
-            letter-spacing: 2px;
-        }
-
-        .hero-stats span {
-            color: var(--text-light);
-            font-weight: 700;
-        }
-
-        /* ==========================================================================
-           3. TACTICAL FILTER BAR
-           ========================================================================== */
-        .filter-wrapper {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: rgba(5, 5, 5, 0.85);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            padding: 20px 0;
-        }
-
-        .filter-nav {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            flex-wrap: wrap;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .filter-btn {
-            background: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: var(--text-steel);
-            padding: 10px 20px;
-            font-family: var(--font-mono);
-            font-size: 0.75rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border-radius: 2px;
-        }
-
-        .filter-btn:hover {
-            border-color: rgba(197, 160, 89, 0.5);
-            color: #fff;
-        }
-
-        .filter-btn.active {
-            background: var(--accent-brass);
-            border-color: var(--accent-brass);
-            color: #000;
-            font-weight: 700;
-        }
-
-        /* ==========================================================================
-           4. ASYMMETRIC BENTO GRID (2026 ARCHITECTURE)
-           ========================================================================== */
-        .gallery-container {
-            max-width: 1600px;
-            margin: 40px auto 100px auto;
-            padding: 0 20px;
-        }
-
-        .bento-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            grid-auto-rows: 280px;
-            gap: var(--grid-gap);
-            grid-auto-flow: dense;
-        }
-
-        /* Dynamic Sizes for Storytelling */
-        .span-wide { grid-column: span 2; } /* Landscape shots */
-        .span-tall { grid-row: span 2; }    /* Portrait shots */
-        .span-large { grid-column: span 2; grid-row: span 2; } /* Hero shots */
-
-        @media (max-width: 768px) {
-            .span-wide, .span-large { grid-column: span 1; }
-        }
-
-        .bento-card {
-            position: relative;
-            background: var(--bg-carbon);
-            border-radius: 2px;
-            overflow: hidden;
-            cursor: crosshair;
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-            display: block; /* For the link wrapper */
-        }
-
-        .bento-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.8);
-            z-index: 10;
-        }
-
-        .bento-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            /* High-end moody look by default */
-            filter: grayscale(80%) contrast(110%) brightness(0.8);
-            transition: all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
-        }
-
-        .bento-card:hover .bento-img {
-            filter: grayscale(0%) contrast(100%) brightness(1);
-            transform: scale(1.05);
-        }
-
-        /* Tactical Data Overlay */
-        .bento-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.2) 50%, transparent 100%);
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 25px;
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            pointer-events: none;
-        }
-
-        .bento-card:hover .bento-overlay { opacity: 1; }
-
-        .spec-tag {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: var(--accent-brass);
-            color: #000;
-            font-family: var(--font-mono);
-            font-size: 0.6rem;
-            font-weight: 700;
-            padding: 4px 10px;
-            letter-spacing: 1px;
-            border-radius: 2px;
-            transform: translateY(-10px);
-            opacity: 0;
-            transition: all 0.4s ease 0.1s;
-        }
-
-        .bento-card:hover .spec-tag {
-            transform: translateY(0);
-            opacity: 1;
-        }
-
-        .card-category {
-            font-family: var(--font-mono);
-            color: var(--accent-brass);
-            font-size: 0.65rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 5px;
-            transform: translateY(10px);
-            transition: transform 0.4s ease;
-        }
-
-        .card-title {
-            font-family: var(--font-head);
-            font-size: clamp(1.1rem, 2vw, 1.4rem);
-            color: #fff;
-            margin: 0;
-            line-height: 1.2;
-            transform: translateY(10px);
-            transition: transform 0.4s ease 0.05s;
-        }
-
-        .bento-card:hover .card-category,
-        .bento-card:hover .card-title {
-            transform: translateY(0);
-        }
-    </style>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/components/nav.css">
+    <link rel="stylesheet" href="assets/css/components/footer.css">
+    <link rel="stylesheet" href="assets/css/components/mission-os.css">
+    <link rel="stylesheet" href="assets/css/components/gallery.css">
 </head>
-<body>
 
-    <header class="archive-hero">
-        <span class="hero-tag">[ DATENBANK VERIFIZIERT ]</span>
-        <h1 class="hero-title" data-aos="fade-up">Visuelle Beweisführung</h1>
-        <p class="hero-desc" data-aos="fade-up" data-aos-delay="100">
-            Kompromisslose Architektur-Integration und Maßmontage. Jeder Datensatz repräsentiert höchste bayerische Handwerkspräzision.
-        </p>
-        
-        <div class="hero-stats" data-aos="fade-up" data-aos-delay="200">
-            <div class="stat">PROJEKTE: <span>65+</span></div>
-            <div class="stat">TOLERANZ: <span>< 2MM</span></div>
-            <div class="stat">EINSATZGEBIET: <span>AUGSBURG & MÜNCHEN</span></div>
-        </div>
-    </header>
+<body class="is-dark">
 
-    <nav class="filter-wrapper">
-        <div class="filter-nav">
-            <button class="filter-btn active" data-filter="all">Alle Akten</button>
-            <button class="filter-btn" data-filter="kueche">Küchen-Systeme</button>
-            <button class="filter-btn" data-filter="wohnen">Wohn-Architektur</button>
-            <button class="filter-btn" data-filter="schlafen">Schlaf-Suiten</button>
-        </div>
-    </nav>
+    <div id="global-nav"></div>
 
-    <main class="gallery-container">
-        <div class="bento-grid" id="masterGrid">
+    <main class="archive-container">
+        <header class="archive-hero">
+            <span class="hero-tag">[ DATENBANK VERIFIZIERT ]</span>
+            <h1 class="hero-title">Visuelle Beweisführung</h1>
+            <p class="hero-desc">Kompromisslose Architektur-Integration und Maßmontage.</p>
+        </header>
+
+        <nav class="filter-wrapper">
+            <div class="filter-nav">
+                <button class="filter-btn active" data-filter="all"><i class="fas fa-server"></i> ALLE AKTEN</button>
+                <button class="filter-btn" data-filter="kueche"><i class="fas fa-utensils"></i> KÜCHE</button>
+                <button class="filter-btn" data-filter="wohnen"><i class="fas fa-couch"></i> WOHNEN</button>
+                <button class="filter-btn" data-filter="schlafen"><i class="fas fa-bed"></i> SCHLAFEN</button>
             </div>
+        </nav>
+
+        <section class="gallery-content">
+            <div class="container gallery-container">
+                <div class="bento-grid" id="masterGrid">
+                    
+                    <a href="assets/images/kueche-1-a.webp" data-fslightbox="gallery" class="bento-card kueche"><img src="assets/images/kueche-1-a.webp" class="bento-img" loading="lazy" alt="Küchen-Integration"><div class="bento-overlay"><span class="card-category">KÜCHE</span><h3 class="card-title">Küchen-Integration</h3></div></a>
+                    <a href="assets/images/kueche-1-b.webp" data-fslightbox="gallery" class="bento-card kueche"><img src="assets/images/kueche-1-b.webp" class="bento-img" loading="lazy" alt="Küchen-Detail"><div class="bento-overlay"><span class="card-category">KÜCHE</span><h3 class="card-title">Küchen-Detail</h3></div></a>
+                    <a href="assets/images/kueche-2-a.webp" data-fslightbox="gallery" class="bento-card kueche"><img src="assets/images/kueche-2-a.webp" class="bento-img" loading="lazy" alt="Küchen-System"><div class="bento-overlay"><span class="card-category">KÜCHE</span><h3 class="card-title">Küchen-System</h3></div></a>
+                    <a href="assets/images/kueche-2-b.webp" data-fslightbox="gallery" class="bento-card kueche"><img src="assets/images/kueche-2-b.webp" class="bento-img" loading="lazy" alt="Küchen-Finish"><div class="bento-overlay"><span class="card-category">KÜCHE</span><h3 class="card-title">Küchen-Finish</h3></div></a>
+                    <a href="assets/images/kueche-3-a.webp" data-fslightbox="gallery" class="bento-card kueche"><img src="assets/images/kueche-3-a.webp" class="bento-img" loading="lazy" alt="Küchen-Aufbau"><div class="bento-overlay"><span class="card-category">KÜCHE</span><h3 class="card-title">Küchen-Aufbau</h3></div></a>
+                    <a href="assets/images/kueche-3-b.webp" data-fslightbox="gallery" class="bento-card kueche"><img src="assets/images/kueche-3-b.webp" class="bento-img" loading="lazy" alt="Küchen-Detail"><div class="bento-overlay"><span class="card-category">KÜCHE</span><h3 class="card-title">Küchen-Detail</h3></div></a>
+                    <a href="assets/images/kueche-4-a.webp" data-fslightbox="gallery" class="bento-card kueche"><img src="assets/images/kueche-4-a.webp" class="bento-img" loading="lazy" alt="Küchen-Montage"><div class="bento-overlay"><span class="card-category">KÜCHE</span><h3 class="card-title">Küchen-Montage</h3></div></a>
+                    <a href="assets/images/kueche-4-b.webp" data-fslightbox="gallery" class="bento-card kueche"><img src="assets/images/kueche-4-b.webp" class="bento-img" loading="lazy" alt="Küchen-Kanten"><div class="bento-overlay"><span class="card-category">KÜCHE</span><h3 class="card-title">Küchen-Kanten</h3></div></a>
+                    <a href="assets/images/kueche-5-a.webp" data-fslightbox="gallery" class="bento-card kueche"><img src="assets/images/kueche-5-a.webp" class="bento-img" loading="lazy" alt="Küchen-Front"><div class="bento-overlay"><span class="card-category">KÜCHE</span><h3 class="card-title">Küchen-Front</h3></div></a>
+                    <a href="assets/images/kueche-5-b.webp" data-fslightbox="gallery" class="bento-card kueche"><img src="assets/images/kueche-5-b.webp" class="bento-img" loading="lazy" alt="Küchen-Eck"><div class="bento-overlay"><span class="card-category">KÜCHE</span><h3 class="card-title">Küchen-Eck</h3></div></a>
+                    <a href="assets/images/kueche-6-a.webp" data-fslightbox="gallery" class="bento-card kueche"><img src="assets/images/kueche-6-a.webp" class="bento-img" loading="lazy" alt="Küchen-Hänger"><div class="bento-overlay"><span class="card-category">KÜCHE</span><h3 class="card-title">Küchen-Hänger</h3></div></a>
+                    <a href="assets/images/kueche-6-b.webp" data-fslightbox="gallery" class="bento-card kueche"><img src="assets/images/kueche-6-b.webp" class="bento-img" loading="lazy" alt="Montage-Detail"><div class="bento-overlay"><span class="card-category">KÜCHE</span><h3 class="card-title">Montage-Detail</h3></div></a>
+                    <a href="assets/images/kueche-7-a.webp" data-fslightbox="gallery" class="bento-card kueche"><img src="assets/images/kueche-7-a.webp" class="bento-img" loading="lazy" alt="Backsplash"><div class="bento-overlay"><span class="card-category">KÜCHE</span><h3 class="card-title">Backsplash</h3></div></a>
+                    <a href="assets/images/kueche-7-b.webp" data-fslightbox="gallery" class="bento-card kueche"><img src="assets/images/kueche-7-b.webp" class="bento-img" loading="lazy" alt="Fugen-Technik"><div class="bento-overlay"><span class="card-category">KÜCHE</span><h3 class="card-title">Fugen-Technik</h3></div></a>
+                    <a href="assets/images/kueche-8-a.webp" data-fslightbox="gallery" class="bento-card kueche"><img src="assets/images/kueche-8-a.webp" class="bento-img" loading="lazy" alt="Insel"><div class="bento-overlay"><span class="card-category">KÜCHE</span><h3 class="card-title">Insel</h3></div></a>
+                    <a href="assets/images/kueche-8-b.webp" data-fslightbox="gallery" class="bento-card kueche"><img src="assets/images/kueche-8-b.webp" class="bento-img" loading="lazy" alt="Insel-Detail"><div class="bento-overlay"><span class="card-category">KÜCHE</span><h3 class="card-title">Insel-Detail</h3></div></a>
+                    <a href="assets/images/kueche-9-a.webp" data-fslightbox="gallery" class="bento-card kueche"><img src="assets/images/kueche-9-a.webp" class="bento-img" loading="lazy" alt="Schubladen"><div class="bento-overlay"><span class="card-category">KÜCHE</span><h3 class="card-title">Schubladen</h3></div></a>
+                    <a href="assets/images/kueche-10-a.webp" data-fslightbox="gallery" class="bento-card kueche"><img src="assets/images/kueche-10-a.webp" class="bento-img" loading="lazy" alt="Licht"><div class="bento-overlay"><span class="card-category">KÜCHE</span><h3 class="card-title">Licht</h3></div></a>
+                    <a href="assets/images/kueche-11-a.webp" data-fslightbox="gallery" class="bento-card kueche"><img src="assets/images/kueche-11-a.webp" class="bento-img" loading="lazy" alt="Design"><div class="bento-overlay"><span class="card-category">KÜCHE</span><h3 class="card-title">Design</h3></div></a>
+                    <a href="assets/images/kueche-11-b.webp" data-fslightbox="gallery" class="bento-card kueche"><img src="assets/images/kueche-11-b.webp" class="bento-img" loading="lazy" alt="Griff"><div class="bento-overlay"><span class="card-category">KÜCHE</span><h3 class="card-title">Griff</h3></div></a>
+                    <a href="assets/images/kueche-12-a.webp" data-fslightbox="gallery" class="bento-card kueche"><img src="assets/images/kueche-12-a.webp" class="bento-img" loading="lazy" alt="Back-Office"><div class="bento-overlay"><span class="card-category">KÜCHE</span><h3 class="card-title">Back-Office</h3></div></a>
+                    <a href="assets/images/kueche-12-b.webp" data-fslightbox="gallery" class="bento-card kueche"><img src="assets/images/kueche-12-b.webp" class="bento-img" loading="lazy" alt="Ecke"><div class="bento-overlay"><span class="card-category">KÜCHE</span><h3 class="card-title">Ecke</h3></div></a>
+                    <a href="assets/images/kueche-13-a.webp" data-fslightbox="gallery" class="bento-card kueche"><img src="assets/images/kueche-13-a.webp" class="bento-img" loading="lazy" alt="Island"><div class="bento-overlay"><span class="card-category">KÜCHE</span><h3 class="card-title">Island</h3></div></a>
+                    <a href="assets/images/kueche-13-b.webp" data-fslightbox="gallery" class="bento-card kueche"><img src="assets/images/kueche-13-b.webp" class="bento-img" loading="lazy" alt="Insel-Technik"><div class="bento-overlay"><span class="card-category">KÜCHE</span><h3 class="card-title">Insel-Technik</h3></div></a>
+                    <a href="assets/images/kueche-14-a.webp" data-fslightbox="gallery" class="bento-card kueche"><img src="assets/images/kueche-14-a.webp" class="bento-img" loading="lazy" alt="Fronten"><div class="bento-overlay"><span class="card-category">KÜCHE</span><h3 class="card-title">Fronten</h3></div></a>
+                    <a href="assets/images/kueche-14-b.webp" data-fslightbox="gallery" class="bento-card kueche"><img src="assets/images/kueche-14-b.webp" class="bento-img" loading="lazy" alt="Wand"><div class="bento-overlay"><span class="card-category">KÜCHE</span><h3 class="card-title">Wand</h3></div></a>
+                    <a href="assets/images/kueche-15-a.webp" data-fslightbox="gallery" class="bento-card kueche"><img src="assets/images/kueche-15-a.webp" class="bento-img" loading="lazy" alt="Spüle"><div class="bento-overlay"><span class="card-category">KÜCHE</span><h3 class="card-title">Spüle</h3></div></a>
+                    <a href="assets/images/kueche-15-b.webp" data-fslightbox="gallery" class="bento-card kueche"><img src="assets/images/kueche-15-b.webp" class="bento-img" loading="lazy" alt="Siphon"><div class="bento-overlay"><span class="card-category">KÜCHE</span><h3 class="card-title">Siphon</h3></div></a>
+                    <a href="assets/images/kueche-16-a.webp" data-fslightbox="gallery" class="bento-card kueche"><img src="assets/images/kueche-16-a.webp" class="bento-img" loading="lazy" alt="Kochfeld"><div class="bento-overlay"><span class="card-category">KÜCHE</span><h3 class="card-title">Kochfeld</h3></div></a>
+                    <a href="assets/images/kueche-16-b.webp" data-fslightbox="gallery" class="bento-card kueche"><img src="assets/images/kueche-16-b.webp" class="bento-img" loading="lazy" alt="Elektro"><div class="bento-overlay"><span class="card-category">KÜCHE</span><h3 class="card-title">Elektro</h3></div></a>
+                    <a href="assets/images/kueche-17-a.webp" data-fslightbox="gallery" class="bento-card kueche"><img src="assets/images/kueche-17-a.webp" class="bento-img" loading="lazy" alt="Großraum"><div class="bento-overlay"><span class="card-category">KÜCHE</span><h3 class="card-title">Großraum</h3></div></a>
+                    <a href="assets/images/kueche-17-b.webp" data-fslightbox="gallery" class="bento-card kueche"><img src="assets/images/kueche-17-b.webp" class="bento-img" loading="lazy" alt="Raum"><div class="bento-overlay"><span class="card-category">KÜCHE</span><h3 class="card-title">Raum</h3></div></a>
+                    <a href="assets/images/kueche-18-a.webp" data-fslightbox="gallery" class="bento-card kueche"><img src="assets/images/kueche-18-a.webp" class="bento-img" loading="lazy" alt="Finish"><div class="bento-overlay"><span class="card-category">KÜCHE</span><h3 class="card-title">Finish</h3></div></a>
+                    <a href="assets/images/kueche-18-b.webp" data-fslightbox="gallery" class="bento-card kueche"><img src="assets/images/kueche-18-b.webp" class="bento-img" loading="lazy" alt="Protokoll"><div class="bento-overlay"><span class="card-category">KÜCHE</span><h3 class="card-title">Protokoll</h3></div></a>
+
+                    <a href="assets/images/schlafen-1-a.webp" data-fslightbox="gallery" class="bento-card schlafen"><img src="assets/images/schlafen-1-a.webp" class="bento-img" loading="lazy" alt="Bett"><div class="bento-overlay"><span class="card-category">SCHLAFEN</span><h3 class="card-title">Master Bed</h3></div></a>
+                    <a href="assets/images/schlafen-1-b.webp" data-fslightbox="gallery" class="bento-card schlafen"><img src="assets/images/schlafen-1-b.webp" class="bento-img" loading="lazy" alt="Bett-Detail"><div class="bento-overlay"><span class="card-category">SCHLAFEN</span><h3 class="card-title">Bett-Detail</h3></div></a>
+                    <a href="assets/images/sz-1-a.webp" data-fslightbox="gallery" class="bento-card schlafen"><img src="assets/images/sz-1-a.webp" class="bento-img" loading="lazy" alt="PAX"><div class="bento-overlay"><span class="card-category">SCHLAFEN</span><h3 class="card-title">PAX System</h3></div></a>
+                    <a href="assets/images/sz-1-b.webp" data-fslightbox="gallery" class="bento-card schlafen"><img src="assets/images/sz-1-b.webp" class="bento-img" loading="lazy" alt="Layout"><div class="bento-overlay"><span class="card-category">SCHLAFEN</span><h3 class="card-title">Layout</h3></div></a>
+                    <a href="assets/images/sz-2-a.webp" data-fslightbox="gallery" class="bento-card schlafen"><img src="assets/images/sz-2-a.webp" class="bento-img" loading="lazy" alt="Spiegel"><div class="bento-overlay"><span class="card-category">SCHLAFEN</span><h3 class="card-title">Spiegel</h3></div></a>
+                    <a href="assets/images/sz-2-b.webp" data-fslightbox="gallery" class="bento-card schlafen"><img src="assets/images/sz-2-b.webp" class="bento-img" loading="lazy" alt="Schiene"><div class="bento-overlay"><span class="card-category">SCHLAFEN</span><h3 class="card-title">Schiene</h3></div></a>
+                    <a href="assets/images/sz-3-a.webp" data-fslightbox="gallery" class="bento-card schlafen"><img src="assets/images/sz-3-a.webp" class="bento-img" loading="lazy" alt="Ankleide"><div class="bento-overlay"><span class="card-category">SCHLAFEN</span><h3 class="card-title">Ankleide</h3></div></a>
+                    <a href="assets/images/sz-3-b.webp" data-fslightbox="gallery" class="bento-card schlafen"><img src="assets/images/sz-3-b.webp" class="bento-img" loading="lazy" alt="Regal"><div class="bento-overlay"><span class="card-category">SCHLAFEN</span><h3 class="card-title">Regal</h3></div></a>
+                    <a href="assets/images/sz-4-a.webp" data-fslightbox="gallery" class="bento-card schlafen"><img src="assets/images/sz-4-a.webp" class="bento-img" loading="lazy" alt="Türen"><div class="bento-overlay"><span class="card-category">SCHLAFEN</span><h3 class="card-title">Türen</h3></div></a>
+                    <a href="assets/images/sz-4-b.webp" data-fslightbox="gallery" class="bento-card schlafen"><img src="assets/images/sz-4-b.webp" class="bento-img" loading="lazy" alt="Griff"><div class="bento-overlay"><span class="card-category">SCHLAFEN</span><h3 class="card-title">Griff</h3></div></a>
+                    <a href="assets/images/sz-5-a.webp" data-fslightbox="gallery" class="bento-card schlafen"><img src="assets/images/sz-5-a.webp" class="bento-img" loading="lazy" alt="Kopfteil"><div class="bento-overlay"><span class="card-category">SCHLAFEN</span><h3 class="card-title">Kopfteil</h3></div></a>
+                    <a href="assets/images/sz-5-b.webp" data-fslightbox="gallery" class="bento-card schlafen"><img src="assets/images/sz-5-b.webp" class="bento-img" loading="lazy" alt="Polster"><div class="bento-overlay"><span class="card-category">SCHLAFEN</span><h3 class="card-title">Polster</h3></div></a>
+                    <a href="assets/images/sz-6-a.webp" data-fslightbox="gallery" class="bento-card schlafen"><img src="assets/images/sz-6-a.webp" class="bento-img" loading="lazy" alt="Modul"><div class="bento-overlay"><span class="card-category">SCHLAFEN</span><h3 class="card-title">Modul</h3></div></a>
+                    <a href="assets/images/sz-6-b.webp" data-fslightbox="gallery" class="bento-card schlafen"><img src="assets/images/sz-6-b.webp" class="bento-img" loading="lazy" alt="Nacht"><div class="bento-overlay"><span class="card-category">SCHLAFEN</span><h3 class="card-title">Nachtschrank</h3></div></a>
+                    <a href="assets/images/sz-7-a.webp" data-fslightbox="gallery" class="bento-card schlafen"><img src="assets/images/sz-7-a.webp" class="bento-img" loading="lazy" alt="LED"><div class="bento-overlay"><span class="card-category">SCHLAFEN</span><h3 class="card-title">LED Environment</h3></div></a>
+                    <a href="assets/images/sz-7-b.webp" data-fslightbox="gallery" class="bento-card schlafen"><img src="assets/images/sz-7-b.webp" class="bento-img" loading="lazy" alt="Sync"><div class="bento-overlay"><span class="card-category">SCHLAFEN</span><h3 class="card-title">Sync</h3></div></a>
+
+                    <a href="assets/images/wohnen-1-a.webp" data-fslightbox="gallery" class="bento-card wohnen"><img src="assets/images/wohnen-1-a.webp" class="bento-img" loading="lazy" alt="Media"><div class="bento-overlay"><span class="card-category">WOHNEN</span><h3 class="card-title">Media Wall</h3></div></a>
+                    <a href="assets/images/wohnen-1-b.webp" data-fslightbox="gallery" class="bento-card wohnen"><img src="assets/images/wohnen-1-b.webp" class="bento-img" loading="lazy" alt="TV"><div class="bento-overlay"><span class="card-category">WOHNEN</span><h3 class="card-title">TV</h3></div></a>
+                    <a href="assets/images/wohnen-2-a.webp" data-fslightbox="gallery" class="bento-card wohnen"><img src="assets/images/wohnen-2-a.webp" class="bento-img" loading="lazy" alt="Highboard"><div class="bento-overlay"><span class="card-category">WOHNEN</span><h3 class="card-title">Highboard</h3></div></a>
+                    <a href="assets/images/wohnen-2-b.webp" data-fslightbox="gallery" class="bento-card wohnen"><img src="assets/images/wohnen-2-b.webp" class="bento-img" loading="lazy" alt="Front"><div class="bento-overlay"><span class="card-category">WOHNEN</span><h3 class="card-title">Front</h3></div></a>
+                    <a href="assets/images/wohnen-3-a.webp" data-fslightbox="gallery" class="bento-card wohnen"><img src="assets/images/wohnen-3-a.webp" class="bento-img" loading="lazy" alt="Bücher"><div class="bento-overlay"><span class="card-category">WOHNEN</span><h3 class="card-title">Bücherwand</h3></div></a>
+                    <a href="assets/images/wohnen-3-b.webp" data-fslightbox="gallery" class="bento-card wohnen"><img src="assets/images/wohnen-3-b.webp" class="bento-img" loading="lazy" alt="Regal"><div class="bento-overlay"><span class="card-category">WOHNEN</span><h3 class="card-title">Regal</h3></div></a>
+                    <a href="assets/images/wohnen-4-a.webp" data-fslightbox="gallery" class="bento-card wohnen"><img src="assets/images/wohnen-4-a.webp" class="bento-img" loading="lazy" alt="Acoustic"><div class="bento-overlay"><span class="card-category">WOHNEN</span><h3 class="card-title">Akustik</h3></div></a>
+                    <a href="assets/images/wohnen-4-b.webp" data-fslightbox="gallery" class="bento-card wohnen"><img src="assets/images/wohnen-4-b.webp" class="bento-img" loading="lazy" alt="Panel"><div class="bento-overlay"><span class="card-category">WOHNEN</span><h3 class="card-title">Panel</h3></div></a>
+                    <a href="assets/images/wohnen-5-a.webp" data-fslightbox="gallery" class="bento-card wohnen"><img src="assets/images/wohnen-5-a.webp" class="bento-img" loading="lazy" alt="Sideboard"><div class="bento-overlay"><span class="card-category">WOHNEN</span><h3 class="card-title">Sideboard</h3></div></a>
+                    <a href="assets/images/wohnen-5-b.webp" data-fslightbox="gallery" class="bento-card wohnen"><img src="assets/images/wohnen-5-b.webp" class="bento-img" loading="lazy" alt="Türen"><div class="bento-overlay"><span class="card-category">WOHNEN</span><h3 class="card-title">Türen</h3></div></a>
+                    <a href="assets/images/wohnen-6-a.webp" data-fslightbox="gallery" class="bento-card wohnen"><img src="assets/images/wohnen-6-a.webp" class="bento-img" loading="lazy" alt="Lowboard"><div class="bento-overlay"><span class="card-category">WOHNEN</span><h3 class="card-title">Lowboard</h3></div></a>
+                    <a href="assets/images/wohnen-6-b.webp" data-fslightbox="gallery" class="bento-card wohnen"><img src="assets/images/wohnen-6-b.webp" class="bento-img" loading="lazy" alt="Kabel"><div class="bento-overlay"><span class="card-category">WOHNEN</span><h3 class="card-title">Kabel</h3></div></a>
+                    <a href="assets/images/wohnen-7-a.webp" data-fslightbox="gallery" class="bento-card wohnen"><img src="assets/images/wohnen-7-a.webp" class="bento-img" loading="lazy" alt="Ent"><div class="bento-overlay"><span class="card-category">WOHNEN</span><h3 class="card-title">Entertainment</h3></div></a>
+                    <a href="assets/images/wohnen-7-b.webp" data-fslightbox="gallery" class="bento-card wohnen"><img src="assets/images/wohnen-7-b.webp" class="bento-img" loading="lazy" alt="Rack"><div class="bento-overlay"><span class="card-category">WOHNEN</span><h3 class="card-title">Rack</h3></div></a>
+                    <a href="assets/images/wohnen-8-a.webp" data-fslightbox="gallery" class="bento-card wohnen"><img src="assets/images/wohnen-8-a.webp" class="bento-img" loading="lazy" alt="Vitrine"><div class="bento-overlay"><span class="card-category">WOHNEN</span><h3 class="card-title">Vitrine</h3></div></a>
+                    <a href="assets/images/wohnen-8-b.webp" data-fslightbox="gallery" class="bento-card wohnen"><img src="assets/images/wohnen-8-b.webp" class="bento-img" loading="lazy" alt="Glas"><div class="bento-overlay"><span class="card-category">WOHNEN</span><h3 class="card-title">Glas</h3></div></a>
+                    <a href="assets/images/wohnen-9-a.webp" data-fslightbox="gallery" class="bento-card wohnen"><img src="assets/images/wohnen-9-a.webp" class="bento-img" loading="lazy" alt="Eck"><div class="bento-overlay"><span class="card-category">WOHNEN</span><h3 class="card-title">Eck</h3></div></a>
+                    <a href="assets/images/wohnen-10-a.webp" data-fslightbox="gallery" class="bento-card wohnen"><img src="assets/images/wohnen-10-a.webp" class="bento-img" loading="lazy" alt="Flur"><div class="bento-overlay"><span class="card-category">WOHNEN</span><h3 class="card-title">Flur</h3></div></a>
+                    <a href="assets/images/wohnen-11-a.webp" data-fslightbox="gallery" class="bento-card wohnen"><img src="assets/images/wohnen-11-a.webp" class="bento-img" loading="lazy" alt="Panel"><div class="bento-overlay"><span class="card-category">WOHNEN</span><h3 class="card-title">Panel</h3></div></a>
+                    <a href="assets/images/wohnen-11-b.webp" data-fslightbox="gallery" class="bento-card wohnen"><img src="assets/images/wohnen-11-b.webp" class="bento-img" loading="lazy" alt="Anchor"><div class="bento-overlay"><span class="card-category">WOHNEN</span><h3 class="card-title">Anchor</h3></div></a>
+                    <a href="assets/images/wohnen-12-a.webp" data-fslightbox="gallery" class="bento-card wohnen"><img src="assets/images/wohnen-12-a.webp" class="bento-img" loading="lazy" alt="Console"><div class="bento-overlay"><span class="card-category">WOHNEN</span><h3 class="card-title">Console</h3></div></a>
+                    <a href="assets/images/wohnen-13-a.webp" data-fslightbox="gallery" class="bento-card wohnen"><img src="assets/images/wohnen-13-a.webp" class="bento-img" loading="lazy" alt="Garde"><div class="bento-overlay"><span class="card-category">WOHNEN</span><h3 class="card-title">Garderobe</h3></div></a>
+                    <a href="assets/images/wohnen-14-a.webp" data-fslightbox="gallery" class="bento-card wohnen"><img src="assets/images/wohnen-14-a.webp" class="bento-img" loading="lazy" alt="Spiegel"><div class="bento-overlay"><span class="card-category">WOHNEN</span><h3 class="card-title">Spiegel</h3></div></a>
+                    <a href="assets/images/wohnen-15-a.webp" data-fslightbox="gallery" class="bento-card wohnen"><img src="assets/images/wohnen-15-a.webp" class="bento-img" loading="lazy" alt="Beton"><div class="bento-overlay"><span class="card-category">WOHNEN</span><h3 class="card-title">Beton</h3></div></a>
+                    <a href="assets/images/wohnen-16-a.webp" data-fslightbox="gallery" class="bento-card wohnen"><img src="assets/images/wohnen-16-a.webp" class="bento-img" loading="lazy" alt="Wohn"><div class="bento-overlay"><span class="card-category">WOHNEN</span><h3 class="card-title">Wohn</h3></div></a>
+                    <a href="assets/images/wohnen-17-a.webp" data-fslightbox="gallery" class="bento-card wohnen"><img src="assets/images/wohnen-17-a.webp" class="bento-img" loading="lazy" alt="Schatten"><div class="bento-overlay"><span class="card-category">WOHNEN</span><h3 class="card-title">Schatten</h3></div></a>
+                    <a href="assets/images/wohnen-18-a.webp" data-fslightbox="gallery" class="bento-card wohnen"><img src="assets/images/wohnen-18-a.webp" class="bento-img" loading="lazy" alt="Einbau"><div class="bento-overlay"><span class="card-category">WOHNEN</span><h3 class="card-title">Einbau</h3></div></a>
+                    <a href="assets/images/wohnen-19-a.webp" data-fslightbox="gallery" class="bento-card wohnen"><img src="assets/images/wohnen-19-a.webp" class="bento-img" loading="lazy" alt="Dach"><div class="bento-overlay"><span class="card-category">WOHNEN</span><h3 class="card-title">Dach</h3></div></a>
+                    <a href="assets/images/wohnen-20-a.webp" data-fslightbox="gallery" class="bento-card wohnen"><img src="assets/images/wohnen-20-a.webp" class="bento-img" loading="lazy" alt="Bereich"><div class="bento-overlay"><span class="card-category">WOHNEN</span><h3 class="card-title">Bereich</h3></div></a>
+                    <a href="assets/images/wohnen-21-a.webp" data-fslightbox="gallery" class="bento-card wohnen"><img src="assets/images/wohnen-21-a.webp" class="bento-img" loading="lazy" alt="Modul"><div class="bento-overlay"><span class="card-category">WOHNEN</span><h3 class="card-title">Modul</h3></div></a>
+                    <a href="assets/images/wohnen-22-a.webp" data-fslightbox="gallery" class="bento-card wohnen"><img src="assets/images/wohnen-22-a.webp" class="bento-img" loading="lazy" alt="Facade"><div class="bento-overlay"><span class="card-category">WOHNEN</span><h3 class="card-title">Fassade</h3></div></a>
+                    <a href="assets/images/wohnen-23-a.webp" data-fslightbox="gallery" class="bento-card wohnen"><img src="assets/images/wohnen-23-a.webp" class="bento-img" loading="lazy" alt="Integration"><div class="bento-overlay"><span class="card-category">WOHNEN</span><h3 class="card-title">Integration</h3></div></a>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fslightbox/3.0.9/index.min.js"></script>
+    <div id="global-footer"></div>
+    <div id="global-os"></div>
+    
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fslightbox/3.0.9/index.min.js"></script>
+    <script src="assets/js/main.js" defer></script>
+    
     <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        // Initialize Scroll Animations
-        AOS.init({ once: true, offset: 50 });
-
-        // --- THE MASSIVE 2026 DATABASE ---
-        // Span Guide: 'span-large' (Giant Square), 'span-wide' (Landscape), 'span-tall' (Portrait), '' (Small Detail Box)
-        const projectData = [
-            // KITCHEN (KÜCHE)
-            { img: 'kueche-13-a.webp', cat: 'kueche', title: 'Executive Kitchen Island', spec: 'TOLERANZ_0MM', span: 'span-large' },
-            { img: 'kueche-13-b.webp', cat: 'kueche', title: 'Island Detail', spec: 'FLUSH_FIT', span: '' },
-            { img: 'kueche-1-a.webp', cat: 'kueche', title: 'Bespoke Integration', spec: 'ARCH_FIT', span: 'span-wide' },
-            { img: 'kueche-1-b.webp', cat: 'kueche', title: 'Surface Alignment', spec: 'SEAMLESS', span: '' },
-            { img: 'kueche-2-a.webp', cat: 'kueche', title: 'Minimalist L-Shape', spec: 'SYMMETRY_PRO', span: 'span-tall' },
-            { img: 'kueche-2-b.webp', cat: 'kueche', title: 'Cabinet Lines', spec: 'LEVEL_0', span: '' },
-            { img: 'kueche-3-a.webp', cat: 'kueche', title: 'Premium Appliance Mount', spec: 'INTEGRATED', span: 'span-wide' },
-            { img: 'kueche-4-a.webp', cat: 'kueche', title: 'Matte Finish Architecture', spec: 'NANO_COAT', span: 'span-wide' },
-            { img: 'kueche-6-a.webp', cat: 'kueche', title: 'Suspended Storage', spec: 'WALL_ANCHOR', span: '' },
-            { img: 'kueche-8-a.webp', cat: 'kueche', title: 'Custom Panel Sizing', spec: 'SCRIBED', span: 'span-wide' },
-            { img: 'kueche-10-a.webp', cat: 'kueche', title: 'Smart Lighting Sync', spec: 'LED_INTEGRATION', span: 'span-tall' },
-            { img: 'kueche-17-a.webp', cat: 'kueche', title: 'Architectural Build', spec: 'CUSTOM_GRID', span: 'span-large' },
-            { img: 'kueche-18-a.webp', cat: 'kueche', title: 'Final Handover', spec: 'INSPECTED', span: 'span-wide' },
-
-            // LIVING ROOM (WOHNEN)
-            { img: 'wohnen-12-a.webp', cat: 'wohnen', title: 'Floating Media Console', spec: 'HEAVY_LOAD', span: 'span-large' },
-            { img: 'wohnen-1-a.webp', cat: 'wohnen', title: 'BESTÅ Wall Mount', spec: 'ZERO_CABLE', span: 'span-wide' },
-            { img: 'wohnen-1-b.webp', cat: 'wohnen', title: 'Cable Routing', spec: 'HIDDEN_IO', span: '' },
-            { img: 'wohnen-3-a.webp', cat: 'wohnen', title: 'Bookshelf Wall', spec: 'FULL_HEIGHT', span: 'span-tall' },
-            { img: 'wohnen-4-a.webp', cat: 'wohnen', title: 'Acoustic Panel Setup', spec: 'SOUND_DAMP', span: 'span-wide' },
-            { img: 'wohnen-6-a.webp', cat: 'wohnen', title: 'Lowboard Design', spec: 'MINIMAL', span: 'span-wide' },
-            { img: 'wohnen-7-a.webp', cat: 'wohnen', title: 'Entertainment Wall', spec: 'CENTERED', span: 'span-large' },
-            { img: 'wohnen-15-a.webp', cat: 'wohnen', title: 'Concrete Anchor Mount', spec: 'HILTI_FIX', span: 'span-wide' },
-            { img: 'wohnen-17-a.webp', cat: 'wohnen', title: 'Bespoke Fitment', spec: 'WALL_TO_WALL', span: 'span-tall' },
-            { img: 'wohnen-22-a.webp', cat: 'wohnen', title: 'Textured Facade', spec: 'TACTILE', span: '' },
-
-            // BEDROOM (SCHLAFZIMMER)
-            { img: 'schlafen-1-a.webp', cat: 'schlafen', title: 'Master Bed Frame', spec: 'SOLID_WOOD', span: 'span-large' },
-            { img: 'sz-1-a.webp', cat: 'schlafen', title: 'PAX Wardrobe Wall', spec: 'FULL_SPAN', span: 'span-wide' },
-            { img: 'sz-1-b.webp', cat: 'schlafen', title: 'Door Alignment', spec: 'GAP_ADJUST', span: '' },
-            { img: 'sz-3-a.webp', cat: 'schlafen', title: 'Walk-In Closet Concept', spec: 'OPEN_STORAGE', span: 'span-wide' },
-            { img: 'sz-4-a.webp', cat: 'schlafen', title: 'Sliding Door Mechanics', spec: 'RAIL_SYNC', span: 'span-tall' },
-            { img: 'sz-5-a.webp', cat: 'schlafen', title: 'Custom Headboard', spec: 'WALL_ANCHOR', span: 'span-wide' },
-            { img: 'sz-7-a.webp', cat: 'schlafen', title: 'Mood Lighting Integration', spec: 'LUMEN_SYNC', span: 'span-wide' }
-        ];
-
-        const grid = document.getElementById('masterGrid');
-
-        // --- THE RENDER ENGINE ---
-        projectData.forEach((item, index) => {
-            // Assign proper German names for the UI tags
-            let categoryName = item.cat === 'kueche' ? 'Küchen-System' : 
-                               item.cat === 'wohnen' ? 'Wohn-Architektur' : 'Schlaf-Suite';
-
-            const card = document.createElement('a');
-            // Using fslightbox to trigger fullscreen gallery viewing
-            card.setAttribute('data-fslightbox', 'gallery');
-            card.href = `./assets/images/${item.img}`;
-            card.className = `bento-card ${item.cat} ${item.span}`;
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof AOS !== 'undefined') AOS.init({ duration: 800, once: true });
             
-            // Stagger animations based on index
-            let delay = (index % 4) * 100;
-            card.setAttribute('data-aos', 'fade-up');
-            card.setAttribute('data-aos-delay', delay);
-            
-            card.innerHTML = `
-                <img src="./assets/images/${item.img}" class="bento-img" alt="${item.title}" loading="lazy">
-                <div class="spec-tag">[ ${item.spec} ]</div>
-                <div class="bento-overlay">
-                    <span class="card-category">${categoryName}</span>
-                    <h3 class="card-title">${item.title}</h3>
-                </div>
-            `;
-            grid.appendChild(card);
-        });
+            // Inject Nav/Footer
+            fetch('nav.html').then(r => r.text()).then(d => document.getElementById('global-nav').innerHTML = d);
+            fetch('footer.html').then(r => r.text()).then(d => document.getElementById('global-footer').innerHTML = d);
+            fetch('mission.html').then(r => r.text()).then(d => document.getElementById('global-os').innerHTML = d);
 
-        // Initialize Lightbox dynamically
-        if(typeof refreshFsLightbox !== 'undefined') refreshFsLightbox();
-
-        // --- TACTICAL FILTER LOGIC ---
-        const buttons = document.querySelectorAll('.filter-btn');
-        buttons.forEach(btn => {
-            btn.addEventListener('click', () => {
-                // Remove active class from all buttons
-                buttons.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                
-                const filterValue = btn.dataset.filter;
-                
-                document.querySelectorAll('.bento-card').forEach(card => {
-                    // Logic: If 'all' is selected, or if the card has the matching class
-                    if(filterValue === 'all' || card.classList.contains(filterValue)) {
-                        card.style.display = 'block';
-                        setTimeout(() => card.style.opacity = '1', 10);
-                    } else {
-                        card.style.opacity = '0';
-                        setTimeout(() => card.style.display = 'none', 300);
-                    }
+            // Filter Logic
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                    e.target.classList.add('active');
+                    const filter = e.target.dataset.filter;
+                    document.querySelectorAll('.bento-card').forEach(card => {
+                        card.style.display = (filter === 'all' || card.classList.contains(filter)) ? 'block' : 'none';
+                    });
                 });
             });
         });
-    });
     </script>
 </body>
 </html>

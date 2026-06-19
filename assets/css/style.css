@@ -3,35 +3,104 @@
    ARCHITECTURE: CYBER-FLUID | MOBILE-FIRST | GPU-ACCELERATED
    ========================================================================== */
 
-/* 1. Reset & Global Base */
+/* --- 1. RESET & PERFORMANCE FOUNDATION --- */
 *, *::before, *::after { box-sizing: border-box; }
-
-html { scroll-behavior: smooth; background: #000; scroll-padding-top: 80px; }
+html { 
+    scroll-behavior: smooth; 
+    background: #000; 
+    scroll-padding-top: 80px; 
+    contain: paint; /* Performance optimization */
+}
 body { 
-    background-color: #050505; color: #ffffff; font-family: 'Inter', sans-serif; 
-    line-height: 1.6; margin: 0; padding: 0; -webkit-font-smoothing: antialiased;
+    background-color: #050505; 
+    color: #ffffff; 
+    font-family: 'Inter', sans-serif; 
+    line-height: 1.6; 
+    margin: 0; 
+    padding: 0; 
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
 }
 
-/* 2. Neon Engine (Variables) */
+/* --- 2. THE NEON ENGINE (DESIGN TOKENS) --- */
 :root {
-    --bg-dark: #050505; --bg-darker: #000000; --surface: #0a0a0c;
-    --neon-gold: #FFD700; --neon-green: #39ff14; --neon-cyan: #00e5ff; --neon-pink: #ff007f;
-    --glass-bg: rgba(10, 10, 10, 0.75); --glass-border: rgba(255, 255, 255, 0.08);
-    --font-head: 'Space Grotesk', sans-serif; --font-body: 'Inter', sans-serif;
+    --bg-dark: #050505;
+    --bg-darker: #000000;
+    --surface: #0a0a0c;
+    --neon-gold: #FFD700;
+    --neon-green: #39ff14;
+    --neon-cyan: #00e5ff;
+    --neon-pink: #ff007f;
+    --glass-bg: rgba(10, 10, 10, 0.75);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --font-head: 'Space Grotesk', sans-serif;
+    --font-body: 'Inter', sans-serif;
     --font-mono: 'JetBrains Mono', monospace;
-    --spring: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    --spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
     --blur: blur(20px) saturate(150%);
 }
 
-/* 3. Global Typo & Utilities */
-.container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 clamp(15px, 5vw, 30px); }
-h1, h2, h3 { font-family: var(--font-head); text-transform: uppercase; line-height: 1.1; margin-bottom: 0.5em; }
+/* --- 3. GLOBAL TYPOGRAPHY --- */
+h1, h2, h3, h4 { 
+    font-family: var(--font-head); 
+    text-transform: uppercase; 
+    line-height: 1.1; 
+    margin-bottom: 0.5em; 
+    word-break: break-word; 
+}
+a { text-decoration: none; color: inherit; }
+
+/* --- 4. UTILITY UTILITIES --- */
+.container { width: 100%; max-width: 1400px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 40px); }
+.relative-z { position: relative; z-index: 2; }
+.center { text-align: center; }
+
+/* Colors */
 .gold-text { color: var(--neon-gold) !important; text-shadow: 0 0 15px rgba(255, 215, 0, 0.5); }
 .cyan-text { color: var(--neon-cyan) !important; text-shadow: 0 0 15px rgba(0, 229, 255, 0.5); }
-.btn { display: inline-flex; align-items: center; justify-content: center; padding: 15px 30px; border-radius: 8px; cursor: pointer; text-transform: uppercase; font-weight: 800; border: none; transition: var(--spring); }
-.glass-panel { background: var(--glass-bg); backdrop-filter: var(--blur); border: 1px solid var(--glass-border); border-radius: 16px; }
+.pink-text { color: var(--neon-pink) !important; text-shadow: 0 0 15px rgba(255, 0, 127, 0.5); }
+.green-text { color: var(--neon-green) !important; text-shadow: 0 0 15px rgba(57, 255, 20, 0.5); }
 
-/* 4. Global Animations (Keep these globally) */
-@keyframes pulseStatus { 0% { transform: scale(0.8); opacity: 0.8; } 100% { transform: scale(2.5); opacity: 0; } }
+/* --- 5. GLASSMORPHISM CORE --- */
+.glass-panel { 
+    background: var(--glass-bg); 
+    backdrop-filter: var(--blur); 
+    -webkit-backdrop-filter: var(--blur);
+    border: 1px solid var(--glass-border); 
+    border-radius: 16px;
+    content-visibility: auto; /* Performance optimization */
+}
+
+/* --- 6. INTERACTIVE COMPONENTS --- */
+.btn { 
+    display: inline-flex; align-items: center; justify-content: center; 
+    padding: 15px 30px; border-radius: 8px; cursor: pointer; 
+    text-transform: uppercase; font-weight: 800; border: none; 
+    transition: var(--spring); font-family: var(--font-head);
+}
+
+/* --- 7. GLOBAL ANIMATION ENGINE --- */
 .blink { animation: blinker 2s infinite; }
 @keyframes blinker { 50% { opacity: 0.3; } }
+
+.status-pulse { position: relative; }
+.status-pulse::after {
+    content: ''; position: absolute; inset: -2px;
+    border-radius: 50%; border: 1px solid currentColor;
+    animation: statusPulse 2s infinite ease-out;
+}
+@keyframes statusPulse {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(2.5); opacity: 0; }
+}
+
+/* --- 8. GLOBAL COMPONENT IMPORTS --- */
+/* These map to your component files to keep the main style.css clean */
+@import url('components/nav.css');
+@import url('components/footer.css');
+@import url('components/mission-os.css');
+
+/* --- 9. ACCESSIBILITY & FALLBACKS --- */
+.no-js-override [data-aos] { 
+    opacity: 1 !important; transform: none !important; visibility: visible !important; 
+}

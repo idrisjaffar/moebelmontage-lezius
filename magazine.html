@@ -8,18 +8,30 @@
     <meta name="description" content="Tiefgehende Einblicke in die millimetergenaue Montagearchitektur von Premium-Möbeln, Küchen und Outdoor-Systemen.">
     <meta name="theme-color" content="#020203">
 
+    <!-- SEO & Social Meta -->
+    <meta property="og:title" content="Raphael Lezius | Magazin & Philosophie">
+    <meta property="og:description" content="Einblicke in die millimetergenaue Montagearchitektur.">
+    <meta property="og:type" content="website">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
-    <!-- High-End Editorial Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&family=Space+Grotesk:wght@300;400;500;700;800&family=JetBrains+Mono:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Optimized Font Loading -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&family=Space+Grotesk:wght@300;400;500;700;800&family=JetBrains+Mono:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
-    <!-- CSS ARCHITECTURE -->
+    <!-- CSS ARCHITECTURE: Global Foundation First -->
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/components/magazine.css">
+    
+    <!-- Component Styles: These fix the "skeleton" issue -->
+    <link rel="stylesheet" href="assets/css/components/nav.css">
+    <link rel="stylesheet" href="assets/css/components/footer.css">
     <link rel="stylesheet" href="assets/css/components/mission-os.css">
+    
+    <!-- Page Specific Style -->
+    <link rel="stylesheet" href="assets/css/components/magazine.css">
 </head>
 
 <body class="is-dark magazine-theme no-js-override">
@@ -387,6 +399,7 @@
     <!-- SCRIPTS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="assets/js/main.js" defer></script>
+    <script src="assets/js/components/magazine-logic.js" defer></script>
     
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -404,14 +417,38 @@
                 }, 1200);
             }
             
-            // Inject Mission OS (if required on this page)
+            // ---------------------------------------------------------
+            // INJECT GLOBAL NAVIGATION
+            // ---------------------------------------------------------
+            fetch('nav.html')
+                .then(res => res.text())
+                .then(data => {
+                    const navContainer = document.getElementById('global-nav');
+                    if(navContainer) navContainer.innerHTML = data;
+                })
+                .catch(e => console.log("Nav Fetch Error:", e));
+
+            // ---------------------------------------------------------
+            // INJECT GLOBAL FOOTER
+            // ---------------------------------------------------------
+            fetch('footer.html')
+                .then(res => res.text())
+                .then(data => {
+                    const footerContainer = document.getElementById('global-footer');
+                    if(footerContainer) footerContainer.innerHTML = data;
+                })
+                .catch(e => console.log("Footer Fetch Error:", e));
+
+            // ---------------------------------------------------------
+            // INJECT MISSION OS MODAL
+            // ---------------------------------------------------------
             fetch('mission.html')
                 .then(res => res.text())
                 .then(data => {
                     const osContainer = document.getElementById('global-os');
                     if(osContainer) osContainer.innerHTML = data;
                 })
-                .catch(e => console.log("MissionOS Fetch Notice:", e));
+                .catch(e => console.log("MissionOS Fetch Error:", e));
         });
     </script>
 </body>
