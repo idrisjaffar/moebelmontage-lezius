@@ -1000,42 +1000,5 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="assets/js/main.js"></script>
-    <script src="assets/js/components/pricing-logic.js" defer></script>
-    
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Initialize Animation Engine
-            if (typeof AOS !== 'undefined') {
-                AOS.init({ duration: 800, once: true });
-            }
-
-            // Inject Global Navigation
-            fetch('nav.html')
-                .then(res => res.text())
-                .then(data => {
-                    const navContainer = document.getElementById('global-nav');
-                    if(navContainer) navContainer.innerHTML = data;
-                })
-                .catch(e => console.log("Nav Fetch Error:", e));
-
-            // Inject Global Footer
-            fetch('footer.html')
-                .then(res => res.text())
-                .then(data => {
-                    const footerContainer = document.getElementById('global-footer');
-                    if(footerContainer) footerContainer.innerHTML = data;
-                })
-                .catch(e => console.log("Footer Fetch Error:", e));
-
-            // Inject Mission OS Modal
-            fetch('mission.html')
-                .then(res => res.text())
-                .then(data => {
-                    const osContainer = document.getElementById('global-os');
-                    if(osContainer) osContainer.innerHTML = data;
-                })
-                .catch(e => console.log("MissionOS Fetch Error:", e));
-        });
-    </script>
 </body>
 </html>

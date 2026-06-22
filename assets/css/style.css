@@ -104,3 +104,21 @@ a { text-decoration: none; color: inherit; }
 .no-js-override [data-aos] { 
     opacity: 1 !important; transform: none !important; visibility: visible !important; 
 }
+
+/* ==========================================================================
+   KILL ROGUE NAV ANIMATION
+   ========================================================================== */
+#global-nav,
+#global-nav *,
+#global-nav::before,
+#global-nav::after,
+.nav-container::before,
+.nav-container::after {
+    animation: none !important;
+    box-shadow: none !important;
+}
+
+/* Also catches any rogue glowing borders on the nav */
+header, nav {
+    animation: none !important;
+}
