@@ -1,202 +1,85 @@
 /* ==========================================================================
-   RAPHAEL LEZIUS | 2026 MASTER SYSTEM ENGINE (main.js)
-   ARCHITECTURE: ASYNC BOOT SEQUENCE | EVENT DELEGATION | CANVAS PHYSICS
+   RAPHAEL LEZIUS | 2026 MASTER SYSTEM ENGINE
+   ARCHITECTURE: ASYNC BOOT SEQUENCE | EVENT DELEGATION | TERMINAL OS
    ========================================================================== */
 
-document.addEventListener("DOMContentLoaded", async () => {
+document.addEventListener("DOMContentLoaded", () => {
     
-    /* ==========================================================================
-       1. IMMEDIATE VISUAL UNLOCK (Fixes the Black Screen)
-       ========================================================================== */
-    // Sync Typography to remove opacity: 0
+    // 1. VISUAL UNLOCK (Fixes the Black Screen / Typography Sync)
     if (document.fonts) {
         document.fonts.ready.then(() => document.body.classList.add('typography-synced'));
     } else {
         document.body.classList.add('typography-synced');
     }
 
-    // Lift the black "Establishing Connection" transition curtain
     const transitionEngine = document.getElementById('transition-engine');
     if (transitionEngine) {
-        setTimeout(() => {
-            transitionEngine.style.transform = 'translateY(-100%)';
-        }, 800);
+        setTimeout(() => transitionEngine.style.transform = 'translateY(-100%)', 800);
     }
 
-    /* ==========================================================================
-       2. ASYNC SYSTEM LOADER (Injects Nav, Footer, and Mission OS)
-       ========================================================================== */
-    const isRoot = window.location.pathname.split('/').filter(Boolean).length <= 1;
-    const pathPrefix = isRoot ? '' : '../';
-
-    async function loadComponent(elementId, filePath) {
-        try {
-            const container = document.getElementById(elementId);
-            if (!container) return; 
-
-            // Fix the path logic depending on your folder structure
-             // Adjusted path
-            const fullPath = pathPrefix + 'components/' + filePath; const response = await fetch(fullPath);
-            if (!response.ok) throw new Error(`Failed to load ${fullPath}`);
-            
-            container.innerHTML = await response.text();
-        } catch (error) {
-            console.error(`Injection Error for ${elementId}:`, error);
-        }
-    }
-
-    // Attempt to inject HTML components
-    await Promise.all([
-        loadComponent("global-nav", "nav.html"),
-        loadComponent("global-footer", "footer.html"),
-        loadComponent("global-os", "mission_os.html")
-    ]);
-
-    console.log("SYS_UPLINK ESTABLISHED: Components Handled.");
-
-    /* ==========================================================================
-       3. INITIALIZE SYSTEM ENGINES
-       ========================================================================== */
-    initializeSystemEngines();
-    if (window.MissionOS) window.MissionOS.init(); 
-});
-
-/* ==========================================================================
-   4. MISSION OS v2.6 LOGIC ENGINE (Multi-Step Form & Modal)
-   ========================================================================== */
-window.MissionOS = {
-    currentStep: 1,
-    totalSteps: 4,
-
-    open: () => {
-        const modal = document.getElementById('missionOS');
-        if (modal) {
-            modal.classList.add('system-active');
-            document.body.style.overflow = 'hidden'; 
-            window.MissionOS.goToStep(1); 
-        }
-    },
-
-    close: () => {
-        const modal = document.getElementById('missionOS');
-        if (modal) {
-            modal.classList.remove('system-active');
-            document.body.style.overflow = ''; 
-        }
-    },
-
-    goToStep: (stepNumber) => {
-        if(stepNumber < 1 || stepNumber > window.MissionOS.totalSteps) return;
-        window.MissionOS.currentStep = stepNumber;
-
-        document.querySelectorAll('.form-step').forEach(step => {
-            if (parseInt(step.dataset.step) === window.MissionOS.currentStep) {
-                step.style.display = 'block';
-                setTimeout(() => step.classList.add('is-active'), 50);
-            } else {
-                step.classList.remove('is-active');
-                setTimeout(() => step.style.display = 'none', 300);
-            }
-        });
-
-        const progressFill = document.getElementById('osProgress');
-        if(progressFill) {
-            const progress = ((window.MissionOS.currentStep - 1) / (window.MissionOS.totalSteps - 1)) * 100;
-            progressFill.style.width = `${progress}%`;
-        }
-
-        document.querySelectorAll('.step-text').forEach((indicator, index) => {
-            if(index + 1 <= window.MissionOS.currentStep) {
-                indicator.classList.add('active');
-            } else {
-                indicator.classList.remove('active');
-            }
-        });
-    },
-
-    init: () => {
-        document.addEventListener('click', (e) => {
-            if(e.target.closest('.btn-next')) {
-                e.preventDefault();
-                window.MissionOS.goToStep(window.MissionOS.currentStep + 1);
-            }
-            if(e.target.closest('.btn-prev')) {
-                e.preventDefault();
-                window.MissionOS.goToStep(window.MissionOS.currentStep - 1);
-            }
-            if(e.target.closest('.js-close-os') || e.target.classList.contains('os-backdrop')) {
-                e.preventDefault();
-                window.MissionOS.close();
-            }
-            if(e.target.closest('.js-open-os')) {
-                e.preventDefault();
-                window.MissionOS.open();
-            }
-        });
-
-        // AI Feedback inputs inside MissionOS
-        const form = document.getElementById('leadForm');
-        if(form) {
-            const aiStatus = document.getElementById('ai-status');
-            const updateAiStatus = (text, color) => {
-                if(aiStatus) {
-                    aiStatus.innerText = text;
-                    aiStatus.style.color = color;
-                }
-            };
-            form.querySelectorAll('.intelligent-input').forEach(input => {
-                input.addEventListener('focus', () => updateAiStatus('ANALYZING // ACTIVE_INPUT_STREAM', 'var(--neon-gold)'));
-                input.addEventListener('blur', () => updateAiStatus('SYSTEM_IDLE // AWAITING_INPUT', 'var(--neon-green)'));
-            });
-        }
-    }
-};
-
-/* ==========================================================================
-   5. MASTER VISUAL ENGINES (Physics, Sliders, Layouts)
-   ========================================================================== */
-function initializeSystemEngines() {
-    
-    // --- A. AOS ANIMATIONS ---
+    // 2. INITIALIZE VISUAL ENGINES (AOS)
     if (typeof AOS !== 'undefined') {
         AOS.init({ duration: 800, offset: 50, once: true });
     }
 
-    // --- B. MAGNETIC BUTTON PHYSICS ---
-    document.querySelectorAll('.btn-magnetic, .magnetic-target').forEach(btn => {
-        btn.addEventListener('mousemove', (e) => {
+    // 3. ASYNC COMPONENT INJECTOR (Upgraded with Promise returns)
+    const injectComponent = (id, file) => {
+        const container = document.getElementById(id);
+        if (container) {
+            return fetch(file)
+                .then(response => {
+                    if (!response.ok) throw new Error(`Missing ${file}`);
+                    return response.text();
+                })
+                .then(data => {
+                    container.innerHTML = data;
+                })
+                .catch(err => console.error(`System Injection Error [${file}]:`, err));
+        }
+        return Promise.resolve();
+    };
+
+    // LOAD GLOBAL COMPONENTS (Paths corrected to match your VS Code structure)
+    Promise.all([
+        injectComponent('global-nav', 'components/nav.html'),
+        injectComponent('global-footer', 'components/footer.html'),
+        injectComponent('global-os', 'components/mission-os.html')
+    ]).then(() => {
+        // Refresh animations after HTML is injected so new elements animate properly
+        if (typeof AOS !== 'undefined') {
+            AOS.refresh();
+        }
+        console.log("SYS_UPLINK ESTABLISHED: All components loaded.");
+    });
+
+    // 4. BOOT SUBSYSTEMS
+    initializePhysicsAndMenus();
+    initializeMissionOS();
+});
+
+
+/* ==========================================================================
+   PHYSICS & GLOBAL UI LOGIC
+   ========================================================================== */
+function initializePhysicsAndMenus() {
+    
+    // A. Magnetic Buttons (Hover Physics)
+    document.addEventListener('mousemove', (e) => {
+        const btn = e.target.closest('.btn-magnetic, .magnetic-target');
+        if (btn) {
             const pos = btn.getBoundingClientRect();
             const x = e.clientX - pos.left - pos.width / 2;
             const y = e.clientY - pos.top - pos.height / 2;
             btn.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px)`;
-        });
-        btn.addEventListener('mouseout', () => {
-            btn.style.transform = 'translate(0px, 0px)';
-        });
+        }
+    });
+    document.addEventListener('mouseout', (e) => {
+        const btn = e.target.closest('.btn-magnetic, .magnetic-target');
+        if (btn) btn.style.transform = 'translate(0px, 0px)';
     });
 
-    // --- C. MOBILE MENU TOGGLE ---
-    const hamburger = document.getElementById('mobileMenuToggle'); 
-    const mobileMenu = document.getElementById('fluidMobileMenu');
-    
-    if (hamburger && mobileMenu) {
-        hamburger.addEventListener('click', () => {
-            mobileMenu.classList.toggle('is-open');
-            hamburger.classList.toggle('is-active');
-            document.body.style.overflow = mobileMenu.classList.contains('is-open') ? 'hidden' : '';
-        });
-
-        document.querySelectorAll('.m-link-massive').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.remove('is-open');
-                hamburger.classList.remove('is-active');
-                document.body.style.overflow = '';
-            });
-        });
-    }
-
-    // --- D. GLOBAL ACCORDION DELEGATION ---
-    document.addEventListener('click', function(e) {
+    // B. Global Accordion Delegation (FAQ)
+    document.addEventListener('click', (e) => {
         const accordionHeader = e.target.closest('.accordion-header') || e.target.closest('.faq-trigger-btn');
         if (accordionHeader) {
             const item = accordionHeader.parentElement;
@@ -212,61 +95,132 @@ function initializeSystemEngines() {
             if (!isOpen) {
                 item.classList.add('active', 'open');
                 const content = item.querySelector('.accordion-content, .module-body');
-                if (content) {
-                    content.style.maxHeight = content.scrollHeight + "px";
-                }
+                if (content) content.style.maxHeight = content.scrollHeight + "px";
             }
+        }
+    });
+
+    // C. Mobile Menu Toggle
+    document.addEventListener('click', (e) => {
+        const hamburger = e.target.closest('#mobileMenuToggle');
+        const mobileMenu = document.getElementById('fluidMobileMenu');
+        
+        if (hamburger && mobileMenu) {
+            mobileMenu.classList.toggle('is-open');
+            hamburger.classList.toggle('is-active');
+            document.body.style.overflow = mobileMenu.classList.contains('is-open') ? 'hidden' : '';
+        }
+
+        // Close menu if a link is clicked
+        if (e.target.closest('.m-link-massive')) {
+            if(mobileMenu) mobileMenu.classList.remove('is-open');
+            const toggle = document.getElementById('mobileMenuToggle');
+            if(toggle) toggle.classList.remove('is-active');
+            document.body.style.overflow = '';
         }
     });
 }
 
-// This listens for clicks anywhere on the document
-document.addEventListener('click', function(event) {
+
+/* ==========================================================================
+   MISSION OS v2026 // MODAL & MULTI-STEP LOGIC
+   ========================================================================== */
+function initializeMissionOS() {
     
-    // Check if the user clicked the "ANFRAGE" button (or any element with js-open-os)
-    if (event.target.closest('.js-open-os')) {
-        event.preventDefault(); // Stop page reload
+    document.addEventListener('click', (e) => {
         
-        const modal = document.getElementById('missionOS');
-        if (modal) {
-            modal.classList.add('system-active');
-            console.log("Mission OS: UPLINK ESTABLISHED");
-        } else {
-            console.error("Mission OS: Overlay not found in DOM.");
+        // --- OPEN MODAL ---
+        if (e.target.closest('.js-open-os')) {
+            e.preventDefault();
+            const modal = document.getElementById('missionOS');
+            if (modal) {
+                modal.classList.add('system-active');
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            }
+        }
+
+        // --- CLOSE MODAL ---
+        if (e.target.closest('.js-close-os')) {
+            e.preventDefault();
+            const modal = document.getElementById('missionOS');
+            if (modal) {
+                modal.classList.remove('system-active');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // --- NEXT STEP LOGIC (With Upgraded Validation) ---
+        if (e.target.closest('.btn-next')) {
+            const currentStep = e.target.closest('.form-step');
+            let isValid = true;
+            
+            // Validate text inputs, selects, and textareas
+            currentStep.querySelectorAll('input[required], select[required], textarea[required]').forEach(input => {
+                
+                // Handle Checkbox validation (like the DSGVO box)
+                if (input.type === 'checkbox') {
+                    if (!input.checked) {
+                        isValid = false;
+                        input.parentElement.style.color = '#FF007F'; // Highlight text in pink
+                    } else {
+                        input.parentElement.style.color = ''; 
+                    }
+                } 
+                // Handle standard text inputs
+                else if (input.type !== 'radio') {
+                    if (!input.value.trim()) {
+                        isValid = false;
+                        input.style.borderBottomColor = '#FF007F'; // Highlight border in pink
+                    } else {
+                        input.style.borderBottomColor = ''; 
+                    }
+                }
+            });
+
+            if (isValid) {
+                const nextStepNum = parseInt(currentStep.dataset.step) + 1;
+                const nextStep = document.querySelector(`.form-step[data-step="${nextStepNum}"]`);
+                
+                if (nextStep) {
+                    currentStep.classList.remove('is-active');
+                    nextStep.classList.add('is-active');
+                    updateOSProgress(nextStepNum);
+                }
+            }
+        }
+
+        // --- PREVIOUS STEP LOGIC ---
+        if (e.target.closest('.btn-prev')) {
+            const currentStep = e.target.closest('.form-step');
+            const prevStepNum = parseInt(currentStep.dataset.step) - 1;
+            const prevStep = document.querySelector(`.form-step[data-step="${prevStepNum}"]`);
+            
+            if (prevStep) {
+                currentStep.classList.remove('is-active');
+                prevStep.classList.add('is-active');
+                updateOSProgress(prevStepNum);
+            }
+        }
+    });
+
+    // --- PROGRESS BAR & INDICATOR HANDLER ---
+    function updateOSProgress(stepNumber) {
+        // Update Bar Width (25%, 50%, 75%, 100%)
+        const progressBar = document.getElementById('osProgress');
+        if (progressBar) {
+            progressBar.style.width = `${stepNumber * 25}%`;
+        }
+
+        // Update Text Indicators (st1, st2, st3, st4)
+        for (let i = 1; i <= 4; i++) {
+            const indicator = document.getElementById(`st${i}`);
+            if (indicator) {
+                if (i <= stepNumber) {
+                    indicator.classList.add('active');
+                } else {
+                    indicator.classList.remove('active');
+                }
+            }
         }
     }
-
-    // Check if the user clicked the close button or backdrop
-    if (event.target.closest('.js-close-os')) {
-        const modal = document.getElementById('missionOS');
-        if (modal) {
-            modal.classList.remove('system-active');
-        }
-    }
-});
-
-// assets/js/main.js
-
-document.addEventListener("DOMContentLoaded", () => {
-    
-    // Function to inject HTML files into containers
-    const injectComponent = (id, file) => {
-        const container = document.getElementById(id);
-        if (container) {
-            fetch(file)
-                .then(response => {
-                    if (!response.ok) throw new Error(`Could not load ${file}`);
-                    return response.text();
-                })
-                .then(data => {
-                    container.innerHTML = data;
-                })
-                .catch(err => console.error("Injection Error:", err));
-        }
-    };
-
-    // Trigger injections for Nav, Footer, and the MissionOS Modal
-    injectComponent('global-nav', 'nav.html');
-    injectComponent('global-footer', 'footer.html');
-    injectComponent('global-os', 'mission.html');
-});
+}

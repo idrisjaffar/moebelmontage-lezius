@@ -4,149 +4,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Demontage, Bohrarbeiten & Küchen-Umzug | Raphael Lezius</title>
-    
+   
     <meta name="description" content="Ihr Experte für zerstörungsfreie Möbel-Demontage, professionelle Bohrarbeiten, Lampenmontage und den Komplett-Umzug von Gebrauchtküchen in Augsburg und München.">
-    
+   
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&family=Space+Grotesk:wght@300;500;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&family=Montserrat:wght@700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+   
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- CSS ARCHITECTURE -->
     <link rel="stylesheet" href="assets/css/style.css">
-
-    <style id="service-custom-css">
-        /* Sicherheits-Bypass: Verhindert Blank-Screen bei JS-Verzögerung */
-        body { opacity: 1 !important; visibility: visible !important; }
-        .no-js-override [data-aos] { opacity: 1 !important; transform: none !important; visibility: visible !important; }
-
-        /* Tech Green Theme */
-        :root {
-            --demo-green: #39ff14; 
-            --demo-dark: #070a08;
-            --demo-cyan: #00e5ff;
-        }
-
-        /* Wall Scanner Animation */
-        .scanner-box {
-            position: relative;
-            background: rgba(10, 10, 10, 0.85);
-            border: 1px solid rgba(0, 229, 255, 0.2);
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: inset 0 0 40px rgba(0, 229, 255, 0.05);
-            padding: 40px;
-            z-index: 1;
-        }
-        .scan-line-anim {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: var(--demo-cyan);
-            box-shadow: 0 0 20px 5px rgba(0, 229, 255, 0.5);
-            animation: scanWall 3s linear infinite;
-            z-index: -1;
-            opacity: 0.7;
-        }
-        @keyframes scanWall {
-            0% { top: 0; opacity: 0; }
-            10% { opacity: 0.8; }
-            50% { top: 100%; opacity: 0.8; }
-            90% { opacity: 0.8; }
-            100% { top: 0; opacity: 0; }
-        }
-
-        /* Instagram-Style Swipe Carousels for Mobile */
-        .swipe-carousel {
-            display: flex;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            scrollbar-width: none; 
-            -ms-overflow-style: none;  
-            gap: 20px;
-            padding-bottom: 20px;
-        }
-        .swipe-carousel::-webkit-scrollbar { display: none; }
-        .swipe-item {
-            scroll-snap-align: center;
-            flex: 0 0 85%; /* Shows a peek of the next card */
-            min-width: 280px;
-        }
-        
-        /* Desktop Grid Override */
-        @media (min-width: 768px) {
-            .swipe-carousel {
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-                overflow-x: visible;
-                gap: 30px;
-            }
-            .swipe-item { flex: unset; min-width: unset; }
-            .carousel-indicators { display: none !important; }
-        }
-
-        /* Carousel Indicators */
-        .carousel-indicators { display: flex; justify-content: center; gap: 8px; margin-top: 10px; }
-        .dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.2); transition: all 0.3s ease; }
-        .dot.active { background: var(--demo-green); transform: scale(1.3); box-shadow: 0 0 10px rgba(57, 255, 20, 0.5); }
-
-        /* Floating Badge */
-        .floating-badge {
-            animation: floatBadge 4s ease-in-out infinite;
-        }
-        @keyframes floatBadge {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-    </style>
+    <link rel="stylesheet" href="assets/css/components/nav.css">
+    <link rel="stylesheet" href="assets/css/components/footer.css">
+    <link rel="stylesheet" href="assets/css/components/mission-os.css">
+    
+    <!-- PAGE SPECIFIC CSS -->
+    <link rel="stylesheet" href="assets/css/components/demontage.css">
 </head>
 <body class="is-dark no-js-override">
 
     <div id="global-nav"></div>
 
     <main>
-        
-        <section class="hero-section" style="border-bottom: 1px solid rgba(57, 255, 20, 0.3); position: relative; height: 90vh; min-height: 800px; display: flex; align-items: center; justify-content: center; background: var(--demo-dark); overflow: hidden;">
-            
-            <div style="position: absolute; inset: 0; background-image: linear-gradient(rgba(57, 255, 20, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(57, 255, 20, 0.05) 1px, transparent 1px); background-size: 60px 60px; z-index: 0;"></div>
-            <div class="hero-vignette" style="position: absolute; inset: 0; background: radial-gradient(circle at center, transparent 0%, #000 90%); z-index: 1;"></div>
+       
+        <!-- HERO SECTION -->
+        <section class="demo-hero">
+            <div class="hero-grid-overlay"></div>
+            <div class="hero-vignette"></div>
 
-            <div class="container relative-z center" style="padding-top: 80px; z-index: 5;">
+            <div class="container relative-z center" style="padding-top: 80px;">
                 <div class="section-tag-wrapper" data-aos="fade-down" style="display: flex; justify-content: center; margin-bottom: 20px;">
-                    <span class="section-tag floating-badge" style="border-color: var(--demo-green); color: var(--demo-green); background: rgba(57, 255, 20, 0.05);"><i class="fas fa-wrench blink"></i> FULL-SERVICE HANDWERK</span>
+                    <span class="section-tag floating-badge"><i class="fas fa-wrench blink"></i> FULL-SERVICE HANDWERK</span>
                 </div>
-                
-                <h1 class="glitch-header" data-aos="zoom-in" style="font-size: clamp(3rem, 6vw, 5.5rem); margin-bottom: 20px; line-height: 1.1;">
+               
+                <h1 class="glitch-header" data-aos="zoom-in">
                     <span class="white">BOHREN. HÄNGEN.</span><br>
                     <span style="color: var(--demo-green); text-shadow: 0 0 20px rgba(57, 255, 20, 0.4);">KÜCHEN-UMZUG.</span>
                 </h1>
-                
-                <p class="hero-deep-copy" data-aos="fade-up" data-aos-delay="100" style="margin: 0 auto 40px auto; border-left: none; text-align: center; max-width: 850px; padding: 0;">
+               
+                <p class="hero-deep-copy" data-aos="fade-up" data-aos-delay="100">
                     Sie haben eine gebrauchte Küche auf Kleinanzeigen gefunden? Ich baue sie ab, transportiere sie und passe sie mit präzisen Sägeschnitten perfekt an Ihren neuen Raum an. Sie trauen sich nicht an die harten Betonwände, um Lampen, Gardinen oder schwere Spiegel aufzuhängen? <strong>Ich bringe Profi-Equipment, elektronische Leitungsortung und die nötige Erfahrung mit.</strong> Alles aus einer Hand.
                 </p>
-                
+               
                 <div class="magnetic-btn-group" data-aos="fade-up" data-aos-delay="200" style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-                    <button onclick="MissionOS.open()" class="btn reactive-btn btn-magnetic" style="background: var(--demo-green); color: #000; box-shadow: 0 0 20px rgba(57,255,20,0.3);">
+                    <button type="button" class="btn-demo btn-magnetic js-open-os">
                         <i class="fas fa-calendar-check"></i> SERVICE ANFRAGEN
                     </button>
-                    <a href="#services" class="btn-holographic reactive-btn" style="border-color: var(--demo-cyan); color: var(--demo-cyan);">
+                    <a href="#services" class="btn-ghost-cyan btn-magnetic">
                         <i class="fas fa-list"></i> ALLE LEISTUNGEN
                     </a>
                 </div>
             </div>
         </section>
 
-        <div class="marquee-wrapper" style="background: #030405; padding: 20px 0; overflow: hidden; white-space: nowrap; position: relative; border-top: 1px solid rgba(57, 255, 20, 0.2); border-bottom: 1px solid rgba(57, 255, 20, 0.2); box-shadow: inset 0 0 50px rgba(0,0,0,0.9);">
-            <div class="marquee-track" style="color: var(--demo-green); text-shadow: 0 0 10px rgba(57,255,20,0.4);">
+        <!-- MARQUEE STRIP -->
+        <div class="demo-marquee-wrapper">
+            <div class="demo-marquee-track">
                 <span><i class="fas fa-hammer"></i> GEBRAUCHTKÜCHEN-UMZUG</span>
                 <span><i class="fas fa-bolt"></i> ELEKTRONISCHE LEITUNGSORTUNG</span>
                 <span><i class="fas fa-lightbulb"></i> DECKENLAMPEN MONTAGE</span>
                 <span><i class="fas fa-image"></i> BILDER & SPIEGEL AUFHÄNGEN</span>
                 <span><i class="fas fa-cut"></i> ARBEITSPLATTEN ZUSCHNITT</span>
                 <span><i class="fas fa-door-open"></i> GARDINENSTANGEN & ROLLOS</span>
-                
+               
+                <!-- Duplicate for seamless scroll -->
                 <span><i class="fas fa-hammer"></i> GEBRAUCHTKÜCHEN-UMZUG</span>
                 <span><i class="fas fa-bolt"></i> ELEKTRONISCHE LEITUNGSORTUNG</span>
                 <span><i class="fas fa-lightbulb"></i> DECKENLAMPEN MONTAGE</span>
@@ -156,23 +79,24 @@
             </div>
         </div>
 
+        <!-- RELOCATION SERVICES -->
         <section id="services" class="section-padding bg-darker">
             <div class="container relative-z">
                 <div class="section-header center" data-aos="fade-up">
-                    <div class="pre-title" style="color: var(--demo-green);">KLEINANZEIGEN & UMZUG</div>
-                    <h2 class="section-heading">Der Gebrauchtküchen <span style="color: var(--demo-green);">Komplett-Service</span></h2>
-                    <p class="section-subtitle" style="margin: 0 auto 50px auto;">Sie haben eine Traumküche gebraucht gekauft? Der Kauf ist einfach – der logistische Albtraum beginnt danach. Ich nehme Ihnen diese Last komplett ab.</p>
+                    <div class="pre-title" style="color: var(--demo-green); font-family: var(--font-mono); font-size: 0.85rem; letter-spacing: 2px; margin-bottom: 10px;">KLEINANZEIGEN & UMZUG</div>
+                    <h2 class="section-heading" style="font-family: var(--font-head); font-size: clamp(2.5rem, 5vw, 4rem); color: #fff;">Der Gebrauchtküchen <span style="color: var(--demo-green);">Komplett-Service</span></h2>
+                    <p class="section-subtitle" style="margin: 15px auto 50px auto; color: #aaa; font-size: 1.1rem; max-width: 600px;">Sie haben eine Traumküche gebraucht gekauft? Der Kauf ist einfach – der logistische Albtraum beginnt danach. Ich nehme Ihnen diese Last komplett ab.</p>
                 </div>
 
                 <div class="split-layout" style="margin-bottom: 60px;">
                     <div class="glass-panel" data-aos="fade-right" style="padding: 40px; border-top: 3px solid var(--demo-green); background: rgba(10, 10, 10, 0.85);">
                         <h3 style="color: #fff; font-size: 1.6rem; margin-bottom: 20px; font-family: var(--font-head);"><i class="fas fa-truck-loading" style="color: var(--demo-green); margin-right: 10px;"></i> Abbau & Transportvorbereitung</h3>
                         <p style="color: #aaa; line-height: 1.7; margin-bottom: 20px;">Ich fahre zum Verkäufer und demontiere die Küche fachmännisch. Schrauben werden gesichert, Schränke transportfähig gebündelt und Arbeitsplatten schonend getrennt. Auf Wunsch organisiere ich den sicheren Transport zu Ihnen nach Hause.</p>
-                        <div class="alert-box" style="margin-top: 20px; border-color: var(--neon-gold); background: rgba(255,215,0,0.05); padding: 15px; border-radius: 8px; border-left: 3px solid var(--neon-gold);">
+                        <div class="alert-box">
                             <p style="color: #ccc; font-size: 0.9rem; margin: 0;"><i class="fas fa-exclamation-triangle" style="color: var(--neon-gold); margin-right: 5px;"></i> WICHTIG: Aus versicherungsrechtlichen Gründen müssen Wasser und Starkstrom am alten und neuen Ort von einem konzessionierten Elektriker/Klempner an- und abgeklemmt werden. Die Vorbereitung übernehme ich.</p>
                         </div>
                     </div>
-                    
+                   
                     <div class="glass-panel" data-aos="fade-left" style="padding: 40px; border-top: 3px solid var(--demo-cyan); background: rgba(10, 10, 10, 0.85);">
                         <h3 style="color: #fff; font-size: 1.6rem; margin-bottom: 20px; font-family: var(--font-head);"><i class="fas fa-cut" style="color: var(--demo-cyan); margin-right: 10px;"></i> Anpassung & Neuaufbau</h3>
                         <p style="color: #aaa; line-height: 1.7; margin-bottom: 20px;">Gebrauchte Küchen passen fast nie perfekt in den neuen Raum. Ich passe die Korpusse an Ihre Raumsituation an. Häufig wird eine neue Arbeitsplatte benötigt – diese säge ich mit meiner Festool Tauchsäge absolut ausrissfrei vor Ort auf Maß, inklusive Ausschnitten für Spüle und Kochfeld.</p>
@@ -186,16 +110,17 @@
             </div>
         </section>
 
+        <!-- SCANNER CAROUSEL -->
         <section class="section-padding bg-dark">
             <div class="container relative-z">
                 <div class="section-header center" data-aos="fade-up">
-                    <div class="pre-title" style="color: var(--demo-cyan);">WANDGESTALTUNG & BEFESTIGUNG</div>
-                    <h2 class="section-heading">Bohren, Hängen, <span style="color: var(--demo-cyan);">Sichern.</span></h2>
-                    <p class="section-subtitle" style="margin: 0 auto 50px auto;">Der schlimmste Feind des Heimwerkers: Versteckte Wasserleitungen, bröselige Altbauwände oder extrem harter Stahlbeton. Ich übernehme das für Sie.</p>
+                    <div class="pre-title" style="color: var(--demo-cyan); font-family: var(--font-mono); font-size: 0.85rem; letter-spacing: 2px; margin-bottom: 10px;">WANDGESTALTUNG & BEFESTIGUNG</div>
+                    <h2 class="section-heading" style="font-family: var(--font-head); font-size: clamp(2.5rem, 5vw, 4rem); color: #fff;">Bohren, Hängen, <span style="color: var(--demo-cyan);">Sichern.</span></h2>
+                    <p class="section-subtitle" style="margin: 15px auto 50px auto; color: #aaa; font-size: 1.1rem; max-width: 600px;">Der schlimmste Feind des Heimwerkers: Versteckte Wasserleitungen, bröselige Altbauwände oder extrem harter Stahlbeton. Ich übernehme das für Sie.</p>
                 </div>
 
                 <div class="swipe-carousel" id="handymanCarousel">
-                    
+                   
                     <div class="scanner-box swipe-item" data-aos="fade-up" data-aos-delay="100">
                         <div class="scan-line-anim"></div>
                         <i class="fas fa-bolt" style="font-size: 2.5rem; color: var(--demo-cyan); margin-bottom: 20px;"></i>
@@ -218,7 +143,7 @@
                         <span style="display: inline-block; padding: 5px 12px; background: rgba(57, 255, 20, 0.1); border: 1px solid var(--demo-green); border-radius: 4px; color: var(--demo-green); font-family: var(--font-mono); font-size: 0.8rem;">SCHWERLAST GEPRÜFT</span>
                     </div>
                 </div>
-                
+               
                 <div class="carousel-indicators" id="handymanIndicators">
                     <div class="dot cyan-active active"></div>
                     <div class="dot cyan-active"></div>
@@ -227,16 +152,17 @@
             </div>
         </section>
 
+        <!-- ZIPLOC TIMELINE PROTOCOL -->
         <section id="ziploc" class="section-padding bg-darker">
             <div class="container relative-z">
                 <div class="section-header center" data-aos="fade-up">
-                    <div class="pre-title" style="color: var(--demo-green);">LOGISTIK & ORDNUNG</div>
-                    <h2 class="section-heading">Das <span style="color: var(--demo-green);">Ziploc-Protokoll.</span></h2>
-                    <p class="section-subtitle" style="margin: 0 auto 50px auto;">Möbel abbauen ist einfach. Sie so abzubauen, dass man sie stressfrei wieder aufbauen kann, ist eine Kunst.</p>
+                    <div class="pre-title" style="color: var(--demo-green); font-family: var(--font-mono); font-size: 0.85rem; letter-spacing: 2px; margin-bottom: 10px;">LOGISTIK & ORDNUNG</div>
+                    <h2 class="section-heading" style="font-family: var(--font-head); font-size: clamp(2.5rem, 5vw, 4rem); color: #fff;">Das <span style="color: var(--demo-green);">Ziploc-Protokoll.</span></h2>
+                    <p class="section-subtitle" style="margin: 15px auto 50px auto; color: #aaa; font-size: 1.1rem; max-width: 600px;">Möbel abbauen ist einfach. Sie so abzubauen, dass man sie stressfrei wieder aufbauen kann, ist eine Kunst.</p>
                 </div>
 
                 <div class="demo-timeline">
-                    
+                   
                     <div class="demo-step" data-aos="fade-up">
                         <div class="demo-step-marker">01</div>
                         <div class="demo-step-content">
@@ -273,36 +199,37 @@
             </div>
         </section>
 
-        <section class="section-padding bg-dark animated-grid-bg">
+        <!-- VALUE PROPOSITION -->
+        <section class="section-padding bg-dark">
             <div class="container">
                 <div class="split-layout">
                     <div class="text-col" data-aos="fade-right">
-                        <h2 class="section-heading">Warum sich der <span class="gold-text">Profi rechnet.</span></h2>
-                        <p class="desc-line" style="border-color: var(--demo-green); color: #ccc;">
+                        <h2 class="section-heading" style="font-family: var(--font-head); font-size: clamp(2rem, 4vw, 3rem); color: #fff; margin-bottom: 20px;">Warum sich der <span class="gold-text">Profi rechnet.</span></h2>
+                        <p style="color: #ccc; font-size: 1.1rem; line-height: 1.7; margin-bottom: 30px;">
                             Ein Heimwerker braucht für das Aufhängen von 5 Lampen und 3 Bildern oft das ganze Wochenende – inklusive Staub, Stress und schiefen Löchern. Ich erledige das in wenigen Stunden. Perfekt.
                         </p>
-                        
-                        <div style="margin-top: 30px;">
+                       
+                        <div>
                             <div style="display: flex; gap: 15px; margin-bottom: 25px; align-items: flex-start;">
                                 <i class="fas fa-file-invoice-dollar gold-text" style="font-size: 1.8rem; margin-top: 5px;"></i>
                                 <div>
                                     <h4 style="color: #fff; font-family: var(--font-head); font-size: 1.1rem; margin-bottom: 5px;">Steuerlich Absetzbar (Legal Hack)</h4>
-                                    <p style="color: #aaa; font-size: 0.95rem; line-height: 1.6;">Als eingetragener Handwerksbetrieb erhalten Sie eine ordentliche Rechnung. Sie können 20% meiner Arbeitskosten als "Haushaltsnahe Handwerkerleistung" von der Steuer absetzen. Das macht den Profi oft günstiger als Schwarzarbeit.</p>
+                                    <p style="color: #aaa; font-size: 0.95rem; line-height: 1.6; margin: 0;">Als eingetragener Handwerksbetrieb erhalten Sie eine ordentliche Rechnung. Sie können 20% meiner Arbeitskosten als "Haushaltsnahe Handwerkerleistung" von der Steuer absetzen. Das macht den Profi oft günstiger als Schwarzarbeit.</p>
                                 </div>
                             </div>
-                            
+                           
                             <div style="display: flex; gap: 15px; align-items: flex-start;">
                                 <i class="fas fa-shield-alt cyan-text" style="font-size: 1.8rem; margin-top: 5px;"></i>
                                 <div>
                                     <h4 style="color: #fff; font-family: var(--font-head); font-size: 1.1rem; margin-bottom: 5px;">Betriebshaftpflicht</h4>
-                                    <p style="color: #aaa; font-size: 0.95rem; line-height: 1.6;">Bohre ich beim Aufhängen des Spiegels aus Versehen in eine Wasserleitung, zahlt meine Versicherung den Millionenschaden. Bohrt Ihr Schwager in die Leitung, zahlen Sie. Gehen Sie auf Nummer sicher.</p>
+                                    <p style="color: #aaa; font-size: 0.95rem; line-height: 1.6; margin: 0;">Bohre ich beim Aufhängen des Spiegels aus Versehen in eine Wasserleitung, zahlt meine Versicherung den Millionenschaden. Bohrt Ihr Schwager in die Leitung, zahlen Sie. Gehen Sie auf Nummer sicher.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
+                   
                     <div class="image-col" data-aos="fade-left">
-                        <div class="glass-panel" style="padding: 40px; text-align: center; border-radius: 16px; border-top: 4px solid var(--demo-green);">
+                        <div class="glass-panel" style="padding: 40px; text-align: center; border-radius: 16px; border-top: 4px solid var(--demo-green); background: rgba(10, 10, 10, 0.85); box-shadow: inset 0 0 40px rgba(57, 255, 20, 0.05);">
                             <i class="fas fa-tools" style="font-size: 4rem; color: var(--demo-green); margin-bottom: 20px;"></i>
                             <h3 style="color: #fff; font-family: var(--font-head); font-size: 1.5rem; margin-bottom: 15px;">Mieten Sie mein Werkzeug.</h3>
                             <p style="color: #888; margin-bottom: 20px; line-height: 1.6;">Sie müssen sich für Ihren Umzug keinen teuren Bohrhammer, keinen Leitungssucher und keinen Linienlaser im Baumarkt mieten. Ich bringe für jede Aufgabe genau das High-End Werkzeug mit, das gebraucht wird.</p>
@@ -313,11 +240,12 @@
             </div>
         </section>
 
+        <!-- CTA SECTION -->
         <section class="section-padding" style="background: linear-gradient(135deg, #050505, #08110a); text-align: center; border-top: 2px dashed var(--demo-green);">
             <div class="container" data-aos="zoom-in">
                 <h2 style="font-family: var(--font-head); font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; color: #fff; margin-bottom: 15px; letter-spacing: -1px;">FEHLT IHNEN DAS WERKZEUG?</h2>
                 <p style="font-size: 1.15rem; color: #aaa; margin-bottom: 35px; max-width: 600px; margin-left: auto; margin-right: auto;">Kein Frust. Kein Staub. Perfekt gesichert. Buchen Sie jetzt Ihren Allround-Service in Augsburg, München oder dem Umland.</p>
-                <button onclick="MissionOS.open()" class="btn reactive-btn" style="background: var(--demo-green); color: #000; font-size: 1.1rem; font-weight: bold; padding: 20px 50px; box-shadow: 0 0 30px rgba(57,255,20,0.3); border: none; font-family: var(--font-head); text-transform: uppercase; letter-spacing: 1px;">
+                <button type="button" class="btn-demo js-open-os">
                     <i class="fas fa-calendar-alt"></i> SERVICE ANFRAGEN
                 </button>
             </div>
@@ -325,8 +253,8 @@
 
     </main>
 
+    <!-- INJECTION POINTS -->
     <div id="global-footer"></div>
-
     <div id="global-os"></div>
 
     <a href="https://wa.me/491608194018" target="_blank" class="whatsapp-float reactive-btn">
@@ -334,16 +262,17 @@
         <i class="fab fa-whatsapp"></i>
     </a>
 
+    <!-- SCRIPTS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="assets/js/main.js"></script>
-    
+   
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             // Swipe Carousel Logic für "Bohren & Wandmontage" (Mobile)
             const setupCarousel = (carouselId, indicatorsId) => {
                 const carousel = document.getElementById(carouselId);
                 const indicators = document.getElementById(indicatorsId);
-                
+               
                 if (!carousel || !indicators) return;
 
                 const items = carousel.querySelectorAll('.swipe-item');

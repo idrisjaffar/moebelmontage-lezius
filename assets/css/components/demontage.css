@@ -1,0 +1,134 @@
+/* ==========================================================================
+   DEMONTAGE & SERVICE PAGE STYLES (v2026)
+   TECH-GREEN REPAIR & RELOCATION AESTHETIC
+   ========================================================================== */
+
+:root {
+    --demo-green: #39ff14;
+    --demo-dark: #070a08;
+    --demo-cyan: #00e5ff;
+}
+
+/* --- 1. GLOBAL UTILITIES & FAILSAFES --- */
+body { opacity: 1 !important; visibility: visible !important; background-color: #030405; }
+.no-js-override [data-aos] { opacity: 1 !important; transform: none !important; visibility: visible !important; }
+
+.section-padding { padding: 120px 0; }
+.bg-darker { background-color: #030405; }
+.bg-dark { background-color: #050505; }
+.relative-z { position: relative; z-index: 5; }
+.center { text-align: center; }
+.white { color: #fff !important; }
+
+/* --- 2. HERO SECTION --- */
+.demo-hero {
+    border-bottom: 1px solid rgba(57, 255, 20, 0.3);
+    position: relative;
+    height: 90vh;
+    min-height: 800px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--demo-dark);
+    overflow: hidden;
+}
+
+.hero-grid-overlay {
+    position: absolute; inset: 0; z-index: 0;
+    background-image: linear-gradient(rgba(57, 255, 20, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(57, 255, 20, 0.05) 1px, transparent 1px);
+    background-size: 60px 60px; 
+}
+.hero-vignette { position: absolute; inset: 0; background: radial-gradient(circle at center, transparent 0%, #000 90%); z-index: 1; }
+
+.glitch-header { font-size: clamp(3rem, 6vw, 5.5rem); margin-bottom: 20px; line-height: 1.1; font-family: var(--font-head); font-weight: 800; color: #fff; }
+.hero-deep-copy { margin: 0 auto 40px auto; text-align: center; max-width: 850px; color: #ccc; font-size: 1.1rem; line-height: 1.8; }
+
+.section-tag {
+    border: 1px solid var(--demo-green); color: var(--demo-green);
+    background: rgba(57, 255, 20, 0.05); padding: 6px 15px;
+    font-family: var(--font-mono); font-size: 0.8rem; font-weight: 800;
+    letter-spacing: 2px; border-radius: 4px; display: inline-block;
+}
+
+/* Floating Badge */
+.floating-badge { animation: floatBadge 4s ease-in-out infinite; }
+@keyframes floatBadge { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+/* Buttons */
+.btn-demo {
+    background: var(--demo-green); color: #000; box-shadow: 0 0 20px rgba(57, 255, 20, 0.3);
+    padding: 20px 40px; border-radius: 8px; border: none; font-family: var(--font-head);
+    font-size: 1.1rem; font-weight: 800; cursor: pointer; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px;
+}
+.btn-demo:hover { background: #fff; color: #000; box-shadow: 0 0 40px rgba(57, 255, 20, 0.5); transform: translateY(-3px); }
+.btn-ghost-cyan { border: 1px solid var(--demo-cyan); color: var(--demo-cyan); background: transparent; padding: 20px 40px; font-family: var(--font-mono); font-weight: 700; text-decoration: none; transition: 0.3s; border-radius: 8px; }
+.btn-ghost-cyan:hover { background: var(--demo-cyan); color: #000; }
+
+/* --- 3. MARQUEE STRIP --- */
+.demo-marquee-wrapper {
+    background: #030405; padding: 20px 0; overflow: hidden; white-space: nowrap;
+    position: relative; border-top: 1px solid rgba(57, 255, 20, 0.2);
+    border-bottom: 1px solid rgba(57, 255, 20, 0.2); box-shadow: inset 0 0 50px rgba(0,0,0,0.9);
+}
+.demo-marquee-track {
+    display: inline-block; color: var(--demo-green); text-shadow: 0 0 10px rgba(57,255,20,0.4);
+    font-family: var(--font-mono); font-size: 1.2rem; font-weight: 700; letter-spacing: 2px;
+    animation: marqueeScroll 25s linear infinite;
+}
+.demo-marquee-track span { margin-right: 40px; }
+
+/* --- 4. LAYOUTS & CONTAINERS --- */
+.split-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+@media (max-width: 992px) { .split-layout { grid-template-columns: 1fr; } }
+
+.alert-box {
+    margin-top: 20px; border-color: var(--neon-gold); background: rgba(255,215,0,0.05); 
+    padding: 15px; border-radius: 8px; border-left: 3px solid var(--neon-gold);
+}
+
+/* --- 5. WALL SCANNER CAROUSEL --- */
+.scanner-box {
+    position: relative; background: rgba(10, 10, 10, 0.85); border: 1px solid rgba(0, 229, 255, 0.2);
+    border-radius: 16px; overflow: hidden; box-shadow: inset 0 0 40px rgba(0, 229, 255, 0.05);
+    padding: 40px; z-index: 1; transition: transform 0.3s;
+}
+.scanner-box:hover { transform: translateY(-5px); }
+
+.scan-line-anim {
+    position: absolute; top: 0; left: 0; width: 100%; height: 3px;
+    background: var(--demo-cyan); box-shadow: 0 0 20px 5px rgba(0, 229, 255, 0.5);
+    animation: scanWall 3s linear infinite; z-index: -1; opacity: 0.7;
+}
+@keyframes scanWall {
+    0% { top: 0; opacity: 0; }
+    10% { opacity: 0.8; }
+    50% { top: 100%; opacity: 0.8; }
+    90% { opacity: 0.8; }
+    100% { top: 0; opacity: 0; }
+}
+
+.swipe-carousel { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; -ms-overflow-style: none; gap: 20px; padding-bottom: 20px; }
+.swipe-carousel::-webkit-scrollbar { display: none; }
+.swipe-item { scroll-snap-align: center; flex: 0 0 85%; min-width: 280px; }
+@media (min-width: 768px) {
+    .swipe-carousel { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); overflow-x: visible; gap: 30px; }
+    .swipe-item { flex: unset; min-width: unset; }
+    .carousel-indicators { display: none !important; }
+}
+.carousel-indicators { display: flex; justify-content: center; gap: 8px; margin-top: 10px; }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.2); transition: all 0.3s ease; }
+.dot.cyan-active.active { background: var(--demo-cyan); transform: scale(1.3); box-shadow: 0 0 10px rgba(0, 229, 255, 0.5); }
+
+/* --- 6. ZIPLOC PROTOCOL TIMELINE --- */
+.demo-timeline { display: flex; flex-direction: column; gap: 30px; max-width: 800px; margin: 0 auto; position: relative; }
+.demo-timeline::before { content: ''; position: absolute; left: 24px; top: 0; bottom: 0; width: 2px; background: rgba(57, 255, 20, 0.2); }
+
+.demo-step { display: flex; gap: 30px; position: relative; z-index: 2; align-items: flex-start; }
+.demo-step-marker {
+    width: 50px; height: 50px; border-radius: 50%; background: #050505; border: 2px solid var(--demo-green);
+    display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-weight: 700;
+    color: var(--demo-green); flex-shrink: 0; box-shadow: 0 0 15px rgba(57, 255, 20, 0.2);
+}
+.demo-step-content { background: rgba(10, 10, 10, 0.85); padding: 30px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); width: 100%; }
+.demo-step-content h3 { font-family: var(--font-head); font-size: 1.5rem; margin-bottom: 10px; }
+.demo-step-content p { color: #aaa; line-height: 1.7; margin: 0; }

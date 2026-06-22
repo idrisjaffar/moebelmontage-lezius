@@ -1,9 +1,9 @@
 /* ==========================================================================
-   PRICING MATRIX & CALIBRATION ENGINE (v2026.4)
+   PRICING MATRIX & CALIBRATION ENGINE (v2026.5)
    HIGH-END INTERIOR TECH AESTHETIC
    ========================================================================== */
 
-/* --- 0. ROOT VARIABLES & UTILITIES --- */
+/* --- 0. ROOT VARIABLES & SAFEGUARDS --- */
 :root {
     --neon-gold: #FFD700;
     --neon-cyan: #00E5FF;
@@ -16,15 +16,32 @@
     --spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
+/* Visibility Safeguard (Verhindert, dass style.css diese Sektionen versteckt) */
+.pricing-theme main, 
+.pricing-matrix-section, 
+.logistics-section, 
+.fiscal-section {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
 .text-gold { color: var(--neon-gold) !important; }
 .text-cyan { color: var(--neon-cyan) !important; }
 .text-pink { color: var(--neon-pink) !important; }
 .text-green { color: var(--neon-green) !important; }
+.text-white { color: #ffffff !important; }
 
 .pricing-theme {
     background-color: var(--bg-dark);
     color: #fff;
     overflow-x: hidden;
+}
+
+/* --- Z-INDEX UTILITY --- */
+.relative-z {
+    position: relative;
+    z-index: 5;
 }
 
 /* Glass Panel Base */
@@ -38,6 +55,7 @@
     overflow: hidden;
     box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(255, 255, 255, 0.02);
     transition: transform 0.4s var(--spring), border-color 0.4s ease;
+    will-change: transform;
 }
 .glass-panel:hover {
     transform: translateY(-5px);
@@ -55,7 +73,7 @@
     background-size: 100% 4px;
 }
 
-/* --- 1. HERO & HUD --- */
+/* --- 1. HERO & CALIBRATION HUD --- */
 .price-hero {
     position: relative; min-height: 90vh; display: flex; align-items: center; 
     padding: 180px 0 100px 0; border-bottom: 1px solid var(--border-dim);
@@ -64,7 +82,7 @@
     position: absolute; inset: 0; z-index: 0;
     background: radial-gradient(circle at 50% 30%, rgba(255, 215, 0, 0.05) 0%, transparent 60%), var(--bg-dark);
 }
-.hero-content { max-width: 900px; margin: 0 auto; text-align: center; }
+.hero-content { max-width: 900px; margin: 0 auto; text-align: center; width: 100%; padding: 0 20px; }
 
 .hero-glitch-tag {
     display: inline-block; font-family: var(--font-mono); font-size: 0.8rem;
@@ -81,17 +99,42 @@
     margin-bottom: 50px; max-width: 700px; margin-left: auto; margin-right: auto;
 }
 
-.calibration-hud {
-    display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px;
-    background: rgba(5, 7, 10, 0.8); border: 1px solid var(--border-dim);
-    padding: 25px; border-radius: 12px; backdrop-filter: var(--glass-blur);
+/* Hero Dashboard Grid (Replaces old calibration-hud) */
+.hero-content .fiscal-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-top: 50px;
+    padding: 25px;
+    background: rgba(5, 7, 10, 0.8);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--border-dim);
+    border-radius: 12px;
     text-align: left;
 }
-@media (min-width: 768px) { .calibration-hud { grid-template-columns: repeat(4, 1fr); } }
-.hud-stat { display: flex; flex-direction: column; gap: 5px; padding: 10px; border-left: 2px solid #333; }
-.hud-stat.highlight-cyan { border-left-color: var(--neon-cyan); background: rgba(0, 229, 255, 0.03); }
-.hud-label { font-family: var(--font-mono); font-size: 0.65rem; color: #666; letter-spacing: 1px; }
-.hud-value { font-family: var(--font-head); font-size: 1.1rem; color: #fff; font-weight: 700; }
+.hero-content .fiscal-stat {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    border-left: 2px solid #333;
+    transition: 0.3s;
+}
+.hero-content .fiscal-stat:hover {
+    border-left-color: var(--neon-gold);
+    background: rgba(255, 215, 0, 0.03);
+}
+.hero-content .fiscal-stat:nth-child(2) { 
+    border-left-color: var(--neon-cyan); 
+    background: rgba(0, 229, 255, 0.03); 
+}
+.stat-label { 
+    font-family: var(--font-mono); font-size: 0.65rem; color: #888; 
+    text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px;
+}
+.stat-value { 
+    font-family: var(--font-head); font-size: 1.2rem; color: #fff; font-weight: 700;
+}
 
 /* --- 2. PRICING MATRIX --- */
 .pricing-matrix-section { padding: 120px 0; }
@@ -112,7 +155,7 @@
     font-size: 0.7rem; font-weight: 800; padding: 5px 15px; border-radius: 20px; letter-spacing: 1px;
 }
 .module-tag { font-family: var(--font-mono); font-size: 0.75rem; color: #888; display: block; margin-bottom: 10px; }
-.module-header h3 { font-family: var(--font-head); font-size: 2rem; }
+.module-header h3 { font-family: var(--font-head); font-size: 2rem; margin: 0; }
 
 .price-display { margin: 30px 0; display: flex; align-items: baseline; gap: 5px; }
 .currency { font-size: 1.5rem; font-weight: 600; color: #666; }
@@ -216,8 +259,16 @@
 
 /* --- 3. FISCAL PROTOCOL & TAX ADVANTAGE --- */
 .fiscal-section { padding: 100px 0; background: #030406; border-top: 1px dashed rgba(255,255,255,0.05); }
-.fiscal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-@media (max-width: 992px) { .fiscal-grid { grid-template-columns: 1fr; } }
+
+/* Tax Grid (Separated from Hero Dashboard) */
+.fiscal-section .fiscal-grid { 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 60px; 
+    align-items: center; 
+}
+@media (max-width: 992px) { .fiscal-section .fiscal-grid { grid-template-columns: 1fr; } }
+
 .law-badge { display: inline-flex; align-items: center; gap: 10px; background: rgba(255,215,0,0.05); padding: 8px 15px; border-radius: 6px; border: 1px solid rgba(255,215,0,0.2); font-family: var(--font-mono); font-size: 0.7rem; color: #fff; margin-bottom: 25px; }
 .fiscal-text-block { background: rgba(255,255,255,0.02); padding: 25px; border-left: 3px solid var(--neon-cyan); border-radius: 0 12px 12px 0; color: #bbb; line-height: 1.7; font-size: 1rem; }
 
@@ -364,8 +415,6 @@
 .btn-sticky-action { padding: 12px 25px; font-size: 0.9rem; }
 
 /* --- 14. MISSION OS MODAL (Overrides for Pricing context) --- */
-/* The base structural CSS for MissionOS is handled in mission-os.css, 
-   but specific pricing module form logic (cyber inputs) is styled here */
 .cyber-input { width: 100%; background: rgba(0,0,0,0.5); border: 1px solid var(--border-dim); color: #fff; padding: 15px; border-radius: 8px; font-family: var(--font-body); transition: 0.3s; margin-bottom: 15px; }
 .cyber-input:focus { border-color: var(--neon-cyan); outline: none; box-shadow: 0 0 15px rgba(0,229,255,0.1); }
 .input-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }

@@ -8,7 +8,6 @@
     <meta name="description" content="Transparente Festpreise und System-Tarife für Premium-Möbelmontage, IKEA PAX und USM Haller in Augsburg & München.">
     <meta name="theme-color" content="#020203">
 
-    <!-- SEO & Social Meta -->
     <meta property="og:title" content="Raphael Lezius | Kalibrierung & Preise">
     <meta property="og:description" content="Transparente Kostenstruktur für millimetergenaue Montage in Augsburg & München.">
     <meta property="og:type" content="website">
@@ -16,37 +15,27 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
-    <!-- Optimized Font Loading -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&family=Space+Grotesk:wght@300;500;700;800&family=JetBrains+Mono:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&family=Montserrat:wght@700;900&family=JetBrains+Mono:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
-    <!-- CSS ARCHITECTURE: Global Foundation + Components -->
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/components/nav.css">
     <link rel="stylesheet" href="assets/css/components/footer.css">
     <link rel="stylesheet" href="assets/css/components/mission-os.css">
-    
-    <!-- Page Specific Style -->
     <link rel="stylesheet" href="assets/css/components/pricing-matrix.css">
 </head>
 
-<body class="is-dark pricing-theme">
+<body class="is-dark pricing-theme no-js-override">
 
-    <!-- ======================================================================
-         PHASE 11: GLOBAL ATMOSPHERE OVERLAYS
-         ====================================================================== -->
     <div class="noise-overlay"></div>
     <div class="crt-overlay"></div>
 
-    <!-- NAV INJECTOR ANCHOR -->
     <div id="global-nav"></div>      
 
-    <main>
-        <!-- ======================================================================
-             PHASE 1: HERO & CALIBRATION HUD
-             ====================================================================== -->
+    <main class="pricing-core-wrapper">
+        
         <section class="price-hero">
             <div class="industrial-bg"></div>
             
@@ -64,45 +53,38 @@
                     Absolute Transparenz durch systembasierte Kalkulation. Keine versteckten Gebühren, keine unerwarteten Stundenabrechnungen. Wir kalibrieren den Preis exakt nach Ihrem Projektumfang.
                 </p>
 
-                <!-- THE HUD (Heads Up Display) -->
-                <div class="calibration-hud" data-aos="fade-up" data-aos-delay="200">
-                    <div class="hud-stat">
-                        <span class="hud-label">CALCULATION_MODE</span>
-                        <span class="hud-value">HYBRID_MATRIX</span>
+                <div class="fiscal-grid" data-aos="fade-up" data-aos-delay="200">
+                    <div class="fiscal-stat">
+                        <span class="stat-label">CALCULATION_MODE</span>
+                        <span class="stat-value">HYBRID_MATRIX</span>
                     </div>
-                    <div class="hud-stat highlight-cyan">
-                        <span class="hud-label">TAX_ADVANTAGE</span>
-                        <span class="hud-value text-cyan">-20% EStG §35a</span>
+                    <div class="fiscal-stat">
+                        <span class="stat-label">TAX_ADVANTAGE</span>
+                        <span class="stat-value text-cyan">-20% EStG §35a</span>
                     </div>
-                    <div class="hud-stat">
-                        <span class="hud-label">SERVICE_REGION</span>
-                        <span class="hud-value">BAYERN_SOUTH</span>
+                    <div class="fiscal-stat">
+                        <span class="stat-label">SERVICE_REGION</span>
+                        <span class="stat-value">BAYERN_SOUTH</span>
                     </div>
-                    <div class="hud-stat">
-                        <span class="hud-label">ESTIMATION_ACCURACY</span>
-                        <span class="hud-value">99.9%</span>
+                    <div class="fiscal-stat">
+                        <span class="stat-label">ESTIMATION_ACCURACY</span>
+                        <span class="stat-value text-gold">99.9%</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ======================================================================
-             PHASE 2: THE MOBILE-SWIPE PRICING MATRIX
-             ====================================================================== -->
         <section class="pricing-matrix-section" id="pricing-matrix">
             <div class="container relative-z">
                 
-                <!-- Section Header -->
                 <div class="section-header-center" data-aos="fade-up">
                     <span class="hero-glitch-tag">// CONFIGURATION_LEVELS</span>
                     <h2 class="section-title-large">System-Tarife.</h2>
                     <p class="section-subtitle-mono">WÄHLEN SIE IHR MODELL FÜR MAXIMALE EFFIZIENZ</p>
                 </div>
 
-                <!-- The Swipeable/Grid Wrapper -->
                 <div class="pricing-swipe-track">
                     
-                    <!-- MODULE 01: FLEX (Hourly) -->
                     <div class="price-module glass-panel" data-aos="fade-up" data-aos-delay="100">
                         <div class="hover-glow"></div>
                         <div class="module-header">
@@ -127,7 +109,6 @@
                         <button type="button" class="btn-price-action js-open-os">FLEX_INIT</button>
                     </div>
 
-                    <!-- MODULE 02: FIXED (Recommended) -->
                     <div class="price-module module-active glass-panel" data-aos="fade-up" data-aos-delay="200">
                         <div class="hover-glow"></div>
                         <div class="recommended-badge">RECOMMENDED</div>
@@ -154,7 +135,6 @@
                         <button type="button" class="btn-price-action active-btn js-open-os">START_CALC</button>
                     </div>
 
-                    <!-- MODULE 03: PROJECT (B2B) -->
                     <div class="price-module glass-panel" data-aos="fade-up" data-aos-delay="300">
                         <div class="hover-glow"></div>
                         <div class="module-header">
@@ -181,21 +161,16 @@
 
                 </div>
 
-                <!-- Legal Disclaimer -->
                 <div class="price-disclaimer" data-aos="fade-in">
                     <p>* PREISE WERDEN INDIVIDUELL NACH KONFIGURATION UND STANDORT ERMITTELT. ALLE ANGEBOTE SIND UNVERBINDLICH BIS ZUR FINALEN SYSTEMBESTÄTIGUNG DURCH DIE ZENTRALE.</p>
                 </div>
             </div>
         </section>
 
-        <!-- ======================================================================
-             PHASE 17: LOGISTICS ENGINE & RADAR MAP
-             ====================================================================== -->
         <section class="logistics-section" id="logistics-engine">
             <div class="container relative-z">
                 <div class="logistics-grid">
                     
-                    <!-- Left: Zone Stack -->
                     <div class="logistics-text" data-aos="fade-right">
                         <span class="hero-glitch-tag">// LOGISTICS_ENGINE</span>
                         <h2 class="section-title-large" style="text-align: left;">
@@ -207,7 +182,6 @@
                         </p>
 
                         <div class="zone-stack">
-                            <!-- Zone 1 -->
                             <div class="zone-item glass-panel border-left-gold" data-aos="fade-up" data-aos-delay="100">
                                 <div class="zone-info">
                                     <span class="zone-id text-gold">ZONE_01</span>
@@ -217,7 +191,6 @@
                                 <div class="zone-price">25 €</div>
                             </div>
 
-                            <!-- Zone 2 -->
                             <div class="zone-item glass-panel border-left-cyan" data-aos="fade-up" data-aos-delay="200">
                                 <div class="zone-info">
                                     <span class="zone-id text-cyan">ZONE_02</span>
@@ -227,7 +200,6 @@
                                 <div class="zone-price">45 €</div>
                             </div>
 
-                            <!-- Zone 3 -->
                             <div class="zone-item glass-panel border-left-pink" data-aos="fade-up" data-aos-delay="300">
                                 <div class="zone-info">
                                     <span class="zone-id text-pink">ZONE_03</span>
@@ -239,27 +211,21 @@
                         </div>
                     </div>
 
-                    <!-- Right: The Radar Map Visualizer -->
                     <div class="map-visualizer-container" data-aos="fade-left" data-aos-delay="200">
                         <div class="map-visualizer glass-panel">
-                            <!-- Grid Background -->
                             <div class="map-grid-overlay"></div>
                             
-                            <!-- 2026 Conic Radar Sweep -->
                             <div class="radar-sweep"></div>
                             
-                            <!-- Concentric Range Rings -->
                             <div class="radar-ring ring-1"></div>
                             <div class="radar-ring ring-2"></div>
                             <div class="radar-ring ring-3"></div>
                             
-                            <!-- Central HQ Ping -->
                             <div class="hq-ping">
                                 <div class="ping-core"></div>
                                 <div class="ping-wave"></div>
                             </div>
                             
-                            <!-- Tactical Readout HUD -->
                             <div class="tactical-readout">
                                 LAT: 48.3717° N<br>
                                 LON: 10.8983° E<br>
@@ -272,13 +238,9 @@
             </div>
         </section>
 
-        <!-- ======================================================================
-             PHASE 18: EXECUTION PIPELINE (WORKFLOW TRACK)
-             ====================================================================== -->
         <section class="pipeline-section" id="execution-pipeline">
             <div class="container relative-z">
                 
-                <!-- Section Header -->
                 <div class="section-header-center" data-aos="fade-up">
                     <span class="hero-glitch-tag">// EXECUTION_PIPELINE</span>
                     <h2 class="section-title-large">Operationeller<br><span class="text-cyan">Ablauf.</span></h2>
@@ -287,15 +249,12 @@
                     </p>
                 </div>
 
-                <!-- The Vertical Pipeline -->
                 <div class="pipeline-wrapper">
                     
-                    <!-- The Glowing Center Laser -->
                     <div class="laser-track">
                         <div class="laser-beam"></div>
                     </div>
 
-                    <!-- STEP 01 -->
                     <div class="pipeline-step step-left" data-aos="fade-up">
                         <div class="step-node">01</div>
                         <div class="step-card glass-panel">
@@ -307,7 +266,6 @@
                         </div>
                     </div>
 
-                    <!-- STEP 02 -->
                     <div class="pipeline-step step-right" data-aos="fade-up">
                         <div class="step-node">02</div>
                         <div class="step-card glass-panel">
@@ -319,7 +277,6 @@
                         </div>
                     </div>
 
-                    <!-- STEP 03 -->
                     <div class="pipeline-step step-left" data-aos="fade-up">
                         <div class="step-node">03</div>
                         <div class="step-card glass-panel">
@@ -331,7 +288,6 @@
                         </div>
                     </div>
 
-                    <!-- STEP 04 -->
                     <div class="pipeline-step step-right" data-aos="fade-up">
                         <div class="step-node">04</div>
                         <div class="step-card glass-panel">
@@ -347,14 +303,10 @@
             </div>
         </section>
 
-        <!-- ======================================================================
-             PHASE 3: FISCAL PROTOCOL & TAX ADVANTAGE
-             ====================================================================== -->
         <section class="fiscal-section" id="fiscal-protocol">
             <div class="container relative-z">
                 <div class="fiscal-grid">
                     
-                    <!-- Left: The Explanation -->
                     <div class="fiscal-info" data-aos="fade-right">
                         <div class="law-badge">
                             <i class="fas fa-gavel text-gold"></i>
@@ -375,16 +327,13 @@
                         </div>
                     </div>
 
-                    <!-- Right: The Visual Receipt / Engine -->
                     <div class="fiscal-visual" data-aos="fade-left" data-aos-delay="200">
                         <div class="fiscal-card glass-panel">
                             
-                            <!-- Engine Label -->
                             <div class="engine-label">
                                 CALCULATION_ENGINE_v4.0
                             </div>
 
-                            <!-- Receipt Rows -->
                             <div class="fiscal-row">
                                 <span class="row-label">Brutto Montage-Invest</span>
                                 <span class="row-value">500<span class="price-decimal">,00</span> €</span>
@@ -395,13 +344,11 @@
                                 <span class="row-value">79<span class="price-decimal">,83</span> €</span>
                             </div>
                             
-                            <!-- The Deduction Row -->
                             <div class="fiscal-row highlight-row">
                                 <span>Finanzamt-Erstattung (20%)</span>
                                 <span class="row-value">- 100<span class="price-decimal">,00</span> €</span>
                             </div>
 
-                            <!-- The Final Savings Box -->
                             <div class="savings-highlight">
                                 <span class="savings-amount">400<span class="price-decimal">,00</span> €</span>
                                 <span class="savings-label">Effektive Netto-Belastung</span>
@@ -419,13 +366,9 @@
             </div>
         </section>
 
-        <!-- ======================================================================
-             PHASE 4: MODULAR QUOTE SECTION (UNIT LOGIC)
-             ====================================================================== -->
         <section class="modular-quote-section" id="quote-metrics">
             <div class="container relative-z">
                 
-                <!-- Section Header -->
                 <div class="section-header-left" data-aos="fade-up">
                     <span class="hero-glitch-tag">// CALCULATION_UNITS</span>
                     <h2 class="section-title-large">Modulare<br><span class="text-gold">Metriken.</span></h2>
@@ -434,10 +377,8 @@
                     </p>
                 </div>
 
-                <!-- The Metrics Grid -->
                 <div class="metrics-grid">
                     
-                    <!-- Metric 1: PAX / Storage -->
                     <div class="metric-card glass-panel" data-aos="fade-up" data-aos-delay="100">
                         <div class="hover-glow"></div>
                         <div class="metric-card-header">
@@ -459,7 +400,6 @@
                         </div>
                     </div>
 
-                    <!-- Metric 2: Kitchens -->
                     <div class="metric-card glass-panel" data-aos="fade-up" data-aos-delay="200">
                         <div class="hover-glow"></div>
                         <div class="metric-card-header">
@@ -481,7 +421,6 @@
                         </div>
                     </div>
 
-                    <!-- Metric 3: Outdoor -->
                     <div class="metric-card glass-panel" data-aos="fade-up" data-aos-delay="300">
                         <div class="hover-glow"></div>
                         <div class="metric-card-header">
@@ -503,7 +442,6 @@
                         </div>
                     </div>
 
-                    <!-- Metric 4: B2B / Office -->
                     <div class="metric-card glass-panel" data-aos="fade-up" data-aos-delay="400">
                         <div class="hover-glow"></div>
                         <div class="metric-card-header">
@@ -529,13 +467,9 @@
             </div>
         </section>
 
-        <!-- ======================================================================
-             PHASE 5: MICRO-SERVICES (ADD-ON MODULES)
-             ====================================================================== -->
         <section class="addon-section" id="micro-services">
             <div class="container relative-z">
                 
-                <!-- Section Header -->
                 <div class="section-header-center" data-aos="fade-up">
                     <span class="hero-glitch-tag">// OPTIONAL_COMPONENTS</span>
                     <h2 class="section-title-large">Micro-Services.</h2>
@@ -544,10 +478,8 @@
                     </p>
                 </div>
 
-                <!-- Add-on Grid -->
                 <div class="addon-grid">
                     
-                    <!-- Service 1: Core Drilling -->
                     <div class="addon-card glass-panel" data-aos="fade-up" data-aos-delay="100">
                         <div class="hover-glow"></div>
                         <span class="addon-id">CORE_DRILLING</span>
@@ -567,7 +499,6 @@
                         </div>
                     </div>
 
-                    <!-- Service 2: Light Module -->
                     <div class="addon-card glass-panel" data-aos="fade-up" data-aos-delay="200">
                         <div class="hover-glow"></div>
                         <span class="addon-id">PHOTONIC_INTEGRATION</span>
@@ -587,7 +518,6 @@
                         </div>
                     </div>
 
-                    <!-- Service 3: Heavy Load -->
                     <div class="addon-card glass-panel" data-aos="fade-up" data-aos-delay="300">
                         <div class="hover-glow"></div>
                         <span class="addon-id">HEAVY_LOAD_SECURE</span>
@@ -607,7 +537,6 @@
                         </div>
                     </div>
 
-                    <!-- Service 4: Cable Management -->
                     <div class="addon-card glass-panel" data-aos="fade-up" data-aos-delay="400">
                         <div class="hover-glow"></div>
                         <span class="addon-id">ZERO_CABLE_LOGIC</span>
@@ -631,13 +560,9 @@
             </div>
         </section>
 
-        <!-- ======================================================================
-             PHASE 6: SECURITY AUDIT (RISK MITIGATION)
-             ====================================================================== -->
         <section class="security-audit-section" id="security-audit">
             <div class="container relative-z">
                 
-                <!-- Section Header (Asymmetric Layout) -->
                 <div class="security-header-box" data-aos="fade-up">
                     <div class="sh-left">
                         <span class="hero-glitch-tag">// RISK_MITIGATION</span>
@@ -651,10 +576,8 @@
                     </div>
                 </div>
 
-                <!-- The Security Grid -->
                 <div class="security-grid">
                     
-                    <!-- Pillar 1: Liability -->
                     <div class="security-spec-card glass-panel" data-aos="fade-up" data-aos-delay="100">
                         <div class="hover-glow"></div>
                         <i class="fas fa-shield-alt bg-icon bg-icon-gold"></i>
@@ -671,7 +594,6 @@
                         </div>
                     </div>
 
-                    <!-- Pillar 2: Pipe Protection -->
                     <div class="security-spec-card glass-panel border-top-cyan" data-aos="fade-up" data-aos-delay="200">
                         <div class="hover-glow"></div>
                         <i class="fas fa-microscope bg-icon bg-icon-cyan"></i>
@@ -688,7 +610,6 @@
                         </div>
                     </div>
 
-                    <!-- Pillar 3: Surface Protection -->
                     <div class="security-spec-card glass-panel" data-aos="fade-up" data-aos-delay="300">
                         <div class="hover-glow"></div>
                         <i class="fas fa-hard-hat bg-icon bg-icon-gold"></i>
@@ -707,7 +628,6 @@
 
                 </div>
 
-                <!-- Premium Notice -->
                 <div class="premium-notice glass-panel" data-aos="fade-in">
                     <i class="fas fa-info-circle text-cyan"></i>
                     <p>
@@ -718,13 +638,9 @@
             </div>
         </section>
 
-        <!-- ======================================================================
-             PHASE 7: EQUIPMENT INVENTORY (HARDWARE SPECS)
-             ====================================================================== -->
         <section class="equipment-section" id="hardware-inventory">
             <div class="container relative-z">
                 
-                <!-- Section Header -->
                 <div class="section-header-center" data-aos="fade-up">
                     <span class="hero-glitch-tag">// HARDWARE_INVENTORY</span>
                     <h2 class="section-title-large">Das Werkzeug<br><span class="text-cyan">der Profis.</span></h2>
@@ -733,10 +649,8 @@
                     </p>
                 </div>
 
-                <!-- Equipment Grid -->
                 <div class="equipment-grid">
                     
-                    <!-- Tool 1: Bosch Laser -->
                     <div class="tool-spec-card glass-panel" data-aos="fade-up" data-aos-delay="100">
                         <div class="tool-header">
                             <span class="tool-brand">BOSCH_PROFESSIONAL</span>
@@ -765,7 +679,6 @@
                         </p>
                     </div>
 
-                    <!-- Tool 2: Festool HEPA -->
                     <div class="tool-spec-card glass-panel border-top-gold" data-aos="fade-up" data-aos-delay="200">
                         <div class="tool-header">
                             <span class="tool-brand border-gold">FESTOOL_CLEANTEC</span>
@@ -794,7 +707,6 @@
                         </p>
                     </div>
 
-                    <!-- Tool 3: Hilti Scanner -->
                     <div class="tool-spec-card glass-panel" data-aos="fade-up" data-aos-delay="300">
                         <div class="tool-header">
                             <span class="tool-brand">HILTI_SCAN_TECH</span>
@@ -827,14 +739,10 @@
             </div>
         </section>
         
-        <!-- ======================================================================
-             PHASE 8: ECOLOGICAL INTEGRITY (ZERO WASTE)
-             ====================================================================== -->
         <section class="eco-section" id="eco-matrix">
             <div class="container relative-z">
                 <div class="eco-grid">
                     
-                    <!-- Left Side: Eco Philosophy -->
                     <div class="eco-text" data-aos="fade-right">
                         <span class="hero-glitch-tag text-green">// ECOLOGICAL_INTEGRITY</span>
                         <h2 class="section-title-large" style="text-align: left;">
@@ -860,12 +768,10 @@
                         </div>
                     </div>
 
-                    <!-- Right Side: Data Visualization -->
                     <div class="eco-visual" data-aos="fade-left" data-aos-delay="200">
                         <div class="disposal-matrix glass-panel">
                             <span class="matrix-label text-green">WASTE_SEGREGATION_RATIO</span>
                             
-                            <!-- Progress Bar 1 -->
                             <div class="data-bar-group">
                                 <div class="data-bar-header">
                                     <span>Kartonage / Papier</span>
@@ -876,7 +782,6 @@
                                 </div>
                             </div>
 
-                            <!-- Progress Bar 2 -->
                             <div class="data-bar-group">
                                 <div class="data-bar-header">
                                     <span>LDPE Folien / Kunststoffe</span>
@@ -887,7 +792,6 @@
                                 </div>
                             </div>
 
-                            <!-- Progress Bar 3 -->
                             <div class="data-bar-group" style="margin-bottom: 0;">
                                 <div class="data-bar-header">
                                     <span>Metall / Hardware Reste</span>
@@ -898,7 +802,6 @@
                                 </div>
                             </div>
 
-                            <!-- Guarantee Box -->
                             <div class="eco-guarantee">
                                 <p>
                                     <strong>Besenrein-Garantie:</strong> Wir hinterlassen Ihren Raum im absolut bezugsfertigen Zustand. Durch unsere HEPA-Sauger und strukturierte Müllbündelung entfällt für Sie jeglicher Reinigungsaufwand.
@@ -911,45 +814,36 @@
             </div>
         </section>        
 
-        <!-- ======================================================================
-             PHASE 9: THE FINAL PROTOCOL (HANDOVER & INVOICING)
-             ====================================================================== -->
         <section class="handover-section" id="final-protocol">
             <div class="container relative-z">
                 <div class="handover-grid">
                     
-                    <!-- Left Side: The Digital Protocol Mockup -->
                     <div class="handover-visual" data-aos="fade-right">
                         <div class="handover-visual-wrap glass-panel">
                             
-                            <!-- The Document UI -->
                             <div class="report-ui-mockup">
                                 <div class="report-header">
                                     <div class="report-title">RAPHAEL_LEZIUS<br>ABNAHME_PROTOKOLL</div>
                                     <div class="verified-stamp">VERIFIED_2026</div>
                                 </div>
                                 
-                                <!-- Abstract Document Lines -->
                                 <div class="doc-line" style="width: 40%;"></div>
                                 <div class="doc-line" style="width: 100%;"></div>
                                 <div class="doc-line" style="width: 100%;"></div>
                                 <div class="doc-line" style="width: 70%; margin-bottom: 30px;"></div>
                                 
-                                <!-- Signature Block -->
                                 <div class="report-footer">
                                     <div class="project-id">PROJECT_ID: #RL-8822</div>
                                     <div class="signature-box">SIGNATURE</div>
                                 </div>
                             </div>
 
-                            <!-- Floating Integrity Badge -->
                             <div class="integrity-badge">
                                 DATA_INTEGRITY: 100%
                             </div>
                         </div>
                     </div>
 
-                    <!-- Right Side: The Explanation -->
                     <div class="handover-content" data-aos="fade-left" data-aos-delay="200">
                         <span class="hero-glitch-tag">// POST_MISSION_DATA</span>
                         <h2 class="section-title-large" style="text-align: left;">
@@ -963,7 +857,6 @@
 
                         <div class="handover-features">
                             
-                            <!-- Feature 1 -->
                             <div class="hf-item">
                                 <div class="hf-icon-box"><i class="fas fa-file-pdf"></i></div>
                                 <div class="hf-text">
@@ -972,7 +865,6 @@
                                 </div>
                             </div>
 
-                            <!-- Feature 2 -->
                             <div class="hf-item">
                                 <div class="hf-icon-box"><i class="fas fa-receipt"></i></div>
                                 <div class="hf-text">
@@ -981,7 +873,6 @@
                                 </div>
                             </div>
 
-                            <!-- Feature 3 -->
                             <div class="hf-item">
                                 <div class="hf-icon-box"><i class="fas fa-server"></i></div>
                                 <div class="hf-text">
@@ -997,22 +888,16 @@
             </div>
         </section>
         
-        <!-- ======================================================================
-             PHASE 10: SYSTEM-INTEGRITY FAQ
-             ====================================================================== -->
         <section class="faq-section" id="faq-terminal">
             <div class="container relative-z">
                 
-                <!-- Section Header -->
                 <div class="section-header-center" data-aos="fade-up">
                     <span class="hero-glitch-tag">// SYSTEM_INTEGRITY_CHECK</span>
                     <h2 class="section-title-large">Häufige Fragen.</h2>
                 </div>
 
-                <!-- The FAQ Accordion List -->
                 <div class="faq-list">
                     
-                    <!-- Question 1 -->
                     <div class="accordion-item glass-panel faq-module" data-aos="fade-up" data-aos-delay="100" onclick="window.toggleModule(this)">
                         <button class="accordion-header" type="button">
                             <span class="faq-question">Was passiert bei einer Planungsänderung vor Ort?</span>
@@ -1025,7 +910,6 @@
                         </div>
                     </div>
 
-                    <!-- Question 2 -->
                     <div class="accordion-item glass-panel faq-module" data-aos="fade-up" data-aos-delay="200" onclick="window.toggleModule(this)">
                         <button class="accordion-header" type="button">
                             <span class="faq-question">Sind die Anfahrtskosten wirklich fix?</span>
@@ -1038,7 +922,6 @@
                         </div>
                     </div>
 
-                    <!-- Question 3 -->
                     <div class="accordion-item glass-panel faq-module" data-aos="fade-up" data-aos-delay="300" onclick="window.toggleModule(this)">
                         <button class="accordion-header" type="button">
                             <span class="faq-question">Muss ich Werkzeug oder Material bereitstellen?</span>
@@ -1053,7 +936,6 @@
 
                 </div>
 
-                <!-- Trust Indicators -->
                 <div class="integrity-bar" data-aos="fade-in" data-aos-delay="400">
                     <div class="integrity-item">
                         <i class="fas fa-shield-check text-gold"></i> <span>100% VERSICHERT</span>
@@ -1069,9 +951,6 @@
             </div>
         </section>
 
-        <!-- ======================================================================
-             THE FINAL CTA (TERMINAL INITIALIZATION)
-             ====================================================================== -->
         <section class="final-cta-block">
             <div class="container relative-z" data-aos="zoom-in">
                 <span class="hero-glitch-tag">SYSTEM_READY // INITIALIZE_PROJECT</span>
@@ -1084,7 +963,6 @@
                     Wählen Sie Präzision über Kompromiss. Starten Sie jetzt Ihre unverbindliche Kalkulation über unser sicheres MissionOS Portal.
                 </p>
 
-                <!-- Triggers the MissionOS Modal -->
                 <button type="button" class="btn-terminal js-open-os">
                     PROJEKT INITIALISIEREN <i class="fas fa-bolt"></i>
                 </button>
@@ -1093,9 +971,6 @@
 
     </main>
 
-    <!-- ======================================================================
-         PHASE 19: DYNAMIC PROGRESS ANCHORS (SECTION TRACKER)
-         ====================================================================== -->
     <nav class="section-tracker desktop-only">
         <ul class="tracker-list">
             <li><a href="#pricing-matrix" class="tracker-dot" data-label="System-Tarife"></a></li>
@@ -1108,9 +983,6 @@
         </ul>
     </nav>
 
-    <!-- ======================================================================
-         PHASE 16: TACTICAL STICKY MOBILE CTA
-         ====================================================================== -->
     <div class="mobile-sticky-cta glass-panel">
         <div class="sticky-cta-content">
             <div class="sticky-price-info">
@@ -1123,162 +995,46 @@
         </div>
     </div>
 
-    <!-- ======================================================================
-         PHASE 14: MISSION OS (MULTI-STEP LEAD CAPTURE MODAL)
-         ====================================================================== -->
-    <div id="missionOS" class="os-overlay">
-        <div class="os-backdrop js-close-os"></div>
-        
-        <div class="os-terminal glass-panel">
-            <!-- Terminal Header -->
-            <div class="os-header">
-                <div class="os-title">
-                    <span class="hero-glitch-tag glitch-active" data-text="// MISSION_OS_TERMINAL">// MISSION_OS_TERMINAL</span>
-                    <h3>Projekt Initialisierung</h3>
-                </div>
-                <button class="os-close-btn js-close-os" type="button"><i class="fas fa-times"></i></button>
-            </div>
-
-            <!-- Progress Tracker -->
-            <div class="os-progress-container">
-                <div class="os-progress-track">
-                    <div id="osProgress" class="os-progress-fill"></div>
-                </div>
-                <div class="os-step-indicators">
-                    <span class="step-text active">01_TYPE</span>
-                    <span class="step-text">02_SCOPE</span>
-                    <span class="step-text">03_LOC</span>
-                    <span class="step-text">04_SYNC</span>
-                </div>
-            </div>
-
-            <!-- The Multi-Step Form -->
-            <form id="leadForm" class="os-form">
-                
-                <!-- STEP 1: Project Type -->
-                <div class="form-step is-active" data-step="1">
-                    <h4 class="step-title">Wählen Sie den System-Typ</h4>
-                    <div class="radio-grid">
-                        <label class="tactical-radio">
-                            <input type="radio" name="projectType" value="IKEA PAX" required>
-                            <div class="radio-card">
-                                <i class="fas fa-align-left text-cyan"></i>
-                                <span>IKEA PAX / PLATSA</span>
-                            </div>
-                        </label>
-                        <label class="tactical-radio">
-                            <input type="radio" name="projectType" value="Kitchen">
-                            <div class="radio-card">
-                                <i class="fas fa-blender text-cyan"></i>
-                                <span>Küchen-System</span>
-                            </div>
-                        </label>
-                        <label class="tactical-radio">
-                            <input type="radio" name="projectType" value="USM Haller">
-                            <div class="radio-card">
-                                <i class="fas fa-th text-gold"></i>
-                                <span>USM Haller / Office</span>
-                            </div>
-                        </label>
-                        <label class="tactical-radio">
-                            <input type="radio" name="projectType" value="Biohort">
-                            <div class="radio-card">
-                                <i class="fas fa-home text-green"></i>
-                                <span>Biohort / Outdoor</span>
-                            </div>
-                        </label>
-                    </div>
-                    <div class="form-actions right">
-                        <button type="button" class="btn-terminal btn-next">PARAMETER DEFINIEREN <i class="fas fa-arrow-right"></i></button>
-                    </div>
-                </div>
-
-                <!-- STEP 2: Parameters -->
-                <div class="form-step" data-step="2" style="display: none;">
-                    <h4 class="step-title">Projekt-Metriken</h4>
-                    <div class="input-group">
-                        <label>Geschätzter Umfang (z.B. LFM, Anzahl Schränke)</label>
-                        <input type="text" name="projectScope" class="cyber-input" placeholder="Z.B. 3 Meter PAX oder 5 Küchenschränke" required>
-                    </div>
-                    <div class="input-group">
-                        <label>Besonderheiten / Link zur Planung (Optional)</label>
-                        <textarea name="projectDetails" class="cyber-input" rows="3" placeholder="IKEA Planungscode einfügen oder Details beschreiben..."></textarea>
-                    </div>
-                    <div class="form-actions split">
-                        <button type="button" class="btn-text btn-prev"><i class="fas fa-arrow-left"></i> ZURÜCK</button>
-                        <button type="button" class="btn-terminal btn-next">LOGISTIK PRÜFEN <i class="fas fa-arrow-right"></i></button>
-                    </div>
-                </div>
-
-                <!-- STEP 3: Logistics -->
-                <div class="form-step" data-step="3" style="display: none;">
-                    <h4 class="step-title">Einsatz-Koordinaten</h4>
-                    <div class="input-row">
-                        <div class="input-group">
-                            <label>PLZ (Für Logistik-Zone)</label>
-                            <input type="text" name="zipCode" class="cyber-input" placeholder="86150" required>
-                        </div>
-                        <div class="input-group">
-                            <label>Stadt</label>
-                            <input type="text" name="city" class="cyber-input" placeholder="Augsburg" required>
-                        </div>
-                    </div>
-                    <div class="input-group">
-                        <label>Wunschtermin / Zeitfenster</label>
-                        <input type="text" name="timeframe" class="cyber-input" placeholder="So bald wie möglich / Nächsten Monat" required>
-                    </div>
-                    <div class="form-actions split">
-                        <button type="button" class="btn-text btn-prev"><i class="fas fa-arrow-left"></i> ZURÜCK</button>
-                        <button type="button" class="btn-terminal btn-next">IDENTITÄT BESTÄTIGEN <i class="fas fa-arrow-right"></i></button>
-                    </div>
-                </div>
-
-                <!-- STEP 4: Final Sync -->
-                <div class="form-step case-container" data-step="4" style="display: none;">
-                    <h4 class="step-title">System-Kopplung</h4>
-                    <div class="input-group">
-                        <label>Name / Firma</label>
-                        <input type="text" name="fullName" class="cyber-input" placeholder="Max Mustermann" required>
-                    </div>
-                    <div class="input-row">
-                        <div class="input-group">
-                            <label>E-Mail</label>
-                            <input type="email" name="email" class="cyber-input" placeholder="signal@domain.com" required>
-                        </div>
-                        <div class="input-group">
-                            <label>Telefon (Für Rückfragen)</label>
-                            <input type="tel" name="phone" class="cyber-input" placeholder="+49..." required>
-                        </div>
-                    </div>
-                    <div class="checkbox-group">
-                        <label class="cyber-checkbox-label">
-                            <input type="checkbox" required>
-                            <span class="custom-checkbox"></span>
-                            <span class="cb-text">Ich stimme der Verarbeitung meiner Daten zur Angebotserstellung gemäß DSGVO zu.</span>
-                        </label>
-                    </div>
-                    <div class="form-actions split" style="margin-top: 40px;">
-                        <button type="button" class="btn-text btn-prev"><i class="fas fa-arrow-left"></i> ZURÜCK</button>
-                        <button type="submit" class="btn-terminal btn-submit">DATEN ÜBERTRAGEN <i class="fas fa-satellite-dish"></i></button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- GLOBAL FOOTER ANCHOR -->
+    <div id="global-os"></div>
     <div id="global-footer"></div>
 
-    <!-- SCRIPTS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/components/pricing-logic.js" defer></script>
     
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // Initialize Animation Engine
             if (typeof AOS !== 'undefined') {
                 AOS.init({ duration: 800, once: true });
             }
+
+            // Inject Global Navigation
+            fetch('nav.html')
+                .then(res => res.text())
+                .then(data => {
+                    const navContainer = document.getElementById('global-nav');
+                    if(navContainer) navContainer.innerHTML = data;
+                })
+                .catch(e => console.log("Nav Fetch Error:", e));
+
+            // Inject Global Footer
+            fetch('footer.html')
+                .then(res => res.text())
+                .then(data => {
+                    const footerContainer = document.getElementById('global-footer');
+                    if(footerContainer) footerContainer.innerHTML = data;
+                })
+                .catch(e => console.log("Footer Fetch Error:", e));
+
+            // Inject Mission OS Modal
+            fetch('mission.html')
+                .then(res => res.text())
+                .then(data => {
+                    const osContainer = document.getElementById('global-os');
+                    if(osContainer) osContainer.innerHTML = data;
+                })
+                .catch(e => console.log("MissionOS Fetch Error:", e));
         });
     </script>
 </body>
