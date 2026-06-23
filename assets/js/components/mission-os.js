@@ -32,3 +32,28 @@ setTimeout(() => {
     currentStep.classList.remove('is-active');
     nextStep.classList.add('is-active');
 }, 300);
+
+/* ==========================================================================
+   COMPONENT: MISSION OS (REQUEST TERMINAL)
+   ========================================================================== */
+
+window.openMissionOS = function() {
+    const osTerminal = document.getElementById('global-os');
+    if (!osTerminal) return;
+
+    // Display the terminal logic
+    osTerminal.classList.add('active');
+    
+    // Aesthetic: Prevent body scroll when terminal is open
+    document.body.style.overflow = 'hidden';
+    
+    console.log("SYSTEM UPLINK: MISSION OS INITIALIZED");
+};
+
+// Close logic
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        document.getElementById('global-os').classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+});

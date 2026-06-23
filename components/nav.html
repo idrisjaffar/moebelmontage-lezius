@@ -1,71 +1,83 @@
-<header class="lezius-nav-2026" id="masterNav">
+<!-- ==========================================================================
+   RAPHAEL LEZIUS | MASTER NAVIGATION HTML (v2077.2)
+   ARCHITECTURE: STRICT SEPARATION (HTML ONLY) | SEMANTIC | ACCESSIBLE
+========================================================================== -->
+
+<header class="lezius-nav-2026" id="masterNav" role="banner">
     <div class="floating-capsule">
         
-        <div class="nav-brand magnetic-target" id="brandLogoTrigger" onclick="triggerHaptic(15)">
+        <!-- 1. MAGNETIC BRAND LOGO & TELEMETRY -->
+        <a href="index.html" class="nav-brand magnetic-target" id="brandLogoTrigger" aria-label="Zur Startseite">
             <div class="brand-pedestal">
                 <div class="logo-flipper">
+                    <!-- Placeholder images - path remains as defined -->
                     <div class="logo-face front"><img src="assets/images/raphael-lezius-logo-front.webp" alt="Raphael Lezius" onerror="this.style.display='none';"></div>
                     <div class="logo-face back"><img src="assets/images/raphael-lezius-logo-back.webp" alt="Premium Montage" onerror="this.style.display='none';"></div>
                 </div>
             </div>
             <div class="brand-text">
                 <div class="brand-title">
-                    <span class="first" data-text="RAPHAEL">RAPHAEL</span>
-                    <span class="last" data-text="LEZIUS">LEZIUS</span>
+                    <span class="first">RAPHAEL</span>
+                    <span class="last">LEZIUS</span>
                 </div>
-                <div class="geo-clock" id="telemetryClock">
+                <div class="geo-clock" id="telemetryClock" aria-live="polite">
                     <i class="fas fa-satellite"></i> MUC-AUG <span class="time-display">SYNC...</span>
                 </div>
             </div>
-        </div>
+        </a>
 
-        <nav class="nav-desktop">
+        <!-- 2. DESKTOP NAVIGATION -->
+        <nav class="nav-desktop" aria-label="Hauptnavigation Desktop">
             <a href="index.html" class="capsule-link">
                 <span class="link-text-main">Start</span>
                 <span class="link-text-sub"><span class="sub-dot"></span> HAUPTSYSTEM</span>
             </a>
             
+            <!-- MEGA MENU DROPDOWN (LEISTUNGEN) -->
             <div class="nav-dropdown-trigger" id="dropdownTrigger">
-                <button class="capsule-link drop-btn">
+                <button class="capsule-link drop-btn" aria-haspopup="true" aria-expanded="false">
                     <span class="link-text-main">Leistungen <i class="fas fa-chevron-down drop-arrow"></i></span>
                     <span class="link-text-sub"><span class="sub-dot"></span> MODULE</span>
                 </button>
                 
-                <div class="mega-quantum-shield" id="megaPanel">
+                <div class="mega-quantum-shield" id="megaPanel" role="menu">
                     <div class="mega-layout-split">
+                        
+                        <!-- Mega Menu Sidebar -->
                         <div class="mega-sidebar">
                             <span class="sidebar-label">AKTIVE_MODULE</span>
-                            <h3 class="sidebar-title">Engineering<br><span style="color: var(--neon-gold);">System</span></h3>
+                            <h3 class="sidebar-title">Engineering<br><span style="color: var(--nav-neon-gold);">System</span></h3>
                             <p class="sidebar-desc">Wählen Sie einen Sektor für hochpräzise Montage- und Konstruktionsprotokolle.</p>
                             <div class="sidebar-data-stream">
-                                <div class="data-row"><span>STATUS:</span> <span style="color: var(--neon-cyan);">ONLINE</span></div>
-                                <div class="data-row"><span>ENERGIE:</span> <span style="color: var(--neon-green);">OPTIMAL</span></div>
+                                <div class="data-row"><span>STATUS:</span> <span style="color: var(--nav-neon-cyan);">ONLINE</span></div>
+                                <div class="data-row"><span>ENERGIE:</span> <span style="color: var(--nav-neon-green);">OPTIMAL</span></div>
                             </div>
                         </div>
 
+                        <!-- Mega Menu Sektoren -->
                         <div class="mega-panel-inner">
-                            <a href="residential.html" class="mega-card hover-cyan magnetic-target">
+                            <a href="residential.html" class="mega-card hover-cyan magnetic-target" role="menuitem">
                                 <div class="mc-icon"><i class="fas fa-couch"></i></div>
                                 <div class="mc-data">
                                     <span class="mc-title">Privatkunden</span>
                                     <span class="mc-sub">Möbelmontage</span>
                                 </div>
                             </a>
-                            <a href="office.html" class="mega-card hover-pink magnetic-target">
+                            <a href="office.html" class="mega-card hover-pink magnetic-target" role="menuitem">
                                 <div class="mc-icon"><i class="fas fa-building"></i></div>
                                 <div class="mc-data">
                                     <span class="mc-title">Firmenkunden</span>
                                     <span class="mc-sub">Büro & Gewerbe</span>
                                 </div>
                             </a>
-                            <a href="outdoor.html" class="mega-card hover-green magnetic-target">
+                            <a href="outdoor.html" class="mega-card hover-green magnetic-target" role="menuitem">
                                 <div class="mc-icon"><i class="fas fa-tree"></i></div>
                                 <div class="mc-data">
                                     <span class="mc-title">Outdoor</span>
                                     <span class="mc-sub">Terrassen & Holzbau</span>
                                 </div>
                             </a>
-                            <a href="demontage.html" class="mega-card hover-gold magnetic-target">
+                            <a href="demontage.html" class="mega-card hover-gold magnetic-target" role="menuitem">
                                 <div class="mc-icon"><i class="fas fa-tools"></i></div>
                                 <div class="mc-data">
                                     <span class="mc-title">Demontage</span>
@@ -73,78 +85,80 @@
                                 </div>
                             </a>
                         </div>
+                        
                     </div>
                 </div>
             </div>
 
+            <!-- Weitere Desktop Links -->
             <a href="process-pricing.html" class="capsule-link">
-                <span class="link-text-main">Prozess & Preise</span>
-                <span class="link-text-sub"><span class="sub-dot"></span> SYSTEM_INFO</span>
+                <span class="link-text-main">Preise</span>
+                <span class="link-text-sub"><span class="sub-dot"></span> TARIFE</span>
             </a>
-            
             <a href="area.html" class="capsule-link">
                 <span class="link-text-main">Einsatzgebiet</span>
                 <span class="link-text-sub"><span class="sub-dot"></span> REGION</span>
             </a>
-            
             <a href="gallery.html" class="capsule-link">
-                <span class="link-text-main">Projektgalerie</span>
+                <span class="link-text-main">Galerie</span>
                 <span class="link-text-sub"><span class="sub-dot"></span> ARCHIV</span>
             </a>
             <a href="magazine.html" class="capsule-link">
                 <span class="link-text-main">Magazin</span>
-                <span class="link-text-sub"><span class="sub-dot"></span> DATENBANK</span>
+                <span class="link-text-sub"><span class="sub-dot"></span> WISSEN</span>
             </a>
         </nav>
 
+        <!-- 3. TACTICAL ACTIONS & MOBILE TOGGLE -->
         <div class="nav-actions">
+            <!-- System Security Indicator -->
             <div class="agent-node desktop-only" title="Sichere Verbindung aktiv">
                 <div class="agent-radar"><div class="agent-core"></div><div class="agent-sweep"></div></div>
                 <span class="agent-text">SYSTEM_SICHER</span>
             </div>
             
-           <button class="action-btn magnetic-target desktop-only js-open-os" onmouseenter="triggerHaptic(10)">
-    <span class="btn-glare"></span>
-    <span class="btn-text">ANFRAGE</span> <i class="fas fa-bolt"></i>
-</button>
+            <!-- Terminal/OS Trigger Button -->
+            <button class="action-btn magnetic-target desktop-only js-open-os" aria-label="Projekt Anfrage Starten">
+                <span class="btn-glare"></span>
+                <span class="btn-text">ANFRAGE</span> <i class="fas fa-bolt"></i>
+            </button>
 
-            <button class="mobile-toggle magnetic-target" id="mobileMenuToggle" aria-label="Menu" onclick="triggerHaptic(20)">
+            <!-- Mobile Hamburger Button -->
+            <button class="mobile-toggle magnetic-target" id="mobileMenuToggle" aria-label="Mobiles Menü öffnen" aria-expanded="false" aria-controls="fluidMobileMenu">
                 <div class="toggle-lines"><span class="line line-1"></span><span class="line line-2"></span></div>
             </button>
         </div>
         
-        <div class="nav-laser-track"><div class="laser-beam"></div></div>
+        <!-- Subtle Bottom Laser Track -->
+        <div class="nav-laser-track" aria-hidden="true"><div class="laser-beam"></div></div>
     </div>
 </header>
 
-<div class="logo-lightbox-overlay" id="logoLightbox">
-    <div class="lightbox-close-btn" id="closeLightbox">[ SCHLIESSEN ]</div>
-    <div class="lightbox-content">
-        <div class="lightbox-aura"></div>
-        <img src="assets/images/raphael-lezius-logo-front.webp" alt="Raphael Lezius Premium Montage" class="lightbox-img">
-    </div>
-</div>
-
-<div class="fluid-mobile-menu" id="fluidMobileMenu">
+<!-- 4. FULLSCREEN VIBRANT MOBILE MENU (HUD) -->
+<div class="fluid-mobile-menu" id="fluidMobileMenu" aria-hidden="true">
+    <!-- Prismatic Cyber-Backdrop -->
     <div class="mobile-prismatic-backdrop"></div>
-    <div class="mobile-crt-scanline"></div>
     
     <div class="mobile-menu-content">
+        
+        <!-- Mobile HUD Header -->
         <div class="mobile-header">
             <span class="sys-text">SYS_UPLINK // ESTABLISHED</span>
-            <span class="mob-clock-display">SYNCING...</span>
+            <span class="mob-clock-display" id="mobileClock" aria-live="polite">SYNCING...</span>
         </div>
 
-        <nav class="mobile-main-nav">
+        <!-- Mobile Main Links -->
+        <nav class="mobile-main-nav" aria-label="Hauptnavigation Mobil">
             <a href="index.html" class="m-link-massive" style="--boot-delay: 0.1s;">START <i class="fas fa-arrow-right"></i></a>
-            <a href="process-pricing.html" class="m-link-massive" style="--boot-delay: 0.2s;">PROZESS & PREISE <i class="fas fa-arrow-right"></i></a>
+            <a href="process-pricing.html" class="m-link-massive" style="--boot-delay: 0.2s;">PREISE & PROZESS <i class="fas fa-arrow-right"></i></a>
             <a href="area.html" class="m-link-massive" style="--boot-delay: 0.3s;">EINSATZGEBIET <i class="fas fa-arrow-right"></i></a>
             <a href="gallery.html" class="m-link-massive" style="--boot-delay: 0.4s;">PROJEKTGALERIE <i class="fas fa-arrow-right"></i></a>
             <a href="magazine.html" class="m-link-massive" style="--boot-delay: 0.5s;">MAGAZIN <i class="fas fa-arrow-right"></i></a>
         </nav>
 
+        <!-- Mobile Services Grid -->
         <div class="mobile-services-grid" style="--boot-delay: 0.6s;">
-            <div class="m-grid-label">LEISTUNGEN (MODULE)</div>
+            <div class="m-grid-label">LEISTUNGEN (SEKTOREN)</div>
             <div class="m-grid-container">
                 <a href="residential.html" class="m-srv-card cyan"><i class="fas fa-couch"></i><span>PRIVAT</span></a>
                 <a href="office.html" class="m-srv-card pink"><i class="fas fa-building"></i><span>FIRMEN</span></a>
@@ -153,11 +167,13 @@
             </div>
         </div>
 
+        <!-- Mobile Footer Action -->
         <div class="mobile-footer-action" style="--boot-delay: 0.7s;">
-            <button onclick="MissionOS.open(); document.getElementById('mobileMenuToggle').click();" class="action-btn full-width magnetic-target" aria-label="Projekt Starten">
+            <button class="action-btn full-width magnetic-target js-open-os" id="mobileOSBtn" aria-label="MissionOS Terminal Starten">
                 <span class="btn-glare"></span>
                 PROJEKT STARTEN <i class="fas fa-bolt"></i>
             </button>
         </div>
+        
     </div>
 </div>

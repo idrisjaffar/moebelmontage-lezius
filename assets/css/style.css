@@ -1,124 +1,190 @@
 /* ==========================================================================
-   RAPHAEL LEZIUS | 2026 MASTER STYLE FOUNDATION
+   RAPHAEL LEZIUS | MASTER STYLE FOUNDATION (AURUM 2077 EDITION)
    ARCHITECTURE: CYBER-FLUID | MOBILE-FIRST | GPU-ACCELERATED
    ========================================================================== */
 
-/* --- 1. RESET & PERFORMANCE FOUNDATION --- */
-*, *::before, *::after { box-sizing: border-box; }
+/* --- 1. THE AURUM ENGINE (DESIGN TOKENS & VARIABLES) --- */
+:root {
+    /* Core Palette: Dark Metallic & Neon Accents */
+    --bg-dark: #0a0805;       /* Deep Bronze/Black Void */
+    --surface-glass: rgba(10, 8, 5, 0.85);
+    
+    --neon-gold: #FFD700;     /* Primary Aurum */
+    --neon-cyan: #00e5ff;     /* System UI / HUD */
+    --neon-pink: #ff007f;     /* Warnings / Corporate */
+    --neon-green: #39ff14;    /* Success / Live Status */
+    
+    /* Typography Setup */
+    --font-head: 'Space Grotesk', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    
+    /* Physics & Animation Curves */
+    --spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    --smooth: cubic-bezier(0.16, 1, 0.3, 1);
+    
+    /* Layer Architecture */
+    --z-base: 1;
+    --z-glass: 10;
+    --z-hud: 100;
+    --z-modal: 9999;
+    --z-nav: 100000;
+}
+
+/* --- 2. GLOBAL RESET & SCROLL PHYSICS --- */
+*, *::before, *::after { 
+    box-sizing: border-box; 
+}
+
 html { 
     scroll-behavior: smooth; 
-    background: #000; 
-    scroll-padding-top: 80px; 
-    contain: paint; /* Performance optimization */
+    background: var(--bg-dark); 
+    scroll-padding-top: 120px; 
+    text-size-adjust: 100%;
 }
-body { 
-    background-color: #050505; 
-    color: #ffffff; 
-    font-family: 'Inter', sans-serif; 
+
+body.aurum-theme { 
+    background-color: var(--bg-dark); 
+    color: #cbd5e1; 
+    font-family: var(--font-body); 
     line-height: 1.6; 
     margin: 0; 
     padding: 0; 
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
+    overflow-x: hidden;
 }
 
-/* --- 2. THE NEON ENGINE (DESIGN TOKENS) --- */
-:root {
-    --bg-dark: #050505;
-    --bg-darker: #000000;
-    --surface: #0a0a0c;
-    --neon-gold: #FFD700;
-    --neon-green: #39ff14;
-    --neon-cyan: #00e5ff;
-    --neon-pink: #ff007f;
-    --glass-bg: rgba(10, 10, 10, 0.75);
-    --glass-border: rgba(255, 255, 255, 0.08);
-    --font-head: 'Space Grotesk', sans-serif;
-    --font-body: 'Inter', sans-serif;
-    --font-mono: 'JetBrains Mono', monospace;
-    --spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    --blur: blur(20px) saturate(150%);
+/* Cyber-Aurum Global Background Pattern */
+body.aurum-theme::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: 
+        radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.02) 0%, transparent 80%),
+        linear-gradient(rgba(255, 215, 0, 0.02) 1px, transparent 1px), 
+        linear-gradient(90deg, rgba(255, 215, 0, 0.02) 1px, transparent 1px);
+    background-size: 100% 100%, 60px 60px, 60px 60px;
+    z-index: -1;
+    pointer-events: none;
 }
 
-/* --- 3. GLOBAL TYPOGRAPHY --- */
-h1, h2, h3, h4 { 
+/* Custom Tactical Scrollbar */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: #050402; border-left: 1px solid rgba(255,215,0,0.1); }
+::-webkit-scrollbar-thumb { background: rgba(255, 215, 0, 0.3); border-radius: 0px; }
+::-webkit-scrollbar-thumb:hover { background: var(--neon-gold); }
+
+/* Selection Highlighting */
+::selection { background: var(--neon-gold); color: #000; text-shadow: none; }
+::-moz-selection { background: var(--neon-gold); color: #000; text-shadow: none; }
+
+/* Focus Accessibility */
+:focus-visible { outline: 2px solid var(--neon-cyan); outline-offset: 4px; }
+
+/* --- 3. FLUID TYPOGRAPHY ENGINE --- */
+h1, h2, h3, h4, h5, h6 { 
     font-family: var(--font-head); 
     text-transform: uppercase; 
     line-height: 1.1; 
+    margin-top: 0;
     margin-bottom: 0.5em; 
-    word-break: break-word; 
+    color: #fff;
+    letter-spacing: -0.02em;
 }
-a { text-decoration: none; color: inherit; }
 
-/* --- 4. UTILITY UTILITIES --- */
-.container { width: 100%; max-width: 1400px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 40px); }
-.relative-z { position: relative; z-index: 2; }
+/* Viewport-scaled headers */
+h1 { font-size: clamp(2.5rem, 6vw, 5rem); }
+h2 { font-size: clamp(2rem, 4vw, 3.5rem); }
+h3 { font-size: clamp(1.5rem, 2.5vw, 2.5rem); }
+p { font-size: clamp(1rem, 1.2vw, 1.125rem); color: #94a3b8; margin-bottom: 1.5em; }
+
+/* Utility Typography Classes */
+.tech-font { font-family: var(--font-mono); text-transform: uppercase; }
+.crisp-text { text-shadow: none !important; -webkit-font-smoothing: antialiased; letter-spacing: 0.5px; }
+
+/* Corporate Color Utilities */
+.gold-text { color: var(--neon-gold) !important; text-shadow: none; }
+.cyan-text { color: var(--neon-cyan) !important; text-shadow: none; }
+.pink-text { color: var(--neon-pink) !important; text-shadow: none; }
+.green-text { color: var(--neon-green) !important; text-shadow: none; }
+
+/* --- 4. STRUCTURAL UTILITIES --- */
+.container { 
+    width: 100%; 
+    max-width: 1400px; 
+    margin: 0 auto; 
+    padding: 0 clamp(20px, 5vw, 40px); 
+}
+.relative-z { position: relative; z-index: var(--z-glass); }
 .center { text-align: center; }
+.desktop-only { display: block; }
+.hide-desktop { display: none; }
 
-/* Colors */
-.gold-text { color: var(--neon-gold) !important; text-shadow: 0 0 15px rgba(255, 215, 0, 0.5); }
-.cyan-text { color: var(--neon-cyan) !important; text-shadow: 0 0 15px rgba(0, 229, 255, 0.5); }
-.pink-text { color: var(--neon-pink) !important; text-shadow: 0 0 15px rgba(255, 0, 127, 0.5); }
-.green-text { color: var(--neon-green) !important; text-shadow: 0 0 15px rgba(57, 255, 20, 0.5); }
+@media (max-width: 1024px) {
+    .desktop-only { display: none !important; }
+    .hide-desktop { display: block; }
+}
 
-/* --- 5. GLASSMORPHISM CORE --- */
+/* --- 5. HOLOGRAPHIC GLASSMORPHISM (THE CARDS) --- */
 .glass-panel { 
-    background: var(--glass-bg); 
-    backdrop-filter: var(--blur); 
-    -webkit-backdrop-filter: var(--blur);
-    border: 1px solid var(--glass-border); 
-    border-radius: 16px;
-    content-visibility: auto; /* Performance optimization */
+    background: var(--surface-glass); 
+    backdrop-filter: blur(24px) saturate(120%); 
+    -webkit-backdrop-filter: blur(24px) saturate(120%);
+    border: 1px solid rgba(255, 215, 0, 0.15); 
+    border-radius: 0px; /* 2077 Sharp Edges */
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%); /* Tactical Cut Corner */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 215, 0, 0.05);
+    transition: transform 0.4s var(--smooth), border-color 0.4s ease, box-shadow 0.4s ease;
+    transform: translateZ(0); /* Hardware Acceleration */
 }
 
-/* --- 6. INTERACTIVE COMPONENTS --- */
-.btn { 
-    display: inline-flex; align-items: center; justify-content: center; 
-    padding: 15px 30px; border-radius: 8px; cursor: pointer; 
-    text-transform: uppercase; font-weight: 800; border: none; 
-    transition: var(--spring); font-family: var(--font-head);
+/* --- 6. ACTION TERMINALS (BUTTONS) --- */
+.reactive-btn { 
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    padding: clamp(15px, 2vw, 20px) clamp(25px, 4vw, 35px); 
+    cursor: pointer; 
+    text-transform: uppercase; font-weight: 900; 
+    transition: all 0.4s var(--smooth); 
+    font-family: var(--font-head); letter-spacing: 1px;
+    position: relative; overflow: hidden;
+    text-decoration: none;
+    z-index: 1;
 }
 
-/* --- 7. GLOBAL ANIMATION ENGINE --- */
-.blink { animation: blinker 2s infinite; }
-@keyframes blinker { 50% { opacity: 0.3; } }
-
-.status-pulse { position: relative; }
-.status-pulse::after {
-    content: ''; position: absolute; inset: -2px;
-    border-radius: 50%; border: 1px solid currentColor;
-    animation: statusPulse 2s infinite ease-out;
+/* Button Glare Effect */
+.btn-glare { 
+    position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; 
+    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.4), transparent); 
+    transform: rotate(45deg) translateY(100%); transition: 0.6s ease; z-index: -1; 
 }
-@keyframes statusPulse {
-    0% { transform: scale(1); opacity: 1; }
-    100% { transform: scale(2.5); opacity: 0; }
+.reactive-btn:hover .btn-glare { transform: rotate(45deg) translateY(-100%); }
+
+/* Solid Gold (Primary Action) */
+.btn-solid-gold { 
+    background: var(--neon-gold); color: #000; border: none; 
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%); 
+    box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
 }
+.btn-solid-gold:hover { background: #FFF; box-shadow: 0 15px 40px rgba(255, 215, 0, 0.6); transform: translateY(-2px); }
 
-/* --- 8. GLOBAL COMPONENT IMPORTS --- */
-/* These map to your component files to keep the main style.css clean */
-@import url('components/nav.css');
-@import url('components/footer.css');
-@import url('components/mission-os.css');
+/* Holographic Outline (Secondary Action) */
+.btn-holographic { 
+    background: rgba(255, 255, 255, 0.03); color: #fff; 
+    border: 1px solid rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px);
+    clip-path: polygon(15px 0, 100% 0, 100% 100%, 0 100%, 0 15px);
+}
+.btn-holographic:hover { background: rgba(255, 255, 255, 0.1); border-color: #fff; transform: translateY(-2px); }
 
-/* --- 9. ACCESSIBILITY & FALLBACKS --- */
+/* --- 7. CORE ANIMATION ENGINE --- */
+.blink { animation: blinker 2s infinite cubic-bezier(0.16, 1, 0.3, 1); }
+@keyframes blinker { 50% { opacity: 0.2; } }
+
+/* Universal Physics Target */
+.magnetic-target { will-change: transform; }
+
+/* Failsafe */
 .no-js-override [data-aos] { 
     opacity: 1 !important; transform: none !important; visibility: visible !important; 
-}
-
-/* ==========================================================================
-   KILL ROGUE NAV ANIMATION
-   ========================================================================== */
-#global-nav,
-#global-nav *,
-#global-nav::before,
-#global-nav::after,
-.nav-container::before,
-.nav-container::after {
-    animation: none !important;
-    box-shadow: none !important;
-}
-
-/* Also catches any rogue glowing borders on the nav */
-header, nav {
-    animation: none !important;
 }

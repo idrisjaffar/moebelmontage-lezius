@@ -224,3 +224,73 @@ function initializeMissionOS() {
         }
     }
 }
+
+/* ==========================================================================
+   RAPHAEL LEZIUS | MAIN CONTROL ENGINE
+   ========================================================================== */
+
+document.addEventListener('DOMContentLoaded', () => {
+    
+    // 1. Initialize AOS Engine
+    AOS.init({
+        duration: 1000,
+        once: true,
+        offset: 50
+    });
+
+    // 2. Dynamic Date Injection (System Date for HUD)
+    const dateEl = document.getElementById('dynamic-date');
+    if (dateEl) {
+        dateEl.textContent = new Date().getFullYear();
+    }
+
+    // 3. Magnetic Button Interaction
+    const magneticBtns = document.querySelectorAll('.magnetic-target');
+    magneticBtns.forEach(btn => {
+        btn.addEventListener('mousemove', (e) => {
+            const rect = btn.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            btn.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px)`;
+        });
+        btn.addEventListener('mouseleave', () => {
+            btn.style.transform = `translate(0, 0)`;
+        });
+    });
+
+    // 4. Modal Triggers (Mission OS)
+    const openOsBtns = document.querySelectorAll('.js-open-os');
+    openOsBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Trigger your mission-os.js logic here
+            if (typeof window.openMissionOS === 'function') {
+                window.openMissionOS();
+            }
+        });
+    });
+});
+
+// FAQ Accordion Engine
+const faqItems = document.querySelectorAll('.js-faq-item');
+
+faqItems.forEach(item => {
+    const trigger = item.querySelector('.faq-trigger');
+    const content = item.querySelector('.faq-content');
+
+    trigger.addEventListener('click', () => {
+        // Toggle the 'active' class
+        const isActive = item.classList.contains('active');
+        
+        // Close all items first (optional)
+        faqItems.forEach(el => {
+            el.classList.remove('active');
+            el.querySelector('.faq-content').style.maxHeight = null;
+        });
+
+        // If it wasn't active, open it now
+        if (!isActive) {
+            item.classList.add('active');
+            content.style.maxHeight = content.scrollHeight + "px"; // Dynamic height calculation
+        }
+    });
+});

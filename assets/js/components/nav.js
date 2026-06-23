@@ -1,27 +1,24 @@
-/* ==========================================================================
-   RAPHAEL LEZIUS | NAVIGATION LOGIC
-   ========================================================================== */
+// Oben in Ihrer main.js: Importieren Sie die Engine
+import NavigationEngine from './components/nav.js';
 
-const initNav = () => {
-    // 1. Live Telemetry Clock
-    const clock = document.getElementById('telemetryClock');
-    if (clock) {
-        setInterval(() => {
-            const time = new Date().toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' });
-            clock.querySelector('.time-display').innerText = time;
-        }, 1000);
+// ... (Ihre anderen Funktionen wie loadComponent etc.) ...
+
+// Wenn Sie Ihre Navigation über fetch() in die Seite laden:
+async function loadNavigation() {
+    try {
+        const response = await fetch('components/nav.html');
+        const html = await response.text();
+        document.getElementById('global-nav').innerHTML = html;
+        
+        // WICHTIG: Starten Sie die Engine ERST, wenn das HTML existiert!
+        new NavigationEngine();
+        
+    } catch (error) {
+        console.error('Fehler beim Laden der Navigation:', error);
     }
+}
 
-    // 2. Mobile Menu Logic
-    const toggle = document.getElementById('mobileMenuToggle');
-    const menu = document.getElementById('fluidMobileMenu');
-    if (toggle && menu) {
-        toggle.addEventListener('click', () => {
-            toggle.classList.toggle('is-active');
-            menu.classList.toggle('is-open');
-        });
-    }
-};
-
-// Initialize
-initNav();
+// Beim Start der Seite ausführen
+document.addEventListener('DOMContentLoaded', () => {
+    loadNavigation();
+});

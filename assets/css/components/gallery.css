@@ -136,183 +136,153 @@
 .lightbox-data-panel p { color: #aaa; font-family: var(--font-body); font-size: 1.1rem; margin: 0; }
 
 
-
-
 /* ==========================================================================
-   PROJECT BELT FIX: LIVE REFERENZEN (IMAGE SIZING & SCROLLING)
-   GOLDEN CYBERCORE EDITION
+   PIECE 7: PROJECT BELT - INDUSTRIAL GALLERY ENGINE
    ========================================================================== */
 
-
-/* 1. The Overall Layout */
 .visual-split-layout {
     display: grid;
-    grid-template-columns: 1fr; /* Stack on mobile */
+    grid-template-columns: 1fr;
     gap: 40px;
+    align-items: center;
 }
 
-
-@media (min-width: 992px) {
+@media (min-width: 1024px) {
     .visual-split-layout {
-        grid-template-columns: 350px 1fr; /* Left Info Panel, Right Sliding Belt */
-        gap: 60px;
-        align-items: center;
+        grid-template-columns: 480px 1fr;
+        gap: 80px;
     }
 }
 
-
-/* 2. Left Info Panel Styling */
-.visual-info-pane {
-    padding: clamp(30px, 5vw, 40px);
-    border-radius: 16px;
-    border: 1px solid rgba(255, 215, 0, 0.1); /* Shifted to subtle Gold */
-    background: rgba(10, 10, 10, 0.6);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    box-shadow: 0 20px 50px rgba(0,0,0,0.5), inset 0 2px 10px rgba(255, 215, 0, 0.02);
-}
-
-
-/* 3. The Navigation Buttons */
-.belt-controls {
-    display: flex;
-    gap: 15px;
-    margin-top: 30px;
-}
-
-
-.nav-hud-btn {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: #fff;
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    padding: 12px 20px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: 0.3s var(--transition);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: 700;
-}
-
-
-/* Gold Interactive Hover */
-.nav-hud-btn:hover {
-    background: var(--neon-gold);
-    color: #000;
-    box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
-    border-color: var(--neon-gold);
-    transform: translateY(-2px);
-}
-
-
-/* =========================================================
-   🚨 CRITICAL FIX: IMAGE SIZING AND SCROLL TRACK
-   ========================================================= */
-
-
+/* --- BELT TRACK CONTAINER --- */
 .belt-container {
     width: 100%;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory; /* Snaps to each image like an app */
-    scrollbar-width: none; /* Hides scrollbar in Firefox */
-    -ms-overflow-style: none; /* Hides scrollbar in IE */
-    padding-bottom: 20px;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch; /* Momentum scrolling on iOS */
+    overflow: hidden;
+    position: relative;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 215, 0, 0.15);
+    background: rgba(0,0,0,0.4);
 }
-
-
-.belt-container::-webkit-scrollbar {
-    display: none; /* Hides scrollbar in Chrome/Safari */
-}
-
 
 .belt-track {
     display: flex;
-    gap: 20px;
-    width: max-content; /* Forces the track to stretch infinitely horizontally */
-    will-change: transform; /* GPU Optimization */
-}
-
-
-/* The Individual Image Cards */
-.belt-item {
-    position: relative;
-    flex: 0 0 85vw; /* On mobile: Take up 85% of the screen width */
-    aspect-ratio: 4 / 3; /* Perfect rectangle shape */
-    border-radius: 12px;
-    overflow: hidden;
-    scroll-snap-align: center;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    background: #111; /* Fallback color before image loads */
-    transition: transform 0.5s var(--transition), border-color 0.5s;
-    will-change: transform, border-color;
-    cursor: pointer;
-}
-
-
-@media (min-width: 768px) {
-    .belt-item {
-        flex: 0 0 450px; /* On PC/Tablet: Lock to exactly 450px wide */
-    }
-}
-
-
-/* Hover Physics for the Card */
-.belt-item:hover {
-    border-color: rgba(255, 215, 0, 0.5); /* Ignites in Gold */
-    transform: translateY(-5px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.6), 0 0 20px rgba(255, 215, 0, 0.1);
-}
-
-
-/* The Actual Image Tag */
-.belt-item img {
     width: 100%;
-    height: 100%;
-    object-fit: cover; /* Forces image to fit the box without stretching! */
-    transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+    transition: transform 0.5s ease-in-out;
     will-change: transform;
 }
 
-
-.belt-item:hover img {
-    transform: scale(1.08); /* Deep zoom on hover */
+/* Forcing slides to take full width of the container */
+.belt-item {
+    flex: 0 0 100%;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
+.belt-item img {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
 
-/* The Overlay Tag (e.g. "METOD_KÜCHE") */
+@media (min-width: 768px) {
+    .belt-item img { height: 450px; }
+}
+
 .img-tag {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    background: rgba(5, 6, 8, 0.85);
-    backdrop-filter: blur(10px);
-    color: var(--neon-gold); /* Shifted to Gold */
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    font-weight: 700;
-    padding: 6px 14px;
-    border-radius: 4px;
-    border: 1px solid rgba(255, 215, 0, 0.3); /* Gold border */
-    letter-spacing: 2px;
+    margin-top: 20px;
+    font-family: var(--font-mono, monospace);
+    font-size: 0.8rem;
+    color: var(--neon-gold, #FFD700);
+    letter-spacing: 3px;
     text-transform: uppercase;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-    transition: color 0.3s, border-color 0.3s;
+    text-align: center;
 }
 
-
-/* Cyber Accent on Hover */
-.belt-item:hover .img-tag {
-    color: var(--neon-cyan); /* Shifts to Cyan data-accent on hover */
-    border-color: rgba(0, 229, 255, 0.4);
+/* --- HUD CONTROLS & DOTS --- */
+.nav-hud-btn {
+    background: rgba(255,255,255,0.05); 
+    border: 1px solid rgba(255,255,255,0.1); 
+    padding: 12px 24px; 
+    color: #fff; 
+    cursor: pointer; 
+    text-transform: uppercase; 
+    font-family: var(--font-mono, monospace);
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
 }
 
+.nav-hud-btn:hover {
+    background: rgba(255,255,255,0.15);
+    border-color: var(--neon-gold, #FFD700);
+    color: var(--neon-gold, #FFD700);
+}
+
+#nextBelt {
+    background: var(--neon-gold, #FFD700);
+    color: #000;
+    border: none;
+    font-weight: 800;
+}
+
+#nextBelt:hover {
+    background: #fff;
+    color: #000;
+}
+
+.carousel-dots {
+    display: flex;
+    gap: 12px;
+    margin: 25px 0;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border: 1px solid var(--neon-gold, #FFD700);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot.active {
+    background: var(--neon-gold, #FFD700);
+    box-shadow: 0 0 12px var(--neon-gold, #FFD700);
+    transform: scale(1.2);
+}
+
+/* --- INFO PANE & PROOF BOX --- */
+.proof-box {
+    background: rgba(255, 215, 0, 0.02);
+    border: 1px solid rgba(255, 215, 0, 0.05);
+    padding: 25px;
+    border-radius: 8px;
+    margin: 35px 0;
+}
+
+.proof-icon {
+    width: 55px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 215, 0, 0.05);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    color: var(--neon-gold, #FFD700);
+}
 
 /* ==========================================================================
    MASTER ARCHIVE & GALLERY ENGINE (v2026.5)

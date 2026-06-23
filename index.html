@@ -4,133 +4,189 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Raphael Lezius | Premium Montage & 2026 High-End Interior Tech</title>
-   
+    
     <meta name="description" content="Professioneller Montage-Experte für Premium-Möbel, Küchen, Gartenhäuser und Demontage in Augsburg und München. Millimetergenaue Präzision mit Bosch Professional.">
-    <meta name="theme-color" content="#050505">
+    <meta name="theme-color" content="#0a0805">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-
+    <!-- Preconnect for Performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-   
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&family=Space+Grotesk:wght@300;500;700;800&family=JetBrains+Mono:wght@400;700&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
+    
+    <!-- High-End Typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&family=Space+Grotesk:wght@300;500;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
+    <!-- Modular CSS Engine (2077 Aurum Standard) -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/components/global.css">
+    <link rel="stylesheet" href="assets/css/components/nav.css">
+    <link rel="stylesheet" href="assets/css/components/footer.css">
+    <link rel="stylesheet" href="assets/css/components/area.css">
+    <link rel="stylesheet" href="assets/css/components/faq.css">
+    <link rel="stylesheet" href="assets/css/components/gallery.css">
+    <link rel="stylesheet" href="assets/css/components/hero.css">
+    <link rel="stylesheet" href="assets/css/components/profile.css">
+    <link rel="stylesheet" href="assets/css/components/services.css">
+    <link rel="stylesheet" href="assets/css/components/mission-os.css">
 
- <!-- Modular CSS Engine -->
-<link rel="stylesheet" href="assets/css/style.css">
-<link rel="stylesheet" href="assets/css/components/global.css">
-
-
-<link rel="stylesheet" href="assets/css/components/nav.css">
-<link rel="stylesheet" href="assets/css/components/footer.css">
-
-
-<link rel="stylesheet" href="assets/css/components/area.css">
-<link rel="stylesheet" href="assets/css/components/faq.css">
-<link rel="stylesheet" href="assets/css/components/gallery.css">
-<link rel="stylesheet" href="assets/css/components/hero.css">
-<link rel="stylesheet" href="assets/css/components/profile.css">
-<link rel="stylesheet" href="assets/css/components/services.css">
-
-
-<link rel="stylesheet" href="assets/css/components/mission-os.css">
-
-
+    <!-- Failsafe & Anti-Flicker Script -->
     <style>
-        body { background: #050505; opacity: 1 !important; visibility: visible !important; }
+        body { background: #0a0805; opacity: 1 !important; visibility: visible !important; }
         .no-js-override [data-aos] { opacity: 1 !important; transform: none !important; visibility: visible !important; }
+        
+        /* Inline overrides for the Review Layout */
+        .review-grid-3col { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-top: 30px; }
+        .review-category-header { display: flex; align-items: center; gap: 12px; font-family: var(--font-mono, monospace); font-size: 0.85rem; letter-spacing: 2px; color: #fff; margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; }
+        .review-card-aurum { padding: 30px; background: rgba(10, 8, 5, 0.8); border: 1px solid rgba(255, 215, 0, 0.15); border-top: 3px solid #FFD700; display: flex; flex-direction: column; transition: transform 0.4s; }
+        .review-card-aurum:hover { transform: translateY(-5px); border-color: rgba(255, 215, 0, 0.4); box-shadow: 0 20px 40px rgba(0,0,0,0.8), 0 0 20px rgba(255,215,0,0.05); }
+        .rev-stars { color: #FFD700; font-size: 0.8rem; margin-bottom: 15px; }
+        .rev-quote { font-size: 0.95rem; color: #e2e8f0; line-height: 1.6; font-style: italic; margin-bottom: 25px; flex-grow: 1; }
+        .rev-client-info { display: flex; justify-content: space-between; align-items: flex-end; border-top: 1px dashed rgba(255,255,255,0.1); padding-top: 15px; }
+        .rev-client-name { font-family: var(--font-head, sans-serif); font-weight: 700; color: #fff; font-size: 1rem; }
+        .rev-platform-tag { font-family: var(--font-mono, monospace); font-size: 0.65rem; padding: 4px 8px; border-radius: 4px; background: rgba(255,255,255,0.05); color: #94a3b8; }
     </style>
 </head>
 
+<body class="is-dark no-js-override aurum-theme">
 
-<body class="is-dark no-js-override">
+    <!-- ==========================================
+         GLOBAL NAVIGATION (INJECTED VIA JS)
+         ========================================== -->
+    <div id="global-nav" aria-label="Hauptnavigation"></div>
 
-
-    <div id="global-nav"></div>
-
-
-    <main>
+    <main id="main-content" role="main">
         
-<section class="hero-section" id="home">
+  <!-- ==========================================
+             1. KINETIC HERO SECTION (PURE VISION EDITION)
+             ========================================== -->
+        <section class="hero-section aurum-theme" id="home" aria-label="Startbildschirm">
             
-        <div class="video-bg-container">
+            <!-- PURE VIDEO ENGINE & BUBBLES -->
+            <div class="video-bg-container" aria-hidden="true">
+                <!-- Pures Video ohne störende Grids -->
                 <video autoplay muted loop playsinline class="hero-video" poster="assets/images/Bedroom_grey_main.webp">
                     <source src="assets/video/project-landscape.mp4" type="video/mp4">
                 </video>
-                <canvas id="gold-bubbles"></canvas>
+                
+                <!-- Einzigartiger Gold Bubbles Effekt -->
+                <div id="gold-bubbles-effect"></div> 
+                
+                <!-- Sanfter Übergang zur nächsten dunklen Sektion -->
+                <div class="video-fade-bottom"></div>
             </div>  
 
-            <div class="container">
+            <div class="container relative-z">
                 <div class="kinetic-layout">
                     
-                    <div class="hero-text" data-aos="fade-up">
+                    <!-- LEFT: Core Mission Statement -->
+                    <div class="hero-text-core" data-aos="fade-up">
                         
-                        <div class="live-indicator">
-                            <div class="status-dot-container">
-                                <div class="status-pulse"></div>
-                                <div class="status-dot"></div>
-                            </div>
-                            <span class="live-text">EINSATZBEREIT IN MÜNCHEN & AUGSBURG</span>
+                        <!-- Tactical Gold Uplink Badge -->
+                        <div class="system-uplink-badge" role="status">
+                            <div class="pulse-ring-gold"></div>
+                            <span class="uplink-text crisp-text">SYSTEM ONLINE // MÜNCHEN & AUGSBURG</span>
                         </div>
                         
-                        <h1 class="glitch-header">
-                            MÖBEL KAUFEN<br>IST SCHÖN.<br>
-                            <span class="gold-text">DER AUFBAU MEIN JOB.</span>
+                        <!-- Razor-Sharp Typography (Premium Copy) -->
+                        <h1 class="hero-title-sharp">
+                            <span class="title-line">MÖBEL KAUFEN</span>
+                            <span class="title-line">IST SCHÖN.</span>
+                            <span class="title-line gold-text">DIE MONTAGE MEINE DISZIPLIN.</span>
                         </h1>
                         
-                        <p class="hero-deep-copy">
-                            <strong>Sparen Sie sich Zeit, Nerven und das Chaos endloser Schrauben.</strong><br>
-                            Sie haben in eine exklusive Einrichtung investiert. Überlassen Sie die fachgerechte Montage nicht dem Zufall. Als spezialisierter Experte sorge ich mit modernstem <strong>Bosch Professional-Werkzeug</strong> und digitaler Laser-Nivellierung für absolute Präzision.
+                        <!-- High-Contrast Copywriting (Psychologically Optimized) -->
+                        <p class="hero-mission-statement crisp-text">
+                            <span class="highlight-bar-gold">Ihre Zeit ist zu wertvoll für Kompromisse.</span><br>
+                            Sie haben in erstklassiges Interieur investiert – überlassen Sie das finale Finish nicht dem Zufall. Als spezialisierter Montage-Experte garantiere ich eine makellose Umsetzung. Millimetergenau, staubfrei und ausgeführt mit digitaler <strong>Laser-Nivellierung</strong> sowie High-End-Technologie von <strong>Bosch Professional</strong>.
                         </p>
 
-                        <div class="magnetic-btn-group">
-                            <button class="btn btn-gold reactive-btn js-open-os">
-                                <i class="fas fa-hammer"></i> KOSTENLOS ANFRAGEN
+                        <!-- Action Terminals -->
+                        <div class="tactical-btn-group">
+                            <button class="btn btn-solid-gold reactive-btn magnetic-target js-open-os" aria-label="Projektanfrage starten">
+                                <i class="fas fa-bolt"></i> PROJEKT-ANFRAGE STARTEN
                             </button>
-                            <a href="#projekt-belt" class="btn btn-holographic reactive-btn">
-                                <i class="fas fa-camera"></i> MEINE ARBEITEN
+                            <a href="gallery.html" class="btn btn-glass reactive-btn magnetic-target" aria-label="Projektgalerie ansehen">
+                                <i class="fas fa-database"></i> PROJEKT-ARCHIV ÖFFNEN
                             </a>
                         </div>
                     </div>
 
-                    <div class="ops-panel-wrapper desktop-only" data-aos="fade-left" data-aos-delay="200">
-                        <div class="glass-panel ops-card">
+                    <!-- RIGHT: Operations Panel (Ultra-Clean Glass HUD) -->
+                    <aside class="ops-panel-wrapper desktop-only" data-aos="fade-left" data-aos-delay="200" aria-label="System-Spezifikationen">
+                        <div class="glass-panel ops-card aurum-card">
+                            
                             <div class="ops-header">
-                                <span class="tech-font">PREMIUM STANDARD</span>
-                                <span class="status-live-text blink"><i class="fas fa-shield-alt"></i> GEPRÜFT</span>
+                                <div class="ops-badge">
+                                    <i class="fas fa-microchip gold-text"></i>
+                                    <span class="tech-font crisp-text">PREMIUM STANDARD</span>
+                                </div>
+                                <div class="status-live-text">
+                                    <span class="dot-gold blink"></span> 
+                                    <span class="crisp-text">VERIFIZIERT</span>
+                                </div>
                             </div>
                             
-                            <ul class="tech-specs-list">
-                                <li><i class="fas fa-ruler-combined"></i> <span><strong>Laser-Nivellierung:</strong> 100% Waagerecht.</span></li>
-                                <li><i class="fas fa-wind"></i> <span><strong>Staubfrei:</strong> Aktive HEPA-Absaugung.</span></li>
-                                <li><i class="fas fa-cut"></i> <span><strong>Zuschnitte:</strong> Ausrissfreie Festool-Kanten.</span></li>
-                                <li><i class="fas fa-anchor"></i> <span><strong>Sicherheit:</strong> Fischer Schwerlast-Systeme.</span></li>
-                            </ul>
+                            <!-- Crisp Telemetry Data Grid -->
+                            <div class="ops-data-grid">
+                                <div class="data-cell">
+                                    <div class="cell-icon gold-border"><i class="fas fa-ruler-combined gold-text"></i></div>
+                                    <div class="cell-text">
+                                        <span class="cell-label crisp-text">NIVELLIERUNG</span>
+                                        <span class="cell-val crisp-text">100% Laser-Waage</span>
+                                    </div>
+                                </div>
+                                <div class="data-cell">
+                                    <div class="cell-icon gold-border"><i class="fas fa-wind gold-text"></i></div>
+                                    <div class="cell-text">
+                                        <span class="cell-label crisp-text">UMGEBUNG</span>
+                                        <span class="cell-val crisp-text">HEPA-Staubfrei</span>
+                                    </div>
+                                </div>
+                                <div class="data-cell">
+                                    <div class="cell-icon gold-border"><i class="fas fa-cut gold-text"></i></div>
+                                    <div class="cell-text">
+                                        <span class="cell-label crisp-text">ZUSCHNITT</span>
+                                        <span class="cell-val crisp-text">Ausrissfrei (Festool)</span>
+                                    </div>
+                                </div>
+                                <div class="data-cell">
+                                    <div class="cell-icon gold-border"><i class="fas fa-anchor gold-text"></i></div>
+                                    <div class="cell-text">
+                                        <span class="cell-label crisp-text">VERANKERUNG</span>
+                                        <span class="cell-val crisp-text">Schwerlast-Systeme</span>
+                                    </div>
+                                </div>
+                            </div>
 
-                            <div class="stream-info-block">
-                                <i class="fas fa-user-tie" style="font-size: 2rem; color: var(--neon-gold); margin-top: 5px;"></i>
-                                <div>
-                                    <span class="tech-font gold-text">PERSÖNLICHE BETREUUNG</span>
-                                    <p style="font-size: 0.85rem; color: #ccc; margin-top: 5px; margin-bottom: 0;">Keine Subunternehmer. Ich kümmere mich persönlich um die millimetergenaue Umsetzung Ihres Projekts.</p>
+                            <!-- Human Authority Block -->
+                            <div class="stream-info-block aurum-block">
+                                <div class="avatar-hexagon gold-hex">
+                                    <i class="fas fa-user-tie"></i>
+                                </div>
+                                <div class="info-content">
+                                    <span class="tech-font gold-text crisp-text">DIREKTER UPLINK // CHEFSACHE</span>
+                                    <p class="crisp-text">Keine Subunternehmer. Ich verantworte die Umsetzung Ihres Projekts persönlich.</p>
                                 </div>
                             </div>
 
                             <div class="ops-footer">
-                                <span>STATUS:</span>
-                                <span class="gold-text blink">BEREIT FÜR ANFRAGEN</span>
+                                <span class="footer-sys-label crisp-text">SYSTEM_STATUS:</span>
+                                <span class="gold-text blink fw-800 crisp-text">BEREIT FÜR ANFRAGEN</span>
                             </div>
                         </div>
-                    </div>
+                    </aside>
 
                 </div>
             </div>
         </section>
 
-      <!-- DATA STREAM MARQUEE (PIECE 7) -->
-        <div class="marquee-wrapper">
+        <!-- ==========================================
+             2. DATA STREAM MARQUEE (TELEMETRY)
+             ========================================== -->
+        <div class="marquee-wrapper" aria-hidden="true">
             <div class="marquee-track">
                 <span><i class="fas fa-cube"></i> IKEA PAX EXPERTE</span>
                 <span><i class="fas fa-home"></i> OUTDOOR & GARTENHÄUSER</span>
@@ -138,7 +194,7 @@
                 <span><i class="fas fa-gem"></i> USM HALLER DESIGN</span>
                 <span><i class="fas fa-tools"></i> SYSTEM-DEMONTAGE</span>
                 <span><i class="fas fa-bed"></i> BOXSPRINGBETTEN</span>
-                <!-- Duplicated for seamless infinite loop -->
+                
                 <span><i class="fas fa-cube"></i> IKEA PAX EXPERTE</span>
                 <span><i class="fas fa-home"></i> OUTDOOR & GARTENHÄUSER</span>
                 <span><i class="fas fa-utensils"></i> KÜCHEN-MONTAGE</span>
@@ -148,16 +204,15 @@
             </div>
         </div>
 
-        <!-- DIGITAL PROFILE & PHILOSOPHY (PIECES 2, 3, 7, 8) -->
-        <section id="profile" class="section-padding animated-grid-bg">
+        <!-- ==========================================
+             3. DIGITAL PROFILE & PHILOSOPHY
+             ========================================== -->
+        <section id="profile" class="section-padding animated-grid-bg" aria-labelledby="profile-heading">
             <div class="container relative-z">
                 <div class="split-layout">
                     
-                    <!-- LEFT COLUMN: The HUD & 3D ID Card -->
                     <div class="profile-card-wrapper" data-aos="fade-right">
-                        
-                        <!-- HUD Stats Monitor -->
-                        <div class="hud-monitor">
+                        <div class="hud-monitor" aria-hidden="true">
                             <div class="hud-header">
                                 <i class="fas fa-crosshairs blink" style="color: var(--neon-cyan);"></i>
                                 <span>OPERATIONAL ZONE // AUGSBURG & MÜNCHEN</span>
@@ -170,20 +225,19 @@
                             <div class="diag-bar"><div class="diag-fill"></div></div>
                         </div>
 
-                        <!-- Scanning ID Card with 3D Avatar -->
-                        <div class="id-card">
+                        <article class="id-card glass-panel">
                             <div class="id-header-tech">
-                                <div class="chip"><i class="fas fa-user-tie"></i></div>
+                                <div class="chip"><i class="fas fa-microchip"></i></div>
                                 <div class="status-live"><span class="blink">●</span> MONTAGE-EXPERTE</div>
                             </div>
 
                             <div class="avatar-frame">
                                 <div class="flipper">
                                     <div class="front">
-                                        <img src="assets/images/raphael-lezius-logo-front.webp" alt="Raphael Lezius Profil" onerror="this.src='https://via.placeholder.com/300'">
+                                        <img src="assets/images/raphael-lezius-logo-front.webp" alt="Raphael Lezius Profil" loading="lazy">
                                     </div>
                                     <div class="back">
-                                        <img src="assets/images/raphael-lezius-logo-back.webp" alt="Qualitätssiegel" onerror="this.src='https://via.placeholder.com/300'">
+                                        <img src="assets/images/raphael-lezius-logo-back.webp" alt="Qualitätssiegel" loading="lazy">
                                     </div>
                                 </div>
                             </div>
@@ -201,90 +255,83 @@
                                 <div class="stat-cell"><span class="label">KUNDEN</span><span class="value cyan-text">100%</span></div>
                                 <div class="stat-cell"><span class="label">ERFAHRUNG</span><span class="value">8+ JAHRE</span></div>
                             </div>
-                        </div>
+                        </article>
                     </div>
                     
-                    <!-- RIGHT COLUMN: Philosophy & Consultation -->
                     <div class="philosophy-content" data-aos="fade-left">
-                        
                         <div class="section-tag-wrapper">
                             <span class="section-tag">MEINE PHILOSOPHIE</span>
                         </div>
                         
-                        <h2 class="section-heading">
+                        <h2 id="profile-heading" class="section-heading">
                             Wahres Handwerk kennt keine <span class="gold-text">Kompromisse.</span>
                         </h2>
                         
-                        <p class="desc-line" style="font-size: 1.25rem; color: #fff; font-style: italic;">
+                        <blockquote class="desc-line" style="font-size: 1.25rem; color: #f8fafc; font-style: italic;">
                             "Ein Zuhause ist mehr als nur Wände und Möbel. Es ist der Ort, an dem Sie zur Ruhe kommen sollen. Mein Ziel ist es, Ihnen exakt diese Ruhe zu schenken."
-                        </p>
+                        </blockquote>
                         
-                        <p class="desc-line" style="border-left: none; padding-left: 0; margin-top: -20px; color: #aaa;">
+                        <p class="desc-line" style="border-left: none; padding-left: 0; margin-top: -20px; color: #94a3b8;">
                             Ich biete Ihnen einen Service, den große Möbelhäuser oft nicht leisten können: absolute Zuverlässigkeit, persönliche Erreichbarkeit und eine handwerkliche Qualität, die auch bei schiefen Wänden oder komplexen Sonderwünschen nicht aufgibt.
                         </p>
 
-                        <!-- Cyber Glass Swipe Carousel -->
-                        <div class="swipe-carousel" id="philosophyCarousel">
-                            <div class="tech-card-v2 swipe-item">
+                        <div class="swipe-carousel" id="philosophyCarousel" aria-label="Kernkompetenzen">
+                            <div class="tech-card-v2 swipe-item glass-panel">
                                 <div class="card-icon-v2"><i class="fas fa-drafting-compass"></i></div>
                                 <h3 class="card-title-v2">DETAILVERLIEBT</h3>
                                 <p class="card-desc-v2">Schleifende Schranktüren? Nicht bei mir. Jedes Scharnier wird millimetergenau justiert.</p>
                             </div>
-                            <div class="tech-card-v2 swipe-item">
+                            <div class="tech-card-v2 swipe-item glass-panel">
                                 <div class="card-icon-v2"><i class="fas fa-handshake"></i></div>
                                 <h3 class="card-title-v2">TRANSPARENT</h3>
                                 <p class="card-desc-v2">Sie erhalten vor dem Start einen festen Preis. Keine Nachverhandlungen, kein Stress.</p>
                             </div>
-                            <div class="tech-card-v2 swipe-item">
+                            <div class="tech-card-v2 swipe-item glass-panel">
                                 <div class="card-icon-v2"><i class="fas fa-shield-alt"></i></div>
                                 <h3 class="card-title-v2">VERSICHERT</h3>
                                 <p class="card-desc-v2">Vollständige Betriebshaftpflicht. Null Risiko für Ihre wertvolle Einrichtung und Böden.</p>
                             </div>
                         </div>
 
-                        <!-- Premium Consultation Banner (Piece 8) -->
-                        <div class="consultation-wrapper" style="margin-top: 40px;">
+                        <div class="consultation-wrapper glass-panel" style="margin-top: 40px;">
                             <div class="consultation-info">
                                 <span class="pulse-dot-gold"></span>
                                 <strong>KOSTENLOSER PROJEKT-CHECK</strong>
                                 <p>Klären Sie technische Details und Maße völlig unverbindlich ab, bevor Sie mich beauftragen.</p>
                             </div>
                             <div class="cta-action-row">
-                                <button class="btn btn-gold reactive-btn js-open-os">
-                                    <i class="fas fa-calendar-plus"></i> UNVERBINDLICH ANFRAGEN
+                                <button class="btn btn-gold reactive-btn magnetic-target js-open-os">
+                                    <i class="fas fa-satellite-dish"></i> UPLINK STARTEN
                                 </button>
                                 <div class="signature">
                                     <span>Raphael Lezius</span>
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
         </section>
 
-     <!-- SYSTEM SERVICES ACCORDION ENGINE (PIECE 9) -->
-        <section id="system-integration" class="services-accordion-section">
-            
-            <!-- Added Ambient Tactical Grid Overlay -->
-            <div class="interface-overlay"></div>
+        <!-- ==========================================
+             4. SYSTEM SERVICES ACCORDION ENGINE
+             ========================================== -->
+        <section id="system-integration" class="services-accordion-section" aria-labelledby="services-heading">
+            <div class="interface-overlay" aria-hidden="true"></div>
 
             <div class="container relative-z">
-                
                 <div class="section-header center" data-aos="fade-up">
                     <div class="pre-title">SYSTEM_SERVICES</div>
-                    <h2 class="section-heading">VON DER KÜCHE BIS ZUM <span class="cyan-text">GARTENHAUS</span></h2>
-                    <p class="section-subtitle" style="margin-left: auto; margin-right: auto;">Maßgeschneiderte Montagelösungen für Ihr gesamtes Grundstück. Klicken Sie auf ein Modul für technische Details.</p>
+                    <h2 id="services-heading" class="section-heading">VON DER KÜCHE BIS ZUM <span class="cyan-text">GARTENHAUS</span></h2>
+                    <p class="section-subtitle" style="margin-left: auto; margin-right: auto;">Maßgeschneiderte Montagelösungen für Ihr gesamtes Grundstück. Navigieren Sie durch die Module für technische Spezifikationen.</p>
                 </div>
 
                 <div class="accordion-container" data-aos="fade-up" data-aos-delay="100">
                     
-                    <!-- MODULE 01: Cyan -->
-                    <div class="accordion-item border-cyan">
+                    <div class="accordion-item glass-panel border-cyan">
                         <button class="accordion-header hover-cyan" aria-expanded="false">
                             <div class="header-left">
-                                <span class="sector-id cyan-text">MODUL_01</span>
+                                <span class="sector-id cyan-text">MODUL_01 // RESIDENTIAL</span>
                                 <h3 class="sector-title">IKEA PAX, Küchen & Wohnmöbel</h3>
                             </div>
                             <div class="sector-trigger"><i class="fas fa-plus icon-cyan"></i></div>
@@ -300,29 +347,31 @@
                                         <ul>
                                             <li><strong>Traglast:</strong> Max. 30kg pro Regalboden</li>
                                             <li><strong>Präzision:</strong> Laser-Ausrichtung (1mm Toleranz)</li>
-                                            <li><strong>Sicherheit:</strong> Schwerlast-Kippsicherung in Beton/Gipskarton</li>
-                                            <li><strong>Features:</strong> Schwebetüren & KOMPLEMENT Systeme</li>
+                                            <li><strong>Sicherheit:</strong> Kippsicherung in Beton/Gipskarton</li>
+                                            <li><strong>Integration:</strong> Schwebetüren & KOMPLEMENT</li>
                                         </ul>
                                     </div>
                                     <div class="sector-group">
                                         <h4 class="group-label"><i class="fas fa-utensils cyan-text"></i> METOD Küchen</h4>
                                         <ul>
-                                            <li><strong>Traglast:</strong> Bis zu 120kg pro Wandschiene</li>
-                                            <li><strong>Präzision:</strong> Fugenlose Arbeitsplatten-Verbindung</li>
-                                            <li><strong>Integration:</strong> Spülen- & Kochfeldausschnitte versiegelt</li>
-                                            <li><strong>Mechanik:</strong> UTRUSTA & MAXIMERA Feinjustierung</li>
+                                            <li><strong>Verankerung:</strong> Schwerlast-Wandschienen</li>
+                                            <li><strong>Präzision:</strong> Fugenlose Arbeitsplatten</li>
+                                            <li><strong>Zuschnitt:</strong> Spülen- & Kochfeldausschnitte</li>
+                                            <li><strong>Mechanik:</strong> MAXIMERA Feinjustierung</li>
                                         </ul>
                                     </div>
+                                </div>
+                                <div class="sector-action" style="margin-top: 20px; text-align: right;">
+                                    <a href="residential.html" class="cyan-text" style="font-family: var(--font-mono); font-size: 0.8rem; text-decoration: underline; text-underline-offset: 4px;">ZUM RESIDENTIAL-SEKTOR -></a>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- MODULE 02: Gold -->
-                    <div class="accordion-item border-gold">
+                    <div class="accordion-item glass-panel border-gold">
                         <button class="accordion-header hover-gold" aria-expanded="false">
                             <div class="header-left">
-                                <span class="sector-id gold-text">MODUL_02</span>
+                                <span class="sector-id gold-text">MODUL_02 // OUTDOOR</span>
                                 <h3 class="sector-title">Gartenhäuser & Outdoor-Holzbau</h3>
                             </div>
                             <div class="sector-trigger"><i class="fas fa-plus icon-gold"></i></div>
@@ -330,37 +379,37 @@
                         <div class="accordion-content">
                             <div class="accordion-body-inner">
                                 <p class="sector-description">
-                                    Machen Sie Ihren Garten zur Wohlfühloase. Ich übernehme das schwere Heben und die wetterfeste, sturmsichere Montage Ihrer Outdoor-Strukturen auf vorbereiteten Fundamenten.
+                                    Ich übernehme das schwere Heben und die wetterfeste, sturmsichere Montage Ihrer Outdoor-Strukturen auf vorbereiteten Fundamenten.
                                 </p>
                                 <div class="sector-grid">
                                     <div class="sector-group">
                                         <h4 class="group-label"><i class="fas fa-home gold-text"></i> Holz-Gartenhäuser</h4>
                                         <ul>
-                                            <li><strong>Struktur:</strong> 28mm - 44mm Blockbohlenbauweise</li>
+                                            <li><strong>Struktur:</strong> 28mm - 44mm Blockbohlenbau</li>
                                             <li><strong>Dachlast:</strong> Schneelastsicherung bis 85kg/m²</li>
-                                            <li><strong>Wetterfest:</strong> EPDM-Folien & Bitumen-Verklebung</li>
-                                            <li><strong>Sicherheit:</strong> Verschraubte Bodenanker</li>
+                                            <li><strong>Wetterfest:</strong> EPDM-Folien & Bitumen</li>
                                         </ul>
                                     </div>
                                     <div class="sector-group">
                                         <h4 class="group-label"><i class="fas fa-toolbox gold-text"></i> Metall-Systeme</h4>
                                         <ul>
                                             <li><strong>Marken:</strong> BIOHORT, TEPRO Spezialist</li>
-                                            <li><strong>Fundament:</strong> Verschraubung auf Beton/Gehwegplatten</li>
-                                            <li><strong>Features:</strong> Mülltonnenboxen & Fahrradgaragen</li>
-                                            <li><strong>Schutz:</strong> Silikon-Abdichtung gegen Staunässe</li>
+                                            <li><strong>Fundament:</strong> Verschraubung auf Beton</li>
+                                            <li><strong>Schutz:</strong> Silikon-Abdichtung</li>
                                         </ul>
                                     </div>
+                                </div>
+                                <div class="sector-action" style="margin-top: 20px; text-align: right;">
+                                    <a href="outdoor.html" class="gold-text" style="font-family: var(--font-mono); font-size: 0.8rem; text-decoration: underline; text-underline-offset: 4px;">ZUM OUTDOOR-SEKTOR -></a>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- MODULE 03: Pink -->
-                    <div class="accordion-item border-pink">
+                    <div class="accordion-item glass-panel border-pink">
                         <button class="accordion-header hover-pink" aria-expanded="false">
                             <div class="header-left">
-                                <span class="sector-id pink-text">MODUL_03</span>
+                                <span class="sector-id pink-text">MODUL_03 // CORPORATE</span>
                                 <h3 class="sector-title">Gewerbe & USM Haller</h3>
                             </div>
                             <div class="sector-trigger"><i class="fas fa-plus icon-pink"></i></div>
@@ -374,31 +423,31 @@
                                     <div class="sector-group">
                                         <h4 class="group-label"><i class="fas fa-gem pink-text"></i> USM Haller Design</h4>
                                         <ul>
-                                            <li><strong>Werkzeug:</strong> Zertifiziertes USM-Spezialwerkzeug</li>
-                                            <li><strong>Garantie:</strong> 100% kratzfreie Chromrohr-Montage</li>
-                                            <li><strong>Service:</strong> Umbau, Erweiterungen & Neukonfiguration</li>
-                                            <li><strong>Präzision:</strong> Fugenlose Blech-Justierung</li>
+                                            <li><strong>Werkzeug:</strong> Spezial-Konnektoren-Tool</li>
+                                            <li><strong>Garantie:</strong> Kratzfreie Chrom-Montage</li>
+                                            <li><strong>Service:</strong> Umbau & Neukonfiguration</li>
                                         </ul>
                                     </div>
                                     <div class="sector-group">
                                         <h4 class="group-label"><i class="fas fa-building pink-text"></i> Office Workspace</h4>
                                         <ul>
-                                            <li><strong>Ergonomie:</strong> E-Höhenverstellbare Schreibtische</li>
-                                            <li><strong>Logistik:</strong> Massen-Rollout für Startup-Büros</li>
-                                            <li><strong>Ausstattung:</strong> Konferenzanlagen & Akustikpaneele</li>
-                                            <li><strong>Kabel:</strong> Integriertes, unsichtbares Kabelmanagement</li>
+                                            <li><strong>Ergonomie:</strong> E-Höhenverstellbare Desks</li>
+                                            <li><strong>Logistik:</strong> Massen-Rollout für Büros</li>
+                                            <li><strong>Kabel:</strong> Unsichtbares Kabelmanagement</li>
                                         </ul>
                                     </div>
+                                </div>
+                                <div class="sector-action" style="margin-top: 20px; text-align: right;">
+                                    <a href="office.html" class="pink-text" style="font-family: var(--font-mono); font-size: 0.8rem; text-decoration: underline; text-underline-offset: 4px;">ZUM CORPORATE-SEKTOR -></a>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- MODULE 04: Green -->
-                    <div class="accordion-item border-green">
+                    <div class="accordion-item glass-panel border-green">
                         <button class="accordion-header hover-green" aria-expanded="false">
                             <div class="header-left">
-                                <span class="sector-id green-text">MODUL_04</span>
+                                <span class="sector-id green-text">MODUL_04 // DECONSTRUCT</span>
                                 <h3 class="sector-title">Möbel-Demontage & Rückbau</h3>
                             </div>
                             <div class="sector-trigger"><i class="fas fa-plus icon-green"></i></div>
@@ -406,27 +455,10 @@
                         <div class="accordion-content">
                             <div class="accordion-body-inner">
                                 <p class="sector-description">
-                                    Umzug oder Renovierung? Ich zerlege Ihre wertvollen Systeme systematisch und zerstörungsfrei, damit der Wiederaufbau am neuen Ort schnell und fehlerfrei gelingt.
+                                    Umzug oder Renovierung? Ich zerlege Ihre wertvollen Systeme systematisch und zerstörungsfrei, damit der Wiederaufbau am neuen Ort fehlerfrei gelingt.
                                 </p>
-                                <div class="sector-grid">
-                                    <div class="sector-group">
-                                        <h4 class="group-label"><i class="fas fa-wrench green-text"></i> Küchen-Rückbau</h4>
-                                        <ul>
-                                            <li><strong>Schutz:</strong> Beschädigungsfreies Lösen der Platten</li>
-                                            <li><strong>Sicherheit:</strong> Trennung (Wasser/Strom bauseits geklärt)</li>
-                                            <li><strong>Logistik:</strong> Systematische Sortierung aller Kleinteile</li>
-                                            <li><strong>Transport:</strong> Bündelung für Speditionen</li>
-                                        </ul>
-                                    </div>
-                                    <div class="sector-group">
-                                        <h4 class="group-label"><i class="fas fa-door-open green-text"></i> PAX & Systeme</h4>
-                                        <ul>
-                                            <li><strong>Protokoll:</strong> Labeling-System für Wiederaufbau</li>
-                                            <li><strong>Schutz:</strong> Sichern von genagelten Rückwänden</li>
-                                            <li><strong>Hardware:</strong> Sicherung von Schrauben & Beschlägen</li>
-                                            <li><strong>Glas:</strong> Fachgerechtes Aushängen von Spiegeltüren</li>
-                                        </ul>
-                                    </div>
+                                <div class="sector-action" style="margin-top: 20px; text-align: right;">
+                                    <a href="demontage.html" class="green-text" style="font-family: var(--font-mono); font-size: 0.8rem; text-decoration: underline; text-underline-offset: 4px;">ZUM DEMONTAGE-SEKTOR -></a>
                                 </div>
                             </div>
                         </div>
@@ -436,20 +468,198 @@
             </div>
         </section>
 
-        <!-- PREMIUM CINEMATIC VIDEO SCROLLER (PIECE 11) -->
-        <section id="integration-feeds" class="cinematic-section">
+        <!-- ==========================================
+             5. VERIFIED CLIENT LOGS (SOCIAL PROOF)
+             ========================================== -->
+        <section id="reviews" class="review-mainframe-bg hex-core-bg section-padding" style="position: relative; border-top: 1px solid rgba(255, 215, 0, 0.1);">
+            
+            <div class="reviews-grid-overlay" style="position: absolute; inset: 0; background-image: radial-gradient(rgba(255, 215, 0, 0.08) 1px, transparent 1px); background-size: 40px 40px; opacity: 0.4;"></div>
+            <div class="reviews-glow-pulse"></div>
+
+            <div class="container relative-z">
+                
+                <div class="section-header center" data-aos="fade-up">
+                    <div class="pre-title" style="font-family: var(--font-mono); color: #FFD700; letter-spacing: 3px; font-size: 0.75rem; margin-bottom: 10px;">SOCIAL_PROOF // VERIFIED_FEEDBACK</div>
+                    <h2 class="section-heading" style="font-family: var(--font-head); font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 900; color: #fff; margin-bottom: 20px;">Vertrauen durch <span style="color: #FFD700;">Leistung</span></h2>
+                    <p class="section-subtitle" style="color: #94a3b8; font-size: 1.1rem; max-width: 700px; margin: 0 auto 40px auto; line-height: 1.6;">
+                        Über <strong>110+ zufriedene Kunden</strong> bewerten meine Arbeit mit 5.0 Sternen. 
+                        Hier ist, was meine Auftraggeber über die millimetergenaue Umsetzung sagen.
+                    </p>
+                </div>
+
+                <div class="trust-cards-wrapper" data-aos="fade-up" style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 60px;">
+                    
+                    <a href="https://profis.check24.de" target="_blank" rel="noopener noreferrer" class="platform-card reactive-btn glass-panel magnetic-target" style="padding: 15px 30px; display: flex; align-items: center; gap: 15px; text-decoration: none; border: 1px solid rgba(255, 255, 255, 0.1); background: rgba(0, 0, 0, 0.6); transition: 0.3s;">
+                        <div class="platform-logo check24-logo" style="font-family: var(--font-head); font-weight: 900; color: #fff; font-size: 1.3rem; letter-spacing: -1px;">CHECK<span style="color: #00e5ff;">24</span></div>
+                        <div style="border-left: 1px solid rgba(255,255,255,0.1); padding-left: 15px;">
+                            <div class="big-score" style="color: #fff; font-family: var(--font-head); font-weight: 900; font-size: 1.6rem; line-height: 1;">5.0</div>
+                            <div class="sub-stats tech-font" style="font-family: var(--font-mono); color: #00e5ff; font-size: 0.65rem; letter-spacing: 1px; margin-top: 4px;">HERVORRAGEND</div>
+                        </div>
+                    </a>
+
+                    <a href="https://www.my-hammer.de" target="_blank" rel="noopener noreferrer" class="platform-card reactive-btn glass-panel magnetic-target" style="padding: 15px 30px; display: flex; align-items: center; gap: 15px; text-decoration: none; border: 1px solid rgba(255, 215, 0, 0.3); background: rgba(255, 215, 0, 0.05); transition: 0.3s;">
+                        <div class="platform-logo hammer-logo" style="font-family: var(--font-head); font-weight: 900; color: #FFD700; font-size: 1.3rem; letter-spacing: -1px;"><i class="fas fa-hammer"></i> MyHammer</div>
+                        <div style="border-left: 1px solid rgba(255, 215, 0, 0.2); padding-left: 15px;">
+                            <div class="big-score" style="color: #fff; font-family: var(--font-head); font-weight: 900; font-size: 1.6rem; line-height: 1;">5.0</div>
+                            <div class="sub-stats tech-font" style="font-family: var(--font-mono); color: #FFD700; font-size: 0.65rem; letter-spacing: 1px; margin-top: 4px;">ÜBER 110 BEWERTUNGEN</div>
+                        </div>
+                    </a>
+
+                </div>
+
+                <div class="reviews-matrix-content" data-aos="fade-up" data-aos-delay="100">
+                    
+                    <!-- COLUMN 1: KITCHEN SYSTEMS -->
+                    <div class="review-category-header">
+                        <i class="fas fa-utensils" style="color: #FFD700;"></i> [SYS_01] KÜCHENMONTAGE & PLANUNG
+                    </div>
+                    <div class="review-grid-3col" style="margin-bottom: 50px;">
+                        
+                        <article class="review-card-aurum glass-panel">
+                            <div class="rev-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <p class="rev-quote">"Herr Lezius ist ein sehr guter Handwerker. Er hat uns bei unseren Küchenproblemen exzellent beraten und anschließend alles hervorragend umgesetzt und repariert."</p>
+                            <div class="rev-client-info">
+                                <div style="display: flex; flex-direction: column;">
+                                    <span class="rev-client-name">Timothy P.</span>
+                                    <span style="font-family: var(--font-mono); font-size: 0.65rem; color: #64748b; margin-top: 2px;">Dasing</span>
+                                </div>
+                                <span class="rev-platform-tag">MyHammer</span>
+                            </div>
+                        </article>
+
+                        <article class="review-card-aurum glass-panel">
+                            <div class="rev-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <p class="rev-quote">"Wir sind mehr als zufrieden! Raphael hat unsere Arbeitsplatte für die Küche ausgeschnitten und eingebaut. Es sieht perfekt aus und ging super schnell."</p>
+                            <div class="rev-client-info">
+                                <div style="display: flex; flex-direction: column;">
+                                    <span class="rev-client-name">Julia H.</span>
+                                    <span style="font-family: var(--font-mono); font-size: 0.65rem; color: #64748b; margin-top: 2px;">München</span>
+                                </div>
+                                <span class="rev-platform-tag">CHECK24</span>
+                            </div>
+                        </article>
+
+                        <article class="review-card-aurum glass-panel">
+                            <div class="rev-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <p class="rev-quote">"Wir haben eine ungeplante Küche gekauft... Raphael Lezius und sein Kollege haben hervorragende Arbeit geleistet! Sie waren äußerst professionell und haben alles so präzise montiert, als wäre es genau so geplant worden."</p>
+                            <div class="rev-client-info">
+                                <div style="display: flex; flex-direction: column;">
+                                    <span class="rev-client-name">Nomen W.</span>
+                                    <span style="font-family: var(--font-mono); font-size: 0.65rem; color: #64748b; margin-top: 2px;">Augsburg</span>
+                                </div>
+                                <span class="rev-platform-tag">CHECK24</span>
+                            </div>
+                        </article>
+
+                    </div>
+
+                    <!-- COLUMN 2: FURNITURE ASSEMBLY -->
+                    <div class="review-category-header">
+                        <i class="fas fa-box-open" style="color: #FFD700;"></i> [SYS_02] MÖBEL & INNENAUSBAU
+                    </div>
+                    <div class="review-grid-3col" style="margin-bottom: 50px;">
+                        
+                        <article class="review-card-aurum glass-panel">
+                            <div class="rev-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <p class="rev-quote">"Die Kommunikation mit Raphael war absolut unkompliziert, freundlich und schnell. Er hat die Möbel sehr effizient, präzise und sorgfältig aufgebaut, als wären es seine eigenen. Er hat ein großartiges Auge für Details."</p>
+                            <div class="rev-client-info">
+                                <div style="display: flex; flex-direction: column;">
+                                    <span class="rev-client-name">Astrid M.</span>
+                                    <span style="font-family: var(--font-mono); font-size: 0.65rem; color: #64748b; margin-top: 2px;">Augsburg</span>
+                                </div>
+                                <span class="rev-platform-tag">MyHammer</span>
+                            </div>
+                        </article>
+
+                        <article class="review-card-aurum glass-panel">
+                            <div class="rev-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <p class="rev-quote">"Herr Lezius ist ein wahrer Glückstreffer. Pünktlich, freundlich und absolut professionell. Ohne die Aufbauanleitung von IKEA benötigen zu müssen, stellte er uns die Küchenschränke gewissenhaft und schnell alleine auf."</p>
+                            <div class="rev-client-info">
+                                <div style="display: flex; flex-direction: column;">
+                                    <span class="rev-client-name">Norbert R.</span>
+                                    <span style="font-family: var(--font-mono); font-size: 0.65rem; color: #64748b; margin-top: 2px;">München</span>
+                                </div>
+                                <span class="rev-platform-tag">CHECK24</span>
+                            </div>
+                        </article>
+
+                        <article class="review-card-aurum glass-panel">
+                            <div class="rev-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <p class="rev-quote">"Raphael ist super zuverlässig und macht die Arbeit ordentlich genau so, wie man es möchte. Er nimmt Wünsche an, gibt selbst sehr gute Tipps und ist technisch perfekt ausgestattet. Wirklich perfekt, immer wieder gerne."</p>
+                            <div class="rev-client-info">
+                                <div style="display: flex; flex-direction: column;">
+                                    <span class="rev-client-name">Jacqueline Z.</span>
+                                    <span style="font-family: var(--font-mono); font-size: 0.65rem; color: #64748b; margin-top: 2px;">Bayern</span>
+                                </div>
+                                <span class="rev-platform-tag">CHECK24</span>
+                            </div>
+                        </article>
+
+                    </div>
+
+                    <!-- COLUMN 3: SERVICE & RELIABILITY -->
+                    <div class="review-category-header">
+                        <i class="fas fa-shield-alt" style="color: #FFD700;"></i> [SYS_03] SERVICE & ZUVERLÄSSIGKEIT
+                    </div>
+                    <div class="review-grid-3col">
+                        
+                        <article class="review-card-aurum glass-panel">
+                            <div class="rev-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <p class="rev-quote">"Schnelle Terminvergabe, effiziente und saubere Arbeitsweise, freundlicher Kollege, fairer Preis! Definitiv und uneingeschränkt weiterzuempfehlen!"</p>
+                            <div class="rev-client-info">
+                                <div style="display: flex; flex-direction: column;">
+                                    <span class="rev-client-name">Nina K.</span>
+                                    <span style="font-family: var(--font-mono); font-size: 0.65rem; color: #64748b; margin-top: 2px;">Augsburg</span>
+                                </div>
+                                <span class="rev-platform-tag">MyHammer</span>
+                            </div>
+                        </article>
+
+                        <article class="review-card-aurum glass-panel">
+                            <div class="rev-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <p class="rev-quote">"Die Zusammenarbeit mit Raphael gestaltete sich von A-Z professionell, freundlich, zuverlässig und sehr unkompliziert. Er arbeitet extrem gewissenhaft und schnell."</p>
+                            <div class="rev-client-info">
+                                <div style="display: flex; flex-direction: column;">
+                                    <span class="rev-client-name">JL</span>
+                                    <span style="font-family: var(--font-mono); font-size: 0.65rem; color: #64748b; margin-top: 2px;">München</span>
+                                </div>
+                                <span class="rev-platform-tag">CHECK24</span>
+                            </div>
+                        </article>
+
+                        <article class="review-card-aurum glass-panel">
+                            <div class="rev-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <p class="rev-quote">"Definitiv die beste Wahl für jeden. Nicht nur hat er die Arbeit schnell und ordentlich verrichtet, er hat auch genau erklärt, was er tut und uns einige Dinge gezeigt, die sehr hilfreich sind."</p>
+                            <div class="rev-client-info">
+                                <div style="display: flex; flex-direction: column;">
+                                    <span class="rev-client-name">Ute B.</span>
+                                    <span style="font-family: var(--font-mono); font-size: 0.65rem; color: #64748b; margin-top: 2px;">Bayern</span>
+                                </div>
+                                <span class="rev-platform-tag">CHECK24</span>
+                            </div>
+                        </article>
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             6. PREMIUM CINEMATIC VIDEO SCROLLER
+             ========================================== -->
+        <section id="integration-feeds" class="cinematic-section" aria-labelledby="video-heading">
             <div class="container relative-z">
                 
                 <div class="section-header center" data-aos="fade-up">
                     <div class="pre-title">TRANSPARENZ IN BEWEGUNG</div>
-                    <h2 class="section-heading">Einblicke in die <span class="gold-text">Montage</span></h2>
+                    <h2 id="video-heading" class="section-heading">Einblicke in die <span class="gold-text">Montage</span></h2>
                     <p class="section-subtitle" style="margin-left: auto; margin-right: auto;">Sehen Sie mir bei der Arbeit zu. Überzeugen Sie sich von meiner strukturierten Arbeitsweise und millimetergenauen Präzision.</p>
                 </div>
 
                 <div class="cinematic-scroller" data-aos="fade-up" data-aos-delay="100">
                     
-                    <!-- Added js-lightbox-trigger to connect with your Javascript -->
-                    <div class="cinematic-card js-lightbox-trigger" data-video-src="assets/video/project-portrait-timelapse.mp4" data-title="Wohnraum Konzept" data-desc="Vom Kartonchaos zur perfekten Architektur in Rekordzeit.">
+                    <div class="cinematic-card js-lightbox-trigger magnetic-target" data-video-src="assets/video/project-portrait-timelapse.mp4" data-title="Wohnraum Konzept" data-desc="Vom Kartonchaos zur perfekten Architektur in Rekordzeit.">
                         <video autoplay muted loop playsinline preload="metadata" class="cinematic-video" poster="assets/images/Bedroom_grey_main.webp">
                             <source src="assets/video/project-portrait-timelapse.mp4" type="video/mp4">
                         </video>
@@ -462,7 +672,7 @@
                         </div>
                     </div>
 
-                    <div class="cinematic-card js-lightbox-trigger" data-video-src="assets/video/raphael-assembly-action.mp4" data-title="Präzision im Detail" data-desc="Jeder Handgriff sitzt. Ausgestattet mit Bosch Professional Werkzeug.">
+                    <div class="cinematic-card js-lightbox-trigger magnetic-target" data-video-src="assets/video/raphael-assembly-action.mp4" data-title="Präzision im Detail" data-desc="Jeder Handgriff sitzt. Ausgestattet mit Bosch Professional Werkzeug.">
                         <video autoplay muted loop playsinline preload="metadata" class="cinematic-video" poster="assets/images/ikea-bekant-schreibtisch-hoehenverstellbar-aufbau.webp">
                             <source src="assets/video/raphael-assembly-action.mp4" type="video/mp4">
                         </video>
@@ -477,7 +687,7 @@
 
                 </div>
                 
-                <div class="cinematic-scroll-indicator hide-desktop">
+                <div class="cinematic-scroll-indicator hide-desktop" aria-hidden="true">
                     <div class="scroll-track">
                         <div class="scroll-thumb"></div>
                     </div>
@@ -487,205 +697,217 @@
             </div>
         </section>
 
-
-<div class="cinematic-lightbox-overlay" id="cinematicLightbox">
-    <div class="lightbox-close-btn" id="closeCinematicLightbox">[ SCHLIESSEN ]</div>
-   
-    <div class="cinematic-lightbox-content">
-        <video id="lightboxVideoPlayer" controls class="lightbox-main-video">
-            <source src="" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-       
-        <div class="lightbox-data-panel">
-            <h2 id="lightboxTitle">Titel</h2>
-            <p id="lightboxDesc">Beschreibung</p>
-        </div>
-    </div>
-</div>
-
-<!-- PROJECT BELT: LIVE REFERENZEN -->
-        <section id="projekt-belt" style="background: #000; padding: clamp(80px, 12vw, 150px) 0; border-top: 1px solid rgba(255, 215, 0, 0.1);">
-            <div class="container relative-z">
-                <div class="visual-split-layout">
-                    
-                    <div class="visual-info-pane glass-panel" data-aos="fade-right">
-                        <div class="pre-title">LIVE_REFERENZEN</div>
-                        <h2 class="section-heading">Bilder sagen mehr als <span class="cyan-text">Worte.</span></h2>
-                        
-                        <p class="desc-line" style="border-left: none; padding-left: 0; color: #aaa; margin-bottom: 40px; background: none;">
-                            Überzeugen Sie sich von der Qualität. Jedes Bild stammt aus echten Kundenaufträgen – vom passgenauen Kleiderschrank bis zur vollintegrierten Premium-Küche.
-                        </p>
-                        
-                        <div class="proof-box">
-                            <div class="proof-item" style="padding: 20px; display: flex; gap: 20px; align-items: center; border-radius: 12px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05);">
-                                <div class="proof-icon"><i class="fas fa-camera gold-text" style="font-size: 2rem;"></i></div>
-                                <div>
-                                    <strong style="color: #fff; font-size: 1rem; font-family: var(--font-head); letter-spacing: 1px;">100% Echte Projekte</strong>
-                                    <span style="color: #888; font-size: 0.9rem; display: block; margin-top: 5px;">Keine Stock-Fotos. Authentisches Handwerk aus Bayern.</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="belt-controls">
-                            <button class="nav-hud-btn reactive-btn" id="prevBelt"><i class="fas fa-chevron-left"></i> ZURÜCK</button>
-                            <button class="nav-hud-btn reactive-btn" id="nextBelt">WEITER <i class="fas fa-chevron-right"></i></button>
-                        </div>
-                    </div>
-
-                    <div class="belt-container" data-aos="fade-left">
-                        <div class="belt-track" id="imageBelt">
-                            
-                            <div class="belt-item">
-                                <img src="assets/images/kueche-1-a.webp" alt="Premium Küchenmontage" onerror="this.src='https://via.placeholder.com/800x600/111/333?text=KUECHE_01'">
-                                <div class="img-tag">METOD_KÜCHE</div>
-                            </div>
-                            
-                            <div class="belt-item">
-                                <img src="assets/images/wohnen-2-a.webp" alt="Wohnzimmer System" onerror="this.src='https://via.placeholder.com/800x600/111/333?text=WOHNEN_02'">
-                                <div class="img-tag">LIVING_SYSTEM</div>
-                            </div>
-                            
-                            <div class="belt-item">
-                                <img src="assets/images/Bedroom_grey_main.webp" alt="PAX Montage" onerror="this.src='https://via.placeholder.com/800x600/111/333?text=PAX_SYSTEM'">
-                                <div class="img-tag">PAX_WARDROBE</div>
-                            </div>
-                            
-                            <div class="belt-item">
-                                <img src="assets/images/kueche-4-a.webp" alt="Küchendetail" onerror="this.src='https://via.placeholder.com/800x600/111/333?text=KUECHE_04'">
-                                <div class="img-tag">KITCHEN_DETAIL</div>
-                            </div>
-
-                            <div class="belt-item">
-                                <img src="assets/images/ikea-hemnes-tagesbett-ausziehbar-montage.webp" alt="Hemnes Bett" onerror="this.src='https://via.placeholder.com/800x600/111/333?text=HEMNES_BETT'">
-                                <div class="img-tag">BEDROOM_HEMNES</div>
-                            </div>
-
-                            <div class="belt-item">
-                                <img src="assets/images/wohnen-7-a.webp" alt="Wandmontage" onerror="this.src='https://via.placeholder.com/800x600/111/333?text=BESTA_WALL'">
-                                <div class="img-tag">BESTÅ_MOUNT</div>
-                            </div>
-                            
-                            <div class="belt-item">
-                                <img src="assets/images/ikea-bekant-schreibtisch-hoehenverstellbar-aufbau.webp" alt="Büro Schreibtisch" onerror="this.src='https://via.placeholder.com/800x600/111/333?text=OFFICE_DESK'">
-                                <div class="img-tag">OFFICE_WORKSPACE</div>
-                            </div>
-
-                        </div>
-                    </div>
-
+        <!-- Video Lightbox Overlay -->
+        <div class="cinematic-lightbox-overlay" id="cinematicLightbox" aria-hidden="true" role="dialog">
+            <button class="lightbox-close-btn" id="closeCinematicLightbox" aria-label="Video schließen">[ SCHLIESSEN ]</button>
+            <div class="cinematic-lightbox-content">
+                <video id="lightboxVideoPlayer" controls class="lightbox-main-video">
+                    <source src="" type="video/mp4">
+                    Ihr Browser unterstützt dieses Videoformat nicht.
+                </video>
+                <div class="lightbox-data-panel">
+                    <h2 id="lightboxTitle">Titel</h2>
+                    <p id="lightboxDesc">Beschreibung</p>
                 </div>
             </div>
-        </section>
+        </div>
 
-        <!-- THE FAQ MAINFRAME (PIECE 13) -->
-        <section id="faq-smart" class="faq-tech-section">
+      <!-- ==========================================================================
+     7. PROJECT BELT: LIVE REFERENZEN (COMPLETE MODULE)
+     ========================================================================== -->
+<section id="projekt-belt" class="section-padding" style="background: var(--bg-darker); border-top: 1px solid rgba(255, 215, 0, 0.1);" aria-labelledby="belt-heading">
+    <div class="container relative-z">
+        <div class="visual-split-layout" style="display: grid; grid-template-columns: 1fr 1.5fr; gap: 60px; align-items: center;">
+            
+            <!-- INFO PANE -->
+            <div class="visual-info-pane glass-panel" data-aos="fade-right" style="padding: 40px;">
+                <div class="pre-title" style="font-family: var(--font-mono); color: var(--neon-gold); font-size: 0.75rem; letter-spacing: 3px; margin-bottom: 15px;">LIVE_REFERENZEN</div>
+                <h2 id="belt-heading" class="section-heading" style="font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 25px; line-height: 1.1;">
+                    Bilder sagen mehr als <span class="cyan-text" style="color: var(--neon-cyan);">Worte.</span>
+                </h2>
+                
+                <p class="desc-line" style="color: #94a3b8; margin-bottom: 40px; line-height: 1.6; font-size: 1.1rem;">
+                    Überzeugen Sie sich von der Qualität. Jedes Bild stammt aus echten Kundenaufträgen – vom passgenauen Kleiderschrank bis zur vollintegrierten Premium-Küche.
+                </p>
+                
+                <!-- Proof Box -->
+                <div class="proof-box" style="margin-bottom: 40px;">
+                    <div class="proof-item" style="display: flex; gap: 20px; align-items: center;">
+                        <div class="proof-icon"><i class="fas fa-camera" style="font-size: 2rem; color: var(--neon-gold);"></i></div>
+                        <div>
+                            <strong style="color: #fff; display: block; font-family: var(--font-head); letter-spacing: 1px;">100% Echte Projekte</strong>
+                            <span style="color: #888; font-size: 0.9rem;">Authentisches Handwerk aus Bayern.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation Controls -->
+                <div class="belt-controls" style="display: flex; gap: 15px; margin-bottom: 30px;">
+                    <button class="nav-hud-btn reactive-btn" id="prevBelt" aria-label="Vorheriges Bild" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 12px 20px; color: #fff; cursor: pointer; text-transform: uppercase; font-family: var(--font-mono);">
+                        <i class="fas fa-chevron-left"></i> ZURÜCK
+                    </button>
+                    <button class="nav-hud-btn reactive-btn" id="nextBelt" aria-label="Nächstes Bild" style="background: var(--neon-gold); border: none; padding: 12px 20px; color: #000; cursor: pointer; text-transform: uppercase; font-family: var(--font-mono); font-weight: 800;">
+                        WEITER <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+
+                <!-- Carousel Dots Container -->
+                <div class="carousel-dots" id="beltDots" style="display: flex; gap: 10px; margin-bottom: 20px;"></div>
+                
+                <a href="gallery.html" class="cyan-text" style="font-family: var(--font-mono); font-size: 0.8rem; text-decoration: underline; color: var(--neon-cyan);">ZUR VOLLSTÄNDIGEN GALERIE -></a>
+            </div>
+
+            <!-- IMAGE BELT -->
+            <div class="belt-container" data-aos="fade-left" style="overflow: hidden; position: relative;">
+                <div class="belt-track" id="imageBelt" style="display: flex; transition: transform 0.5s ease-in-out;">
+                    
+                    <!-- Items -->
+                    <figure class="belt-item" style="min-width: 100%; padding: 0 10px;">
+                        <img src="assets/images/kueche-1-a.webp" alt="Premium Küchenmontage" style="width: 100%; border-radius: 8px;">
+                        <figcaption style="margin-top: 10px; font-family: var(--font-mono); color: var(--neon-gold);">METOD_KÜCHE</figcaption>
+                    </figure>
+                    
+                    <figure class="belt-item" style="min-width: 100%; padding: 0 10px;">
+                        <img src="assets/images/kueche-13-a.webp" alt="Design Küche" style="width: 100%; border-radius: 8px;">
+                        <figcaption style="margin-top: 10px; font-family: var(--font-mono); color: var(--neon-gold);">PREMIUM_KITCHEN</figcaption>
+                    </figure>
+
+                    <figure class="belt-item" style="min-width: 100%; padding: 0 10px;">
+                        <img src="assets/images/wohnen-2-a.webp" alt="Wohnzimmer System" style="width: 100%; border-radius: 8px;">
+                        <figcaption style="margin-top: 10px; font-family: var(--font-mono); color: var(--neon-gold);">LIVING_SYSTEM</figcaption>
+                    </figure>
+
+                    <figure class="belt-item" style="min-width: 100%; padding: 0 10px;">
+                        <img src="assets/images/sz-3-a.webp" alt="Schlafzimmer Luxus" style="width: 100%; border-radius: 8px;">
+                        <figcaption style="margin-top: 10px; font-family: var(--font-mono); color: var(--neon-gold);">MASTER_BEDROOM</figcaption>
+                    </figure>
+
+                    <figure class="belt-item" style="min-width: 100%; padding: 0 10px;">
+                        <img src="assets/images/wohnen-7-a.webp" alt="Wandmontage" style="width: 100%; border-radius: 8px;">
+                        <figcaption style="margin-top: 10px; font-family: var(--font-mono); color: var(--neon-gold);">BESTÅ_WALL</figcaption>
+                    </figure>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+        <!-- ==========================================
+             8. THE FAQ MAINFRAME
+             ========================================== -->
+        <section id="faq-smart" class="faq-tech-section" aria-labelledby="support-heading">
             <div class="container relative-z">
                 
                 <div class="section-header center" data-aos="fade-up">
                     <div class="pre-title">SUPPORT_CENTER</div>
-                    <h2 class="section-heading">Technische <span class="gold-text">Protokolle</span> & FAQ</h2>
+                    <h2 id="support-heading" class="section-heading">Technische <span class="gold-text">Protokolle</span> & FAQ</h2>
                     <p class="section-subtitle" style="margin-left: auto; margin-right: auto;">
                         Maximale Transparenz für Ihre Planung. Hier finden Sie detaillierte Antworten zu Ausrüstung, Abrechnung und Sicherheitsstandards.
                     </p>
                 </div>
 
-                <div class="faq-tile-grid" data-aos="fade-up" data-aos-delay="100">
+                <div class="faq-matrix" data-aos="fade-up" data-aos-delay="100">
                     
-                    <!-- FAQ 1: Workflow -->
-                    <div class="faq-module js-faq-item">
-                        <div class="module-header faq-trigger-btn">
-                            <div class="m-icon"><i class="fas fa-microchip"></i></div>
-                            <div class="m-title-wrap">
-                                <span class="m-category">WORKFLOW</span>
-                                <h3 class="m-title">Arbeitsweise & High-End Ausrüstung</h3>
+                    <article class="faq-module-v2 glass-panel js-faq-item">
+                        <button class="faq-trigger magnetic-target" aria-expanded="false">
+                            <div class="faq-icon-box"><i class="fas fa-microchip icon-cyan"></i></div>
+                            <div class="faq-title-wrap">
+                                <span class="faq-category">WORKFLOW</span>
+                                <h4 class="faq-question">Arbeitsweise & High-End Ausrüstung</h4>
                             </div>
-                            <div class="m-plus">+</div>
-                        </div>
-                        <div class="module-body">
-                            <div class="faq-inner-content">
-                                <div class="faq-entry">
-                                    <h6>Bringen Sie Profi-Werkzeug mit?</h6>
-                                    <p>Ja. Mein "Mobile Workshop" basiert auf Festool, Bosch Professional (BITURBO) und Makita XGT. Das bedeutet: maximale Präzision durch Führungsschienen-Systeme und drehmomentgesteuerte Verschraubungen für empfindliche Oberflächen.</p>
-                                </div>
-                                <div class="faq-entry">
-                                    <h6>Wie staubfrei ist die Montage?</h6>
-                                    <p>Ich nutze aktive HEPA-Klasse M Absaugmobile. Jeder Bohrvorgang wird direkt am Entstehungspunkt abgesaugt. Zuschnitte erfolgen mit angeschlossener Absaugung – ideal für bewohnte Räume und Allergiker.</p>
-                                </div>
-                                <div class="faq-entry">
-                                    <h6>Nivellierung & Ausrichtung?</h6>
-                                    <p>Keine Schätzung. Schränke und Küchen werden mittels 360° Kreuzlinienlaser nivelliert. So garantieren wir perfekte Spaltmaße, selbst bei unebenen Böden in Altbauten.</p>
+                            <div class="faq-plus"></div>
+                        </button>
+                        <div class="faq-content">
+                            <div class="faq-inner">
+                                <div class="faq-grid-internal">
+                                    <div class="faq-text-block">
+                                        <h6>Bringen Sie Profi-Werkzeug mit?</h6>
+                                        <p>Ja. Mein "Mobile Workshop" basiert auf Festool, Bosch Professional (BITURBO) und Makita XGT. Das bedeutet: maximale Präzision durch Führungsschienen-Systeme und drehmomentgesteuerte Verschraubungen für empfindliche Oberflächen.</p>
+                                    </div>
+                                    <div class="faq-text-block">
+                                        <h6>Wie staubfrei ist die Montage?</h6>
+                                        <p>Ich nutze aktive HEPA-Klasse M Absaugmobile. Jeder Bohrvorgang wird direkt am Entstehungspunkt abgesaugt. Zuschnitte erfolgen mit angeschlossener Absaugung – ideal für bewohnte Räume und Allergiker.</p>
+                                    </div>
+                                    <div class="faq-text-block">
+                                        <h6>Nivellierung & Ausrichtung?</h6>
+                                        <p>Keine Schätzung. Schränke und Küchen werden mittels 360° Kreuzlinienlaser nivelliert. So garantieren wir perfekte Spaltmaße, selbst bei unebenen Böden in Altbauten.</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </article>
 
-                    <!-- FAQ 2: Finance -->
-                    <div class="faq-module js-faq-item">
-                        <div class="module-header faq-trigger-btn">
-                            <div class="m-icon"><i class="fas fa-file-invoice-dollar"></i></div>
-                            <div class="m-title-wrap">
-                                <span class="m-category">FINANCE_OPS</span>
-                                <h3 class="m-title">Investition & Steuerliche Vorteile</h3>
+                    <article class="faq-module-v2 glass-panel js-faq-item">
+                        <button class="faq-trigger magnetic-target" aria-expanded="false">
+                            <div class="faq-icon-box"><i class="fas fa-file-invoice-dollar icon-gold"></i></div>
+                            <div class="faq-title-wrap">
+                                <span class="faq-category">FINANCE_OPS</span>
+                                <h4 class="faq-question">Investition & Steuerliche Vorteile</h4>
                             </div>
-                            <div class="m-plus">+</div>
-                        </div>
-                        <div class="module-body">
-                            <div class="faq-inner-content">
-                                <div class="faq-entry">
-                                    <h6>Kalkulation: Festpreis vs. Regie?</h6>
-                                    <p>Für definierte Module (z.B. IKEA PAX pro Meter oder BIOHORT Modelle) erhalten Sie garantierte Festpreise. Bei individuellen Projekten oder Demontagen erfolgt die Abrechnung nach transparenten Stundensätzen inkl. digitalem Zeitnachweis.</p>
-                                </div>
-                                <div class="faq-entry">
-                                    <h6>Ihr Steuer-Vorteil (§ 35a EStG)</h6>
-                                    <p>Als eingetragener Handwerksbetrieb sind meine Rechnungen voll finanzamtstauglich. Sie können 20% der Lohnkosten (bis zu 1.200 € im Jahr) direkt von Ihrer Steuerschuld abziehen, da meine Leistungen als haushaltsnahe Dienstleistungen gelten.</p>
-                                </div>
-                                <div class="faq-entry">
-                                    <h6>Zahlungskanäle 2026</h6>
-                                    <p>Sicher und digital. Nach erfolgreicher Abnahme zahlen Sie bequem via SumUp Terminal (EC-Karte, Apple Pay, Google Pay) oder per Echtzeit-Überweisung. Barzahlungen werden aus Compliance-Gründen nicht entgegengenommen.</p>
+                            <div class="faq-plus"></div>
+                        </button>
+                        <div class="faq-content">
+                            <div class="faq-inner">
+                                <div class="faq-grid-internal">
+                                    <div class="faq-text-block">
+                                        <h6>Kalkulation: Festpreis vs. Regie?</h6>
+                                        <p>Für definierte Module (z.B. IKEA PAX pro Meter oder BIOHORT Modelle) erhalten Sie garantierte Festpreise. Bei individuellen Projekten oder Demontagen erfolgt die Abrechnung nach transparenten Stundensätzen inkl. digitalem Zeitnachweis.</p>
+                                    </div>
+                                    <div class="faq-text-block">
+                                        <h6>Ihr Steuer-Vorteil (§ 35a EStG)</h6>
+                                        <p>Als eingetragener Handwerksbetrieb sind meine Rechnungen voll finanzamtstauglich. Sie können 20% der Lohnkosten (bis zu 1.200 € im Jahr) direkt von Ihrer Steuerschuld abziehen, da meine Leistungen als haushaltsnahe Dienstleistungen gelten.</p>
+                                    </div>
+                                    <div class="faq-text-block">
+                                        <h6>Zahlungskanäle 2026</h6>
+                                        <p>Sicher und digital. Nach erfolgreicher Abnahme zahlen Sie bequem via SumUp Terminal (EC-Karte, Apple Pay, Google Pay) oder per Echtzeit-Überweisung. Barzahlungen werden aus Compliance-Gründen nicht entgegengenommen.</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </article>
 
-                    <!-- FAQ 3: Safety -->
-                    <div class="faq-module js-faq-item">
-                        <div class="module-header faq-trigger-btn">
-                            <div class="m-icon"><i class="fas fa-shield-alt"></i></div>
-                            <div class="m-title-wrap">
-                                <span class="m-category">SAFETY_PROTOCOL</span>
-                                <h3 class="m-title">Haftung, Schutz & Bausubstanz</h3>
+                    <article class="faq-module-v2 glass-panel js-faq-item">
+                        <button class="faq-trigger magnetic-target" aria-expanded="false">
+                            <div class="faq-icon-box"><i class="fas fa-shield-check icon-pink"></i></div>
+                            <div class="faq-title-wrap">
+                                <span class="faq-category">SAFETY_PROTOCOL</span>
+                                <h4 class="faq-question">Haftung, Schutz & Bausubstanz</h4>
                             </div>
-                            <div class="m-plus">+</div>
-                        </div>
-                        <div class="module-body">
-                            <div class="faq-inner-content">
-                                <div class="faq-entry">
-                                    <h6>Versicherungsschutz?</h6>
-                                    <p>Ich arbeite mit höchster Sorgfalt. Dennoch bin ich für den Ernstfall mit einer Betriebshaftpflichtversicherung (Deckungssumme bis 5 Mio. €) abgesichert. Schäden an Möbeln oder Bausubstanz sind vollumfänglich gedeckt.</p>
-                                </div>
-                                <div class="faq-entry">
-                                    <h6>Montage an Trockenbau & Problemwänden?</h6>
-                                    <p>Wir prüfen jede Wand vorab digital auf Leitungen. Bei Gipskarton nutzen wir spezielle Hohlraumdübel (Metall), bei porösem Mauerwerk setzen wir auf chemische Siebhülsen und Injektionsmörtel für maximale Zugfestigkeit.</p>
+                            <div class="faq-plus"></div>
+                        </button>
+                        <div class="faq-content">
+                            <div class="faq-inner">
+                                <div class="faq-grid-internal">
+                                    <div class="faq-text-block">
+                                        <h6>Versicherungsschutz?</h6>
+                                        <p>Ich arbeite mit höchster Sorgfalt. Dennoch bin ich für den Ernstfall mit einer Betriebshaftpflichtversicherung (Deckungssumme bis 5 Mio. €) abgesichert. Schäden an Möbeln oder Bausubstanz sind vollumfänglich gedeckt.</p>
+                                    </div>
+                                    <div class="faq-text-block">
+                                        <h6>Montage an Trockenbau & Problemwänden?</h6>
+                                        <p>Wir prüfen jede Wand vorab digital auf Leitungen. Bei Gipskarton nutzen wir spezielle Hohlraumdübel (Metall), bei porösem Mauerwerk setzen wir auf chemische Siebhülsen und Injektionsmörtel für maximale Zugfestigkeit.</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </article>
 
                 </div>
             </div>
         </section>
 
-        <!-- CLOSING MARQUEE -->
-        <div class="marquee-wrapper">
-            <div class="marquee-track" style="color: #bbb;">
+        <!-- ==========================================
+             9. CLOSING MARQUEE
+             ========================================== -->
+        <div class="marquee-wrapper" aria-hidden="true" style="background: var(--bg-darker); border-top: 1px solid rgba(255, 215, 0, 0.15); border-bottom: 1px solid rgba(255, 215, 0, 0.15); box-shadow: inset 0 0 30px rgba(0,0,0,0.8);">
+            <div class="marquee-track" style="color: #64748b;">
                 <span><i class="fas fa-ruler-combined gold-text"></i> MILLIMETERGENAUE AUSRICHTUNG</span>
                 <span><i class="fas fa-wind gold-text"></i> STAUBFREIE MONTAGE (HEPA)</span>
                 <span><i class="fas fa-tools gold-text"></i> BOSCH PROFI-WERKZEUG</span>
                 <span><i class="fas fa-shield-alt gold-text"></i> SCHWERLAST-VERANKERUNG</span>
                 <span><i class="fas fa-gem gold-text"></i> KRATZFREIER AUFBAU</span>
                 <span><i class="fas fa-box-open gold-text"></i> KARTONAGEN SORTIERT</span>
-                <!-- Duplicated for seamless scrolling -->
+                
                 <span><i class="fas fa-ruler-combined gold-text"></i> MILLIMETERGENAUE AUSRICHTUNG</span>
                 <span><i class="fas fa-wind gold-text"></i> STAUBFREIE MONTAGE (HEPA)</span>
                 <span><i class="fas fa-tools gold-text"></i> BOSCH PROFI-WERKZEUG</span>
@@ -695,24 +917,22 @@
             </div>
         </div>
 
-        
-
     </main>
 
-    <!-- FOOTER & OS INJECTIONS -->
-    <div id="global-footer"></div>
-    <div id="global-os"></div>
+    <!-- GLOBAL FOOTER & TERMINAL (INJECTED VIA JS) -->
+    <div id="global-footer" aria-label="Globale Fußzeile"></div>
+    <div id="global-os" aria-label="MissionOS Anfrage-Terminal"></div>
 
     <!-- UPGRADED WHATSAPP FLOAT -->
-    <a href="https://wa.me/491608194018" target="_blank" class="whatsapp-float">
+    <a href="https://wa.me/491608194018" target="_blank" rel="noopener noreferrer" class="whatsapp-float magnetic-target" aria-label="Live Chat via WhatsApp öffnen">
         <div class="whatsapp-pulse"></div>
         <div class="whatsapp-tooltip">LIVE CHAT</div>
         <i class="fab fa-whatsapp"></i>
     </a>
 
-   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="assets/js/components/footer.js" defer></script> <script src="assets/js/main.js"></script>
-    <script src="assets/js/components/mission-os.js" defer></script>
+    <!-- SCRIPTS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script type="module" src="assets/js/main.js"></script>
 
 </body>
-</html> 
+</html>

@@ -1,115 +1,120 @@
 /* ==========================================================================
-   PHASE 13: THE FAQ MAINFRAME
-   UNIFIED ACCORDIONS | ROTATION PHYSICS | INTERNAL CONTENT GRIDS
+   PIECE 8: FAQ MAINFRAME (SYSTEM PROTOCOLS)
+   ACCORDION ENGINE | TERMINAL-UI | GOLD-STATUS INDICATORS
    ========================================================================== */
 
 .faq-tech-section {
-    padding: clamp(80px, 12vw, 150px) 0;
+    padding: clamp(60px, 8vh, 100px) 0;
     background: #020203;
     position: relative;
-    border-top: 1px solid rgba(255, 215, 0, 0.1); /* Shifted to Gold */
+    border-top: 1px solid rgba(255, 215, 0, 0.1);
 }
 
-/* --- 1. THE FAQ GRID CONTAINER --- */
-.faq-tile-grid {
-    display: flex; flex-direction: column; gap: 20px;
-    margin-top: 60px; max-width: 1000px; margin-left: auto; margin-right: auto;
+.faq-matrix {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 900px;
+    margin: 0 auto;
 }
 
-.faq-module {
-    cursor: pointer; transition: var(--spring);
-    border-left: 2px solid transparent; overflow: hidden;
-    background: var(--surface); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 12px;
+/* --- FAQ MODULE ENGINE --- */
+.faq-module-v2 {
+    overflow: hidden;
+    background: rgba(10, 8, 5, 0.85);
+    border: 1px solid rgba(255, 215, 0, 0.15);
+    transition: all 0.4s ease;
+    border-radius: 0;
 }
 
-/* Hover State (Non-Active) */
-.faq-module:hover:not(.active) {
-    border-left-color: rgba(255, 215, 0, 0.4); /* Shifted to Gold */
-    background: rgba(255, 215, 0, 0.02);
-    transform: translateX(5px);
+.faq-module-v2:hover {
+    border-color: rgba(255, 215, 0, 0.4);
 }
 
-/* --- 2. THE MODULE HEADER --- */
-.module-header {
-    padding: clamp(20px, 4vw, 35px);
-    display: flex; align-items: center; gap: clamp(20px, 4vw, 30px);
+.faq-trigger {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 25px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    color: #fff;
+    outline: none;
 }
 
-.m-icon {
-    font-size: 1.5rem; color: var(--neon-gold); /* Shifted to Gold */
-    width: clamp(50px, 7vw, 70px); height: clamp(50px, 7vw, 70px);
-    background: rgba(255, 215, 0, 0.05);
-    display: flex; align-items: center; justify-content: center;
-    border-radius: 12px; flex-shrink: 0;
-    border: 1px solid rgba(255, 215, 0, 0.2);
-    box-shadow: inset 0 0 15px rgba(255, 215, 0, 0.1);
-    transition: var(--spring);
+.faq-icon-box {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 1.2rem;
+    color: var(--neon-gold);
 }
 
-.m-title-wrap { display: flex; flex-direction: column; gap: 6px; flex: 1; }
-
-.m-category {
-    font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 3px;
-    color: var(--neon-cyan); /* Cyan accent for data contrast */
+.faq-title-wrap { flex-grow: 1; }
+.faq-category { 
+    display: block; 
+    font-family: var(--font-mono, monospace); 
+    font-size: 0.65rem; 
+    color: var(--neon-gold); 
+    letter-spacing: 2px; 
+    margin-bottom: 4px; 
     text-transform: uppercase;
 }
+.faq-question { font-size: 1.1rem; margin: 0; font-weight: 600; font-family: var(--font-head, sans-serif); }
 
-.m-title {
-    font-family: var(--font-head); font-size: clamp(1.1rem, 2.5vw, 1.4rem);
-    font-weight: 800; color: #fff; line-height: 1.3; letter-spacing: 1px;
+.faq-plus {
+    width: 20px; height: 2px; background: #475569;
+    position: relative; transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.faq-plus::after {
+    content: ''; position: absolute; width: 2px; height: 20px; background: #475569;
+    left: 9px; top: -9px; transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* The Plus/Cross Icon */
-.m-plus {
-    font-size: 2rem; color: #444; transition: var(--spring);
-    flex-shrink: 0; font-weight: 300;
+/* Active State Styles */
+.faq-module-v2.active { 
+    border-left: 4px solid var(--neon-gold); 
+    background: rgba(255, 215, 0, 0.02);
+}
+.faq-module-v2.active .faq-plus { transform: rotate(45deg); background: var(--neon-gold); }
+.faq-module-v2.active .faq-plus::after { background: var(--neon-gold); }
+
+/* --- CONTENT AREA (THE TERMINAL) --- */
+.faq-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s cubic-bezier(0.2, 0, 0.1, 1);
+    background: rgba(0, 0, 0, 0.3);
 }
 
-/* --- 3. THE MODULE BODY (CONTENT AREA) --- */
-.module-body {
-    max-height: 0; overflow: hidden;
-    transition: max-height 0.6s cubic-bezier(0.2, 1, 0.3, 1);
-    padding: 0 clamp(20px, 4vw, 35px); background: rgba(0, 0, 0, 0.2);
+.faq-inner { padding: 0 25px 25px 90px; }
+
+.faq-grid-internal {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    border-top: 1px dashed rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
 }
 
-/* Internal FAQ Entry Layout */
-.faq-inner-content {
-    padding-bottom: 35px; border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 25px;
-}
-
-.faq-entry { display: flex; flex-direction: column; gap: 12px; }
-
-.faq-entry h6 {
-    color: var(--neon-cyan); /* Accent color inside the gold module */
-    font-family: var(--font-head); font-size: 1.05rem; font-weight: 800;
-    letter-spacing: 1px; display: flex; gap: 12px; margin: 0;
-}
-
-.faq-entry p { color: #aaa; font-size: 0.95rem; line-height: 1.7; margin: 0; }
-
-/* --- 4. OPEN/ACTIVE STATE LOGIC --- */
-.faq-module.open, .faq-module.active {
-    background: rgba(10, 10, 10, 0.95);
-    border-left: 4px solid var(--neon-gold); /* Solid Gold Active State */
-    transform: translateX(0);
-    box-shadow: 0 30px 60px rgba(0,0,0,0.6);
-}
-
-.faq-module.open .m-plus, .faq-module.active .m-plus {
-    transform: rotate(45deg);
+.faq-text-block h6 {
     color: var(--neon-gold);
-    text-shadow: 0 0 15px var(--neon-gold);
+    font-size: 0.85rem;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    font-family: var(--font-head, sans-serif);
 }
 
-.faq-module.open .m-icon, .faq-module.active .m-icon {
-    background: var(--neon-gold);
-    color: #000;
-    box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
-    border-color: var(--neon-gold);
+.faq-text-block p {
+    font-size: 0.9rem;
+    color: #94a3b8;
+    line-height: 1.6;
+    margin: 0;
 }
-
-/* --- 5. PROGRESSIVE DESKTOP UNLOCK --- */
-@media (min-width: 992px) {
-    .faq-inner-content { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
-}
-
