@@ -31,6 +31,9 @@
     <link rel="stylesheet" href="assets/css/components/profile.css">
     <link rel="stylesheet" href="assets/css/components/services.css">
     <link rel="stylesheet" href="assets/css/components/mission-os.css">
+    <link rel="stylesheet" href="assets/css/components/belt.css">
+    <link rel="stylesheet" href="assets/css/components/video.css">
+    <link rel="stylesheet" href="assets/css/components/reviews.css">
 
     <!-- Failsafe & Anti-Flicker Script -->
     <style>
@@ -645,147 +648,204 @@
             </div>
         </section>
 
-        <!-- ==========================================
-             6. PREMIUM CINEMATIC VIDEO SCROLLER
-             ========================================== -->
-        <section id="integration-feeds" class="cinematic-section" aria-labelledby="video-heading">
-            <div class="container relative-z">
-                
-                <div class="section-header center" data-aos="fade-up">
-                    <div class="pre-title">TRANSPARENZ IN BEWEGUNG</div>
-                    <h2 id="video-heading" class="section-heading">Einblicke in die <span class="gold-text">Montage</span></h2>
-                    <p class="section-subtitle" style="margin-left: auto; margin-right: auto;">Sehen Sie mir bei der Arbeit zu. Überzeugen Sie sich von meiner strukturierten Arbeitsweise und millimetergenauen Präzision.</p>
-                </div>
+<!-- ==========================================================================
+     6. ASYMMETRIC TELEMETRY MATRIX (V3 - ABSOLUTE GEOMETRY)
+     ========================================================================== -->
+<section id="integration-feeds" class="cinematic-section">
+    <div class="container relative-z">
+        
+        <div class="section-header center" data-aos="fade-up">
+            <div class="pre-title" style="font-family: var(--font-mono); color: var(--neon-cyan); font-size: 0.75rem; letter-spacing: 3px; margin-bottom: 15px;">TELEMETRIE_FEED // LIVE_STREAM</div>
+            <h2 id="video-heading" class="section-heading">Systemische <span class="gold-text">Transparenz.</span></h2>
+        </div>
 
-                <div class="cinematic-scroller" data-aos="fade-up" data-aos-delay="100">
-                    
-                    <div class="cinematic-card js-lightbox-trigger magnetic-target" data-video-src="assets/video/project-portrait-timelapse.mp4" data-title="Wohnraum Konzept" data-desc="Vom Kartonchaos zur perfekten Architektur in Rekordzeit.">
-                        <video autoplay muted loop playsinline preload="metadata" class="cinematic-video" poster="assets/images/Bedroom_grey_main.webp">
-                            <source src="assets/video/project-portrait-timelapse.mp4" type="video/mp4">
-                        </video>
-                        <div class="cinematic-overlay">
-                            <div class="cinematic-tag">TIMELAPSE</div>
-                            <div class="cinematic-text">
-                                <h3>Wohnraum Konzept</h3>
-                                <p>Vom Kartonchaos zur perfekten Architektur in Rekordzeit.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="cinematic-card js-lightbox-trigger magnetic-target" data-video-src="assets/video/raphael-assembly-action.mp4" data-title="Präzision im Detail" data-desc="Jeder Handgriff sitzt. Ausgestattet mit Bosch Professional Werkzeug.">
-                        <video autoplay muted loop playsinline preload="metadata" class="cinematic-video" poster="assets/images/ikea-bekant-schreibtisch-hoehenverstellbar-aufbau.webp">
-                            <source src="assets/video/raphael-assembly-action.mp4" type="video/mp4">
-                        </video>
-                        <div class="cinematic-overlay">
-                            <div class="cinematic-tag">ACTION CAM</div>
-                            <div class="cinematic-text">
-                                <h3>Präzision im Detail</h3>
-                                <p>Jeder Handgriff sitzt. Ausgestattet mit Bosch Professional Werkzeug.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                
-                <div class="cinematic-scroll-indicator hide-desktop" aria-hidden="true">
-                    <div class="scroll-track">
-                        <div class="scroll-thumb"></div>
-                    </div>
-                    <span class="scroll-hint">Seitlich wischen</span>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- Video Lightbox Overlay -->
-        <div class="cinematic-lightbox-overlay" id="cinematicLightbox" aria-hidden="true" role="dialog">
-            <button class="lightbox-close-btn" id="closeCinematicLightbox" aria-label="Video schließen">[ SCHLIESSEN ]</button>
-            <div class="cinematic-lightbox-content">
-                <video id="lightboxVideoPlayer" controls class="lightbox-main-video">
-                    <source src="" type="video/mp4">
-                    Ihr Browser unterstützt dieses Videoformat nicht.
+        <!-- Matrix GRID -->
+        <div class="telemetry-matrix" data-aos="fade-up" data-aos-delay="100">
+            
+            <!-- Feed 1: Primary (Links) -->
+            <div class="cinematic-card js-lightbox-trigger" data-video-src="video/project-portrait-timelapse.mp4">
+                <div class="tech-bracket top-left"></div>
+                <video class="cinematic-video" muted playsinline loop preload="metadata">
+                    <source src="video/project-portrait-timelapse.mp4" type="video/mp4">
                 </video>
-                <div class="lightbox-data-panel">
-                    <h2 id="lightboxTitle">Titel</h2>
-                    <p id="lightboxDesc">Beschreibung</p>
+                <div class="cinematic-overlay">
+                    <div class="cinematic-tag"><span class="blink-dot red"></span> TIMELAPSE_LOG</div>
+                    <h3>Wohnraum Architektur</h3>
+                </div>
+            </div>
+
+            <!-- Feed 2: Top Right -->
+            <div class="cinematic-card js-lightbox-trigger" data-video-src="video/raphael-assembly-action.mp4">
+                <div class="tech-bracket top-left"></div>
+                <video class="cinematic-video" muted playsinline loop preload="metadata">
+                    <source src="video/raphael-assembly-action.mp4" type="video/mp4">
+                </video>
+                <div class="cinematic-overlay">
+                    <div class="cinematic-tag"><span class="blink-dot cyan"></span> ACTION_CAM</div>
+                    <h3>Bosch Professional</h3>
+                </div>
+            </div>
+
+            <!-- Feed 3: Bottom Right -->
+            <div class="cinematic-card js-lightbox-trigger" data-video-src="video/project-landscape.mp4">
+                <div class="tech-bracket top-left"></div>
+                <video class="cinematic-video" muted playsinline loop preload="metadata">
+                    <source src="video/project-landscape.mp4" type="video/mp4">
+                </video>
+                <div class="cinematic-overlay">
+                    <div class="cinematic-tag"><span class="blink-dot cyan"></span> MACRO_VIEW</div>
+                    <h3>Projektübersicht</h3>
                 </div>
             </div>
         </div>
+    </div>
+</section>
 
-      <!-- ==========================================================================
+<!-- LIGHTBOX -->
+<div class="cinematic-lightbox" id="videoLightbox">
+    <button class="lightbox-close" id="closeLightbox">[ UPLINK_TRENNEN ]</button>
+    <div class="lightbox-inner">
+        <video id="lightboxPlayer" controls playsinline></video>
+    </div>
+</div>
+
+    <!-- ==========================================
      7. PROJECT BELT: LIVE REFERENZEN (COMPLETE MODULE)
      ========================================================================== -->
-<section id="projekt-belt" class="section-padding" style="background: var(--bg-darker); border-top: 1px solid rgba(255, 215, 0, 0.1);" aria-labelledby="belt-heading">
+<section id="projekt-belt" class="section-padding" style="background: #020203; border-top: 1px solid rgba(255, 215, 0, 0.1);" aria-labelledby="belt-heading">
     <div class="container relative-z">
-        <div class="visual-split-layout" style="display: grid; grid-template-columns: 1fr 1.5fr; gap: 60px; align-items: center;">
+        
+        <div class="visual-split-layout">
             
-            <!-- INFO PANE -->
-            <div class="visual-info-pane glass-panel" data-aos="fade-right" style="padding: 40px;">
-                <div class="pre-title" style="font-family: var(--font-mono); color: var(--neon-gold); font-size: 0.75rem; letter-spacing: 3px; margin-bottom: 15px;">LIVE_REFERENZEN</div>
-                <h2 id="belt-heading" class="section-heading" style="font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 25px; line-height: 1.1;">
-                    Bilder sagen mehr als <span class="cyan-text" style="color: var(--neon-cyan);">Worte.</span>
+            <div class="visual-info-pane glass-panel" data-aos="fade-right" style="padding: 40px; border-top: 3px solid var(--neon-cyan);">
+                <div class="pre-title" style="font-family: var(--font-mono); color: var(--neon-cyan); font-size: 0.75rem; letter-spacing: 3px; margin-bottom: 15px;">DATENSTROM // LIVE_REFERENZEN</div>
+                <h2 id="belt-heading" class="section-heading" style="font-size: clamp(2rem, 3.5vw, 2.5rem); margin-bottom: 20px; line-height: 1.1;">
+                    System-Logs & <span class="gold-text">Architektur.</span>
                 </h2>
                 
-                <p class="desc-line" style="color: #94a3b8; margin-bottom: 40px; line-height: 1.6; font-size: 1.1rem;">
-                    Überzeugen Sie sich von der Qualität. Jedes Bild stammt aus echten Kundenaufträgen – vom passgenauen Kleiderschrank bis zur vollintegrierten Premium-Küche.
+                <p style="color: #94a3b8; margin-bottom: 30px; line-height: 1.6; font-size: 0.95rem;">
+                    Zugriff auf verifizierte Projektdaten. Filtern Sie die Galerie nach Systembereichen, um spezifische Montagelösungen aus München und Augsburg zu analysieren.
                 </p>
                 
-                <!-- Proof Box -->
-                <div class="proof-box" style="margin-bottom: 40px;">
-                    <div class="proof-item" style="display: flex; gap: 20px; align-items: center;">
-                        <div class="proof-icon"><i class="fas fa-camera" style="font-size: 2rem; color: var(--neon-gold);"></i></div>
-                        <div>
-                            <strong style="color: #fff; display: block; font-family: var(--font-head); letter-spacing: 1px;">100% Echte Projekte</strong>
-                            <span style="color: #888; font-size: 0.9rem;">Authentisches Handwerk aus Bayern.</span>
-                        </div>
-                    </div>
+                <div class="sector-nav">
+                    <button class="sector-btn active" data-target="all">ALLE SYSTEME</button>
+                    <button class="sector-btn" data-target="kitchen">KÜCHEN_TECH</button>
+                    <button class="sector-btn" data-target="living">WOHN_MODULE</button>
+                    <button class="sector-btn" data-target="bedroom">SCHLAF_ZONEN</button>
                 </div>
 
-                <!-- Navigation Controls -->
+                <div class="pulse-rail-container">
+                    <div class="pulse-rail-indicator" id="pulseRailIndicator"></div>
+                </div>
+
                 <div class="belt-controls" style="display: flex; gap: 15px; margin-bottom: 30px;">
-                    <button class="nav-hud-btn reactive-btn" id="prevBelt" aria-label="Vorheriges Bild" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 12px 20px; color: #fff; cursor: pointer; text-transform: uppercase; font-family: var(--font-mono);">
+                    <button class="nav-hud-btn reactive-btn" id="prevBelt" aria-label="Vorheriges Bild" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 10px 20px; color: #fff;">
                         <i class="fas fa-chevron-left"></i> ZURÜCK
                     </button>
-                    <button class="nav-hud-btn reactive-btn" id="nextBelt" aria-label="Nächstes Bild" style="background: var(--neon-gold); border: none; padding: 12px 20px; color: #000; cursor: pointer; text-transform: uppercase; font-family: var(--font-mono); font-weight: 800;">
+                    <button class="nav-hud-btn reactive-btn" id="nextBelt" aria-label="Nächstes Bild" style="background: rgba(0, 229, 255, 0.1); border: 1px solid var(--neon-cyan); padding: 10px 20px; color: var(--neon-cyan);">
                         WEITER <i class="fas fa-chevron-right"></i>
                     </button>
                 </div>
-
-                <!-- Carousel Dots Container -->
-                <div class="carousel-dots" id="beltDots" style="display: flex; gap: 10px; margin-bottom: 20px;"></div>
                 
-                <a href="gallery.html" class="cyan-text" style="font-family: var(--font-mono); font-size: 0.8rem; text-decoration: underline; color: var(--neon-cyan);">ZUR VOLLSTÄNDIGEN GALERIE -></a>
+                <a href="gallery.html" style="font-family: var(--font-mono); font-size: 0.75rem; text-decoration: none; color: #fff; border-bottom: 1px dashed #fff;">[ ARCHIV_ÖFFNEN ]</a>
             </div>
 
-            <!-- IMAGE BELT -->
-            <div class="belt-container" data-aos="fade-left" style="overflow: hidden; position: relative;">
-                <div class="belt-track" id="imageBelt" style="display: flex; transition: transform 0.5s ease-in-out;">
+            <div class="belt-container" data-aos="fade-left">
+                <div class="belt-track" id="imageBelt">
                     
-                    <!-- Items -->
-                    <figure class="belt-item" style="min-width: 100%; padding: 0 10px;">
-                        <img src="assets/images/kueche-1-a.webp" alt="Premium Küchenmontage" style="width: 100%; border-radius: 8px;">
-                        <figcaption style="margin-top: 10px; font-family: var(--font-mono); color: var(--neon-gold);">METOD_KÜCHE</figcaption>
-                    </figure>
-                    
-                    <figure class="belt-item" style="min-width: 100%; padding: 0 10px;">
-                        <img src="assets/images/kueche-13-a.webp" alt="Design Küche" style="width: 100%; border-radius: 8px;">
-                        <figcaption style="margin-top: 10px; font-family: var(--font-mono); color: var(--neon-gold);">PREMIUM_KITCHEN</figcaption>
-                    </figure>
+                    <div class="belt-item" data-sector="kitchen">
+                        <div class="belt-image-wrapper">
+                            <img src="assets/images/kueche-1-a.webp" alt="Küchenmontage Premium" loading="lazy">
+                            <div class="data-stamp">ID: KCH-01 // VERIFIED</div>
+                        </div>
+                    </div>
+                    <div class="belt-item" data-sector="kitchen">
+                        <div class="belt-image-wrapper">
+                            <img src="assets/images/kueche-4-a.webp" alt="Küchen Detail" loading="lazy">
+                            <div class="data-stamp">ID: KCH-04 // VERIFIED</div>
+                        </div>
+                    </div>
+                    <div class="belt-item" data-sector="kitchen">
+                        <div class="belt-image-wrapper">
+                            <img src="assets/images/kueche-8-a.webp" alt="Küchen System" loading="lazy">
+                            <div class="data-stamp">ID: KCH-08 // VERIFIED</div>
+                        </div>
+                    </div>
+                    <div class="belt-item" data-sector="kitchen">
+                        <div class="belt-image-wrapper">
+                            <img src="assets/images/kueche-13-a.webp" alt="Premium Küche" loading="lazy">
+                            <div class="data-stamp">ID: KCH-13 // VERIFIED</div>
+                        </div>
+                    </div>
+                    <div class="belt-item" data-sector="kitchen">
+                        <div class="belt-image-wrapper">
+                            <img src="assets/images/kueche-18-a.webp" alt="Küchen Architektur" loading="lazy">
+                            <div class="data-stamp">ID: KCH-18 // VERIFIED</div>
+                        </div>
+                    </div>
 
-                    <figure class="belt-item" style="min-width: 100%; padding: 0 10px;">
-                        <img src="assets/images/wohnen-2-a.webp" alt="Wohnzimmer System" style="width: 100%; border-radius: 8px;">
-                        <figcaption style="margin-top: 10px; font-family: var(--font-mono); color: var(--neon-gold);">LIVING_SYSTEM</figcaption>
-                    </figure>
+                    <div class="belt-item" data-sector="living">
+                        <div class="belt-image-wrapper">
+                            <img src="assets/images/wohnen-2-a.webp" alt="Wohnzimmer System" loading="lazy">
+                            <div class="data-stamp">ID: LVG-02 // VERIFIED</div>
+                        </div>
+                    </div>
+                    <div class="belt-item" data-sector="living">
+                        <div class="belt-image-wrapper">
+                            <img src="assets/images/wohnen-7-a.webp" alt="Wandmontage" loading="lazy">
+                            <div class="data-stamp">ID: LVG-07 // VERIFIED</div>
+                        </div>
+                    </div>
+                    <div class="belt-item" data-sector="living">
+                        <div class="belt-image-wrapper">
+                            <img src="assets/images/wohnen-11-a.webp" alt="Wohnbereich" loading="lazy">
+                            <div class="data-stamp">ID: LVG-11 // VERIFIED</div>
+                        </div>
+                    </div>
+                    <div class="belt-item" data-sector="living">
+                        <div class="belt-image-wrapper">
+                            <img src="assets/images/wohnen-18-a.webp" alt="Wohnlandschaft" loading="lazy">
+                            <div class="data-stamp">ID: LVG-18 // VERIFIED</div>
+                        </div>
+                    </div>
+                    <div class="belt-item" data-sector="living">
+                        <div class="belt-image-wrapper">
+                            <img src="assets/images/ikea-bekant-schreibtisch-hoehenverstellbar-aufbau.webp" alt="Office Aufbau" loading="lazy">
+                            <div class="data-stamp">ID: OFC-01 // VERIFIED</div>
+                        </div>
+                    </div>
 
-                    <figure class="belt-item" style="min-width: 100%; padding: 0 10px;">
-                        <img src="assets/images/sz-3-a.webp" alt="Schlafzimmer Luxus" style="width: 100%; border-radius: 8px;">
-                        <figcaption style="margin-top: 10px; font-family: var(--font-mono); color: var(--neon-gold);">MASTER_BEDROOM</figcaption>
-                    </figure>
+                    <div class="belt-item" data-sector="bedroom">
+                        <div class="belt-image-wrapper">
+                            <img src="assets/images/sz-1-a.webp" alt="Schlafzimmer Montage" loading="lazy">
+                            <div class="data-stamp">ID: BDR-01 // VERIFIED</div>
+                        </div>
+                    </div>
+                    <div class="belt-item" data-sector="bedroom">
+                        <div class="belt-image-wrapper">
+                            <img src="assets/images/sz-3-a.webp" alt="Schlafzimmer Detail" loading="lazy">
+                            <div class="data-stamp">ID: BDR-03 // VERIFIED</div>
+                        </div>
+                    </div>
+                    <div class="belt-item" data-sector="bedroom">
+                        <div class="belt-image-wrapper">
+                            <img src="assets/images/sz-6-a.webp" alt="Schlafbereich" loading="lazy">
+                            <div class="data-stamp">ID: BDR-06 // VERIFIED</div>
+                        </div>
+                    </div>
+                    <div class="belt-item" data-sector="bedroom">
+                        <div class="belt-image-wrapper">
+                            <img src="assets/images/Bedroom_grey_main.webp" alt="PAX Wardrobe" loading="lazy">
+                            <div class="data-stamp">ID: BDR-PAX // VERIFIED</div>
+                        </div>
+                    </div>
+                    <div class="belt-item" data-sector="bedroom">
+                        <div class="belt-image-wrapper">
+                            <img src="assets/images/ikea-hemnes-tagesbett-ausziehbar-montage.webp" alt="Hemnes Bett" loading="lazy">
+                            <div class="data-stamp">ID: BDR-HEM // VERIFIED</div>
+                        </div>
+                    </div>
 
-                    <figure class="belt-item" style="min-width: 100%; padding: 0 10px;">
-                        <img src="assets/images/wohnen-7-a.webp" alt="Wandmontage" style="width: 100%; border-radius: 8px;">
-                        <figcaption style="margin-top: 10px; font-family: var(--font-mono); color: var(--neon-gold);">BESTÅ_WALL</figcaption>
-                    </figure>
                 </div>
             </div>
 
@@ -933,6 +993,9 @@
     <!-- SCRIPTS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script type="module" src="assets/js/main.js"></script>
+    <script src="assets/js/components/belt.js"></script>
+    <script src="assets/js/components/video.js"></script>
+    <script src="assets/js/components/reviews.js"></script>
 
 </body>
 </html>

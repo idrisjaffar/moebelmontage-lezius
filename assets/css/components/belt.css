@@ -1,0 +1,139 @@
+/* ==========================================================================
+   COMPONENT: CINEMATIC DATA STREAM (BELT STYLES)
+   LOCATION: assets/css/components/belt.css
+   ========================================================================== */
+
+.visual-split-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+@media (min-width: 1200px) {
+    .visual-split-layout { grid-template-columns: 480px 1fr; gap: 80px; }
+}
+
+/* --- SECTOR TABS (The Filters) --- */
+.sector-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+    padding-bottom: 15px;
+}
+
+.sector-btn {
+    background: transparent;
+    border: 1px solid transparent;
+    color: #64748b;
+    font-family: var(--font-mono, monospace);
+    font-size: 0.75rem;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: 0.4s ease;
+    letter-spacing: 1px;
+}
+
+.sector-btn:hover { color: #fff; }
+.sector-btn.active {
+    color: var(--neon-gold, #FFD700);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    background: rgba(255, 215, 0, 0.05);
+    border-radius: 4px;
+    box-shadow: inset 0 0 10px rgba(255, 215, 0, 0.05);
+}
+
+/* --- THE BELT TRACK (Depth Engine) --- */
+.belt-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding: 20px 0; /* Room for glow effects */
+}
+
+.belt-track {
+    display: flex;
+    transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); /* Magnetic easing */
+    width: 100%;
+    align-items: center;
+}
+
+.belt-item {
+    flex: 0 0 100%;
+    min-width: 100%;
+    padding: 0 15px;
+    box-sizing: border-box;
+    transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+    
+    /* Out-of-focus state (default) */
+    transform: scale(0.92);
+    opacity: 0.4;
+    filter: blur(4px) grayscale(50%);
+}
+
+.belt-item.in-focus {
+    /* In-focus state */
+    transform: scale(1);
+    opacity: 1;
+    filter: blur(0px) grayscale(0%);
+}
+
+/* The Glow-Edge Images */
+.belt-image-wrapper {
+    position: relative;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 215, 0, 0.15);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+}
+
+.belt-item.in-focus .belt-image-wrapper {
+    border-color: rgba(0, 229, 255, 0.3);
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.1), 0 20px 40px rgba(0, 0, 0, 0.9);
+}
+
+.belt-item img {
+    display: block;
+    width: 100%;
+    height: 45vh; /* Responsive height */
+    min-height: 350px;
+    object-fit: cover;
+}
+
+/* Data Overlay on Images */
+.data-stamp {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    background: rgba(5, 5, 5, 0.85);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    padding: 8px 12px;
+    font-family: var(--font-mono, monospace);
+    font-size: 0.65rem;
+    color: var(--neon-gold, #FFD700);
+    letter-spacing: 2px;
+}
+
+/* --- THE PULSE RAIL (Replaces Dots) --- */
+.pulse-rail-container {
+    width: 100%;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.1);
+    margin-bottom: 30px;
+    position: relative;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.pulse-rail-indicator {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: var(--neon-cyan, #00e5ff);
+    box-shadow: 0 0 10px var(--neon-cyan, #00e5ff);
+    transition: all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
