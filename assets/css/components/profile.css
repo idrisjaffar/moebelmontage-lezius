@@ -1,127 +1,214 @@
 /* ==========================================================================
-   PIECE 7: DATA STREAM & DIGITAL PROFILE
-   INFINITE MARQUEE | SCANNING ID CARD | 3D AVATAR ENGINE
+   PHASE 3: DIGITAL PROFILE & PHILOSOPHY (ADAPTIVE MATRIX)
+   FILE: assets/css/components/profile.css
    ========================================================================== */
 
-
-/* --- 1. MARQUEE DATA STREAM --- */
-.marquee-wrapper {
-    border-top: 1px solid rgba(255, 215, 0, 0.1);
-    border-bottom: 1px solid rgba(255, 215, 0, 0.1);
-    background: var(--bg-darker); padding: 25px 0; overflow: hidden; position: relative; z-index: 10;
+/* --- 1. PROFILE SPLIT LAYOUT --- */
+.profile-split-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 50px;
+    align-items: flex-start;
 }
 
-
-.marquee-track {
-    display: flex; width: max-content; animation: marqueeScroll 60s linear infinite;
-    font-family: var(--font-mono); font-weight: 700; font-size: clamp(0.75rem, 1.5vw, 0.9rem);
-    letter-spacing: 4px; text-transform: uppercase; will-change: transform;
+@media (min-width: 992px) {
+    .profile-split-layout {
+        grid-template-columns: 350px 1fr;
+        gap: 80px;
+    }
 }
 
-
-.marquee-track span {
-    padding: 0 60px; display: flex; align-items: center; gap: 15px;
-    color: var(--neon-gold); text-shadow: 0 0 10px rgba(255, 215, 0, 0.3); /* Shifted to Gold */
-}
-
-
-@keyframes marqueeScroll {
-    from { transform: translate3d(0, 0, 0); }
-    to { transform: translate3d(-50%, 0, 0); }
-}
-
-
-/* --- 2. DIGITAL PROFILE LAYOUT --- */
-.split-layout { display: flex; flex-direction: column; gap: 50px; align-items: center; }
-.profile-card-wrapper { width: 100%; max-width: 480px; perspective: 2000px; }
-
-
-/* --- 3. THE HUD MONITOR STATS --- */
+/* --- 2. HUD MONITOR --- */
 .hud-monitor {
-    border: 1px solid rgba(255, 215, 0, 0.2); border-radius: 12px; padding: 25px;
-    font-family: var(--font-mono); margin-bottom: 25px;
-    background: rgba(255, 215, 0, 0.02); box-shadow: inset 0 0 20px rgba(255, 215, 0, 0.05); /* Shifted to Gold */
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(0, 229, 255, 0.2);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    font-family: monospace;
+    font-size: 0.75rem;
+}
+.hud-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #94a3b8;
+    border-bottom: 1px solid rgba(0, 229, 255, 0.1);
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+.hud-stats-grid { 
+    display: grid; 
+    grid-template-columns: 1fr 1fr 1fr; 
+    gap: 10px; 
+}
+.h-stat { display: flex; flex-direction: column; }
+.h-label { color: #64748b; margin-bottom: 5px; font-size: 0.65rem; }
+.h-val { font-weight: bold; }
+.diag-bar {
+    width: 100%;
+    height: 4px;
+    background: rgba(255,255,255,0.1);
+    margin-top: 15px;
+    border-radius: 2px;
+    overflow: hidden;
+}
+.diag-fill {
+    width: 100%;
+    height: 100%;
+    background: #FFD700;
+    box-shadow: 0 0 10px #FFD700;
 }
 
-
-.hud-header { color: var(--text-mute); font-size: 0.65rem; letter-spacing: 2px; margin-bottom: 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding-bottom: 15px; display: flex; align-items: center; gap: 10px; }
-.hud-stats-grid { display: flex; justify-content: space-between; margin-bottom: 20px; }
-.h-stat { display: flex; flex-direction: column; gap: 8px; }
-.h-label { font-size: 0.6rem; color: #666; text-transform: uppercase; }
-.h-val { font-size: 0.9rem; color: #fff; font-weight: 700; }
-
-
-.diag-bar { width: 100%; height: 4px; background: #111; border-radius: 2px; overflow: hidden; }
-.diag-fill { height: 100%; background: var(--neon-gold); box-shadow: 0 0 15px var(--neon-gold); width: 100%; }
-
-
-/* --- 4. THE SCANNING ID CARD --- */
+/* --- 3. ID CARD --- */
 .id-card {
-    padding: clamp(25px, 5vw, 45px); position: relative; overflow: hidden;
-    background: var(--surface); border-top: 3px solid var(--neon-gold); /* Shifted to Gold */
-    transition: var(--spring);
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 30px;
+    text-align: center;
+    backdrop-filter: blur(10px);
 }
-
-
-/* Cyber Scan Animation (Cyan accent sweep) */
-.id-card::after {
-    content: ''; position: absolute; top: -100%; left: 0; width: 100%; height: 50%;
-    background: linear-gradient(to bottom, transparent, rgba(0, 229, 255, 0.1), var(--neon-cyan), transparent);
-    opacity: 0.4; animation: cyberScan 5s linear infinite; pointer-events: none; z-index: 10;
+.id-header-tech {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
 }
+.chip { color: #FFD700; font-size: 1.5rem; }
+.status-live { font-family: monospace; font-size: 0.75rem; color: #00e5ff; font-weight: bold; }
 
-
-@keyframes cyberScan { 0% { transform: translateY(0); } 100% { transform: translateY(400%); } }
-
-
-.id-header-tech { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
-.chip i { font-size: 2.8rem; color: var(--neon-cyan); opacity: 0.8; } /* Hardware cyan accent */
-.status-live { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; color: var(--neon-gold); font-family: var(--font-mono); font-weight: 800; text-shadow: 0 0 10px rgba(255,215,0,0.5); }
-
-
-/* --- 5. THE 3D FLIPPER AVATAR --- */
+/* --- THE FIX: AUTHENTICATION DATA-PLATE --- */
 .avatar-frame {
-    width: 100%; aspect-ratio: 16 / 9; border-radius: 8px; background: #000;
-    margin-bottom: 30px; overflow: hidden; border: 1px solid rgba(255, 215, 0, 0.3); /* Shifted to Gold */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 25px 0;
+    position: relative;
 }
 
-
-.flipper { width: 100%; height: 100%; position: relative; transform-style: preserve-3d; transition: var(--slow-spring); }
-.avatar-frame:hover .flipper { transform: rotateY(180deg); }
-.flipper img { width: 100%; height: 100%; object-fit: cover; }
-
-
-.flipper .front, .flipper .back { position: absolute; inset: 0; backface-visibility: hidden; }
-.flipper .back { transform: rotateY(180deg); background: #080808; display: flex; align-items: center; justify-content: center; }
-
-
-.pro-name { font-size: 2.5rem; text-align: center; margin-bottom: 5px; }
-.pro-title {
-    color: var(--neon-gold); font-size: 0.9rem; text-align: center;
-    font-family: var(--font-mono); letter-spacing: 4px; margin-bottom: 25px; text-transform: uppercase;
+/* Holographic Brackets */
+.avatar-frame::before,
+.avatar-frame::after {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border: 2px solid var(--neon-cyan, #00e5ff);
+    z-index: 2;
+    pointer-events: none;
 }
 
-
-.pro-badges { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
-.badge-tech { background: rgba(255, 255, 255, 0.03); font-size: 0.65rem; padding: 6px 14px; border: 1px solid rgba(255, 255, 255, 0.1); font-weight: 700; font-family: var(--font-mono); }
-
-
-.id-stats-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr);
-    background: rgba(255, 215, 0, 0.03); padding: 25px; margin-top: 30px;
-    border-radius: 8px; border: 1px solid rgba(255, 215, 0, 0.1);
+.avatar-frame::before {
+    top: -5px;
+    left: 0;
+    border-right: none;
+    border-bottom: none;
 }
 
-
-.stat-cell .label { font-size: 0.6rem; color: var(--text-mute); display: block; margin-bottom: 5px; text-transform: uppercase; }
-.stat-cell .value { font-size: 1.2rem; font-family: var(--font-head); font-weight: 800; text-align: center; }
-
-
-/* --- 6. PROGRESSIVE DESKTOP UNLOCK --- */
-@media (min-width: 1200px) {
-    .split-layout { display: grid; grid-template-columns: 480px 1fr; gap: clamp(80px, 10vw, 120px); align-items: flex-start; }
-    .profile-card-wrapper:hover .id-card { transform: rotateX(5deg) rotateY(5deg) translateY(-10px); box-shadow: -20px 40px 80px rgba(0,0,0,0.8); border-color: var(--neon-cyan); }
+.avatar-frame::after {
+    bottom: -5px;
+    right: 0;
+    border-left: none;
+    border-top: none;
+    border-color: var(--neon-gold, #FFD700);
 }
 
+.avatar-img {
+    width: 100%; 
+    max-width: 320px; /* Allows your wide logo to span beautifully */
+    height: auto; /* Respects natural proportions */
+    border-radius: 4px; /* Industrial squared edges */
+    border: 1px solid rgba(255, 215, 0, 0.4);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 229, 255, 0.1);
+    object-fit: contain; /* CRITICAL: Prevents cropping */
+    display: block;
+    background: #000;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
 
+.id-card:hover .avatar-img {
+    border-color: var(--neon-cyan, #00e5ff);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6), 0 0 25px rgba(0, 229, 255, 0.2);
+    transform: translateY(-2px);
+}
+/* ------------------------------------------ */
 
+.pro-name { font-size: 1.8rem; margin: 15px 0 5px 0; font-weight: 900; letter-spacing: -0.5px; }
+.pro-title { color: #FFD700; font-family: monospace; font-size: 0.85rem; letter-spacing: 2px; margin-bottom: 20px; }
+
+.pro-badges {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 25px;
+}
+.badge-tech {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 6px 12px;
+    font-family: monospace;
+    font-size: 0.7rem;
+    color: #cbd5e1;
+    border-radius: 4px;
+}
+
+.id-stats-grid { 
+    display: grid; 
+    grid-template-columns: 1fr 1fr 1fr; 
+    border-top: 1px solid rgba(255,255,255,0.1); 
+    margin-top: 25px; 
+    padding-top: 25px; 
+}
+.stat-cell { display: flex; flex-direction: column; font-family: monospace; }
+.stat-cell .label { color: #64748b; font-size: 0.65rem; margin-bottom: 5px; }
+.stat-cell .value { color: #fff; font-weight: bold; font-size: 0.9rem; }
+
+/* --- 4. PHILOSOPHY TACTILE STREAM --- */
+.section-tag-wrapper { margin-bottom: 15px; }
+.section-tag {
+    font-family: monospace;
+    color: #00e5ff;
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    background: rgba(0, 229, 255, 0.1);
+    padding: 5px 12px;
+    border-radius: 4px;
+    border: 1px solid rgba(0, 229, 255, 0.2);
+}
+
+.philosophy-tactile-stream {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 20px;
+    padding-bottom: 20px;
+    -webkit-overflow-scrolling: touch;
+    margin-top: 30px;
+}
+.philosophy-tactile-stream::-webkit-scrollbar { height: 4px; }
+.philosophy-tactile-stream::-webkit-scrollbar-thumb { background: #00e5ff; border-radius: 4px; }
+
+.tech-card-v2 {
+    min-width: 260px;
+    scroll-snap-align: start;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.05);
+    padding: 25px;
+    border-radius: 8px;
+    transition: transform 0.3s;
+}
+.tech-card-v2:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 215, 0, 0.3);
+}
+
+@media (min-width: 768px) {
+    .philosophy-tactile-stream {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        overflow-x: visible;
+    }
+    .tech-card-v2 { min-width: auto; }
+}

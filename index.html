@@ -34,7 +34,7 @@
     <link rel="stylesheet" href="assets/css/components/belt.css">
     <link rel="stylesheet" href="assets/css/components/video.css">
     <link rel="stylesheet" href="assets/css/components/reviews.css">
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- Failsafe & Anti-Flicker Script -->
     <style>
         body { background: #0a0805; opacity: 1 !important; visibility: visible !important; }
@@ -210,20 +210,21 @@
         <!-- ==========================================
              3. DIGITAL PROFILE & PHILOSOPHY
              ========================================== -->
-        <section id="profile" class="section-padding animated-grid-bg" aria-labelledby="profile-heading">
-            <div class="container relative-z">
-                <div class="split-layout">
+      <section id="profile" class="section-padding" style="background: #020203; padding: clamp(60px, 8vw, 100px) 0; position: relative; border-top: 1px solid rgba(0, 229, 255, 0.1);">
+            <div class="container relative-z" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+                
+                <div class="profile-split-layout">
                     
                     <div class="profile-card-wrapper" data-aos="fade-right">
-                        <div class="hud-monitor" aria-hidden="true">
+                        <div class="hud-monitor">
                             <div class="hud-header">
-                                <i class="fas fa-crosshairs blink" style="color: var(--neon-cyan);"></i>
+                                <i class="fas fa-crosshairs blink" style="color: var(--neon-cyan, #00e5ff);"></i>
                                 <span>OPERATIONAL ZONE // AUGSBURG & MÜNCHEN</span>
                             </div>
                             <div class="hud-stats-grid">
                                 <div class="h-stat"><span class="h-label">SYSTEM_DATUM</span><span class="h-val tech-font" id="dynamic-date">2026</span></div>
-                                <div class="h-stat"><span class="h-label">ZERTIFIZIERUNG</span><span class="h-val gold-text">GEPRÜFT</span></div>
-                                <div class="h-stat"><span class="h-label">KAPAZITÄT</span><span class="h-val green-text">OPTIMAL</span></div>
+                                <div class="h-stat"><span class="h-label">ZERTIFIZIERUNG</span><span class="h-val gold-text" style="color: #FFD700;">GEPRÜFT</span></div>
+                                <div class="h-stat"><span class="h-label">KAPAZITÄT</span><span class="h-val cyan-text" style="color: #00e5ff;">OPTIMAL</span></div>
                             </div>
                             <div class="diag-bar"><div class="diag-fill"></div></div>
                         </div>
@@ -231,18 +232,11 @@
                         <article class="id-card glass-panel">
                             <div class="id-header-tech">
                                 <div class="chip"><i class="fas fa-microchip"></i></div>
-                                <div class="status-live"><span class="blink">●</span> MONTAGE-EXPERTE</div>
+                                <div class="status-live"><span class="blink" style="color: #00e5ff;">●</span> MONTAGE-EXPERTE</div>
                             </div>
 
                             <div class="avatar-frame">
-                                <div class="flipper">
-                                    <div class="front">
-                                        <img src="assets/images/raphael-lezius-logo-front.webp" alt="Raphael Lezius Profil" loading="lazy">
-                                    </div>
-                                    <div class="back">
-                                        <img src="assets/images/raphael-lezius-logo-back.webp" alt="Qualitätssiegel" loading="lazy">
-                                    </div>
-                                </div>
+                                <img src="assets/images/raphael-lezius-logo-front.webp" alt="Raphael Lezius Profil" loading="lazy" class="avatar-img">
                             </div>
                             
                             <h3 class="pro-name">Raphael Lezius</h3>
@@ -254,8 +248,8 @@
                             </div>
 
                             <div class="id-stats-grid">
-                                <div class="stat-cell"><span class="label">RATING</span><span class="value">5.0 <i class="fas fa-star gold-text" style="font-size:0.7rem;"></i></span></div>
-                                <div class="stat-cell"><span class="label">KUNDEN</span><span class="value cyan-text">100%</span></div>
+                                <div class="stat-cell"><span class="label">RATING</span><span class="value">5.0 <i class="fas fa-star" style="color: #FFD700; font-size:0.7rem;"></i></span></div>
+                                <div class="stat-cell"><span class="label">KUNDEN</span><span class="value" style="color: #00e5ff;">100%</span></div>
                                 <div class="stat-cell"><span class="label">ERFAHRUNG</span><span class="value">8+ JAHRE</span></div>
                             </div>
                         </article>
@@ -266,48 +260,47 @@
                             <span class="section-tag">MEINE PHILOSOPHIE</span>
                         </div>
                         
-                        <h2 id="profile-heading" class="section-heading">
-                            Wahres Handwerk kennt keine <span class="gold-text">Kompromisse.</span>
+                        <h2 id="profile-heading" class="section-heading" style="font-size: clamp(2rem, 4vw, 3rem); line-height: 1.1; margin-bottom: 20px;">
+                            Wahres Handwerk kennt keine <span style="color: #FFD700;">Kompromisse.</span>
                         </h2>
                         
-                        <blockquote class="desc-line" style="font-size: 1.25rem; color: #f8fafc; font-style: italic;">
+                        <blockquote class="desc-line" style="font-size: clamp(1.1rem, 2vw, 1.25rem); color: #f8fafc; font-style: italic; border-left: 3px solid #FFD700; padding-left: 20px; margin-bottom: 25px;">
                             "Ein Zuhause ist mehr als nur Wände und Möbel. Es ist der Ort, an dem Sie zur Ruhe kommen sollen. Mein Ziel ist es, Ihnen exakt diese Ruhe zu schenken."
                         </blockquote>
                         
-                        <p class="desc-line" style="border-left: none; padding-left: 0; margin-top: -20px; color: #94a3b8;">
+                        <p class="desc-line" style="color: #94a3b8; line-height: 1.7; margin-bottom: 40px; font-size: clamp(0.95rem, 1.5vw, 1.05rem);">
                             Ich biete Ihnen einen Service, den große Möbelhäuser oft nicht leisten können: absolute Zuverlässigkeit, persönliche Erreichbarkeit und eine handwerkliche Qualität, die auch bei schiefen Wänden oder komplexen Sonderwünschen nicht aufgibt.
                         </p>
 
-                        <div class="swipe-carousel" id="philosophyCarousel" aria-label="Kernkompetenzen">
-                            <div class="tech-card-v2 swipe-item glass-panel">
-                                <div class="card-icon-v2"><i class="fas fa-drafting-compass"></i></div>
-                                <h3 class="card-title-v2">DETAILVERLIEBT</h3>
-                                <p class="card-desc-v2">Schleifende Schranktüren? Nicht bei mir. Jedes Scharnier wird millimetergenau justiert.</p>
+                        <div class="philosophy-tactile-stream" aria-label="Kernkompetenzen">
+                            <div class="tech-card-v2 glass-panel">
+                                <div class="card-icon-v2" style="color: #00e5ff; font-size: 1.5rem; margin-bottom: 15px;"><i class="fas fa-drafting-compass"></i></div>
+                                <h3 class="card-title-v2" style="font-family: monospace; font-size: 1rem; margin-bottom: 10px;">DETAILVERLIEBT</h3>
+                                <p class="card-desc-v2" style="color: #94a3b8; font-size: 0.85rem; line-height: 1.5;">Schleifende Schranktüren? Nicht bei mir. Jedes Scharnier wird millimetergenau justiert.</p>
                             </div>
-                            <div class="tech-card-v2 swipe-item glass-panel">
-                                <div class="card-icon-v2"><i class="fas fa-handshake"></i></div>
-                                <h3 class="card-title-v2">TRANSPARENT</h3>
-                                <p class="card-desc-v2">Sie erhalten vor dem Start einen festen Preis. Keine Nachverhandlungen, kein Stress.</p>
+                            <div class="tech-card-v2 glass-panel">
+                                <div class="card-icon-v2" style="color: #FFD700; font-size: 1.5rem; margin-bottom: 15px;"><i class="fas fa-handshake"></i></div>
+                                <h3 class="card-title-v2" style="font-family: monospace; font-size: 1rem; margin-bottom: 10px;">TRANSPARENT</h3>
+                                <p class="card-desc-v2" style="color: #94a3b8; font-size: 0.85rem; line-height: 1.5;">Sie erhalten vor dem Start einen festen Preis. Keine Nachverhandlungen, kein Stress.</p>
                             </div>
-                            <div class="tech-card-v2 swipe-item glass-panel">
-                                <div class="card-icon-v2"><i class="fas fa-shield-alt"></i></div>
-                                <h3 class="card-title-v2">VERSICHERT</h3>
-                                <p class="card-desc-v2">Vollständige Betriebshaftpflicht. Null Risiko für Ihre wertvolle Einrichtung und Böden.</p>
+                            <div class="tech-card-v2 glass-panel">
+                                <div class="card-icon-v2" style="color: #00e5ff; font-size: 1.5rem; margin-bottom: 15px;"><i class="fas fa-shield-alt"></i></div>
+                                <h3 class="card-title-v2" style="font-family: monospace; font-size: 1rem; margin-bottom: 10px;">VERSICHERT</h3>
+                                <p class="card-desc-v2" style="color: #94a3b8; font-size: 0.85rem; line-height: 1.5;">Vollständige Betriebshaftpflicht. Null Risiko für Ihre wertvolle Einrichtung und Böden.</p>
                             </div>
                         </div>
 
-                        <div class="consultation-wrapper glass-panel" style="margin-top: 40px;">
-                            <div class="consultation-info">
-                                <span class="pulse-dot-gold"></span>
-                                <strong>KOSTENLOSER PROJEKT-CHECK</strong>
-                                <p>Klären Sie technische Details und Maße völlig unverbindlich ab, bevor Sie mich beauftragen.</p>
+                        <div class="consultation-wrapper glass-panel" style="margin-top: 40px; padding: 30px; border-left: 2px solid #00e5ff; background: rgba(0, 229, 255, 0.02);">
+                            <div class="consultation-info" style="margin-bottom: 20px;">
+                                <strong style="color: #fff; font-family: monospace; letter-spacing: 1px; display: block; margin-bottom: 10px;"><span style="color: #00e5ff;">●</span> KOSTENLOSER PROJEKT-CHECK</strong>
+                                <p style="color: #94a3b8; font-size: 0.9rem; line-height: 1.5; margin: 0;">Klären Sie technische Details und Maße völlig unverbindlich ab, bevor Sie mich beauftragen.</p>
                             </div>
-                            <div class="cta-action-row">
-                                <button class="btn btn-gold reactive-btn magnetic-target js-open-os">
+                            <div class="cta-action-row" style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap;">
+                                <button class="btn-primary" style="background: #FFD700; color: #000; border: none; padding: 12px 25px; font-weight: bold; font-family: monospace; cursor: pointer;">
                                     <i class="fas fa-satellite-dish"></i> UPLINK STARTEN
                                 </button>
-                                <div class="signature">
-                                    <span>Raphael Lezius</span>
+                                <div class="signature" style="font-family: 'Brush Script MT', cursive; font-size: 1.5rem; color: #fff;">
+                                    Raphael Lezius
                                 </div>
                             </div>
                         </div>
@@ -316,332 +309,174 @@
             </div>
         </section>
 
-        <!-- ==========================================
-             4. SYSTEM SERVICES ACCORDION ENGINE
-             ========================================== -->
-        <section id="system-integration" class="services-accordion-section" aria-labelledby="services-heading">
-            <div class="interface-overlay" aria-hidden="true"></div>
-
-            <div class="container relative-z">
-                <div class="section-header center" data-aos="fade-up">
-                    <div class="pre-title">SYSTEM_SERVICES</div>
-                    <h2 id="services-heading" class="section-heading">VON DER KÜCHE BIS ZUM <span class="cyan-text">GARTENHAUS</span></h2>
-                    <p class="section-subtitle" style="margin-left: auto; margin-right: auto;">Maßgeschneiderte Montagelösungen für Ihr gesamtes Grundstück. Navigieren Sie durch die Module für technische Spezifikationen.</p>
-                </div>
-
-                <div class="accordion-container" data-aos="fade-up" data-aos-delay="100">
-                    
-                    <div class="accordion-item glass-panel border-cyan">
-                        <button class="accordion-header hover-cyan" aria-expanded="false">
-                            <div class="header-left">
-                                <span class="sector-id cyan-text">MODUL_01 // RESIDENTIAL</span>
-                                <h3 class="sector-title">IKEA PAX, Küchen & Wohnmöbel</h3>
-                            </div>
-                            <div class="sector-trigger"><i class="fas fa-plus icon-cyan"></i></div>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="accordion-body-inner">
-                                <p class="sector-description">
-                                    Der Aufbau von Großmöbeln erfordert Planung, Kraft und Präzision. Ich montiere Ihr gesamtes Interieur fachgerecht und verankere es absolut sicher nach Herstellervorgaben.
-                                </p>
-                                <div class="sector-grid">
-                                    <div class="sector-group">
-                                        <h4 class="group-label"><i class="fas fa-box-open cyan-text"></i> PAX & Schränke</h4>
-                                        <ul>
-                                            <li><strong>Traglast:</strong> Max. 30kg pro Regalboden</li>
-                                            <li><strong>Präzision:</strong> Laser-Ausrichtung (1mm Toleranz)</li>
-                                            <li><strong>Sicherheit:</strong> Kippsicherung in Beton/Gipskarton</li>
-                                            <li><strong>Integration:</strong> Schwebetüren & KOMPLEMENT</li>
-                                        </ul>
-                                    </div>
-                                    <div class="sector-group">
-                                        <h4 class="group-label"><i class="fas fa-utensils cyan-text"></i> METOD Küchen</h4>
-                                        <ul>
-                                            <li><strong>Verankerung:</strong> Schwerlast-Wandschienen</li>
-                                            <li><strong>Präzision:</strong> Fugenlose Arbeitsplatten</li>
-                                            <li><strong>Zuschnitt:</strong> Spülen- & Kochfeldausschnitte</li>
-                                            <li><strong>Mechanik:</strong> MAXIMERA Feinjustierung</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="sector-action" style="margin-top: 20px; text-align: right;">
-                                    <a href="residential.html" class="cyan-text" style="font-family: var(--font-mono); font-size: 0.8rem; text-decoration: underline; text-underline-offset: 4px;">ZUM RESIDENTIAL-SEKTOR -></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="accordion-item glass-panel border-gold">
-                        <button class="accordion-header hover-gold" aria-expanded="false">
-                            <div class="header-left">
-                                <span class="sector-id gold-text">MODUL_02 // OUTDOOR</span>
-                                <h3 class="sector-title">Gartenhäuser & Outdoor-Holzbau</h3>
-                            </div>
-                            <div class="sector-trigger"><i class="fas fa-plus icon-gold"></i></div>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="accordion-body-inner">
-                                <p class="sector-description">
-                                    Ich übernehme das schwere Heben und die wetterfeste, sturmsichere Montage Ihrer Outdoor-Strukturen auf vorbereiteten Fundamenten.
-                                </p>
-                                <div class="sector-grid">
-                                    <div class="sector-group">
-                                        <h4 class="group-label"><i class="fas fa-home gold-text"></i> Holz-Gartenhäuser</h4>
-                                        <ul>
-                                            <li><strong>Struktur:</strong> 28mm - 44mm Blockbohlenbau</li>
-                                            <li><strong>Dachlast:</strong> Schneelastsicherung bis 85kg/m²</li>
-                                            <li><strong>Wetterfest:</strong> EPDM-Folien & Bitumen</li>
-                                        </ul>
-                                    </div>
-                                    <div class="sector-group">
-                                        <h4 class="group-label"><i class="fas fa-toolbox gold-text"></i> Metall-Systeme</h4>
-                                        <ul>
-                                            <li><strong>Marken:</strong> BIOHORT, TEPRO Spezialist</li>
-                                            <li><strong>Fundament:</strong> Verschraubung auf Beton</li>
-                                            <li><strong>Schutz:</strong> Silikon-Abdichtung</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="sector-action" style="margin-top: 20px; text-align: right;">
-                                    <a href="outdoor.html" class="gold-text" style="font-family: var(--font-mono); font-size: 0.8rem; text-decoration: underline; text-underline-offset: 4px;">ZUM OUTDOOR-SEKTOR -></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="accordion-item glass-panel border-pink">
-                        <button class="accordion-header hover-pink" aria-expanded="false">
-                            <div class="header-left">
-                                <span class="sector-id pink-text">MODUL_03 // CORPORATE</span>
-                                <h3 class="sector-title">Gewerbe & USM Haller</h3>
-                            </div>
-                            <div class="sector-trigger"><i class="fas fa-plus icon-pink"></i></div>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="accordion-body-inner">
-                                <p class="sector-description">
-                                    Präzision für Ihr Business. Ich montiere exklusive Designermöbel für Büros, Kanzleien und Praxen – absolut kratzfrei, diskret und streng termingerecht.
-                                </p>
-                                <div class="sector-grid">
-                                    <div class="sector-group">
-                                        <h4 class="group-label"><i class="fas fa-gem pink-text"></i> USM Haller Design</h4>
-                                        <ul>
-                                            <li><strong>Werkzeug:</strong> Spezial-Konnektoren-Tool</li>
-                                            <li><strong>Garantie:</strong> Kratzfreie Chrom-Montage</li>
-                                            <li><strong>Service:</strong> Umbau & Neukonfiguration</li>
-                                        </ul>
-                                    </div>
-                                    <div class="sector-group">
-                                        <h4 class="group-label"><i class="fas fa-building pink-text"></i> Office Workspace</h4>
-                                        <ul>
-                                            <li><strong>Ergonomie:</strong> E-Höhenverstellbare Desks</li>
-                                            <li><strong>Logistik:</strong> Massen-Rollout für Büros</li>
-                                            <li><strong>Kabel:</strong> Unsichtbares Kabelmanagement</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="sector-action" style="margin-top: 20px; text-align: right;">
-                                    <a href="office.html" class="pink-text" style="font-family: var(--font-mono); font-size: 0.8rem; text-decoration: underline; text-underline-offset: 4px;">ZUM CORPORATE-SEKTOR -></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="accordion-item glass-panel border-green">
-                        <button class="accordion-header hover-green" aria-expanded="false">
-                            <div class="header-left">
-                                <span class="sector-id green-text">MODUL_04 // DECONSTRUCT</span>
-                                <h3 class="sector-title">Möbel-Demontage & Rückbau</h3>
-                            </div>
-                            <div class="sector-trigger"><i class="fas fa-plus icon-green"></i></div>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="accordion-body-inner">
-                                <p class="sector-description">
-                                    Umzug oder Renovierung? Ich zerlege Ihre wertvollen Systeme systematisch und zerstörungsfrei, damit der Wiederaufbau am neuen Ort fehlerfrei gelingt.
-                                </p>
-                                <div class="sector-action" style="margin-top: 20px; text-align: right;">
-                                    <a href="demontage.html" class="green-text" style="font-family: var(--font-mono); font-size: 0.8rem; text-decoration: underline; text-underline-offset: 4px;">ZUM DEMONTAGE-SEKTOR -></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- ==========================================
-             5. VERIFIED CLIENT LOGS (SOCIAL PROOF)
-             ========================================== -->
-        <section id="reviews" class="review-mainframe-bg hex-core-bg section-padding" style="position: relative; border-top: 1px solid rgba(255, 215, 0, 0.1);">
+       <!-- ==========================================================================
+             4. SYSTEM SERVICES ACCORDION ENGINE (PREMIUM BLUEPRINTS)
+             ========================================================================== -->
+        <section id="system-integration" style="background: #020203; padding: clamp(80px, 10vw, 120px) 0; border-top: 1px solid rgba(0, 229, 255, 0.1); position: relative;">
             
-            <div class="reviews-grid-overlay" style="position: absolute; inset: 0; background-image: radial-gradient(rgba(255, 215, 0, 0.08) 1px, transparent 1px); background-size: 40px 40px; opacity: 0.4;"></div>
-            <div class="reviews-glow-pulse"></div>
+            <!-- Background Grid Accent -->
+            <div style="position: absolute; inset: 0; background-image: linear-gradient(rgba(0, 229, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 229, 255, 0.03) 1px, transparent 1px); background-size: 60px 60px; mask-image: radial-gradient(circle at top, black, transparent 70%); pointer-events: none;"></div>
 
-            <div class="container relative-z">
+            <div class="container relative-z" style="max-width: 1000px; margin: 0 auto; padding: 0 20px;">
                 
-                <div class="section-header center" data-aos="fade-up">
-                    <div class="pre-title" style="font-family: var(--font-mono); color: #FFD700; letter-spacing: 3px; font-size: 0.75rem; margin-bottom: 10px;">SOCIAL_PROOF // VERIFIED_FEEDBACK</div>
-                    <h2 class="section-heading" style="font-family: var(--font-head); font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 900; color: #fff; margin-bottom: 20px;">Vertrauen durch <span style="color: #FFD700;">Leistung</span></h2>
-                    <p class="section-subtitle" style="color: #94a3b8; font-size: 1.1rem; max-width: 700px; margin: 0 auto 40px auto; line-height: 1.6;">
-                        Über <strong>110+ zufriedene Kunden</strong> bewerten meine Arbeit mit 5.0 Sternen. 
-                        Hier ist, was meine Auftraggeber über die millimetergenaue Umsetzung sagen.
+                <div class="section-header center" data-aos="fade-up" style="text-align: center; margin-bottom: 60px;">
+                    <div class="pre-title" style="font-family: monospace; color: #00e5ff; font-size: 0.75rem; letter-spacing: 3px; margin-bottom: 15px;">SYSTEM_SERVICES // SPEZIFIKATIONEN</div>
+                    <h2 id="services-heading" class="section-heading" style="font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 900; line-height: 1.1; margin-bottom: 25px;">
+                        VON DER KÜCHE BIS ZUM <span style="color: #00e5ff;">GARTENHAUS</span>
+                    </h2>
+                    <p class="section-subtitle" style="color: #94a3b8; max-width: 700px; margin: 0 auto; font-size: 1.1rem; line-height: 1.7;">
+                        Mein Anspruch ist die millimetergenaue Integration in Ihre Architektur. Entdecken Sie die technischen Parameter meiner Kernkompetenzen und erfahren Sie, warum kompromisslose Qualität bei der Montage beginnt.
                     </p>
                 </div>
 
-                <div class="trust-cards-wrapper" data-aos="fade-up" style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 60px;">
+                <div class="accordion-engine" data-aos="fade-up" data-aos-delay="100">
                     
-                    <a href="https://profis.check24.de" target="_blank" rel="noopener noreferrer" class="platform-card reactive-btn glass-panel magnetic-target" style="padding: 15px 30px; display: flex; align-items: center; gap: 15px; text-decoration: none; border: 1px solid rgba(255, 255, 255, 0.1); background: rgba(0, 0, 0, 0.6); transition: 0.3s;">
-                        <div class="platform-logo check24-logo" style="font-family: var(--font-head); font-weight: 900; color: #fff; font-size: 1.3rem; letter-spacing: -1px;">CHECK<span style="color: #00e5ff;">24</span></div>
-                        <div style="border-left: 1px solid rgba(255,255,255,0.1); padding-left: 15px;">
-                            <div class="big-score" style="color: #fff; font-family: var(--font-head); font-weight: 900; font-size: 1.6rem; line-height: 1;">5.0</div>
-                            <div class="sub-stats tech-font" style="font-family: var(--font-mono); color: #00e5ff; font-size: 0.65rem; letter-spacing: 1px; margin-top: 4px;">HERVORRAGEND</div>
+                    <!-- MODULE 1: RESIDENTIAL -->
+                    <div class="sys-accordion-item">
+                        <button class="sys-accordion-header js-accordion-trigger" aria-expanded="false">
+                            <div class="sys-header-info">
+                                <span class="sys-id" style="color: #00e5ff;">MODUL_01 // RESIDENTIAL & INTERIOR</span>
+                                <h3 class="sys-title">Küchenarchitektur & Premium-Innenausbau</h3>
+                            </div>
+                            <div class="sys-icon"><i class="fas fa-plus"></i></div>
+                        </button>
+                        <div class="sys-accordion-content">
+                            <div class="sys-content-inner">
+                                <p style="color: #94a3b8; font-size: 1rem; line-height: 1.7; margin-bottom: 30px;">
+                                    Der Aufbau von komplexen Möbelsystemen und Küchen erfordert mehr als nur einen Akkuschrauber. Es erfordert räumliches Denken, Materialverständnis und Laser-Präzision. Ich sorge dafür, dass Spaltmaße stimmen, Arbeitsplatten nahtlos ineinandergreifen und Schränke auch unter Maximallast absolut starr mit der Bausubstanz verankert sind.
+                                </p>
+                                
+                                <div class="sys-tech-grid">
+                                    <div class="sys-tech-col">
+                                        <h4 style="color: #fff; font-family: monospace; font-size: 1.1rem; border-bottom: 1px solid rgba(0, 229, 255, 0.3); padding-bottom: 12px; margin-bottom: 20px;"><i class="fas fa-utensils" style="color: #00e5ff; margin-right: 10px;"></i> METOD & Premium Küchen</h4>
+                                        <ul style="list-style: none; padding: 0; margin: 0; color: #cbd5e1; font-size: 0.95rem; line-height: 1.9;">
+                                            <li><strong style="color:#fff;">Fugenlose Integration:</strong> Millimetergenauer Zuschnitt von Arbeitsplatten, Spülen und Kochfeldern.</li>
+                                            <li><strong style="color:#fff;">Schwerlast-Verankerung:</strong> Spezialdübel für Altbauwände, Rigips und Beton (bis zu 150kg Traglast pro Schiene).</li>
+                                            <li><strong style="color:#fff;">Spaltmaß-Justierung:</strong> Laser-ausgerichtete Fronten für ein homogenes, luxuriöses Gesamtbild.</li>
+                                            <li><strong style="color:#fff;">Geräte-Einbau:</strong> Fachgerechte mechanische Integration von Einbaugeräten (Bosch, Siemens, Miele, IKEA).</li>
+                                        </ul>
+                                    </div>
+                                    <div class="sys-tech-col">
+                                        <h4 style="color: #fff; font-family: monospace; font-size: 1.1rem; border-bottom: 1px solid rgba(0, 229, 255, 0.3); padding-bottom: 12px; margin-bottom: 20px;"><i class="fas fa-box-open" style="color: #00e5ff; margin-right: 10px;"></i> PAX & Maßschränke</h4>
+                                        <ul style="list-style: none; padding: 0; margin: 0; color: #cbd5e1; font-size: 0.95rem; line-height: 1.9;">
+                                            <li><strong style="color:#fff;">Raumhohe Konstruktionen:</strong> Sicherer Aufbau auch bei minimalem Platz zur Decke (Stehend-Montage).</li>
+                                            <li><strong style="color:#fff;">Schwebetüren-Mechanik:</strong> Reibungslose Justierung der Laufschienen für lautloses Gleiten.</li>
+                                            <li><strong style="color:#fff;">KOMPLEMENT Innenausbau:</strong> Logische und stabile Installation von Schubladen, Auszügen und Beleuchtung.</li>
+                                            <li><strong style="color:#fff;">Kippsicherung:</strong> Kompromisslose Fixierung an der Wand zum Schutz von Kindern und Haustieren.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </a>
+                    </div>
 
-                    <a href="https://www.my-hammer.de" target="_blank" rel="noopener noreferrer" class="platform-card reactive-btn glass-panel magnetic-target" style="padding: 15px 30px; display: flex; align-items: center; gap: 15px; text-decoration: none; border: 1px solid rgba(255, 215, 0, 0.3); background: rgba(255, 215, 0, 0.05); transition: 0.3s;">
-                        <div class="platform-logo hammer-logo" style="font-family: var(--font-head); font-weight: 900; color: #FFD700; font-size: 1.3rem; letter-spacing: -1px;"><i class="fas fa-hammer"></i> MyHammer</div>
-                        <div style="border-left: 1px solid rgba(255, 215, 0, 0.2); padding-left: 15px;">
-                            <div class="big-score" style="color: #fff; font-family: var(--font-head); font-weight: 900; font-size: 1.6rem; line-height: 1;">5.0</div>
-                            <div class="sub-stats tech-font" style="font-family: var(--font-mono); color: #FFD700; font-size: 0.65rem; letter-spacing: 1px; margin-top: 4px;">ÜBER 110 BEWERTUNGEN</div>
+                    <!-- MODULE 2: OUTDOOR -->
+                    <div class="sys-accordion-item">
+                        <button class="sys-accordion-header js-accordion-trigger" aria-expanded="false">
+                            <div class="sys-header-info">
+                                <span class="sys-id" style="color: #FFD700;">MODUL_02 // OUTDOOR & EXTERIOR</span>
+                                <h3 class="sys-title">Gartenhäuser, Gerätehütten & Holzbau</h3>
+                            </div>
+                            <div class="sys-icon"><i class="fas fa-plus"></i></div>
+                        </button>
+                        <div class="sys-accordion-content">
+                            <div class="sys-content-inner">
+                                <p style="color: #94a3b8; font-size: 1rem; line-height: 1.7; margin-bottom: 30px;">
+                                    Outdoor-Strukturen sind extremen Bedingungen ausgesetzt. Stürme, Schneelasten und Feuchtigkeit verzeihen keine Montagefehler. Ich übernehme das schwere Heben, die fundamentale Verankerung und die absolut wetterfeste Versiegelung Ihrer Garten- und Gerätehäuser.
+                                </p>
+                                
+                                <div class="sys-tech-grid">
+                                    <div class="sys-tech-col">
+                                        <h4 style="color: #fff; font-family: monospace; font-size: 1.1rem; border-bottom: 1px solid rgba(255, 215, 0, 0.3); padding-bottom: 12px; margin-bottom: 20px;"><i class="fas fa-home" style="color: #FFD700; margin-right: 10px;"></i> Massivholz-Gartenhäuser</h4>
+                                        <ul style="list-style: none; padding: 0; margin: 0; color: #cbd5e1; font-size: 0.95rem; line-height: 1.9;">
+                                            <li><strong style="color:#fff;">Strukturelle Integrität:</strong> Fachgerechter Aufbau von Blockbohlenhäusern (28mm bis 44mm Wandstärke).</li>
+                                            <li><strong style="color:#fff;">Dachabdichtung:</strong> Professionelle Verlegung von Bitumenschindeln oder EPDM-Folien gegen Feuchtigkeit.</li>
+                                            <li><strong style="color:#fff;">Schneelast-Sicherung:</strong> Verstärkung der Dachkonstruktion nach regionalen Wetteranforderungen.</li>
+                                        </ul>
+                                    </div>
+                                    <div class="sys-tech-col">
+                                        <h4 style="color: #fff; font-family: monospace; font-size: 1.1rem; border-bottom: 1px solid rgba(255, 215, 0, 0.3); padding-bottom: 12px; margin-bottom: 20px;"><i class="fas fa-toolbox" style="color: #FFD700; margin-right: 10px;"></i> Metall- & Premium-Systeme</h4>
+                                        <ul style="list-style: none; padding: 0; margin: 0; color: #cbd5e1; font-size: 0.95rem; line-height: 1.9;">
+                                            <li><strong style="color:#fff;">Marken-Expertise:</strong> Spezialisiert auf komplexe High-End Systeme wie BIOHORT und TEPRO.</li>
+                                            <li><strong style="color:#fff;">Sturm-Fundamentierung:</strong> Schwerlast-Verschraubung in Beton- oder Punktfundamente nach DIN-Norm.</li>
+                                            <li><strong style="color:#fff;">Isolierung:</strong> Silikon-Versiegelung und Abdichtung gegen Bodenfeuchtigkeit und Insekten.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </a>
-
-                </div>
-
-                <div class="reviews-matrix-content" data-aos="fade-up" data-aos-delay="100">
-                    
-                    <!-- COLUMN 1: KITCHEN SYSTEMS -->
-                    <div class="review-category-header">
-                        <i class="fas fa-utensils" style="color: #FFD700;"></i> [SYS_01] KÜCHENMONTAGE & PLANUNG
-                    </div>
-                    <div class="review-grid-3col" style="margin-bottom: 50px;">
-                        
-                        <article class="review-card-aurum glass-panel">
-                            <div class="rev-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                            <p class="rev-quote">"Herr Lezius ist ein sehr guter Handwerker. Er hat uns bei unseren Küchenproblemen exzellent beraten und anschließend alles hervorragend umgesetzt und repariert."</p>
-                            <div class="rev-client-info">
-                                <div style="display: flex; flex-direction: column;">
-                                    <span class="rev-client-name">Timothy P.</span>
-                                    <span style="font-family: var(--font-mono); font-size: 0.65rem; color: #64748b; margin-top: 2px;">Dasing</span>
-                                </div>
-                                <span class="rev-platform-tag">MyHammer</span>
-                            </div>
-                        </article>
-
-                        <article class="review-card-aurum glass-panel">
-                            <div class="rev-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                            <p class="rev-quote">"Wir sind mehr als zufrieden! Raphael hat unsere Arbeitsplatte für die Küche ausgeschnitten und eingebaut. Es sieht perfekt aus und ging super schnell."</p>
-                            <div class="rev-client-info">
-                                <div style="display: flex; flex-direction: column;">
-                                    <span class="rev-client-name">Julia H.</span>
-                                    <span style="font-family: var(--font-mono); font-size: 0.65rem; color: #64748b; margin-top: 2px;">München</span>
-                                </div>
-                                <span class="rev-platform-tag">CHECK24</span>
-                            </div>
-                        </article>
-
-                        <article class="review-card-aurum glass-panel">
-                            <div class="rev-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                            <p class="rev-quote">"Wir haben eine ungeplante Küche gekauft... Raphael Lezius und sein Kollege haben hervorragende Arbeit geleistet! Sie waren äußerst professionell und haben alles so präzise montiert, als wäre es genau so geplant worden."</p>
-                            <div class="rev-client-info">
-                                <div style="display: flex; flex-direction: column;">
-                                    <span class="rev-client-name">Nomen W.</span>
-                                    <span style="font-family: var(--font-mono); font-size: 0.65rem; color: #64748b; margin-top: 2px;">Augsburg</span>
-                                </div>
-                                <span class="rev-platform-tag">CHECK24</span>
-                            </div>
-                        </article>
-
                     </div>
 
-                    <!-- COLUMN 2: FURNITURE ASSEMBLY -->
-                    <div class="review-category-header">
-                        <i class="fas fa-box-open" style="color: #FFD700;"></i> [SYS_02] MÖBEL & INNENAUSBAU
-                    </div>
-                    <div class="review-grid-3col" style="margin-bottom: 50px;">
-                        
-                        <article class="review-card-aurum glass-panel">
-                            <div class="rev-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                            <p class="rev-quote">"Die Kommunikation mit Raphael war absolut unkompliziert, freundlich und schnell. Er hat die Möbel sehr effizient, präzise und sorgfältig aufgebaut, als wären es seine eigenen. Er hat ein großartiges Auge für Details."</p>
-                            <div class="rev-client-info">
-                                <div style="display: flex; flex-direction: column;">
-                                    <span class="rev-client-name">Astrid M.</span>
-                                    <span style="font-family: var(--font-mono); font-size: 0.65rem; color: #64748b; margin-top: 2px;">Augsburg</span>
-                                </div>
-                                <span class="rev-platform-tag">MyHammer</span>
+                    <!-- MODULE 3: CORPORATE -->
+                    <div class="sys-accordion-item">
+                        <button class="sys-accordion-header js-accordion-trigger" aria-expanded="false">
+                            <div class="sys-header-info">
+                                <span class="sys-id" style="color: #ff007f;">MODUL_03 // CORPORATE & DESIGN</span>
+                                <h3 class="sys-title">Executive Office & USM Haller Design</h3>
                             </div>
-                        </article>
-
-                        <article class="review-card-aurum glass-panel">
-                            <div class="rev-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                            <p class="rev-quote">"Herr Lezius ist ein wahrer Glückstreffer. Pünktlich, freundlich und absolut professionell. Ohne die Aufbauanleitung von IKEA benötigen zu müssen, stellte er uns die Küchenschränke gewissenhaft und schnell alleine auf."</p>
-                            <div class="rev-client-info">
-                                <div style="display: flex; flex-direction: column;">
-                                    <span class="rev-client-name">Norbert R.</span>
-                                    <span style="font-family: var(--font-mono); font-size: 0.65rem; color: #64748b; margin-top: 2px;">München</span>
+                            <div class="sys-icon"><i class="fas fa-plus"></i></div>
+                        </button>
+                        <div class="sys-accordion-content">
+                            <div class="sys-content-inner">
+                                <p style="color: #94a3b8; font-size: 1rem; line-height: 1.7; margin-bottom: 30px;">
+                                    Ihre Geschäftsräume sind Ihre Visitenkarte. Die Montage von Designermöbeln in Kanzleien, Praxen oder Executive Offices erfordert höchste Diskretion, Sauberkeit und den respektvollen Umgang mit extrem teuren Materialien. Ich biete reibungslose Rollouts – auf Wunsch auch außerhalb Ihrer Geschäftszeiten.
+                                </p>
+                                
+                                <div class="sys-tech-grid">
+                                    <div class="sys-tech-col">
+                                        <h4 style="color: #fff; font-family: monospace; font-size: 1.1rem; border-bottom: 1px solid rgba(255, 0, 127, 0.3); padding-bottom: 12px; margin-bottom: 20px;"><i class="fas fa-gem" style="color: #ff007f; margin-right: 10px;"></i> USM Haller Spezialist</h4>
+                                        <ul style="list-style: none; padding: 0; margin: 0; color: #cbd5e1; font-size: 0.95rem; line-height: 1.9;">
+                                            <li><strong style="color:#fff;">Zertifizierte Technik:</strong> Einsatz von USM-Spezialwerkzeugen (Konnektoren-Spanner) für das patentierte Rohrsystem.</li>
+                                            <li><strong style="color:#fff;">Kratzfrei-Garantie:</strong> Polster-Montage zur absoluten Schonung von pulverbeschichteten Tablaren und Chromrohren.</li>
+                                            <li><strong style="color:#fff;">Re-Konfiguration:</strong> Umbau, Erweiterung und Neuausrichtung bestehender USM Haller Landschaften.</li>
+                                        </ul>
+                                    </div>
+                                    <div class="sys-tech-col">
+                                        <h4 style="color: #fff; font-family: monospace; font-size: 1.1rem; border-bottom: 1px solid rgba(255, 0, 127, 0.3); padding-bottom: 12px; margin-bottom: 20px;"><i class="fas fa-building" style="color: #ff007f; margin-right: 10px;"></i> Smart Workspace</h4>
+                                        <ul style="list-style: none; padding: 0; margin: 0; color: #cbd5e1; font-size: 0.95rem; line-height: 1.9;">
+                                            <li><strong style="color:#fff;">Ergonomie:</strong> Fachgerechte Kalibrierung von elektronisch höhenverstellbaren Schreibtischen.</li>
+                                            <li><strong style="color:#fff;">Cable Management:</strong> Unsichtbare Kabelführung für eine makellose, kabelfreie Office-Optik.</li>
+                                            <li><strong style="color:#fff;">Logistik:</strong> Effiziente Massenmontage von Arbeitsplätzen ohne Unterbrechung Ihres Betriebsablaufs.</li>
+                                        </ul>
+                                    </div>
                                 </div>
-                                <span class="rev-platform-tag">CHECK24</span>
                             </div>
-                        </article>
-
-                        <article class="review-card-aurum glass-panel">
-                            <div class="rev-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                            <p class="rev-quote">"Raphael ist super zuverlässig und macht die Arbeit ordentlich genau so, wie man es möchte. Er nimmt Wünsche an, gibt selbst sehr gute Tipps und ist technisch perfekt ausgestattet. Wirklich perfekt, immer wieder gerne."</p>
-                            <div class="rev-client-info">
-                                <div style="display: flex; flex-direction: column;">
-                                    <span class="rev-client-name">Jacqueline Z.</span>
-                                    <span style="font-family: var(--font-mono); font-size: 0.65rem; color: #64748b; margin-top: 2px;">Bayern</span>
-                                </div>
-                                <span class="rev-platform-tag">CHECK24</span>
-                            </div>
-                        </article>
-
+                        </div>
                     </div>
 
-                    <!-- COLUMN 3: SERVICE & RELIABILITY -->
-                    <div class="review-category-header">
-                        <i class="fas fa-shield-alt" style="color: #FFD700;"></i> [SYS_03] SERVICE & ZUVERLÄSSIGKEIT
-                    </div>
-                    <div class="review-grid-3col">
-                        
-                        <article class="review-card-aurum glass-panel">
-                            <div class="rev-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                            <p class="rev-quote">"Schnelle Terminvergabe, effiziente und saubere Arbeitsweise, freundlicher Kollege, fairer Preis! Definitiv und uneingeschränkt weiterzuempfehlen!"</p>
-                            <div class="rev-client-info">
-                                <div style="display: flex; flex-direction: column;">
-                                    <span class="rev-client-name">Nina K.</span>
-                                    <span style="font-family: var(--font-mono); font-size: 0.65rem; color: #64748b; margin-top: 2px;">Augsburg</span>
-                                </div>
-                                <span class="rev-platform-tag">MyHammer</span>
+                    <!-- MODULE 4: DECONSTRUCT (NEW UPSELL) -->
+                    <div class="sys-accordion-item">
+                        <button class="sys-accordion-header js-accordion-trigger" aria-expanded="false">
+                            <div class="sys-header-info">
+                                <span class="sys-id" style="color: #10b981;">MODUL_04 // REVERSE ENGINEERING</span>
+                                <h3 class="sys-title">Premium-Umzug & Zerstörungsfreie Demontage</h3>
                             </div>
-                        </article>
-
-                        <article class="review-card-aurum glass-panel">
-                            <div class="rev-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                            <p class="rev-quote">"Die Zusammenarbeit mit Raphael gestaltete sich von A-Z professionell, freundlich, zuverlässig und sehr unkompliziert. Er arbeitet extrem gewissenhaft und schnell."</p>
-                            <div class="rev-client-info">
-                                <div style="display: flex; flex-direction: column;">
-                                    <span class="rev-client-name">JL</span>
-                                    <span style="font-family: var(--font-mono); font-size: 0.65rem; color: #64748b; margin-top: 2px;">München</span>
+                            <div class="sys-icon"><i class="fas fa-plus"></i></div>
+                        </button>
+                        <div class="sys-accordion-content">
+                            <div class="sys-content-inner">
+                                <p style="color: #94a3b8; font-size: 1rem; line-height: 1.7; margin-bottom: 30px;">
+                                    Ein hochwertiger Umzug scheitert oft an der unsachgemäßen Demontage teurer Einbauten. Ich biete "Reverse Engineering": Die sorgfältige, dokumentierte und zerstörungsfreie Zerlegung Ihrer Küchen und Schränke, damit sie am neuen Standort wieder exakt so makellos stehen wie am ersten Tag.
+                                </p>
+                                
+                                <div class="sys-tech-grid">
+                                    <div class="sys-tech-col">
+                                        <h4 style="color: #fff; font-family: monospace; font-size: 1.1rem; border-bottom: 1px solid rgba(16, 185, 129, 0.3); padding-bottom: 12px; margin-bottom: 20px;"><i class="fas fa-hammer" style="color: #10b981; margin-right: 10px;"></i> System-Rückbau</h4>
+                                        <ul style="list-style: none; padding: 0; margin: 0; color: #cbd5e1; font-size: 0.95rem; line-height: 1.9;">
+                                            <li><strong style="color:#fff;">Zerstörungsfrei:</strong> Lösen verklebter oder stark verankerter Verbindungen ohne Materialbruch.</li>
+                                            <li><strong style="color:#fff;">Dokumentation:</strong> Beschriftung und Kategorisierung aller Schrauben und Beschläge für den perfekten Neuaufbau.</li>
+                                        </ul>
+                                    </div>
+                                    <div class="sys-tech-col">
+                                        <h4 style="color: #fff; font-family: monospace; font-size: 1.1rem; border-bottom: 1px solid rgba(16, 185, 129, 0.3); padding-bottom: 12px; margin-bottom: 20px;"><i class="fas fa-truck-loading" style="color: #10b981; margin-right: 10px;"></i> Modifikation & Neuaufbau</h4>
+                                        <ul style="list-style: none; padding: 0; margin: 0; color: #cbd5e1; font-size: 0.95rem; line-height: 1.9;">
+                                            <li><strong style="color:#fff;">Raumanpassung:</strong> Zuschnitt und Modifikation alter Möbel an neue, veränderte Raummaße.</li>
+                                            <li><strong style="color:#fff;">Rundum-Sorglos:</strong> Demontage am alten Standort und direkter, justierter Aufbau in der neuen Immobilie.</li>
+                                        </ul>
+                                    </div>
                                 </div>
-                                <span class="rev-platform-tag">CHECK24</span>
                             </div>
-                        </article>
-
-                        <article class="review-card-aurum glass-panel">
-                            <div class="rev-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                            <p class="rev-quote">"Definitiv die beste Wahl für jeden. Nicht nur hat er die Arbeit schnell und ordentlich verrichtet, er hat auch genau erklärt, was er tut und uns einige Dinge gezeigt, die sehr hilfreich sind."</p>
-                            <div class="rev-client-info">
-                                <div style="display: flex; flex-direction: column;">
-                                    <span class="rev-client-name">Ute B.</span>
-                                    <span style="font-family: var(--font-mono); font-size: 0.65rem; color: #64748b; margin-top: 2px;">Bayern</span>
-                                </div>
-                                <span class="rev-platform-tag">CHECK24</span>
-                            </div>
-                        </article>
-
+                        </div>
                     </div>
 
                 </div>
@@ -649,7 +484,108 @@
         </section>
 
 <!-- ==========================================================================
-             5. VERIFIED CLIENT LOGS (SOCIAL PROOF)
+             6. ASYMMETRIC TELEMETRY MATRIX (VIDEO ENGINE)
+             ========================================================================== -->
+        <section id="integration-feeds" class="cinematic-section" aria-labelledby="video-heading">
+            <div class="container relative-z" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+                
+                <div class="section-header center" data-aos="fade-up" style="text-align: center; margin-bottom: 50px;">
+                    <div class="pre-title" style="font-family: monospace; color: #00e5ff; font-size: 0.75rem; letter-spacing: 3px; margin-bottom: 15px;">TELEMETRIE_FEED // LIVE</div>
+                    <h2 id="video-heading" class="section-heading" style="font-size: clamp(2rem, 4vw, 3rem); margin: 0 0 20px 0; line-height: 1.1;">
+                        Systemische <span style="color: #FFD700;">Transparenz.</span>
+                    </h2>
+                    <p class="section-subtitle" style="color: #94a3b8; max-width: 600px; margin: 0 auto; font-size: 1.1rem; line-height: 1.6;">
+                        Überwachen Sie meine Operationsprotokolle. Keine statischen Bilder, sondern echte, ungeschönte Präzision in Bewegung.
+                    </p>
+                </div>
+
+                <div class="telemetry-matrix" data-aos="fade-up" data-aos-delay="100">
+                    
+                    <div class="cinematic-card primary-feed js-lightbox-trigger" data-video-src="video/project-portrait-timelapse.mp4">
+                        <div class="signal-loader"></div>
+                        <div class="tech-bracket top-left"></div>
+                        <div class="tech-bracket bottom-right"></div>
+                        
+                        <video autoplay muted loop playsinline preload="auto" class="cinematic-video js-hover-play">
+                            <source src="video/project-portrait-timelapse.mp4" type="video/mp4">
+                        </video>
+                        
+                        <div class="cinematic-overlay">
+                            <div class="feed-header" style="display: flex; justify-content: space-between;">
+                                <div class="cinematic-tag"><span class="blink-dot red"></span> TIMELAPSE_LOG</div>
+                                <div class="tech-font" style="color: #00e5ff; font-size: 0.6rem;">ID: WOHN_ALPHA</div>
+                            </div>
+                            <div class="cinematic-text">
+                                <h3>Architektur im Zeitraffer</h3>
+                                <p style="margin:0; font-size: 0.85rem; color: #cbd5e1;">Vom rohen Karton zur millimetergenauen Premium-Integration.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cinematic-card secondary-feed js-lightbox-trigger" data-video-src="video/raphael-assembly-action.mp4">
+                        <div class="signal-loader"></div>
+                        <div class="tech-bracket top-left"></div>
+                        <div class="tech-bracket bottom-right"></div>
+                        
+                        <video autoplay muted loop playsinline preload="auto" class="cinematic-video js-hover-play">
+                            <source src="video/raphael-assembly-action.mp4" type="video/mp4">
+                        </video>
+                        
+                        <div class="cinematic-overlay">
+                            <div class="feed-header" style="display: flex; justify-content: space-between;">
+                                <div class="cinematic-tag"><span class="blink-dot cyan"></span> DETAIL_SCAN</div>
+                                <div class="tech-font" style="color: #FFD700; font-size: 0.6rem;">ID: SYS_BETA</div>
+                            </div>
+                            <div class="cinematic-text">
+                                <h3>Bosch Professional</h3>
+                                <p style="margin:0; font-size: 0.85rem; color: #cbd5e1;">Maximale Drehmomentkontrolle für exklusive Fronten.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cinematic-card secondary-feed js-lightbox-trigger" data-video-src="video/project-landscape.mp4">
+                        <div class="signal-loader"></div>
+                        <div class="tech-bracket top-left"></div>
+                        <div class="tech-bracket bottom-right"></div>
+                        
+                        <video autoplay muted loop playsinline preload="auto" class="cinematic-video js-hover-play">
+                            <source src="video/project-landscape.mp4" type="video/mp4">
+                        </video>
+                        
+                        <div class="cinematic-overlay">
+                            <div class="feed-header" style="display: flex; justify-content: space-between;">
+                                <div class="cinematic-tag"><span class="blink-dot cyan"></span> MACRO_VIEW</div>
+                                <div class="tech-font" style="color: #FFD700; font-size: 0.6rem;">ID: KCH_GAMMA</div>
+                            </div>
+                            <div class="cinematic-text">
+                                <h3>Projektübersicht</h3>
+                                <p style="margin:0; font-size: 0.85rem; color: #cbd5e1;">100% Laser-Ausrichtung für kompromisslose Spaltmaße.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- LIGHTBOX MODAL -->
+        <div class="cinematic-lightbox-overlay" id="cinematicLightbox" aria-hidden="true" role="dialog" style="display: none;">
+            <div class="lightbox-backdrop"></div>
+            <button class="lightbox-close-btn" id="closeCinematicLightbox" aria-label="Verbindung trennen">
+                <i class="fas fa-times" style="margin-right: 8px;"></i> [ UPLINK_TRENNEN ]
+            </button>
+            <div class="cinematic-lightbox-content">
+                <div class="lightbox-frame">
+                    <video id="lightboxVideoPlayer" controls playsinline class="lightbox-main-video">
+                        <source id="lightboxVideoSource" src="" type="video/mp4">
+                        SYSTEM_ERROR: Protokoll wird nicht unterstützt.
+                    </video>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==========================================================================
+             5. VERIFIED CLIENT LOGS (SOCIAL PROOF - CAROUSEL ONLY)
              ========================================================================== -->
         <section id="reviews" class="review-mainframe-bg" style="position: relative; border-top: 1px solid rgba(255, 215, 0, 0.1); padding: 100px 0; background: #020203;">
             
@@ -667,7 +603,7 @@
 
                 <!-- TRUST NODES (CHECK24 & MYHAMMER) -->
                 <div class="trust-cards-wrapper" style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 60px;">
-                    <a href="https://profis.check24.de" target="_blank" rel="noopener noreferrer" class="platform-card" style="padding: 15px 30px; display: flex; align-items: center; gap: 15px; text-decoration: none; border: 1px solid rgba(0, 229, 255, 0.3); background: rgba(0, 0, 0, 0.6); border-radius: 8px;">
+                    <a href="https://profis.check24.de" target="_blank" rel="noopener noreferrer" class="platform-card" style="padding: 15px 30px; display: flex; align-items: center; gap: 15px; text-decoration: none; border: 1px solid rgba(0, 229, 255, 0.3); background: rgba(0, 0, 0, 0.6); border-radius: 8px; transition: 0.3s;">
                         <div style="font-weight: 900; color: #fff; font-size: 1.3rem; letter-spacing: -1px;">CHECK<span style="color: #00e5ff;">24</span></div>
                         <div style="border-left: 1px solid rgba(255,255,255,0.1); padding-left: 15px;">
                             <div style="color: #fff; font-weight: 900; font-size: 1.6rem; line-height: 1;">5.0</div>
@@ -675,7 +611,7 @@
                         </div>
                     </a>
 
-                    <a href="https://www.my-hammer.de" target="_blank" rel="noopener noreferrer" class="platform-card" style="padding: 15px 30px; display: flex; align-items: center; gap: 15px; text-decoration: none; border: 1px solid rgba(255, 215, 0, 0.3); background: rgba(255, 215, 0, 0.05); border-radius: 8px;">
+                    <a href="https://www.my-hammer.de" target="_blank" rel="noopener noreferrer" class="platform-card" style="padding: 15px 30px; display: flex; align-items: center; gap: 15px; text-decoration: none; border: 1px solid rgba(255, 215, 0, 0.3); background: rgba(255, 215, 0, 0.05); border-radius: 8px; transition: 0.3s;">
                         <div style="font-weight: 900; color: #FFD700; font-size: 1.3rem; letter-spacing: -1px;"><i class="fas fa-hammer"></i> MyHammer</div>
                         <div style="border-left: 1px solid rgba(255, 215, 0, 0.2); padding-left: 15px;">
                             <div style="color: #fff; font-weight: 900; font-size: 1.6rem; line-height: 1;">5.0</div>
@@ -684,41 +620,95 @@
                     </a>
                 </div>
 
-                <!-- SWIPEABLE MATRIX (Premium Upgrade) -->
+                <!-- SWIPEABLE MATRIX (All 9 Reviews Included) -->
                 <div class="swipe-carousel">
                     
+                    <!-- Review 1 -->
                     <article class="rev-card">
                         <div style="color: #FFD700; font-size: 0.7rem; margin-bottom: 15px;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                        <p style="color: #e2e8f0; line-height: 1.6; font-style: italic; flex-grow: 1;">"Herr Lezius ist ein sehr guter Handwerker. Er hat uns bei unseren Küchenproblemen exzellent beraten und anschließend alles hervorragend umgesetzt."</p>
+                        <p style="color: #e2e8f0; line-height: 1.6; font-style: italic; flex-grow: 1;">"Herr Lezius ist ein sehr guter Handwerker. Er hat uns bei unseren Küchenproblemen exzellent beraten und anschließend alles hervorragend umgesetzt und repariert."</p>
                         <div style="margin-top: 20px;">
                             <div style="font-weight: 700; color: #fff;">Timothy P.</div>
                             <div style="font-family: monospace; font-size: 0.65rem; color: #64748b; margin-top: 2px;">DASING // MYHAMMER</div>
                         </div>
                     </article>
 
+                    <!-- Review 2 -->
                     <article class="rev-card">
                         <div style="color: #FFD700; font-size: 0.7rem; margin-bottom: 15px;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                        <p style="color: #e2e8f0; line-height: 1.6; font-style: italic; flex-grow: 1;">"Wir sind mehr als zufrieden! Raphael hat unsere Arbeitsplatte für die Küche ausgeschnitten und eingebaut. Es sieht perfekt aus."</p>
+                        <p style="color: #e2e8f0; line-height: 1.6; font-style: italic; flex-grow: 1;">"Wir sind mehr als zufrieden! Raphael hat unsere Arbeitsplatte für die Küche ausgeschnitten und eingebaut. Es sieht perfekt aus und ging super schnell."</p>
                         <div style="margin-top: 20px;">
                             <div style="font-weight: 700; color: #fff;">Julia H.</div>
                             <div style="font-family: monospace; font-size: 0.65rem; color: #64748b; margin-top: 2px;">MÜNCHEN // CHECK24</div>
                         </div>
                     </article>
 
+                    <!-- Review 3 -->
                     <article class="rev-card">
                         <div style="color: #FFD700; font-size: 0.7rem; margin-bottom: 15px;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                        <p style="color: #e2e8f0; line-height: 1.6; font-style: italic; flex-grow: 1;">"Die Zusammenarbeit gestaltete sich von A-Z professionell, freundlich, zuverlässig und sehr unkompliziert. Er arbeitet extrem gewissenhaft."</p>
+                        <p style="color: #e2e8f0; line-height: 1.6; font-style: italic; flex-grow: 1;">"Wir haben eine ungeplante Küche gekauft... Raphael Lezius und sein Kollege haben hervorragende Arbeit geleistet! Sie waren äußerst professionell."</p>
+                        <div style="margin-top: 20px;">
+                            <div style="font-weight: 700; color: #fff;">Nomen W.</div>
+                            <div style="font-family: monospace; font-size: 0.65rem; color: #64748b; margin-top: 2px;">AUGSBURG // CHECK24</div>
+                        </div>
+                    </article>
+
+                    <!-- Review 4 -->
+                    <article class="rev-card">
+                        <div style="color: #FFD700; font-size: 0.7rem; margin-bottom: 15px;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <p style="color: #e2e8f0; line-height: 1.6; font-style: italic; flex-grow: 1;">"Die Kommunikation war absolut unkompliziert. Er hat die Möbel sehr effizient, präzise und sorgfältig aufgebaut, als wären es seine eigenen."</p>
+                        <div style="margin-top: 20px;">
+                            <div style="font-weight: 700; color: #fff;">Astrid M.</div>
+                            <div style="font-family: monospace; font-size: 0.65rem; color: #64748b; margin-top: 2px;">AUGSBURG // MYHAMMER</div>
+                        </div>
+                    </article>
+
+                    <!-- Review 5 -->
+                    <article class="rev-card">
+                        <div style="color: #FFD700; font-size: 0.7rem; margin-bottom: 15px;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <p style="color: #e2e8f0; line-height: 1.6; font-style: italic; flex-grow: 1;">"Herr Lezius ist ein wahrer Glückstreffer. Ohne die Aufbauanleitung von IKEA benötigen zu müssen, stellte er uns die Küchenschränke gewissenhaft auf."</p>
+                        <div style="margin-top: 20px;">
+                            <div style="font-weight: 700; color: #fff;">Norbert R.</div>
+                            <div style="font-family: monospace; font-size: 0.65rem; color: #64748b; margin-top: 2px;">MÜNCHEN // CHECK24</div>
+                        </div>
+                    </article>
+                    
+                    <!-- Review 6 -->
+                    <article class="rev-card">
+                        <div style="color: #FFD700; font-size: 0.7rem; margin-bottom: 15px;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <p style="color: #e2e8f0; line-height: 1.6; font-style: italic; flex-grow: 1;">"Raphael ist super zuverlässig und macht die Arbeit ordentlich. Er nimmt Wünsche an und ist technisch perfekt ausgestattet. Immer wieder gerne."</p>
+                        <div style="margin-top: 20px;">
+                            <div style="font-weight: 700; color: #fff;">Jacqueline Z.</div>
+                            <div style="font-family: monospace; font-size: 0.65rem; color: #64748b; margin-top: 2px;">BAYERN // CHECK24</div>
+                        </div>
+                    </article>
+
+                    <!-- Review 7 -->
+                    <article class="rev-card">
+                        <div style="color: #FFD700; font-size: 0.7rem; margin-bottom: 15px;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <p style="color: #e2e8f0; line-height: 1.6; font-style: italic; flex-grow: 1;">"Schnelle Terminvergabe, effiziente und saubere Arbeitsweise, freundlicher Kollege, fairer Preis! Definitiv und uneingeschränkt weiterzuempfehlen!"</p>
+                        <div style="margin-top: 20px;">
+                            <div style="font-weight: 700; color: #fff;">Nina K.</div>
+                            <div style="font-family: monospace; font-size: 0.65rem; color: #64748b; margin-top: 2px;">AUGSBURG // MYHAMMER</div>
+                        </div>
+                    </article>
+
+                    <!-- Review 8 -->
+                    <article class="rev-card">
+                        <div style="color: #FFD700; font-size: 0.7rem; margin-bottom: 15px;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <p style="color: #e2e8f0; line-height: 1.6; font-style: italic; flex-grow: 1;">"Die Zusammenarbeit mit Raphael gestaltete sich von A-Z professionell, freundlich, zuverlässig und sehr unkompliziert. Er arbeitet extrem gewissenhaft und schnell."</p>
                         <div style="margin-top: 20px;">
                             <div style="font-weight: 700; color: #fff;">JL</div>
                             <div style="font-family: monospace; font-size: 0.65rem; color: #64748b; margin-top: 2px;">MÜNCHEN // CHECK24</div>
                         </div>
                     </article>
 
+                    <!-- Review 9 -->
                     <article class="rev-card">
                         <div style="color: #FFD700; font-size: 0.7rem; margin-bottom: 15px;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                        <p style="color: #e2e8f0; line-height: 1.6; font-style: italic; flex-grow: 1;">"Raphael ist super zuverlässig. Er nimmt Wünsche an, gibt selbst sehr gute Tipps und ist technisch perfekt ausgestattet. Immer wieder gerne."</p>
+                        <p style="color: #e2e8f0; line-height: 1.6; font-style: italic; flex-grow: 1;">"Definitiv die beste Wahl für jeden. Nicht nur hat er die Arbeit schnell und ordentlich verrichtet, er hat auch genau erklärt, was er tut."</p>
                         <div style="margin-top: 20px;">
-                            <div style="font-weight: 700; color: #fff;">Jacqueline Z.</div>
+                            <div style="font-weight: 700; color: #fff;">Ute B.</div>
                             <div style="font-family: monospace; font-size: 0.65rem; color: #64748b; margin-top: 2px;">BAYERN // CHECK24</div>
                         </div>
                     </article>
@@ -727,251 +717,81 @@
             </div>
         </section>
 
-
-
-    <!-- ==========================================================================
-     6. ASYMMETRIC TELEMETRY MATRIX (V3 - ABSOLUTE GEOMETRY)
-     ========================================================================== -->
-<section id="integration-feeds" class="cinematic-section" aria-labelledby="video-heading">
-    <div class="container relative-z">
-        
-        <div class="section-header center" data-aos="fade-up">
-            <div class="pre-title" style="font-family: var(--font-mono); color: var(--neon-cyan); font-size: 0.75rem; letter-spacing: 3px; margin-bottom: 15px;">TELEMETRIE_FEED // LIVE</div>
-            <h2 id="video-heading" class="section-heading" style="font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 20px; line-height: 1.1;">
-                Systemische <span class="gold-text">Transparenz.</span>
-            </h2>
-            <p class="section-subtitle" style="margin-left: auto; margin-right: auto; color: #94a3b8; max-width: 600px; font-size: 1.1rem; line-height: 1.6;">
-                Überwachen Sie meine Operationsprotokolle. Keine statischen Bilder, sondern echte, ungeschönte Präzision in Bewegung.
-            </p>
-        </div>
-
-        <div class="telemetry-matrix" data-aos="fade-up" data-aos-delay="100">
-            
-            <div class="cinematic-card primary-feed js-lightbox-trigger" data-video-src="video/project-portrait-timelapse.mp4">
-                <div class="signal-loader"></div>
-                <div class="tech-bracket top-left"></div>
-                <div class="tech-bracket bottom-right"></div>
+        <!-- ==========================================================================
+             7. PROJECT BELT: LIVE REFERENZEN (COMPLETE MODULE)
+             ========================================================================== -->
+        <section id="projekt-belt" class="section-padding" style="background: #020203; border-top: 1px solid rgba(255, 215, 0, 0.1); padding: 100px 0;" aria-labelledby="belt-heading">
+            <div class="container relative-z" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
                 
-                <video muted loop playsinline preload="metadata" class="cinematic-video js-hover-play">
-                    <source src="video/project-portrait-timelapse.mp4" type="video/mp4">
-                </video>
-                
-                <div class="cinematic-overlay">
-                    <div class="feed-header">
-                        <div class="cinematic-tag"><span class="blink-dot red"></span> TIMELAPSE_LOG</div>
-                        <div class="tech-font" style="color: var(--neon-cyan); font-size: 0.6rem;">ID: WOHN_ALPHA</div>
-                    </div>
-                    <div class="cinematic-text">
-                        <h3>Architektur im Zeitraffer</h3>
-                        <p>Vom rohen Karton zur millimetergenauen Premium-Integration.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="cinematic-card secondary-feed js-lightbox-trigger" data-video-src="video/raphael-assembly-action.mp4">
-                <div class="signal-loader"></div>
-                <div class="tech-bracket top-left"></div>
-                <div class="tech-bracket bottom-right"></div>
-                
-                <video muted loop playsinline preload="metadata" class="cinematic-video js-hover-play">
-                    <source src="video/raphael-assembly-action.mp4" type="video/mp4">
-                </video>
-                
-                <div class="cinematic-overlay">
-                    <div class="feed-header">
-                        <div class="cinematic-tag"><span class="blink-dot cyan"></span> DETAIL_SCAN</div>
-                        <div class="tech-font" style="color: var(--neon-gold); font-size: 0.6rem;">ID: SYS_BETA</div>
-                    </div>
-                    <div class="cinematic-text">
-                        <h3>Bosch Professional</h3>
-                        <p>Maximale Drehmomentkontrolle für exklusive Fronten.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="cinematic-card secondary-feed js-lightbox-trigger" data-video-src="video/project-landscape.mp4">
-                <div class="signal-loader"></div>
-                <div class="tech-bracket top-left"></div>
-                <div class="tech-bracket bottom-right"></div>
-                
-                <video muted loop playsinline preload="metadata" class="cinematic-video js-hover-play">
-                    <source src="video/project-landscape.mp4" type="video/mp4">
-                </video>
-                
-                <div class="cinematic-overlay">
-                    <div class="feed-header">
-                        <div class="cinematic-tag"><span class="blink-dot cyan"></span> MACRO_VIEW</div>
-                        <div class="tech-font" style="color: var(--neon-gold); font-size: 0.6rem;">ID: KCH_GAMMA</div>
-                    </div>
-                    <div class="cinematic-text">
-                        <h3>Projektübersicht</h3>
-                        <p>100% Laser-Ausrichtung für kompromisslose Spaltmaße.</p>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-<div class="cinematic-lightbox-overlay" id="cinematicLightbox" aria-hidden="true" role="dialog">
-    <div class="lightbox-backdrop"></div>
-    <button class="lightbox-close-btn" id="closeCinematicLightbox" aria-label="Verbindung trennen">
-        <i class="fas fa-times" style="margin-right: 8px;"></i> [ UPLINK_TRENNEN ]
-    </button>
-    <div class="cinematic-lightbox-content">
-        <div class="lightbox-frame">
-            <video id="lightboxVideoPlayer" controls playsinline class="lightbox-main-video">
-                <source id="lightboxVideoSource" src="" type="video/mp4">
-                SYSTEM_ERROR: Protokoll wird nicht unterstützt.
-            </video>
-        </div>
-    </div>
-</div>
-
-    <!-- ==========================================
-     7. PROJECT BELT: LIVE REFERENZEN (COMPLETE MODULE)
-     ========================================================================== -->
-<section id="projekt-belt" class="section-padding" style="background: #020203; border-top: 1px solid rgba(255, 215, 0, 0.1);" aria-labelledby="belt-heading">
-    <div class="container relative-z">
-        
-        <div class="visual-split-layout">
-            
-            <div class="visual-info-pane glass-panel" data-aos="fade-right" style="padding: 40px; border-top: 3px solid var(--neon-cyan);">
-                <div class="pre-title" style="font-family: var(--font-mono); color: var(--neon-cyan); font-size: 0.75rem; letter-spacing: 3px; margin-bottom: 15px;">DATENSTROM // LIVE_REFERENZEN</div>
-                <h2 id="belt-heading" class="section-heading" style="font-size: clamp(2rem, 3.5vw, 2.5rem); margin-bottom: 20px; line-height: 1.1;">
-                    System-Logs & <span class="gold-text">Architektur.</span>
-                </h2>
-                
-                <p style="color: #94a3b8; margin-bottom: 30px; line-height: 1.6; font-size: 0.95rem;">
-                    Zugriff auf verifizierte Projektdaten. Filtern Sie die Galerie nach Systembereichen, um spezifische Montagelösungen aus München und Augsburg zu analysieren.
-                </p>
-                
-                <div class="sector-nav">
-                    <button class="sector-btn active" data-target="all">ALLE SYSTEME</button>
-                    <button class="sector-btn" data-target="kitchen">KÜCHEN_TECH</button>
-                    <button class="sector-btn" data-target="living">WOHN_MODULE</button>
-                    <button class="sector-btn" data-target="bedroom">SCHLAF_ZONEN</button>
-                </div>
-
-                <div class="pulse-rail-container">
-                    <div class="pulse-rail-indicator" id="pulseRailIndicator"></div>
-                </div>
-
-                <div class="belt-controls" style="display: flex; gap: 15px; margin-bottom: 30px;">
-                    <button class="nav-hud-btn reactive-btn" id="prevBelt" aria-label="Vorheriges Bild" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 10px 20px; color: #fff;">
-                        <i class="fas fa-chevron-left"></i> ZURÜCK
-                    </button>
-                    <button class="nav-hud-btn reactive-btn" id="nextBelt" aria-label="Nächstes Bild" style="background: rgba(0, 229, 255, 0.1); border: 1px solid var(--neon-cyan); padding: 10px 20px; color: var(--neon-cyan);">
-                        WEITER <i class="fas fa-chevron-right"></i>
-                    </button>
-                </div>
-                
-                <a href="gallery.html" style="font-family: var(--font-mono); font-size: 0.75rem; text-decoration: none; color: #fff; border-bottom: 1px dashed #fff;">[ ARCHIV_ÖFFNEN ]</a>
-            </div>
-
-            <div class="belt-container" data-aos="fade-left">
-                <div class="belt-track" id="imageBelt">
+                <div class="visual-split-layout">
                     
-                    <div class="belt-item" data-sector="kitchen">
-                        <div class="belt-image-wrapper">
-                            <img src="assets/images/kueche-1-a.webp" alt="Küchenmontage Premium" loading="lazy">
-                            <div class="data-stamp">ID: KCH-01 // VERIFIED</div>
+                    <div class="visual-info-pane glass-panel" data-aos="fade-right" style="padding: 40px; border-top: 3px solid var(--neon-cyan); background: rgba(255,255,255,0.02); margin-bottom: 40px;">
+                        <div class="pre-title" style="font-family: monospace; color: #00e5ff; font-size: 0.75rem; letter-spacing: 3px; margin-bottom: 15px;">DATENSTROM // LIVE_REFERENZEN</div>
+                        <h2 id="belt-heading" class="section-heading" style="font-size: clamp(2rem, 3.5vw, 2.5rem); margin-bottom: 20px; line-height: 1.1;">
+                            System-Logs & <span style="color: #FFD700;">Architektur.</span>
+                        </h2>
+                        
+                        <p style="color: #94a3b8; margin-bottom: 30px; line-height: 1.6; font-size: 0.95rem;">
+                            Zugriff auf verifizierte Projektdaten. Filtern Sie die Galerie nach Systembereichen, um spezifische Montagelösungen aus München und Augsburg zu analysieren.
+                        </p>
+                        
+                        <div class="sector-nav" style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 30px;">
+                            <button class="sector-btn active" data-target="all" style="background: #00e5ff; color: #000; border: none; padding: 8px 15px; font-family: monospace; cursor: pointer; font-weight: bold;">ALLE SYSTEME</button>
+                            <button class="sector-btn" data-target="kitchen" style="background: transparent; color: #fff; border: 1px solid #333; padding: 8px 15px; font-family: monospace; cursor: pointer;">KÜCHEN_TECH</button>
+                            <button class="sector-btn" data-target="living" style="background: transparent; color: #fff; border: 1px solid #333; padding: 8px 15px; font-family: monospace; cursor: pointer;">WOHN_MODULE</button>
+                            <button class="sector-btn" data-target="bedroom" style="background: transparent; color: #fff; border: 1px solid #333; padding: 8px 15px; font-family: monospace; cursor: pointer;">SCHLAF_ZONEN</button>
                         </div>
-                    </div>
-                    <div class="belt-item" data-sector="kitchen">
-                        <div class="belt-image-wrapper">
-                            <img src="assets/images/kueche-4-a.webp" alt="Küchen Detail" loading="lazy">
-                            <div class="data-stamp">ID: KCH-04 // VERIFIED</div>
+
+                        <div class="belt-controls" style="display: flex; gap: 15px; margin-bottom: 30px;">
+                            <button class="nav-hud-btn reactive-btn" id="prevBelt" aria-label="Vorheriges Bild" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 10px 20px; color: #fff; cursor: pointer;">
+                                <i class="fas fa-chevron-left"></i> ZURÜCK
+                            </button>
+                            <button class="nav-hud-btn reactive-btn" id="nextBelt" aria-label="Nächstes Bild" style="background: rgba(0, 229, 255, 0.1); border: 1px solid #00e5ff; padding: 10px 20px; color: #00e5ff; cursor: pointer;">
+                                WEITER <i class="fas fa-chevron-right"></i>
+                            </button>
                         </div>
-                    </div>
-                    <div class="belt-item" data-sector="kitchen">
-                        <div class="belt-image-wrapper">
-                            <img src="assets/images/kueche-8-a.webp" alt="Küchen System" loading="lazy">
-                            <div class="data-stamp">ID: KCH-08 // VERIFIED</div>
-                        </div>
-                    </div>
-                    <div class="belt-item" data-sector="kitchen">
-                        <div class="belt-image-wrapper">
-                            <img src="assets/images/kueche-13-a.webp" alt="Premium Küche" loading="lazy">
-                            <div class="data-stamp">ID: KCH-13 // VERIFIED</div>
-                        </div>
-                    </div>
-                    <div class="belt-item" data-sector="kitchen">
-                        <div class="belt-image-wrapper">
-                            <img src="assets/images/kueche-18-a.webp" alt="Küchen Architektur" loading="lazy">
-                            <div class="data-stamp">ID: KCH-18 // VERIFIED</div>
-                        </div>
+                        
+                        <a href="gallery.html" style="font-family: monospace; font-size: 0.75rem; text-decoration: none; color: #fff; border-bottom: 1px dashed #fff;">[ ARCHIV_ÖFFNEN ]</a>
                     </div>
 
-                    <div class="belt-item" data-sector="living">
-                        <div class="belt-image-wrapper">
-                            <img src="assets/images/wohnen-2-a.webp" alt="Wohnzimmer System" loading="lazy">
-                            <div class="data-stamp">ID: LVG-02 // VERIFIED</div>
-                        </div>
-                    </div>
-                    <div class="belt-item" data-sector="living">
-                        <div class="belt-image-wrapper">
-                            <img src="assets/images/wohnen-7-a.webp" alt="Wandmontage" loading="lazy">
-                            <div class="data-stamp">ID: LVG-07 // VERIFIED</div>
-                        </div>
-                    </div>
-                    <div class="belt-item" data-sector="living">
-                        <div class="belt-image-wrapper">
-                            <img src="assets/images/wohnen-11-a.webp" alt="Wohnbereich" loading="lazy">
-                            <div class="data-stamp">ID: LVG-11 // VERIFIED</div>
-                        </div>
-                    </div>
-                    <div class="belt-item" data-sector="living">
-                        <div class="belt-image-wrapper">
-                            <img src="assets/images/wohnen-18-a.webp" alt="Wohnlandschaft" loading="lazy">
-                            <div class="data-stamp">ID: LVG-18 // VERIFIED</div>
-                        </div>
-                    </div>
-                    <div class="belt-item" data-sector="living">
-                        <div class="belt-image-wrapper">
-                            <img src="assets/images/ikea-bekant-schreibtisch-hoehenverstellbar-aufbau.webp" alt="Office Aufbau" loading="lazy">
-                            <div class="data-stamp">ID: OFC-01 // VERIFIED</div>
-                        </div>
-                    </div>
-
-                    <div class="belt-item" data-sector="bedroom">
-                        <div class="belt-image-wrapper">
-                            <img src="assets/images/sz-1-a.webp" alt="Schlafzimmer Montage" loading="lazy">
-                            <div class="data-stamp">ID: BDR-01 // VERIFIED</div>
-                        </div>
-                    </div>
-                    <div class="belt-item" data-sector="bedroom">
-                        <div class="belt-image-wrapper">
-                            <img src="assets/images/sz-3-a.webp" alt="Schlafzimmer Detail" loading="lazy">
-                            <div class="data-stamp">ID: BDR-03 // VERIFIED</div>
-                        </div>
-                    </div>
-                    <div class="belt-item" data-sector="bedroom">
-                        <div class="belt-image-wrapper">
-                            <img src="assets/images/sz-6-a.webp" alt="Schlafbereich" loading="lazy">
-                            <div class="data-stamp">ID: BDR-06 // VERIFIED</div>
-                        </div>
-                    </div>
-                    <div class="belt-item" data-sector="bedroom">
-                        <div class="belt-image-wrapper">
-                            <img src="assets/images/Bedroom_grey_main.webp" alt="PAX Wardrobe" loading="lazy">
-                            <div class="data-stamp">ID: BDR-PAX // VERIFIED</div>
-                        </div>
-                    </div>
-                    <div class="belt-item" data-sector="bedroom">
-                        <div class="belt-image-wrapper">
-                            <img src="assets/images/ikea-hemnes-tagesbett-ausziehbar-montage.webp" alt="Hemnes Bett" loading="lazy">
-                            <div class="data-stamp">ID: BDR-HEM // VERIFIED</div>
+                    <div class="belt-container" data-aos="fade-left" style="overflow-x: auto; display: flex; gap: 20px; padding-bottom: 20px; scroll-snap-type: x mandatory;">
+                        
+                        <!-- Track Container -->
+                        <div class="belt-track" id="imageBelt" style="display: flex; gap: 20px;">
+                            <!-- Items -->
+                            <div class="belt-item" data-sector="kitchen" style="min-width: 300px; scroll-snap-align: start; position: relative;">
+                                <div class="belt-image-wrapper" style="border: 1px solid rgba(255,255,255,0.1); padding: 5px; background: #000;">
+                                    <img src="assets/images/kueche-1-a.webp" alt="Küchenmontage Premium" loading="lazy" style="width: 100%; height: 250px; object-fit: cover;">
+                                    <div class="data-stamp" style="font-family: monospace; font-size: 0.65rem; color: #00e5ff; margin-top: 10px; text-align: center;">ID: KCH-01 // VERIFIED</div>
+                                </div>
+                            </div>
+                            
+                            <div class="belt-item" data-sector="kitchen" style="min-width: 300px; scroll-snap-align: start; position: relative;">
+                                <div class="belt-image-wrapper" style="border: 1px solid rgba(255,255,255,0.1); padding: 5px; background: #000;">
+                                    <img src="assets/images/kueche-4-a.webp" alt="Küchen Detail" loading="lazy" style="width: 100%; height: 250px; object-fit: cover;">
+                                    <div class="data-stamp" style="font-family: monospace; font-size: 0.65rem; color: #00e5ff; margin-top: 10px; text-align: center;">ID: KCH-04 // VERIFIED</div>
+                                </div>
+                            </div>
+                            
+                            <div class="belt-item" data-sector="living" style="min-width: 300px; scroll-snap-align: start; position: relative;">
+                                <div class="belt-image-wrapper" style="border: 1px solid rgba(255,255,255,0.1); padding: 5px; background: #000;">
+                                    <img src="assets/images/wohnen-11-a.webp" alt="Wohnbereich" loading="lazy" style="width: 100%; height: 250px; object-fit: cover;">
+                                    <div class="data-stamp" style="font-family: monospace; font-size: 0.65rem; color: #00e5ff; margin-top: 10px; text-align: center;">ID: LVG-11 // VERIFIED</div>
+                                </div>
+                            </div>
+                            
+                            <div class="belt-item" data-sector="bedroom" style="min-width: 300px; scroll-snap-align: start; position: relative;">
+                                <div class="belt-image-wrapper" style="border: 1px solid rgba(255,255,255,0.1); padding: 5px; background: #000;">
+                                    <img src="assets/images/Bedroom_grey_main.webp" alt="PAX Wardrobe" loading="lazy" style="width: 100%; height: 250px; object-fit: cover;">
+                                    <div class="data-stamp" style="font-family: monospace; font-size: 0.65rem; color: #00e5ff; margin-top: 10px; text-align: center;">ID: BDR-PAX // VERIFIED</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
                 </div>
             </div>
-
-        </div>
-    </div>
-</section>
+        </section>
 
         <!-- ==========================================
              8. THE FAQ MAINFRAME
@@ -1117,6 +937,8 @@
    
     <script src="assets/js/components/video.js"></script>
     <script src="assets/js/components/reviews.js"></script>
+    <script src="assets/js/components/accordion.js"></script> 
+    <script src="assets/js/components/services.js"></script>
 
 </body>
 </html>

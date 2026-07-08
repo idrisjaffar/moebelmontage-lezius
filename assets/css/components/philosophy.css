@@ -1,88 +1,148 @@
 /* ==========================================================================
-   PIECE 10: PHILOSOPHIE SEKTION (MOBILE OPTIMIZED)
+   PHASE 3: PHILOSOPHY & TACTILE DATA STREAM
+   FILE: assets/css/components/philosophy.css
    ========================================================================== */
 
-.philo-section {
-    background-color: #030406;
-    padding: clamp(60px, 10vw, 120px) 0;
-    position: relative;
-    border-top: 1px solid rgba(255, 215, 0, 0.1); /* Shifted to Gold */
+/* --- 1. TYPOGRAPHY & TAGS --- */
+.philosophy-content {
+    display: flex;
+    flex-direction: column;
 }
 
-/* --- 1. MOBILE FIRST GRID --- */
-.philo-grid { display: grid; grid-template-columns: 1fr; gap: 50px; }
-.philo-content { display: flex; flex-direction: column; gap: 30px; }
+.section-tag-wrapper { 
+    margin-bottom: 20px; 
+}
 
-/* --- 2. 2026 QUOTE DESIGN --- */
-.philo-quote {
+.section-tag {
+    font-family: monospace;
+    color: var(--neon-cyan, #00e5ff);
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    background: rgba(0, 229, 255, 0.05);
+    padding: 6px 14px;
+    border-radius: 4px;
+    border: 1px solid rgba(0, 229, 255, 0.2);
+    display: inline-block;
+    text-transform: uppercase;
+}
+
+/* --- 2. TACTILE SWIPE STREAM (Mobile Magic) --- */
+.philosophy-tactile-stream {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 20px;
+    padding-bottom: 25px; /* Space for the custom scrollbar */
+    margin-top: 20px;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    
+    /* Hide scrollbar by default on desktop, show custom on mobile */
+    scrollbar-width: thin;
+    scrollbar-color: var(--neon-cyan, #00e5ff) rgba(255,255,255,0.05);
+}
+
+/* Custom High-Tech Scrollbar */
+.philosophy-tactile-stream::-webkit-scrollbar { 
+    height: 4px; 
+}
+.philosophy-tactile-stream::-webkit-scrollbar-track { 
+    background: rgba(255,255,255,0.05); 
+    border-radius: 4px; 
+}
+.philosophy-tactile-stream::-webkit-scrollbar-thumb { 
+    background: var(--neon-cyan, #00e5ff); 
+    border-radius: 4px; 
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
+}
+
+/* --- 3. SWIPE CARDS (Glassmorphism) --- */
+.tech-card-v2 {
+    min-width: 280px; /* Forces cards to peek off-screen on mobile, hinting to swipe */
+    scroll-snap-align: start;
     background: rgba(255, 255, 255, 0.02);
-    border-left: 3px solid var(--neon-gold);
-    padding: clamp(20px, 5vw, 30px);
-    border-radius: 0 12px 12px 0;
-    position: relative; margin: 0;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 30px 25px;
+    border-radius: 8px;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
 }
 
-.quote-icon {
-    position: absolute; top: 20px; right: 20px; font-size: 3rem;
-    color: rgba(255, 215, 0, 0.08); /* Gold */
+.tech-card-v2:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 215, 0, 0.4);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(255, 215, 0, 0.02);
 }
 
-.philo-quote p {
-    color: #fff; font-family: var(--font-head); font-size: clamp(1.1rem, 4vw, 1.4rem);
-    line-height: 1.6; font-weight: 500; margin-bottom: 15px; position: relative; z-index: 2;
+.card-icon-v2 {
+    transition: transform 0.3s ease;
 }
 
-.quote-author {
-    color: var(--neon-gold); font-family: var(--font-mono); font-size: 0.8rem;
-    letter-spacing: 2px; text-transform: uppercase;
+.tech-card-v2:hover .card-icon-v2 {
+    transform: scale(1.1);
 }
 
-.philo-desc { color: #aaa; font-size: 1rem; line-height: 1.7; margin: 0; }
-
-/* --- 3. MOBILE CTA BOX --- */
-.philo-cta-box {
-    background: linear-gradient(135deg, rgba(255, 215, 0, 0.05), transparent); /* Gold Hint */
-    border: 1px solid rgba(255, 215, 0, 0.1); /* Gold Border */
-    border-radius: 12px; padding: 25px;
-    display: flex; flex-direction: column; gap: 20px;
+/* --- 4. RESPONSIVE GRID (Desktop Override) --- */
+@media (min-width: 768px) {
+    .philosophy-tactile-stream {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        overflow-x: visible;
+        padding-bottom: 0;
+    }
+    
+    .tech-card-v2 { 
+        min-width: auto; 
+    }
+    
+    /* Hide scrollbar completely on desktop since it's a grid */
+    .philosophy-tactile-stream::-webkit-scrollbar {
+        display: none;
+    }
 }
 
-.cta-text h4 { color: #fff; font-family: var(--font-head); font-size: 1.1rem; margin: 0 0 5px 0; }
-.cta-text p { color: #888; font-size: 0.85rem; margin: 0; line-height: 1.4; }
-
-/* --- 4. THE 3 PILLAR CARDS (RIGHT SIDE) --- */
-.philo-pillars { display: flex; flex-direction: column; gap: 20px; }
-
-.pillar-card {
-    display: flex; align-items: flex-start; gap: 20px;
-    background: rgba(255,255,255,0.02); padding: 25px;
-    border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);
-    transition: transform 0.3s var(--transition), border-color 0.3s;
+/* --- 5. CONSULTATION ACTIVE NODE --- */
+.consultation-wrapper {
+    transition: all 0.3s ease;
+    border-left: 3px solid var(--neon-cyan, #00e5ff);
 }
 
-.pillar-card:hover { 
-    transform: translateY(-5px); 
-    background: rgba(255,255,255,0.04); 
-    border-color: rgba(255, 215, 0, 0.2); /* Unified gold hover */
+.consultation-wrapper:hover {
+    background: rgba(0, 229, 255, 0.05) !important;
+    box-shadow: inset 0 0 30px rgba(0, 229, 255, 0.02);
 }
 
-.pillar-icon {
-    width: clamp(45px, 10vw, 55px); height: clamp(45px, 10vw, 55px);
-    border-radius: 12px; display: flex; align-items: center; justify-content: center;
-    font-size: 1.4rem; flex-shrink: 0;
+/* Pulsating "Live" Status Dot */
+.pulse-dot-gold {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background-color: var(--neon-cyan, #00e5ff);
+    border-radius: 50%;
+    margin-right: 10px;
+    box-shadow: 0 0 10px var(--neon-cyan, #00e5ff);
+    animation: pulseActive 2s infinite;
 }
 
-/* Color assignments for Pillar Icons */
-.border-cyan .pillar-icon { color: var(--neon-cyan); background: rgba(0, 229, 255, 0.1); border: 1px solid rgba(0, 229, 255, 0.2); }
-.border-pink .pillar-icon { color: var(--neon-pink); background: rgba(255, 0, 127, 0.1); border: 1px solid rgba(255, 0, 127, 0.2); }
-.border-gold .pillar-icon { color: var(--neon-gold); background: rgba(255, 215, 0, 0.1); border: 1px solid rgba(255, 215, 0, 0.2); }
-
-.pillar-text h4 { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 2px; margin-bottom: 8px; font-weight: 800; color: #fff; }
-.pillar-text p { color: #999; font-size: 0.95rem; line-height: 1.5; margin: 0; }
-
-/* --- 5. PROGRESSIVE DESKTOP UNLOCK --- */
-@media (min-width: 992px) {
-    .philo-grid { grid-template-columns: 1.2fr 1fr; gap: 80px; align-items: center; }
-    .philo-cta-box { flex-direction: row; align-items: center; justify-content: space-between; }
+@keyframes pulseActive {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 229, 255, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(0, 229, 255, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 229, 255, 0); }
 }
 
+/* Button & Signature Row */
+.cta-action-row {
+    margin-top: 15px;
+}
+
+.btn-primary {
+    transition: all 0.3s ease;
+    border-radius: 4px;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+    background: #e6c200 !important; /* Slightly darker gold on hover */
+}
