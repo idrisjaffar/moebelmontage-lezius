@@ -1,10 +1,10 @@
 /* ==========================================================================
-   PIECE 8: FAQ MAINFRAME (SYSTEM PROTOCOLS)
+   PHASE 8: FAQ MAINFRAME – SYSTEM PROTOCOLS (FULL WORKING)
    ACCORDION ENGINE | TERMINAL-UI | GOLD-STATUS INDICATORS
    ========================================================================== */
 
 .faq-tech-section {
-    padding: clamp(60px, 8vh, 100px) 0;
+    padding: clamp(80px, 10vh, 120px) 0;
     background: #020203;
     position: relative;
     border-top: 1px solid rgba(255, 215, 0, 0.1);
@@ -13,8 +13,8 @@
 .faq-matrix {
     display: flex;
     flex-direction: column;
-    gap: 15px;
-    max-width: 900px;
+    gap: 20px;
+    max-width: 960px;
     margin: 0 auto;
 }
 
@@ -22,13 +22,13 @@
 .faq-module-v2 {
     overflow: hidden;
     background: rgba(10, 8, 5, 0.85);
-    border: 1px solid rgba(255, 215, 0, 0.15);
-    transition: all 0.4s ease;
-    border-radius: 0;
+    border: 1px solid rgba(255, 215, 0, 0.12);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    border-radius: 4px;
 }
 
 .faq-module-v2:hover {
-    border-color: rgba(255, 215, 0, 0.4);
+    border-color: rgba(255, 215, 0, 0.35);
 }
 
 .faq-trigger {
@@ -36,85 +36,231 @@
     display: flex;
     align-items: center;
     gap: 20px;
-    padding: 25px;
+    padding: 28px 30px;
     background: none;
     border: none;
     cursor: pointer;
     text-align: left;
     color: #fff;
     outline: none;
+    font-family: inherit;
+    transition: background 0.3s ease;
+}
+
+.faq-trigger:hover {
+    background: rgba(255, 215, 0, 0.03);
 }
 
 .faq-icon-box {
-    width: 45px;
-    height: 45px;
+    width: 50px;
+    height: 50px;
+    min-width: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
     background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    font-size: 1.2rem;
-    color: var(--neon-gold);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 8px;
+    font-size: 1.3rem;
+    color: var(--neon-gold, #FFD700);
+    transition: all 0.3s ease;
 }
 
-.faq-title-wrap { flex-grow: 1; }
-.faq-category { 
-    display: block; 
-    font-family: var(--font-mono, monospace); 
-    font-size: 0.65rem; 
-    color: var(--neon-gold); 
-    letter-spacing: 2px; 
-    margin-bottom: 4px; 
-    text-transform: uppercase;
+.faq-module-v2.active .faq-icon-box {
+    border-color: var(--neon-gold, #FFD700);
+    background: rgba(255, 215, 0, 0.08);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.08);
 }
-.faq-question { font-size: 1.1rem; margin: 0; font-weight: 600; font-family: var(--font-head, sans-serif); }
+
+.faq-title-wrap {
+    flex-grow: 1;
+}
+
+.faq-category {
+    display: block;
+    font-family: var(--font-mono, monospace);
+    font-size: 0.6rem;
+    color: var(--neon-cyan, #00e5ff);
+    letter-spacing: 3px;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.faq-question {
+    font-size: 1.15rem;
+    margin: 0;
+    font-weight: 600;
+    font-family: var(--font-head, sans-serif);
+    color: #fff;
+    letter-spacing: -0.02em;
+}
 
 .faq-plus {
-    width: 20px; height: 2px; background: #475569;
-    position: relative; transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    width: 22px;
+    height: 2px;
+    background: #475569;
+    position: relative;
+    transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    flex-shrink: 0;
 }
+
 .faq-plus::after {
-    content: ''; position: absolute; width: 2px; height: 20px; background: #475569;
-    left: 9px; top: -9px; transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 22px;
+    background: #475569;
+    left: 10px;
+    top: -10px;
+    transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Active State Styles */
-.faq-module-v2.active { 
-    border-left: 4px solid var(--neon-gold); 
+/* Active State – Plus rotates to minus */
+.faq-module-v2.active {
+    border-left: 4px solid var(--neon-gold, #FFD700);
     background: rgba(255, 215, 0, 0.02);
+    box-shadow: inset 0 0 30px rgba(255, 215, 0, 0.02);
 }
-.faq-module-v2.active .faq-plus { transform: rotate(45deg); background: var(--neon-gold); }
-.faq-module-v2.active .faq-plus::after { background: var(--neon-gold); }
 
-/* --- CONTENT AREA (THE TERMINAL) --- */
+.faq-module-v2.active .faq-plus {
+    transform: rotate(45deg);
+    background: var(--neon-gold, #FFD700);
+}
+
+.faq-module-v2.active .faq-plus::after {
+    background: var(--neon-gold, #FFD700);
+}
+
+.faq-module-v2.active .faq-question {
+    color: var(--neon-gold, #FFD700);
+}
+
+/* --- CONTENT AREA (THE TERMINAL) – CRITICAL FOR OPENING --- */
 .faq-content {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.5s cubic-bezier(0.2, 0, 0.1, 1);
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.25);
 }
 
-.faq-inner { padding: 0 25px 25px 90px; }
+/* 
+   ⚠️ REMOVED the fallback max-height rule – now the JavaScript 
+   sets the exact height dynamically via inline style.
+*/
+
+.faq-inner {
+    padding: 0 30px 30px 100px;
+}
 
 .faq-grid-internal {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: 1fr;
     gap: 30px;
-    border-top: 1px dashed rgba(255, 255, 255, 0.1);
-    padding-top: 20px;
+    border-top: 1px dashed rgba(255, 215, 0, 0.1);
+    padding-top: 25px;
+}
+
+@media (min-width: 700px) {
+    .faq-grid-internal {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (min-width: 1000px) {
+    .faq-grid-internal {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+.faq-text-block {
+    background: rgba(255, 255, 255, 0.02);
+    padding: 20px;
+    border-radius: 6px;
+    border-left: 2px solid rgba(255, 215, 0, 0.15);
+    transition: border-color 0.3s ease;
+}
+
+.faq-text-block:hover {
+    border-left-color: var(--neon-cyan, #00e5ff);
 }
 
 .faq-text-block h6 {
-    color: var(--neon-gold);
+    color: var(--neon-gold, #FFD700);
     font-size: 0.85rem;
-    margin-bottom: 10px;
+    margin: 0 0 10px 0;
     text-transform: uppercase;
     font-family: var(--font-head, sans-serif);
+    letter-spacing: 1px;
 }
 
 .faq-text-block p {
     font-size: 0.9rem;
-    color: #94a3b8;
-    line-height: 1.6;
+    color: #cbd5e1;
+    line-height: 1.7;
     margin: 0;
+}
+
+/* --- RESPONSIVE TWEAKS --- */
+@media (max-width: 768px) {
+    .faq-trigger {
+        padding: 20px;
+        gap: 15px;
+    }
+
+    .faq-icon-box {
+        width: 40px;
+        height: 40px;
+        min-width: 40px;
+        font-size: 1rem;
+    }
+
+    .faq-question {
+        font-size: 0.95rem;
+    }
+
+    .faq-inner {
+        padding: 0 20px 20px 70px;
+    }
+
+    .faq-text-block {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .faq-trigger {
+        padding: 16px;
+        gap: 12px;
+    }
+
+    .faq-icon-box {
+        width: 35px;
+        height: 35px;
+        min-width: 35px;
+        font-size: 0.85rem;
+    }
+
+    .faq-inner {
+        padding: 0 15px 15px 55px;
+    }
+
+    .faq-text-block h6 {
+        font-size: 0.75rem;
+    }
+
+    .faq-text-block p {
+        font-size: 0.8rem;
+    }
+}
+
+/* Ensure the transition works */
+.faq-content {
+    transition: max-height 0.5s cubic-bezier(0.2, 0, 0.1, 1) !important;
+    overflow: hidden !important;
+}
+
+/* When active, let JS control the height */
+.faq-module-v2.active .faq-content {
+    max-height: none; /* This will be overridden by inline style, but it's safe */
 }

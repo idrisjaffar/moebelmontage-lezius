@@ -1,5 +1,6 @@
 /* ==========================================================================
-   PIECE 06: ASYMMETRIC TELEMETRY MATRIX
+   PIECE 06: ASYMMETRIC TELEMETRY MATRIX (V3.0 - HARD-WIRED DISPLAY)
+   LOCATION: assets/css/components/video.css
    ========================================================================== */
 
 .cinematic-section {
@@ -9,25 +10,31 @@
     border-top: 1px solid rgba(255, 215, 0, 0.1);
 }
 
-/* --- 1. ASYMMETRIC MATRIX GRID --- */
+/* --- 1. ABSOLUTE GRID GEOMETRY --- */
 .telemetry-matrix {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr;
     gap: 20px;
     width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
 }
 
 @media (min-width: 992px) {
     .telemetry-matrix {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1fr 1fr;
+        grid-template-columns: 1.5fr 1fr;
+        grid-template-rows: 350px 350px;
         gap: 25px;
-        height: 700px; /* Lock height for perfect desktop grid */
     }
 
-    .primary-feed { grid-column: 1 / 2; grid-row: 1 / 3; }
-    .secondary-feed { grid-column: 2 / 3; }
+    .primary-feed { 
+        grid-column: 1 / 2; 
+        grid-row: 1 / 3; 
+    }
+    
+    .secondary-feed { 
+        grid-column: 2 / 3; 
+    }
 }
 
 /* --- 2. THE CINEMATIC CARDS --- */
@@ -35,108 +42,286 @@
     position: relative;
     border-radius: 8px;
     overflow: hidden;
-    background: #05070a; 
-    border: 1px solid rgba(0, 229, 255, 0.15); 
+    background: #05070a;
+    border: 1px solid rgba(0, 229, 255, 0.2);
     transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.6);
     cursor: crosshair;
-    min-height: 300px;
+    width: 100%;
+    min-height: 350px;
+    display: flex; /* CRITICAL: Forces children to respect height */
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+@media (min-width: 992px) {
+    .cinematic-card { 
+        min-height: auto;
+        height: 100%;
+    }
 }
 
 .cinematic-card:hover {
-    transform: translateY(-4px);
+    transform: translateY(-5px);
     border-color: var(--neon-gold, #FFD700);
-    box-shadow: 0 20px 50px rgba(0,0,0,0.8), 0 0 20px rgba(255, 215, 0, 0.15);
-    z-index: 5;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.9), 0 0 25px rgba(255, 215, 0, 0.15);
+    z-index: 10;
 }
 
-/* --- 3. CSS SIGNAL LOADER (No-Image Fallback) --- */
+/* --- 3. SIGNAL LOADER (VISUAL FALLBACK) --- */
 .signal-loader {
-    position: absolute; inset: 0; z-index: 0;
+    position: absolute;
+    inset: 0;
+    z-index: 1;
     background-image: 
         linear-gradient(rgba(0, 229, 255, 0.05) 1px, transparent 1px),
         linear-gradient(90deg, rgba(0, 229, 255, 0.05) 1px, transparent 1px);
-    background-size: 20px 20px;
+    background-size: 30px 30px;
+    background-color: #020305;
+    pointer-events: none;
 }
-.signal-loader::after {
-    content: ''; position: absolute; top: -100%; left: 0; width: 100%; height: 50%;
-    background: linear-gradient(to bottom, transparent, rgba(0, 229, 255, 0.2), transparent);
-    animation: radarScan 4s linear infinite;
-}
-@keyframes radarScan { 0% { transform: translateY(0); } 100% { transform: translateY(400%); } }
 
-/* --- 4. VIDEO LAYERS & HOVER PHYSICS --- */
+.signal-loader::after {
+    content: '';
+    position: absolute;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(to bottom, transparent, rgba(0, 229, 255, 0.15), transparent);
+    animation: radarScan 3s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes radarScan {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(400%); }
+}
+
+/* --- 4. VIDEO LAYER (HARD-WIRED) --- */
 .cinematic-video {
-    position: absolute; inset: 0; width: 100%; height: 100%;
-    object-fit: cover; z-index: 1;
-    filter: grayscale(100%) sepia(30%) hue-rotate(180deg) brightness(0.4);
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Forces video to fill container */
+    display: block; /* CRITICAL: Removes inline-block spacing */
+    z-index: 2;
+    position: relative; /* CRITICAL: Removes absolute positioning complexity */
+    filter: grayscale(80%) sepia(20%) hue-rotate(180deg) brightness(0.7) contrast(1.1);
     transition: filter 0.6s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     transform: scale(1.02);
+    background: #000;
 }
 
 .cinematic-card:hover .cinematic-video { 
-    filter: grayscale(0%) sepia(0%) brightness(1); 
-    transform: scale(1); 
+    filter: grayscale(0%) sepia(0%) brightness(1) contrast(1);
+    transform: scale(1);
 }
 
-.cinematic-card:hover .signal-loader { opacity: 0; }
+.cinematic-card:hover .signal-loader {
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
 
 /* --- 5. TECH BRACKETS --- */
-.tech-bracket { position: absolute; width: 20px; height: 20px; z-index: 2; transition: 0.4s; }
-.tech-bracket.top-left { top: 15px; left: 15px; border-top: 2px solid var(--neon-cyan); border-left: 2px solid var(--neon-cyan); }
-.tech-bracket.bottom-right { bottom: 15px; right: 15px; border-bottom: 2px solid var(--neon-cyan); border-right: 2px solid var(--neon-cyan); }
-.cinematic-card:hover .tech-bracket { width: 35px; height: 35px; border-color: var(--neon-gold, #FFD700); }
+.tech-bracket {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    z-index: 4;
+    transition: 0.4s ease;
+    pointer-events: none;
+}
+
+.tech-bracket.top-left {
+    top: 15px;
+    left: 15px;
+    border-top: 2px solid var(--neon-cyan, #00e5ff);
+    border-left: 2px solid var(--neon-cyan, #00e5ff);
+}
+
+.tech-bracket.bottom-right {
+    bottom: 15px;
+    right: 15px;
+    border-bottom: 2px solid var(--neon-cyan, #00e5ff);
+    border-right: 2px solid var(--neon-cyan, #00e5ff);
+}
+
+.cinematic-card:hover .tech-bracket { 
+    width: 45px;
+    height: 45px;
+    border-color: var(--neon-gold, #FFD700);
+}
 
 /* --- 6. TEXT OVERLAYS --- */
 .cinematic-overlay {
-    position: absolute; inset: 0; z-index: 3;
-    background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.6) 100%);
-    display: flex; flex-direction: column; justify-content: space-between;
-    padding: clamp(15px, 3vw, 30px); pointer-events: none;
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,0) 60%, rgba(0,0,0,0.95) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: clamp(20px, 3vw, 35px);
+    pointer-events: none;
 }
 
-.feed-header { display: flex; justify-content: space-between; align-items: center; }
+.feed-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
 
 .cinematic-tag {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(5px);
-    padding: 6px 12px; border-radius: 2px; border: 1px solid rgba(255, 255, 255, 0.1);
-    font-size: 0.65rem; font-weight: 800; letter-spacing: 2px;
-    color: #fff; font-family: var(--font-mono, monospace); text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    padding: 6px 12px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: #fff;
+    font-family: var(--font-mono, monospace);
+    text-transform: uppercase;
 }
 
-.blink-dot { width: 6px; height: 6px; border-radius: 50%; animation: pulseBlink 1.5s infinite; }
-.blink-dot.red { background: #ff003c; box-shadow: 0 0 8px #ff003c; }
-.blink-dot.cyan { background: var(--neon-cyan); box-shadow: 0 0 8px var(--neon-cyan); }
+.blink-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    animation: pulseBlink 1.5s infinite;
+}
 
-@keyframes pulseBlink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+.blink-dot.red {
+    background: #ff003c;
+    box-shadow: 0 0 10px #ff003c;
+}
 
-.cinematic-text h3 { color: #fff; font-size: clamp(1.1rem, 2vw, 1.5rem); margin: 0 0 6px 0; font-family: var(--font-head, sans-serif); font-weight: 800; }
-.cinematic-text p { color: #94a3b8; font-size: 0.85rem; line-height: 1.5; margin: 0; font-family: var(--font-mono, monospace); }
+.blink-dot.cyan {
+    background: var(--neon-cyan, #00e5ff);
+    box-shadow: 0 0 10px var(--neon-cyan, #00e5ff);
+}
+
+@keyframes pulseBlink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+.cinematic-text h3 {
+    color: #fff;
+    font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+    margin: 0 0 8px 0;
+    font-family: var(--font-head, sans-serif);
+    font-weight: 800;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+}
+
+.cinematic-text p {
+    color: #cbd5e1;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 0;
+    font-family: var(--font-body, sans-serif);
+    text-shadow: 0 2px 5px rgba(0,0,0,0.8);
+}
 
 /* --- 7. LIGHTBOX MODAL --- */
 .cinematic-lightbox-overlay {
-    position: fixed; inset: 0; z-index: 9999; display: flex; align-items: center; justify-content: center;
-    opacity: 0; visibility: hidden; transition: all 0.4s ease;
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s ease;
 }
-.cinematic-lightbox-overlay.is-active { opacity: 1; visibility: visible; }
-.lightbox-backdrop { position: absolute; inset: 0; background: rgba(2, 2, 3, 0.95); backdrop-filter: blur(15px); }
+
+.cinematic-lightbox-overlay.is-active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.lightbox-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(2, 2, 3, 0.95);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+}
 
 .lightbox-close-btn {
-    position: absolute; top: 30px; right: 40px; background: transparent; border: 1px solid var(--neon-gold, #FFD700);
-    color: var(--neon-gold, #FFD700); font-family: var(--font-mono, monospace); font-size: 0.8rem; padding: 8px 16px;
-    cursor: pointer; z-index: 10; transition: 0.3s;
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    background: rgba(0,0,0,0.5);
+    border: 1px solid var(--neon-gold, #FFD700);
+    color: var(--neon-gold, #FFD700);
+    font-family: var(--font-mono, monospace);
+    font-size: 0.8rem;
+    padding: 10px 20px;
+    cursor: pointer;
+    z-index: 10;
+    transition: 0.3s;
+    border-radius: 4px;
 }
-.lightbox-close-btn:hover { background: rgba(255, 215, 0, 0.1); box-shadow: 0 0 15px rgba(255, 215, 0, 0.4); }
+
+.lightbox-close-btn:hover {
+    background: rgba(255, 215, 0, 0.15);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+}
 
 .cinematic-lightbox-content {
-    position: relative; width: 90%; max-width: 1100px; z-index: 5;
-    transform: scale(0.95); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    width: 95%;
+    max-width: 1200px;
+    z-index: 5;
+    transform: scale(0.95);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.cinematic-lightbox-overlay.is-active .cinematic-lightbox-content { transform: scale(1); }
+
+.cinematic-lightbox-overlay.is-active .cinematic-lightbox-content {
+    transform: scale(1);
+}
 
 .lightbox-frame {
-    border: 1px solid var(--neon-cyan); box-shadow: 0 0 40px rgba(0, 229, 255, 0.1);
-    background: #000; border-radius: 4px; overflow: hidden;
+    border: 1px solid var(--neon-cyan, #00e5ff);
+    box-shadow: 0 0 50px rgba(0, 229, 255, 0.15);
+    background: #000;
+    border-radius: 8px;
+    overflow: hidden;
 }
-.lightbox-main-video { width: 100%; max-height: 85vh; display: block; outline: none; }
+
+.lightbox-main-video {
+    width: 100%;
+    max-height: 85vh;
+    display: block;
+    outline: none;
+}
+
+/* --- 8. MOBILE RESPONSIVE TWEAKS --- */
+@media (max-width: 991px) {
+    .cinematic-card {
+        min-height: 280px;
+    }
+    
+    .cinematic-text h3 {
+        font-size: 1.1rem;
+    }
+    
+    .cinematic-text p {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .cinematic-card {
+        min-height: 200px;
+    }
+}

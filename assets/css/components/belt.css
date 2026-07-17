@@ -1,139 +1,416 @@
 /* ==========================================================================
-   COMPONENT: CINEMATIC DATA STREAM (BELT STYLES)
+   COMPONENT: PROJECT BELT – LIVE REFERENZEN (AURUM 2077)
+   CAROUSEL ENGINE | SECTOR FILTERS | ANTI-BLUR IMAGE OPTIMIZATION
    LOCATION: assets/css/components/belt.css
    ========================================================================== */
 
+/* --- 1. MAIN LAYOUT (VISUAL SPLIT) --- */
 .visual-split-layout {
     display: grid;
     grid-template-columns: 1fr;
     gap: 50px;
-    align-items: center;
+    align-items: start;
+    width: 100%;
 }
 
-@media (min-width: 1200px) {
-    .visual-split-layout { grid-template-columns: 480px 1fr; gap: 80px; }
+@media (min-width: 992px) {
+    .visual-split-layout {
+        grid-template-columns: 420px 1fr;
+        gap: 80px;
+        align-items: center;
+    }
 }
 
-/* --- SECTOR TABS (The Filters) --- */
+/* --- 2. INFO PANE (LEFT SIDE) --- */
+.visual-info-pane {
+    padding: 40px;
+    border-top: 3px solid var(--neon-cyan, #00e5ff);
+    border-radius: 8px;
+    background: rgba(10, 8, 5, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 215, 0, 0.08);
+}
+
+.visual-info-pane .pre-title {
+    font-family: var(--font-mono, monospace);
+    color: var(--neon-cyan, #00e5ff);
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.visual-info-pane .section-heading {
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    margin-bottom: 20px;
+    line-height: 1.1;
+    font-weight: 900;
+    color: #fff;
+}
+
+.visual-info-pane .section-heading .gold-text {
+    color: var(--neon-gold, #FFD700);
+}
+
+.visual-info-pane p {
+    color: #94a3b8;
+    margin-bottom: 30px;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+/* --- 3. SECTOR NAVIGATION (FILTER BUTTONS) --- */
 .sector-nav {
     display: flex;
-    flex-wrap: wrap;
     gap: 10px;
+    flex-wrap: wrap;
     margin-bottom: 30px;
-    border-bottom: 1px solid rgba(255, 215, 0, 0.1);
-    padding-bottom: 15px;
 }
 
 .sector-btn {
     background: transparent;
-    border: 1px solid transparent;
-    color: #64748b;
-    font-family: var(--font-mono, monospace);
-    font-size: 0.75rem;
+    color: #94a3b8;
+    border: 1px solid rgba(255, 255, 255, 0.08);
     padding: 8px 16px;
-    cursor: pointer;
-    transition: 0.4s ease;
+    font-family: var(--font-mono, monospace);
+    font-size: 0.7rem;
     letter-spacing: 1px;
-}
-
-.sector-btn:hover { color: #fff; }
-.sector-btn.active {
-    color: var(--neon-gold, #FFD700);
-    border: 1px solid rgba(255, 215, 0, 0.3);
-    background: rgba(255, 215, 0, 0.05);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     border-radius: 4px;
-    box-shadow: inset 0 0 10px rgba(255, 215, 0, 0.05);
+    text-transform: uppercase;
 }
 
-/* --- THE BELT TRACK (Depth Engine) --- */
+.sector-btn:hover {
+    color: #fff;
+    border-color: rgba(255, 215, 0, 0.3);
+}
+
+.sector-btn.active {
+    background: var(--neon-cyan, #00e5ff);
+    color: #000;
+    border: none;
+    font-weight: 700;
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.2);
+}
+
+/* --- 4. BELT CONTROLS (NAVIGATION BUTTONS) --- */
+.belt-controls {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.nav-hud-btn {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 10px 22px;
+    color: #fff;
+    cursor: pointer;
+    font-family: var(--font-mono, monospace);
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    border-radius: 4px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-hud-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--neon-cyan, #00e5ff);
+    color: var(--neon-cyan, #00e5ff);
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.05);
+}
+
+.nav-hud-btn:active {
+    transform: scale(0.96);
+}
+
+/* --- 5. BELT CONTAINER & TRACK (CAROUSEL ENGINE) --- */
 .belt-container {
     width: 100%;
     overflow: hidden;
     position: relative;
-    padding: 20px 0; /* Room for glow effects */
+    border-radius: 8px;
+    background: #000;
 }
 
 .belt-track {
     display: flex;
-    transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); /* Magnetic easing */
+    transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
     width: 100%;
-    align-items: center;
+    will-change: transform;
+    backface-visibility: hidden;
 }
 
+/* --- 6. BELT ITEMS (EACH SLIDE) --- */
 .belt-item {
     flex: 0 0 100%;
     min-width: 100%;
-    padding: 0 15px;
+    padding: 0 10px;
     box-sizing: border-box;
-    transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
-    
-    /* Out-of-focus state (default) */
-    transform: scale(0.92);
-    opacity: 0.4;
-    filter: blur(4px) grayscale(50%);
+    scroll-snap-align: start;
 }
 
-.belt-item.in-focus {
-    /* In-focus state */
-    transform: scale(1);
-    opacity: 1;
-    filter: blur(0px) grayscale(0%);
-}
-
-/* The Glow-Edge Images */
+/* --- 7. IMAGE WRAPPER & ANTI-BLUR IMAGE OPTIMIZATION --- */
 .belt-image-wrapper {
     position: relative;
     border-radius: 6px;
     overflow: hidden;
-    border: 1px solid rgba(255, 215, 0, 0.15);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(255, 215, 0, 0.12);
+    background: #000;
+    transition: border-color 0.4s ease, box-shadow 0.4s ease;
 }
 
-.belt-item.in-focus .belt-image-wrapper {
-    border-color: rgba(0, 229, 255, 0.3);
-    box-shadow: 0 0 20px rgba(0, 229, 255, 0.1), 0 20px 40px rgba(0, 0, 0, 0.9);
+.belt-image-wrapper:hover {
+    border-color: rgba(255, 215, 0, 0.35);
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.05);
 }
 
-.belt-item img {
+/* CRITICAL: ANTI-BLUR FIX - Ensures images stay razor-sharp */
+.belt-image-wrapper img {
     display: block;
     width: 100%;
-    height: 45vh; /* Responsive height */
-    min-height: 350px;
-    object-fit: cover;
+    height: 350px;
+    object-fit: cover;          /* Fills the container without distortion */
+    image-rendering: auto;      /* Allows browser to choose best rendering */
+    backface-visibility: hidden; /* Prevents flicker on transform */
+    transform: translateZ(0);   /* Forces GPU acceleration */
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform;
 }
 
-/* Data Overlay on Images */
+.belt-image-wrapper:hover img {
+    transform: scale(1.02);
+}
+
+/* --- 8. DATA STAMP (HOLOGRAPHIC OVERLAY TEXT) --- */
 .data-stamp {
-    position: absolute;
-    bottom: 15px;
-    right: 15px;
-    background: rgba(5, 5, 5, 0.85);
-    backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 215, 0, 0.3);
-    padding: 8px 12px;
     font-family: var(--font-mono, monospace);
-    font-size: 0.65rem;
+    font-size: 0.6rem;
+    color: var(--neon-cyan, #00e5ff);
+    padding: 12px 10px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    letter-spacing: 1.5px;
+    border-top: 1px solid rgba(255, 215, 0, 0.08);
+    transition: color 0.3s ease;
+}
+
+.belt-image-wrapper:hover .data-stamp {
     color: var(--neon-gold, #FFD700);
-    letter-spacing: 2px;
 }
 
-/* --- THE PULSE RAIL (Replaces Dots) --- */
-.pulse-rail-container {
-    width: 100%;
-    height: 2px;
-    background: rgba(255, 255, 255, 0.1);
-    margin-bottom: 30px;
-    position: relative;
-    border-radius: 2px;
-    overflow: hidden;
+/* --- 9. PROJECT COUNTER (TOTAL IMAGES) --- */
+.project-counter {
+    font-family: var(--font-mono, monospace);
+    color: #64748b;
+    font-size: 0.65rem;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
-.pulse-rail-indicator {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
+.project-counter i {
+    color: var(--neon-cyan, #00e5ff);
+}
+
+/* --- 10. ARCHIVE LINK --- */
+.archive-link {
+    font-family: var(--font-mono, monospace);
+    font-size: 0.75rem;
+    text-decoration: none;
+    color: #fff;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
+    padding-bottom: 2px;
+    transition: all 0.3s ease;
+}
+
+.archive-link:hover {
+    color: var(--neon-cyan, #00e5ff);
+    border-bottom-color: var(--neon-cyan, #00e5ff);
+}
+
+/* --- 11. RESPONSIVE ADJUSTMENTS --- */
+
+/* Tablet & Small Desktop */
+@media (max-width: 991px) {
+    .visual-split-layout {
+        gap: 40px;
+    }
+
+    .visual-info-pane {
+        padding: 30px 25px;
+    }
+
+    .belt-image-wrapper img {
+        height: 280px;
+    }
+
+    .sector-btn {
+        font-size: 0.6rem;
+        padding: 6px 12px;
+    }
+
+    .nav-hud-btn {
+        padding: 8px 16px;
+        font-size: 0.65rem;
+    }
+}
+
+/* Mobile Phones */
+@media (max-width: 600px) {
+    .visual-split-layout {
+        gap: 30px;
+    }
+
+    .visual-info-pane {
+        padding: 20px 16px;
+    }
+
+    .visual-info-pane .section-heading {
+        font-size: 1.6rem;
+    }
+
+    .visual-info-pane p {
+        font-size: 0.85rem;
+    }
+
+    .sector-nav {
+        gap: 6px;
+        margin-bottom: 20px;
+    }
+
+    .sector-btn {
+        font-size: 0.5rem;
+        padding: 5px 10px;
+        letter-spacing: 0.5px;
+    }
+
+    .belt-controls {
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+
+    .nav-hud-btn {
+        padding: 6px 14px;
+        font-size: 0.6rem;
+        gap: 5px;
+    }
+
+    .belt-image-wrapper img {
+        height: 200px;
+    }
+
+    .data-stamp {
+        font-size: 0.5rem;
+        padding: 8px 6px;
+        letter-spacing: 1px;
+    }
+
+    .belt-item {
+        padding: 0 6px;
+    }
+
+    .project-counter {
+        font-size: 0.55rem;
+    }
+
+    .archive-link {
+        font-size: 0.65rem;
+    }
+}
+
+/* Extra Small Phones */
+@media (max-width: 400px) {
+    .belt-image-wrapper img {
+        height: 160px;
+    }
+
+    .visual-info-pane {
+        padding: 15px 12px;
+    }
+
+    .sector-btn {
+        font-size: 0.45rem;
+        padding: 4px 8px;
+    }
+
+    .nav-hud-btn {
+        font-size: 0.5rem;
+        padding: 5px 10px;
+    }
+}
+
+/* --- 12. TOUCH DEVICE OPTIMIZATION --- */
+@media (hover: none) {
+    .belt-image-wrapper:hover img {
+        transform: none; /* Disable hover zoom on touch devices for performance */
+    }
+
+    .belt-image-wrapper:hover {
+        border-color: rgba(255, 215, 0, 0.12); /* Keep border consistent on touch */
+        box-shadow: none;
+    }
+
+    .nav-hud-btn:active {
+        background: rgba(0, 229, 255, 0.1);
+        border-color: var(--neon-cyan, #00e5ff);
+    }
+}
+
+/* --- 13. SCROLLBAR STYLING (for the track if overflow) --- */
+.belt-container::-webkit-scrollbar {
+    height: 4px;
+}
+
+.belt-container::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 4px;
+}
+
+.belt-container::-webkit-scrollbar-thumb {
     background: var(--neon-cyan, #00e5ff);
-    box-shadow: 0 0 10px var(--neon-cyan, #00e5ff);
-    transition: all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+    border-radius: 4px;
+}
+
+.belt-container {
+    scrollbar-width: thin;
+    scrollbar-color: var(--neon-cyan, #00e5ff) rgba(255, 255, 255, 0.03);
+}
+
+/* --- 14. LOADING PLACEHOLDER (subtle shimmer while images load) --- */
+.belt-image-wrapper {
+    position: relative;
+    background: #0a0805;
+}
+
+.belt-image-wrapper::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.02), transparent);
+    transform: translateX(-100%);
+    animation: shimmer 1.5s infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* Hide shimmer once image is loaded (optional, but harmless) */
+.belt-image-wrapper img {
+    position: relative;
+    z-index: 2;
 }

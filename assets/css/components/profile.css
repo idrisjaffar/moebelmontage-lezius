@@ -3,6 +3,12 @@
    FILE: assets/css/components/profile.css
    ========================================================================== */
 
+:root {
+    --bg-darker: #020203;
+    --neon-gold: #FFD700;
+    --neon-cyan: #00e5ff;
+}
+
 /* --- 1. PROFILE SPLIT LAYOUT --- */
 .profile-split-layout {
     display: grid;
@@ -13,7 +19,7 @@
 
 @media (min-width: 992px) {
     .profile-split-layout {
-        grid-template-columns: 350px 1fr;
+        grid-template-columns: 380px 1fr;
         gap: 80px;
     }
 }
@@ -23,105 +29,176 @@
     background: rgba(0, 0, 0, 0.8);
     border: 1px solid rgba(0, 229, 255, 0.2);
     border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 20px;
-    font-family: monospace;
-    font-size: 0.75rem;
+    padding: 25px 20px;
+    margin-bottom: 25px;
+    font-family: var(--font-mono, monospace);
 }
+
 .hud-header {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
     color: #94a3b8;
     border-bottom: 1px solid rgba(0, 229, 255, 0.1);
-    padding-bottom: 10px;
-    margin-bottom: 15px;
+    padding-bottom: 12px;
+    margin-bottom: 18px;
+    font-size: 0.7rem;
+    letter-spacing: 1px;
 }
-.hud-stats-grid { 
-    display: grid; 
-    grid-template-columns: 1fr 1fr 1fr; 
-    gap: 10px; 
+
+.hud-header i {
+    color: var(--neon-cyan, #00e5ff);
 }
-.h-stat { display: flex; flex-direction: column; }
-.h-label { color: #64748b; margin-bottom: 5px; font-size: 0.65rem; }
-.h-val { font-weight: bold; }
+
+.hud-stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+}
+
+.h-stat {
+    display: flex;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.02);
+    padding: 10px;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.h-label {
+    color: #64748b;
+    font-size: 0.55rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+
+.h-val {
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: #fff;
+}
+
+.h-val.gold-text { color: var(--neon-gold, #FFD700); }
+.h-val.green-text { color: #39ff14; }
+.h-val.cyan-text { color: var(--neon-cyan, #00e5ff); }
+
 .diag-bar {
     width: 100%;
-    height: 4px;
-    background: rgba(255,255,255,0.1);
-    margin-top: 15px;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.05);
+    margin-top: 18px;
     border-radius: 2px;
     overflow: hidden;
 }
+
 .diag-fill {
     width: 100%;
     height: 100%;
-    background: #FFD700;
-    box-shadow: 0 0 10px #FFD700;
+    background: linear-gradient(90deg, var(--neon-cyan, #00e5ff), var(--neon-gold, #FFD700));
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
 }
 
 /* --- 3. ID CARD --- */
 .id-card {
     background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 215, 0, 0.1);
     border-radius: 12px;
-    padding: 30px;
+    padding: 35px 30px;
     text-align: center;
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
+
+.id-card:hover {
+    border-color: rgba(255, 215, 0, 0.3);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), inset 0 0 30px rgba(255, 215, 0, 0.02);
+}
+
 .id-header-tech {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
-.chip { color: #FFD700; font-size: 1.5rem; }
-.status-live { font-family: monospace; font-size: 0.75rem; color: #00e5ff; font-weight: bold; }
 
-/* --- THE FIX: AUTHENTICATION DATA-PLATE --- */
+.chip {
+    color: var(--neon-gold, #FFD700);
+    font-size: 1.8rem;
+}
+
+.status-live {
+    font-family: var(--font-mono, monospace);
+    font-size: 0.7rem;
+    color: var(--neon-cyan, #00e5ff);
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.status-live .blink {
+    animation: pulseDot 2s infinite;
+}
+
+@keyframes pulseDot {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.2; }
+}
+
+/* --- AVATAR FRAME (WIDE LOGO SUPPORT) --- */
 .avatar-frame {
     width: 100%;
+    max-width: 380px;
+    margin: 0 auto 20px;
+    position: relative;
     display: flex;
     justify-content: center;
-    margin: 25px 0;
-    position: relative;
 }
 
-/* Holographic Brackets */
+/* Holographic Corner Brackets */
 .avatar-frame::before,
 .avatar-frame::after {
     content: '';
     position: absolute;
-    width: 15px;
-    height: 15px;
+    width: 20px;
+    height: 20px;
     border: 2px solid var(--neon-cyan, #00e5ff);
     z-index: 2;
     pointer-events: none;
+    opacity: 0.6;
+    transition: all 0.4s ease;
 }
 
 .avatar-frame::before {
     top: -5px;
-    left: 0;
+    left: -5px;
     border-right: none;
     border-bottom: none;
 }
 
 .avatar-frame::after {
     bottom: -5px;
-    right: 0;
+    right: -5px;
     border-left: none;
     border-top: none;
     border-color: var(--neon-gold, #FFD700);
 }
 
+.id-card:hover .avatar-frame::before,
+.id-card:hover .avatar-frame::after {
+    width: 30px;
+    height: 30px;
+    opacity: 1;
+}
+
 .avatar-img {
-    width: 100%; 
-    max-width: 320px; /* Allows your wide logo to span beautifully */
-    height: auto; /* Respects natural proportions */
-    border-radius: 4px; /* Industrial squared edges */
-    border: 1px solid rgba(255, 215, 0, 0.4);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 229, 255, 0.1);
-    object-fit: contain; /* CRITICAL: Prevents cropping */
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 0 0 15px rgba(255, 215, 0, 0.05);
+    object-fit: contain;
     display: block;
     background: #000;
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -129,13 +206,27 @@
 
 .id-card:hover .avatar-img {
     border-color: var(--neon-cyan, #00e5ff);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6), 0 0 25px rgba(0, 229, 255, 0.2);
-    transform: translateY(-2px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.6), 0 0 30px rgba(0, 229, 255, 0.15);
+    transform: translateY(-3px);
 }
-/* ------------------------------------------ */
 
-.pro-name { font-size: 1.8rem; margin: 15px 0 5px 0; font-weight: 900; letter-spacing: -0.5px; }
-.pro-title { color: #FFD700; font-family: monospace; font-size: 0.85rem; letter-spacing: 2px; margin-bottom: 20px; }
+/* --- PROFILE TEXT --- */
+.pro-name {
+    font-size: 2rem;
+    margin: 15px 0 5px 0;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+    color: #fff;
+    font-family: var(--font-head, sans-serif);
+}
+
+.pro-title {
+    color: var(--neon-gold, #FFD700);
+    font-family: var(--font-mono, monospace);
+    font-size: 0.85rem;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+}
 
 .pro-badges {
     display: flex;
@@ -144,64 +235,170 @@
     flex-wrap: wrap;
     margin-bottom: 25px;
 }
+
 .badge-tech {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
-    padding: 6px 12px;
-    font-family: monospace;
-    font-size: 0.7rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 6px 14px;
+    font-family: var(--font-mono, monospace);
+    font-size: 0.6rem;
     color: #cbd5e1;
     border-radius: 4px;
+    letter-spacing: 1px;
 }
 
-.id-stats-grid { 
-    display: grid; 
-    grid-template-columns: 1fr 1fr 1fr; 
-    border-top: 1px solid rgba(255,255,255,0.1); 
-    margin-top: 25px; 
-    padding-top: 25px; 
+.id-stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    margin-top: 25px;
+    padding-top: 25px;
 }
-.stat-cell { display: flex; flex-direction: column; font-family: monospace; }
-.stat-cell .label { color: #64748b; font-size: 0.65rem; margin-bottom: 5px; }
-.stat-cell .value { color: #fff; font-weight: bold; font-size: 0.9rem; }
 
-/* --- 4. PHILOSOPHY TACTILE STREAM --- */
-.section-tag-wrapper { margin-bottom: 15px; }
+.stat-cell {
+    display: flex;
+    flex-direction: column;
+    font-family: var(--font-mono, monospace);
+}
+
+.stat-cell .label {
+    color: #64748b;
+    font-size: 0.55rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.stat-cell .value {
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.stat-cell .value .gold-text { color: var(--neon-gold, #FFD700); }
+.stat-cell .value .cyan-text { color: var(--neon-cyan, #00e5ff); }
+
+/* --- 4. PHILOSOPHY CONTENT --- */
+.philosophy-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.section-tag-wrapper {
+    margin-bottom: 15px;
+}
+
 .section-tag {
-    font-family: monospace;
-    color: #00e5ff;
-    font-size: 0.75rem;
-    letter-spacing: 3px;
-    background: rgba(0, 229, 255, 0.1);
-    padding: 5px 12px;
+    font-family: var(--font-mono, monospace);
+    color: var(--neon-cyan, #00e5ff);
+    font-size: 0.7rem;
+    letter-spacing: 4px;
+    background: rgba(0, 229, 255, 0.05);
+    padding: 6px 16px;
     border-radius: 4px;
-    border: 1px solid rgba(0, 229, 255, 0.2);
+    border: 1px solid rgba(0, 229, 255, 0.15);
+    display: inline-block;
+    text-transform: uppercase;
 }
 
+.section-heading {
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.1;
+    margin-bottom: 20px;
+    font-weight: 900;
+    color: #fff;
+}
+
+.section-heading .gold-text {
+    color: var(--neon-gold, #FFD700);
+}
+
+.desc-line {
+    font-size: clamp(1rem, 1.5vw, 1.15rem);
+    color: #cbd5e1;
+    line-height: 1.8;
+    margin-bottom: 25px;
+}
+
+.desc-line blockquote {
+    font-style: italic;
+    border-left: 3px solid var(--neon-gold, #FFD700);
+    padding-left: 20px;
+    margin: 0 0 25px 0;
+    color: #f8fafc;
+}
+
+/* --- 5. TACTILE STREAM CARDS --- */
 .philosophy-tactile-stream {
     display: flex;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     gap: 20px;
-    padding-bottom: 20px;
+    padding: 10px 0 25px 0;
+    margin-top: 10px;
     -webkit-overflow-scrolling: touch;
-    margin-top: 30px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--neon-cyan, #00e5ff) rgba(255, 255, 255, 0.03);
 }
-.philosophy-tactile-stream::-webkit-scrollbar { height: 4px; }
-.philosophy-tactile-stream::-webkit-scrollbar-thumb { background: #00e5ff; border-radius: 4px; }
+
+.philosophy-tactile-stream::-webkit-scrollbar {
+    height: 4px;
+}
+
+.philosophy-tactile-stream::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 4px;
+}
+
+.philosophy-tactile-stream::-webkit-scrollbar-thumb {
+    background: var(--neon-cyan, #00e5ff);
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.3);
+}
 
 .tech-card-v2 {
-    min-width: 260px;
+    min-width: 280px;
     scroll-snap-align: start;
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.05);
-    padding: 25px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 30px 25px;
     border-radius: 8px;
-    transition: transform 0.3s;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
 }
+
 .tech-card-v2:hover {
     transform: translateY(-5px);
     border-color: rgba(255, 215, 0, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(255, 215, 0, 0.02);
+}
+
+.card-icon-v2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease;
+}
+
+.tech-card-v2:hover .card-icon-v2 {
+    transform: scale(1.1);
+}
+
+.card-title-v2 {
+    font-family: var(--font-mono, monospace);
+    font-size: 0.85rem;
+    margin: 0 0 10px 0;
+    color: #fff;
+    letter-spacing: 2px;
+}
+
+.card-desc-v2 {
+    font-size: 0.85rem;
+    color: #94a3b8;
+    line-height: 1.6;
+    margin: 0;
 }
 
 @media (min-width: 768px) {
@@ -209,6 +406,148 @@
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         overflow-x: visible;
+        padding-bottom: 0;
     }
-    .tech-card-v2 { min-width: auto; }
+
+    .tech-card-v2 {
+        min-width: auto;
+    }
+
+    .philosophy-tactile-stream::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .tech-card-v2 {
+        min-width: 240px;
+        padding: 20px 18px;
+    }
+
+    .card-title-v2 {
+        font-size: 0.75rem;
+    }
+
+    .card-desc-v2 {
+        font-size: 0.75rem;
+    }
+}
+
+/* --- 6. CONSULTATION WRAPPER --- */
+.consultation-wrapper {
+    margin-top: 40px;
+    padding: 30px;
+    border-left: 3px solid var(--neon-cyan, #00e5ff);
+    background: rgba(0, 229, 255, 0.02);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.consultation-wrapper:hover {
+    background: rgba(0, 229, 255, 0.05) !important;
+    box-shadow: inset 0 0 30px rgba(0, 229, 255, 0.02);
+}
+
+.pulse-dot-gold {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background-color: var(--neon-cyan, #00e5ff);
+    border-radius: 50%;
+    margin-right: 10px;
+    box-shadow: 0 0 10px var(--neon-cyan, #00e5ff);
+    animation: pulseActive 2s infinite;
+}
+
+@keyframes pulseActive {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(0, 229, 255, 0.7);
+    }
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 10px rgba(0, 229, 255, 0);
+    }
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(0, 229, 255, 0);
+    }
+}
+
+.consultation-info strong {
+    color: #fff;
+    font-family: var(--font-mono, monospace);
+    letter-spacing: 1px;
+    display: block;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+}
+
+.consultation-info strong span {
+    color: var(--neon-cyan, #00e5ff);
+}
+
+.consultation-info p {
+    color: #94a3b8;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.cta-action-row {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+.btn-primary {
+    background: var(--neon-gold, #FFD700);
+    color: #000;
+    border: none;
+    padding: 12px 28px;
+    font-weight: 800;
+    font-family: var(--font-mono, monospace);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(255, 215, 0, 0.3);
+    background: #e6c200 !important;
+}
+
+.signature {
+    font-family: 'Mrs Saint Delafield', cursive;
+    font-size: 1.8rem;
+    color: #fff;
+    opacity: 0.7;
+}
+
+@media (max-width: 480px) {
+    .consultation-wrapper {
+        padding: 20px 15px;
+    }
+
+    .consultation-info strong {
+        font-size: 0.75rem;
+    }
+
+    .consultation-info p {
+        font-size: 0.8rem;
+    }
+
+    .btn-primary {
+        padding: 10px 20px;
+        font-size: 0.7rem;
+    }
+
+    .signature {
+        font-size: 1.4rem;
+    }
 }

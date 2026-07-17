@@ -1,159 +1,250 @@
 /* ==========================================================================
-PHASE 4: SYSTEM SERVICES ACCORDION ENGINE
-FILE: assets/css/components/services.css
-========================================================================== */
+   PHASE 4: SYSTEM SERVICES ACCORDION (ENHANCED)
+   TECHNICAL SPECIFICATIONS | MODULAR ENGINEERING
+   ========================================================================== */
 
-/* --- 1. CORE ENGINE LAYOUT --- /
-.accordion-engine {
-display: flex;
-flex-direction: column;
-gap: 15px; / Spacing between unopened modules */
+.services-accordion-section {
+    background: #020203;
+    padding: clamp(80px, 10vw, 120px) 0;
+    border-top: 1px solid rgba(0, 229, 255, 0.1);
+    position: relative;
 }
 
-/* --- 2. ACCORDION ITEM (THE UNLOCKED STATE) --- */
-.sys-accordion-item {
-background: rgba(255,255,255,0.02);
-border: 1px solid rgba(255,255,255,0.05);
-border-radius: 8px;
-overflow: hidden;
-transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-backdrop-filter: blur(10px);
+.interface-overlay {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(0, 229, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 229, 255, 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(circle at top, black, transparent 70%);
+    pointer-events: none;
 }
 
-/* Hover effects for unopened items */
-.sys-accordion-item:not(.is-active):hover {
-border-color: rgba(255, 255, 255, 0.2);
-background: rgba(255,255,255,0.04);
+/* --- ACCORDION CONTAINER --- */
+.accordion-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }
 
-/* Active (Open) State Styling */
-.sys-accordion-item.is-active {
-background: rgba(0, 0, 0, 0.6);
+/* --- ACCORDION ITEMS --- */
+.accordion-item {
+    overflow: hidden;
+    background: rgba(10, 8, 5, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    border-radius: 4px;
 }
 
-/* Sector-specific Glow Colors when Active /
-/ Modul 01: Cyan */
-.sys-accordion-item:nth-child(1).is-active {
-border-color: var(--neon-cyan, #00e5ff);
-box-shadow: inset 0 0 30px rgba(0, 229, 255, 0.05), 0 10px 30px rgba(0,0,0,0.5);
+.accordion-item:hover {
+    border-color: rgba(255, 215, 0, 0.2);
 }
 
-/* Modul 02: Gold */
-.sys-accordion-item:nth-child(2).is-active {
-border-color: var(--neon-gold, #FFD700);
-box-shadow: inset 0 0 30px rgba(255, 215, 0, 0.05), 0 10px 30px rgba(0,0,0,0.5);
+.accordion-item.border-cyan { border-left: 3px solid var(--neon-cyan, #00e5ff); }
+.accordion-item.border-gold { border-left: 3px solid var(--neon-gold, #FFD700); }
+.accordion-item.border-pink { border-left: 3px solid #ff007f; }
+.accordion-item.border-green { border-left: 3px solid #10b981; }
+
+/* --- HEADER --- */
+.accordion-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 30px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    color: #fff;
+    font-family: inherit;
+    transition: background 0.3s ease;
+    gap: 20px;
 }
 
-/* Modul 03: Pink */
-.sys-accordion-item:nth-child(3).is-active {
-border-color: #ff007f;
-box-shadow: inset 0 0 30px rgba(255, 0, 127, 0.05), 0 10px 30px rgba(0,0,0,0.5);
+.accordion-header:hover {
+    background: rgba(255, 255, 255, 0.02);
 }
 
-/* Modul 04: Emerald Green (Deconstruct) */
-.sys-accordion-item:nth-child(4).is-active {
-border-color: #10b981;
-box-shadow: inset 0 0 30px rgba(16, 185, 129, 0.05), 0 10px 30px rgba(0,0,0,0.5);
+.header-left {
+    flex: 1;
 }
 
-/* --- 3. ACCORDION HEADER (THE TRIGGER) --- */
-.sys-accordion-header {
-width: 100%;
-background: transparent;
-border: none;
-padding: 25px 30px;
-display: flex;
-justify-content: space-between;
-align-items: center;
-cursor: pointer;
-text-align: left;
-color: #fff;
-outline: none;
+.sector-id {
+    display: block;
+    font-family: var(--font-mono, monospace);
+    font-size: 0.6rem;
+    letter-spacing: 3px;
+    margin-bottom: 4px;
+    font-weight: 700;
 }
 
-.sys-header-info {
-display: flex;
-flex-direction: column;
-gap: 8px;
+.sector-title {
+    font-size: 1.1rem;
+    margin: 0;
+    font-weight: 700;
+    font-family: var(--font-head, sans-serif);
+    color: #fff;
 }
 
-.sys-id {
-font-family: monospace;
-font-size: 0.75rem;
-letter-spacing: 2px;
-font-weight: bold;
+.sector-trigger {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    font-size: 0.8rem;
 }
 
-.sys-title {
-margin: 0;
-font-size: clamp(1.1rem, 3vw, 1.4rem);
-font-family: sans-serif;
-font-weight: 800;
+.sector-trigger .icon-cyan { color: var(--neon-cyan, #00e5ff); }
+.sector-trigger .icon-gold { color: var(--neon-gold, #FFD700); }
+.sector-trigger .icon-pink { color: #ff007f; }
+.sector-trigger .icon-green { color: #10b981; }
+
+.accordion-item.active .sector-trigger {
+    transform: rotate(45deg);
+    border-color: var(--neon-cyan, #00e5ff);
 }
 
-/* The Plus/Cross Icon Animation */
-.sys-icon {
-color: #64748b;
-font-size: 1.2rem;
-transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s;
+/* --- CONTENT --- */
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s cubic-bezier(0.2, 0, 0.1, 1);
+    background: rgba(0, 0, 0, 0.2);
 }
 
-/* Rotate icon to an 'X' and change color based on active sector */
-.sys-accordion-item:nth-child(1).is-active .sys-icon { transform: rotate(45deg); color: var(--neon-cyan, #00e5ff); }
-.sys-accordion-item:nth-child(2).is-active .sys-icon { transform: rotate(45deg); color: var(--neon-gold, #FFD700); }
-.sys-accordion-item:nth-child(3).is-active .sys-icon { transform: rotate(45deg); color: #ff007f; }
-.sys-accordion-item:nth-child(4).is-active .sys-icon { transform: rotate(45deg); color: #10b981; }
-
-/* --- 4. ACCORDION CONTENT (THE BLUEPRINT) --- /
-.sys-accordion-content {
-max-height: 0; / Crucial: Starts hidden. JS calculates and changes this */
-overflow: hidden;
-transition: max-height 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+.accordion-body-inner {
+    padding: 0 30px 30px 30px;
 }
 
-.sys-content-inner {
-padding: 0 30px 30px 30px;
-border-top: 1px solid rgba(255,255,255,0.05);
-margin-top: 10px;
-padding-top: 30px;
+.sector-description {
+    color: #cbd5e1;
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 25px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: 20px;
 }
 
-/* Fluid Technical Grid /
-.sys-tech-grid {
-display: grid;
-grid-template-columns: 1fr; / Mobile: Stacks columns vertically */
-gap: 30px;
-background: rgba(0,0,0,0.4);
-padding: 25px;
-border-radius: 6px;
-border: 1px solid rgba(255,255,255,0.03);
+.sector-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 25px;
 }
 
-@media (min-width: 768px) {
-.sys-tech-grid {
-grid-template-columns: 1fr 1fr; /* Desktop: Columns sit side-by-side */
-gap: 40px;
-}
-}
-
-.sys-tech-col ul {
-list-style: none;
-padding: 0;
-margin: 0;
+@media (min-width: 700px) {
+    .sector-grid {
+        grid-template-columns: 1fr 1fr;
+    }
 }
 
-.sys-tech-col li {
-position: relative;
-padding-left: 15px;
-margin-bottom: 8px;
+.sector-group {
+    background: rgba(255, 255, 255, 0.02);
+    padding: 20px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-/* Custom List Bullets */
-.sys-tech-col li::before {
-content: '>';
-position: absolute;
-left: 0;
-color: rgba(255,255,255,0.3);
-font-family: monospace;
-font-size: 0.8rem;
+.sector-group .group-label {
+    font-size: 0.85rem;
+    color: #fff;
+    margin-bottom: 15px;
+    font-family: var(--font-head, sans-serif);
+}
+
+.sector-group ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sector-group ul li {
+    color: #94a3b8;
+    font-size: 0.9rem;
+    line-height: 1.8;
+    padding: 4px 0;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.03);
+}
+
+.sector-group ul li:last-child {
+    border-bottom: none;
+}
+
+.sector-group ul li strong {
+    color: #fff;
+    font-weight: 600;
+}
+
+/* --- RESPONSIVE TWEAKS --- */
+@media (max-width: 768px) {
+    .accordion-header {
+        padding: 18px 20px;
+        flex-wrap: wrap;
+    }
+
+    .sector-title {
+        font-size: 0.95rem;
+    }
+
+    .accordion-body-inner {
+        padding: 0 20px 20px 20px;
+    }
+
+    .sector-description {
+        font-size: 0.9rem;
+    }
+
+    .sector-group {
+        padding: 15px;
+    }
+
+    .sector-group ul li {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .accordion-header {
+        padding: 14px 16px;
+        gap: 12px;
+    }
+
+    .sector-id {
+        font-size: 0.5rem;
+    }
+
+    .sector-title {
+        font-size: 0.85rem;
+    }
+
+    .sector-trigger {
+        width: 25px;
+        height: 25px;
+        font-size: 0.65rem;
+    }
+
+    .accordion-body-inner {
+        padding: 0 16px 16px 16px;
+    }
+
+    .sector-grid {
+        gap: 15px;
+    }
+
+    .sector-group {
+        padding: 12px;
+    }
+
+    .sector-group ul li {
+        font-size: 0.75rem;
+        line-height: 1.6;
+    }
 }

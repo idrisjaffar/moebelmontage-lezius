@@ -1,68 +1,339 @@
 /* ==========================================================================
-   PHASE 12: REVIEWS & TRUST SYSTEM
-   PLATFORM CARDS | SWIPEABLE TESTIMONIALS | NEON GRID OVERLAYS (GOLD THEME)
+   PHASE 12: REVIEWS & TRUST SYSTEM (ENHANCED)
+   PLATFORM CARDS | GRID TESTIMONIALS | NEON OVERLAYS
    ========================================================================== */
 
 :root {
     --bg-darker: #020203;
     --neon-gold: #FFD700;
     --neon-cyan: #00e5ff;
-    --surface: rgba(255, 255, 255, 0.03);
-    --blur: blur(10px);
-    --spring: cubic-bezier(0.16, 1, 0.3, 1) 0.4s;
 }
 
-.review-mainframe-bg { 
-    position: relative; 
-    overflow: hidden; 
+.review-mainframe-bg {
+    position: relative;
+    overflow: hidden;
     background-color: var(--bg-darker);
     padding: 100px 0;
+    border-top: 1px solid rgba(255, 215, 0, 0.1);
 }
 
-.reviews-grid-overlay { 
-    position: absolute; inset: 0; 
-    background-image: linear-gradient(rgba(255, 215, 0, 0.04) 1px, transparent 1px), 
-                      linear-gradient(90deg, rgba(255, 215, 0, 0.04) 1px, transparent 1px); 
-    background-size: 80px 80px; 
-    mask-image: radial-gradient(circle at center, black, transparent 80%); 
+.reviews-grid-overlay {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(255, 215, 0, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 215, 0, 0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(circle at center, black, transparent 80%);
     pointer-events: none;
 }
 
-.trust-cards-wrapper { 
-    display: grid; grid-template-columns: 1fr; gap: 30px; margin-bottom: 80px; 
+.reviews-glow-pulse {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 30%, rgba(255, 215, 0, 0.03), transparent 70%);
+    pointer-events: none;
 }
 
-.platform-card { 
-    display: block; text-decoration: none; border-radius: 20px; padding: 2px; 
-    transition: var(--spring);
+/* --- SECTION HEADER --- */
+.section-header.center {
+    text-align: center;
+    margin-bottom: 60px;
 }
 
-.card-inner { 
-    background: rgba(10, 10, 10, 0.9); padding: 60px 30px; 
-    display: flex; flex-direction: column; align-items: center; 
-    border-radius: 18px; backdrop-filter: var(--blur);
+.pre-title {
+    font-family: var(--font-mono, monospace);
+    color: var(--neon-gold, #FFD700);
+    letter-spacing: 3px;
+    font-size: 0.7rem;
+    margin-bottom: 10px;
+    text-transform: uppercase;
 }
 
-.card-blue { background: linear-gradient(135deg, #004fb6 0%, #001a3d 100%); }
-.card-gold { background: linear-gradient(135deg, var(--neon-gold) 0%, #3d3400 100%); }
-
-.big-score { font-family: sans-serif; font-size: 5rem; font-weight: 900; line-height: 1; margin: 20px 0; letter-spacing: -4px; }
-.card-blue .big-score { color: #fff; }
-.card-gold .big-score { color: #000; }
-
-.swipe-carousel {
-    display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 30px;
-    padding-bottom: 40px; -webkit-overflow-scrolling: touch;
+.section-heading {
+    font-family: var(--font-head, sans-serif);
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 900;
+    color: #fff;
+    margin-bottom: 20px;
+    line-height: 1.1;
 }
 
-.rev-card { 
-    min-width: 320px; scroll-snap-align: start; padding: 40px; background: var(--surface);
-    border-top: 2px solid var(--neon-gold); transition: var(--spring);
+.section-heading .gold-text {
+    color: var(--neon-gold, #FFD700);
 }
 
-.rev-card:hover { border-top-color: var(--neon-cyan); transform: translateY(-8px); }
+.section-subtitle {
+    color: #94a3b8;
+    font-size: 1.1rem;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
 
-@media (min-width: 1024px) {
-    .trust-cards-wrapper { grid-template-columns: 1fr 1fr; }
-    .swipe-carousel { display: grid; grid-template-columns: repeat(3, 1fr); overflow: visible; }
+.section-subtitle strong {
+    color: #fff;
+    font-weight: 700;
+}
+
+/* --- TRUST CARDS (Platform Badges) --- */
+.trust-cards-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+    margin-bottom: 60px;
+}
+
+.platform-card {
+    padding: 18px 35px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    cursor: pointer;
+}
+
+.platform-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+.platform-card:first-child {
+    border-color: rgba(0, 229, 255, 0.3);
+}
+
+.platform-card:first-child:hover {
+    border-color: rgba(0, 229, 255, 0.6);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 229, 255, 0.05);
+}
+
+.platform-card:last-child {
+    border-color: rgba(255, 215, 0, 0.3);
+}
+
+.platform-card:last-child:hover {
+    border-color: rgba(255, 215, 0, 0.6);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 215, 0, 0.05);
+}
+
+.platform-logo {
+    font-family: var(--font-head, sans-serif);
+    font-weight: 900;
+    font-size: 1.2rem;
+    letter-spacing: -1px;
+}
+
+.check24-logo {
+    color: #fff;
+}
+
+.check24-logo span {
+    color: var(--neon-cyan, #00e5ff);
+}
+
+.hammer-logo {
+    color: var(--neon-gold, #FFD700);
+}
+
+.big-score {
+    font-family: var(--font-head, sans-serif);
+    font-weight: 900;
+    font-size: 1.6rem;
+    line-height: 1;
+    color: #fff;
+}
+
+.big-score .gold-text {
+    color: var(--neon-gold, #FFD700);
+}
+
+.score-label {
+    font-family: var(--font-mono, monospace);
+    color: #00e5ff;
+    font-size: 0.6rem;
+    letter-spacing: 1px;
+    margin-top: 4px;
+}
+
+.score-stars {
+    color: var(--neon-gold, #FFD700);
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+}
+
+.sub-stats {
+    font-family: var(--font-mono, monospace);
+    font-size: 0.6rem;
+    letter-spacing: 1px;
+    color: #94a3b8;
+}
+
+.card-divider {
+    width: 1px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.06);
+}
+
+@media (max-width: 600px) {
+    .trust-cards-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .platform-card {
+        width: 100%;
+        max-width: 340px;
+        justify-content: center;
+        padding: 15px 25px;
+    }
+}
+
+/* --- REVIEW CATEGORY HEADERS --- */
+.review-category-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-family: var(--font-mono, monospace);
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    color: #fff;
+    margin-bottom: 25px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    padding-bottom: 12px;
+}
+
+.review-category-header i {
+    font-size: 1.1rem;
+}
+
+.review-category-header i.gold-text {
+    color: var(--neon-gold, #FFD700);
+}
+
+.review-category-header i.cyan-text {
+    color: var(--neon-cyan, #00e5ff);
+}
+
+.review-category-header i.pink-text {
+    color: #ff007f;
+}
+
+/* --- REVIEW GRID --- */
+.review-grid-3col {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 25px;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+@media (min-width: 700px) {
+    .review-grid-3col {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (min-width: 1000px) {
+    .review-grid-3col {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+.review-card-aurum {
+    padding: 30px 25px;
+    background: rgba(10, 8, 5, 0.85);
+    border: 1px solid rgba(255, 215, 0, 0.08);
+    border-top: 3px solid var(--neon-gold, #FFD700);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.review-card-aurum:hover {
+    transform: translateY(-6px);
+    border-color: rgba(255, 215, 0, 0.3);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), 0 0 30px rgba(255, 215, 0, 0.03);
+}
+
+.rev-stars {
+    color: var(--neon-gold, #FFD700);
+    font-size: 0.75rem;
+    margin-bottom: 15px;
+    letter-spacing: 3px;
+}
+
+.rev-quote {
+    font-size: 0.95rem;
+    color: #e2e8f0;
+    line-height: 1.7;
+    font-style: italic;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+.rev-client-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-top: 1px dashed rgba(255, 255, 255, 0.06);
+    padding-top: 15px;
+}
+
+.rev-client-name {
+    font-family: var(--font-head, sans-serif);
+    font-weight: 700;
+    color: #fff;
+    font-size: 1rem;
+}
+
+.rev-client-location {
+    font-family: var(--font-mono, monospace);
+    font-size: 0.6rem;
+    color: #64748b;
+    margin-top: 2px;
+}
+
+.rev-platform-tag {
+    font-family: var(--font-mono, monospace);
+    font-size: 0.6rem;
+    padding: 4px 10px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.04);
+    color: #94a3b8;
+    letter-spacing: 1px;
+}
+
+.rev-platform-tag.check24 {
+    color: var(--neon-cyan, #00e5ff);
+    border: 1px solid rgba(0, 229, 255, 0.15);
+}
+
+.rev-platform-tag.hammer {
+    color: var(--neon-gold, #FFD700);
+    border: 1px solid rgba(255, 215, 0, 0.15);
+}
+
+@media (max-width: 480px) {
+    .review-card-aurum {
+        padding: 20px 16px;
+    }
+
+    .rev-quote {
+        font-size: 0.85rem;
+    }
+
+    .rev-client-name {
+        font-size: 0.85rem;
+    }
+
+    .rev-platform-tag {
+        font-size: 0.5rem;
+        padding: 3px 8px;
+    }
 }
