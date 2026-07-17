@@ -1,296 +1,222 @@
 /* ==========================================================================
-   RAPHAEL LEZIUS | 2026 MASTER SYSTEM ENGINE
-   ARCHITECTURE: ASYNC BOOT SEQUENCE | EVENT DELEGATION | TERMINAL OS
+   RAPHAEL LEZIUS | MASTER ENGINE v2026
+   ARCHITECTURE: ASYNC BOOT | COMPONENT INJECTION | 2‑SIDED LOGO FLIP
    ========================================================================== */
 
-document.addEventListener("DOMContentLoaded", () => {
-    
-    // 1. VISUAL UNLOCK (Fixes the Black Screen / Typography Sync)
-    if (document.fonts) {
-        document.fonts.ready.then(() => document.body.classList.add('typography-synced'));
-    } else {
-        document.body.classList.add('typography-synced');
-    }
+(function() {
+    "use strict";
 
-    const transitionEngine = document.getElementById('transition-engine');
-    if (transitionEngine) {
-        setTimeout(() => transitionEngine.style.transform = 'translateY(-100%)', 800);
-    }
+    // ────────────────────────────────────────────────
+    // 1. BOOT SEQUENCE (Runs once DOM is ready)
+    // ────────────────────────────────────────────────
+    document.addEventListener('DOMContentLoaded', function() {
 
-    // 2. INITIALIZE VISUAL ENGINES (AOS)
-    if (typeof AOS !== 'undefined') {
-        AOS.init({ duration: 800, offset: 50, once: true });
-    }
+        console.log('🔄 SYSTEM: Booting Aurum 2077…');
 
-    // 3. ASYNC COMPONENT INJECTOR (Upgraded with Promise returns)
-    const injectComponent = (id, file) => {
-        const container = document.getElementById(id);
-        if (container) {
-            return fetch(file)
-                .then(response => {
-                    if (!response.ok) throw new Error(`Missing ${file}`);
+        // --- A. Inject global components (Nav, Footer, OS) ---
+        // Try multiple possible paths
+        var navPaths = ['nav.html', 'components/nav.html', 'partials/nav.html'];
+        var footerPaths = ['footer.html', 'components/footer.html', 'partials/footer.html'];
+        var osPaths = ['mission-os.html', 'components/mission-os.html', 'partials/mission-os.html'];
+
+        Promise.all([
+            loadComponent('global-nav', navPaths),
+            loadComponent('global-footer', footerPaths),
+            loadComponent('global-os', osPaths)
+        ]).then(function() {
+            // AOS refresh (animations on injected content)
+            if (typeof AOS !== 'undefined') {
+                AOS.refresh();
+                console.log('✅ AOS: Refreshed.');
+            }
+            // Attach event listeners to newly injected elements
+            attachEventListeners();
+            console.log('✅ SYSTEM: All components loaded and listeners attached.');
+        });
+
+        // --- B. Initialize AOS (on static content) ---
+        if (typeof AOS !== 'undefined') {
+            AOS.init({ duration: 1000, once: true, offset: 50 });
+        }
+
+        // --- C. Set system date ---
+        var dateEl = document.getElementById('dynamic-date');
+        if (dateEl) {
+            dateEl.textContent = new Date().getFullYear();
+        }
+
+        // --- D. Attach listeners to elements already in the DOM ---
+        attachEventListeners();
+
+        console.log('✅ SYSTEM: Boot sequence complete.');
+    });
+
+
+    // ────────────────────────────────────────────────
+    // 2. COMPONENT INJECTOR (with fallback paths)
+    // ────────────────────────────────────────────────
+    function loadComponent(id, paths) {
+        var target = document.getElementById(id);
+        if (!target) {
+            console.warn('⚠️ Component container "' + id + '" not found in HTML.');
+            return Promise.resolve();
+        }
+
+        // Try multiple paths in order
+        function tryPath(index) {
+            if (index >= paths.length) {
+                console.warn('⚠️ Could not load component "' + id + '" from any path.');
+                // Fallback content
+                if (id === 'global-nav') {
+                    target.innerHTML = '<nav style="padding:20px;color:#888;text-align:center;background:#0a0805;border-bottom:1px solid rgba(255,215,0,0.1);">[ Navigation not loaded ]</nav>';
+                } else if (id === 'global-footer') {
+                    target.innerHTML = '<footer style="padding:40px 20px;color:#666;text-align:center;background:#0a0805;border-top:1px solid rgba(255,215,0,0.1);">[ Footer not loaded ]</footer>';
+                } else if (id === 'global-os') {
+                    target.innerHTML = '<div style="padding:20px;color:#888;text-align:center;">[ Mission OS not loaded ]</div>';
+                }
+                return Promise.resolve();
+            }
+
+            var path = paths[index];
+            return fetch(path)
+                .then(function(response) {
+                    if (!response.ok) throw new Error('HTTP ' + response.status);
                     return response.text();
                 })
-                .then(data => {
-                    container.innerHTML = data;
+                .then(function(html) {
+                    target.innerHTML = html;
+                    console.log('✅ Loaded: ' + path);
+                    return Promise.resolve();
                 })
-                .catch(err => console.error(`System Injection Error [${file}]:`, err));
+                .catch(function() {
+                    // Try next path
+                    return tryPath(index + 1);
+                });
         }
-        return Promise.resolve();
-    };
 
-    // LOAD GLOBAL COMPONENTS (Paths corrected to match your VS Code structure)
-    Promise.all([
-        injectComponent('global-nav', 'components/nav.html'),
-        injectComponent('global-footer', 'components/footer.html'),
-        injectComponent('global-os', 'components/mission-os.html')
-    ]).then(() => {
-        // Refresh animations after HTML is injected so new elements animate properly
-        if (typeof AOS !== 'undefined') {
-            AOS.refresh();
-        }
-        console.log("SYS_UPLINK ESTABLISHED: All components loaded.");
-    });
-
-    // 4. BOOT SUBSYSTEMS
-    initializePhysicsAndMenus();
-    initializeMissionOS();
-});
+        return tryPath(0);
+    }
 
 
-/* ==========================================================================
-   PHYSICS & GLOBAL UI LOGIC
-   ========================================================================== */
-function initializePhysicsAndMenus() {
-    
-    // A. Magnetic Buttons (Hover Physics)
-    document.addEventListener('mousemove', (e) => {
-        const btn = e.target.closest('.btn-magnetic, .magnetic-target');
-        if (btn) {
-            const pos = btn.getBoundingClientRect();
-            const x = e.clientX - pos.left - pos.width / 2;
-            const y = e.clientY - pos.top - pos.height / 2;
-            btn.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px)`;
-        }
-    });
-    document.addEventListener('mouseout', (e) => {
-        const btn = e.target.closest('.btn-magnetic, .magnetic-target');
-        if (btn) btn.style.transform = 'translate(0px, 0px)';
-    });
+    // ────────────────────────────────────────────────
+    // 3. EVENT LISTENERS (Delegated + Direct)
+    // ────────────────────────────────────────────────
+    function attachEventListeners() {
 
-    // B. Global Accordion Delegation (FAQ)
-    document.addEventListener('click', (e) => {
-        const accordionHeader = e.target.closest('.accordion-header') || e.target.closest('.faq-trigger-btn');
-        if (accordionHeader) {
-            const item = accordionHeader.parentElement;
-            const isOpen = item.classList.contains('active') || item.classList.contains('open');
-            
-            const container = item.parentElement;
-            container.querySelectorAll('.accordion-item, .faq-module').forEach(mod => {
-                mod.classList.remove('active', 'open');
-                const content = mod.querySelector('.accordion-content, .module-body');
-                if (content) content.style.maxHeight = null;
+        // --- A. Magnetic Buttons (hover physics) ---
+        document.querySelectorAll('.magnetic-target').forEach(function(btn) {
+            btn.addEventListener('mousemove', function(e) {
+                var rect = this.getBoundingClientRect();
+                var x = e.clientX - rect.left - rect.width / 2;
+                var y = e.clientY - rect.top - rect.height / 2;
+                this.style.transform = 'translate(' + (x * 0.15) + 'px, ' + (y * 0.15) + 'px)';
+            });
+            btn.addEventListener('mouseleave', function() {
+                this.style.transform = 'translate(0, 0)';
+            });
+        });
+
+        // --- B. FAQ Accordion (delegated to handle dynamic content) ---
+        document.addEventListener('click', function(e) {
+            var trigger = e.target.closest('.faq-trigger');
+            if (!trigger) return;
+
+            var item = trigger.closest('.js-faq-item');
+            if (!item) return;
+
+            var content = item.querySelector('.faq-content');
+            if (!content) return;
+
+            e.preventDefault();
+
+            var isOpen = item.classList.contains('active');
+
+            // Close all others
+            document.querySelectorAll('.js-faq-item').forEach(function(other) {
+                if (other !== item) {
+                    other.classList.remove('active');
+                    var otherContent = other.querySelector('.faq-content');
+                    if (otherContent) otherContent.style.maxHeight = null;
+                }
             });
 
-            if (!isOpen) {
-                item.classList.add('active', 'open');
-                const content = item.querySelector('.accordion-content, .module-body');
-                if (content) content.style.maxHeight = content.scrollHeight + "px";
+            if (isOpen) {
+                item.classList.remove('active');
+                content.style.maxHeight = '0px';
+            } else {
+                item.classList.add('active');
+                content.style.maxHeight = content.scrollHeight + 'px';
+                trigger.setAttribute('aria-expanded', 'true');
             }
-        }
-    });
+        });
 
-    // C. Mobile Menu Toggle
-    document.addEventListener('click', (e) => {
-        const hamburger = e.target.closest('#mobileMenuToggle');
-        const mobileMenu = document.getElementById('fluidMobileMenu');
-        
-        if (hamburger && mobileMenu) {
-            mobileMenu.classList.toggle('is-open');
-            hamburger.classList.toggle('is-active');
-            document.body.style.overflow = mobileMenu.classList.contains('is-open') ? 'hidden' : '';
-        }
-
-        // Close menu if a link is clicked
-        if (e.target.closest('.m-link-massive')) {
-            if(mobileMenu) mobileMenu.classList.remove('is-open');
-            const toggle = document.getElementById('mobileMenuToggle');
-            if(toggle) toggle.classList.remove('is-active');
-            document.body.style.overflow = '';
-        }
-    });
-}
-
-
-/* ==========================================================================
-   MISSION OS v2026 // MODAL & MULTI-STEP LOGIC
-   ========================================================================== */
-function initializeMissionOS() {
-    
-    document.addEventListener('click', (e) => {
-        
-        // --- OPEN MODAL ---
-        if (e.target.closest('.js-open-os')) {
-            e.preventDefault();
-            const modal = document.getElementById('missionOS');
-            if (modal) {
-                modal.classList.add('system-active');
-                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        // --- C. Mission OS Modal ---
+        document.addEventListener('click', function(e) {
+            var openBtn = e.target.closest('.js-open-os');
+            if (openBtn) {
+                e.preventDefault();
+                var modal = document.getElementById('global-os');
+                if (modal) {
+                    modal.classList.add('is-active');
+                    document.body.style.overflow = 'hidden';
+                }
+                return;
             }
-        }
 
-        // --- CLOSE MODAL ---
-        if (e.target.closest('.js-close-os')) {
-            e.preventDefault();
-            const modal = document.getElementById('missionOS');
-            if (modal) {
-                modal.classList.remove('system-active');
+            var closeBtn = e.target.closest('.js-close-os');
+            if (closeBtn) {
+                e.preventDefault();
+                var modal = document.getElementById('global-os');
+                if (modal) {
+                    modal.classList.remove('is-active');
+                    document.body.style.overflow = '';
+                }
+                return;
+            }
+
+            // Close modal on backdrop click
+            var backdrop = e.target.closest('.os-backdrop');
+            if (backdrop) {
+                var modal = document.getElementById('global-os');
+                if (modal) {
+                    modal.classList.remove('is-active');
+                    document.body.style.overflow = '';
+                }
+                return;
+            }
+        });
+
+        // --- D. Mobile Menu Toggle ---
+        document.addEventListener('click', function(e) {
+            var toggle = e.target.closest('#mobileMenuToggle');
+            if (toggle) {
+                var menu = document.getElementById('fluidMobileMenu');
+                if (menu) {
+                    menu.classList.toggle('is-open');
+                    toggle.classList.toggle('is-active');
+                    document.body.style.overflow = menu.classList.contains('is-open') ? 'hidden' : '';
+                }
+                return;
+            }
+
+            // Close menu on link click
+            var link = e.target.closest('.m-link-massive');
+            if (link) {
+                var menu = document.getElementById('fluidMobileMenu');
+                if (menu) menu.classList.remove('is-open');
+                var toggle = document.getElementById('mobileMenuToggle');
+                if (toggle) toggle.classList.remove('is-active');
                 document.body.style.overflow = '';
             }
-        }
+        });
 
-        // --- NEXT STEP LOGIC (With Upgraded Validation) ---
-        if (e.target.closest('.btn-next')) {
-            const currentStep = e.target.closest('.form-step');
-            let isValid = true;
-            
-            // Validate text inputs, selects, and textareas
-            currentStep.querySelectorAll('input[required], select[required], textarea[required]').forEach(input => {
-                
-                // Handle Checkbox validation (like the DSGVO box)
-                if (input.type === 'checkbox') {
-                    if (!input.checked) {
-                        isValid = false;
-                        input.parentElement.style.color = '#FF007F'; // Highlight text in pink
-                    } else {
-                        input.parentElement.style.color = ''; 
-                    }
-                } 
-                // Handle standard text inputs
-                else if (input.type !== 'radio') {
-                    if (!input.value.trim()) {
-                        isValid = false;
-                        input.style.borderBottomColor = '#FF007F'; // Highlight border in pink
-                    } else {
-                        input.style.borderBottomColor = ''; 
-                    }
-                }
+        // --- E. TWO‑SIDED LOGO FLIP (Profile Avatar) ---
+        var avatarFrame = document.querySelector('.avatar-frame');
+        if (avatarFrame) {
+            avatarFrame.addEventListener('click', function() {
+                this.classList.toggle('flipped');
             });
-
-            if (isValid) {
-                const nextStepNum = parseInt(currentStep.dataset.step) + 1;
-                const nextStep = document.querySelector(`.form-step[data-step="${nextStepNum}"]`);
-                
-                if (nextStep) {
-                    currentStep.classList.remove('is-active');
-                    nextStep.classList.add('is-active');
-                    updateOSProgress(nextStepNum);
-                }
-            }
-        }
-
-        // --- PREVIOUS STEP LOGIC ---
-        if (e.target.closest('.btn-prev')) {
-            const currentStep = e.target.closest('.form-step');
-            const prevStepNum = parseInt(currentStep.dataset.step) - 1;
-            const prevStep = document.querySelector(`.form-step[data-step="${prevStepNum}"]`);
-            
-            if (prevStep) {
-                currentStep.classList.remove('is-active');
-                prevStep.classList.add('is-active');
-                updateOSProgress(prevStepNum);
-            }
-        }
-    });
-
-    // --- PROGRESS BAR & INDICATOR HANDLER ---
-    function updateOSProgress(stepNumber) {
-        // Update Bar Width (25%, 50%, 75%, 100%)
-        const progressBar = document.getElementById('osProgress');
-        if (progressBar) {
-            progressBar.style.width = `${stepNumber * 25}%`;
-        }
-
-        // Update Text Indicators (st1, st2, st3, st4)
-        for (let i = 1; i <= 4; i++) {
-            const indicator = document.getElementById(`st${i}`);
-            if (indicator) {
-                if (i <= stepNumber) {
-                    indicator.classList.add('active');
-                } else {
-                    indicator.classList.remove('active');
-                }
-            }
         }
     }
-}
 
-/* ==========================================================================
-   RAPHAEL LEZIUS | MAIN CONTROL ENGINE
-   ========================================================================== */
-
-document.addEventListener('DOMContentLoaded', () => {
-    
-    // 1. Initialize AOS Engine
-    AOS.init({
-        duration: 1000,
-        once: true,
-        offset: 50
-    });
-
-    // 2. Dynamic Date Injection (System Date for HUD)
-    const dateEl = document.getElementById('dynamic-date');
-    if (dateEl) {
-        dateEl.textContent = new Date().getFullYear();
-    }
-
-    // 3. Magnetic Button Interaction
-    const magneticBtns = document.querySelectorAll('.magnetic-target');
-    magneticBtns.forEach(btn => {
-        btn.addEventListener('mousemove', (e) => {
-            const rect = btn.getBoundingClientRect();
-            const x = e.clientX - rect.left - rect.width / 2;
-            const y = e.clientY - rect.top - rect.height / 2;
-            btn.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px)`;
-        });
-        btn.addEventListener('mouseleave', () => {
-            btn.style.transform = `translate(0, 0)`;
-        });
-    });
-
-    // 4. Modal Triggers (Mission OS)
-    const openOsBtns = document.querySelectorAll('.js-open-os');
-    openOsBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            // Trigger your mission-os.js logic here
-            if (typeof window.openMissionOS === 'function') {
-                window.openMissionOS();
-            }
-        });
-    });
-});
-
-// FAQ Accordion Engine
-const faqItems = document.querySelectorAll('.js-faq-item');
-
-faqItems.forEach(item => {
-    const trigger = item.querySelector('.faq-trigger');
-    const content = item.querySelector('.faq-content');
-
-    trigger.addEventListener('click', () => {
-        // Toggle the 'active' class
-        const isActive = item.classList.contains('active');
-        
-        // Close all items first (optional)
-        faqItems.forEach(el => {
-            el.classList.remove('active');
-            el.querySelector('.faq-content').style.maxHeight = null;
-        });
-
-        // If it wasn't active, open it now
-        if (!isActive) {
-            item.classList.add('active');
-            content.style.maxHeight = content.scrollHeight + "px"; // Dynamic height calculation
-        }
-    });
-});
+})();

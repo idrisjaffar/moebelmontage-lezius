@@ -1,8 +1,58 @@
 /* ==========================================================================
    COMPONENT: PROJECT BELT – LIVE REFERENZEN (AURUM 2077)
-   CAROUSEL ENGINE | SECTOR FILTERS | ANTI-BLUR IMAGE OPTIMIZATION
+   FULL CAROUSEL ENGINE | SECTOR FILTERS | ANTI-BLUR IMAGE OPTIMIZATION
    LOCATION: assets/css/components/belt.css
    ========================================================================== */
+/* ==========================================================================
+   [COMPONENT NAME] – MOBILE-FLUID ARCHITECTURE
+   BREAKPOINTS: 480px | 768px | 992px | 1200px
+   ========================================================================== */
+
+/* --- BASE (Mobile First) --- */
+.component-wrapper {
+    width: 100%;
+    padding: clamp(20px, 4vw, 60px);
+    display: flex;
+    flex-direction: column;
+    gap: clamp(16px, 2vw, 30px);
+}
+
+.component-title {
+    font-size: clamp(1.4rem, 4vw, 2.8rem);
+    line-height: 1.2;
+}
+
+.component-text {
+    font-size: clamp(0.85rem, 1.2vw, 1.05rem);
+    line-height: 1.6;
+}
+
+/* --- TABLET (768px+) --- */
+@media (min-width: 768px) {
+    .component-wrapper {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .component-item {
+        flex: 1 1 calc(50% - 20px);
+    }
+}
+
+/* --- DESKTOP (992px+) --- */
+@media (min-width: 992px) {
+    .component-item {
+        flex: 1 1 calc(33.333% - 20px);
+    }
+}
+
+/* --- WIDE DESKTOP (1200px+) --- */
+@media (min-width: 1200px) {
+    .component-wrapper {
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+}
+
 
 /* --- 1. MAIN LAYOUT (VISUAL SPLIT) --- */
 .visual-split-layout {
@@ -172,15 +222,15 @@
     box-shadow: 0 0 30px rgba(255, 215, 0, 0.05);
 }
 
-/* CRITICAL: ANTI-BLUR FIX - Ensures images stay razor-sharp */
+/* CRITICAL: ANTI-BLUR FIX – Ensures images stay razor-sharp */
 .belt-image-wrapper img {
     display: block;
     width: 100%;
     height: 350px;
-    object-fit: cover;          /* Fills the container without distortion */
-    image-rendering: auto;      /* Allows browser to choose best rendering */
-    backface-visibility: hidden; /* Prevents flicker on transform */
-    transform: translateZ(0);   /* Forces GPU acceleration */
+    object-fit: cover;
+    image-rendering: auto;
+    backface-visibility: hidden;
+    transform: translateZ(0);
     transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: transform;
 }
@@ -357,7 +407,7 @@
     }
 
     .belt-image-wrapper:hover {
-        border-color: rgba(255, 215, 0, 0.12); /* Keep border consistent on touch */
+        border-color: rgba(255, 215, 0, 0.12);
         box-shadow: none;
     }
 
@@ -413,4 +463,111 @@
 .belt-image-wrapper img {
     position: relative;
     z-index: 2;
+}
+
+/* --- 15. RESPONSIVE GRID FALLBACK FOR SECTOR FILTERS --- */
+@media (max-width: 480px) {
+    .sector-nav {
+        justify-content: center;
+    }
+
+    .sector-btn {
+        flex: 1 1 auto;
+        text-align: center;
+        min-width: 60px;
+    }
+}
+
+/* --- BELT MOBILE FIX --- */
+@media (max-width: 768px) {
+    .visual-split-layout {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .visual-info-pane {
+        padding: 24px 18px;
+        order: 2; /* Info below images on mobile */
+    }
+
+    .belt-container {
+        order: 1;
+    }
+
+    .sector-nav {
+        gap: 6px;
+        justify-content: center;
+    }
+
+    .sector-btn {
+        font-size: 0.5rem;
+        padding: 5px 12px;
+        letter-spacing: 0.5px;
+    }
+
+    .belt-controls {
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .nav-hud-btn {
+        padding: 8px 16px;
+        font-size: 0.6rem;
+        gap: 6px;
+    }
+
+    .belt-image-wrapper img {
+        height: 220px;
+    }
+
+    .data-stamp {
+        font-size: 0.5rem;
+        padding: 8px 6px;
+        letter-spacing: 1px;
+    }
+
+    .visual-info-pane .section-heading {
+        font-size: clamp(1.4rem, 4vw, 1.8rem);
+    }
+
+    .visual-info-pane p {
+        font-size: 0.8rem;
+    }
+
+    .project-counter {
+        font-size: 0.5rem;
+    }
+
+    .archive-link {
+        font-size: 0.6rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .belt-image-wrapper img {
+        height: 160px;
+    }
+
+    .sector-btn {
+        font-size: 0.45rem;
+        padding: 4px 8px;
+    }
+
+    .nav-hud-btn {
+        font-size: 0.5rem;
+        padding: 6px 12px;
+    }
+
+    .data-stamp {
+        font-size: 0.45rem;
+        padding: 6px 4px;
+    }
+
+    .visual-info-pane {
+        padding: 16px 12px;
+    }
+
+    .belt-item {
+        padding: 0 4px;
+    }
 }

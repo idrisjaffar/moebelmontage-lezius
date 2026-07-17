@@ -2,6 +2,56 @@
    PHASE 8: FAQ MAINFRAME – SYSTEM PROTOCOLS (FULL WORKING)
    ACCORDION ENGINE | TERMINAL-UI | GOLD-STATUS INDICATORS
    ========================================================================== */
+/* ==========================================================================
+   [COMPONENT NAME] – MOBILE-FLUID ARCHITECTURE
+   BREAKPOINTS: 480px | 768px | 992px | 1200px
+   ========================================================================== */
+
+/* --- BASE (Mobile First) --- */
+.component-wrapper {
+    width: 100%;
+    padding: clamp(20px, 4vw, 60px);
+    display: flex;
+    flex-direction: column;
+    gap: clamp(16px, 2vw, 30px);
+}
+
+.component-title {
+    font-size: clamp(1.4rem, 4vw, 2.8rem);
+    line-height: 1.2;
+}
+
+.component-text {
+    font-size: clamp(0.85rem, 1.2vw, 1.05rem);
+    line-height: 1.6;
+}
+
+/* --- TABLET (768px+) --- */
+@media (min-width: 768px) {
+    .component-wrapper {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .component-item {
+        flex: 1 1 calc(50% - 20px);
+    }
+}
+
+/* --- DESKTOP (992px+) --- */
+@media (min-width: 992px) {
+    .component-item {
+        flex: 1 1 calc(33.333% - 20px);
+    }
+}
+
+/* --- WIDE DESKTOP (1200px+) --- */
+@media (min-width: 1200px) {
+    .component-wrapper {
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+}
+
 
 .faq-tech-section {
     padding: clamp(80px, 10vh, 120px) 0;
@@ -263,4 +313,91 @@
 /* When active, let JS control the height */
 .faq-module-v2.active .faq-content {
     max-height: none; /* This will be overridden by inline style, but it's safe */
+}
+
+
+/* --- FAQ MOBILE FIX --- */
+@media (max-width: 768px) {
+    .faq-trigger {
+        padding: 18px 16px;
+        gap: 14px;
+    }
+
+    .faq-icon-box {
+        width: 40px;
+        height: 40px;
+        min-width: 40px;
+        font-size: 1rem;
+    }
+
+    .faq-question {
+        font-size: clamp(0.85rem, 2vw, 1rem);
+    }
+
+    .faq-category {
+        font-size: 0.5rem;
+        letter-spacing: 2px;
+    }
+
+    .faq-plus {
+        width: 18px;
+    }
+    .faq-plus::after {
+        height: 18px;
+        left: 8px;
+        top: -8px;
+    }
+
+    .faq-inner {
+        padding: 0 16px 16px 60px;
+    }
+
+    .faq-grid-internal {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding-top: 16px;
+    }
+
+    .faq-text-block {
+        padding: 14px;
+    }
+
+    .faq-text-block h6 {
+        font-size: 0.75rem;
+    }
+
+    .faq-text-block p {
+        font-size: 0.8rem;
+        line-height: 1.6;
+    }
+}
+
+@media (max-width: 480px) {
+    .faq-trigger {
+        padding: 14px 12px;
+        gap: 10px;
+    }
+
+    .faq-icon-box {
+        width: 32px;
+        height: 32px;
+        min-width: 32px;
+        font-size: 0.8rem;
+    }
+
+    .faq-inner {
+        padding: 0 12px 12px 48px;
+    }
+
+    .faq-text-block {
+        padding: 12px;
+    }
+
+    .faq-text-block h6 {
+        font-size: 0.65rem;
+    }
+
+    .faq-text-block p {
+        font-size: 0.7rem;
+    }
 }

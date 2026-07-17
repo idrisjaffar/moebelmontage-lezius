@@ -3,6 +3,57 @@
    NEO-EDITORIAL & BENTO ARCHITECTURE
    ========================================================================== */
 
+   /* ==========================================================================
+   [COMPONENT NAME] – MOBILE-FLUID ARCHITECTURE
+   BREAKPOINTS: 480px | 768px | 992px | 1200px
+   ========================================================================== */
+
+/* --- BASE (Mobile First) --- */
+.component-wrapper {
+    width: 100%;
+    padding: clamp(20px, 4vw, 60px);
+    display: flex;
+    flex-direction: column;
+    gap: clamp(16px, 2vw, 30px);
+}
+
+.component-title {
+    font-size: clamp(1.4rem, 4vw, 2.8rem);
+    line-height: 1.2;
+}
+
+.component-text {
+    font-size: clamp(0.85rem, 1.2vw, 1.05rem);
+    line-height: 1.6;
+}
+
+/* --- TABLET (768px+) --- */
+@media (min-width: 768px) {
+    .component-wrapper {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .component-item {
+        flex: 1 1 calc(50% - 20px);
+    }
+}
+
+/* --- DESKTOP (992px+) --- */
+@media (min-width: 992px) {
+    .component-item {
+        flex: 1 1 calc(33.333% - 20px);
+    }
+}
+
+/* --- WIDE DESKTOP (1200px+) --- */
+@media (min-width: 1200px) {
+    .component-wrapper {
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+}
+
+
 /* Failsafe to prevent blank screens */
 body { opacity: 1 !important; visibility: visible !important; background-color: #030405; }
 .no-js-override [data-aos] { opacity: 1 !important; transform: none !important; visibility: visible !important; }

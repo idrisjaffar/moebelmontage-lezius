@@ -2,6 +2,56 @@
    PIECE 6: KINETIC HERO ENGINE (v2077.4 - MAXIMUM POLISH)
    VIDEO INTEGRATION | QUANTUM DRIFT PARTICLES | BREATHING HUD
    ========================================================================== */
+/* ==========================================================================
+   [COMPONENT NAME] – MOBILE-FLUID ARCHITECTURE
+   BREAKPOINTS: 480px | 768px | 992px | 1200px
+   ========================================================================== */
+
+/* --- BASE (Mobile First) --- */
+.component-wrapper {
+    width: 100%;
+    padding: clamp(20px, 4vw, 60px);
+    display: flex;
+    flex-direction: column;
+    gap: clamp(16px, 2vw, 30px);
+}
+
+.component-title {
+    font-size: clamp(1.4rem, 4vw, 2.8rem);
+    line-height: 1.2;
+}
+
+.component-text {
+    font-size: clamp(0.85rem, 1.2vw, 1.05rem);
+    line-height: 1.6;
+}
+
+/* --- TABLET (768px+) --- */
+@media (min-width: 768px) {
+    .component-wrapper {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .component-item {
+        flex: 1 1 calc(50% - 20px);
+    }
+}
+
+/* --- DESKTOP (992px+) --- */
+@media (min-width: 992px) {
+    .component-item {
+        flex: 1 1 calc(33.333% - 20px);
+    }
+}
+
+/* --- WIDE DESKTOP (1200px+) --- */
+@media (min-width: 1200px) {
+    .component-wrapper {
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+}
+
 
 .hero-section { 
     position: relative; 
@@ -325,4 +375,72 @@
     position: absolute; bottom: 0; left: 0; width: 100%; height: 100px;
     background: linear-gradient(to top, var(--bg-dark, #020203), transparent);
     z-index: 4; pointer-events: none;
+}
+
+
+/* --- HERO MOBILE FIX --- */
+@media (max-width: 768px) {
+    .hero-section {
+        min-height: 100vh;
+        padding: 120px 0 60px 0;
+    }
+
+    .hero-title-sharp {
+        font-size: clamp(2rem, 7vw, 3rem);
+        line-height: 1.1;
+    }
+
+    .hero-title-sharp .title-line {
+        display: block;
+    }
+
+    .hero-mission-statement {
+        font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+        padding-left: 15px;
+        border-left-width: 3px;
+    }
+
+    .hero-text-core {
+        max-width: 100%;
+        padding: 0 10px;
+    }
+
+    .tactical-btn-group {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .tactical-btn-group .btn {
+        width: 100%;
+        justify-content: center;
+        padding: 14px 20px;
+        font-size: 0.8rem;
+    }
+
+    .system-uplink-badge {
+        padding: 6px 12px;
+        font-size: 0.6rem;
+        flex-wrap: wrap;
+    }
+
+    .uplink-text {
+        font-size: 0.6rem;
+        letter-spacing: 1px;
+    }
+
+    /* Hide OPS Panel on mobile */
+    .ops-panel-wrapper {
+        display: none !important;
+    }
+
+    /* Video background */
+    .hero-video {
+        opacity: 0.3;
+    }
+
+    /* Gold bubbles effect - reduce on mobile for performance */
+    #gold-bubbles-effect::before,
+    #gold-bubbles-effect::after {
+        box-shadow: 10vw 10vh 2px 0px rgba(255, 215, 0, 0.4);
+    }
 }

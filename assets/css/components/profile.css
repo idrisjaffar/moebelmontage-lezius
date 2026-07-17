@@ -1,15 +1,16 @@
 /* ==========================================================================
-   PHASE 3: DIGITAL PROFILE & PHILOSOPHY (ADAPTIVE MATRIX)
+   PHASE 3: DIGITAL PROFILE & PHILOSOPHY (AURUM 2077)
    FILE: assets/css/components/profile.css
    ========================================================================== */
 
+/* --- 1. DESIGN TOKENS --- */
 :root {
     --bg-darker: #020203;
     --neon-gold: #FFD700;
     --neon-cyan: #00e5ff;
 }
 
-/* --- 1. PROFILE SPLIT LAYOUT --- */
+/* --- 2. PROFILE SPLIT LAYOUT --- */
 .profile-split-layout {
     display: grid;
     grid-template-columns: 1fr;
@@ -24,7 +25,7 @@
     }
 }
 
-/* --- 2. HUD MONITOR --- */
+/* --- 3. HUD MONITOR --- */
 .hud-monitor {
     background: rgba(0, 0, 0, 0.8);
     border: 1px solid rgba(0, 229, 255, 0.2);
@@ -99,7 +100,7 @@
     box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
 }
 
-/* --- 3. ID CARD --- */
+/* --- 4. ID CARD --- */
 .id-card {
     background: rgba(255, 255, 255, 0.02);
     border: 1px solid rgba(255, 215, 0, 0.1);
@@ -145,72 +146,7 @@
     50% { opacity: 0.2; }
 }
 
-/* --- AVATAR FRAME (WIDE LOGO SUPPORT) --- */
-.avatar-frame {
-    width: 100%;
-    max-width: 380px;
-    margin: 0 auto 20px;
-    position: relative;
-    display: flex;
-    justify-content: center;
-}
-
-/* Holographic Corner Brackets */
-.avatar-frame::before,
-.avatar-frame::after {
-    content: '';
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    border: 2px solid var(--neon-cyan, #00e5ff);
-    z-index: 2;
-    pointer-events: none;
-    opacity: 0.6;
-    transition: all 0.4s ease;
-}
-
-.avatar-frame::before {
-    top: -5px;
-    left: -5px;
-    border-right: none;
-    border-bottom: none;
-}
-
-.avatar-frame::after {
-    bottom: -5px;
-    right: -5px;
-    border-left: none;
-    border-top: none;
-    border-color: var(--neon-gold, #FFD700);
-}
-
-.id-card:hover .avatar-frame::before,
-.id-card:hover .avatar-frame::after {
-    width: 30px;
-    height: 30px;
-    opacity: 1;
-}
-
-.avatar-img {
-    width: 100%;
-    max-width: 320px;
-    height: auto;
-    border-radius: 4px;
-    border: 1px solid rgba(255, 215, 0, 0.3);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 0 0 15px rgba(255, 215, 0, 0.05);
-    object-fit: contain;
-    display: block;
-    background: #000;
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.id-card:hover .avatar-img {
-    border-color: var(--neon-cyan, #00e5ff);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.6), 0 0 30px rgba(0, 229, 255, 0.15);
-    transform: translateY(-3px);
-}
-
-/* --- PROFILE TEXT --- */
+/* --- 5. PROFILE TEXT --- */
 .pro-name {
     font-size: 2rem;
     margin: 15px 0 5px 0;
@@ -278,7 +214,7 @@
 .stat-cell .value .gold-text { color: var(--neon-gold, #FFD700); }
 .stat-cell .value .cyan-text { color: var(--neon-cyan, #00e5ff); }
 
-/* --- 4. PHILOSOPHY CONTENT --- */
+/* --- 6. PHILOSOPHY CONTENT --- */
 .philosophy-content {
     display: flex;
     flex-direction: column;
@@ -328,7 +264,7 @@
     color: #f8fafc;
 }
 
-/* --- 5. TACTILE STREAM CARDS --- */
+/* --- 7. TACTILE STREAM CARDS --- */
 .philosophy-tactile-stream {
     display: flex;
     overflow-x: auto;
@@ -401,39 +337,7 @@
     margin: 0;
 }
 
-@media (min-width: 768px) {
-    .philosophy-tactile-stream {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        overflow-x: visible;
-        padding-bottom: 0;
-    }
-
-    .tech-card-v2 {
-        min-width: auto;
-    }
-
-    .philosophy-tactile-stream::-webkit-scrollbar {
-        display: none;
-    }
-}
-
-@media (max-width: 480px) {
-    .tech-card-v2 {
-        min-width: 240px;
-        padding: 20px 18px;
-    }
-
-    .card-title-v2 {
-        font-size: 0.75rem;
-    }
-
-    .card-desc-v2 {
-        font-size: 0.75rem;
-    }
-}
-
-/* --- 6. CONSULTATION WRAPPER --- */
+/* --- 8. CONSULTATION WRAPPER --- */
 .consultation-wrapper {
     margin-top: 40px;
     padding: 30px;
@@ -529,7 +433,237 @@
     opacity: 0.7;
 }
 
+/* ============================================================
+   TWO-SIDED LOGO FLIP (AVATAR) – FINAL VERSION
+   ============================================================ */
+
+.avatar-frame {
+    cursor: pointer;
+    perspective: 1000px;
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto 20px;
+}
+
+.avatar-frame .flipper {
+    position: relative;
+    transition: 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+    width: 100%;
+    aspect-ratio: 1 / 0.8;
+}
+
+.avatar-frame.flipped .flipper {
+    transform: rotateY(180deg);
+}
+
+.avatar-frame .front,
+.avatar-frame .back {
+    backface-visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    overflow: hidden;
+    background: #000;
+}
+
+.avatar-frame .back {
+    transform: rotateY(180deg);
+}
+
+.avatar-frame .front img,
+.avatar-frame .back img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    border-radius: 4px;
+    transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.avatar-frame:hover .front img,
+.avatar-frame:hover .back img {
+    border-color: rgba(0, 229, 255, 0.5);
+    box-shadow: 0 0 30px rgba(0, 229, 255, 0.1);
+}
+
+/* ============================================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================================ */
+
+/* --- Tablet (768px) --- */
+@media (max-width: 768px) {
+    .profile-split-layout {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .profile-card-wrapper {
+        max-width: 100%;
+        padding: 0 10px;
+    }
+
+    .id-card {
+        padding: 25px 20px;
+    }
+
+    .pro-name {
+        font-size: 1.6rem;
+    }
+
+    .pro-title {
+        font-size: 0.75rem;
+        letter-spacing: 2px;
+    }
+
+    .pro-badges {
+        gap: 6px;
+    }
+
+    .badge-tech {
+        font-size: 0.5rem;
+        padding: 4px 10px;
+    }
+
+    .id-stats-grid {
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 8px;
+        padding-top: 15px;
+        margin-top: 15px;
+    }
+
+    .stat-cell .value {
+        font-size: 0.8rem;
+    }
+
+    .hud-monitor {
+        padding: 15px;
+    }
+
+    .hud-stats-grid {
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 8px;
+    }
+
+    .hud-header {
+        font-size: 0.6rem;
+        flex-wrap: wrap;
+    }
+
+    .h-val {
+        font-size: 0.7rem;
+    }
+
+    .philosophy-content {
+        padding: 0 10px;
+    }
+
+    .section-heading {
+        font-size: clamp(1.6rem, 5vw, 2.2rem);
+    }
+
+    .desc-line {
+        font-size: clamp(0.9rem, 2vw, 1rem);
+        padding-left: 15px;
+    }
+
+    .philosophy-tactile-stream {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 16px;
+        padding: 10px 0 20px 0;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .tech-card-v2 {
+        min-width: 250px;
+        scroll-snap-align: start;
+        padding: 20px;
+    }
+
+    .consultation-wrapper {
+        padding: 20px 15px;
+    }
+
+    .cta-action-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+    }
+
+    .btn-primary {
+        width: 100%;
+        justify-content: center;
+        padding: 14px;
+    }
+
+    .signature {
+        font-size: 1.4rem;
+        text-align: center;
+    }
+
+    /* Avatar flip mobile */
+    .avatar-frame {
+        max-width: 200px;
+    }
+    .avatar-frame .flipper {
+        aspect-ratio: 1 / 0.7;
+    }
+}
+
+@media (min-width: 768px) {
+    .philosophy-tactile-stream {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        overflow-x: visible;
+        padding-bottom: 0;
+    }
+
+    .tech-card-v2 {
+        min-width: auto;
+    }
+
+    .philosophy-tactile-stream::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+/* --- Mobile (480px) --- */
 @media (max-width: 480px) {
+    .id-stats-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .stat-cell {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 8px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .stat-cell:last-child {
+        border-bottom: none;
+    }
+
+    .tech-card-v2 {
+        min-width: 200px;
+        padding: 16px;
+    }
+
+    .card-title-v2 {
+        font-size: 0.8rem;
+    }
+
+    .card-desc-v2 {
+        font-size: 0.75rem;
+    }
+
     .consultation-wrapper {
         padding: 20px 15px;
     }
@@ -549,5 +683,13 @@
 
     .signature {
         font-size: 1.4rem;
+    }
+
+    /* Avatar flip small mobile */
+    .avatar-frame {
+        max-width: 160px;
+    }
+    .avatar-frame .flipper {
+        aspect-ratio: 1 / 0.6;
     }
 }

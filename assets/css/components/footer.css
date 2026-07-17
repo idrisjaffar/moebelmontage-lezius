@@ -2,6 +2,12 @@
    RAPHAEL LEZIUS | COMPONENT: MISSION CONTROL FOOTER (v2077.2)
    ARCHITECTURE: CSS GRID | GLASSMORPHISM | TACTILE RESPONSIVE HUD
    ========================================================================== */
+/* ==========================================================================
+   [COMPONENT NAME] – MOBILE-FLUID ARCHITECTURE
+   BREAKPOINTS: 480px | 768px | 992px | 1200px
+   ========================================================================== */
+
+Test on your phone or use Chrome DevTools (F12 → Toggle Device Toolbar).
 
 /* --- 1. CORE ENCLOSURE & BLUEPRINT TEXTURE --- */
 .mega-footer-2077 { 
