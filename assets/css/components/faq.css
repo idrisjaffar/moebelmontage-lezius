@@ -1,57 +1,6 @@
 /* ==========================================================================
-   PHASE 8: FAQ MAINFRAME – SYSTEM PROTOCOLS (FULL WORKING)
-   ACCORDION ENGINE | TERMINAL-UI | GOLD-STATUS INDICATORS
+   FAQ MAINFRAME (AURUM 2077)
    ========================================================================== */
-/* ==========================================================================
-   [COMPONENT NAME] – MOBILE-FLUID ARCHITECTURE
-   BREAKPOINTS: 480px | 768px | 992px | 1200px
-   ========================================================================== */
-
-/* --- BASE (Mobile First) --- */
-.component-wrapper {
-    width: 100%;
-    padding: clamp(20px, 4vw, 60px);
-    display: flex;
-    flex-direction: column;
-    gap: clamp(16px, 2vw, 30px);
-}
-
-.component-title {
-    font-size: clamp(1.4rem, 4vw, 2.8rem);
-    line-height: 1.2;
-}
-
-.component-text {
-    font-size: clamp(0.85rem, 1.2vw, 1.05rem);
-    line-height: 1.6;
-}
-
-/* --- TABLET (768px+) --- */
-@media (min-width: 768px) {
-    .component-wrapper {
-        flex-direction: row;
-        flex-wrap: wrap;
-    }
-    .component-item {
-        flex: 1 1 calc(50% - 20px);
-    }
-}
-
-/* --- DESKTOP (992px+) --- */
-@media (min-width: 992px) {
-    .component-item {
-        flex: 1 1 calc(33.333% - 20px);
-    }
-}
-
-/* --- WIDE DESKTOP (1200px+) --- */
-@media (min-width: 1200px) {
-    .component-wrapper {
-        max-width: 1400px;
-        margin: 0 auto;
-    }
-}
-
 
 .faq-tech-section {
     padding: clamp(80px, 10vh, 120px) 0;
@@ -68,7 +17,6 @@
     margin: 0 auto;
 }
 
-/* --- FAQ MODULE ENGINE --- */
 .faq-module-v2 {
     overflow: hidden;
     background: rgba(10, 8, 5, 0.85);
@@ -76,10 +24,7 @@
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     border-radius: 4px;
 }
-
-.faq-module-v2:hover {
-    border-color: rgba(255, 215, 0, 0.35);
-}
+.faq-module-v2:hover { border-color: rgba(255, 215, 0, 0.35); }
 
 .faq-trigger {
     width: 100%;
@@ -96,10 +41,7 @@
     font-family: inherit;
     transition: background 0.3s ease;
 }
-
-.faq-trigger:hover {
-    background: rgba(255, 215, 0, 0.03);
-}
+.faq-trigger:hover { background: rgba(255, 215, 0, 0.03); }
 
 .faq-icon-box {
     width: 50px;
@@ -115,17 +57,13 @@
     color: var(--neon-gold, #FFD700);
     transition: all 0.3s ease;
 }
-
 .faq-module-v2.active .faq-icon-box {
     border-color: var(--neon-gold, #FFD700);
     background: rgba(255, 215, 0, 0.08);
     box-shadow: 0 0 20px rgba(255, 215, 0, 0.08);
 }
 
-.faq-title-wrap {
-    flex-grow: 1;
-}
-
+.faq-title-wrap { flex-grow: 1; }
 .faq-category {
     display: block;
     font-family: var(--font-mono, monospace);
@@ -136,7 +74,6 @@
     text-transform: uppercase;
     font-weight: 700;
 }
-
 .faq-question {
     font-size: 1.15rem;
     margin: 0;
@@ -154,7 +91,6 @@
     transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     flex-shrink: 0;
 }
-
 .faq-plus::after {
     content: '';
     position: absolute;
@@ -166,27 +102,22 @@
     transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Active State – Plus rotates to minus */
 .faq-module-v2.active {
     border-left: 4px solid var(--neon-gold, #FFD700);
     background: rgba(255, 215, 0, 0.02);
     box-shadow: inset 0 0 30px rgba(255, 215, 0, 0.02);
 }
-
 .faq-module-v2.active .faq-plus {
     transform: rotate(45deg);
     background: var(--neon-gold, #FFD700);
 }
-
 .faq-module-v2.active .faq-plus::after {
     background: var(--neon-gold, #FFD700);
 }
-
 .faq-module-v2.active .faq-question {
     color: var(--neon-gold, #FFD700);
 }
 
-/* --- CONTENT AREA (THE TERMINAL) – CRITICAL FOR OPENING --- */
 .faq-content {
     max-height: 0;
     overflow: hidden;
@@ -194,15 +125,7 @@
     background: rgba(0, 0, 0, 0.25);
 }
 
-/* 
-   ⚠️ REMOVED the fallback max-height rule – now the JavaScript 
-   sets the exact height dynamically via inline style.
-*/
-
-.faq-inner {
-    padding: 0 30px 30px 100px;
-}
-
+.faq-inner { padding: 0 30px 30px 100px; }
 .faq-grid-internal {
     display: grid;
     grid-template-columns: 1fr;
@@ -210,17 +133,11 @@
     border-top: 1px dashed rgba(255, 215, 0, 0.1);
     padding-top: 25px;
 }
-
 @media (min-width: 700px) {
-    .faq-grid-internal {
-        grid-template-columns: 1fr 1fr;
-    }
+    .faq-grid-internal { grid-template-columns: 1fr 1fr; }
 }
-
 @media (min-width: 1000px) {
-    .faq-grid-internal {
-        grid-template-columns: 1fr 1fr 1fr;
-    }
+    .faq-grid-internal { grid-template-columns: 1fr 1fr 1fr; }
 }
 
 .faq-text-block {
@@ -230,11 +147,7 @@
     border-left: 2px solid rgba(255, 215, 0, 0.15);
     transition: border-color 0.3s ease;
 }
-
-.faq-text-block:hover {
-    border-left-color: var(--neon-cyan, #00e5ff);
-}
-
+.faq-text-block:hover { border-left-color: var(--neon-cyan, #00e5ff); }
 .faq-text-block h6 {
     color: var(--neon-gold, #FFD700);
     font-size: 0.85rem;
@@ -243,7 +156,6 @@
     font-family: var(--font-head, sans-serif);
     letter-spacing: 1px;
 }
-
 .faq-text-block p {
     font-size: 0.9rem;
     color: #cbd5e1;
@@ -251,153 +163,19 @@
     margin: 0;
 }
 
-/* --- RESPONSIVE TWEAKS --- */
+/* --- RESPONSIVE --- */
 @media (max-width: 768px) {
-    .faq-trigger {
-        padding: 20px;
-        gap: 15px;
-    }
-
-    .faq-icon-box {
-        width: 40px;
-        height: 40px;
-        min-width: 40px;
-        font-size: 1rem;
-    }
-
-    .faq-question {
-        font-size: 0.95rem;
-    }
-
-    .faq-inner {
-        padding: 0 20px 20px 70px;
-    }
-
-    .faq-text-block {
-        padding: 15px;
-    }
+    .faq-trigger { padding: 20px; gap: 15px; }
+    .faq-icon-box { width: 40px; height: 40px; min-width: 40px; font-size: 1rem; }
+    .faq-question { font-size: 0.95rem; }
+    .faq-inner { padding: 0 20px 20px 70px; }
+    .faq-text-block { padding: 15px; }
 }
 
 @media (max-width: 480px) {
-    .faq-trigger {
-        padding: 16px;
-        gap: 12px;
-    }
-
-    .faq-icon-box {
-        width: 35px;
-        height: 35px;
-        min-width: 35px;
-        font-size: 0.85rem;
-    }
-
-    .faq-inner {
-        padding: 0 15px 15px 55px;
-    }
-
-    .faq-text-block h6 {
-        font-size: 0.75rem;
-    }
-
-    .faq-text-block p {
-        font-size: 0.8rem;
-    }
-}
-
-/* Ensure the transition works */
-.faq-content {
-    transition: max-height 0.5s cubic-bezier(0.2, 0, 0.1, 1) !important;
-    overflow: hidden !important;
-}
-
-/* When active, let JS control the height */
-.faq-module-v2.active .faq-content {
-    max-height: none; /* This will be overridden by inline style, but it's safe */
-}
-
-
-/* --- FAQ MOBILE FIX --- */
-@media (max-width: 768px) {
-    .faq-trigger {
-        padding: 18px 16px;
-        gap: 14px;
-    }
-
-    .faq-icon-box {
-        width: 40px;
-        height: 40px;
-        min-width: 40px;
-        font-size: 1rem;
-    }
-
-    .faq-question {
-        font-size: clamp(0.85rem, 2vw, 1rem);
-    }
-
-    .faq-category {
-        font-size: 0.5rem;
-        letter-spacing: 2px;
-    }
-
-    .faq-plus {
-        width: 18px;
-    }
-    .faq-plus::after {
-        height: 18px;
-        left: 8px;
-        top: -8px;
-    }
-
-    .faq-inner {
-        padding: 0 16px 16px 60px;
-    }
-
-    .faq-grid-internal {
-        grid-template-columns: 1fr;
-        gap: 16px;
-        padding-top: 16px;
-    }
-
-    .faq-text-block {
-        padding: 14px;
-    }
-
-    .faq-text-block h6 {
-        font-size: 0.75rem;
-    }
-
-    .faq-text-block p {
-        font-size: 0.8rem;
-        line-height: 1.6;
-    }
-}
-
-@media (max-width: 480px) {
-    .faq-trigger {
-        padding: 14px 12px;
-        gap: 10px;
-    }
-
-    .faq-icon-box {
-        width: 32px;
-        height: 32px;
-        min-width: 32px;
-        font-size: 0.8rem;
-    }
-
-    .faq-inner {
-        padding: 0 12px 12px 48px;
-    }
-
-    .faq-text-block {
-        padding: 12px;
-    }
-
-    .faq-text-block h6 {
-        font-size: 0.65rem;
-    }
-
-    .faq-text-block p {
-        font-size: 0.7rem;
-    }
+    .faq-trigger { padding: 16px; gap: 12px; }
+    .faq-icon-box { width: 35px; height: 35px; min-width: 35px; font-size: 0.85rem; }
+    .faq-inner { padding: 0 15px 15px 55px; }
+    .faq-text-block h6 { font-size: 0.75rem; }
+    .faq-text-block p { font-size: 0.8rem; }
 }

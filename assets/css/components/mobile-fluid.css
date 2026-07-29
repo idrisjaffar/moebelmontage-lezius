@@ -1,0 +1,34 @@
+/* ==========================================================================
+   MOBILE FLUIDITY – COMPREHENSIVE MOBILE FIXES
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+    .container { padding-left: 20px; padding-right: 20px; }
+    .section-padding { padding: 60px 0; }
+    .hero-title-sharp { font-size: 2.8rem !important; }
+    .hero-mission-statement { font-size: 1rem !important; }
+    .profile-split-layout { grid-template-columns: 1fr !important; gap: 40px !important; }
+    .avatar-frame { max-width: 200px; }
+    .philosophy-tactile-stream { display: flex; overflow-x: auto; gap: 20px; }
+    .tech-card-v2 { min-width: 260px; }
+    .review-card-aurum { padding: 20px; }
+    .visual-split-layout { grid-template-columns: 1fr !important; gap: 30px !important; }
+    .belt-image-wrapper img { height: 220px !important; }
+    .sector-btn { font-size: 0.6rem; padding: 6px 10px; }
+    .cinematic-card { aspect-ratio: 16/9; }
+    .cinematic-text h3 { font-size: 1.1rem; }
+    .cinematic-text p { font-size: 0.8rem; }
+    .faq-trigger { padding: 16px; }
+    .faq-inner { padding: 0 20px 20px 70px; }
+    button, .btn { min-height: 44px; }
+}
+
+@media (max-width: 600px) {
+    .hero-title-sharp { font-size: 2rem !important; }
+    .tactical-btn-group .btn { width: 100%; justify-content: center; }
+    .id-stats-grid { grid-template-columns: 1fr; }
+    .stat-cell { flex-direction: row; justify-content: space-between; }
+    .belt-image-wrapper img { height: 160px !important; }
+    .sector-btn { font-size: 0.5rem; padding: 4px 8px; }
+    .nav-hud-btn { font-size: 0.5rem; padding: 6px 12px; }
+}

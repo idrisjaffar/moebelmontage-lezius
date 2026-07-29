@@ -1,58 +1,6 @@
 /* ==========================================================================
-   PHASE 4: SYSTEM SERVICES ACCORDION (ENHANCED)
-   TECHNICAL SPECIFICATIONS | MODULAR ENGINEERING
+   SYSTEM SERVICES ACCORDION (AURUM 2077)
    ========================================================================== */
-
-   /* ==========================================================================
-   [COMPONENT NAME] – MOBILE-FLUID ARCHITECTURE
-   BREAKPOINTS: 480px | 768px | 992px | 1200px
-   ========================================================================== */
-
-/* --- BASE (Mobile First) --- */
-.component-wrapper {
-    width: 100%;
-    padding: clamp(20px, 4vw, 60px);
-    display: flex;
-    flex-direction: column;
-    gap: clamp(16px, 2vw, 30px);
-}
-
-.component-title {
-    font-size: clamp(1.4rem, 4vw, 2.8rem);
-    line-height: 1.2;
-}
-
-.component-text {
-    font-size: clamp(0.85rem, 1.2vw, 1.05rem);
-    line-height: 1.6;
-}
-
-/* --- TABLET (768px+) --- */
-@media (min-width: 768px) {
-    .component-wrapper {
-        flex-direction: row;
-        flex-wrap: wrap;
-    }
-    .component-item {
-        flex: 1 1 calc(50% - 20px);
-    }
-}
-
-/* --- DESKTOP (992px+) --- */
-@media (min-width: 992px) {
-    .component-item {
-        flex: 1 1 calc(33.333% - 20px);
-    }
-}
-
-/* --- WIDE DESKTOP (1200px+) --- */
-@media (min-width: 1200px) {
-    .component-wrapper {
-        max-width: 1400px;
-        margin: 0 auto;
-    }
-}
-
 
 .services-accordion-section {
     background: #020203;
@@ -72,7 +20,6 @@
     pointer-events: none;
 }
 
-/* --- ACCORDION CONTAINER --- */
 .accordion-container {
     max-width: 1000px;
     margin: 0 auto;
@@ -81,7 +28,6 @@
     gap: 16px;
 }
 
-/* --- ACCORDION ITEMS --- */
 .accordion-item {
     overflow: hidden;
     background: rgba(10, 8, 5, 0.85);
@@ -89,17 +35,12 @@
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     border-radius: 4px;
 }
-
-.accordion-item:hover {
-    border-color: rgba(255, 215, 0, 0.2);
-}
-
+.accordion-item:hover { border-color: rgba(255, 215, 0, 0.2); }
 .accordion-item.border-cyan { border-left: 3px solid var(--neon-cyan, #00e5ff); }
 .accordion-item.border-gold { border-left: 3px solid var(--neon-gold, #FFD700); }
 .accordion-item.border-pink { border-left: 3px solid #ff007f; }
 .accordion-item.border-green { border-left: 3px solid #10b981; }
 
-/* --- HEADER --- */
 .accordion-header {
     width: 100%;
     display: flex;
@@ -115,15 +56,9 @@
     transition: background 0.3s ease;
     gap: 20px;
 }
+.accordion-header:hover { background: rgba(255, 255, 255, 0.02); }
 
-.accordion-header:hover {
-    background: rgba(255, 255, 255, 0.02);
-}
-
-.header-left {
-    flex: 1;
-}
-
+.header-left { flex: 1; }
 .sector-id {
     display: block;
     font-family: var(--font-mono, monospace);
@@ -132,7 +67,6 @@
     margin-bottom: 4px;
     font-weight: 700;
 }
-
 .sector-title {
     font-size: 1.1rem;
     margin: 0;
@@ -153,28 +87,22 @@
     flex-shrink: 0;
     font-size: 0.8rem;
 }
-
 .sector-trigger .icon-cyan { color: var(--neon-cyan, #00e5ff); }
 .sector-trigger .icon-gold { color: var(--neon-gold, #FFD700); }
 .sector-trigger .icon-pink { color: #ff007f; }
 .sector-trigger .icon-green { color: #10b981; }
-
 .accordion-item.active .sector-trigger {
     transform: rotate(45deg);
     border-color: var(--neon-cyan, #00e5ff);
 }
 
-/* --- CONTENT --- */
 .accordion-content {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.5s cubic-bezier(0.2, 0, 0.1, 1);
     background: rgba(0, 0, 0, 0.2);
 }
-
-.accordion-body-inner {
-    padding: 0 30px 30px 30px;
-}
+.accordion-body-inner { padding: 0 30px 30px 30px; }
 
 .sector-description {
     color: #cbd5e1;
@@ -190,11 +118,8 @@
     grid-template-columns: 1fr;
     gap: 25px;
 }
-
 @media (min-width: 700px) {
-    .sector-grid {
-        grid-template-columns: 1fr 1fr;
-    }
+    .sector-grid { grid-template-columns: 1fr 1fr; }
 }
 
 .sector-group {
@@ -203,20 +128,17 @@
     border-radius: 6px;
     border: 1px solid rgba(255, 255, 255, 0.05);
 }
-
 .sector-group .group-label {
     font-size: 0.85rem;
     color: #fff;
     margin-bottom: 15px;
     font-family: var(--font-head, sans-serif);
 }
-
 .sector-group ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
-
 .sector-group ul li {
     color: #94a3b8;
     font-size: 0.9rem;
@@ -224,167 +146,26 @@
     padding: 4px 0;
     border-bottom: 1px dashed rgba(255, 255, 255, 0.03);
 }
+.sector-group ul li:last-child { border-bottom: none; }
+.sector-group ul li strong { color: #fff; font-weight: 600; }
 
-.sector-group ul li:last-child {
-    border-bottom: none;
-}
-
-.sector-group ul li strong {
-    color: #fff;
-    font-weight: 600;
-}
-
-/* --- RESPONSIVE TWEAKS --- */
+/* --- RESPONSIVE --- */
 @media (max-width: 768px) {
-    .accordion-header {
-        padding: 18px 20px;
-        flex-wrap: wrap;
-    }
-
-    .sector-title {
-        font-size: 0.95rem;
-    }
-
-    .accordion-body-inner {
-        padding: 0 20px 20px 20px;
-    }
-
-    .sector-description {
-        font-size: 0.9rem;
-    }
-
-    .sector-group {
-        padding: 15px;
-    }
-
-    .sector-group ul li {
-        font-size: 0.8rem;
-    }
+    .accordion-header { padding: 18px 20px; flex-wrap: wrap; }
+    .sector-title { font-size: 0.95rem; }
+    .accordion-body-inner { padding: 0 20px 20px 20px; }
+    .sector-description { font-size: 0.9rem; }
+    .sector-group { padding: 15px; }
+    .sector-group ul li { font-size: 0.8rem; }
 }
 
 @media (max-width: 480px) {
-    .accordion-header {
-        padding: 14px 16px;
-        gap: 12px;
-    }
-
-    .sector-id {
-        font-size: 0.5rem;
-    }
-
-    .sector-title {
-        font-size: 0.85rem;
-    }
-
-    .sector-trigger {
-        width: 25px;
-        height: 25px;
-        font-size: 0.65rem;
-    }
-
-    .accordion-body-inner {
-        padding: 0 16px 16px 16px;
-    }
-
-    .sector-grid {
-        gap: 15px;
-    }
-
-    .sector-group {
-        padding: 12px;
-    }
-
-    .sector-group ul li {
-        font-size: 0.75rem;
-        line-height: 1.6;
-    }
-}
-
-
-/* --- SERVICES MOBILE FIX --- */
-@media (max-width: 768px) {
-    .accordion-header {
-        padding: 16px 18px;
-        gap: 12px;
-        flex-wrap: wrap;
-    }
-
-    .sector-title {
-        font-size: clamp(0.85rem, 2.5vw, 1rem);
-    }
-
-    .sector-id {
-        font-size: 0.5rem;
-        letter-spacing: 1.5px;
-    }
-
-    .sector-trigger {
-        width: 28px;
-        height: 28px;
-        font-size: 0.7rem;
-    }
-
-    .accordion-body-inner {
-        padding: 0 18px 18px 18px;
-    }
-
-    .sector-description {
-        font-size: 0.85rem;
-        padding-bottom: 15px;
-        margin-bottom: 15px;
-    }
-
-    .sector-grid {
-        grid-template-columns: 1fr;
-        gap: 16px;
-    }
-
-    .sector-group {
-        padding: 15px;
-    }
-
-    .sector-group .group-label {
-        font-size: 0.75rem;
-    }
-
-    .sector-group ul li {
-        font-size: 0.8rem;
-        line-height: 1.6;
-        padding: 3px 0;
-    }
-
-    .sys-accordion-item .accordion-content {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.4s ease;
-    }
-
-    .sys-accordion-item.active .accordion-content {
-        max-height: 800px;
-    }
-}
-
-@media (max-width: 480px) {
-    .accordion-header {
-        padding: 12px 14px;
-        gap: 10px;
-    }
-
-    .sector-title {
-        font-size: 0.75rem;
-    }
-
-    .sector-trigger {
-        width: 24px;
-        height: 24px;
-        font-size: 0.6rem;
-    }
-
-    .sector-group {
-        padding: 12px;
-    }
-
-    .sector-group ul li {
-        font-size: 0.7rem;
-    }
+    .accordion-header { padding: 14px 16px; gap: 12px; }
+    .sector-id { font-size: 0.5rem; }
+    .sector-title { font-size: 0.85rem; }
+    .sector-trigger { width: 25px; height: 25px; font-size: 0.65rem; }
+    .accordion-body-inner { padding: 0 16px 16px 16px; }
+    .sector-grid { gap: 15px; }
+    .sector-group { padding: 12px; }
+    .sector-group ul li { font-size: 0.75rem; line-height: 1.6; }
 }

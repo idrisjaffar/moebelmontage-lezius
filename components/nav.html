@@ -1,7 +1,7 @@
 <!-- ==========================================================================
-   RAPHAEL LEZIUS | MASTER NAVIGATION HTML (v2077.2)
+   RAPHAEL LEZIUS | MASTER NAVIGATION HTML (v2077.3 – MOBILE-FLUID)
    ARCHITECTURE: STRICT SEPARATION (HTML ONLY) | SEMANTIC | ACCESSIBLE
-========================================================================== -->
+   ========================================================================== -->
 
 <header class="lezius-nav-2026" id="masterNav" role="banner">
     <div class="floating-capsule">
@@ -10,9 +10,12 @@
         <a href="index.html" class="nav-brand magnetic-target" id="brandLogoTrigger" aria-label="Zur Startseite">
             <div class="brand-pedestal">
                 <div class="logo-flipper">
-                    <!-- Placeholder images - path remains as defined -->
-                    <div class="logo-face front"><img src="assets/images/raphael-lezius-logo-front.webp" alt="Raphael Lezius" onerror="this.style.display='none';"></div>
-                    <div class="logo-face back"><img src="assets/images/raphael-lezius-logo-back.webp" alt="Premium Montage" onerror="this.style.display='none';"></div>
+                    <div class="logo-face front">
+                        <img src="assets/images/raphael-lezius-logo-front.webp" alt="Raphael Lezius" onerror="this.style.display='none';">
+                    </div>
+                    <div class="logo-face back">
+                        <img src="assets/images/raphael-lezius-logo-back.webp" alt="Premium Montage" onerror="this.style.display='none';">
+                    </div>
                 </div>
             </div>
             <div class="brand-text">
@@ -46,11 +49,11 @@
                         <!-- Mega Menu Sidebar -->
                         <div class="mega-sidebar">
                             <span class="sidebar-label">AKTIVE_MODULE</span>
-                            <h3 class="sidebar-title">Engineering<br><span style="color: var(--nav-neon-gold);">System</span></h3>
+                            <h3 class="sidebar-title">Engineering<br><span style="color: var(--nav-neon-gold, #FFD700);">System</span></h3>
                             <p class="sidebar-desc">Wählen Sie einen Sektor für hochpräzise Montage- und Konstruktionsprotokolle.</p>
                             <div class="sidebar-data-stream">
-                                <div class="data-row"><span>STATUS:</span> <span style="color: var(--nav-neon-cyan);">ONLINE</span></div>
-                                <div class="data-row"><span>ENERGIE:</span> <span style="color: var(--nav-neon-green);">OPTIMAL</span></div>
+                                <div class="data-row"><span>STATUS:</span> <span style="color: var(--nav-neon-cyan, #00e5ff);">ONLINE</span></div>
+                                <div class="data-row"><span>ENERGIE:</span> <span style="color: var(--nav-neon-green, #39ff14);">OPTIMAL</span></div>
                             </div>
                         </div>
 
@@ -125,7 +128,11 @@
 
             <!-- Mobile Hamburger Button -->
             <button class="mobile-toggle magnetic-target" id="mobileMenuToggle" aria-label="Mobiles Menü öffnen" aria-expanded="false" aria-controls="fluidMobileMenu">
-                <div class="toggle-lines"><span class="line line-1"></span><span class="line line-2"></span></div>
+                <div class="toggle-lines">
+                    <span class="line line-1"></span>
+                    <span class="line line-2"></span>
+                    <span class="line line-3"></span>
+                </div>
             </button>
         </div>
         
