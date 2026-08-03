@@ -1,1004 +1,292 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>CALIBRATION & PRICING | Raphael Lezius Premium Montage</title>
-    
-    <meta name="description" content="Transparente Festpreise und System-Tarife für Premium-Möbelmontage, IKEA PAX und USM Haller in Augsburg & München.">
-    <meta name="theme-color" content="#020203">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Preise & Prozesse | Raphael Lezius – Premium Montage</title>
+    <meta name="description" content="Transparente Preise für Ihre Möbelmontage in Augsburg und München. Festpreise für IKEA PAX, BIOHORT & Co. Steuerlich absetzbar nach §35a EStG." />
+    <meta name="theme-color" content="#0a0805" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-    <meta property="og:title" content="Raphael Lezius | Kalibrierung & Preise">
-    <meta property="og:description" content="Transparente Kostenstruktur für millimetergenaue Montage in Augsburg & München.">
-    <meta property="og:type" content="website">
+    <!-- Preconnect & Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&family=Space+Grotesk:wght@300;500;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    
+    <!-- AOS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@reimujs/aos/dist/aos.css" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&family=Montserrat:wght@700;900&family=JetBrains+Mono:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/components/nav.css">
-    <link rel="stylesheet" href="assets/css/components/footer.css">
-    <link rel="stylesheet" href="assets/css/components/mission-os.css">
-    <link rel="stylesheet" href="assets/css/components/pricing-matrix.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/components/global.css" />
+    <link rel="stylesheet" href="assets/css/components/nav.css" />
+    <link rel="stylesheet" href="assets/css/components/footer.css" />
+    <link rel="stylesheet" href="assets/css/components/mission-os.css" />
+    <link rel="stylesheet" href="assets/css/components/pricing.css" />
+
+    <!-- Failsafe -->
+    <style>
+        body { background: #0a0805; opacity: 1 !important; visibility: visible !important; }
+        .no-js-override [data-aos] { opacity: 1 !important; transform: none !important; visibility: visible !important; }
+    </style>
 </head>
 
-<body class="is-dark pricing-theme no-js-override">
+<body class="is-dark no-js-override aurum-theme pricing-theme">
 
-    <div class="noise-overlay"></div>
-    <div class="crt-overlay"></div>
+    <!-- ============================================================
+         GLOBAL NAVIGATION (INJECTED VIA JS)
+         ============================================================ -->
+    <div id="global-nav" aria-label="Hauptnavigation"></div>
 
-    <div id="global-nav"></div>      
+    <!-- ============================================================
+         MAIN CONTENT
+         ============================================================ -->
+    <main id="main-content" role="main">
 
-    <main class="pricing-core-wrapper">
-        
-        <section class="price-hero">
-            <div class="industrial-bg"></div>
-            
-            <div class="hero-content relative-z">
-                <div data-aos="fade-down">
-                    <span class="hero-glitch-tag glitch-active" data-text="// FISCAL_PROTOCOLS_v2.6">// FISCAL_PROTOCOLS_v2.6</span>
-                </div>
-                
-                <h1 class="hero-title-massive" data-aos="zoom-in">
-                    Präzision hat<br>
-                    <span class="text-gold">keine Fixkosten.</span>
-                </h1>
-                
-                <p class="hero-description" data-aos="fade-up" data-aos-delay="100">
-                    Absolute Transparenz durch systembasierte Kalkulation. Keine versteckten Gebühren, keine unerwarteten Stundenabrechnungen. Wir kalibrieren den Preis exakt nach Ihrem Projektumfang.
-                </p>
-
-                <div class="fiscal-grid" data-aos="fade-up" data-aos-delay="200">
-                    <div class="fiscal-stat">
-                        <span class="stat-label">CALCULATION_MODE</span>
-                        <span class="stat-value">HYBRID_MATRIX</span>
+        <!-- ============================================================
+             HERO – PRICING COMMAND CENTER
+             ============================================================ -->
+        <section class="price-hero" id="pricing-hero">
+            <div class="industrial-bg" aria-hidden="true"></div>
+            <div class="container relative-z">
+                <div class="hero-content" data-aos="fade-up" data-aos-duration="800">
+                    <div class="hero-glitch-tag">
+                        <i class="fas fa-calculator"></i> FISCAL_ENGINE // v2026
                     </div>
-                    <div class="fiscal-stat">
-                        <span class="stat-label">TAX_ADVANTAGE</span>
-                        <span class="stat-value text-cyan">-20% EStG §35a</span>
-                    </div>
-                    <div class="fiscal-stat">
-                        <span class="stat-label">SERVICE_REGION</span>
-                        <span class="stat-value">BAYERN_SOUTH</span>
-                    </div>
-                    <div class="fiscal-stat">
-                        <span class="stat-label">ESTIMATION_ACCURACY</span>
-                        <span class="stat-value text-gold">99.9%</span>
+                    <h1 class="hero-title-massive">
+                        Transparente <span class="gold-text">System-Tarife.</span>
+                    </h1>
+                    <p class="hero-description">
+                        Keine versteckten Kosten, keine bösen Überraschungen. Meine Preise sind so präzise wie meine Arbeit – kalkuliert für maximale Transparenz und Ihren steuerlichen Vorteil.
+                    </p>
+                    
+                    <!-- FISCAL GRID (Steuerlicher Vorteil) -->
+                    <div class="fiscal-grid" data-aos="fade-up" data-aos-duration="600" data-aos-delay="100">
+                        <div class="fiscal-stat">
+                            <span class="stat-label">§ 35a EStG</span>
+                            <span class="stat-value gold-text">20%</span>
+                            <span style="font-size:0.7rem; color:#64748b;">Steuerliche Förderung</span>
+                        </div>
+                        <div class="fiscal-stat">
+                            <span class="stat-label">Max. Förderung</span>
+                            <span class="stat-value gold-text">1.200 €</span>
+                            <span style="font-size:0.7rem; color:#64748b;">pro Jahr absetzbar</span>
+                        </div>
+                        <div class="fiscal-stat">
+                            <span class="stat-label">Festpreis-Garantie</span>
+                            <span class="stat-value cyan-text">100%</span>
+                            <span style="font-size:0.7rem; color:#64748b;">Keine Nachverhandlungen</span>
+                        </div>
+                        <div class="fiscal-stat">
+                            <span class="stat-label">Zahlung</span>
+                            <span class="stat-value green-text">DIGITAL</span>
+                            <span style="font-size:0.7rem; color:#64748b;">EC, Apple Pay, Google Pay</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="pricing-matrix-section" id="pricing-matrix">
+        <!-- ============================================================
+             PRICING MATRIX – 3 TIERS
+             ============================================================ -->
+        <section class="pricing-matrix-section" id="matrix">
             <div class="container relative-z">
-                
-                <div class="section-header-center" data-aos="fade-up">
-                    <span class="hero-glitch-tag">// CONFIGURATION_LEVELS</span>
-                    <h2 class="section-title-large">System-Tarife.</h2>
-                    <p class="section-subtitle-mono">WÄHLEN SIE IHR MODELL FÜR MAXIMALE EFFIZIENZ</p>
+                <div class="section-header center" data-aos="fade-up" data-aos-duration="600">
+                    <div class="pre-title" style="color:var(--neon-cyan);">TARIF_MODULE</div>
+                    <h2 class="section-heading">Wählen Sie Ihr <span class="gold-text">System.</span></h2>
+                    <p class="section-subtitle" style="color:#94a3b8; max-width:600px; margin:0 auto;">
+                        Alle Preise verstehen sich als Richtwerte für typische Projekte. Ihr individuelles Angebot erhalten Sie nach dem kostenlosen Projekt-Check.
+                    </p>
                 </div>
 
-                <div class="pricing-swipe-track">
+                <div class="pricing-swipe-track" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
                     
-                    <div class="price-module glass-panel" data-aos="fade-up" data-aos-delay="100">
-                        <div class="hover-glow"></div>
+                    <!-- TIER 1: STARTER -->
+                    <div class="price-module glass-panel module-starter">
                         <div class="module-header">
-                            <span class="module-tag">MODUS_01 // FLEX</span>
-                            <h3>Kleinmontage</h3>
+                            <span class="module-badge cyan-text">[SYS_01]</span>
+                            <h3 class="module-title">STARTER</h3>
+                            <p class="module-sub">Einzelmontage & Kleingeräte</p>
                         </div>
-                        
                         <div class="price-display">
                             <span class="currency">€</span>
-                            <span class="amount">--</span>
-                            <span class="metric">/ STUNDE</span>
+                            <span class="amount">49</span>
+                            <span class="period">/ Std.</span>
                         </div>
-
                         <ul class="feature-list">
-                            <li><i class="fas fa-check text-cyan"></i> <span>Spiegel & Lampen Montage</span></li>
-                            <li><i class="fas fa-check text-cyan"></i> <span>Bohrarbeiten (HEPA-Absaugung)</span></li>
-                            <li><i class="fas fa-check text-cyan"></i> <span>Faire 30-Minuten Taktung</span></li>
-                            <li><i class="fas fa-check text-cyan"></i> <span>Abrechnung nach Zeitaufwand</span></li>
-                            <li class="muted-feature"><i class="fas fa-times"></i> <span>Kostenlose Anfahrt</span></li>
+                            <li><i class="fas fa-check gold-text"></i> Einzelne Möbelstücke (z.B. PAX Korpus)</li>
+                            <li><i class="fas fa-check gold-text"></i> Regale & Kleinschränke</li>
+                            <li><i class="fas fa-check gold-text"></i> IKEA BESTÅ & Co.</li>
+                            <li><i class="fas fa-check gold-text"></i> Hängende Wandmontage</li>
+                            <li><i class="fas fa-check gold-text"></i> inkl. Kartonagen-Entsorgung</li>
+                            <li><i class="fas fa-times" style="color:#475569;"></i> Küchenmontage</li>
+                            <li><i class="fas fa-times" style="color:#475569;"></i> Komplexe Systeme (USM)</li>
                         </ul>
-
-                        <button type="button" class="btn-price-action js-open-os">FLEX_INIT</button>
+                        <button class="btn-price-action magnetic-target js-open-os">
+                            <i class="fas fa-bolt"></i> ANFRAGE STARTEN
+                        </button>
+                        <span class="tax-hint">zzgl. MwSt. // Steuerlich absetzbar</span>
                     </div>
 
-                    <div class="price-module module-active glass-panel" data-aos="fade-up" data-aos-delay="200">
-                        <div class="hover-glow"></div>
-                        <div class="recommended-badge">RECOMMENDED</div>
-                        
+                    <!-- TIER 2: PROFESSIONAL (Recommended) -->
+                    <div class="price-module glass-panel module-active module-professional" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+                        <div class="recommended-badge">
+                            <i class="fas fa-star"></i> EMPFOHLEN
+                        </div>
                         <div class="module-header">
-                            <span class="module-tag text-gold">MODUS_02 // SYSTEM_FIXED</span>
-                            <h3 class="text-gold">Festpreis</h3>
+                            <span class="module-badge gold-text">[SYS_02]</span>
+                            <h3 class="module-title gold-text">PROFESSIONAL</h3>
+                            <p class="module-sub">Komplett-Montage & Küchen</p>
                         </div>
-                        
-                        <div class="price-display">
-                            <span class="currency text-gold">€</span>
-                            <span class="amount text-gold">--</span>
-                            <span class="metric">/ PRO MODUL</span>
-                        </div>
-
-                        <ul class="feature-list">
-                            <li><i class="fas fa-check-double text-gold"></i> <span class="text-white">IKEA PAX & Küchen Systeme</span></li>
-                            <li><i class="fas fa-check-double text-gold"></i> <span class="text-white">Biohort & Outdoor Strukturen</span></li>
-                            <li><i class="fas fa-check-double text-gold"></i> <span class="text-white">100% Kalkulations-Garantie</span></li>
-                            <li><i class="fas fa-check-double text-gold"></i> <span class="text-white">Inkl. Laser-Nivellierung</span></li>
-                            <li><i class="fas fa-check-double text-gold"></i> <span class="text-white">Besenreine Übergabe</span></li>
-                        </ul>
-
-                        <button type="button" class="btn-price-action active-btn js-open-os">START_CALC</button>
-                    </div>
-
-                    <div class="price-module glass-panel" data-aos="fade-up" data-aos-delay="300">
-                        <div class="hover-glow"></div>
-                        <div class="module-header">
-                            <span class="module-tag text-pink">MODUS_03 // PROJECT</span>
-                            <h3>Business / B2B</h3>
-                        </div>
-                        
                         <div class="price-display">
                             <span class="currency">€</span>
-                            <span class="amount">--</span>
-                            <span class="metric">/ PROJEKT</span>
+                            <span class="amount gold-text">69</span>
+                            <span class="period">/ Std.</span>
                         </div>
-
                         <ul class="feature-list">
-                            <li><i class="fas fa-gem text-pink"></i> <span>USM Haller Spezialmontage</span></li>
-                            <li><i class="fas fa-gem text-pink"></i> <span>Gewerbe & Praxiseinrichtung</span></li>
-                            <li><i class="fas fa-gem text-pink"></i> <span>Wochenend-Service (No Downtime)</span></li>
-                            <li><i class="fas fa-gem text-pink"></i> <span>Mengenrabatte bei Rollouts</span></li>
-                            <li><i class="fas fa-gem text-pink"></i> <span>Detaillierte Dokumentation</span></li>
+                            <li><i class="fas fa-check gold-text"></i> Einzelne Möbelstücke (z.B. PAX Korpus)</li>
+                            <li><i class="fas fa-check gold-text"></i> <strong>Komplette Küchen</strong> (IKEA METOD)</li>
+                            <li><i class="fas fa-check gold-text"></i> PAX Schwebetüren-Systeme</li>
+                            <li><i class="fas fa-check gold-text"></i> Arbeitsplatten-Zuschnitt (Festool)</li>
+                            <li><i class="fas fa-check gold-text"></i> USM Haller (auf Anfrage)</li>
+                            <li><i class="fas fa-check gold-text"></i> inkl. Kartonagen-Entsorgung</li>
+                            <li><i class="fas fa-check gold-text"></i> <strong>Laser-Nivellierung</strong> inklusive</li>
                         </ul>
-
-                        <button type="button" class="btn-price-action js-open-os">PROJECT_CONSULT</button>
-                    </div>
-
-                </div>
-
-                <div class="price-disclaimer" data-aos="fade-in">
-                    <p>* PREISE WERDEN INDIVIDUELL NACH KONFIGURATION UND STANDORT ERMITTELT. ALLE ANGEBOTE SIND UNVERBINDLICH BIS ZUR FINALEN SYSTEMBESTÄTIGUNG DURCH DIE ZENTRALE.</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="logistics-section" id="logistics-engine">
-            <div class="container relative-z">
-                <div class="logistics-grid">
-                    
-                    <div class="logistics-text" data-aos="fade-right">
-                        <span class="hero-glitch-tag">// LOGISTICS_ENGINE</span>
-                        <h2 class="section-title-large" style="text-align: left;">
-                            Transparente<br><span class="text-gold">Anfahrt.</span>
-                        </h2>
-                        
-                        <p class="hero-description" style="text-align: left; margin: 0 0 40px 0;">
-                            Keine Kilometer-Pauschalen mit Überraschungseffekt. Wir berechnen die Logistik basierend auf fest definierten Radien um unser Headquarter in Augsburg.
-                        </p>
-
-                        <div class="zone-stack">
-                            <div class="zone-item glass-panel border-left-gold" data-aos="fade-up" data-aos-delay="100">
-                                <div class="zone-info">
-                                    <span class="zone-id text-gold">ZONE_01</span>
-                                    <strong class="zone-name">Augsburg & Umland</strong>
-                                    <small class="zone-detail">Radius bis 15km (Stadtbergen, Neusäß, Friedberg)</small>
-                                </div>
-                                <div class="zone-price">25 €</div>
-                            </div>
-
-                            <div class="zone-item glass-panel border-left-cyan" data-aos="fade-up" data-aos-delay="200">
-                                <div class="zone-info">
-                                    <span class="zone-id text-cyan">ZONE_02</span>
-                                    <strong class="zone-name">München West / FFB</strong>
-                                    <small class="zone-detail">Dachau, Fürstenfeldbruck, Landsberg</small>
-                                </div>
-                                <div class="zone-price">45 €</div>
-                            </div>
-
-                            <div class="zone-item glass-panel border-left-pink" data-aos="fade-up" data-aos-delay="300">
-                                <div class="zone-info">
-                                    <span class="zone-id text-pink">ZONE_03</span>
-                                    <strong class="zone-name">München City / Süd</strong>
-                                    <small class="zone-detail">Zentrum, Starnberg, Ammersee Region</small>
-                                </div>
-                                <div class="zone-price">65 €</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="map-visualizer-container" data-aos="fade-left" data-aos-delay="200">
-                        <div class="map-visualizer glass-panel">
-                            <div class="map-grid-overlay"></div>
-                            
-                            <div class="radar-sweep"></div>
-                            
-                            <div class="radar-ring ring-1"></div>
-                            <div class="radar-ring ring-2"></div>
-                            <div class="radar-ring ring-3"></div>
-                            
-                            <div class="hq-ping">
-                                <div class="ping-core"></div>
-                                <div class="ping-wave"></div>
-                            </div>
-                            
-                            <div class="tactical-readout">
-                                LAT: 48.3717° N<br>
-                                LON: 10.8983° E<br>
-                                <span class="text-cyan">STATUS: DEPLOYMENT_READY</span>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <section class="pipeline-section" id="execution-pipeline">
-            <div class="container relative-z">
-                
-                <div class="section-header-center" data-aos="fade-up">
-                    <span class="hero-glitch-tag">// EXECUTION_PIPELINE</span>
-                    <h2 class="section-title-large">Operationeller<br><span class="text-cyan">Ablauf.</span></h2>
-                    <p class="hero-description" style="margin: 0 auto; max-width: 600px;">
-                        Ein perfektes Montage-Ergebnis ist kein Zufall, sondern das Resultat eines streng definierten, militärisch präzisen Workflows.
-                    </p>
-                </div>
-
-                <div class="pipeline-wrapper">
-                    
-                    <div class="laser-track">
-                        <div class="laser-beam"></div>
-                    </div>
-
-                    <div class="pipeline-step step-left" data-aos="fade-up">
-                        <div class="step-node">01</div>
-                        <div class="step-card glass-panel">
-                            <span class="step-label text-gold">PHASE_01 // SYSTEM_INIT</span>
-                            <h3 class="step-title">MissionOS Setup</h3>
-                            <p class="step-desc">
-                                Sie übertragen uns Ihre Projekt-Metriken (IKEA Planungslink, Stückzahlen, Standort) über unser verschlüsseltes Terminal. Unser System analysiert den Umfang.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="pipeline-step step-right" data-aos="fade-up">
-                        <div class="step-node">02</div>
-                        <div class="step-card glass-panel">
-                            <span class="step-label text-cyan">PHASE_02 // CALIBRATION</span>
-                            <h3 class="step-title">Fixpreis & Termin</h3>
-                            <p class="step-desc">
-                                Innerhalb von 24 Stunden erhalten Sie einen garantierten Festpreis ohne versteckte Kosten sowie konkrete Zeitslots für die Ausführung.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="pipeline-step step-left" data-aos="fade-up">
-                        <div class="step-node">03</div>
-                        <div class="step-card glass-panel">
-                            <span class="step-label text-gold">PHASE_03 // DEPLOYMENT</span>
-                            <h3 class="step-title">Hardware-Montage</h3>
-                            <p class="step-desc">
-                                Ankunft am Zielort. Wir sichern die Oberflächen, richten unsere Laser-Nivellierung ein und montieren Ihre Systeme millimetergenau nach Hersteller-Protokoll.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="pipeline-step step-right" data-aos="fade-up">
-                        <div class="step-node">04</div>
-                        <div class="step-card glass-panel">
-                            <span class="step-label text-green">PHASE_04 // VERIFICATION</span>
-                            <h3 class="step-title">Handover & Zero-Waste</h3>
-                            <p class="step-desc">
-                                Gemeinsame Abnahme des Projekts. Sämtliches Verpackungsmaterial wird von uns separiert und abtransportiert. Sie erhalten Ihr digitales Abnahmeprotokoll.
-                            </p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <section class="fiscal-section" id="fiscal-protocol">
-            <div class="container relative-z">
-                <div class="fiscal-grid">
-                    
-                    <div class="fiscal-info" data-aos="fade-right">
-                        <div class="law-badge">
-                            <i class="fas fa-gavel text-gold"></i>
-                            <span>EStG § 35a // HAUSHALTSNAHE DIENSTLEISTUNG</span>
-                        </div>
-
-                        <h2 class="section-title-large" style="text-align: left;">
-                            Handwerk ist<br>
-                            <span class="text-cyan">steuerfrei.</span>
-                        </h2>
-
-                        <p class="hero-description" style="text-align: left; margin: 0 0 30px 0;">
-                            Warum ein Amateur am Ende teurer ist als der Profi: Der deutsche Staat fördert qualifiziertes Handwerk direkt über Ihre Einkommensteuererklärung.
-                        </p>
-
-                        <div class="fiscal-text-block">
-                            Jeder Euro, den Sie für unsere Arbeitsleistung ausgeben, wird mit <strong>20% direkt von Ihrer Steuerschuld abgezogen</strong> (bis zu einem Höchstbetrag von 1.200 € pro Jahr). Im Gegensatz zu "Nachbarschaftshilfe" erhalten Sie bei uns eine rechtssichere, digital signierte Rechnung, die das Finanzamt sofort anerkennt. Ihr effektiver Preis sinkt somit um ein Fünftel.
-                        </div>
-                    </div>
-
-                    <div class="fiscal-visual" data-aos="fade-left" data-aos-delay="200">
-                        <div class="fiscal-card glass-panel">
-                            
-                            <div class="engine-label">
-                                CALCULATION_ENGINE_v4.0
-                            </div>
-
-                            <div class="fiscal-row">
-                                <span class="row-label">Brutto Montage-Invest</span>
-                                <span class="row-value">500<span class="price-decimal">,00</span> €</span>
-                            </div>
-                            
-                            <div class="fiscal-row">
-                                <span class="row-label">Umsatzsteuer (19%)</span>
-                                <span class="row-value">79<span class="price-decimal">,83</span> €</span>
-                            </div>
-                            
-                            <div class="fiscal-row highlight-row">
-                                <span>Finanzamt-Erstattung (20%)</span>
-                                <span class="row-value">- 100<span class="price-decimal">,00</span> €</span>
-                            </div>
-
-                            <div class="savings-highlight">
-                                <span class="savings-amount">400<span class="price-decimal">,00</span> €</span>
-                                <span class="savings-label">Effektive Netto-Belastung</span>
-                            </div>
-
-                            <div class="fiscal-disclaimer">
-                                <i class="fas fa-info-circle text-cyan"></i>
-                                <span>[!] GILT NUR FÜR ARBEITS- & ANFAHRTSKOSTEN. NICHT FÜR MATERIAL.</span>
-                            </div>
-
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <section class="modular-quote-section" id="quote-metrics">
-            <div class="container relative-z">
-                
-                <div class="section-header-left" data-aos="fade-up">
-                    <span class="hero-glitch-tag">// CALCULATION_UNITS</span>
-                    <h2 class="section-title-large">Modulare<br><span class="text-gold">Metriken.</span></h2>
-                    <p class="hero-description" style="margin: 20px 0 0 0; text-align: left;">
-                        Unsere Festpreise basieren auf standardisierten physikalischen Einheiten. So bleibt Ihr Angebot auch bei spontanen Planungsänderungen vor Ort absolut transparent und berechenbar.
-                    </p>
-                </div>
-
-                <div class="metrics-grid">
-                    
-                    <div class="metric-card glass-panel" data-aos="fade-up" data-aos-delay="100">
-                        <div class="hover-glow"></div>
-                        <div class="metric-card-header">
-                            <h3 class="metric-title">Storage Systems</h3>
-                            <i class="fas fa-align-left icon-gold-muted"></i>
-                        </div>
-                        
-                        <div class="unit-logic-box">
-                            <span class="logic-label">Metrik_Basis</span>
-                            <span class="logic-value text-gold">PRO LAUFENDER METER (LFM)</span>
-                        </div>
-                        
-                        <p class="metric-desc">
-                            Gilt für IKEA PAX, PLATSA und Schrankwandsysteme. Wir berechnen die Korpusbreite inkl. Scharniertüren und Standard-Inneneinrichtung (Böden/Stangen).
-                        </p>
-                        
-                        <div class="metric-footer">
-                            REFERENCE: PAX_2026_PROTOCOL // CALIBRATED
-                        </div>
-                    </div>
-
-                    <div class="metric-card glass-panel" data-aos="fade-up" data-aos-delay="200">
-                        <div class="hover-glow"></div>
-                        <div class="metric-card-header">
-                            <h3 class="metric-title">Kitchen Engineering</h3>
-                            <i class="fas fa-blender icon-gold-muted"></i>
-                        </div>
-                        
-                        <div class="unit-logic-box">
-                            <span class="logic-label">Metrik_Basis</span>
-                            <span class="logic-value text-gold">PRO UNTERSCHRANK / GERÄT</span>
-                        </div>
-                        
-                        <p class="metric-desc">
-                            Kombinierte Berechnung aus Korpus-Einheiten und Elektrogeräte-Integration. Inklusive präziser, wasserfest versiegelter Ausschnitte für Spüle und Kochfeld.
-                        </p>
-                        
-                        <div class="metric-footer">
-                            REFERENCE: KÜCHEN_METOD_CUSTOM // CALIBRATED
-                        </div>
-                    </div>
-
-                    <div class="metric-card glass-panel" data-aos="fade-up" data-aos-delay="300">
-                        <div class="hover-glow"></div>
-                        <div class="metric-card-header">
-                            <h3 class="metric-title">Outdoor Living</h3>
-                            <i class="fas fa-home icon-gold-muted"></i>
-                        </div>
-                        
-                        <div class="unit-logic-box">
-                            <span class="logic-label">Metrik_Basis</span>
-                            <span class="logic-value text-gold">PRO MODELL-KLASSE (S-XL)</span>
-                        </div>
-                        
-                        <p class="metric-desc">
-                            Festpreise für Biohort (Neo/Highline) und Gartenhäuser. Basierend auf der reinen Bodenfläche und der Fundament-Komplexität (z.B. SmartBase).
-                        </p>
-                        
-                        <div class="metric-footer">
-                            REFERENCE: BIOHORT_STORM_PROOF // CALIBRATED
-                        </div>
-                    </div>
-
-                    <div class="metric-card glass-panel" data-aos="fade-up" data-aos-delay="400">
-                        <div class="hover-glow"></div>
-                        <div class="metric-card-header">
-                            <h3 class="metric-title">USM Haller & Office</h3>
-                            <i class="fas fa-th icon-gold-muted"></i>
-                        </div>
-                        
-                        <div class="unit-logic-box">
-                            <span class="logic-label">Metrik_Basis</span>
-                            <span class="logic-value text-gold">PRO KONNEKTOR-EINHEIT</span>
-                        </div>
-                        
-                        <p class="metric-desc">
-                            Spezialisierte Berechnung für modulare Stahlsysteme. Berücksichtigt die exakte Anzahl der Knotenpunkte, Chromrohre und Tablar-Konfigurationen.
-                        </p>
-                        
-                        <div class="metric-footer">
-                            REFERENCE: SWISS_PRECISION_LOGIC // CALIBRATED
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <section class="addon-section" id="micro-services">
-            <div class="container relative-z">
-                
-                <div class="section-header-center" data-aos="fade-up">
-                    <span class="hero-glitch-tag">// OPTIONAL_COMPONENTS</span>
-                    <h2 class="section-title-large">Micro-Services.</h2>
-                    <p class="hero-description" style="margin: 0 auto; max-width: 600px;">
-                        Ergänzende Module für den finalen Schliff Ihres Projekts. Absolute Transparenz durch exakte Einzelpreise – für maximale Flexibilität ohne versteckte Kosten.
-                    </p>
-                </div>
-
-                <div class="addon-grid">
-                    
-                    <div class="addon-card glass-panel" data-aos="fade-up" data-aos-delay="100">
-                        <div class="hover-glow"></div>
-                        <span class="addon-id">CORE_DRILLING</span>
-                        
-                        <div class="addon-header">
-                            <div class="addon-icon-box"><i class="fas fa-bore-hole text-gold"></i></div>
-                            <h3 class="addon-title">Bohr-Einheit</h3>
-                        </div>
-                        
-                        <p class="addon-desc">
-                            Präzisionsbohrung inkl. digitaler Leitungsortung und aktiver HEPA-Absaugung. Gilt für Hohlraum, Ziegel oder Beton.
-                        </p>
-                        
-                        <div class="addon-price-tag tag-cyan">
-                            <span class="tag-label">UNIT_PRICE</span>
-                            <strong class="tag-value">€ 5,50 / Loch</strong>
-                        </div>
-                    </div>
-
-                    <div class="addon-card glass-panel" data-aos="fade-up" data-aos-delay="200">
-                        <div class="hover-glow"></div>
-                        <span class="addon-id">PHOTONIC_INTEGRATION</span>
-                        
-                        <div class="addon-header">
-                            <div class="addon-icon-box"><i class="fas fa-lightbulb text-gold"></i></div>
-                            <h3 class="addon-title">Licht-Modul</h3>
-                        </div>
-                        
-                        <p class="addon-desc">
-                            Fachgerechte Montage und technischer Anschluss von LED-Spots, Unterschrankleuchten oder smarten Lichtleisten (z.B. TRÅDFRI).
-                        </p>
-                        
-                        <div class="addon-price-tag tag-gold">
-                            <span class="tag-label">UNIT_PRICE</span>
-                            <strong class="tag-value">€ 15,00 / Spot</strong>
-                        </div>
-                    </div>
-
-                    <div class="addon-card glass-panel" data-aos="fade-up" data-aos-delay="300">
-                        <div class="hover-glow"></div>
-                        <span class="addon-id">HEAVY_LOAD_SECURE</span>
-                        
-                        <div class="addon-header">
-                            <div class="addon-icon-box"><i class="fas fa-vector-square text-gold"></i></div>
-                            <h3 class="addon-title">TV & Spiegel</h3>
-                        </div>
-                        
-                        <p class="addon-desc">
-                            Sichere Wandmontage von Schwerlast-Objekten an Gipskarton- oder Altbauwänden inkl. der nötigen Spezialanker-Systeme.
-                        </p>
-                        
-                        <div class="addon-price-tag tag-cyan">
-                            <span class="tag-label">UNIT_PRICE</span>
-                            <strong class="tag-value">ab € 45,00</strong>
-                        </div>
-                    </div>
-
-                    <div class="addon-card glass-panel" data-aos="fade-up" data-aos-delay="400">
-                        <div class="hover-glow"></div>
-                        <span class="addon-id">ZERO_CABLE_LOGIC</span>
-                        
-                        <div class="addon-header">
-                            <div class="addon-icon-box"><i class="fas fa-network-wired text-gold"></i></div>
-                            <h3 class="addon-title">Kabel-Management</h3>
-                        </div>
-                        
-                        <p class="addon-desc">
-                            Unsichtbare, zugentlastete und strukturierte Verlegung von Strom- und Datenkabeln für eine cleane "Clean-Desk" Optik.
-                        </p>
-                        
-                        <div class="addon-price-tag tag-gold">
-                            <span class="tag-label">UNIT_PRICE</span>
-                            <strong class="tag-value">Pauschale</strong>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <section class="security-audit-section" id="security-audit">
-            <div class="container relative-z">
-                
-                <div class="security-header-box" data-aos="fade-up">
-                    <div class="sh-left">
-                        <span class="hero-glitch-tag">// RISK_MITIGATION</span>
-                        <h2 class="section-title-large">Null Risiko.</h2>
-                    </div>
-                    <div class="sh-right desktop-only">
-                        <p class="tech-id-badge">
-                            VERIFIED_CONTRACTOR // ID_86152_MUC<br>
-                            LIABILITY_STATUS: <span class="text-gold">FULLY_COVERED</span>
-                        </p>
-                    </div>
-                </div>
-
-                <div class="security-grid">
-                    
-                    <div class="security-spec-card glass-panel" data-aos="fade-up" data-aos-delay="100">
-                        <div class="hover-glow"></div>
-                        <i class="fas fa-shield-alt bg-icon bg-icon-gold"></i>
-                        <span class="spec-id text-gold">INSURANCE_PILLAR_01</span>
-                        
-                        <h3 class="spec-title">Betriebshaftpflicht</h3>
-                        <p class="spec-desc">
-                            Vollumfänglicher Schutz bei Personen- und Sachschäden. Wir decken das Risiko ab der exakten Minute, in der wir Ihr Objekt betreten.
-                        </p>
-                        
-                        <div class="spec-metric">
-                            <span class="spec-value">5.000.000 €</span>
-                            <span class="spec-label text-gold">PAUSCHAL_DECKUNG</span>
-                        </div>
-                    </div>
-
-                    <div class="security-spec-card glass-panel border-top-cyan" data-aos="fade-up" data-aos-delay="200">
-                        <div class="hover-glow"></div>
-                        <i class="fas fa-microscope bg-icon bg-icon-cyan"></i>
-                        <span class="spec-id text-cyan">INSURANCE_PILLAR_02</span>
-                        
-                        <h3 class="spec-title">Leitungsschutz</h3>
-                        <p class="spec-desc">
-                            Inkludierte Absicherung gegen Schäden an wasser- und stromführenden Leitungen durch zwingenden Einsatz digitaler Detektionstechnik vor jedem Bohrgang.
-                        </p>
-                        
-                        <div class="spec-metric">
-                            <span class="spec-value">VOLLE_HAFTUNG</span>
-                            <span class="spec-label text-cyan">SYSTEM_DETECT_PRO</span>
-                        </div>
-                    </div>
-
-                    <div class="security-spec-card glass-panel" data-aos="fade-up" data-aos-delay="300">
-                        <div class="hover-glow"></div>
-                        <i class="fas fa-hard-hat bg-icon bg-icon-gold"></i>
-                        <span class="spec-id text-gold">INSURANCE_PILLAR_03</span>
-                        
-                        <h3 class="spec-title">Oberflächenschutz</h3>
-                        <p class="spec-desc">
-                            Schutz von Parkett, Naturstein und hochwertigen Möbelfronten durch industrielles Malervlies und spezialisierte Handhabung.
-                        </p>
-                        
-                        <div class="spec-metric">
-                            <span class="spec-value">ZERO_SCRATCH</span>
-                            <span class="spec-label text-gold">MATERIAL_PRESERVATION</span>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="premium-notice glass-panel" data-aos="fade-in">
-                    <i class="fas fa-info-circle text-cyan"></i>
-                    <p>
-                        <strong>Hinweis für Premium-Kunden:</strong> Unsere Versicherungspolice ist speziell für den Bereich Montage und High-End Innenausbau optimiert. Im Gegensatz zu privaten Haftpflichtversicherungen decken wir gewerbliche Tätigkeit mit höchster Präzision ab.
-                    </p>
-                </div>
-
-            </div>
-        </section>
-
-        <section class="equipment-section" id="hardware-inventory">
-            <div class="container relative-z">
-                
-                <div class="section-header-center" data-aos="fade-up">
-                    <span class="hero-glitch-tag">// HARDWARE_INVENTORY</span>
-                    <h2 class="section-title-large">Das Werkzeug<br><span class="text-cyan">der Profis.</span></h2>
-                    <p class="hero-description" style="margin: 0 auto; max-width: 700px;">
-                        Ihre Investition finanziert nicht nur Arbeitszeit, sondern den Einsatz modernster Industrietechnologie für ein makelloses, millimetergenaues Engineering-Ergebnis.
-                    </p>
-                </div>
-
-                <div class="equipment-grid">
-                    
-                    <div class="tool-spec-card glass-panel" data-aos="fade-up" data-aos-delay="100">
-                        <div class="tool-header">
-                            <span class="tool-brand">BOSCH_PROFESSIONAL</span>
-                            <i class="fas fa-crosshairs text-cyan" style="font-size: 1.8rem;"></i>
-                        </div>
-                        
-                        <h3 class="tool-title">Laser-Optik</h3>
-                        
-                        <ul class="tool-stats">
-                            <li>
-                                <span class="stat-label">ACCURACY</span>
-                                <span class="stat-value">± 0.2 mm/m</span>
-                            </li>
-                            <li>
-                                <span class="stat-label">RANGE</span>
-                                <span class="stat-value text-cyan">360° GREEN_BEAM</span>
-                            </li>
-                            <li>
-                                <span class="stat-label">CALIBRATION</span>
-                                <span class="stat-value">AUTO_LEVEL</span>
-                            </li>
-                        </ul>
-                        
-                        <p class="tool-desc">
-                            Wir nutzen digitale 3-Ebenen-Laser, um Schränke und Küchenzeilen auf die absolute Nulllinie zu bringen. Perfekte Spaltmaße sind kein Zufall, sondern reine Optik.
-                        </p>
-                    </div>
-
-                    <div class="tool-spec-card glass-panel border-top-gold" data-aos="fade-up" data-aos-delay="200">
-                        <div class="tool-header">
-                            <span class="tool-brand border-gold">FESTOOL_CLEANTEC</span>
-                            <i class="fas fa-wind text-gold" style="font-size: 1.8rem;"></i>
-                        </div>
-                        
-                        <h3 class="tool-title">HEPA-Absaugung</h3>
-                        
-                        <ul class="tool-stats">
-                            <li>
-                                <span class="stat-label">FILTRATION</span>
-                                <span class="stat-value text-gold">99.99% (M-CLASS)</span>
-                            </li>
-                            <li>
-                                <span class="stat-label">VACUUM</span>
-                                <span class="stat-value">24000 PA</span>
-                            </li>
-                            <li>
-                                <span class="stat-label">STATUS</span>
-                                <span class="stat-value">DUST_FREE_ZONE</span>
-                            </li>
-                        </ul>
-                        
-                        <p class="tool-desc">
-                            Bohren ohne Staubbelastung. Unsere aktiven Absaugsysteme fangen Partikel direkt an der Quelle ein – für ein klinisch sauberes Wohnumfeld während der Montage.
-                        </p>
-                    </div>
-
-                    <div class="tool-spec-card glass-panel" data-aos="fade-up" data-aos-delay="300">
-                        <div class="tool-header">
-                            <span class="tool-brand">HILTI_SCAN_TECH</span>
-                            <i class="fas fa-radar text-cyan" style="font-size: 1.8rem;"></i>
-                        </div>
-                        
-                        <h3 class="tool-title">Digital-Ortung</h3>
-                        
-                        <ul class="tool-stats">
-                            <li>
-                                <span class="stat-label">DEPTH</span>
-                                <span class="stat-value">UP TO 120 MM</span>
-                            </li>
-                            <li>
-                                <span class="stat-label">DETECTION</span>
-                                <span class="stat-value text-cyan">METAL / AC / WATER</span>
-                            </li>
-                            <li>
-                                <span class="stat-label">SAFETY</span>
-                                <span class="stat-value">ZERO_STRIKE</span>
-                            </li>
-                        </ul>
-                        
-                        <p class="tool-desc">
-                            Forensische Analyse Ihrer Wände. Bevor der Bohrer ansetzt, kartieren wir Leitungen und Rohre, um strukturelle Schäden und Kurzschlüsse kategorisch auszuschließen.
-                        </p>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-        
-        <section class="eco-section" id="eco-matrix">
-            <div class="container relative-z">
-                <div class="eco-grid">
-                    
-                    <div class="eco-text" data-aos="fade-right">
-                        <span class="hero-glitch-tag text-green">// ECOLOGICAL_INTEGRITY</span>
-                        <h2 class="section-title-large" style="text-align: left;">
-                            Sauberes Umfeld.<br>
-                            <span class="text-green">Gewissen inklusive.</span>
-                        </h2>
-                        
-                        <p class="hero-description" style="text-align: left; margin: 30px 0 0 0;">
-                            Unsere Montage endet nicht beim letzten Scharnier. Wir übernehmen die volle Verantwortung für den Lebenszyklus der anfallenden Verpackungsmaterialien.
-                        </p>
-
-                        <div class="eco-feature-box">
-                            <div class="eco-mini-card glass-panel">
-                                <i class="fas fa-leaf text-green"></i>
-                                <h4>Zero-Waste Logic</h4>
-                                <p>95% Sortenreine Trennung von Kartonage und PE-Folien direkt vor Ort.</p>
-                            </div>
-                            <div class="eco-mini-card glass-panel">
-                                <i class="fas fa-recycle text-green"></i>
-                                <h4>Full Removal</h4>
-                                <p>Auf Wunsch führen wir den Abfall sofort dem zertifizierten Recycling-Kreislauf zu.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="eco-visual" data-aos="fade-left" data-aos-delay="200">
-                        <div class="disposal-matrix glass-panel">
-                            <span class="matrix-label text-green">WASTE_SEGREGATION_RATIO</span>
-                            
-                            <div class="data-bar-group">
-                                <div class="data-bar-header">
-                                    <span>Kartonage / Papier</span>
-                                    <span class="text-green">85%</span>
-                                </div>
-                                <div class="data-bar-track">
-                                    <div class="data-bar-fill fill-green" style="width: 85%;"></div>
-                                </div>
-                            </div>
-
-                            <div class="data-bar-group">
-                                <div class="data-bar-header">
-                                    <span>LDPE Folien / Kunststoffe</span>
-                                    <span class="text-green">12%</span>
-                                </div>
-                                <div class="data-bar-track">
-                                    <div class="data-bar-fill fill-green" style="width: 12%;"></div>
-                                </div>
-                            </div>
-
-                            <div class="data-bar-group" style="margin-bottom: 0;">
-                                <div class="data-bar-header">
-                                    <span>Metall / Hardware Reste</span>
-                                    <span class="text-green">3%</span>
-                                </div>
-                                <div class="data-bar-track">
-                                    <div class="data-bar-fill fill-green" style="width: 3%;"></div>
-                                </div>
-                            </div>
-
-                            <div class="eco-guarantee">
-                                <p>
-                                    <strong>Besenrein-Garantie:</strong> Wir hinterlassen Ihren Raum im absolut bezugsfertigen Zustand. Durch unsere HEPA-Sauger und strukturierte Müllbündelung entfällt für Sie jeglicher Reinigungsaufwand.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>        
-
-        <section class="handover-section" id="final-protocol">
-            <div class="container relative-z">
-                <div class="handover-grid">
-                    
-                    <div class="handover-visual" data-aos="fade-right">
-                        <div class="handover-visual-wrap glass-panel">
-                            
-                            <div class="report-ui-mockup">
-                                <div class="report-header">
-                                    <div class="report-title">RAPHAEL_LEZIUS<br>ABNAHME_PROTOKOLL</div>
-                                    <div class="verified-stamp">VERIFIED_2026</div>
-                                </div>
-                                
-                                <div class="doc-line" style="width: 40%;"></div>
-                                <div class="doc-line" style="width: 100%;"></div>
-                                <div class="doc-line" style="width: 100%;"></div>
-                                <div class="doc-line" style="width: 70%; margin-bottom: 30px;"></div>
-                                
-                                <div class="report-footer">
-                                    <div class="project-id">PROJECT_ID: #RL-8822</div>
-                                    <div class="signature-box">SIGNATURE</div>
-                                </div>
-                            </div>
-
-                            <div class="integrity-badge">
-                                DATA_INTEGRITY: 100%
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="handover-content" data-aos="fade-left" data-aos-delay="200">
-                        <span class="hero-glitch-tag">// POST_MISSION_DATA</span>
-                        <h2 class="section-title-large" style="text-align: left;">
-                            Digitale<br>
-                            <span class="text-gold">Beweislast.</span>
-                        </h2>
-                        
-                        <p class="hero-description" style="text-align: left; margin: 30px 0 50px 0;">
-                            Transparenz endet nicht mit der Bezahlung. Wir liefern Ihnen eine lückenlose, sofort verfügbare Dokumentation Ihrer Montage für Ihre Unterlagen und das Finanzamt.
-                        </p>
-
-                        <div class="handover-features">
-                            
-                            <div class="hf-item">
-                                <div class="hf-icon-box"><i class="fas fa-file-pdf"></i></div>
-                                <div class="hf-text">
-                                    <h4>Das Abnahmeprotokoll</h4>
-                                    <p>Nach jeder Montage erhalten Sie ein digitales Protokoll, das den Zustand und die exakte Justierung aller Komponenten bestätigt.</p>
-                                </div>
-                            </div>
-
-                            <div class="hf-item">
-                                <div class="hf-icon-box"><i class="fas fa-receipt"></i></div>
-                                <div class="hf-text">
-                                    <h4>Instant-Invoicing</h4>
-                                    <p>Ihre Rechnung wird sofort nach Abnahme digital erstellt – perfekt formatiert für Ihren Steuervorteil gemäß § 35a EStG.</p>
-                                </div>
-                            </div>
-
-                            <div class="hf-item">
-                                <div class="hf-icon-box"><i class="fas fa-server"></i></div>
-                                <div class="hf-text">
-                                    <h4>Projekt-Archiv</h4>
-                                    <p>Wir speichern die technischen Parameter verschlüsselt. Bei späteren Erweiterungen wissen wir exakt, welche Systeme verbaut wurden.</p>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-        
-        <section class="faq-section" id="faq-terminal">
-            <div class="container relative-z">
-                
-                <div class="section-header-center" data-aos="fade-up">
-                    <span class="hero-glitch-tag">// SYSTEM_INTEGRITY_CHECK</span>
-                    <h2 class="section-title-large">Häufige Fragen.</h2>
-                </div>
-
-                <div class="faq-list">
-                    
-                    <div class="accordion-item glass-panel faq-module" data-aos="fade-up" data-aos-delay="100" onclick="window.toggleModule(this)">
-                        <button class="accordion-header" type="button">
-                            <span class="faq-question">Was passiert bei einer Planungsänderung vor Ort?</span>
-                            <i class="fas fa-chevron-down faq-icon m-plus"></i>
+                        <button class="btn-price-action gold-btn magnetic-target js-open-os">
+                            <i class="fas fa-bolt"></i> ANFRAGE STARTEN
                         </button>
-                        <div class="accordion-content module-body" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease;">
-                            <div class="faq-answer" style="padding: 20px;">
-                                Wir arbeiten nach dem <strong>Agile-Montage-Prinzip</strong>. Sollten sich während des Aufbaus spontane Änderungen ergeben (z.B. zusätzliche Module oder das Versetzen von Anschlüssen), kalkulieren wir diese absolut transparent nach unserem Modul-Katalog nach. Sie behalten jederzeit die volle Kostenkontrolle.
-                            </div>
-                        </div>
+                        <span class="tax-hint">zzgl. MwSt. // Steuerlich absetzbar</span>
                     </div>
 
-                    <div class="accordion-item glass-panel faq-module" data-aos="fade-up" data-aos-delay="200" onclick="window.toggleModule(this)">
-                        <button class="accordion-header" type="button">
-                            <span class="faq-question">Sind die Anfahrtskosten wirklich fix?</span>
-                            <i class="fas fa-chevron-down faq-icon m-plus"></i>
-                        </button>
-                        <div class="accordion-content module-body" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease;">
-                            <div class="faq-answer" style="padding: 20px;">
-                                Korrekt. Basierend auf unserem <strong>Zone-Mapping</strong> erhalten Sie eine Logistik-Pauschale. Diese deckt den Transport des Equipments, die Anfahrt und die Abfahrt ab – völlig unabhängig von Staus oder unerwarteten Verzögerungen im Verkehr.
-                            </div>
+                    <!-- TIER 3: ENTERPRISE -->
+                    <div class="price-module glass-panel module-enterprise">
+                        <div class="module-header">
+                            <span class="module-badge pink-text">[SYS_03]</span>
+                            <h3 class="module-title">ENTERPRISE</h3>
+                            <p class="module-sub">Gewerbe & Sonderlösungen</p>
                         </div>
-                    </div>
-
-                    <div class="accordion-item glass-panel faq-module" data-aos="fade-up" data-aos-delay="300" onclick="window.toggleModule(this)">
-                        <button class="accordion-header" type="button">
-                            <span class="faq-question">Muss ich Werkzeug oder Material bereitstellen?</span>
-                            <i class="fas fa-chevron-down faq-icon m-plus"></i>
-                        </button>
-                        <div class="accordion-content module-body" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease;">
-                            <div class="faq-answer" style="padding: 20px;">
-                                Nein. Wir bringen ein volles Arsenal an Profi-Werkzeug (Bosch, Festool, Hilti) sowie alle gängigen Befestigungsmittel und Spezialdübel mit. Sie müssen lediglich den freien Zugang zum Raum sicherstellen.
-                            </div>
+                        <div class="price-display">
+                            <span class="currency">€</span>
+                            <span class="amount">89</span>
+                            <span class="period">/ Std.</span>
                         </div>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check gold-text"></i> <strong>Alles aus PROFESSIONAL</strong></li>
+                            <li><i class="fas fa-check gold-text"></i> Massen-Rollout für Büros</li>
+                            <li><i class="fas fa-check gold-text"></i> USM Haller Spezialist</li>
+                            <li><i class="fas fa-check gold-text"></i> Demontage & Wiederaufbau</li>
+                            <li><i class="fas fa-check gold-text"></i> Nachjustierung (90 Tage)</li>
+                            <li><i class="fas fa-check gold-text"></i> Bevorzugte Terminvergabe</li>
+                        </ul>
+                        <button class="btn-price-action magnetic-target js-open-os">
+                            <i class="fas fa-bolt"></i> ANFRAGE STARTEN
+                        </button>
+                        <span class="tax-hint">zzgl. MwSt. // Steuerlich absetzbar</span>
                     </div>
 
                 </div>
-
-                <div class="integrity-bar" data-aos="fade-in" data-aos-delay="400">
-                    <div class="integrity-item">
-                        <i class="fas fa-shield-check text-gold"></i> <span>100% VERSICHERT</span>
-                    </div>
-                    <div class="integrity-item">
-                        <i class="fas fa-tools text-gold"></i> <span>PRO_EQUIPMENT</span>
-                    </div>
-                    <div class="integrity-item">
-                        <i class="fas fa-certificate text-gold"></i> <span>GEPRÜFT</span>
-                    </div>
+                
+                <!-- Matrix Footer Note -->
+                <div class="matrix-footer" data-aos="fade-up" data-aos-duration="600" data-aos-delay="300">
+                    <p><i class="fas fa-info-circle cyan-text"></i> Alle Preise sind Netto-Richtwerte. Ihr individuelles Festpreis-Angebot erhalten Sie nach dem kostenlosen Projekt-Check.</p>
                 </div>
-
             </div>
         </section>
 
-        <section class="final-cta-block">
-            <div class="container relative-z" data-aos="zoom-in">
-                <span class="hero-glitch-tag">SYSTEM_READY // INITIALIZE_PROJECT</span>
-                <h2 class="hero-title-massive" style="margin-bottom: 20px;">
-                    Bereit für das<br>
-                    <span class="text-gold">Lezius-Upgrade?</span>
+        <!-- ============================================================
+             LOGISTICS / AREA SECTION
+             ============================================================ -->
+        <section class="logistics-section" id="logistics">
+            <div class="container relative-z">
+                <div class="logistics-grid" data-aos="fade-up" data-aos-duration="800">
+                    
+                    <div class="logistics-text">
+                        <div class="pre-title" style="color:var(--neon-cyan);">[SYS_04] LOGISTIK</div>
+                        <h2 class="section-heading">Einsatzgebiet &amp; <span class="gold-text">Fahrzeit.</span></h2>
+                        <p class="section-subtitle" style="color:#94a3b8; max-width:500px;">
+                            Ich bin für Sie in Augsburg, München und dem gesamten Umland im Einsatz. Die Anfahrtskosten werden transparent und fair berechnet.
+                        </p>
+                        <ul class="logistics-features">
+                            <li><i class="fas fa-check gold-text"></i> <strong>Augsburg</strong> – Innenstadt & Umkreis</li>
+                            <li><i class="fas fa-check gold-text"></i> <strong>München</strong> – Alle Stadtteile</li>
+                            <li><i class="fas fa-check gold-text"></i> <strong>Umland</strong> – Auf Anfrage</li>
+                            <li><i class="fas fa-check gold-text"></i> <strong>Fahrzeit</strong> – 0,50 €/km (einfach)</li>
+                        </ul>
+                        <div style="margin-top:30px; display:flex; gap:15px; flex-wrap:wrap;">
+                            <a href="area.html" class="btn-holographic reactive-btn" style="border:1px solid var(--neon-cyan); color:var(--neon-cyan); padding:14px 28px; text-decoration:none; font-weight:700;">
+                                <i class="fas fa-map"></i> KARTE ANSEHEN
+                            </a>
+                            <button class="btn-solid-gold reactive-btn js-open-os" style="padding:14px 28px; cursor:pointer; border:none; font-weight:800;">
+                                <i class="fas fa-bolt"></i> ANFRAGE SENDEN
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="map-visualizer" data-aos="fade-left" data-aos-duration="800" data-aos-delay="100">
+                        <div class="radar-sweep" aria-hidden="true"></div>
+                        <div class="map-content">
+                            <div class="map-dot munich"><span>M</span></div>
+                            <div class="map-dot augsburg"><span>A</span></div>
+                            <div class="map-ring"></div>
+                            <div class="map-label munich-label">München</div>
+                            <div class="map-label augsburg-label">Augsburg</div>
+                            <div class="map-distance">~65 km</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             CTA SECTION
+             ============================================================ -->
+        <section class="cta-section" style="background: linear-gradient(135deg, #050505, #051015); text-align:center; padding:clamp(60px, 10vw, 100px) 0; border-top:2px dashed var(--neon-cyan);">
+            <div class="container" data-aos="zoom-in" data-aos-duration="600">
+                <h2 style="font-family:var(--font-head); font-size:clamp(2rem,5vw,3.5rem); font-weight:800; color:#fff; margin-bottom:15px; letter-spacing:-1px;">
+                    Bereit für den <span class="gold-text">Aufbau?</span>
                 </h2>
-                
-                <p class="hero-description" style="margin: 0 auto 50px auto; color: #888;">
-                    Wählen Sie Präzision über Kompromiss. Starten Sie jetzt Ihre unverbindliche Kalkulation über unser sicheres MissionOS Portal.
+                <p style="font-size:1.15rem; color:#aaa; margin-bottom:35px; max-width:600px; margin-left:auto; margin-right:auto;">
+                    Kein Frust. Kein Chaos. Perfekt ausgerichtet. Fordern Sie Ihr Festpreisangebot an.
                 </p>
-
-                <button type="button" class="btn-terminal js-open-os">
-                    PROJEKT INITIALISIEREN <i class="fas fa-bolt"></i>
+                <button type="button" class="btn btn-solid-gold reactive-btn js-open-os" style="padding:20px 50px; font-size:1.1rem; text-transform:uppercase; letter-spacing:1px; border:none; font-weight:800; cursor:pointer;">
+                    <i class="fas fa-rocket"></i> PROJEKT INITIALISIEREN
                 </button>
             </div>
         </section>
 
-    </main>
-
-    <nav class="section-tracker desktop-only">
-        <ul class="tracker-list">
-            <li><a href="#pricing-matrix" class="tracker-dot" data-label="System-Tarife"></a></li>
-            <li><a href="#logistics-engine" class="tracker-dot" data-label="Logistik"></a></li>
-            <li><a href="#execution-pipeline" class="tracker-dot" data-label="Ablauf"></a></li>
-            <li><a href="#fiscal-protocol" class="tracker-dot" data-label="EStG §35a"></a></li>
-            <li><a href="#hardware-inventory" class="tracker-dot" data-label="Hardware"></a></li>
-            <li><a href="#final-protocol" class="tracker-dot" data-label="Handover"></a></li>
-            <li><a href="#faq-terminal" class="tracker-dot" data-label="System-FAQ"></a></li>
-        </ul>
-    </nav>
-
-    <div class="mobile-sticky-cta glass-panel">
-        <div class="sticky-cta-content">
-            <div class="sticky-price-info">
-                <span class="sticky-label text-gold">SYSTEM_FIXED</span>
-                <span class="sticky-price">Kalkulation <i class="fas fa-lock" style="font-size: 0.7em; opacity: 0.5;"></i></span>
-            </div>
-            <button type="button" class="btn-terminal btn-sticky-action js-open-os">
-                START <i class="fas fa-bolt"></i>
+        <!-- Mobile Sticky CTA (visible only on mobile) -->
+        <div class="mobile-sticky-cta glass-panel">
+            <button class="js-open-os" style="width:100%; background:var(--neon-gold); color:#000; border:none; padding:16px; font-weight:800; font-family:var(--font-head); border-radius:12px; cursor:pointer; font-size:1rem;">
+                <i class="fas fa-bolt"></i> ANFRAGE STARTEN
             </button>
         </div>
-    </div>
 
-    <div id="global-os"></div>
-    <div id="global-footer"></div>
+    </main>
 
+    <!-- ============================================================
+         GLOBAL FOOTER & MISSION OS
+         ============================================================ -->
+    <div id="global-footer" aria-label="Globale Fußzeile"></div>
+    <div id="global-os" aria-label="MissionOS Anfrage-Terminal"></div>
+
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/491608194018" target="_blank" rel="noopener noreferrer" class="whatsapp-float magnetic-target" aria-label="Live Chat via WhatsApp öffnen">
+        <div class="whatsapp-pulse"></div>
+        <div class="whatsapp-tooltip">LIVE CHAT</div>
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- ============================================================
+         SCRIPTS
+         ============================================================ -->
+    <script src="https://cdn.jsdelivr.net/npm/@reimujs/aos/dist/aos.umd.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/components/mission-os.js"></script>
+
 </body>
 </html>

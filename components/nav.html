@@ -1,20 +1,22 @@
 <!-- ==========================================================================
-   RAPHAEL LEZIUS | MASTER NAVIGATION HTML (v2077.3 – MOBILE-FLUID)
-   ARCHITECTURE: STRICT SEPARATION (HTML ONLY) | SEMANTIC | ACCESSIBLE
+   RAPHAEL LEZIUS | MASTER NAVIGATION HTML (v2077.4 – MOBILE-FLUID)
+   ARCHITECTURE: GLASSMORPHISM | MEGA-MENU | FULLY RESPONSIVE
    ========================================================================== -->
 
 <header class="lezius-nav-2026" id="masterNav" role="banner">
     <div class="floating-capsule">
         
-        <!-- 1. MAGNETIC BRAND LOGO & TELEMETRY -->
+        <!-- ============================================================
+             1. BRAND / LOGO (with 2-sided flip)
+             ============================================================ -->
         <a href="index.html" class="nav-brand magnetic-target" id="brandLogoTrigger" aria-label="Zur Startseite">
             <div class="brand-pedestal">
                 <div class="logo-flipper">
                     <div class="logo-face front">
-                        <img src="assets/images/raphael-lezius-logo-front.webp" alt="Raphael Lezius" onerror="this.style.display='none';">
+                        <img src="assets/images/raphael-lezio-logo-front.webp" alt="Raphael Lezius Logo" onerror="this.style.display='none';">
                     </div>
                     <div class="logo-face back">
-                        <img src="assets/images/raphael-lezius-logo-back.webp" alt="Premium Montage" onerror="this.style.display='none';">
+                        <img src="assets/images/raphael-lezio-logo-back.webp" alt="Premium Montage" onerror="this.style.display='none';">
                     </div>
                 </div>
             </div>
@@ -29,14 +31,16 @@
             </div>
         </a>
 
-        <!-- 2. DESKTOP NAVIGATION -->
+        <!-- ============================================================
+             2. DESKTOP NAVIGATION
+             ============================================================ -->
         <nav class="nav-desktop" aria-label="Hauptnavigation Desktop">
             <a href="index.html" class="capsule-link">
                 <span class="link-text-main">Start</span>
                 <span class="link-text-sub"><span class="sub-dot"></span> HAUPTSYSTEM</span>
             </a>
             
-            <!-- MEGA MENU DROPDOWN (LEISTUNGEN) -->
+            <!-- MEGA MENU DROPDOWN -->
             <div class="nav-dropdown-trigger" id="dropdownTrigger">
                 <button class="capsule-link drop-btn" aria-haspopup="true" aria-expanded="false">
                     <span class="link-text-main">Leistungen <i class="fas fa-chevron-down drop-arrow"></i></span>
@@ -112,11 +116,16 @@
             </a>
         </nav>
 
-        <!-- 3. TACTICAL ACTIONS & MOBILE TOGGLE -->
+        <!-- ============================================================
+             3. TACTICAL ACTIONS & MOBILE TOGGLE
+             ============================================================ -->
         <div class="nav-actions">
             <!-- System Security Indicator -->
             <div class="agent-node desktop-only" title="Sichere Verbindung aktiv">
-                <div class="agent-radar"><div class="agent-core"></div><div class="agent-sweep"></div></div>
+                <div class="agent-radar">
+                    <div class="agent-core"></div>
+                    <div class="agent-sweep"></div>
+                </div>
                 <span class="agent-text">SYSTEM_SICHER</span>
             </div>
             
@@ -137,11 +146,15 @@
         </div>
         
         <!-- Subtle Bottom Laser Track -->
-        <div class="nav-laser-track" aria-hidden="true"><div class="laser-beam"></div></div>
+        <div class="nav-laser-track" aria-hidden="true">
+            <div class="laser-beam"></div>
+        </div>
     </div>
 </header>
 
-<!-- 4. FULLSCREEN VIBRANT MOBILE MENU (HUD) -->
+<!-- ============================================================
+     4. FULLSCREEN MOBILE MENU (HUD)
+     ============================================================ -->
 <div class="fluid-mobile-menu" id="fluidMobileMenu" aria-hidden="true">
     <!-- Prismatic Cyber-Backdrop -->
     <div class="mobile-prismatic-backdrop"></div>
@@ -156,21 +169,39 @@
 
         <!-- Mobile Main Links -->
         <nav class="mobile-main-nav" aria-label="Hauptnavigation Mobil">
-            <a href="index.html" class="m-link-massive" style="--boot-delay: 0.1s;">START <i class="fas fa-arrow-right"></i></a>
-            <a href="process-pricing.html" class="m-link-massive" style="--boot-delay: 0.2s;">PREISE & PROZESS <i class="fas fa-arrow-right"></i></a>
-            <a href="area.html" class="m-link-massive" style="--boot-delay: 0.3s;">EINSATZGEBIET <i class="fas fa-arrow-right"></i></a>
-            <a href="gallery.html" class="m-link-massive" style="--boot-delay: 0.4s;">PROJEKTGALERIE <i class="fas fa-arrow-right"></i></a>
-            <a href="magazine.html" class="m-link-massive" style="--boot-delay: 0.5s;">MAGAZIN <i class="fas fa-arrow-right"></i></a>
+            <a href="index.html" class="m-link-massive" style="--boot-delay: 0.1s;">
+                START <i class="fas fa-arrow-right"></i>
+            </a>
+            <a href="process-pricing.html" class="m-link-massive" style="--boot-delay: 0.2s;">
+                PREISE & PROZESS <i class="fas fa-arrow-right"></i>
+            </a>
+            <a href="area.html" class="m-link-massive" style="--boot-delay: 0.3s;">
+                EINSATZGEBIET <i class="fas fa-arrow-right"></i>
+            </a>
+            <a href="gallery.html" class="m-link-massive" style="--boot-delay: 0.4s;">
+                PROJEKTGALERIE <i class="fas fa-arrow-right"></i>
+            </a>
+            <a href="magazine.html" class="m-link-massive" style="--boot-delay: 0.5s;">
+                MAGAZIN <i class="fas fa-arrow-right"></i>
+            </a>
         </nav>
 
         <!-- Mobile Services Grid -->
         <div class="mobile-services-grid" style="--boot-delay: 0.6s;">
             <div class="m-grid-label">LEISTUNGEN (SEKTOREN)</div>
             <div class="m-grid-container">
-                <a href="residential.html" class="m-srv-card cyan"><i class="fas fa-couch"></i><span>PRIVAT</span></a>
-                <a href="office.html" class="m-srv-card pink"><i class="fas fa-building"></i><span>FIRMEN</span></a>
-                <a href="outdoor.html" class="m-srv-card green"><i class="fas fa-tree"></i><span>OUTDOOR</span></a>
-                <a href="demontage.html" class="m-srv-card gold"><i class="fas fa-tools"></i><span>SERVICE</span></a>
+                <a href="residential.html" class="m-srv-card cyan">
+                    <i class="fas fa-couch"></i><span>PRIVAT</span>
+                </a>
+                <a href="office.html" class="m-srv-card pink">
+                    <i class="fas fa-building"></i><span>FIRMEN</span>
+                </a>
+                <a href="outdoor.html" class="m-srv-card green">
+                    <i class="fas fa-tree"></i><span>OUTDOOR</span>
+                </a>
+                <a href="demontage.html" class="m-srv-card gold">
+                    <i class="fas fa-tools"></i><span>SERVICE</span>
+                </a>
             </div>
         </div>
 

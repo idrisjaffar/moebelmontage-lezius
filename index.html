@@ -3,26 +3,56 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Raphael Lezius | Premium Montage & High-End Interior Tech</title>
+    <title>Raphael Lezius | Premium Montage & 2026 High-End Interior Tech</title>
     <meta name="description" content="Professioneller Montage-Experte für Premium-Möbel, Küchen, Gartenhäuser und Demontage in Augsburg und München. Millimetergenaue Präzision mit Bosch Professional." />
     <meta name="theme-color" content="#0a0805" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-    <!-- Preconnect & Fonts -->
+    <!-- ============================================================
+         PRECONNECT & FONTS
+         ============================================================ -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&family=Space+Grotesk:wght@300;500;700;800&family=JetBrains+Mono:wght@400;700&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    
+    <!-- ============================================================
+         AOS (Animate On Scroll) – 2026 Standard
+         ============================================================ -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@reimujs/aos/dist/aos.css" />
 
-    <!-- ===== SINGLE MASTER CSS – all styles combined ===== -->
+    <!-- ============================================================
+         MODULAR CSS ENGINE (AURUM 2077)
+         ============================================================ -->
+    <!-- Foundation -->
     <link rel="stylesheet" href="assets/css/style.css" />
+    
+    <!-- Global Components -->
+    <link rel="stylesheet" href="assets/css/components/global.css" />
+    <link rel="stylesheet" href="assets/css/components/nav.css" />
+    <link rel="stylesheet" href="assets/css/components/footer.css" />
+    <link rel="stylesheet" href="assets/css/components/mission-os.css" />
+    
+    <!-- Section Components -->
+    <link rel="stylesheet" href="assets/css/components/hero.css" />
+    <link rel="stylesheet" href="assets/css/components/profile.css" />
+    <link rel="stylesheet" href="assets/css/components/services.css" />
+    <link rel="stylesheet" href="assets/css/components/faq.css" />
+    <link rel="stylesheet" href="assets/css/components/reviews.css" />
+    <link rel="stylesheet" href="assets/css/components/belt.css" />
+    <link rel="stylesheet" href="assets/css/components/video.css" />
+    
+    <!-- Carousel & Mobile Fluid -->
+    <link rel="stylesheet" href="assets/css/components/carousel.css" />
+    <link rel="stylesheet" href="assets/css/components/mobile-fluid.css" />
 
-    <!-- Minimal fallback for no-JS -->
+    <!-- ============================================================
+         FAILSAFE
+         ============================================================ -->
     <style>
-        body { background: #0a0805; }
-        .no-js-override [data-aos] { opacity: 1 !important; transform: none !important; }
+        body { background: #0a0805; opacity: 1 !important; visibility: visible !important; }
+        .no-js-override [data-aos] { opacity: 1 !important; transform: none !important; visibility: visible !important; }
     </style>
 </head>
 
@@ -53,24 +83,24 @@
             <div class="container relative-z">
                 <div class="kinetic-layout">
                     <!-- Linke Spalte: Mission Statement -->
-                    <div class="hero-text-core" data-aos="fade-up">
-                        <div class="system-uplink-badge" role="status">
+                    <div class="hero-text-core">
+                        <div class="system-uplink-badge" role="status" data-aos="fade-up" data-aos-duration="800">
                             <div class="pulse-ring-gold"></div>
                             <span class="uplink-text crisp-text">SYSTEM ONLINE // MÜNCHEN &amp; AUGSBURG</span>
                         </div>
 
-                        <h1 class="hero-title-sharp">
+                        <h1 class="hero-title-sharp" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
                             <span class="title-line">MÖBEL KAUFEN</span>
                             <span class="title-line">IST SCHÖN.</span>
-                            <span class="title-line gold-text">DIE MONTAGE MEINE DISZIPLIN.</span>
+                            <span class="title-line gold-text">DIE MONTAGE MEINE VERANTWORTUNG.</span>
                         </h1>
 
-                        <p class="hero-mission-statement crisp-text">
+                        <p class="hero-mission-statement crisp-text" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
                             <span class="highlight-bar-gold">Ihre Zeit ist zu wertvoll für Kompromisse.</span><br />
-                            Sie haben in erstklassiges Interieur investiert – überlassen Sie das finale Finish nicht dem Zufall. Als spezialisierter Montage-Experte garantiere ich eine makellose Umsetzung. Millimetergenau, staubfrei und ausgeführt mit digitaler <strong>Laser-Nivellierung</strong> sowie High-End-Technologie von <strong>Bosch Professional</strong>.
+                            Ich verwandle Ihre Möbel in maßgeschneiderte Architektur. Als spezialisierter Montage-Experte garantiere ich eine makellose Umsetzung. Millimetergenau, staubfrei und ausgeführt mit digitaler <strong>Laser-Nivellierung</strong> sowie High-End-Technologie von <strong>Bosch Professional</strong>.
                         </p>
 
-                        <div class="tactical-btn-group">
+                        <div class="tactical-btn-group" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="300">
                             <button class="btn btn-solid-gold reactive-btn magnetic-target js-open-os" aria-label="Projektanfrage starten">
                                 <i class="fas fa-bolt"></i> PROJEKT-ANFRAGE STARTEN
                             </button>
@@ -81,7 +111,7 @@
                     </div>
 
                     <!-- Rechte Spalte: Ops-Panel (Desktop only) -->
-                    <aside class="ops-panel-wrapper desktop-only" data-aos="fade-left" data-aos-delay="200" aria-label="System-Spezifikationen">
+                    <aside class="ops-panel-wrapper desktop-only" data-aos="fade-left" data-aos-duration="800" data-aos-delay="400" aria-label="System-Spezifikationen">
                         <div class="glass-panel ops-card aurum-card">
                             <div class="ops-header">
                                 <div class="ops-badge">
@@ -146,7 +176,7 @@
         </section>
 
         <!-- ============================================================
-             2. DATA STREAM MARQUEE
+             2. DATA STREAM MARQUEE (No AOS – Already moving)
              ============================================================ -->
         <div class="marquee-wrapper" aria-hidden="true">
             <div class="marquee-track">
@@ -166,15 +196,15 @@
         </div>
 
         <!-- ============================================================
-             3. DIGITAL PROFILE & PHILOSOPHY
+             3. DIGITAL PROFILE & PHILOSOPHY (Trust Engine)
              ============================================================ -->
         <section id="profile" class="section-padding" style="background:#020203; padding:clamp(60px,8vw,100px) 0; border-top:1px solid rgba(0,229,255,0.1);">
             <div class="container relative-z" style="max-width:1200px; margin:0 auto; padding:0 20px;">
                 <div class="profile-split-layout">
 
                     <!-- Linke Spalte: HUD + ID-Card -->
-                    <div class="profile-card-wrapper" data-aos="fade-right">
-                        <div class="hud-monitor">
+                    <div class="profile-card-wrapper" data-aos="fade-right" data-aos-duration="800">
+                        <div class="hud-monitor" data-aos="fade-right" data-aos-duration="600">
                             <div class="hud-header">
                                 <i class="fas fa-crosshairs blink" style="color:var(--neon-cyan,#00e5ff);"></i>
                                 <span>OPERATIONAL ZONE // AUGSBURG &amp; MÜNCHEN</span>
@@ -187,7 +217,7 @@
                             <div class="diag-bar"><div class="diag-fill"></div></div>
                         </div>
 
-                        <article class="id-card glass-panel">
+                        <article class="id-card glass-panel" data-aos="fade-right" data-aos-duration="800" data-aos-delay="100">
                             <div class="id-header-tech">
                                 <div class="chip"><i class="fas fa-microchip"></i></div>
                                 <div class="status-live"><span class="blink" style="color:#00e5ff;">●</span> MONTAGE-EXPERTE</div>
@@ -222,43 +252,44 @@
                     </div>
 
                     <!-- Rechte Spalte: Philosophie -->
-                    <div class="philosophy-content" data-aos="fade-left">
+                    <div class="philosophy-content" data-aos="fade-left" data-aos-duration="800">
                         <div class="section-tag-wrapper">
                             <span class="section-tag">MEINE PHILOSOPHIE</span>
                         </div>
 
-                        <h2 id="profile-heading" class="section-heading" style="font-size:clamp(2rem,4vw,3rem); line-height:1.1; margin-bottom:20px;">
+                        <h2 id="profile-heading" class="section-heading" style="font-size:clamp(2rem,4vw,3rem); line-height:1.1; margin-bottom:20px;" data-aos="fade-left" data-aos-duration="800" data-aos-delay="100">
                             Wahres Handwerk kennt keine <span style="color:#FFD700;">Kompromisse.</span>
                         </h2>
 
-                        <blockquote class="desc-line" style="font-size:clamp(1.1rem,2vw,1.25rem); color:#f8fafc; font-style:italic; border-left:3px solid #FFD700; padding-left:20px; margin-bottom:25px;">
-                            „Ein Zuhause ist mehr als nur Wände und Möbel. Es ist der Ort, an dem Sie zur Ruhe kommen sollen. Mein Ziel ist es, Ihnen exakt diese Ruhe zu schenken.“
+                        <blockquote class="desc-line" style="font-size:clamp(1.1rem,2vw,1.25rem); color:#f8fafc; font-style:italic; border-left:3px solid #FFD700; padding-left:20px; margin-bottom:25px;" data-aos="fade-left" data-aos-duration="800" data-aos-delay="200">
+                            „Ein Zuhause ist der Ort, an dem Sie zur Ruhe kommen. Ich sorge dafür, dass Sie diese Ruhe auch spüren.“
                         </blockquote>
 
-                        <p class="desc-line" style="color:#94a3b8; line-height:1.7; margin-bottom:40px; font-size:clamp(0.95rem,1.5vw,1.05rem);">
-                            Ich biete Ihnen einen Service, den große Möbelhäuser oft nicht leisten können: absolute Zuverlässigkeit, persönliche Erreichbarkeit und eine handwerkliche Qualität, die auch bei schiefen Wänden oder komplexen Sonderwünschen nicht aufgibt. Jedes Projekt wird mit der gleichen Hingabe behandelt – als wäre es mein eigenes Zuhause.
+                        <p class="desc-line" style="color:#94a3b8; line-height:1.7; margin-bottom:40px; font-size:clamp(0.95rem,1.5vw,1.05rem);" data-aos="fade-left" data-aos-duration="800" data-aos-delay="300">
+                            Ich biete Ihnen, was große Möbelhäuser nicht können: absolute Zuverlässigkeit, persönliche Erreichbarkeit und handwerkliche Qualität – auch bei schiefen Wänden oder komplexen Sonderwünschen.
                         </p>
 
-                        <!-- PHILOSOPHY CARDS -->
+                        <!-- PHILOSOPHY CARDS (with staggered AOS) -->
                         <div class="philosophy-tactile-stream" aria-label="Kernkompetenzen">
-                            <div class="tech-card-v2 glass-panel">
+                            <div class="tech-card-v2 glass-panel" data-aos="fade-up" data-aos-duration="600" data-aos-delay="100">
                                 <div class="card-icon-v2" style="color:#00e5ff; font-size:1.5rem; margin-bottom:15px;"><i class="fas fa-drafting-compass"></i></div>
                                 <h3 class="card-title-v2" style="font-family:monospace; font-size:1rem; margin-bottom:10px;">DETAILVERLIEBT</h3>
                                 <p class="card-desc-v2" style="color:#94a3b8; font-size:0.85rem; line-height:1.5;">Schleifende Schranktüren? Nicht bei mir. Jedes Scharnier wird millimetergenau justiert.</p>
                             </div>
-                            <div class="tech-card-v2 glass-panel">
+                            <div class="tech-card-v2 glass-panel" data-aos="fade-up" data-aos-duration="600" data-aos-delay="200">
                                 <div class="card-icon-v2" style="color:#FFD700; font-size:1.5rem; margin-bottom:15px;"><i class="fas fa-handshake"></i></div>
                                 <h3 class="card-title-v2" style="font-family:monospace; font-size:1rem; margin-bottom:10px;">TRANSPARENT</h3>
-                                <p class="card-desc-v2" style="color:#94a3b8; font-size:0.85rem; line-height:1.5;">Sie erhalten vor dem Start einen festen Preis. Keine Nachverhandlungen, kein Stress.</p>
+                                <p class="card-desc-v2" style="color:#94a3b8; font-size:0.85rem; line-height:1.5;">Feste Preise, keine Überraschungen. Sie planen mit Klarheit.</p>
                             </div>
-                            <div class="tech-card-v2 glass-panel">
+                            <div class="tech-card-v2 glass-panel" data-aos="fade-up" data-aos-duration="600" data-aos-delay="300">
                                 <div class="card-icon-v2" style="color:#00e5ff; font-size:1.5rem; margin-bottom:15px;"><i class="fas fa-shield-alt"></i></div>
                                 <h3 class="card-title-v2" style="font-family:monospace; font-size:1rem; margin-bottom:10px;">VERSICHERT</h3>
-                                <p class="card-desc-v2" style="color:#94a3b8; font-size:0.85rem; line-height:1.5;">Vollständige Betriebshaftpflicht. Null Risiko für Ihre wertvolle Einrichtung.</p>
+                                <p class="card-desc-v2" style="color:#94a3b8; font-size:0.85rem; line-height:1.5;">Vollständige Haftpflicht. Ihr Zuhause ist abgesichert.</p>
                             </div>
                         </div>
 
-                        <div class="consultation-wrapper glass-panel" style="margin-top:40px; padding:30px; border-left:2px solid #00e5ff; background:rgba(0,229,255,0.02);">
+                        <!-- Consultation Box -->
+                        <div class="consultation-wrapper glass-panel" style="margin-top:40px; padding:30px; border-left:2px solid #00e5ff; background:rgba(0,229,255,0.02);" data-aos="fade-up" data-aos-duration="600" data-aos-delay="400">
                             <div class="consultation-info" style="margin-bottom:20px;">
                                 <strong style="color:#fff; font-family:monospace; letter-spacing:1px; display:block; margin-bottom:10px;"><span style="color:#00e5ff;">●</span> KOSTENLOSER PROJEKT-CHECK</strong>
                                 <p style="color:#94a3b8; font-size:0.9rem; line-height:1.5; margin:0;">Klären Sie technische Details und Maße völlig unverbindlich ab, bevor Sie mich beauftragen.</p>
@@ -278,51 +309,52 @@
         </section>
 
         <!-- ============================================================
-             4. SYSTEM SERVICES ACCORDION
+             4. SYSTEM SERVICES ACCORDION (Updated Content)
              ============================================================ -->
         <section id="system-integration" class="services-accordion-section" style="background:#020203; padding:clamp(80px,10vw,120px) 0; border-top:1px solid rgba(0,229,255,0.1); position:relative;">
             <div class="interface-overlay" style="position:absolute; inset:0; background-image:linear-gradient(rgba(0,229,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,229,255,0.03) 1px, transparent 1px); background-size:60px 60px; mask-image:radial-gradient(circle at top, black, transparent 70%); pointer-events:none;"></div>
 
             <div class="container relative-z" style="max-width:1000px; margin:0 auto; padding:0 20px;">
-                <div class="section-header center" data-aos="fade-up" style="text-align:center; margin-bottom:60px;">
+                <div class="section-header center" data-aos="fade-up" data-aos-duration="600" style="text-align:center; margin-bottom:60px;">
                     <div class="pre-title" style="font-family:monospace; color:#00e5ff; font-size:0.75rem; letter-spacing:3px; margin-bottom:15px;">SYSTEM_SERVICES // SPEZIFIKATIONEN</div>
                     <h2 id="services-heading" class="section-heading" style="font-size:clamp(2rem,4vw,3.5rem); font-weight:900; line-height:1.1; margin-bottom:25px;">
-                        VON DER KÜCHE BIS ZUM <span style="color:#00e5ff;">GARTENHAUS</span>
+                        VON DER KÜCHE BIS ZUM <span style="color:#00e5ff;">GARTENHAUS</span> – ICH BAUE, WORAUF SIE SICH VERLASSEN KÖNNEN.
                     </h2>
                     <p class="section-subtitle" style="color:#94a3b8; max-width:700px; margin:0 auto; font-size:1.1rem; line-height:1.7;">
-                        Mein Anspruch ist die millimetergenaue Integration in Ihre Architektur.
+                        Ihre Räume verdienen mehr als einen Akkuschrauber. Ich schaffe Strukturen, die Sie ein Leben lang nicht mehr ärgern.
                     </p>
                 </div>
 
-                <div class="accordion-container" data-aos="fade-up" data-aos-delay="100">
+                <div class="accordion-container" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
 
-                    <!-- Modul 1: Residential -->
-                    <div class="accordion-item border-cyan">
+                    <!-- Modul 1: LUXUS. WOHNEN. -->
+                    <div class="accordion-item border-cyan" data-aos="fade-up" data-aos-duration="600" data-aos-delay="100">
                         <button class="accordion-header js-accordion-trigger" aria-expanded="false">
                             <div class="header-left">
-                                <span class="sector-id cyan-text">MODUL_01 // RESIDENTIAL</span>
-                                <h3 class="sector-title">Küchenarchitektur &amp; Premium-Innenausbau</h3>
+                                <span class="sector-id cyan-text">[SYS_01] RESIDENTIAL</span>
+                                <h3 class="sector-title">LUXUS. WOHNEN.</h3>
+                                <p style="color:#94a3b8; font-size:0.9rem; margin:4px 0 0 0;">Küchen &amp; Premium-Innenausbau</p>
                             </div>
                             <div class="sector-trigger"><i class="fas fa-plus icon-cyan"></i></div>
                         </button>
                         <div class="accordion-content">
                             <div class="accordion-body-inner">
-                                <p class="sector-description">Der Aufbau von komplexen Möbelsystemen und Küchen erfordert mehr als nur einen Akkuschrauber. Es erfordert räumliches Denken, Materialverständnis und Laser-Präzision.</p>
+                                <p class="sector-description">Ob Einbauküche oder Maßschrank – ich gleiche selbst schiefe Altbauwände millimetergenau aus.</p>
                                 <div class="sector-grid">
                                     <div class="sector-group">
                                         <h4 class="group-label"><i class="fas fa-utensils cyan-text"></i> METOD &amp; Premium-Küchen</h4>
                                         <ul>
-                                            <li><strong>Fugenlose Integration:</strong> Millimetergenauer Zuschnitt von Arbeitsplatten.</li>
-                                            <li><strong>Schwerlast-Verankerung:</strong> Spezialdübel bis 150kg Traglast.</li>
-                                            <li><strong>Spaltmaß-Justierung:</strong> Laser-ausgerichtete Fronten.</li>
+                                            <li><strong>Laser-justierte Fronten</strong> für perfekte Spaltmaße.</li>
+                                            <li><strong>Schwerlast-Verankerung</strong> für absolute Stabilität.</li>
+                                            <li><strong>Kratzfreie Montage</strong> Ihrer teuren Geräte.</li>
                                         </ul>
                                     </div>
                                     <div class="sector-group">
                                         <h4 class="group-label"><i class="fas fa-box-open cyan-text"></i> PAX &amp; Maßschränke</h4>
                                         <ul>
-                                            <li><strong>Raumhohe Konstruktionen:</strong> Sicherer Aufbau bei minimalem Platz.</li>
-                                            <li><strong>Schwebetüren-Mechanik:</strong> Lautloses Gleiten.</li>
-                                            <li><strong>Kippsicherung:</strong> Kompromisslose Fixierung.</li>
+                                            <li><strong>Raumhohe Konstruktionen</strong> – sicherer Aufbau bei minimalem Platz.</li>
+                                            <li><strong>Schwebetüren-Mechanik</strong> – lautloses, sanftes Gleiten.</li>
+                                            <li><strong>Kippsicherung</strong> – kompromisslose Fixierung.</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -330,31 +362,32 @@
                         </div>
                     </div>
 
-                    <!-- Modul 2: Outdoor -->
-                    <div class="accordion-item border-gold">
+                    <!-- Modul 2: NATUR. TECHNIK. -->
+                    <div class="accordion-item border-gold" data-aos="fade-up" data-aos-duration="600" data-aos-delay="200">
                         <button class="accordion-header js-accordion-trigger" aria-expanded="false">
                             <div class="header-left">
-                                <span class="sector-id gold-text">MODUL_02 // OUTDOOR</span>
-                                <h3 class="sector-title">Gartenhäuser &amp; Holzbau</h3>
+                                <span class="sector-id gold-text">[SYS_02] OUTDOOR</span>
+                                <h3 class="sector-title">NATUR. TECHNIK.</h3>
+                                <p style="color:#94a3b8; font-size:0.9rem; margin:4px 0 0 0;">Gartenhäuser &amp; Terrassenbau</p>
                             </div>
                             <div class="sector-trigger"><i class="fas fa-plus icon-gold"></i></div>
                         </button>
                         <div class="accordion-content">
                             <div class="accordion-body-inner">
-                                <p class="sector-description">Outdoor-Strukturen sind extremen Bedingungen ausgesetzt. Stürme, Schneelasten und Feuchtigkeit verzeihen keine Montagefehler.</p>
+                                <p class="sector-description">Gartenhäuser halten nur, wenn die Statik stimmt. Ich baue wetterfest und sturmsicher.</p>
                                 <div class="sector-grid">
                                     <div class="sector-group">
                                         <h4 class="group-label"><i class="fas fa-home gold-text"></i> Massivholz-Gartenhäuser</h4>
                                         <ul>
-                                            <li><strong>Strukturelle Integrität:</strong> 28-44mm Blockbohlenbau.</li>
-                                            <li><strong>Dachabdichtung:</strong> EPDM-Folien &amp; Bitumen.</li>
+                                            <li><strong>Präziser Blockbohlenbau</strong> (28-44mm).</li>
+                                            <li><strong>Wetterdichte Dachabdichtung</strong> &amp; Isolierung.</li>
                                         </ul>
                                     </div>
                                     <div class="sector-group">
                                         <h4 class="group-label"><i class="fas fa-toolbox gold-text"></i> Metall-Systeme</h4>
                                         <ul>
-                                            <li><strong>Marken:</strong> BIOHORT, TEPRO Spezialist.</li>
-                                            <li><strong>Fundament:</strong> Verschraubung auf Beton.</li>
+                                            <li><strong>Spezialist</strong> für BIOHORT &amp; TEPRO Systeme.</li>
+                                            <li><strong>Sturmfundament</strong> – Schwerlast-Verschraubung auf Beton.</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -362,31 +395,32 @@
                         </div>
                     </div>
 
-                    <!-- Modul 3: Corporate -->
-                    <div class="accordion-item border-pink">
+                    <!-- Modul 3: PROFIT. RÄUME. -->
+                    <div class="accordion-item border-pink" data-aos="fade-up" data-aos-duration="600" data-aos-delay="300">
                         <button class="accordion-header js-accordion-trigger" aria-expanded="false">
                             <div class="header-left">
-                                <span class="sector-id pink-text">MODUL_03 // CORPORATE</span>
-                                <h3 class="sector-title">USM Haller &amp; Office Design</h3>
+                                <span class="sector-id pink-text">[SYS_03] CORPORATE</span>
+                                <h3 class="sector-title">PROFIT. RÄUME.</h3>
+                                <p style="color:#94a3b8; font-size:0.9rem; margin:4px 0 0 0;">USM Haller &amp; Office Design</p>
                             </div>
                             <div class="sector-trigger"><i class="fas fa-plus icon-pink"></i></div>
                         </button>
                         <div class="accordion-content">
                             <div class="accordion-body-inner">
-                                <p class="sector-description">Die Montage von Designermöbeln in Kanzleien und Praxen erfordert höchste Diskretion und respektvollen Umgang mit teuren Materialien.</p>
+                                <p class="sector-description">Ihre Geschäftsräume sind Ihre Visitenkarte. Kratzfreie, diskrete Montage für Ihr Office.</p>
                                 <div class="sector-grid">
                                     <div class="sector-group">
                                         <h4 class="group-label"><i class="fas fa-gem pink-text"></i> USM Haller</h4>
                                         <ul>
-                                            <li><strong>Spezialwerkzeug:</strong> Konnektoren-Spanner.</li>
-                                            <li><strong>Kratzfrei:</strong> Polster-Montage für Chromrohre.</li>
+                                            <li><strong>USM Haller Experte</strong> mit Spezialwerkzeug.</li>
+                                            <li><strong>Kratzfreie Montage</strong> – Polster für Chromrohre.</li>
                                         </ul>
                                     </div>
                                     <div class="sector-group">
                                         <h4 class="group-label"><i class="fas fa-building pink-text"></i> Smart Workspace</h4>
                                         <ul>
-                                            <li><strong>Ergonomie:</strong> E-Höhenverstellbare Desks.</li>
-                                            <li><strong>Kabel:</strong> Unsichtbares Management.</li>
+                                            <li><strong>Höhenverstellbare Desks</strong> &amp; Kabelmanagement.</li>
+                                            <li><strong>Massen-Rollout</strong> ohne Betriebsunterbrechung.</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -394,30 +428,31 @@
                         </div>
                     </div>
 
-                    <!-- Modul 4: Deconstruct -->
-                    <div class="accordion-item border-green">
+                    <!-- Modul 4: SICHERHEIT. UMGANG. -->
+                    <div class="accordion-item border-green" data-aos="fade-up" data-aos-duration="600" data-aos-delay="400">
                         <button class="accordion-header js-accordion-trigger" aria-expanded="false">
                             <div class="header-left">
-                                <span class="sector-id green-text">MODUL_04 // DEMONTAGE</span>
-                                <h3 class="sector-title">Zerstörungsfreier Rückbau</h3>
+                                <span class="sector-id green-text">[SYS_04] DEMONTAGE</span>
+                                <h3 class="sector-title">SICHERHEIT. UMGANG.</h3>
+                                <p style="color:#94a3b8; font-size:0.9rem; margin:4px 0 0 0;">Zerstörungsfreier Rückbau</p>
                             </div>
                             <div class="sector-trigger"><i class="fas fa-plus icon-green"></i></div>
                         </button>
                         <div class="accordion-content">
                             <div class="accordion-body-inner">
-                                <p class="sector-description">Die sorgfältige, dokumentierte und zerstörungsfreie Zerlegung Ihrer Küchen und Schränke für den Umzug.</p>
+                                <p class="sector-description">Systematische Demontage ohne Kratzer oder Brüche – perfekt für Ihren Umzug.</p>
                                 <div class="sector-grid">
                                     <div class="sector-group">
                                         <h4 class="group-label"><i class="fas fa-hammer green-text"></i> System-Rückbau</h4>
                                         <ul>
-                                            <li><strong>Zerstörungsfrei:</strong> Lösen ohne Materialbruch.</li>
-                                            <li><strong>Dokumentation:</strong> Beschriftung für Neuaufbau.</li>
+                                            <li><strong>Zerstörungsfreies Lösen</strong> aller Verbindungen.</li>
+                                            <li><strong>Dokumentation</strong> für den fehlerfreien Wiederaufbau.</li>
                                         </ul>
                                     </div>
                                     <div class="sector-group">
                                         <h4 class="group-label"><i class="fas fa-truck-loading green-text"></i> Modifikation</h4>
                                         <ul>
-                                            <li><strong>Raumanpassung:</strong> Zuschnitt an neue Maße.</li>
+                                            <li><strong>Raumanpassung</strong> – Zuschnitt an neue Maße.</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -429,13 +464,13 @@
         </section>
 
         <!-- ============================================================
-             5. REVIEWS – CAROUSEL WITH 9 REVIEWS
+             5. VERIFIED CLIENT LOGS (Static Grid – No Carousel)
              ============================================================ -->
         <section id="reviews" class="review-mainframe-bg" style="border-top:1px solid rgba(255,215,0,0.1); padding:100px 0; background:#020203;">
             <div class="reviews-grid-overlay" style="position:absolute; inset:0; background-image:radial-gradient(rgba(255,215,0,0.08) 1px, transparent 1px); background-size:40px 40px; opacity:0.4;"></div>
 
             <div class="container relative-z" style="max-width:1200px; margin:0 auto; padding:0 20px; position:relative; z-index:2;">
-                <div class="section-header center" style="text-align:center; margin-bottom:40px;">
+                <div class="section-header center" data-aos="fade-up" data-aos-duration="600" style="text-align:center; margin-bottom:40px;">
                     <div class="pre-title" style="font-family:monospace; color:#FFD700; letter-spacing:3px; font-size:0.75rem; margin-bottom:10px;">SOCIAL_PROOF // VERIFIED_FEEDBACK</div>
                     <h2 class="section-heading" style="font-family:sans-serif; font-size:clamp(2rem,4vw,3.5rem); font-weight:900; color:#fff; margin-bottom:20px;">Vertrauen durch <span style="color:#FFD700;">Leistung</span></h2>
                     <p class="section-subtitle" style="color:#94a3b8; font-size:1.1rem; max-width:700px; margin:0 auto; line-height:1.6;">
@@ -444,7 +479,7 @@
                 </div>
 
                 <!-- Trust Cards -->
-                <div class="trust-cards-wrapper" style="display:flex; justify-content:center; gap:20px; flex-wrap:wrap; margin-bottom:50px;">
+                <div class="trust-cards-wrapper" data-aos="fade-up" data-aos-duration="600" data-aos-delay="100" style="display:flex; justify-content:center; gap:20px; flex-wrap:wrap; margin-bottom:50px;">
                     <a href="https://profis.check24.de" target="_blank" rel="noopener noreferrer" class="platform-card" style="padding:15px 30px; display:flex; align-items:center; gap:15px; text-decoration:none; border:1px solid rgba(0,229,255,0.3); background:rgba(0,0,0,0.6); border-radius:8px; transition:0.3s;">
                         <div style="font-weight:900; color:#fff; font-size:1.3rem; letter-spacing:-1px;">CHECK<span style="color:#00e5ff;">24</span></div>
                         <div style="border-left:1px solid rgba(255,255,255,0.1); padding-left:15px;">
@@ -461,112 +496,118 @@
                     </a>
                 </div>
 
-                <!-- Review Carousel -->
-                <div class="review-carousel-container" style="position:relative;">
-                    <div class="review-carousel-track" id="reviewCarouselTrack" style="display:flex; transition:transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1); gap:25px; padding:10px 0 30px 0;">
-                        <!-- Review 1 -->
-                        <div class="review-card-aurum glass-panel" style="flex:0 0 100%; min-width:100%; padding:25px 20px; background:rgba(10,8,5,0.85); border:1px solid rgba(255,215,0,0.08); border-top:3px solid #FFD700; border-radius:8px; display:flex; flex-direction:column;">
-                            <div class="rev-stars" style="color:#FFD700; font-size:0.7rem; margin-bottom:12px; letter-spacing:2px;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                            <p class="rev-quote" style="color:#e2e8f0; line-height:1.6; font-style:italic; flex-grow:1; font-size:0.9rem;">„Herr Lezius ist ein sehr guter Handwerker. Er hat uns bei unseren Küchenproblemen exzellent beraten und anschließend alles hervorragend umgesetzt und repariert. Absolut empfehlenswert!“</p>
-                            <div class="rev-client-info" style="display:flex; justify-content:space-between; align-items:flex-end; border-top:1px dashed rgba(255,255,255,0.06); padding-top:12px;">
-                                <div><span class="rev-client-name" style="font-family:var(--font-head,sans-serif); font-weight:700; color:#fff; font-size:0.9rem;">Timothy P.</span><span class="rev-client-location" style="font-family:var(--font-mono,monospace); font-size:0.55rem; color:#64748b; display:block; margin-top:2px;">Dasing</span></div>
-                                <span class="rev-platform-tag" style="font-family:var(--font-mono,monospace); font-size:0.5rem; padding:3px 8px; border-radius:4px; background:rgba(255,215,0,0.1); color:#FFD700; border:1px solid rgba(255,215,0,0.15);">MyHammer</span>
-                            </div>
-                        </div>
-                        <!-- Review 2 -->
-                        <div class="review-card-aurum glass-panel" style="flex:0 0 100%; min-width:100%; padding:25px 20px; background:rgba(10,8,5,0.85); border:1px solid rgba(255,215,0,0.08); border-top:3px solid #FFD700; border-radius:8px; display:flex; flex-direction:column;">
-                            <div class="rev-stars" style="color:#FFD700; font-size:0.7rem; margin-bottom:12px; letter-spacing:2px;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                            <p class="rev-quote" style="color:#e2e8f0; line-height:1.6; font-style:italic; flex-grow:1; font-size:0.9rem;">„Wir sind mehr als zufrieden! Raphael hat unsere Arbeitsplatte für die Küche ausgeschnitten und eingebaut. Es sieht perfekt aus und ging super schnell. Wir buchen ihn jederzeit wieder.“</p>
-                            <div class="rev-client-info" style="display:flex; justify-content:space-between; align-items:flex-end; border-top:1px dashed rgba(255,255,255,0.06); padding-top:12px;">
-                                <div><span class="rev-client-name" style="font-family:var(--font-head,sans-serif); font-weight:700; color:#fff; font-size:0.9rem;">Julia H.</span><span class="rev-client-location" style="font-family:var(--font-mono,monospace); font-size:0.55rem; color:#64748b; display:block; margin-top:2px;">München</span></div>
-                                <span class="rev-platform-tag" style="font-family:var(--font-mono,monospace); font-size:0.5rem; padding:3px 8px; border-radius:4px; background:rgba(0,229,255,0.1); color:#00e5ff; border:1px solid rgba(0,229,255,0.15);">CHECK24</span>
-                            </div>
-                        </div>
-                        <!-- Review 3 -->
-                        <div class="review-card-aurum glass-panel" style="flex:0 0 100%; min-width:100%; padding:25px 20px; background:rgba(10,8,5,0.85); border:1px solid rgba(255,215,0,0.08); border-top:3px solid #FFD700; border-radius:8px; display:flex; flex-direction:column;">
-                            <div class="rev-stars" style="color:#FFD700; font-size:0.7rem; margin-bottom:12px; letter-spacing:2px;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                            <p class="rev-quote" style="color:#e2e8f0; line-height:1.6; font-style:italic; flex-grow:1; font-size:0.9rem;">„Wir haben eine ungeplante Küche gekauft … Raphael Lezius und sein Kollege haben hervorragende Arbeit geleistet! Sie waren äußerst professionell und haben alles so präzise montiert, als wäre es genau so geplant worden.“</p>
-                            <div class="rev-client-info" style="display:flex; justify-content:space-between; align-items:flex-end; border-top:1px dashed rgba(255,255,255,0.06); padding-top:12px;">
-                                <div><span class="rev-client-name" style="font-family:var(--font-head,sans-serif); font-weight:700; color:#fff; font-size:0.9rem;">Nomen W.</span><span class="rev-client-location" style="font-family:var(--font-mono,monospace); font-size:0.55rem; color:#64748b; display:block; margin-top:2px;">Augsburg</span></div>
-                                <span class="rev-platform-tag" style="font-family:var(--font-mono,monospace); font-size:0.5rem; padding:3px 8px; border-radius:4px; background:rgba(0,229,255,0.1); color:#00e5ff; border:1px solid rgba(0,229,255,0.15);">CHECK24</span>
-                            </div>
-                        </div>
-                        <!-- Review 4 -->
-                        <div class="review-card-aurum glass-panel" style="flex:0 0 100%; min-width:100%; padding:25px 20px; background:rgba(10,8,5,0.85); border:1px solid rgba(255,215,0,0.08); border-top:3px solid #FFD700; border-radius:8px; display:flex; flex-direction:column;">
-                            <div class="rev-stars" style="color:#FFD700; font-size:0.7rem; margin-bottom:12px; letter-spacing:2px;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                            <p class="rev-quote" style="color:#e2e8f0; line-height:1.6; font-style:italic; flex-grow:1; font-size:0.9rem;">„Die Kommunikation mit Raphael war absolut unkompliziert, freundlich und schnell. Er hat die Möbel sehr effizient, präzise und sorgfältig aufgebaut, als wären es seine eigenen.“</p>
-                            <div class="rev-client-info" style="display:flex; justify-content:space-between; align-items:flex-end; border-top:1px dashed rgba(255,255,255,0.06); padding-top:12px;">
-                                <div><span class="rev-client-name" style="font-family:var(--font-head,sans-serif); font-weight:700; color:#fff; font-size:0.9rem;">Astrid M.</span><span class="rev-client-location" style="font-family:var(--font-mono,monospace); font-size:0.55rem; color:#64748b; display:block; margin-top:2px;">Augsburg</span></div>
-                                <span class="rev-platform-tag" style="font-family:var(--font-mono,monospace); font-size:0.5rem; padding:3px 8px; border-radius:4px; background:rgba(255,215,0,0.1); color:#FFD700; border:1px solid rgba(255,215,0,0.15);">MyHammer</span>
-                            </div>
-                        </div>
-                        <!-- Review 5 -->
-                        <div class="review-card-aurum glass-panel" style="flex:0 0 100%; min-width:100%; padding:25px 20px; background:rgba(10,8,5,0.85); border:1px solid rgba(255,215,0,0.08); border-top:3px solid #FFD700; border-radius:8px; display:flex; flex-direction:column;">
-                            <div class="rev-stars" style="color:#FFD700; font-size:0.7rem; margin-bottom:12px; letter-spacing:2px;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                            <p class="rev-quote" style="color:#e2e8f0; line-height:1.6; font-style:italic; flex-grow:1; font-size:0.9rem;">„Herr Lezius ist ein wahrer Glückstreffer. Pünktlich, freundlich und absolut professionell. Ohne die Aufbauanleitung von IKEA benötigen zu müssen, stellte er uns die Küchenschränke gewissenhaft und schnell alleine auf.“</p>
-                            <div class="rev-client-info" style="display:flex; justify-content:space-between; align-items:flex-end; border-top:1px dashed rgba(255,255,255,0.06); padding-top:12px;">
-                                <div><span class="rev-client-name" style="font-family:var(--font-head,sans-serif); font-weight:700; color:#fff; font-size:0.9rem;">Norbert R.</span><span class="rev-client-location" style="font-family:var(--font-mono,monospace); font-size:0.55rem; color:#64748b; display:block; margin-top:2px;">München</span></div>
-                                <span class="rev-platform-tag" style="font-family:var(--font-mono,monospace); font-size:0.5rem; padding:3px 8px; border-radius:4px; background:rgba(0,229,255,0.1); color:#00e5ff; border:1px solid rgba(0,229,255,0.15);">CHECK24</span>
-                            </div>
-                        </div>
-                        <!-- Review 6 -->
-                        <div class="review-card-aurum glass-panel" style="flex:0 0 100%; min-width:100%; padding:25px 20px; background:rgba(10,8,5,0.85); border:1px solid rgba(255,215,0,0.08); border-top:3px solid #FFD700; border-radius:8px; display:flex; flex-direction:column;">
-                            <div class="rev-stars" style="color:#FFD700; font-size:0.7rem; margin-bottom:12px; letter-spacing:2px;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                            <p class="rev-quote" style="color:#e2e8f0; line-height:1.6; font-style:italic; flex-grow:1; font-size:0.9rem;">„Raphael ist super zuverlässig und macht die Arbeit ordentlich genau so, wie man es möchte. Er nimmt Wünsche an, gibt selbst sehr gute Tipps und ist technisch perfekt ausgestattet. Immer wieder gerne!“</p>
-                            <div class="rev-client-info" style="display:flex; justify-content:space-between; align-items:flex-end; border-top:1px dashed rgba(255,255,255,0.06); padding-top:12px;">
-                                <div><span class="rev-client-name" style="font-family:var(--font-head,sans-serif); font-weight:700; color:#fff; font-size:0.9rem;">Jacqueline Z.</span><span class="rev-client-location" style="font-family:var(--font-mono,monospace); font-size:0.55rem; color:#64748b; display:block; margin-top:2px;">Bayern</span></div>
-                                <span class="rev-platform-tag" style="font-family:var(--font-mono,monospace); font-size:0.5rem; padding:3px 8px; border-radius:4px; background:rgba(0,229,255,0.1); color:#00e5ff; border:1px solid rgba(0,229,255,0.15);">CHECK24</span>
-                            </div>
-                        </div>
-                        <!-- Review 7 -->
-                        <div class="review-card-aurum glass-panel" style="flex:0 0 100%; min-width:100%; padding:25px 20px; background:rgba(10,8,5,0.85); border:1px solid rgba(255,215,0,0.08); border-top:3px solid #FFD700; border-radius:8px; display:flex; flex-direction:column;">
-                            <div class="rev-stars" style="color:#FFD700; font-size:0.7rem; margin-bottom:12px; letter-spacing:2px;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                            <p class="rev-quote" style="color:#e2e8f0; line-height:1.6; font-style:italic; flex-grow:1; font-size:0.9rem;">„Schnelle Terminvergabe, effiziente und saubere Arbeitsweise, freundlicher Kollege, fairer Preis! Definitiv und uneingeschränkt weiterzuempfehlen!“</p>
-                            <div class="rev-client-info" style="display:flex; justify-content:space-between; align-items:flex-end; border-top:1px dashed rgba(255,255,255,0.06); padding-top:12px;">
-                                <div><span class="rev-client-name" style="font-family:var(--font-head,sans-serif); font-weight:700; color:#fff; font-size:0.9rem;">Nina K.</span><span class="rev-client-location" style="font-family:var(--font-mono,monospace); font-size:0.55rem; color:#64748b; display:block; margin-top:2px;">Augsburg</span></div>
-                                <span class="rev-platform-tag" style="font-family:var(--font-mono,monospace); font-size:0.5rem; padding:3px 8px; border-radius:4px; background:rgba(255,215,0,0.1); color:#FFD700; border:1px solid rgba(255,215,0,0.15);">MyHammer</span>
-                            </div>
-                        </div>
-                        <!-- Review 8 -->
-                        <div class="review-card-aurum glass-panel" style="flex:0 0 100%; min-width:100%; padding:25px 20px; background:rgba(10,8,5,0.85); border:1px solid rgba(255,215,0,0.08); border-top:3px solid #FFD700; border-radius:8px; display:flex; flex-direction:column;">
-                            <div class="rev-stars" style="color:#FFD700; font-size:0.7rem; margin-bottom:12px; letter-spacing:2px;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                            <p class="rev-quote" style="color:#e2e8f0; line-height:1.6; font-style:italic; flex-grow:1; font-size:0.9rem;">„Die Zusammenarbeit mit Raphael gestaltete sich von A bis Z professionell, freundlich, zuverlässig und sehr unkompliziert. Er arbeitet extrem gewissenhaft und schnell.“</p>
-                            <div class="rev-client-info" style="display:flex; justify-content:space-between; align-items:flex-end; border-top:1px dashed rgba(255,255,255,0.06); padding-top:12px;">
-                                <div><span class="rev-client-name" style="font-family:var(--font-head,sans-serif); font-weight:700; color:#fff; font-size:0.9rem;">JL</span><span class="rev-client-location" style="font-family:var(--font-mono,monospace); font-size:0.55rem; color:#64748b; display:block; margin-top:2px;">München</span></div>
-                                <span class="rev-platform-tag" style="font-family:var(--font-mono,monospace); font-size:0.5rem; padding:3px 8px; border-radius:4px; background:rgba(0,229,255,0.1); color:#00e5ff; border:1px solid rgba(0,229,255,0.15);">CHECK24</span>
-                            </div>
-                        </div>
-                        <!-- Review 9 -->
-                        <div class="review-card-aurum glass-panel" style="flex:0 0 100%; min-width:100%; padding:25px 20px; background:rgba(10,8,5,0.85); border:1px solid rgba(255,215,0,0.08); border-top:3px solid #FFD700; border-radius:8px; display:flex; flex-direction:column;">
-                            <div class="rev-stars" style="color:#FFD700; font-size:0.7rem; margin-bottom:12px; letter-spacing:2px;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                            <p class="rev-quote" style="color:#e2e8f0; line-height:1.6; font-style:italic; flex-grow:1; font-size:0.9rem;">„Definitiv die beste Wahl für jeden. Nicht nur hat er die Arbeit schnell und ordentlich verrichtet, er hat auch genau erklärt, was er tut und uns einige Dinge gezeigt, die sehr hilfreich sind.“</p>
-                            <div class="rev-client-info" style="display:flex; justify-content:space-between; align-items:flex-end; border-top:1px dashed rgba(255,255,255,0.06); padding-top:12px;">
-                                <div><span class="rev-client-name" style="font-family:var(--font-head,sans-serif); font-weight:700; color:#fff; font-size:0.9rem;">Ute B.</span><span class="rev-client-location" style="font-family:var(--font-mono,monospace); font-size:0.55rem; color:#64748b; display:block; margin-top:2px;">Bayern</span></div>
-                                <span class="rev-platform-tag" style="font-family:var(--font-mono,monospace); font-size:0.5rem; padding:3px 8px; border-radius:4px; background:rgba(255,215,0,0.1); color:#FFD700; border:1px solid rgba(255,215,0,0.15);">MyHammer</span>
-                            </div>
+                <!-- Reviews Static Grid (9 reviews) -->
+                <div class="reviews-static-grid">
+
+                    <!-- Review 1 -->
+                    <div class="review-card-aurum glass-panel" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="100">
+                        <div class="rev-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <span class="review-impact-tag">VERIFIED KITCHEN INSTALL</span>
+                        <p class="rev-quote">„Präzise, sauber und pünktlich – genau das, was ich mir erhofft hatte. Meine Küche steht perfekt.“</p>
+                        <div class="rev-client-info">
+                            <div><span class="rev-client-name">Timothy P.</span><span class="rev-client-location">Dasing</span></div>
+                            <span class="rev-platform-tag hammer">MyHammer</span>
                         </div>
                     </div>
 
-                    <!-- Controls -->
-                    <div style="display:flex; justify-content:space-between; align-items:center; margin-top:15px;">
-                        <button class="review-carousel-btn" id="reviewPrevBtn" style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); padding:10px 20px; color:#fff; cursor:pointer; font-family:var(--font-mono,monospace); font-size:0.7rem; border-radius:4px; transition:0.3s;">
-                            <i class="fas fa-chevron-left"></i> ZURÜCK
-                        </button>
-                        <div class="review-carousel-dots" id="reviewDots" style="display:flex; gap:10px;"></div>
-                        <button class="review-carousel-btn" id="reviewNextBtn" style="background:rgba(0,229,255,0.1); border:1px solid #00e5ff; padding:10px 20px; color:#00e5ff; cursor:pointer; font-family:var(--font-mono,monospace); font-size:0.7rem; border-radius:4px; transition:0.3s;">
-                            WEITER <i class="fas fa-chevron-right"></i>
-                        </button>
+                    <!-- Review 2 -->
+                    <div class="review-card-aurum glass-panel" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="200">
+                        <div class="rev-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <span class="review-impact-tag">VERIFIED LIVING ROOM</span>
+                        <p class="rev-quote">„Absolut professionell. Er hat unsere Möbel aufgebaut, als wären es seine eigenen. Kein Kratzer, keine Fehler.“</p>
+                        <div class="rev-client-info">
+                            <div><span class="rev-client-name">Astrid M.</span><span class="rev-client-location">Augsburg</span></div>
+                            <span class="rev-platform-tag hammer">MyHammer</span>
+                        </div>
                     </div>
+
+                    <!-- Review 3 -->
+                    <div class="review-card-aurum glass-panel" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="300">
+                        <div class="rev-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <span class="review-impact-tag">VERIFIED KITCHEN INSTALL</span>
+                        <p class="rev-quote">„Raphael ist ein wahrer Glückstreffer. Er hat unsere Küche ohne Anleitung perfekt aufgebaut. Absolut zuverlässig.“</p>
+                        <div class="rev-client-info">
+                            <div><span class="rev-client-name">Norbert R.</span><span class="rev-client-location">München</span></div>
+                            <span class="rev-platform-tag check24">CHECK24</span>
+                        </div>
+                    </div>
+
+                    <!-- Review 4 -->
+                    <div class="review-card-aurum glass-panel" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="400">
+                        <div class="rev-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <span class="review-impact-tag">VERIFIED SERVICE</span>
+                        <p class="rev-quote">„Schnell, sauber, fairer Preis. Raphael arbeitet extrem gewissenhaft und hinterlässt eine blitzsaubere Baustelle.“</p>
+                        <div class="rev-client-info">
+                            <div><span class="rev-client-name">Nina K.</span><span class="rev-client-location">Augsburg</span></div>
+                            <span class="rev-platform-tag hammer">MyHammer</span>
+                        </div>
+                    </div>
+
+                    <!-- Review 5 -->
+                    <div class="review-card-aurum glass-panel" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="500">
+                        <div class="rev-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <span class="review-impact-tag">VERIFIED LIVING ROOM</span>
+                        <p class="rev-quote">„Die Zusammenarbeit mit Raphael war von A bis Z professionell und sehr unkompliziert. Er hat alles perfekt erklärt.“</p>
+                        <div class="rev-client-info">
+                            <div><span class="rev-client-name">JL</span><span class="rev-client-location">München</span></div>
+                            <span class="rev-platform-tag check24">CHECK24</span>
+                        </div>
+                    </div>
+
+                    <!-- Review 6 -->
+                    <div class="review-card-aurum glass-panel" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="600">
+                        <div class="rev-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <span class="review-impact-tag">VERIFIED KITCHEN INSTALL</span>
+                        <p class="rev-quote">„Wir haben ungeplant eine Küche gekauft – Raphael hat sie perfekt montiert. Äußerst professionell.“</p>
+                        <div class="rev-client-info">
+                            <div><span class="rev-client-name">Nomen W.</span><span class="rev-client-location">Augsburg</span></div>
+                            <span class="rev-platform-tag check24">CHECK24</span>
+                        </div>
+                    </div>
+
+                    <!-- Review 7 -->
+                    <div class="review-card-aurum glass-panel" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="700">
+                        <div class="rev-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <span class="review-impact-tag">VERIFIED LIVING ROOM</span>
+                        <p class="rev-quote">„Raphael ist super zuverlässig und nimmt Wünsche an. Er gibt selbst sehr gute Tipps und ist technisch top ausgestattet.“</p>
+                        <div class="rev-client-info">
+                            <div><span class="rev-client-name">Jacqueline Z.</span><span class="rev-client-location">Bayern</span></div>
+                            <span class="rev-platform-tag check24">CHECK24</span>
+                        </div>
+                    </div>
+
+                    <!-- Review 8 -->
+                    <div class="review-card-aurum glass-panel" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="800">
+                        <div class="rev-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <span class="review-impact-tag">VERIFIED SERVICE</span>
+                        <p class="rev-quote">„Definitiv die beste Wahl. Er hat die Arbeit schnell und ordentlich verrichtet und alles genau erklärt.“</p>
+                        <div class="rev-client-info">
+                            <div><span class="rev-client-name">Ute B.</span><span class="rev-client-location">Bayern</span></div>
+                            <span class="rev-platform-tag check24">CHECK24</span>
+                        </div>
+                    </div>
+
+                    <!-- Review 9 -->
+                    <div class="review-card-aurum glass-panel" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="900">
+                        <div class="rev-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <span class="review-impact-tag">VERIFIED LIVING ROOM</span>
+                        <p class="rev-quote">„Herr Lezius ist ein wahrer Glückstreffer. Er hat unsere Schränke ohne Anleitung schnell und perfekt aufgebaut.“</p>
+                        <div class="rev-client-info">
+                            <div><span class="rev-client-name">Norbert R.</span><span class="rev-client-location">München</span></div>
+                            <span class="rev-platform-tag check24">CHECK24</span>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>
 
         <!-- ============================================================
-             6. VIDEO CAROUSEL – 3 INDIVIDUAL SLIDES
+             6. VIDEO CAROUSEL
              ============================================================ -->
         <section id="integration-feeds" class="cinematic-section" aria-labelledby="video-heading" style="padding:clamp(80px,10vw,120px) 0; background:#020203; border-top:1px solid rgba(0,229,255,0.1);">
             <div class="container relative-z" style="max-width:1200px; margin:0 auto; padding:0 20px;">
-                <div class="section-header center" data-aos="fade-up" style="text-align:center; margin-bottom:50px;">
+                <div class="section-header center" data-aos="fade-up" data-aos-duration="600" style="text-align:center; margin-bottom:50px;">
                     <div class="pre-title" style="font-family:monospace; color:#00e5ff; font-size:0.75rem; letter-spacing:3px; margin-bottom:15px;">TELEMETRIE_FEED // LIVE</div>
                     <h2 id="video-heading" class="section-heading" style="font-size:clamp(2rem,4vw,3rem); margin:0 0 20px 0; line-height:1.1;">
                         Systemische <span style="color:#FFD700;">Transparenz.</span>
@@ -576,63 +617,80 @@
                     </p>
                 </div>
 
-                <div class="telemetry-matrix" data-aos="fade-up" data-aos-delay="100" style="position:relative;">
+                <div class="telemetry-matrix" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100" style="position:relative;">
                     <div class="telemetry-carousel-track" id="telemetryCarouselTrack" style="display:flex; transition:transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1); gap:25px; padding:10px 0 30px 0;">
-                        <!-- Video 1 -->
-                        <div class="cinematic-card primary-feed js-lightbox-trigger" data-video-src="assets/video/project-portrait-timelapse.mp4" style="flex:0 0 100%; min-width:100%; padding:0 10px; box-sizing:border-box; aspect-ratio:9/16; border-radius:8px; overflow:hidden; position:relative; background:#000; border:1px solid rgba(0,229,255,0.15);">
-                            <video autoplay muted loop playsinline class="cinematic-video" style="width:100%; height:100%; object-fit:cover;">
+                        
+                        <!-- Video 1: Primary Feed -->
+                        <div class="cinematic-card primary-feed js-lightbox-trigger" data-video-src="assets/video/project-portrait-timelapse.mp4" data-aos="fade-up-right" data-aos-duration="800" data-aos-delay="100" style="flex:0 0 100%; min-width:100%; padding:0 10px; box-sizing:border-box; aspect-ratio:9/16; border-radius:8px; overflow:hidden; position:relative; background:#000; border:1px solid rgba(0,229,255,0.15);">
+                            <div class="signal-loader" style="position:absolute; inset:0; z-index:1; background-image:linear-gradient(rgba(0,229,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0,229,255,0.05) 1px, transparent 1px); background-size:20px 20px;"></div>
+                            <div class="tech-bracket top-left" style="position:absolute; top:10px; left:10px; width:20px; height:20px; z-index:2; border-top:2px solid #00e5ff; border-left:2px solid #00e5ff;"></div>
+                            <div class="tech-bracket bottom-right" style="position:absolute; bottom:10px; right:10px; width:20px; height:20px; z-index:2; border-bottom:2px solid #00e5ff; border-right:2px solid #00e5ff;"></div>
+                            <video muted loop playsinline preload="metadata" class="cinematic-video js-hover-play" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:1; filter:grayscale(80%) sepia(20%) hue-rotate(180deg) brightness(0.7) contrast(1.1); transition:filter 0.6s ease, transform 0.8s cubic-bezier(0.16,1,0.3,1); transform:scale(1.02);">
                                 <source src="assets/video/project-portrait-timelapse.mp4" type="video/mp4" />
                             </video>
-                            <div class="signal-loader"></div>
-                            <div class="tech-bracket top-left"></div>
-                            <div class="tech-bracket bottom-right"></div>
-                            <div class="cinematic-overlay">
-                                <div class="feed-header">
-                                    <span class="cinematic-tag"><span class="blink-dot red"></span> LIVE // TIMELAPSE</span>
-                                    <span class="cinematic-tag">ID: WOHN_ALPHA</span>
+                            <div class="cinematic-overlay" style="position:absolute; inset:0; z-index:3; background:linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,0) 60%, rgba(0,0,0,0.95) 100%); display:flex; flex-direction:column; justify-content:space-between; padding:15px; pointer-events:none;">
+                                <div class="feed-header" style="display:flex; justify-content:space-between; align-items:flex-start;">
+                                    <div class="cinematic-tag" style="display:inline-flex; align-items:center; gap:8px; background:rgba(0,0,0,0.6); backdrop-filter:blur(4px); padding:4px 10px; border-radius:4px; border:1px solid rgba(255,255,255,0.15); font-size:0.55rem; font-weight:800; letter-spacing:2px; color:#fff; font-family:var(--font-mono,monospace); text-transform:uppercase;">
+                                        <span class="blink-dot red" style="width:5px; height:5px; background:#ff003c; border-radius:50%; box-shadow:0 0 8px #ff003c; animation:pulseBlink 1.5s infinite;"></span>
+                                        TIMELAPSE_LOG
+                                    </div>
+                                    <div class="tech-font" style="color:#00e5ff; font-size:0.55rem; font-family:var(--font-mono,monospace);">ID: WOHN_ALPHA</div>
                                 </div>
                                 <div class="cinematic-text">
-                                    <h3>Systemprotokoll // Wohnen</h3>
-                                    <p>Montage eines hochwertigen PAX-Schrankensembles.</p>
+                                    <h3 style="color:#fff; font-size:1.1rem; margin:0 0 4px 0; font-family:var(--font-head,sans-serif); font-weight:800;">Architektur im Zeitraffer</h3>
+                                    <p style="margin:0; font-size:0.8rem; color:#cbd5e1; font-family:var(--font-body,sans-serif);">Vom rohen Karton zur millimetergenauen Premium-Integration.</p>
                                 </div>
                             </div>
                         </div>
-                        <!-- Video 2 -->
-                        <div class="cinematic-card secondary-feed js-lightbox-trigger" data-video-src="assets/video/raphael-assembly-action.mp4" style="flex:0 0 100%; min-width:100%; padding:0 10px; box-sizing:border-box; aspect-ratio:9/16; border-radius:8px; overflow:hidden; position:relative; background:#000; border:1px solid rgba(0,229,255,0.15);">
-                            <video autoplay muted loop playsinline class="cinematic-video" style="width:100%; height:100%; object-fit:cover;">
+
+                        <!-- Video 2: Secondary Feed 1 -->
+                        <div class="cinematic-card secondary-feed js-lightbox-trigger" data-video-src="assets/video/raphael-assembly-action.mp4" data-aos="fade-up-left" data-aos-duration="800" data-aos-delay="200" style="flex:0 0 100%; min-width:100%; padding:0 10px; box-sizing:border-box; aspect-ratio:9/16; border-radius:8px; overflow:hidden; position:relative; background:#000; border:1px solid rgba(0,229,255,0.15);">
+                            <!-- Same structure as Video 1 with different content -->
+                            <div class="signal-loader" style="position:absolute; inset:0; z-index:1; background-image:linear-gradient(rgba(0,229,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0,229,255,0.05) 1px, transparent 1px); background-size:20px 20px;"></div>
+                            <div class="tech-bracket top-left" style="position:absolute; top:10px; left:10px; width:20px; height:20px; z-index:2; border-top:2px solid #00e5ff; border-left:2px solid #00e5ff;"></div>
+                            <div class="tech-bracket bottom-right" style="position:absolute; bottom:10px; right:10px; width:20px; height:20px; z-index:2; border-bottom:2px solid #00e5ff; border-right:2px solid #00e5ff;"></div>
+                            <video muted loop playsinline preload="metadata" class="cinematic-video js-hover-play" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:1; filter:grayscale(80%) sepia(20%) hue-rotate(180deg) brightness(0.7) contrast(1.1); transition:filter 0.6s ease, transform 0.8s cubic-bezier(0.16,1,0.3,1); transform:scale(1.02);">
                                 <source src="assets/video/raphael-assembly-action.mp4" type="video/mp4" />
                             </video>
-                            <div class="signal-loader"></div>
-                            <div class="tech-bracket top-left"></div>
-                            <div class="tech-bracket bottom-right"></div>
-                            <div class="cinematic-overlay">
-                                <div class="feed-header">
-                                    <span class="cinematic-tag"><span class="blink-dot cyan"></span> SYS_BETA</span>
+                            <div class="cinematic-overlay" style="position:absolute; inset:0; z-index:3; background:linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,0) 60%, rgba(0,0,0,0.95) 100%); display:flex; flex-direction:column; justify-content:space-between; padding:15px; pointer-events:none;">
+                                <div class="feed-header" style="display:flex; justify-content:space-between; align-items:flex-start;">
+                                    <div class="cinematic-tag" style="display:inline-flex; align-items:center; gap:8px; background:rgba(0,0,0,0.6); backdrop-filter:blur(4px); padding:4px 10px; border-radius:4px; border:1px solid rgba(255,255,255,0.15); font-size:0.55rem; font-weight:800; letter-spacing:2px; color:#fff; font-family:var(--font-mono,monospace); text-transform:uppercase;">
+                                        <span class="blink-dot cyan" style="width:5px; height:5px; background:#00e5ff; border-radius:50%; box-shadow:0 0 8px #00e5ff; animation:pulseBlink 1.5s infinite;"></span>
+                                        DETAIL_SCAN
+                                    </div>
+                                    <div class="tech-font" style="color:#FFD700; font-size:0.55rem; font-family:var(--font-mono,monospace);">ID: SYS_BETA</div>
                                 </div>
                                 <div class="cinematic-text">
-                                    <h3>Präzision in Echtzeit</h3>
-                                    <p>Montageprozess mit Laser-Nivellierung.</p>
+                                    <h3 style="color:#fff; font-size:1.1rem; margin:0 0 4px 0; font-family:var(--font-head,sans-serif); font-weight:800;">Bosch Professional</h3>
+                                    <p style="margin:0; font-size:0.8rem; color:#cbd5e1; font-family:var(--font-body,sans-serif);">Maximale Drehmomentkontrolle für exklusive Fronten.</p>
                                 </div>
                             </div>
                         </div>
-                        <!-- Video 3 -->
-                        <div class="cinematic-card secondary-feed js-lightbox-trigger" data-video-src="assets/video/project-landscape.mp4" style="flex:0 0 100%; min-width:100%; padding:0 10px; box-sizing:border-box; aspect-ratio:9/16; border-radius:8px; overflow:hidden; position:relative; background:#000; border:1px solid rgba(0,229,255,0.15);">
-                            <video autoplay muted loop playsinline class="cinematic-video" style="width:100%; height:100%; object-fit:cover;">
+
+                        <!-- Video 3: Secondary Feed 2 -->
+                        <div class="cinematic-card secondary-feed js-lightbox-trigger" data-video-src="assets/video/project-landscape.mp4" data-aos="fade-up-left" data-aos-duration="800" data-aos-delay="300" style="flex:0 0 100%; min-width:100%; padding:0 10px; box-sizing:border-box; aspect-ratio:9/16; border-radius:8px; overflow:hidden; position:relative; background:#000; border:1px solid rgba(0,229,255,0.15);">
+                            <!-- Same structure -->
+                            <div class="signal-loader" style="position:absolute; inset:0; z-index:1; background-image:linear-gradient(rgba(0,229,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0,229,255,0.05) 1px, transparent 1px); background-size:20px 20px;"></div>
+                            <div class="tech-bracket top-left" style="position:absolute; top:10px; left:10px; width:20px; height:20px; z-index:2; border-top:2px solid #00e5ff; border-left:2px solid #00e5ff;"></div>
+                            <div class="tech-bracket bottom-right" style="position:absolute; bottom:10px; right:10px; width:20px; height:20px; z-index:2; border-bottom:2px solid #00e5ff; border-right:2px solid #00e5ff;"></div>
+                            <video muted loop playsinline preload="metadata" class="cinematic-video js-hover-play" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:1; filter:grayscale(80%) sepia(20%) hue-rotate(180deg) brightness(0.7) contrast(1.1); transition:filter 0.6s ease, transform 0.8s cubic-bezier(0.16,1,0.3,1); transform:scale(1.02);">
                                 <source src="assets/video/project-landscape.mp4" type="video/mp4" />
                             </video>
-                            <div class="signal-loader"></div>
-                            <div class="tech-bracket top-left"></div>
-                            <div class="tech-bracket bottom-right"></div>
-                            <div class="cinematic-overlay">
-                                <div class="feed-header">
-                                    <span class="cinematic-tag"><span class="blink-dot cyan"></span> KCH_GAMMA</span>
+                            <div class="cinematic-overlay" style="position:absolute; inset:0; z-index:3; background:linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,0) 60%, rgba(0,0,0,0.95) 100%); display:flex; flex-direction:column; justify-content:space-between; padding:15px; pointer-events:none;">
+                                <div class="feed-header" style="display:flex; justify-content:space-between; align-items:flex-start;">
+                                    <div class="cinematic-tag" style="display:inline-flex; align-items:center; gap:8px; background:rgba(0,0,0,0.6); backdrop-filter:blur(4px); padding:4px 10px; border-radius:4px; border:1px solid rgba(255,255,255,0.15); font-size:0.55rem; font-weight:800; letter-spacing:2px; color:#fff; font-family:var(--font-mono,monospace); text-transform:uppercase;">
+                                        <span class="blink-dot cyan" style="width:5px; height:5px; background:#00e5ff; border-radius:50%; box-shadow:0 0 8px #00e5ff; animation:pulseBlink 1.5s infinite;"></span>
+                                        MACRO_VIEW
+                                    </div>
+                                    <div class="tech-font" style="color:#FFD700; font-size:0.55rem; font-family:var(--font-mono,monospace);">ID: KCH_GAMMA</div>
                                 </div>
                                 <div class="cinematic-text">
-                                    <h3>Küchen-Integration</h3>
-                                    <p>Fugenlose Verbindung von Design & Funktion.</p>
+                                    <h3 style="color:#fff; font-size:1.1rem; margin:0 0 4px 0; font-family:var(--font-head,sans-serif); font-weight:800;">Projektübersicht</h3>
+                                    <p style="margin:0; font-size:0.8rem; color:#cbd5e1; font-family:var(--font-body,sans-serif);">100% Laser-Ausrichtung für kompromisslose Spaltmaße.</p>
                                 </div>
                             </div>
                         </div>
+
                     </div>
 
                     <!-- Controls -->
@@ -672,20 +730,20 @@
             <div class="container relative-z" style="max-width:1200px; margin:0 auto; padding:0 20px;">
                 <div class="visual-split-layout" style="display:grid; grid-template-columns:1fr 1.5fr; gap:60px; align-items:center;">
 
-                    <div class="visual-info-pane glass-panel" data-aos="fade-right" style="padding:40px; border-top:3px solid var(--neon-cyan);">
+                    <div class="visual-info-pane glass-panel" data-aos="fade-left" data-aos-duration="800">
                         <div class="pre-title" style="font-family:monospace; color:#00e5ff; font-size:0.75rem; letter-spacing:3px; margin-bottom:15px;">DATENSTROM // LIVE_REFERENZEN</div>
                         <h2 id="belt-heading" class="section-heading" style="font-size:clamp(2rem,3.5vw,2.8rem); margin-bottom:20px; line-height:1.1;">
                             System-Logs &amp; <span style="color:#FFD700;">Architektur.</span>
                         </h2>
                         <p style="color:#94a3b8; margin-bottom:30px; line-height:1.6; font-size:0.95rem;">
-                            Zugriff auf verifizierte Projektdaten. Filtern Sie die Galerie nach Systembereichen.
+                            Zugriff auf verifizierte Projektdaten. Filtern Sie die Galerie nach Systembereichen, um spezifische Montagelösungen aus München und Augsburg zu analysieren.
                         </p>
 
-                        <div class="sector-nav" style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:30px;">
-                            <button class="sector-btn active" data-target="all" style="background:#00e5ff; color:#000; border:none; padding:8px 15px; font-family:monospace; cursor:pointer; font-weight:bold;">ALLE</button>
-                            <button class="sector-btn" data-target="kitchen" style="background:transparent; color:#fff; border:1px solid #333; padding:8px 15px; font-family:monospace; cursor:pointer;">KÜCHE</button>
-                            <button class="sector-btn" data-target="living" style="background:transparent; color:#fff; border:1px solid #333; padding:8px 15px; font-family:monospace; cursor:pointer;">WOHNEN</button>
-                            <button class="sector-btn" data-target="bedroom" style="background:transparent; color:#fff; border:1px solid #333; padding:8px 15px; font-family:monospace; cursor:pointer;">SCHLAFEN</button>
+                        <div class="sector-nav" style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:30px;" data-aos="fade-up" data-aos-duration="600" data-aos-delay="200">
+                            <button class="sector-btn active" data-target="all" style="background:#00e5ff; color:#000; border:none; padding:8px 15px; font-family:monospace; cursor:pointer; font-weight:bold;">ALLE SYSTEME</button>
+                            <button class="sector-btn" data-target="kitchen" style="background:transparent; color:#fff; border:1px solid #333; padding:8px 15px; font-family:monospace; cursor:pointer;">KÜCHEN_TECH</button>
+                            <button class="sector-btn" data-target="living" style="background:transparent; color:#fff; border:1px solid #333; padding:8px 15px; font-family:monospace; cursor:pointer;">WOHN_MODULE</button>
+                            <button class="sector-btn" data-target="bedroom" style="background:transparent; color:#fff; border:1px solid #333; padding:8px 15px; font-family:monospace; cursor:pointer;">SCHLAF_ZONEN</button>
                         </div>
 
                         <div class="belt-controls" style="display:flex; gap:15px; margin-bottom:30px; flex-wrap:wrap;">
@@ -705,30 +763,130 @@
                         </div>
                     </div>
 
-                    <div class="belt-container" data-aos="fade-left" style="overflow:hidden; position:relative; width:100%;">
+                    <div class="belt-container" data-aos="fade-right" data-aos-duration="800" data-aos-delay="100" style="overflow:hidden; position:relative; width:100%;">
                         <div class="belt-track" id="imageBelt" style="display:flex; transition:transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1); width:100%;">
-                            <!-- 15 Belt Items – Add all your images here -->
+                            
+                            <!-- === KÜCHE (5 Bilder) === -->
                             <div class="belt-item" data-sector="kitchen" style="flex:0 0 100%; min-width:100%; padding:0 10px; box-sizing:border-box;">
                                 <div class="belt-image-wrapper" style="border:1px solid rgba(255,215,0,0.15); border-radius:8px; overflow:hidden; background:#000;">
                                     <img src="assets/images/kueche-1-a.webp" alt="Premium Küchenmontage" loading="lazy" style="width:100%; height:350px; object-fit:cover; display:block;" />
                                     <div class="data-stamp" style="font-family:monospace; font-size:0.6rem; color:#00e5ff; padding:12px; text-align:center; background:rgba(0,0,0,0.7); border-top:1px solid rgba(255,215,0,0.08);">ID: KCH-01 // VERIFIED</div>
                                 </div>
                             </div>
-                            <!-- Add remaining 14 belt items here (same structure, just change image src and sector) -->
-                            <!-- I have kept only one for brevity, but you can copy-paste and change images -->
-                            <!-- In your actual deployment, you would add all 15 items -->
-                        </div>
-                    </div>
-                </div>
-            </div>
+
+                            <div class="belt-item" data-sector="kitchen" style="flex:0 0 100%; min-width:100%; padding:0 10px; box-sizing:border-box;">
+                                <div class="belt-image-wrapper" style="border:1px solid rgba(255,215,0,0.15); border-radius:8px; overflow:hidden; background:#000;">
+                                    <img src="assets/images/kueche-4-a.webp" alt="Küchen Detail" loading="lazy" style="width:100%; height:350px; object-fit:cover; display:block;" />
+                                    <div class="data-stamp" style="font-family:monospace; font-size:0.6rem; color:#00e5ff; padding:12px; text-align:center; background:rgba(0,0,0,0.7); border-top:1px solid rgba(255,215,0,0.08);">ID: KCH-04 // VERIFIED</div>
+                                </div>
+                            </div>
+
+                            <div class="belt-item" data-sector="kitchen" style="flex:0 0 100%; min-width:100%; padding:0 10px; box-sizing:border-box;">
+                                <div class="belt-image-wrapper" style="border:1px solid rgba(255,215,0,0.15); border-radius:8px; overflow:hidden; background:#000;">
+                                    <img src="assets/images/kueche-8-a.webp" alt="Küchen System" loading="lazy" style="width:100%; height:350px; object-fit:cover; display:block;" />
+                                    <div class="data-stamp" style="font-family:monospace; font-size:0.6rem; color:#00e5ff; padding:12px; text-align:center; background:rgba(0,0,0,0.7); border-top:1px solid rgba(255,215,0,0.08);">ID: KCH-08 // VERIFIED</div>
+                                </div>
+                            </div>
+
+                            <div class="belt-item" data-sector="kitchen" style="flex:0 0 100%; min-width:100%; padding:0 10px; box-sizing:border-box;">
+                                <div class="belt-image-wrapper" style="border:1px solid rgba(255,215,0,0.15); border-radius:8px; overflow:hidden; background:#000;">
+                                    <img src="assets/images/kueche-13-a.webp" alt="Premium Küche" loading="lazy" style="width:100%; height:350px; object-fit:cover; display:block;" />
+                                    <div class="data-stamp" style="font-family:monospace; font-size:0.6rem; color:#00e5ff; padding:12px; text-align:center; background:rgba(0,0,0,0.7); border-top:1px solid rgba(255,215,0,0.08);">ID: KCH-13 // VERIFIED</div>
+                                </div>
+                            </div>
+
+                            <div class="belt-item" data-sector="kitchen" style="flex:0 0 100%; min-width:100%; padding:0 10px; box-sizing:border-box;">
+                                <div class="belt-image-wrapper" style="border:1px solid rgba(255,215,0,0.15); border-radius:8px; overflow:hidden; background:#000;">
+                                    <img src="assets/images/kueche-17-a.webp" alt="Küchen Architektur" loading="lazy" style="width:100%; height:350px; object-fit:cover; display:block;" />
+                                    <div class="data-stamp" style="font-family:monospace; font-size:0.6rem; color:#00e5ff; padding:12px; text-align:center; background:rgba(0,0,0,0.7); border-top:1px solid rgba(255,215,0,0.08);">ID: KCH-17 // VERIFIED</div>
+                                </div>
+                            </div>
+
+                            <!-- === WOHNEN (5 Bilder) === -->
+                            <div class="belt-item" data-sector="living" style="flex:0 0 100%; min-width:100%; padding:0 10px; box-sizing:border-box;">
+                                <div class="belt-image-wrapper" style="border:1px solid rgba(255,215,0,0.15); border-radius:8px; overflow:hidden; background:#000;">
+                                    <img src="assets/images/wohnen-2-a.webp" alt="Wohnzimmer System" loading="lazy" style="width:100%; height:350px; object-fit:cover; display:block;" />
+                                    <div class="data-stamp" style="font-family:monospace; font-size:0.6rem; color:#00e5ff; padding:12px; text-align:center; background:rgba(0,0,0,0.7); border-top:1px solid rgba(255,215,0,0.08);">ID: LVG-02 // VERIFIED</div>
+                                </div>
+                            </div>
+
+                            <div class="belt-item" data-sector="living" style="flex:0 0 100%; min-width:100%; padding:0 10px; box-sizing:border-box;">
+                                <div class="belt-image-wrapper" style="border:1px solid rgba(255,215,0,0.15); border-radius:8px; overflow:hidden; background:#000;">
+                                    <img src="assets/images/wohnen-7-a.webp" alt="Wandmontage" loading="lazy" style="width:100%; height:350px; object-fit:cover; display:block;" />
+                                    <div class="data-stamp" style="font-family:monospace; font-size:0.6rem; color:#00e5ff; padding:12px; text-align:center; background:rgba(0,0,0,0.7); border-top:1px solid rgba(255,215,0,0.08);">ID: LVG-07 // VERIFIED</div>
+                                </div>
+                            </div>
+
+                            <div class="belt-item" data-sector="living" style="flex:0 0 100%; min-width:100%; padding:0 10px; box-sizing:border-box;">
+                                <div class="belt-image-wrapper" style="border:1px solid rgba(255,215,0,0.15); border-radius:8px; overflow:hidden; background:#000;">
+                                    <img src="assets/images/wohnen-11-a.webp" alt="Wohnbereich" loading="lazy" style="width:100%; height:350px; object-fit:cover; display:block;" />
+                                    <div class="data-stamp" style="font-family:monospace; font-size:0.6rem; color:#00e5ff; padding:12px; text-align:center; background:rgba(0,0,0,0.7); border-top:1px solid rgba(255,215,0,0.08);">ID: LVG-11 // VERIFIED</div>
+                                </div>
+                            </div>
+
+                            <div class="belt-item" data-sector="living" style="flex:0 0 100%; min-width:100%; padding:0 10px; box-sizing:border-box;">
+                                <div class="belt-image-wrapper" style="border:1px solid rgba(255,215,0,0.15); border-radius:8px; overflow:hidden; background:#000;">
+                                    <img src="assets/images/wohnen-18-a.webp" alt="Wohnlandschaft" loading="lazy" style="width:100%; height:350px; object-fit:cover; display:block;" />
+                                    <div class="data-stamp" style="font-family:monospace; font-size:0.6rem; color:#00e5ff; padding:12px; text-align:center; background:rgba(0,0,0,0.7); border-top:1px solid rgba(255,215,0,0.08);">ID: LVG-18 // VERIFIED</div>
+                                </div>
+                            </div>
+
+                            <div class="belt-item" data-sector="living" style="flex:0 0 100%; min-width:100%; padding:0 10px; box-sizing:border-box;">
+                                <div class="belt-image-wrapper" style="border:1px solid rgba(255,215,0,0.15); border-radius:8px; overflow:hidden; background:#000;">
+                                    <img src="assets/images/wohnen-21-a.webp" alt="Modern Living" loading="lazy" style="width:100%; height:350px; object-fit:cover; display:block;" />
+                                    <div class="data-stamp" style="font-family:monospace; font-size:0.6rem; color:#00e5ff; padding:12px; text-align:center; background:rgba(0,0,0,0.7); border-top:1px solid rgba(255,215,0,0.08);">ID: LVG-21 // VERIFIED</div>
+                                </div>
+                            </div>
+
+                            <!-- === SCHLAFZIMMER (5 Bilder) === -->
+                            <div class="belt-item" data-sector="bedroom" style="flex:0 0 100%; min-width:100%; padding:0 10px; box-sizing:border-box;">
+                                <div class="belt-image-wrapper" style="border:1px solid rgba(255,215,0,0.15); border-radius:8px; overflow:hidden; background:#000;">
+                                    <img src="assets/images/sz-3-a.webp" alt="Luxury Bedroom" loading="lazy" style="width:100%; height:350px; object-fit:cover; display:block;" />
+                                    <div class="data-stamp" style="font-family:monospace; font-size:0.6rem; color:#00e5ff; padding:12px; text-align:center; background:rgba(0,0,0,0.7); border-top:1px solid rgba(255,215,0,0.08);">ID: BDR-03 // VERIFIED</div>
+                                </div>
+                            </div>
+
+                            <div class="belt-item" data-sector="bedroom" style="flex:0 0 100%; min-width:100%; padding:0 10px; box-sizing:border-box;">
+                                <div class="belt-image-wrapper" style="border:1px solid rgba(255,215,0,0.15); border-radius:8px; overflow:hidden; background:#000;">
+                                    <img src="assets/images/sz-6-a.webp" alt="Schlafzimmer PAX" loading="lazy" style="width:100%; height:350px; object-fit:cover; display:block;" />
+                                    <div class="data-stamp" style="font-family:monospace; font-size:0.6rem; color:#00e5ff; padding:12px; text-align:center; background:rgba(0,0,0,0.7); border-top:1px solid rgba(255,215,0,0.08);">ID: BDR-06 // VERIFIED</div>
+                                </div>
+                            </div>
+
+                            <div class="belt-item" data-sector="bedroom" style="flex:0 0 100%; min-width:100%; padding:0 10px; box-sizing:border-box;">
+                                <div class="belt-image-wrapper" style="border:1px solid rgba(255,215,0,0.15); border-radius:8px; overflow:hidden; background:#000;">
+                                    <img src="assets/images/Bedroom_grey_main.webp" alt="PAX Wardrobe" loading="lazy" style="width:100%; height:350px; object-fit:cover; display:block;" />
+                                    <div class="data-stamp" style="font-family:monospace; font-size:0.6rem; color:#00e5ff; padding:12px; text-align:center; background:rgba(0,0,0,0.7); border-top:1px solid rgba(255,215,0,0.08);">ID: BDR-PAX // VERIFIED</div>
+                                </div>
+                            </div>
+
+                            <div class="belt-item" data-sector="bedroom" style="flex:0 0 100%; min-width:100%; padding:0 10px; box-sizing:border-box;">
+                                <div class="belt-image-wrapper" style="border:1px solid rgba(255,215,0,0.15); border-radius:8px; overflow:hidden; background:#000;">
+                                    <img src="assets/images/ikea-hemnes-tagesbett-ausziehbar-montage.webp" alt="Hemnes Bett Montage" loading="lazy" style="width:100%; height:350px; object-fit:cover; display:block;" />
+                                    <div class="data-stamp" style="font-family:monospace; font-size:0.6rem; color:#00e5ff; padding:12px; text-align:center; background:rgba(0,0,0,0.7); border-top:1px solid rgba(255,215,0,0.08);">ID: BDR-HEM // VERIFIED</div>
+                                </div>
+                            </div>
+
+                            <div class="belt-item" data-sector="bedroom" style="flex:0 0 100%; min-width:100%; padding:0 10px; box-sizing:border-box;">
+                                <div class="belt-image-wrapper" style="border:1px solid rgba(255,215,0,0.15); border-radius:8px; overflow:hidden; background:#000;">
+                                    <img src="assets/images/ikea-bekant-schreibtisch-hoehenverstellbar-aufbau.webp" alt="Office Schreibtisch" loading="lazy" style="width:100%; height:350px; object-fit:cover; display:block;" />
+                                    <div class="data-stamp" style="font-family:monospace; font-size:0.6rem; color:#00e5ff; padding:12px; text-align:center; background:rgba(0,0,0,0.7); border-top:1px solid rgba(255,215,0,0.08);">ID: OFC-01 // VERIFIED</div>
+                                </div>
+                            </div>
+
+                        </div><!-- .belt-track -->
+                    </div><!-- .belt-container -->
+
+                </div><!-- .visual-split-layout -->
+            </div><!-- .container -->
         </section>
 
         <!-- ============================================================
-             8. FAQ MAINFRAME
+             8. FAQ MAINFRAME (Updated Content)
              ============================================================ -->
         <section id="faq-smart" class="faq-tech-section" aria-labelledby="support-heading" style="padding:clamp(80px,10vh,120px) 0; background:#020203; border-top:1px solid rgba(255,215,0,0.1);">
             <div class="container relative-z" style="max-width:1000px; margin:0 auto; padding:0 20px;">
-                <div class="section-header center" data-aos="fade-up" style="text-align:center; margin-bottom:60px;">
+                <div class="section-header center" data-aos="fade-up" data-aos-duration="600" style="text-align:center; margin-bottom:60px;">
                     <div class="pre-title" style="font-family:monospace; color:#00e5ff; font-size:0.75rem; letter-spacing:3px; margin-bottom:15px;">SUPPORT_CENTER</div>
                     <h2 id="support-heading" class="section-heading" style="font-size:clamp(2rem,4vw,3rem); font-weight:900; line-height:1.1; margin-bottom:20px;">
                         Technische <span style="color:#FFD700;">Protokolle</span> &amp; FAQ
@@ -738,15 +896,15 @@
                     </p>
                 </div>
 
-                <div class="faq-matrix" data-aos="fade-up" data-aos-delay="100">
+                <div class="faq-matrix" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
 
                     <!-- FAQ 1 -->
-                    <article class="faq-module-v2 glass-panel js-faq-item">
+                    <article class="faq-module-v2 glass-panel js-faq-item" data-aos="fade-up" data-aos-duration="600" data-aos-delay="100">
                         <button class="faq-trigger magnetic-target" aria-expanded="false">
                             <div class="faq-icon-box"><i class="fas fa-microchip icon-cyan"></i></div>
                             <div class="faq-title-wrap">
                                 <span class="faq-category">WORKFLOW</span>
-                                <h4 class="faq-question">Arbeitsweise &amp; High-End Ausrüstung</h4>
+                                <h4 class="faq-question">Wie stellen Sie sicher, dass meine teuren Möbel nicht beschädigt werden?</h4>
                             </div>
                             <div class="faq-plus"></div>
                         </button>
@@ -755,15 +913,15 @@
                                 <div class="faq-grid-internal">
                                     <div class="faq-text-block">
                                         <h6>Welches Werkzeug verwenden Sie?</h6>
-                                        <p>Mein „Mobile Workshop“ basiert auf Festool, Bosch Professional (BITURBO) und Makita XGT. Das bedeutet: maximale Präzision durch Führungsschienen-Systeme, drehmomentgesteuerte Verschraubungen für empfindliche Oberflächen und eine absolut staubarme Arbeitsweise.</p>
+                                        <p>Mein 'Mobile Workshop' basiert auf Festool, Bosch Professional und Makita XGT. Maximale Präzision für empfindliche Oberflächen.</p>
                                     </div>
                                     <div class="faq-text-block">
                                         <h6>Wie staubfrei ist die Montage wirklich?</h6>
-                                        <p>Ich nutze aktive HEPA-Klasse-M Absaugmobile. Jeder Bohrvorgang wird direkt am Entstehungspunkt abgesaugt. Zuschnitte erfolgen mit angeschlossener Absaugung – ideal für bewohnte Räume und Allergiker.</p>
+                                        <p>Aktive HEPA-Klasse-M Absaugmobile. Jeder Bohrvorgang wird direkt abgesaugt. Ideal für Allergiker.</p>
                                     </div>
                                     <div class="faq-text-block">
                                         <h6>Wie präzise ist die Nivellierung?</h6>
-                                        <p>Keine Schätzung. Schränke und Küchen werden mittels 360°-Kreuzlinienlaser nivelliert. So garantiere ich perfekte Spaltmaße – selbst bei unebenen Böden in Altbauten.</p>
+                                        <p>Keine Schätzung. 360°-Kreuzlinienlaser – perfekte Spaltmaße, selbst bei unebenen Böden.</p>
                                     </div>
                                 </div>
                             </div>
@@ -771,12 +929,12 @@
                     </article>
 
                     <!-- FAQ 2 -->
-                    <article class="faq-module-v2 glass-panel js-faq-item">
+                    <article class="faq-module-v2 glass-panel js-faq-item" data-aos="fade-up" data-aos-duration="600" data-aos-delay="200">
                         <button class="faq-trigger magnetic-target" aria-expanded="false">
                             <div class="faq-icon-box"><i class="fas fa-file-invoice-dollar icon-gold"></i></div>
                             <div class="faq-title-wrap">
                                 <span class="faq-category">FINANCE_OPS</span>
-                                <h4 class="faq-question">Investition &amp; Steuerliche Vorteile</h4>
+                                <h4 class="faq-question">Kann ich die Montage von der Steuer absetzen?</h4>
                             </div>
                             <div class="faq-plus"></div>
                         </button>
@@ -785,15 +943,15 @@
                                 <div class="faq-grid-internal">
                                     <div class="faq-text-block">
                                         <h6>Festpreis oder Abrechnung nach Aufwand?</h6>
-                                        <p>Für definierte Module (z. B. IKEA PAX pro Meter oder BIOHORT Modelle) erhalten Sie garantierte Festpreise. Bei individuellen Projekten oder Demontagen erfolgt die Abrechnung nach transparenten Stundensätzen inkl. digitalem Zeitnachweis.</p>
-                                    </div>
-                                    <div class="faq-text-block">
-                                        <h6>Steuerlicher Vorteil (§ 35a EStG)?</h6>
-                                        <p>Als eingetragener Handwerksbetrieb sind meine Rechnungen voll finanzamtstauglich. Sie können 20 % der Lohnkosten (bis zu 1.200 € im Jahr) direkt von Ihrer Steuerschuld abziehen – meine Leistungen gelten als haushaltsnahe Dienstleistungen.</p>
+                                        <p>Festpreise für definierte Module (z.B. IKEA PAX). Transparente Stundensätze für individuelle Projekte.</p>
                                     </div>
                                     <div class="faq-text-block">
                                         <h6>Welche Zahlungsmethoden akzeptieren Sie?</h6>
-                                        <p>Sicher und digital: Nach erfolgreicher Abnahme zahlen Sie bequem via SumUp-Terminal (EC-Karte, Apple Pay, Google Pay) oder per Echtzeit-Überweisung. Barzahlungen werden aus Compliance-Gründen nicht entgegengenommen.</p>
+                                        <p>EC-Karte, Apple Pay, Google Pay oder Echtzeit-Überweisung. Barzahlungen werden aus Compliance-Gründen nicht angenommen.</p>
+                                    </div>
+                                    <div class="faq-text-block">
+                                        <h6>Wie läuft die Abrechnung ab?</h6>
+                                        <p>Nach erfolgreicher Abnahme erhalten Sie eine detaillierte Rechnung – voll finanzamtstauglich für Ihre Steuererklärung.</p>
                                     </div>
                                 </div>
                             </div>
@@ -801,12 +959,12 @@
                     </article>
 
                     <!-- FAQ 3 -->
-                    <article class="faq-module-v2 glass-panel js-faq-item">
+                    <article class="faq-module-v2 glass-panel js-faq-item" data-aos="fade-up" data-aos-duration="600" data-aos-delay="300">
                         <button class="faq-trigger magnetic-target" aria-expanded="false">
                             <div class="faq-icon-box"><i class="fas fa-shield-check icon-pink"></i></div>
                             <div class="faq-title-wrap">
                                 <span class="faq-category">SAFETY_PROTOCOL</span>
-                                <h4 class="faq-question">Haftung, Schutz &amp; Bausubstanz</h4>
+                                <h4 class="faq-question">Was tun Sie, wenn die Wand nicht hält?</h4>
                             </div>
                             <div class="faq-plus"></div>
                         </button>
@@ -815,15 +973,15 @@
                                 <div class="faq-grid-internal">
                                     <div class="faq-text-block">
                                         <h6>Wie ist der Versicherungsschutz?</h6>
-                                        <p>Ich arbeite mit höchster Sorgfalt. Dennoch bin ich für den Ernstfall mit einer Betriebshaftpflichtversicherung (Deckungssumme bis 5 Mio. €) abgesichert. Schäden an Möbeln oder Bausubstanz sind vollumfänglich gedeckt.</p>
-                                    </div>
-                                    <div class="faq-text-block">
-                                        <h6>Montage an Trockenbau oder Problemwänden?</h6>
-                                        <p>Wir prüfen jede Wand vorab digital auf Leitungen. Bei Gipskarton nutzen wir spezielle Hohlraumdübel (Metall), bei porösem Mauerwerk setzen wir auf chemische Siebhülsen und Injektionsmörtel für maximale Zugfestigkeit.</p>
+                                        <p>Betriebshaftpflichtversicherung bis 5 Mio. €. Schäden an Möbeln oder Bausubstanz sind vollumfänglich gedeckt.</p>
                                     </div>
                                     <div class="faq-text-block">
                                         <h6>Was tun bei unebenen Böden?</h6>
-                                        <p>Hier kommt meine Laser-Nivellierung zum Einsatz. Ich gleiche Unebenheiten mit justierbaren Füßen und speziellen Ausgleichskeilen aus – so steht jedes Möbelstück absolut stabil und waagerecht.</p>
+                                        <p>Laser-Nivellierung mit justierbaren Füßen und speziellen Ausgleichskeilen – absolut stabil und waagerecht.</p>
+                                    </div>
+                                    <div class="faq-text-block">
+                                        <h6>Prüfen Sie auf Leitungen?</h6>
+                                        <p>Ja, jede Wand wird vorab digital auf Leitungen geprüft – Sicherheit hat oberste Priorität.</p>
                                     </div>
                                 </div>
                             </div>
@@ -831,12 +989,12 @@
                     </article>
 
                     <!-- FAQ 4 -->
-                    <article class="faq-module-v2 glass-panel js-faq-item">
+                    <article class="faq-module-v2 glass-panel js-faq-item" data-aos="fade-up" data-aos-duration="600" data-aos-delay="400">
                         <button class="faq-trigger magnetic-target" aria-expanded="false">
                             <div class="faq-icon-box"><i class="fas fa-concierge-bell icon-cyan"></i></div>
                             <div class="faq-title-wrap">
                                 <span class="faq-category">EXTRA_SERVICES</span>
-                                <h4 class="faq-question">Entsorgung, Nachjustierung &amp; mehr</h4>
+                                <h4 class="faq-question">Muss ich nach der Montage selbst aufräumen?</h4>
                             </div>
                             <div class="faq-plus"></div>
                         </button>
@@ -845,15 +1003,15 @@
                                 <div class="faq-grid-internal">
                                     <div class="faq-text-block">
                                         <h6>Kümmern Sie sich um die Entsorgung?</h6>
-                                        <p>Ja, auf Wunsch entsorge ich alle Verpackungsmaterialien (Kartonagen, Styropor, Folien) fachgerecht. So müssen Sie sich um nichts kümmern – Ihr Zuhause bleibt sauber und aufgeräumt.</p>
+                                        <p>Ja, ich entsorge alle Verpackungen fachgerecht. Ihr Zuhause bleibt sauber – ich kümmere mich um alles.</p>
                                     </div>
                                     <div class="faq-text-block">
                                         <h6>Bieten Sie auch Nachjustierungen an?</h6>
-                                        <p>Selbstverständlich. Nach einigen Wochen setzen sich Möbel und Holzwerkstoffe. Ich komme gerne noch einmal vorbei und justiere Türen, Schubladen und Griffe nach – kostenlos im Rahmen meiner Servicegarantie.</p>
+                                        <p>Ja. Nach einigen Wochen setzen sich Möbel und Holzwerkstoffe. Ich justiere kostenlos nach.</p>
                                     </div>
                                     <div class="faq-text-block">
                                         <h6>Kann ich Sie auch für Kleinstaufträge buchen?</h6>
-                                        <p>Ja, ich nehme mich auch kleineren Projekten an – vom einzelnen Regal bis zur Wandhalterung. Jeder Auftrag wird mit der gleichen Präzision und Sorgfalt ausgeführt.</p>
+                                        <p>Ja – vom einzelnen Regal bis zur Wandhalterung. Jeder Auftrag mit der gleichen Präzision.</p>
                                     </div>
                                 </div>
                             </div>
@@ -895,7 +1053,9 @@
          ============================================================ -->
     <div id="global-os" aria-label="MissionOS Anfrage-Terminal"></div>
 
-    <!-- WhatsApp Float -->
+    <!-- ============================================================
+         WHATSAPP FLOAT
+         ============================================================ -->
     <a href="https://wa.me/491608194018" target="_blank" rel="noopener noreferrer" class="whatsapp-float magnetic-target" aria-label="Live Chat via WhatsApp öffnen">
         <div class="whatsapp-pulse"></div>
         <div class="whatsapp-tooltip">LIVE CHAT</div>
@@ -905,7 +1065,11 @@
     <!-- ============================================================
          SCRIPTS
          ============================================================ -->
+    <!-- AOS Library -->
+    <script src="https://cdn.jsdelivr.net/npm/@reimujs/aos/dist/aos.umd.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Custom JS -->
     <script src="assets/js/main.js"></script>
     <script src="assets/js/components/belt.js"></script>
     <script src="assets/js/components/carousel.js"></script>

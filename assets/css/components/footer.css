@@ -1,13 +1,7 @@
 /* ==========================================================================
-   RAPHAEL LEZIUS | COMPONENT: MISSION CONTROL FOOTER (v2077.2)
+   RAPHAEL LEZIUS | MISSION CONTROL FOOTER (v2077.3)
    ARCHITECTURE: CSS GRID | GLASSMORPHISM | TACTILE RESPONSIVE HUD
    ========================================================================== */
-/* ==========================================================================
-   [COMPONENT NAME] – MOBILE-FLUID ARCHITECTURE
-   BREAKPOINTS: 480px | 768px | 992px | 1200px
-   ========================================================================== */
-
-Test on your phone or use Chrome DevTools (F12 → Toggle Device Toolbar).
 
 /* --- 1. CORE ENCLOSURE & BLUEPRINT TEXTURE --- */
 .mega-footer-2077 { 
@@ -19,7 +13,6 @@ Test on your phone or use Chrome DevTools (F12 → Toggle Device Toolbar).
         linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px), 
         linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
     background-size: 100% 100%, 40px 40px, 40px 40px;
-    background-position: 0 0, 0 0, 0 0;
     border-top: 1px solid rgba(255, 215, 0, 0.15);
     overflow: hidden;
     z-index: 10;
@@ -111,6 +104,7 @@ Test on your phone or use Chrome DevTools (F12 → Toggle Device Toolbar).
     border-radius: 12px; 
     width: fit-content; 
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 .diagnostic-row { 
     display: flex; 
@@ -136,6 +130,8 @@ Test on your phone or use Chrome DevTools (F12 → Toggle Device Toolbar).
 .d-value { font-family: var(--font-mono, monospace); font-size: 0.85rem; font-weight: 800; letter-spacing: 1px; color: #e2e8f0; margin-top: 4px; }
 .text-green { color: var(--neon-green, #39ff14) !important; text-shadow: 0 0 10px rgba(57, 255, 20, 0.3); }
 .text-gold { color: var(--neon-gold, #FFD700) !important; text-shadow: 0 0 10px rgba(255, 215, 0, 0.3); }
+.text-cyan { color: var(--neon-cyan, #00e5ff) !important; text-shadow: 0 0 10px rgba(0, 229, 255, 0.3); }
+.text-pink { color: var(--neon-pink, #ff007f) !important; text-shadow: 0 0 10px rgba(255, 0, 127, 0.3); }
 
 /* --- 4. NAVIGATION SECTORS (LINKS) --- */
 .f-heading-2077 { 
@@ -168,8 +164,6 @@ Test on your phone or use Chrome DevTools (F12 → Toggle Device Toolbar).
 .footer-links-2077 a:focus-visible { color: var(--neon-cyan, #00e5ff); text-decoration: underline; text-underline-offset: 4px; }
 
 .tech-tag { font-family: var(--font-mono, monospace); font-size: 0.7rem; font-weight: 700; margin-right: 12px; letter-spacing: 1px; }
-.text-cyan { color: var(--neon-cyan, #00e5ff); }
-.text-pink { color: var(--neon-pink, #ff007f); }
 
 .f-arrow { 
     font-family: var(--font-mono, monospace); 
@@ -207,9 +201,13 @@ Test on your phone or use Chrome DevTools (F12 → Toggle Device Toolbar).
 .comms-card:hover { background: rgba(255, 255, 255, 0.04); border-color: rgba(255, 215, 0, 0.2); transform: translateY(-3px) scale(1.02); box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
 
 .c-icon-wrap { 
-    width: 45px; height: 45px; 
-    display: flex; align-items: center; justify-content: center; 
-    border-radius: 10px; font-size: 1.3rem;
+    width: 45px; 
+    height: 45px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    border-radius: 10px; 
+    font-size: 1.3rem;
     border: 1px solid transparent;
     transition: 0.4s ease;
 }
@@ -240,6 +238,7 @@ Test on your phone or use Chrome DevTools (F12 → Toggle Device Toolbar).
     text-align: center;
     background: rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 .copyright-zone { color: #64748b; font-size: 0.75rem; font-family: var(--font-mono, monospace); letter-spacing: 1px; }
@@ -247,7 +246,7 @@ Test on your phone or use Chrome DevTools (F12 → Toggle Device Toolbar).
 
 .meta-telemetry { display: flex; gap: 20px; font-family: var(--font-mono, monospace); font-size: 0.65rem; color: #475569; letter-spacing: 1px; }
 
-.legal-links-2077 { display: flex; align-items: center; gap: 15px; }
+.legal-links-2077 { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
 .legal-links-2077 a { 
     color: #94a3b8; text-decoration: none; transition: 0.3s; 
     font-family: var(--font-mono, monospace); font-size: 0.75rem; 
@@ -256,15 +255,16 @@ Test on your phone or use Chrome DevTools (F12 → Toggle Device Toolbar).
 .legal-links-2077 a:hover { color: var(--neon-cyan, #00e5ff); text-shadow: 0 0 10px rgba(0,229,255,0.4); }
 .legal-links-2077 .divider { color: rgba(255, 255, 255, 0.1); font-family: var(--font-mono, monospace); }
 
-@media (min-width: 1024px) {
-    .footer-bottom-bar-2077 { flex-direction: row; justify-content: space-between; text-align: left; }
-}
-
 /* --- 7. MOBILE TACTILE HUD (max-width: 767px) --- */
 @media (max-width: 767px) {
     .footer-grid-container { gap: 40px 20px; padding: 50px 20px; }
     
-    .brand-col { text-align: center; align-items: center; padding-bottom: 30px; border-bottom: 1px dashed rgba(255,255,255,0.1); }
+    .brand-col { 
+        text-align: center; 
+        align-items: center; 
+        padding-bottom: 30px; 
+        border-bottom: 1px dashed rgba(255,255,255,0.1); 
+    }
     .brand-desc { text-align: center; padding: 0 10px; }
     .system-diagnostics { width: 100%; align-items: flex-start; }
     
@@ -282,5 +282,91 @@ Test on your phone or use Chrome DevTools (F12 → Toggle Device Toolbar).
         border-radius: 50px; 
         border: 1px solid rgba(255, 255, 255, 0.05); 
     }
-    .legal-links-2077 a:active { background: rgba(0, 229, 255, 0.1); border-color: var(--neon-cyan, #00e5ff); color: var(--neon-cyan, #00e5ff); }
+    .legal-links-2077 a:active { 
+        background: rgba(0, 229, 255, 0.1); 
+        border-color: var(--neon-cyan, #00e5ff); 
+        color: var(--neon-cyan, #00e5ff); 
+    }
+    
+    .footer-bottom-bar-2077 { 
+        padding: 25px 20px; 
+        gap: 15px; 
+    }
+    
+    .copyright-zone { 
+        font-size: 0.65rem; 
+    }
+}
+
+/* --- 8. VERY SMALL PHONES --- */
+@media (max-width: 480px) {
+    .footer-grid-container { 
+        padding: 40px 16px; 
+        gap: 30px; 
+    }
+    .brand-desc { 
+        font-size: 0.85rem; 
+    }
+    .system-diagnostics { 
+        padding: 15px; 
+    }
+    .d-value { 
+        font-size: 0.75rem; 
+    }
+    .footer-links-2077 a { 
+        font-size: 0.95rem; 
+    }
+    .comms-card { 
+        padding: 12px; 
+    }
+    .c-value { 
+        font-size: 0.9rem; 
+    }
+    .legal-links-2077 a { 
+        font-size: 0.65rem; 
+        padding: 6px 14px; 
+    }
+    .footer-bottom-bar-2077 { 
+        padding: 20px 16px; 
+    }
+}
+
+/* --- 9. TOUCH DEVICE OPTIMIZATION --- */
+@media (hover: none) {
+    .comms-card:hover { 
+        transform: none; 
+        background: rgba(255, 255, 255, 0.02); 
+        border-color: rgba(255, 255, 255, 0.05); 
+    }
+    .comms-card:active { 
+        background: rgba(255, 255, 255, 0.06); 
+        border-color: rgba(255, 215, 0, 0.15); 
+        transform: scale(0.98); 
+    }
+    .footer-links-2077 a:hover { 
+        transform: none; 
+        color: #94a3b8; 
+    }
+    .footer-links-2077 a:active { 
+        color: #fff; 
+        transform: translateX(4px); 
+    }
+    .diagnostic-row:hover { 
+        transform: none; 
+    }
+    .diagnostic-row:active { 
+        transform: translateX(4px); 
+    }
+}
+
+/* --- 10. SAFE AREA SUPPORT --- */
+@supports (padding: max(0px)) {
+    .footer-grid-container {
+        padding-left: max(20px, env(safe-area-inset-left));
+        padding-right: max(20px, env(safe-area-inset-right));
+    }
+    .footer-bottom-bar-2077 {
+        padding-left: max(20px, env(safe-area-inset-left));
+        padding-right: max(20px, env(safe-area-inset-right));
+    }
 }
