@@ -1,442 +1,367 @@
-/* ==========================================================================
-   RAPHAEL LEZIUS | MASTER ENGINE v2026.1 (with AOS)
-   ARCHITECTURE: ASYNC BOOT | COMPONENT INJECTION | 2‑SIDED LOGO FLIP
-   ========================================================================== */
+// ============================================================
+// MAIN.JS – ALL FUNCTIONALITY
+// ============================================================
 
-(function() {
-    "use strict";
+document.addEventListener('DOMContentLoaded', function() {
 
-    // ====== INITIALIZE AOS ======
-    function initAOS() {
-        if (typeof AOS !== 'undefined') {
-            AOS.init({
-                duration: 800,
-                once: false,
-                offset: 120,
-                easing: 'ease-in-out',
-                delay: 0,
-                // Disable on reduced motion preference
-                disable: window.matchMedia('(prefers-reduced-motion: reduce)').matches,
-                startEvent: 'DOMContentLoaded',
-            });
-            console.log('✅ AOS initialized.');
-        } else {
-            console.warn('⚠️ AOS library not loaded.');
-        }
+    // ===== LOAD COMPONENTS (nav, footer, mission-os) =====
+    function loadComponent(placeholderId, filePath) {
+        const placeholder = document.getElementById(placeholderId);
+        if (!placeholder) return;
+        fetch(filePath)
+            .then(response => {
+                if (!response.ok) throw new Error('Failed to load ' + filePath);
+                return response.text();
+            })
+            .then(html => {
+                placeholder.innerHTML = html;
+                // After loading, re-init any event listeners that might be needed
+                if (placeholderId === 'nav-placeholder') {
+                    initNav();
+                }
+                if (placeholderId === 'footer-placeholder') {
+                    // footer init (if any)
+                }
+                if (placeholderId === 'mission-os-placeholder') {
+                    initOs();
+                }
+            })
+            .catch(err => console.warn('Could not load component:', filePath, err));
     }
 
-    // ====== DOM CONTENT LOADED ======
-    document.addEventListener('DOMContentLoaded', function() {
-        console.log('🔄 SYSTEM: Booting Aurum 2077…');
+    // Load all components
+    loadComponent('nav-placeholder', 'assets/components/nav.html');
+    loadComponent('footer-placeholder', 'assets/components/footer.html');
+    loadComponent('mission-os-placeholder', 'assets/components/mission-os.html');
 
-        // Initialize AOS
-        initAOS();
-
-        // Load components (nav, footer, os)
-        var navPaths = ['nav.html', 'components/nav.html', 'partials/nav.html'];
-        var footerPaths = ['footer.html', 'components/footer.html', 'partials/footer.html'];
-        var osPaths = ['mission-os.html', 'components/mission-os.html', 'partials/mission-os.html'];
-
-        Promise.all([
-            loadComponent('global-nav', navPaths),
-            loadComponent('global-footer', footerPaths),
-            loadComponent('global-os', osPaths)
-        ]).then(function() {
-            // Refresh AOS after injecting dynamic content
-            if (typeof AOS !== 'undefined') {
-                AOS.refresh();
-                console.log('✅ AOS refreshed after component injection.');
-            }
-            attachEventListeners();
-            console.log('✅ SYSTEM: All components loaded.');
+    // ===== AOS INIT =====
+    if (typeof AOS !== 'undefined') {
+        AOS.init({
+            duration: 600,
+            once: true,
+            offset: 40
         });
-
-        // Attach listeners for static elements
-        attachEventListeners();
-        initScrollDetection();
-
-        // Set dynamic date
-        var dateEl = document.getElementById('dynamic-date');
-        if (dateEl) {
-            dateEl.textContent = new Date().getFullYear();
-        }
-
-        console.log('✅ SYSTEM: Boot sequence complete.');
-    });
-
-    // ====== COMPONENT INJECTOR (with fallback paths) ======
-    function loadComponent(id, paths) {
-        var target = document.getElementById(id);
-        if (!target) {
-            console.warn('⚠️ Component container "' + id + '" not found in HTML.');
-            return Promise.resolve();
-        }
-
-        function tryPath(index) {
-            if (index >= paths.length) {
-                console.warn('⚠️ Could not load component "' + id + '" from any path.');
-                // Fallback content
-                if (id === 'global-nav') {
-                    target.innerHTML = '<nav style="padding:20px;color:#888;text-align:center;background:#0a0805;border-bottom:1px solid rgba(255,215,0,0.1);">[ Navigation not loaded ]</nav>';
-                } else if (id === 'global-footer') {
-                    target.innerHTML = '<footer style="padding:40px 20px;color:#666;text-align:center;background:#0a0805;border-top:1px solid rgba(255,215,0,0.1);">[ Footer not loaded ]</footer>';
-                } else if (id === 'global-os') {
-                    target.innerHTML = '<div style="padding:20px;color:#888;text-align:center;">[ Mission OS not loaded ]</div>';
-                }
-                return Promise.resolve();
-            }
-
-            var path = paths[index];
-            return fetch(path)
-                .then(function(response) {
-                    if (!response.ok) throw new Error('HTTP ' + response.status);
-                    return response.text();
-                })
-                .then(function(html) {
-                    target.innerHTML = html;
-                    console.log('✅ Loaded: ' + path);
-                    return Promise.resolve();
-                })
-                .catch(function() {
-                    // Try next path
-                    return tryPath(index + 1);
-                });
-        }
-
-        return tryPath(0);
     }
 
-    // ====== NAVIGATION SCROLL DETECTION ======
-    function initScrollDetection() {
-        var nav = document.querySelector('.lezius-nav-2026');
-        if (!nav) return;
-
-        var scrollThreshold = 80;
-        var isScrolled = false;
-
-        window.addEventListener('scroll', function() {
-            var scrollY = window.scrollY || window.pageYOffset;
-            if (scrollY > scrollThreshold && !isScrolled) {
-                nav.classList.add('is-scrolled');
-                isScrolled = true;
-            } else if (scrollY <= scrollThreshold && isScrolled) {
-                nav.classList.remove('is-scrolled');
-                isScrolled = false;
-            }
-        }, { passive: true });
-    }
-
-    // ====== EVENT LISTENERS ======
-    function attachEventListeners() {
-
-        // --- A. TWO‑SIDED LOGO FLIP (Profile Avatar) ---
-        var avatarFrame = document.querySelector('.avatar-frame');
-        if (avatarFrame) {
-            // Click to flip
-            avatarFrame.addEventListener('click', function(e) {
-                this.classList.toggle('flipped');
-                console.log('🔄 Avatar flipped.');
-            });
-            // Keyboard accessibility
-            avatarFrame.setAttribute('tabindex', '0');
-            avatarFrame.setAttribute('role', 'button');
-            avatarFrame.setAttribute('aria-label', 'Logo umdrehen – Vorder- und Rückseite anzeigen');
-            avatarFrame.addEventListener('keydown', function(e) {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    this.classList.toggle('flipped');
-                }
+    // ===== NAVIGATION =====
+    function initNav() {
+        const hamburger = document.getElementById('hamburgerToggle');
+        const mobileMenu = document.getElementById('mobileMenuOverlay');
+        if (hamburger && mobileMenu) {
+            hamburger.addEventListener('click', function() {
+                this.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+                document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
             });
         }
-
-        // --- B. MAGNETIC BUTTONS (hover physics) ---
-        document.querySelectorAll('.magnetic-target').forEach(function(btn) {
-            btn.addEventListener('mousemove', function(e) {
-                var rect = this.getBoundingClientRect();
-                var x = e.clientX - rect.left - rect.width / 2;
-                var y = e.clientY - rect.top - rect.height / 2;
-                this.style.transform = 'translate(' + (x * 0.15) + 'px, ' + (y * 0.15) + 'px)';
-            });
-            btn.addEventListener('mouseleave', function() {
-                this.style.transform = 'translate(0, 0)';
+        // Close mobile menu on link click
+        const mobileLinks = document.querySelectorAll('.mobile-menu-overlay a, .mobile-menu-overlay .btn-mobile');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                if (mobileMenu) mobileMenu.classList.remove('active');
+                if (hamburger) hamburger.classList.remove('active');
+                document.body.style.overflow = '';
             });
         });
+    }
 
-        // --- C. MOBILE MENU TOGGLE ---
-        var menuToggle = document.getElementById('mobileMenuToggle');
-        var mobileMenu = document.getElementById('fluidMobileMenu');
-
-        if (menuToggle && mobileMenu) {
-            menuToggle.addEventListener('click', function(e) {
-                e.preventDefault();
-                this.classList.toggle('is-active');
-                mobileMenu.classList.toggle('is-open');
-                // Prevent body scroll when menu is open
-                document.body.style.overflow = mobileMenu.classList.contains('is-open') ? 'hidden' : '';
-                // Update aria-expanded
-                var expanded = this.classList.contains('is-active');
-                this.setAttribute('aria-expanded', expanded);
-                this.setAttribute('aria-label', expanded ? 'Mobiles Menü schließen' : 'Mobiles Menü öffnen');
-            });
-
-            // Close menu on link click
-            var menuLinks = mobileMenu.querySelectorAll('a, .m-link-massive, .m-srv-card');
-            menuLinks.forEach(function(link) {
-                link.addEventListener('click', function() {
-                    menuToggle.classList.remove('is-active');
-                    mobileMenu.classList.remove('is-open');
-                    document.body.style.overflow = '';
-                    menuToggle.setAttribute('aria-expanded', 'false');
-                    menuToggle.setAttribute('aria-label', 'Mobiles Menü öffnen');
-                });
-            });
-
-            // Close menu on ESC key
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && mobileMenu.classList.contains('is-open')) {
-                    menuToggle.classList.remove('is-active');
-                    mobileMenu.classList.remove('is-open');
-                    document.body.style.overflow = '';
-                    menuToggle.setAttribute('aria-expanded', 'false');
-                    menuToggle.setAttribute('aria-label', 'Mobiles Menü öffnen');
-                    menuToggle.focus();
-                }
-            });
-        } else {
-            // Fallback: try to find elements if they were injected later
-            setTimeout(function() {
-                var toggle = document.getElementById('mobileMenuToggle');
-                var menu = document.getElementById('fluidMobileMenu');
-                if (toggle && menu) {
-                    // Re-run the toggle setup
-                    toggle.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        this.classList.toggle('is-active');
-                        menu.classList.toggle('is-open');
-                        document.body.style.overflow = menu.classList.contains('is-open') ? 'hidden' : '';
-                        var expanded = this.classList.contains('is-active');
-                        this.setAttribute('aria-expanded', expanded);
-                        this.setAttribute('aria-label', expanded ? 'Mobiles Menü schließen' : 'Mobiles Menü öffnen');
+    // ===== ACCORDION =====
+    document.querySelectorAll('.js-accordion-trigger').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            const item = this.closest('.accordion-item');
+            if (item) {
+                const isActive = item.classList.contains('active');
+                const parent = item.closest('.accordion');
+                if (parent) {
+                    parent.querySelectorAll('.accordion-item.active').forEach(function(el) {
+                        if (el !== item) el.classList.remove('active');
                     });
                 }
-            }, 500);
-        }
-
-        // --- D. FAQ ACCORDION (delegated for dynamic content) ---
-        document.addEventListener('click', function(e) {
-            var trigger = e.target.closest('.faq-trigger');
-            if (!trigger) return;
-
-            var item = trigger.closest('.js-faq-item');
-            if (!item) return;
-
-            var content = item.querySelector('.faq-content');
-            if (!content) return;
-
-            e.preventDefault();
-
-            var isOpen = item.classList.contains('active');
-
-            // Close all others
-            document.querySelectorAll('.js-faq-item').forEach(function(other) {
-                if (other !== item) {
-                    other.classList.remove('active');
-                    var otherContent = other.querySelector('.faq-content');
-                    if (otherContent) otherContent.style.maxHeight = null;
-                }
-            });
-
-            if (isOpen) {
-                item.classList.remove('active');
-                content.style.maxHeight = '0px';
-            } else {
-                item.classList.add('active');
-                content.style.maxHeight = content.scrollHeight + 'px';
-                trigger.setAttribute('aria-expanded', 'true');
+                item.classList.toggle('active');
+                this.setAttribute('aria-expanded', !isActive);
             }
         });
+    });
 
-        // --- E. MISSION OS MODAL ---
-        document.addEventListener('click', function(e) {
-            var openBtn = e.target.closest('.js-open-os');
-            if (openBtn) {
-                e.preventDefault();
-                var modal = document.getElementById('global-os');
-                if (modal) {
-                    modal.classList.add('is-active');
-                    document.body.style.overflow = 'hidden';
+    // ===== FAQ =====
+    document.querySelectorAll('.js-faq-item .trigger').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            const item = this.closest('.js-faq-item');
+            if (item) {
+                const isActive = item.classList.contains('active');
+                const parent = item.closest('.faq-list');
+                if (parent) {
+                    parent.querySelectorAll('.js-faq-item.active').forEach(function(el) {
+                        if (el !== item) el.classList.remove('active');
+                    });
                 }
-                return;
-            }
-
-            var closeBtn = e.target.closest('.js-close-os');
-            if (closeBtn) {
-                e.preventDefault();
-                var modal = document.getElementById('global-os');
-                if (modal) {
-                    modal.classList.remove('is-active');
-                    document.body.style.overflow = '';
-                }
-                return;
-            }
-
-            // Close modal on backdrop click
-            var backdrop = e.target.closest('.os-backdrop');
-            if (backdrop) {
-                var modal = document.getElementById('global-os');
-                if (modal) {
-                    modal.classList.remove('is-active');
-                    document.body.style.overflow = '';
-                }
-                return;
+                item.classList.toggle('active');
             }
         });
+    });
 
-        // --- F. SERVICE ACCORDION ---
-        document.addEventListener('click', function(e) {
-            var trigger = e.target.closest('.js-accordion-trigger');
-            if (!trigger) return;
+    // ===== VIDEO LIGHTBOX =====
+    const lightbox = document.getElementById('videoLightbox');
+    const lightboxPlayer = document.getElementById('lightboxPlayer');
+    const closeLightbox = document.getElementById('closeLightbox');
 
-            var item = trigger.closest('.accordion-item');
-            if (!item) return;
-
-            var content = item.querySelector('.accordion-content');
-            if (!content) return;
-
-            e.preventDefault();
-
-            var isOpen = item.classList.contains('active');
-
-            // Close all others
-            document.querySelectorAll('.accordion-item').forEach(function(other) {
-                if (other !== item) {
-                    other.classList.remove('active');
-                    var otherContent = other.querySelector('.accordion-content');
-                    if (otherContent) otherContent.style.maxHeight = null;
-                }
-            });
-
-            if (isOpen) {
-                item.classList.remove('active');
-                content.style.maxHeight = '0px';
-            } else {
-                item.classList.add('active');
-                content.style.maxHeight = content.scrollHeight + 'px';
-                trigger.setAttribute('aria-expanded', 'true');
-            }
-        });
-
-        // --- G. VIDEO LIGHTBOX ---
-        document.addEventListener('click', function(e) {
-            var trigger = e.target.closest('.js-lightbox-trigger');
-            if (!trigger) return;
-
-            e.preventDefault();
-
-            var lightbox = document.getElementById('cinematicLightbox');
-            var player = document.getElementById('lightboxVideoPlayer');
-            var videoSource = document.getElementById('lightboxVideoSource');
-
-            if (!lightbox || !player || !videoSource) return;
-
-            var src = trigger.getAttribute('data-video-src');
-            if (src) {
-                videoSource.src = src;
-                player.load();
-                lightbox.style.display = 'flex';
-                setTimeout(function() {
-                    lightbox.classList.add('is-active');
-                }, 50);
+    document.querySelectorAll('.js-lightbox-trigger').forEach(function(card) {
+        card.addEventListener('click', function() {
+            const src = this.dataset.video;
+            if (src && lightbox && lightboxPlayer) {
+                lightboxPlayer.src = src;
+                lightboxPlayer.load();
+                lightbox.classList.add('active');
                 document.body.style.overflow = 'hidden';
-                player.play().catch(function(err) {
-                    console.log('User interaction required for audio playback.');
+                document.querySelectorAll('.js-hover-play').forEach(function(v) {
+                    if (!v.paused) v.pause();
                 });
             }
         });
+    });
 
-        // --- H. CLOSE LIGHTBOX ---
-        document.addEventListener('click', function(e) {
-            var closeBtn = e.target.closest('#closeCinematicLightbox');
-            if (closeBtn) {
-                e.preventDefault();
-                closeLightbox();
-                return;
-            }
-
-            var backdrop = e.target.closest('.lightbox-backdrop');
-            if (backdrop) {
-                closeLightbox();
-                return;
-            }
+    if (closeLightbox) {
+        closeLightbox.addEventListener('click', function() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+            lightboxPlayer.pause();
         });
-
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                var lightbox = document.getElementById('cinematicLightbox');
-                if (lightbox && lightbox.classList.contains('is-active')) {
-                    closeLightbox();
-                }
-            }
-        });
-
-        function closeLightbox() {
-            var lightbox = document.getElementById('cinematicLightbox');
-            var player = document.getElementById('lightboxVideoPlayer');
-            if (lightbox) {
-                lightbox.classList.remove('is-active');
-                setTimeout(function() {
-                    lightbox.style.display = 'none';
-                }, 400);
+    }
+    if (lightbox) {
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === this) {
+                lightbox.classList.remove('active');
                 document.body.style.overflow = '';
+                lightboxPlayer.pause();
             }
-            if (player) {
-                player.pause();
-                player.currentTime = 0;
-            }
-            var videoSource = document.getElementById('lightboxVideoSource');
-            if (videoSource) {
-                videoSource.src = '';
-            }
-        }
-
-        // --- I. BELT CAROUSEL SECTOR FILTERS (if belt.js is not loaded) ---
-        document.querySelectorAll('.sector-btn').forEach(function(btn) {
-            btn.addEventListener('click', function(e) {
-                var sector = this.getAttribute('data-target');
-                var items = document.querySelectorAll('.belt-item');
-                var hasVisible = false;
-
-                items.forEach(function(item) {
-                    var itemSector = item.getAttribute('data-sector');
-                    if (sector === 'all' || itemSector === sector) {
-                        item.style.display = 'block';
-                        hasVisible = true;
-                    } else {
-                        item.style.display = 'none';
-                    }
-                });
-
-                // Update active button
-                document.querySelectorAll('.sector-btn').forEach(function(b) {
-                    b.classList.remove('active');
-                    b.style.background = 'transparent';
-                    b.style.color = '#fff';
-                    b.style.border = '1px solid #333';
-                });
-                this.classList.add('active');
-                this.style.background = '#00e5ff';
-                this.style.color = '#000';
-                this.style.border = 'none';
-
-                // Reset carousel
-                var track = document.getElementById('imageBelt');
-                if (track) {
-                    track.style.transform = 'translateX(0%)';
-                }
-            });
         });
-
-        console.log('✅ All event listeners attached.');
     }
 
-})();
+    // ===== VIDEO HOVER PLAY =====
+    document.querySelectorAll('.js-hover-play').forEach(function(video) {
+        video.addEventListener('mouseenter', function() {
+            this.play().catch(function() {});
+        });
+        video.addEventListener('mouseleave', function() {
+            this.pause();
+        });
+        video.addEventListener('click', function(e) {
+            e.stopPropagation();
+            if (this.paused) {
+                this.play().catch(function() {});
+            } else {
+                this.pause();
+            }
+        });
+    });
+
+    // ===== PROJECT BELT =====
+    const track = document.getElementById('beltTrack');
+    const prevBtn = document.getElementById('beltPrev');
+    const nextBtn = document.getElementById('beltNext');
+    const indexDisplay = document.getElementById('beltIndex');
+    const dotsContainer = document.getElementById('beltDots');
+    const filterButtons = document.querySelectorAll('#beltFilters button');
+
+    if (track) {
+        let slides = track.querySelectorAll('.belt-slide');
+        let total = slides.length;
+        let current = 0;
+        let currentFilter = 'all';
+        let filteredSlides = slides;
+        let filteredIndex = 0;
+
+        function buildDots() {
+            if (!dotsContainer) return;
+            dotsContainer.innerHTML = '';
+            const count = filteredSlides.length;
+            for (let i = 0; i < count; i++) {
+                const dot = document.createElement('span');
+                if (i === filteredIndex) dot.classList.add('active');
+                dot.dataset.index = i;
+                dot.addEventListener('click', function() {
+                    goTo(parseInt(this.dataset.index));
+                });
+                dotsContainer.appendChild(dot);
+            }
+        }
+
+        function updateView() {
+            if (!track || !indexDisplay) return;
+            const count = filteredSlides.length;
+            if (count === 0) return;
+            if (filteredIndex >= count) filteredIndex = count - 1;
+            if (filteredIndex < 0) filteredIndex = 0;
+            const slideWidth = filteredSlides[0].offsetWidth || track.offsetWidth;
+            track.style.transform = 'translateX(-' + (filteredIndex * slideWidth) + 'px)';
+            indexDisplay.textContent = (filteredIndex + 1) + ' / ' + count;
+            if (dotsContainer) {
+                const dots = dotsContainer.querySelectorAll('span');
+                dots.forEach(function(d, i) {
+                    d.classList.toggle('active', i === filteredIndex);
+                });
+            }
+        }
+
+        function goTo(index) {
+            if (!filteredSlides.length) return;
+            if (index < 0) index = filteredSlides.length - 1;
+            if (index >= filteredSlides.length) index = 0;
+            filteredIndex = index;
+            updateView();
+        }
+
+        function filterBy(sector) {
+            currentFilter = sector;
+            slides = track.querySelectorAll('.belt-slide');
+            if (sector === 'all') {
+                filteredSlides = slides;
+            } else {
+                filteredSlides = [];
+                slides.forEach(function(s) {
+                    if (s.dataset.sector === sector) {
+                        filteredSlides.push(s);
+                    }
+                });
+            }
+            filteredIndex = 0;
+            slides.forEach(function(s) {
+                s.style.display = 'none';
+            });
+            filteredSlides.forEach(function(s) {
+                s.style.display = 'block';
+            });
+            buildDots();
+            if (track) {
+                track.style.transform = 'translateX(0)';
+            }
+            updateView();
+            filterButtons.forEach(function(btn) {
+                btn.classList.toggle('active', btn.dataset.filter === sector);
+            });
+        }
+
+        if (prevBtn) {
+            prevBtn.addEventListener('click', function() {
+                goTo(filteredIndex - 1);
+            });
+        }
+        if (nextBtn) {
+            nextBtn.addEventListener('click', function() {
+                goTo(filteredIndex + 1);
+            });
+        }
+
+        filterButtons.forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                const filter = this.dataset.filter;
+                filterBy(filter);
+            });
+        });
+
+        // Initial filter: all
+        filterBy('all');
+
+        // Recalculate on resize
+        let resizeTimer;
+        window.addEventListener('resize', function() {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(function() {
+                updateView();
+            }, 200);
+        });
+    }
+
+    // ===== MISSION OS OVERLAY =====
+    function initOs() {
+        const osOverlay = document.getElementById('osOverlay');
+        const openOsBtns = document.querySelectorAll('.js-open-os');
+        const closeOsBtns = document.querySelectorAll('.js-close-os');
+
+        function openOs() {
+            if (osOverlay) {
+                osOverlay.classList.add('active');
+                osOverlay.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeOs() {
+            if (osOverlay) {
+                osOverlay.classList.remove('active');
+                osOverlay.style.display = 'none';
+                document.body.style.overflow = '';
+            }
+        }
+
+        openOsBtns.forEach(function(btn) {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                openOs();
+            });
+        });
+        closeOsBtns.forEach(function(btn) {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                closeOs();
+            });
+        });
+        if (osOverlay) {
+            osOverlay.addEventListener('click', function(e) {
+                if (e.target === this) closeOs();
+            });
+        }
+
+        // OS Form
+        const osForm = document.getElementById('osForm');
+        if (osForm) {
+            osForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Vielen Dank für Ihre Anfrage! Ich melde mich innerhalb von 24 Stunden bei Ihnen.');
+                closeOs();
+                this.reset();
+            });
+        }
+    }
+
+    // ===== CURRENT YEAR =====
+    const yearEl = document.getElementById('currentYear');
+    if (yearEl) {
+        yearEl.textContent = new Date().getFullYear();
+    }
+
+    // ===== KEYBOARD SHORTCUTS =====
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            // Close lightbox
+            if (lightbox && lightbox.classList.contains('active')) {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = '';
+                if (lightboxPlayer) lightboxPlayer.pause();
+            }
+            // Close OS
+            const osOverlay = document.getElementById('osOverlay');
+            if (osOverlay && osOverlay.classList.contains('active')) {
+                osOverlay.classList.remove('active');
+                osOverlay.style.display = 'none';
+                document.body.style.overflow = '';
+            }
+            // Close mobile menu
+            const mobileMenu = document.getElementById('mobileMenuOverlay');
+            const hamburger = document.getElementById('hamburgerToggle');
+            if (mobileMenu && mobileMenu.classList.contains('active')) {
+                mobileMenu.classList.remove('active');
+                if (hamburger) hamburger.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+    });
+
+    // Re-init nav after load (in case it's loaded after DOMContentLoaded)
+    // The nav is loaded via fetch, so we need to call initNav after load.
+    // This is done inside loadComponent callback.
+    // But we also need to handle cases where nav is already in the page.
+    // So we call initNav again after a short delay to ensure it's loaded.
+    setTimeout(initNav, 500);
+
+});

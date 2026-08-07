@@ -1,372 +1,118 @@
-/* ==========================================================================
-   RAPHAEL LEZIUS | MISSION CONTROL FOOTER (v2077.3)
-   ARCHITECTURE: CSS GRID | GLASSMORPHISM | TACTILE RESPONSIVE HUD
-   ========================================================================== */
+<footer class="mega-footer-2026">
+    <div class="footer-grid-overlay"></div>
 
-/* --- 1. CORE ENCLOSURE & BLUEPRINT TEXTURE --- */
-.mega-footer-2077 { 
-    position: relative; 
-    background-color: var(--bg-dark, #020203);
-    /* High-End Industrial Blueprint Texture */
-    background-image: 
-        radial-gradient(circle at 50% 100%, rgba(0, 229, 255, 0.03), transparent 60%),
-        linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px), 
-        linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
-    background-size: 100% 100%, 40px 40px, 40px 40px;
-    border-top: 1px solid rgba(255, 215, 0, 0.15);
-    overflow: hidden;
-    z-index: 10;
-    margin-top: auto;
-    font-family: var(--font-body, 'Inter', sans-serif);
-    color: #cbd5e1;
-}
 
-/* Subtle Top Scanning Laser */
-.footer-laser-scan {
-    position: absolute; 
-    top: 0; 
-    left: 0; 
-    width: 300px; 
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--neon-cyan, #00e5ff), transparent);
-    box-shadow: 0 0 20px var(--neon-cyan, #00e5ff), 0 0 5px #fff;
-    animation: laserScanFooter 6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-    will-change: transform;
-    pointer-events: none;
-}
+    <div class="container relative-z">
+       
+        <div class="footer-cta-box">
+            <div class="cta-content">
+                <span class="cyber-badge">STATUS: BEREIT FÜR ANFRAGEN</span>
+                <h2>BEREIT FÜR IHR NÄCHSTES <span class="gold-text">PROJEKT?</span></h2>
+                <p>Lassen Sie uns Ihre Vision mit Millimeter-Präzision umsetzen.</p>
+            </div>
+            <div class="cta-action">
+                <a href="#missionOS" class="btn btn-gold js-open-os">PROJEKT STARTEN <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
 
-@keyframes laserScanFooter { 
-    0% { transform: translateX(-300px); opacity: 0; }
-    10% { opacity: 1; }
-    90% { opacity: 1; }
-    100% { transform: translateX(100vw); opacity: 0; } 
-}
 
-/* --- 2. FLUID GRID ARCHITECTURE --- */
-.footer-grid-container { 
-    display: grid; 
-    grid-template-columns: 1fr;
-    gap: clamp(40px, 6vw, 60px); 
-    padding: clamp(60px, 8vw, 100px) clamp(20px, 5vw, 40px); 
-    max-width: 1600px;
-    margin: 0 auto;
-}
+        <div class="footer-main-grid">
+           
+            <div class="f-station brand-station">
+                <div class="brand-logo-tech">
+                    RAPHAEL <span class="gold-text">LEZIUS</span>
+                </div>
+                <p class="brand-desc">
+                    Präzision. Qualität. Zuverlässigkeit.<br>Ihr zertifizierter Montage-Experte für High-End Einrichtungen in Bayern.
+                </p>
+               
+                <div class="trust-hud">
+                    <div class="hud-item"><i class="fas fa-shield-alt gold-text"></i> VERSICHERT</div>
+                    <div class="hud-item"><i class="fas fa-check-circle green-text"></i> GEPRÜFT</div>
+                </div>
 
-@media (min-width: 768px) {
-    .footer-grid-container { 
-        grid-template-columns: repeat(2, 1fr); 
-    }
-}
 
-@media (min-width: 1100px) {
-    .footer-grid-container { 
-        grid-template-columns: 1.8fr 1fr 1fr 1.5fr; 
-        align-items: start;
-    }
-}
+                <div class="social-row">
+                    <a href="https://wa.me/491608194018" target="_blank" class="social-btn reactive-btn js-vibrate-light"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" target="_blank" class="social-btn reactive-btn js-vibrate-light"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
 
-.f-col { display: flex; flex-direction: column; }
 
-/* --- 3. BRAND STATION & TELEMETRY --- */
-.footer-brand-title { 
-    display: inline-flex; 
-    gap: 8px; 
-    font-family: var(--font-head, 'Space Grotesk', sans-serif); 
-    font-size: clamp(1.5rem, 2vw, 2rem); 
-    font-weight: 900; 
-    letter-spacing: 2px; 
-    margin-bottom: 20px; 
-    text-decoration: none;
-    transition: transform 0.4s var(--spring, cubic-bezier(0.16, 1, 0.3, 1));
-}
-.footer-brand-title .first { color: #f8fafc; transition: 0.3s; }
-.footer-brand-title .last { color: var(--neon-gold, #FFD700); transition: 0.3s; }
-.footer-brand-title:hover { transform: translateY(-3px); }
-.footer-brand-title:hover .first { color: var(--neon-gold, #FFD700); text-shadow: 0 0 15px rgba(255, 215, 0, 0.4); }
-.footer-brand-title:hover .last { color: var(--neon-cyan, #00e5ff); text-shadow: 0 0 15px rgba(0, 229, 255, 0.4); }
+            <div class="f-station nav-station">
+                <h4 class="f-heading">LEISTUNGEN</h4>
+                <ul class="cyber-footer-links">
+                    <li><a href="residential.html"><span class="h-arrow">→</span> Privatkunden (Möbelmontage)</a></li>
+                    <li><a href="office.html"><span class="h-arrow">→</span> Firmenkunden (Büro & Gewerbe)</a></li>
+                    <li><a href="outdoor.html"><span class="h-arrow">→</span> Outdoor & Terrassen</a></li>
+                    <li><a href="demontage.html"><span class="h-arrow">→</span> Demontage & Entsorgung</a></li>
+                </ul>
+            </div>
 
-.brand-desc { 
-    color: #94a3b8; 
-    font-size: clamp(0.9rem, 1vw, 1rem); 
-    line-height: 1.7; 
-    margin-bottom: 35px; 
-    max-width: 450px;
-}
 
-/* System Diagnostics Box */
-.system-diagnostics { 
-    display: flex; 
-    flex-direction: column; 
-    gap: 12px; 
-    background: rgba(255, 255, 255, 0.02); 
-    border: 1px solid rgba(255, 255, 255, 0.05); 
-    padding: 20px; 
-    border-radius: 12px; 
-    width: fit-content; 
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-}
-.diagnostic-row { 
-    display: flex; 
-    align-items: center; 
-    gap: 15px; 
-    transition: transform 0.3s ease; 
-}
-.diagnostic-row:hover { transform: translateX(5px); }
+            <div class="f-station nav-station">
+                <h4 class="f-heading">SYSTEM & INFO</h4>
+                <ul class="cyber-footer-links">
+                    <li><a href="process-pricing.html"><span class="h-arrow">→</span> Prozess & Preise</a></li>
+                    <li><a href="area.html"><span class="h-arrow">→</span> Einsatzgebiet</a></li>
+                    <li><a href="gallery.html"><span class="h-arrow">→</span> Projektgalerie</a></li>
+                    <li><a href="magazine.html"><span class="h-arrow">→</span> Magazin (Blog)</a></li>
+                </ul>
+            </div>
 
-.status-indicator { position: relative; width: 12px; height: 12px; display: flex; align-items: center; justify-content: center; }
-.pulse-core { 
-    width: 6px; height: 6px; background: var(--neon-green, #39ff14); 
-    border-radius: 50%; box-shadow: 0 0 10px var(--neon-green, #39ff14); 
-}
-.pulse-core::after {
-    content: ''; position: absolute; inset: -4px; border: 1px solid var(--neon-green, #39ff14);
-    border-radius: 50%; animation: pingPulse 2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
-}
-@keyframes pingPulse { 0% { transform: scale(0.5); opacity: 1; } 100% { transform: scale(2.5); opacity: 0; } }
 
-.status-text { display: flex; flex-direction: column; line-height: 1.2; }
-.d-label { font-family: var(--font-mono, monospace); font-size: 0.6rem; color: #64748b; letter-spacing: 2px; }
-.d-value { font-family: var(--font-mono, monospace); font-size: 0.85rem; font-weight: 800; letter-spacing: 1px; color: #e2e8f0; margin-top: 4px; }
-.text-green { color: var(--neon-green, #39ff14) !important; text-shadow: 0 0 10px rgba(57, 255, 20, 0.3); }
-.text-gold { color: var(--neon-gold, #FFD700) !important; text-shadow: 0 0 10px rgba(255, 215, 0, 0.3); }
-.text-cyan { color: var(--neon-cyan, #00e5ff) !important; text-shadow: 0 0 10px rgba(0, 229, 255, 0.3); }
-.text-pink { color: var(--neon-pink, #ff007f) !important; text-shadow: 0 0 10px rgba(255, 0, 127, 0.3); }
+            <div class="f-station comms-station">
+                <h4 class="f-heading">KOMMUNIKATION</h4>
+                <ul class="comms-list">
+                    <li>
+                        <i class="fas fa-phone-alt gold-icon"></i>
+                        <div class="comms-data">
+                            <span class="c-label">DIREKTWAHL</span>
+                            <a href="tel:+491608194018">0160 819 4018</a>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="far fa-envelope gold-icon"></i>
+                        <div class="comms-data">
+                            <span class="c-label">DATENBANK</span>
+                            <a href="mailto:r.lezius@gmail.com">r.lezius@gmail.com</a>
+                        </div>
+                    </li>
+                </ul>
+               
+                <div class="system-live-tracker">
+                    <div class="tracker-dot"><div class="pulse"></div></div>
+                    <div class="tracker-text">
+                        <span class="t-top">SYSTEM STATUS</span>
+                        <span class="t-bot green-text">ONLINE & EMPFANGSBEREIT</span>
+                    </div>
+                </div>
+            </div>
 
-/* --- 4. NAVIGATION SECTORS (LINKS) --- */
-.f-heading-2077 { 
-    color: #f8fafc; 
-    font-family: var(--font-mono, monospace); 
-    font-size: 0.85rem; 
-    font-weight: 800;
-    text-transform: uppercase; 
-    letter-spacing: 3px; 
-    margin-bottom: 30px; 
-    display: flex; 
-    align-items: center; 
-    gap: 12px;
-}
-.f-heading-2077 i { color: var(--neon-gold, #FFD700); font-size: 1rem; }
 
-.footer-links-2077 { list-style: none; padding: 0; margin: 0; }
-.footer-links-2077 li { margin-bottom: 18px; }
-.footer-links-2077 a { 
-    color: #94a3b8; 
-    font-family: var(--font-head, sans-serif); 
-    font-size: 1.05rem; 
-    font-weight: 600;
-    text-decoration: none; 
-    display: inline-flex; 
-    align-items: center; 
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); 
-    outline: none;
-}
-.footer-links-2077 a:focus-visible { color: var(--neon-cyan, #00e5ff); text-decoration: underline; text-underline-offset: 4px; }
+        </div>
 
-.tech-tag { font-family: var(--font-mono, monospace); font-size: 0.7rem; font-weight: 700; margin-right: 12px; letter-spacing: 1px; }
 
-.f-arrow { 
-    font-family: var(--font-mono, monospace); 
-    color: var(--neon-gold, #FFD700); 
-    opacity: 0.5; 
-    margin-right: 12px; 
-    transition: 0.3s; 
-}
+        <div class="footer-bottom-bar">
+            <div class="copyright-zone">
+                &copy; <span id="copyright-year">2026</span> RAPHAEL LEZIUS. <span class="hide-mobile">MADE IN BAVARIA.</span>
+                <div class="legal-links">
+                    <a href="impressum.html">Impressum</a> <span class="divider">|</span> <a href="datenschutz.html">Datenschutz</a>
+                </div>
+            </div>
+           
+            <div class="footer-payments">
+                <i class="fab fa-apple"></i>
+                <i class="fab fa-google"></i>
+                <i class="fab fa-cc-paypal"></i>
+                <i class="fab fa-cc-visa"></i>
+            </div>
+           
+            <div class="developer-credit">
+                <span class="code-bracket">&lt;/&gt;</span>
+                <span class="dev-text">SYS_DEV <span class="dev-name">IDRIS</span></span>
+            </div>
+        </div>
+    </div>
+</footer>
 
-.footer-links-2077 a:hover { color: #fff; transform: translateX(8px); }
-.footer-links-2077 a:hover .f-arrow { opacity: 1; color: var(--neon-cyan, #00e5ff); text-shadow: 0 0 10px rgba(0, 229, 255, 0.5); }
-.footer-links-2077 a:hover .tech-tag { text-shadow: 0 0 10px currentColor; }
-
-/* --- 5. COMMUNICATIONS UPLINK (CARDS) --- */
-.comms-list-2077 { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 15px; }
-
-.comms-card { 
-    display: flex; 
-    align-items: center; 
-    gap: 15px; 
-    background: rgba(255, 255, 255, 0.02); 
-    border: 1px solid rgba(255, 255, 255, 0.05); 
-    padding: 15px; 
-    border-radius: 12px; 
-    text-decoration: none;
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); 
-    overflow: hidden;
-    position: relative;
-}
-.comms-card::before {
-    content: ''; position: absolute; inset: 0; background: linear-gradient(45deg, transparent, rgba(255,255,255,0.05), transparent);
-    transform: translateX(-100%); transition: 0.6s;
-}
-.comms-card:hover::before { transform: translateX(100%); }
-.comms-card:hover { background: rgba(255, 255, 255, 0.04); border-color: rgba(255, 215, 0, 0.2); transform: translateY(-3px) scale(1.02); box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
-
-.c-icon-wrap { 
-    width: 45px; 
-    height: 45px; 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    border-radius: 10px; 
-    font-size: 1.3rem;
-    border: 1px solid transparent;
-    transition: 0.4s ease;
-}
-.bg-cyan-dim { background: rgba(0, 229, 255, 0.1); border-color: rgba(0, 229, 255, 0.2); }
-.bg-gold-dim { background: rgba(255, 215, 0, 0.1); border-color: rgba(255, 215, 0, 0.2); }
-.bg-pink-dim { background: rgba(255, 0, 127, 0.1); border-color: rgba(255, 0, 127, 0.2); }
-
-.comms-card:hover .bg-cyan-dim { background: var(--neon-cyan, #00e5ff); color: #000; box-shadow: 0 0 20px rgba(0,229,255,0.4); }
-.comms-card:hover .bg-cyan-dim i { color: #000 !important; }
-.comms-card:hover .bg-gold-dim { background: var(--neon-gold, #FFD700); color: #000; box-shadow: 0 0 20px rgba(255,215,0,0.4); }
-.comms-card:hover .bg-gold-dim i { color: #000 !important; }
-.comms-card:hover .bg-pink-dim { background: var(--neon-pink, #ff007f); color: #fff; box-shadow: 0 0 20px rgba(255,0,127,0.4); }
-.comms-card:hover .bg-pink-dim i { color: #fff !important; }
-
-.comms-data { display: flex; flex-direction: column; }
-.c-label { font-family: var(--font-mono, monospace); font-size: 0.6rem; color: #64748b; letter-spacing: 2px; margin-bottom: 4px; }
-.c-value { color: #f8fafc; font-size: 1.05rem; font-weight: 800; font-family: var(--font-head, sans-serif); transition: 0.3s; }
-.comms-card:hover .c-value { color: var(--neon-gold, #FFD700); }
-
-/* --- 6. BOTTOM BAR (LEGAL & META) --- */
-.footer-bottom-bar-2077 { 
-    padding: 35px clamp(20px, 5vw, 40px); 
-    border-top: 1px solid rgba(255, 255, 255, 0.05); 
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
-    gap: 20px; 
-    text-align: center;
-    background: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-}
-
-.copyright-zone { color: #64748b; font-size: 0.75rem; font-family: var(--font-mono, monospace); letter-spacing: 1px; }
-.copy-icon { color: var(--neon-gold, #FFD700); margin-right: 5px; font-size: 0.9rem; }
-
-.meta-telemetry { display: flex; gap: 20px; font-family: var(--font-mono, monospace); font-size: 0.65rem; color: #475569; letter-spacing: 1px; }
-
-.legal-links-2077 { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
-.legal-links-2077 a { 
-    color: #94a3b8; text-decoration: none; transition: 0.3s; 
-    font-family: var(--font-mono, monospace); font-size: 0.75rem; 
-    text-transform: uppercase; letter-spacing: 2px; font-weight: 700;
-}
-.legal-links-2077 a:hover { color: var(--neon-cyan, #00e5ff); text-shadow: 0 0 10px rgba(0,229,255,0.4); }
-.legal-links-2077 .divider { color: rgba(255, 255, 255, 0.1); font-family: var(--font-mono, monospace); }
-
-/* --- 7. MOBILE TACTILE HUD (max-width: 767px) --- */
-@media (max-width: 767px) {
-    .footer-grid-container { gap: 40px 20px; padding: 50px 20px; }
-    
-    .brand-col { 
-        text-align: center; 
-        align-items: center; 
-        padding-bottom: 30px; 
-        border-bottom: 1px dashed rgba(255,255,255,0.1); 
-    }
-    .brand-desc { text-align: center; padding: 0 10px; }
-    .system-diagnostics { width: 100%; align-items: flex-start; }
-    
-    .nav-col .f-heading-2077 { font-size: 0.75rem; letter-spacing: 2px; }
-    
-    .comms-col { padding-top: 20px; border-top: 1px dashed rgba(255,255,255,0.1); }
-    
-    .desktop-only { display: none !important; }
-    
-    .legal-links-2077 { flex-wrap: wrap; justify-content: center; gap: 12px; }
-    .legal-links-2077 .divider { display: none; }
-    .legal-links-2077 a { 
-        background: rgba(255, 255, 255, 0.03); 
-        padding: 8px 18px; 
-        border-radius: 50px; 
-        border: 1px solid rgba(255, 255, 255, 0.05); 
-    }
-    .legal-links-2077 a:active { 
-        background: rgba(0, 229, 255, 0.1); 
-        border-color: var(--neon-cyan, #00e5ff); 
-        color: var(--neon-cyan, #00e5ff); 
-    }
-    
-    .footer-bottom-bar-2077 { 
-        padding: 25px 20px; 
-        gap: 15px; 
-    }
-    
-    .copyright-zone { 
-        font-size: 0.65rem; 
-    }
-}
-
-/* --- 8. VERY SMALL PHONES --- */
-@media (max-width: 480px) {
-    .footer-grid-container { 
-        padding: 40px 16px; 
-        gap: 30px; 
-    }
-    .brand-desc { 
-        font-size: 0.85rem; 
-    }
-    .system-diagnostics { 
-        padding: 15px; 
-    }
-    .d-value { 
-        font-size: 0.75rem; 
-    }
-    .footer-links-2077 a { 
-        font-size: 0.95rem; 
-    }
-    .comms-card { 
-        padding: 12px; 
-    }
-    .c-value { 
-        font-size: 0.9rem; 
-    }
-    .legal-links-2077 a { 
-        font-size: 0.65rem; 
-        padding: 6px 14px; 
-    }
-    .footer-bottom-bar-2077 { 
-        padding: 20px 16px; 
-    }
-}
-
-/* --- 9. TOUCH DEVICE OPTIMIZATION --- */
-@media (hover: none) {
-    .comms-card:hover { 
-        transform: none; 
-        background: rgba(255, 255, 255, 0.02); 
-        border-color: rgba(255, 255, 255, 0.05); 
-    }
-    .comms-card:active { 
-        background: rgba(255, 255, 255, 0.06); 
-        border-color: rgba(255, 215, 0, 0.15); 
-        transform: scale(0.98); 
-    }
-    .footer-links-2077 a:hover { 
-        transform: none; 
-        color: #94a3b8; 
-    }
-    .footer-links-2077 a:active { 
-        color: #fff; 
-        transform: translateX(4px); 
-    }
-    .diagnostic-row:hover { 
-        transform: none; 
-    }
-    .diagnostic-row:active { 
-        transform: translateX(4px); 
-    }
-}
-
-/* --- 10. SAFE AREA SUPPORT --- */
-@supports (padding: max(0px)) {
-    .footer-grid-container {
-        padding-left: max(20px, env(safe-area-inset-left));
-        padding-right: max(20px, env(safe-area-inset-right));
-    }
-    .footer-bottom-bar-2077 {
-        padding-left: max(20px, env(safe-area-inset-left));
-        padding-right: max(20px, env(safe-area-inset-right));
-    }
-}

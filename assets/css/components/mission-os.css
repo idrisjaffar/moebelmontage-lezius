@@ -1,488 +1,109 @@
-/* ==========================================================================
-   MISSION OS TERMINAL (v2026.1)
-   MULTI‑STEP MODAL | GLASSMORPHISM | PROGRESS TRACKING
-   ========================================================================== */
-
-/* --- 1. OVERLAY & CONTAINER --- */
-#missionOS.os-overlay { 
-    position: fixed !important; 
-    top: 0; 
-    left: 0; 
-    width: 100vw; 
-    height: 100vh;
-    z-index: 9999999 !important; 
-    display: none; 
-    align-items: center; 
-    justify-content: center;
-    background: rgba(2, 3, 5, 0.95) !important;
-    backdrop-filter: blur(15px); 
-    -webkit-backdrop-filter: blur(15px);
-    opacity: 0; 
-    transition: opacity 0.4s ease;
-}
-#missionOS.system-active { 
-    display: flex !important; 
-    opacity: 1; 
-}
-
-.os-backdrop { 
-    position: absolute; 
-    inset: 0; 
-    cursor: pointer; 
-}
-
-/* --- 2. CASE CONTAINER --- */
-#missionOS .case-container {
-    width: 90%; 
-    max-width: 700px; 
-    background: rgba(10, 10, 12, 0.95);
-    border: 1px solid rgba(255, 215, 0, 0.3); 
-    border-radius: 24px;
-    padding: clamp(30px, 6vw, 60px); 
-    position: relative; 
-    z-index: 2;
-    box-shadow: 0 0 60px rgba(0,0,0,0.8), inset 0 0 20px rgba(255, 215, 0, 0.05);
-    transform: translateY(30px) scale(0.98);
-    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-    max-height: 95vh;
-    overflow-y: auto;
-}
-#missionOS.system-active .case-container { 
-    transform: translateY(0) scale(1); 
-}
-
-/* Custom scrollbar for the modal */
-#missionOS .case-container::-webkit-scrollbar {
-    width: 4px;
-}
-#missionOS .case-container::-webkit-scrollbar-track {
-    background: rgba(255,255,255,0.03);
-    border-radius: 4px;
-}
-#missionOS .case-container::-webkit-scrollbar-thumb {
-    background: var(--neon-gold, #FFD700);
-    border-radius: 4px;
-}
-#missionOS .case-container {
-    scrollbar-width: thin;
-    scrollbar-color: var(--neon-gold, #FFD700) rgba(255,255,255,0.03);
-}
-
-/* --- 3. CLOSE BUTTON --- */
-.os-close-btn {
-    position: absolute; 
-    top: 20px; 
-    right: 20px;
-    background: rgba(255,255,255,0.05); 
-    border: none; 
-    color: #fff;
-    width: 40px; 
-    height: 40px; 
-    border-radius: 50%;
-    cursor: pointer; 
-    transition: 0.3s;
-    display: flex;
+/* ============================================================
+   MISSION OS OVERLAY
+   ============================================================ */
+.os-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1500;
+    background: rgba(0, 0, 0, 0.92);
+    backdrop-filter: blur(24px);
     align-items: center;
     justify-content: center;
-    font-size: 1.2rem;
+    padding: 40px 20px;
 }
-.os-close-btn:hover { 
-    background: #FF007F; 
-    transform: rotate(90deg); 
-}
-
-/* --- 4. HEADER & PROGRESS --- */
-.mission-control-header { 
-    margin-bottom: 35px; 
-    border-bottom: 1px solid rgba(255,255,255,0.1); 
-    padding-bottom: 20px; 
-}
-.mission-control-header h3 { 
-    font-family: var(--font-head); 
-    font-size: clamp(1.2rem, 2.5vw, 1.6rem); 
-    color: #fff; 
-    margin: 0 0 5px 0; 
-}
-.gold-text { 
-    color: var(--neon-gold, #FFD700); 
-    font-size: 0.8rem; 
-    font-family: var(--font-mono); 
+.os-overlay.active {
+    display: flex;
 }
 
-.os-progress-bar { 
-    height: 4px; 
-    background: #222; 
-    border-radius: 2px; 
-    margin: 20px 0 15px 0; 
-    overflow: hidden; 
+.os-panel {
+    max-width: 520px;
+    width: 100%;
+    background: rgba(10, 8, 5, 0.9);
+    border: 1px solid rgba(255, 215, 0, 0.12);
+    border-radius: 16px;
+    padding: 36px 28px;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8);
 }
-.os-progress-fill { 
-    height: 100%; 
-    width: 25%; 
-    background: var(--neon-gold, #FFD700); 
-    transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1); 
-    box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
-}
-
-.os-steps-indicator { 
-    display: flex; 
-    justify-content: space-between; 
-}
-.step-text { 
-    font-family: var(--font-mono); 
-    font-size: 0.6rem; 
-    color: #555; 
-    transition: 0.3s; 
-    letter-spacing: 0.5px;
-}
-.step-text.active { 
-    color: var(--neon-gold, #FFD700); 
-    font-weight: 700; 
-}
-
-/* --- 5. STEPS --- */
-.form-step { 
-    display: none; 
-    animation: fadeIn 0.4s ease forwards; 
-}
-.form-step.is-active { 
-    display: block; 
-}
-@keyframes fadeIn { 
-    from { opacity: 0; transform: translateY(10px); } 
-    to { opacity: 1; transform: translateY(0); } 
-}
-
-.step-heading { 
-    font-family: var(--font-mono); 
-    font-size: 1rem; 
-    color: #fff; 
-    margin-bottom: 8px; 
-    letter-spacing: 1px; 
-}
-.step-heading i { 
-    color: var(--neon-cyan, #00e5ff); 
-    margin-right: 10px; 
-}
-.step-desc { 
-    color: #888; 
-    font-size: 0.9rem; 
-    margin-bottom: 25px; 
-    line-height: 1.5;
-}
-
-/* --- 6. INPUTS --- */
-.input-group { 
-    position: relative; 
-    margin-bottom: 25px; 
-}
-.os-input { 
-    width: 100%; 
-    background: rgba(255,255,255,0.03); 
-    border: 1px solid rgba(255,255,255,0.1);
-    color: #fff; 
-    padding: 22px 18px 10px 18px; 
-    border-radius: 12px; 
-    font-family: var(--font-body); 
-    font-size: 1.05rem; 
-    transition: 0.3s;
-    outline: none;
-}
-.os-input:focus { 
-    border-color: var(--neon-cyan, #00e5ff); 
-    background: rgba(0,229,255,0.05); 
-}
-.os-input:focus + .os-label,
-.os-input:not(:placeholder-shown) + .os-label {
-    top: 6px; 
-    font-size: 0.6rem; 
-    color: var(--neon-cyan, #00e5ff); 
-}
-
-.os-label {
-    position: absolute; 
-    left: 18px; 
-    top: 18px;
-    font-family: var(--font-mono); 
-    font-size: 0.8rem; 
-    color: #666;
-    pointer-events: none; 
-    transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1); 
-}
-
-/* Select styling */
-select.os-input {
-    appearance: none;
-    -webkit-appearance: none;
-    cursor: pointer;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 18px center;
-    padding-right: 40px;
-}
-select.os-input option {
-    background: #111;
-    color: #fff;
-}
-
-textarea.os-input {
-    resize: vertical;
-    min-height: 80px;
-    font-family: var(--font-body);
-}
-
-/* --- 7. RADIO CARDS --- */
-.radio-grid-large { 
-    display: grid; 
-    grid-template-columns: 1fr 1fr; 
-    gap: 15px; 
-    margin-bottom: 25px; 
-}
-.radio-card-large { 
-    cursor: pointer; 
-}
-.radio-card-large input { 
-    display: none; 
-}
-.card-content-large { 
-    background: #111; 
-    border: 1px solid #333; 
-    padding: 20px 15px; 
-    border-radius: 12px;
-    text-align: center; 
-    transition: 0.3s; 
-    display: flex; 
-    flex-direction: column; 
-    gap: 6px; 
-    color: #888;
-}
-.card-content-large i { 
-    font-size: 1.6rem; 
-    transition: 0.3s; 
-}
-.card-content-large strong { 
-    font-family: var(--font-head); 
-    letter-spacing: 1px; 
-    font-size: 1rem;
-    color: #ccc;
-}
-.card-content-large span {
-    font-size: 0.7rem;
-    color: #666;
-    font-family: var(--font-body);
-}
-
-.cyan-hover input:checked + .card-content-large { 
-    border-color: var(--neon-cyan, #00e5ff); 
-    background: rgba(0,229,255,0.05); 
-    color: #fff; 
-}
-.cyan-hover input:checked + .card-content-large i { 
-    color: var(--neon-cyan, #00e5ff); 
-}
-
-.gold-hover input:checked + .card-content-large { 
-    border-color: var(--neon-gold, #FFD700); 
-    background: rgba(255,215,0,0.05); 
-    color: #fff; 
-}
-.gold-hover input:checked + .card-content-large i { 
-    color: var(--neon-gold, #FFD700); 
-}
-
-.pink-hover input:checked + .card-content-large { 
-    border-color: var(--neon-pink, #ff007f); 
-    background: rgba(255,0,127,0.05); 
-    color: #fff; 
-}
-.pink-hover input:checked + .card-content-large i { 
-    color: var(--neon-pink, #ff007f); 
-}
-
-.green-hover input:checked + .card-content-large { 
-    border-color: var(--neon-green, #39ff14); 
-    background: rgba(57,255,20,0.05); 
-    color: #fff; 
-}
-.green-hover input:checked + .card-content-large i { 
-    color: var(--neon-green, #39ff14); 
-}
-
-/* --- 8. BUTTONS --- */
-.step-actions { 
-    display: flex; 
-    justify-content: flex-end; 
-    margin-top: 30px; 
-    gap: 15px; 
-}
-.step-actions.split { 
-    justify-content: space-between; 
-    align-items: center; 
-}
-
-.os-btn { 
-    padding: 16px 30px; 
-    border-radius: 12px; 
-    border: none;
-    background: var(--neon-cyan, #00e5ff); 
-    color: #000; 
-    font-weight: 800; 
-    text-transform: uppercase;
-    cursor: pointer; 
-    transition: 0.3s; 
-    font-family: var(--font-head); 
-    letter-spacing: 1px;
-    font-size: 0.85rem;
-}
-.os-btn:hover { 
-    background: #fff; 
-    box-shadow: 0 0 20px rgba(0,229,255,0.4); 
-    transform: translateY(-2px); 
-}
-.os-btn:active {
-    transform: scale(0.97);
-}
-
-.os-btn-ghost {
-    background: transparent; 
-    border: none; 
-    color: #888; 
-    padding: 15px;
-    font-family: var(--font-mono); 
-    cursor: pointer; 
-    transition: 0.3s;
-    font-size: 0.8rem;
-}
-.os-btn-ghost:hover { 
-    color: #fff; 
-}
-
-/* --- 9. DSGVO CHECKBOX --- */
-.dsgvo-box { 
-    margin-top: 25px; 
-}
-.custom-checkbox { 
-    display: flex; 
-    align-items: flex-start; 
-    gap: 12px; 
-    cursor: pointer; 
-}
-.custom-checkbox input[type="checkbox"] {
-    appearance: none;
-    -webkit-appearance: none;
-    width: 20px;
-    height: 20px;
-    min-width: 20px;
-    border: 2px solid rgba(255,255,255,0.2);
+.os-panel .os-close {
+    float: right;
+    font-family: var(--font-mono, 'JetBrains Mono', monospace);
+    font-size: 0.6rem;
+    color: var(--text-muted, #94a3b8);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    padding: 4px 12px;
     border-radius: 4px;
-    background: transparent;
     cursor: pointer;
     transition: 0.3s;
-    margin-top: 2px;
-    position: relative;
 }
-.custom-checkbox input[type="checkbox"]:checked {
-    background: var(--neon-gold, #FFD700);
-    border-color: var(--neon-gold, #FFD700);
+.os-panel .os-close:hover {
+    color: var(--text-light, #f8fafc);
+    border-color: rgba(255, 255, 255, 0.1);
 }
-.custom-checkbox input[type="checkbox"]:checked::after {
-    content: '';
-    position: absolute;
-    top: 2px;
-    left: 6px;
-    width: 6px;
-    height: 12px;
-    border: solid #000;
-    border-width: 0 2px 2px 0;
-    transform: rotate(45deg);
+.os-panel h2 {
+    font-family: var(--font-head, 'Space Grotesk', sans-serif);
+    font-weight: 800;
+    font-size: 1.5rem;
+    margin: 20px 0 6px;
 }
-.custom-checkbox input[type="checkbox"]:focus {
-    box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.3);
+.os-panel h2 span {
+    color: var(--gold, #FFD700);
 }
-
-.dsgvo-text { 
-    font-size: 0.8rem; 
-    color: #888; 
-    line-height: 1.5; 
+.os-panel p {
+    color: var(--text-muted, #94a3b8);
+    font-size: 0.9rem;
+    margin-bottom: 24px;
 }
-.dsgvo-text strong {
-    color: #ccc;
+.os-panel .os-form-group {
+    margin-bottom: 14px;
 }
-
-/* --- 10. RESPONSIVE --- */
-@media (max-width: 600px) {
-    #missionOS .case-container {
-        padding: 25px 18px;
-        border-radius: 16px;
-        width: 95%;
-        max-height: 90vh;
-    }
-    
-    .radio-grid-large {
-        grid-template-columns: 1fr 1fr;
-        gap: 10px;
-    }
-    .card-content-large {
-        padding: 14px 10px;
-    }
-    .card-content-large i {
-        font-size: 1.2rem;
-    }
-    .card-content-large strong {
-        font-size: 0.8rem;
-    }
-    .card-content-large span {
-        font-size: 0.6rem;
-    }
-    
-    .step-heading {
-        font-size: 0.85rem;
-    }
-    .step-desc {
-        font-size: 0.8rem;
-    }
-    .os-input {
-        font-size: 0.95rem;
-        padding: 20px 14px 8px 14px;
-    }
-    .os-label {
-        font-size: 0.7rem;
-        left: 14px;
-        top: 14px;
-    }
-    
-    .os-btn {
-        padding: 14px 20px;
-        font-size: 0.75rem;
-    }
-    .os-btn-ghost {
-        padding: 12px;
-        font-size: 0.7rem;
-    }
-    
-    .os-steps-indicator .step-text {
-        font-size: 0.5rem;
-    }
-    .step-text:nth-child(2) { display: none; }
-    .step-text:nth-child(3) { display: none; }
-    
-    .os-close-btn {
-        top: 12px;
-        right: 12px;
-        width: 34px;
-        height: 34px;
-        font-size: 1rem;
-    }
+.os-panel .os-form-group label {
+    display: block;
+    font-family: var(--font-mono, 'JetBrains Mono', monospace);
+    font-size: 0.55rem;
+    letter-spacing: 1.5px;
+    color: var(--text-muted, #94a3b8);
+    text-transform: uppercase;
+    margin-bottom: 4px;
 }
-
-@media (max-width: 400px) {
-    .radio-grid-large {
-        grid-template-columns: 1fr;
-    }
-    #missionOS .case-container {
-        padding: 20px 14px;
-    }
-    .mission-control-header h3 {
-        font-size: 1rem;
-    }
+.os-panel .os-form-group input,
+.os-panel .os-form-group textarea {
+    width: 100%;
+    padding: 10px 14px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 6px;
+    color: var(--text-light, #f8fafc);
+    font-family: var(--font-body, 'Inter', sans-serif);
+    font-size: 0.9rem;
+    transition: border-color 0.3s;
+}
+.os-panel .os-form-group input:focus,
+.os-panel .os-form-group textarea:focus {
+    outline: none;
+    border-color: var(--gold, #FFD700);
+}
+.os-panel .os-form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+.os-panel .os-submit {
+    background: var(--gold, #FFD700);
+    color: #000;
+    border: none;
+    padding: 14px 30px;
+    font-family: var(--font-mono, 'JetBrains Mono', monospace);
+    font-weight: 700;
+    font-size: 0.7rem;
+    letter-spacing: 1.5px;
+    border-radius: 6px;
+    width: 100%;
+    transition: 0.3s;
+    cursor: pointer;
+}
+.os-panel .os-submit:hover {
+    background: #e6c200;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(255, 215, 0, 0.2);
 }
