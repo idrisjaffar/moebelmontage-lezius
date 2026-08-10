@@ -1,89 +1,1023 @@
-<footer class="mega-footer-2026">
-    <div class="footer-laser-scan"></div>
-   
-    <div class="container">
-        <div class="footer-grid-2026">
-           
-            <div class="f-col brand-station">
-                <div class="footer-brand-title">
-                    <span class="first">RAPHAEL</span>
-                    <span class="last">LEZIUS</span>
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Raphael Lezius · Footer 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&family=JetBrains+Mono:wght@400;500;600;700;800&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        /* ============================================================
+               RESET & BASE
+               ============================================================ */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: #030405;
+            font-family: 'Inter', system-ui, sans-serif;
+            color: #f8fafc;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* dummy page content above footer */
+        .page-dummy {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 24px;
+            text-align: center;
+        }
+        .page-dummy h1 {
+            font-family: 'Montserrat', system-ui, sans-serif;
+            font-weight: 900;
+            font-size: clamp(2rem, 5vw, 3.6rem);
+            background: linear-gradient(135deg, #00e5ff, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .page-dummy p {
+            color: #94a3b8;
+            margin-top: 12px;
+            font-size: 1.05rem;
+            max-width: 500px;
+        }
+
+        /* ============================================================
+               MEGA FOOTER 2026 — COMPLETE STYLES
+               ============================================================ */
+        .mega-footer-2026 {
+            --ft-cyan: #00e5ff;
+            --ft-gold: #ffd700;
+            --ft-pink: #ff007f;
+            --ft-bg: #030405;
+            --ft-surface: #080b0e;
+            --ft-muted: #94a3b8;
+            --ft-text: #f8fafc;
+            --ft-border: rgba(255, 255, 255, 0.06);
+            --ft-radius: 16px;
+            --font-head: 'Montserrat', system-ui, sans-serif;
+            --font-body: 'Inter', system-ui, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            position: relative;
+            background: var(--ft-bg);
+            color: var(--ft-text);
+            border-top: 1px solid var(--ft-border);
+            overflow: hidden;
+            font-family: var(--font-body);
+        }
+
+        /* ---------- ambient layers ---------- */
+        .footer-ambient {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .footer-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.25;
+            will-change: transform;
+        }
+        .footer-orb--gold {
+            width: 400px;
+            height: 400px;
+            background: var(--ft-gold);
+            top: -120px;
+            right: -80px;
+            opacity: 0.12;
+        }
+        .footer-orb--cyan {
+            width: 320px;
+            height: 320px;
+            background: var(--ft-cyan);
+            bottom: -60px;
+            left: -100px;
+            opacity: 0.10;
+        }
+
+        .footer-grid-lines {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
+            background-size: 60px 60px;
+            opacity: 0.5;
+            mask-image: radial-gradient(ellipse at 50% 80%, black 20%, transparent 80%);
+            -webkit-mask-image: radial-gradient(ellipse at 50% 80%, black 20%, transparent 80%);
+        }
+
+        .footer-scanline {
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(0deg,
+                    transparent 0px,
+                    transparent 3px,
+                    rgba(0, 229, 255, 0.015) 3px,
+                    rgba(0, 229, 255, 0.015) 4px);
+            pointer-events: none;
+            opacity: 0.3;
+        }
+
+        /* ---------- container ---------- */
+        .mega-footer-2026 .container {
+            max-width: 1260px;
+            margin: 0 auto;
+            padding: 0 clamp(16px, 4vw, 32px);
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-inner {
+            padding: clamp(32px, 5vw, 56px) 0 clamp(20px, 3vw, 32px);
+            display: flex;
+            flex-direction: column;
+            gap: clamp(28px, 4vw, 44px);
+        }
+
+        /* ---------- CTA panel ---------- */
+        .footer-cta-panel {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 24px 32px;
+            padding: clamp(24px, 3vw, 36px) clamp(20px, 3vw, 40px);
+            border-radius: var(--ft-radius);
+            background: rgba(255, 255, 255, 0.025);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            position: relative;
+            overflow: hidden;
+        }
+        .footer-cta-panel::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 70% 30%, rgba(0, 229, 255, 0.04), transparent 60%);
+            pointer-events: none;
+        }
+
+        .footer-cta-left {
+            flex: 1 1 360px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-status-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--font-mono);
+            font-size: 0.62rem;
+            letter-spacing: 2px;
+            color: var(--ft-muted);
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+        .footer-live-dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #22c55e;
+            box-shadow: 0 0 12px rgba(34, 197, 94, 0.5);
+            animation: ftPulse 2s ease-in-out infinite;
+        }
+        @keyframes ftPulse {
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.5;
+                transform: scale(0.85);
+            }
+        }
+
+        .footer-cta-title {
+            font-family: var(--font-head);
+            font-weight: 900;
+            font-size: clamp(1.5rem, 3.6vw, 2.6rem);
+            line-height: 1.05;
+            color: #fff;
+            margin: 0 0 8px;
+            letter-spacing: -0.5px;
+        }
+        .footer-cta-title .gold-text {
+            color: var(--ft-gold);
+            text-shadow: 0 0 40px rgba(255, 215, 0, 0.2);
+        }
+
+        .footer-cta-text {
+            font-size: clamp(0.85rem, 1.1vw, 1rem);
+            color: var(--ft-muted);
+            line-height: 1.6;
+            margin: 0;
+            max-width: 500px;
+        }
+
+        .footer-cta-right {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 12px;
+            flex-shrink: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 30px;
+            border-radius: 10px;
+            border: none;
+            background: linear-gradient(135deg, var(--ft-gold), #e6c200);
+            color: #0a0805;
+            font-family: var(--font-mono);
+            font-weight: 800;
+            font-size: 0.78rem;
+            letter-spacing: 1.4px;
+            text-transform: uppercase;
+            text-decoration: none;
+            cursor: pointer;
+            box-shadow: 0 12px 32px rgba(255, 215, 0, 0.22);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .footer-btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 18px 44px rgba(255, 215, 0, 0.35);
+        }
+        .footer-btn-primary i {
+            font-size: 0.9rem;
+        }
+
+        .footer-btn-ghost {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 24px;
+            border-radius: 10px;
+            border: 1px solid rgba(37, 211, 102, 0.4);
+            background: transparent;
+            color: #25d366;
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 0.78rem;
+            letter-spacing: 1.4px;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: background 0.3s, box-shadow 0.3s, transform 0.3s;
+        }
+        .footer-btn-ghost:hover {
+            background: rgba(37, 211, 102, 0.08);
+            box-shadow: 0 0 28px rgba(37, 211, 102, 0.15);
+            transform: translateY(-2px);
+        }
+
+        /* ---------- spec bar ---------- */
+        .footer-spec-bar {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            padding: 12px 0 6px;
+            border-bottom: 1px solid var(--ft-border);
+        }
+        .footer-spec-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 10px 14px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.025);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+        }
+        .footer-spec-item i {
+            font-size: 1.2rem;
+            color: var(--ft-cyan);
+            flex-shrink: 0;
+            opacity: 0.8;
+        }
+        .footer-spec-item>div {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        .spec-label {
+            font-family: var(--font-mono);
+            font-size: 0.55rem;
+            letter-spacing: 1.6px;
+            color: var(--ft-muted);
+            text-transform: uppercase;
+        }
+        .spec-value {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            font-family: var(--font-mono);
+        }
+
+        /* ---------- main grid ---------- */
+        .footer-main-grid {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr 1fr 1.2fr;
+            gap: clamp(20px, 3vw, 40px);
+            padding: 8px 0 4px;
+        }
+
+        .footer-col--brand {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .footer-brand-mark {
+            font-family: var(--font-head);
+            font-weight: 900;
+            font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+            line-height: 1;
+            letter-spacing: -0.5px;
+            color: #fff;
+        }
+        .footer-brand-mark .brand-line-1 {
+            display: block;
+        }
+        .footer-brand-mark .brand-line-2 {
+            display: block;
+            color: var(--ft-gold);
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.15);
+        }
+
+        .footer-brand-desc {
+            font-size: 0.88rem;
+            color: var(--ft-muted);
+            line-height: 1.65;
+            max-width: 300px;
+            margin: 0;
+        }
+
+        .footer-trust-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 4px;
+        }
+        .trust-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-family: var(--font-mono);
+            font-size: 0.58rem;
+            letter-spacing: 1px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            color: var(--ft-muted);
+        }
+        .trust-chip i {
+            font-size: 0.6rem;
+            color: var(--ft-gold);
+        }
+        .trust-chip--cyan i {
+            color: var(--ft-cyan);
+        }
+        .trust-chip--green i {
+            color: #22c55e;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 10px;
+            margin-top: 6px;
+        }
+        .footer-social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: var(--ft-muted);
+            background: rgba(255, 255, 255, 0.02);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: border-color 0.3s, color 0.3s, transform 0.3s, background 0.3s;
+        }
+        .footer-social-btn:hover {
+            border-color: var(--ft-cyan);
+            color: var(--ft-cyan);
+            transform: translateY(-2px);
+            background: rgba(0, 229, 255, 0.06);
+        }
+
+        /* footer columns */
+        .footer-col-title {
+            font-family: var(--font-mono);
+            font-size: 0.62rem;
+            letter-spacing: 2.4px;
+            color: var(--ft-muted);
+            text-transform: uppercase;
+            margin: 0 0 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .title-accent {
+            display: inline-block;
+            width: 4px;
+            height: 18px;
+            border-radius: 2px;
+            background: var(--ft-cyan);
+            flex-shrink: 0;
+        }
+        .title-accent--cyan {
+            background: var(--ft-cyan);
+        }
+        .title-accent--pink {
+            background: var(--ft-pink);
+        }
+
+        .footer-link-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .footer-link-list li a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--ft-muted);
+            text-decoration: none;
+            font-size: 0.88rem;
+            padding: 4px 0;
+            transition: color 0.25s, transform 0.25s;
+            border-bottom: 1px solid transparent;
+        }
+        .footer-link-list li a i {
+            width: 18px;
+            font-size: 0.8rem;
+            color: var(--ft-cyan);
+            flex-shrink: 0;
+            opacity: 0.6;
+            transition: opacity 0.3s;
+        }
+        .footer-link-list li a:hover {
+            color: #fff;
+            transform: translateX(4px);
+        }
+        .footer-link-list li a:hover i {
+            opacity: 1;
+        }
+
+        /* contact column */
+        .footer-col--comms {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .footer-comms-card {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            border-radius: 12px;
+            padding: 14px 16px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .comms-row {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 8px 8px 8px 0;
+            text-decoration: none;
+            color: inherit;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            transition: transform 0.2s;
+        }
+        .comms-row:last-child {
+            border-bottom: none;
+        }
+        .comms-row:hover {
+            transform: translateX(4px);
+        }
+        .comms-row--static {
+            cursor: default;
+        }
+        .comms-row--static:hover {
+            transform: none;
+        }
+
+        .comms-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(0, 229, 255, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: var(--ft-cyan);
+            font-size: 0.8rem;
+        }
+        .comms-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+        }
+        .comms-label {
+            font-family: var(--font-mono);
+            font-size: 0.5rem;
+            letter-spacing: 1.6px;
+            color: var(--ft-muted);
+            text-transform: uppercase;
+        }
+        .comms-value {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #e2e8f0;
+        }
+        .comms-row a .comms-value {
+            color: var(--ft-cyan);
+        }
+
+        .footer-uptime {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 10px 14px;
+            border-radius: 10px;
+            background: rgba(34, 197, 94, 0.04);
+            border: 1px solid rgba(34, 197, 94, 0.12);
+        }
+        .uptime-ring {
+            position: relative;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 2px solid rgba(34, 197, 94, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .uptime-core {
+            display: block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #22c55e;
+            box-shadow: 0 0 16px rgba(34, 197, 94, 0.4);
+            animation: ftPulse 2.4s ease-in-out infinite;
+        }
+        .uptime-text {
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+        }
+        .uptime-top {
+            font-family: var(--font-mono);
+            font-size: 0.52rem;
+            letter-spacing: 1.8px;
+            color: var(--ft-muted);
+            text-transform: uppercase;
+        }
+        .uptime-bot {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: #e2e8f0;
+        }
+
+        /* ---------- bottom bar ---------- */
+        .footer-bottom {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px 24px;
+            padding-top: clamp(18px, 2.5vw, 28px);
+            border-top: 1px solid var(--ft-border);
+            font-size: 0.78rem;
+            color: var(--ft-muted);
+        }
+
+        .footer-copy {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+        }
+        .footer-sep {
+            opacity: 0.3;
+        }
+        .footer-made {
+            font-family: var(--font-mono);
+            font-size: 0.6rem;
+            letter-spacing: 1px;
+            color: #64748b;
+        }
+
+        .footer-legal {
+            display: flex;
+            gap: 20px;
+        }
+        .footer-legal a {
+            color: var(--ft-muted);
+            text-decoration: none;
+            font-size: 0.72rem;
+            font-weight: 500;
+            transition: color 0.25s;
+        }
+        .footer-legal a:hover {
+            color: #fff;
+        }
+
+        .footer-pay {
+            display: flex;
+            gap: 12px;
+            font-size: 1.2rem;
+            color: #64748b;
+        }
+        .footer-pay i {
+            transition: color 0.3s, transform 0.3s;
+            cursor: default;
+        }
+        .footer-pay i:hover {
+            color: #e2e8f0;
+            transform: translateY(-2px);
+        }
+
+        .footer-dev {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-mono);
+            font-size: 0.6rem;
+            letter-spacing: 1px;
+            color: #64748b;
+        }
+        .dev-bracket {
+            color: var(--ft-cyan);
+            font-weight: 700;
+        }
+        .footer-dev .gold-text {
+            color: var(--ft-gold);
+        }
+
+        /* ============================================================
+               RESPONSIVE
+               ============================================================ */
+        @media (max-width: 1024px) {
+            .footer-main-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 28px;
+            }
+            .footer-col--brand {
+                grid-column: span 2;
+            }
+            .footer-col--comms {
+                grid-column: span 2;
+            }
+            .footer-spec-bar {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .footer-cta-panel {
+                flex-direction: column;
+                align-items: stretch;
+                text-align: center;
+            }
+            .footer-cta-left {
+                text-align: center;
+            }
+            .footer-cta-text {
+                max-width: 100%;
+            }
+            .footer-status-row {
+                justify-content: center;
+            }
+            .footer-cta-right {
+                justify-content: center;
+            }
+
+            .footer-main-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            .footer-col--brand {
+                grid-column: span 1;
+            }
+            .footer-col--comms {
+                grid-column: span 1;
+            }
+
+            .footer-spec-bar {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .footer-legal {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .footer-pay {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .footer-dev {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer-spec-bar {
+                grid-template-columns: 1fr;
+            }
+            .footer-cta-right {
+                flex-direction: column;
+                width: 100%;
+            }
+            .footer-btn-primary,
+            .footer-btn-ghost {
+                width: 100%;
+                justify-content: center;
+            }
+            .footer-brand-desc {
+                max-width: 100%;
+            }
+            .footer-comms-card {
+                padding: 12px;
+            }
+        }
+
+        /* reduce motion */
+        @media (prefers-reduced-motion: reduce) {
+            .footer-live-dot,
+            .uptime-core {
+                animation: none !important;
+            }
+            .footer-btn-primary,
+            .footer-btn-ghost,
+            .footer-social-btn,
+            .footer-link-list li a,
+            .comms-row {
+                transition: none !important;
+            }
+            .footer-btn-primary:hover,
+            .footer-btn-ghost:hover {
+                transform: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- dummy page content -->
+    <main class="page-dummy">
+        <div>
+            <h1>RAPHAEL LEZIUS</h1>
+            <p>Montage-Experte · Bayern · Präzision seit 2020</p>
+        </div>
+    </main>
+
+    <!-- ============================================================
+    MEGA FOOTER 2026 — FIXED
+    ============================================================ -->
+    <footer class="mega-footer-2026" id="siteFooter">
+
+        <!-- Ambient layers -->
+        <div class="footer-ambient" aria-hidden="true">
+            <div class="footer-orb footer-orb--gold"></div>
+            <div class="footer-orb footer-orb--cyan"></div>
+            <div class="footer-grid-lines"></div>
+            <div class="footer-scanline"></div>
+        </div>
+
+        <div class="container footer-inner">
+
+            <!-- Top CTA strip -->
+            <div class="footer-cta-panel">
+                <div class="footer-cta-left">
+                    <div class="footer-status-row">
+                        <span class="footer-live-dot"></span>
+                        <span class="footer-status-label">SYSTEM ONLINE // MUC · AUG</span>
+                    </div>
+                    <h2 class="footer-cta-title">
+                        Ihr nächstes Projekt.<br />
+                        <span class="gold-text">Millimetergenau.</span>
+                    </h2>
+                    <p class="footer-cta-text">
+                        Kostenloser Projekt-Check · Festpreise · Persönliche Umsetzung ohne Subunternehmer.
+                    </p>
                 </div>
-                <p class="brand-desc">Hochpräzise Montage- und Konstruktionsprotokolle für Interieur, Outdoor und Gewerbe. Engineered in Bavaria.</p>
-               
-                <div class="system-live-tracker">
-                    <div class="tracker-dot"><div class="pulse"></div></div>
-                    <div class="tracker-text">
-                        <span class="t-top">SYSTEM STATUS</span>
-                        <span class="t-bot">UPLINK ONLINE</span>
+                <div class="footer-cta-right">
+                    <a href="#contact" class="footer-btn-primary js-open-contact">
+                        <span>PROJEKT STARTEN</span>
+                        <i class="fas fa-bolt"></i>
+                    </a>
+                    <a href="https://wa.me/491608194018" target="_blank" rel="noopener" class="footer-btn-ghost">
+                        <i class="fab fa-whatsapp"></i>
+                        <span>WHATSAPP</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Spec bar -->
+            <div class="footer-spec-bar">
+                <div class="footer-spec-item">
+                    <i class="fas fa-ruler-combined"></i>
+                    <div>
+                        <span class="spec-label">PRÄZISION</span>
+                        <span class="spec-value">Laser-Nivellierung</span>
+                    </div>
+                </div>
+                <div class="footer-spec-item">
+                    <i class="fas fa-wind"></i>
+                    <div>
+                        <span class="spec-label">UMGEBUNG</span>
+                        <span class="spec-value">HEPA Staubfrei</span>
+                    </div>
+                </div>
+                <div class="footer-spec-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <div>
+                        <span class="spec-label">SCHUTZ</span>
+                        <span class="spec-value">Haftpflicht 5 Mio. €</span>
+                    </div>
+                </div>
+                <div class="footer-spec-item">
+                    <i class="fas fa-star"></i>
+                    <div>
+                        <span class="spec-label">RATING</span>
+                        <span class="spec-value">5.0 · 110+ Kunden</span>
                     </div>
                 </div>
             </div>
 
+            <!-- Main grid -->
+            <div class="footer-main-grid">
 
-            <div class="f-col">
-                <h4 class="f-heading-2026">Module</h4>
-                <ul class="footer-links-2026">
-                    <li><a href="residential.html"><span class="f-arrow">></span> Privatkunden</a></li>
-                    <li><a href="office.html"><span class="f-arrow">></span> Firmenkunden</a></li>
-                    <li><a href="outdoor.html"><span class="f-arrow">></span> Outdoor</a></li>
-                    <li><a href="demontage.html"><span class="f-arrow">></span> Service & Demontage</a></li>
-                </ul>
+                <!-- Brand column -->
+                <div class="footer-col footer-col--brand">
+                    <div class="footer-brand-mark">
+                        <span class="brand-line-1">RAPHAEL</span>
+                        <span class="brand-line-2 gold-text">LEZIUS</span>
+                    </div>
+                    <p class="footer-brand-desc">
+                        Zertifizierter Montage-Experte für High-End Einrichtungen in Bayern.
+                        Präzision. Qualität. Persönliche Verantwortung.
+                    </p>
+                    <div class="footer-trust-chips">
+                        <span class="trust-chip"><i class="fas fa-check-circle"></i> VERSICHERT</span>
+                        <span class="trust-chip trust-chip--cyan"><i class="fas fa-microchip"></i> BOSCH PRO</span>
+                        <span class="trust-chip trust-chip--green"><i class="fas fa-leaf"></i> HEPA</span>
+                    </div>
+                    <div class="footer-social">
+                        <a href="https://wa.me/491608194018" target="_blank" rel="noopener" class="footer-social-btn" aria-label="WhatsApp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="#" target="_blank" rel="noopener" class="footer-social-btn" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="mailto:r.lezius@gmail.com" class="footer-social-btn" aria-label="E-Mail">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Services -->
+                <div class="footer-col">
+                    <h4 class="footer-col-title">
+                        <span class="title-accent"></span> LEISTUNGEN
+                    </h4>
+                    <ul class="footer-link-list">
+                        <li><a href="residential.html"><i class="fas fa-couch"></i> Privatkunden · Möbelmontage</a></li>
+                        <li><a href="office.html"><i class="fas fa-building"></i> Firmenkunden · Büro &amp; Gewerbe</a></li>
+                        <li><a href="outdoor.html"><i class="fas fa-tree"></i> Outdoor · Terrassen &amp; Holzbau</a></li>
+                        <li><a href="demontage.html"><i class="fas fa-tools"></i> Demontage &amp; Entsorgung</a></li>
+                    </ul>
+                </div>
+
+                <!-- System -->
+                <div class="footer-col">
+                    <h4 class="footer-col-title">
+                        <span class="title-accent title-accent--cyan"></span> SYSTEM
+                    </h4>
+                    <ul class="footer-link-list">
+                        <li><a href="process-pricing.html"><i class="fas fa-sliders-h"></i> Prozess &amp; Preise</a></li>
+                        <li><a href="area.html"><i class="fas fa-map-marker-alt"></i> Einsatzgebiet</a></li>
+                        <li><a href="gallery.html"><i class="fas fa-images"></i> Projektgalerie</a></li>
+                        <li><a href="magazine.html"><i class="fas fa-book-open"></i> Magazin</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div class="footer-col footer-col--comms">
+                    <h4 class="footer-col-title">
+                        <span class="title-accent title-accent--pink"></span> KONTAKT
+                    </h4>
+                    <div class="footer-comms-card">
+                        <a href="tel:+491608194018" class="comms-row">
+                            <div class="comms-icon"><i class="fas fa-phone-alt"></i></div>
+                            <div class="comms-meta">
+                                <span class="comms-label">DIREKTWAHL</span>
+                                <span class="comms-value">0160 819 4018</span>
+                            </div>
+                        </a>
+                        <a href="mailto:r.lezius@gmail.com" class="comms-row">
+                            <div class="comms-icon"><i class="far fa-envelope"></i></div>
+                            <div class="comms-meta">
+                                <span class="comms-label">E-MAIL</span>
+                                <span class="comms-value">r.lezius@gmail.com</span>
+                            </div>
+                        </a>
+                        <div class="comms-row comms-row--static">
+                            <div class="comms-icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <div class="comms-meta">
+                                <span class="comms-label">REGION</span>
+                                <span class="comms-value">Augsburg · München · Umland</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="footer-uptime">
+                        <div class="uptime-ring">
+                            <span class="uptime-core"></span>
+                        </div>
+                        <div class="uptime-text">
+                            <span class="uptime-top">RESPONSE</span>
+                            <span class="uptime-bot">innerhalb 24 Std.</span>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-
-            <div class="f-col">
-                <h4 class="f-heading-2026">Datenbank</h4>
-                <ul class="footer-links-2026">
-                    <li><a href="process-pricing.html"><span class="f-arrow">></span> Prozess & Preise</a></li>
-                    <li><a href="area.html"><span class="f-arrow">></span> Einsatzgebiet</a></li>
-                    <li><a href="gallery.html"><span class="f-arrow">></span> Projektgalerie</a></li>
-                    <li><a href="magazine.html"><span class="f-arrow">></span> Magazin</a></li>
-                </ul>
+            <!-- Bottom bar -->
+            <div class="footer-bottom">
+                <div class="footer-copy">
+                    <span>&copy; <span id="copyright-year">2026</span> RAPHAEL LEZIUS</span>
+                    <span class="footer-sep">·</span>
+                    <span class="footer-made">MADE IN BAVARIA</span>
+                </div>
+                <div class="footer-legal">
+                    <a href="impressum.html">Impressum</a>
+                    <a href="datenschutz.html">Datenschutz</a>
+                    <a href="agb.html">AGB</a>
+                </div>
+                <div class="footer-pay">
+                    <i class="fab fa-apple" title="Apple Pay"></i>
+                    <i class="fab fa-google" title="Google Pay"></i>
+                    <i class="fab fa-cc-paypal" title="PayPal"></i>
+                    <i class="fab fa-cc-visa" title="Visa"></i>
+                    <i class="fab fa-cc-mastercard" title="Mastercard"></i>
+                </div>
+                <div class="footer-dev">
+                    <span class="dev-bracket">&lt;/&gt;</span>
+                    <span>SYS_DEV <strong class="gold-text">IDRIS</strong></span>
+                </div>
             </div>
-
-
-            <div class="f-col comms-station">
-                <h4 class="f-heading-2026">Kommunikation</h4>
-                <ul class="comms-list-2026">
-                    <li>
-                        <i class="fas fa-phone-alt gold-icon"></i>
-                        <div class="comms-data">
-                            <span class="c-label">VOICE_COMM</span>
-                            <a href="tel:+491608194018">+49 160 819 40 18</a>
-                        </div>
-                    </li>
-                    <li>
-                        <i class="fas fa-envelope pink-icon"></i>
-                        <div class="comms-data">
-                            <span class="c-label">SECURE_MAIL</span>
-                            <a href="mailto:info@raphael-lezius.de">info@raphael-lezius.de</a>
-                        </div>
-                    </li>
-                    <li>
-                        <i class="fab fa-instagram cyan-icon"></i>
-                        <div class="comms-data">
-                            <span class="c-label">SOCIAL_FEED</span>
-                            <a href="#" target="_blank">@raphael.lezius</a>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-           
         </div>
+    </footer>
 
+    <script>
+        (function() {
+            var y = document.getElementById('copyright-year');
+            if (y) y.textContent = new Date().getFullYear();
+        })();
+    </script>
 
-        <div class="footer-bottom-bar-2026">
-            <div class="copyright-zone">
-                &copy; <span id="currentYear">2026</span> RAPHAEL LEZIUS. ALL SYSTEMS NOMINAL.
-            </div>
-            <div class="legal-links-2026">
-                <a href="impressum.html">Impressum</a>
-                <span class="divider">//</span>
-                <a href="datenschutz.html">Datenschutz</a>
-                <span class="divider">//</span>
-                <a href="agb.html">AGB</a>
-            </div>
-        </div>
-    </div>
-</footer>
+</body>
+</html>
