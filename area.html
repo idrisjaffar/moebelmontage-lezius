@@ -3,493 +3,2377 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>DEPLOYMENT SECTOR | Raphael Lezius Premium Montage</title>
-    
-    <meta name="description" content="Unser Einsatzgebiet für Premium-Möbelmontage in Bayern. Von Augsburg bis München – maximale Präzision in definierten Logistik-Zonen.">
-    <meta name="theme-color" content="#020203">
-
-    <!-- SEO & Social Meta -->
-    <meta property="og:title" content="Raphael Lezius | Einsatzgebiet & Logistik">
-    <meta property="og:description" content="Präzisions-Montage-Zonen in Augsburg, München und ganz Bayern.">
-    <meta property="og:type" content="website">
+    <title>Einsatzgebiet & Logistik | Raphael Lezius Premium Montage</title>
+    <meta name="description" content="Premium Möbelmontage in Augsburg, München und Bayern. Präzise Logistik-Zonen für maximale Termintreue. Jetzt Sektor prüfen.">
+    <meta name="theme-color" content="#050608">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
-    <!-- Optimized Font Loading -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&family=Space+Grotesk:wght@300;500;700;800&family=JetBrains+Mono:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
-    <!-- CSS ARCHITECTURE: Global Foundation + Components -->
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/components/nav.css">
-    <link rel="stylesheet" href="assets/css/components/footer.css">
-    <link rel="stylesheet" href="assets/css/components/mission-os.css">
-    
-    <!-- Page Specific Style -->
-    <link rel="stylesheet" href="assets/css/components/area.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        /* ============================================================
+           ROOT TOKENS
+           ============================================================ */
+        :root {
+            --gold: #d4af37;
+            --gold-dim: rgba(212, 175, 55, 0.06);
+            --cyan: #00e5ff;
+            --cyan-dim: rgba(0, 229, 255, 0.04);
+            --pink: #ff007f;
+            --pink-dim: rgba(255, 0, 127, 0.04);
+            --green: #00ff88;
+            --bg-primary: #050608;
+            --bg-surface: #0a0c10;
+            --bg-card: rgba(255, 255, 255, 0.02);
+            --text-primary: #f8fafc;
+            --text-muted: #94a3b8;
+            --text-dim: #64748b;
+            --border-subtle: rgba(255, 255, 255, 0.04);
+            --font-head: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --radius: 14px;
+            --nav-height: 68px;
+            --container: 1260px;
+            --ease-out: cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        /* ============================================================
+           RESET & BASE
+           ============================================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        ::selection {
+            background: var(--gold);
+            color: #000;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button {
+            cursor: pointer;
+            border: none;
+            background: none;
+            font-family: inherit;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: var(--container);
+            margin: 0 auto;
+            padding: 0 clamp(16px, 4vw, 32px);
+        }
+
+        .gold-text {
+            color: var(--gold);
+        }
+        .cyan-text {
+            color: var(--cyan);
+        }
+        .pink-text {
+            color: var(--pink);
+        }
+        .green-text {
+            color: var(--green);
+        }
+        .text-muted {
+            color: var(--text-muted);
+        }
+        .text-dim {
+            color: var(--text-dim);
+        }
+
+        .section-padding {
+            padding: clamp(60px, 8vw, 110px) 0;
+        }
+
+        .glass-panel {
+            background: rgba(10, 12, 16, 0.6);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: var(--radius);
+            padding: 28px;
+            transition: border-color 0.3s, transform 0.3s;
+        }
+
+        .glass-panel:hover {
+            border-color: rgba(212, 175, 55, 0.08);
+        }
+
+        /* ============================================================
+           SECTION TAG
+           ============================================================ */
+        .section-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--font-mono);
+            font-size: 0.6rem;
+            letter-spacing: 2.8px;
+            text-transform: uppercase;
+            color: var(--gold);
+            background: var(--gold-dim);
+            padding: 6px 18px;
+            border-radius: 30px;
+            border: 1px solid rgba(212, 175, 55, 0.08);
+        }
+
+        .section-tag i {
+            font-size: 0.55rem;
+        }
+
+        .blink {
+            animation: blinkPulse 1.8s ease-in-out infinite;
+        }
+
+        @keyframes blinkPulse {
+            0%,
+            100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.25;
+            }
+        }
+
+        /* ============================================================
+           SECTION HEADER
+           ============================================================ */
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header .pre-title {
+            font-family: var(--font-mono);
+            font-size: 0.6rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .section-header h2 {
+            font-family: var(--font-head);
+            font-weight: 800;
+            font-size: clamp(2rem, 4.2vw, 3.2rem);
+            line-height: 1.1;
+            color: #fff;
+        }
+
+        .section-header h2 .highlight {
+            background: linear-gradient(135deg, var(--gold), var(--cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            max-width: 620px;
+            margin: 14px auto 0;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        /* ============================================================
+           CUSTOM CURSOR
+           ============================================================ */
+        .cursor-dot,
+        .cursor-ring {
+            position: fixed;
+            top: 0;
+            left: 0;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 99999;
+            transform: translate(-50%, -50%);
+        }
+
+        .cursor-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--gold);
+            mix-blend-mode: difference;
+            transition: width 0.2s, height 0.2s;
+        }
+
+        .cursor-ring {
+            width: 38px;
+            height: 38px;
+            border: 1.5px solid rgba(212, 175, 55, 0.35);
+            transition: width 0.35s, height 0.35s, border-color 0.35s;
+            z-index: 99998;
+        }
+
+        .cursor-dot.hovering {
+            width: 16px;
+            height: 16px;
+            background: #fff;
+            mix-blend-mode: normal;
+        }
+
+        .cursor-ring.hovering {
+            width: 56px;
+            height: 56px;
+            border-color: var(--gold);
+            border-width: 2px;
+        }
+
+        @media (max-width: 768px) {
+            .cursor-dot,
+            .cursor-ring {
+                display: none;
+            }
+        }
+
+        /* ============================================================
+           SCROLL PROGRESS
+           ============================================================ */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--cyan));
+            z-index: 100000;
+            width: 0%;
+            box-shadow: 0 0 16px rgba(212, 175, 55, 0.3);
+        }
+
+        /* ============================================================
+           NAVIGATION
+           ============================================================ */
+        .site-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 0 20px;
+            height: var(--nav-height);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(5, 6, 8, 0.72);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            transition: background 0.4s;
+        }
+
+        .site-nav.scrolled {
+            background: rgba(5, 6, 8, 0.88);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.04);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: var(--font-head);
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: #fff;
+        }
+
+        .nav-logo .mark {
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            background: linear-gradient(135deg, var(--gold), #e6c200);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            color: #000;
+        }
+
+        .nav-logo span {
+            color: var(--gold);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-family: var(--font-mono);
+            font-size: 0.6rem;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        .nav-links a.active {
+            color: #fff;
+        }
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            padding: 8px 18px;
+            border-radius: 30px;
+            background: linear-gradient(135deg, var(--gold), #e6c200);
+            color: #000 !important;
+            font-size: 0.55rem !important;
+            letter-spacing: 1.4px !important;
+            border: none !important;
+            transition: transform 0.3s;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 8px 30px rgba(212, 175, 55, 0.2);
+            color: #000 !important;
+        }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            padding: 6px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .nav-toggle span {
+            width: 26px;
+            height: 2px;
+            background: #fff;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+        .nav-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .nav-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .nav-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: var(--nav-height);
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(5, 6, 8, 0.96);
+            backdrop-filter: blur(20px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 32px;
+            transform: translateX(100%);
+            transition: transform 0.5s var(--ease-out);
+            z-index: 999;
+            padding: 40px 20px;
+        }
+
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+
+        .mobile-menu a {
+            font-family: var(--font-head);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            transition: color 0.3s;
+        }
+
+        .mobile-menu a:hover {
+            color: #fff;
+        }
+
+        .mobile-menu .mobile-cta {
+            margin-top: 20px;
+            padding: 14px 40px;
+            border-radius: 30px;
+            background: linear-gradient(135deg, var(--gold), #e6c200);
+            color: #000 !important;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            letter-spacing: 1.6px;
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 900px) {
+            .nav-links {
+                display: none;
+            }
+            .nav-toggle {
+                display: flex;
+            }
+            .mobile-menu {
+                transform: translateX(100%);
+            }
+            .mobile-menu.open {
+                transform: translateX(0);
+            }
+        }
+
+        /* ============================================================
+           HERO
+           ============================================================ */
+        .area-hero {
+            position: relative;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: clamp(100px, 12vw, 140px) 0 clamp(40px, 5vw, 60px);
+            overflow: hidden;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.04);
+        }
+
+        .map-grid-bg {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(212, 175, 55, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(212, 175, 55, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .map-grid-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 50% 50%, transparent 0%, var(--bg-primary) 85%);
+        }
+
+        .area-hero .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1000px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(212, 175, 55, 0.04);
+            border: 1px solid rgba(212, 175, 55, 0.08);
+            padding: 6px 18px;
+            border-radius: 100px;
+            font-family: var(--font-mono);
+            font-size: 0.55rem;
+            letter-spacing: 2.5px;
+            color: var(--gold);
+            margin-bottom: 28px;
+        }
+
+        .hero-badge .dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--gold);
+            animation: pulseDot 2s infinite;
+        }
+
+        @keyframes pulseDot {
+            0%,
+            100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.25;
+            }
+        }
+
+        .hero-title {
+            font-family: var(--font-head);
+            font-weight: 900;
+            font-size: clamp(2.8rem, 7vw, 5rem);
+            line-height: 1.05;
+            letter-spacing: -2px;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .hero-title .gold {
+            color: var(--gold);
+        }
+
+        .hero-sub {
+            font-size: clamp(1rem, 1.3vw, 1.15rem);
+            color: var(--text-muted);
+            line-height: 1.8;
+            max-width: 640px;
+            margin: 0 auto 16px;
+        }
+
+        .hero-sub strong {
+            color: #e2e8f0;
+            font-weight: 600;
+        }
+
+        .hero-trust {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            flex-wrap: wrap;
+            margin: 24px 0 36px;
+            font-family: var(--font-mono);
+            font-size: 0.55rem;
+            letter-spacing: 1.2px;
+            color: var(--text-dim);
+        }
+
+        .hero-trust span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .hero-trust i {
+            color: var(--gold);
+            font-size: 0.7rem;
+        }
+
+        .hero-actions {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 34px;
+            border-radius: 10px;
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 0.72rem;
+            letter-spacing: 1.6px;
+            text-transform: uppercase;
+            transition: all 0.35s var(--ease-out);
+            border: 1px solid transparent;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--gold), #e6c200);
+            color: #000;
+            box-shadow: 0 12px 40px rgba(212, 175, 55, 0.2);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 56px rgba(212, 175, 55, 0.35);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.03);
+            border-color: rgba(255, 255, 255, 0.06);
+            color: var(--text-primary);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(212, 175, 55, 0.05);
+            border-color: var(--gold);
+            transform: translateY(-4px);
+        }
+
+        .btn-cyan {
+            background: rgba(0, 229, 255, 0.04);
+            border-color: rgba(0, 229, 255, 0.1);
+            color: var(--cyan);
+        }
+
+        .btn-cyan:hover {
+            background: rgba(0, 229, 255, 0.08);
+            border-color: var(--cyan);
+            transform: translateY(-4px);
+        }
+
+        .scroll-indicator {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            margin-top: 50px;
+            color: var(--text-dim);
+            font-family: var(--font-mono);
+            font-size: 0.55rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            animation: floatDown 2.4s ease-in-out infinite;
+        }
+
+        .scroll-indicator i {
+            font-size: 1.1rem;
+            color: var(--gold);
+        }
+
+        @keyframes floatDown {
+            0%,
+            100% {
+                transform: translateY(0);
+                opacity: 0.5;
+            }
+            50% {
+                transform: translateY(8px);
+                opacity: 1;
+            }
+        }
+
+        /* ============================================================
+           SECTOR MAP SECTION
+           ============================================================ */
+        .sector-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        @media (max-width: 1024px) {
+            .sector-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        .map-terminal {
+            padding: 30px;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .map-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .map-header .tech-badge {
+            font-family: var(--font-mono);
+            font-size: 0.5rem;
+            color: var(--text-dim);
+            letter-spacing: 1.5px;
+        }
+
+        .map-header .status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-mono);
+            font-size: 0.5rem;
+            color: var(--green);
+        }
+
+        .map-header .status .pulse-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--green);
+            animation: pulseDot 2s infinite;
+            display: inline-block;
+        }
+
+        .abstract-map {
+            flex: 1;
+            position: relative;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: var(--radius);
+            min-height: 300px;
+            overflow: hidden;
+            border: 1px solid var(--border-subtle);
+        }
+
+        .abstract-map .map-grid-overlay {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 30px 30px;
+            pointer-events: none;
+        }
+
+        .map-node {
+            position: absolute;
+            z-index: 2;
+        }
+
+        .map-node .node-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--gold);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+            position: relative;
+        }
+
+        .map-node .node-dot.cyan {
+            background: var(--cyan);
+            box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);
+        }
+
+        .map-node .node-dot.pink {
+            background: var(--pink);
+            box-shadow: 0 0 20px rgba(255, 0, 127, 0.3);
+        }
+
+        .map-node .node-label {
+            position: absolute;
+            top: -8px;
+            left: 18px;
+            font-family: var(--font-mono);
+            font-size: 0.45rem;
+            color: var(--text-dim);
+            white-space: nowrap;
+            letter-spacing: 1px;
+            background: rgba(5, 6, 8, 0.8);
+            padding: 2px 10px;
+            border-radius: 3px;
+            border: 1px solid var(--border-subtle);
+        }
+
+        .map-node .node-pulse {
+            position: absolute;
+            inset: -8px;
+            border-radius: 50%;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            animation: pulseRadar 3s infinite;
+        }
+
+        @keyframes pulseRadar {
+            0% {
+                transform: scale(1);
+                opacity: 0.6;
+            }
+            100% {
+                transform: scale(2);
+                opacity: 0;
+            }
+        }
+
+        .map-node.node-hq {
+            top: 45%;
+            left: 30%;
+        }
+
+        .map-node.node-muc {
+            top: 60%;
+            left: 55%;
+        }
+
+        .map-node.node-sta {
+            top: 72%;
+            left: 42%;
+        }
+
+        .map-node.node-other {
+            top: 30%;
+            left: 45%;
+        }
+
+        .data-link {
+            position: absolute;
+            z-index: 1;
+            border-top: 1px dashed rgba(212, 175, 55, 0.08);
+            transform-origin: 0 0;
+        }
+
+        .data-link.link-1 {
+            top: 47%;
+            left: 32%;
+            width: 28%;
+            transform: rotate(12deg);
+        }
+
+        .data-link.link-2 {
+            top: 54%;
+            left: 32%;
+            width: 22%;
+            transform: rotate(-8deg);
+        }
+
+        /* Zone Data Cards */
+        .zone-data-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .zone-card {
+            padding: 24px 28px;
+            border-radius: var(--radius);
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid var(--border-subtle);
+            transition: all 0.3s;
+            border-left: 3px solid var(--gold);
+        }
+
+        .zone-card:hover {
+            transform: translateX(6px);
+            border-color: rgba(212, 175, 55, 0.06);
+        }
+
+        .zone-card.cyan-border {
+            border-left-color: var(--cyan);
+        }
+
+        .zone-card.pink-border {
+            border-left-color: var(--pink);
+        }
+
+        .zone-card .zone-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+        }
+
+        .zone-card .zone-id {
+            font-family: var(--font-mono);
+            font-size: 0.6rem;
+            color: var(--gold);
+            letter-spacing: 1.5px;
+        }
+
+        .zone-card .zone-id.cyan {
+            color: var(--cyan);
+        }
+
+        .zone-card .zone-id.pink {
+            color: var(--pink);
+        }
+
+        .zone-card .zone-ttt {
+            font-family: var(--font-mono);
+            font-size: 0.6rem;
+            color: var(--text-dim);
+        }
+
+        .zone-card .zone-ttt strong {
+            color: #fff;
+        }
+
+        .zone-card h3 {
+            font-family: var(--font-head);
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+
+        .zone-card p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .zone-card .zone-cities {
+            font-family: var(--font-mono);
+            font-size: 0.55rem;
+            color: var(--text-dim);
+            letter-spacing: 0.5px;
+        }
+
+        /* ============================================================
+           TELEMETRY
+           ============================================================ */
+        .telemetry-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 900px) {
+            .telemetry-grid {
+                grid-template-columns: 1fr;
+                max-width: 420px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+
+        .telem-card {
+            padding: 24px 20px;
+            border-radius: var(--radius);
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid var(--border-subtle);
+            transition: all 0.3s;
+            border-top: 2px solid var(--gold);
+        }
+
+        .telem-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(212, 175, 55, 0.06);
+        }
+
+        .telem-card.cyan-top {
+            border-top-color: var(--cyan);
+        }
+
+        .telem-card.pink-top {
+            border-top-color: var(--pink);
+        }
+
+        .telem-card .telem-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 14px;
+        }
+
+        .telem-card .telem-top .sector {
+            font-family: var(--font-head);
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .telem-card .telem-top .status-badge {
+            font-family: var(--font-mono);
+            font-size: 0.5rem;
+            padding: 3px 12px;
+            border-radius: 30px;
+            background: rgba(0, 255, 136, 0.04);
+            border: 1px solid rgba(0, 255, 136, 0.08);
+            color: var(--green);
+        }
+
+        .telem-card .telem-top .status-badge.warning {
+            color: var(--gold);
+            border-color: rgba(212, 175, 55, 0.1);
+            background: rgba(212, 175, 55, 0.04);
+        }
+
+        .telem-card .telem-number {
+            font-family: var(--font-head);
+            font-size: 2.4rem;
+            font-weight: 800;
+            color: #fff;
+            line-height: 1;
+        }
+
+        .telem-card .telem-number span {
+            font-size: 1rem;
+            color: var(--text-dim);
+            font-weight: 400;
+        }
+
+        .telem-card .telem-bar {
+            margin-top: 12px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .telem-card .telem-bar .fill {
+            height: 100%;
+            border-radius: 2px;
+            transition: width 1s var(--ease-out);
+        }
+
+        .telem-card .telem-bar .fill.gold {
+            background: var(--gold);
+        }
+        .telem-card .telem-bar .fill.cyan {
+            background: var(--cyan);
+        }
+        .telem-card .telem-bar .fill.pink {
+            background: var(--pink);
+        }
+
+        .telem-card .telem-label {
+            font-family: var(--font-mono);
+            font-size: 0.5rem;
+            color: var(--text-dim);
+            letter-spacing: 1px;
+            margin-top: 8px;
+            text-transform: uppercase;
+        }
+
+        /* ============================================================
+           VERIFICATION
+           ============================================================ */
+        .verification-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: stretch;
+        }
+
+        @media (max-width: 900px) {
+            .verification-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+
+        .terminal-window {
+            padding: 0;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .terminal-window .terminal-bar {
+            padding: 12px 16px;
+            background: rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid var(--border-subtle);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .terminal-window .terminal-bar .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .terminal-window .terminal-bar .dot.red {
+            background: #ff5f56;
+        }
+        .terminal-window .terminal-bar .dot.yellow {
+            background: #ffbd2e;
+        }
+        .terminal-window .terminal-bar .dot.green {
+            background: #27c93f;
+        }
+
+        .terminal-window .terminal-bar .terminal-title {
+            font-family: var(--font-mono);
+            font-size: 0.5rem;
+            color: var(--text-dim);
+            letter-spacing: 1px;
+            margin-left: 8px;
+        }
+
+        .terminal-window .terminal-body {
+            padding: 28px 24px;
+        }
+
+        .terminal-window .terminal-body h3 {
+            font-family: var(--font-head);
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        .terminal-window .terminal-body p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .search-module {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .search-module .search-wrap {
+            flex: 1;
+            min-width: 200px;
+            position: relative;
+        }
+
+        .search-module .search-wrap i {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--cyan);
+            font-size: 0.8rem;
+        }
+
+        .search-module .search-wrap input {
+            width: 100%;
+            padding: 14px 14px 14px 42px;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            color: #fff;
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            transition: border-color 0.3s;
+        }
+
+        .search-module .search-wrap input:focus {
+            outline: none;
+            border-color: rgba(0, 229, 255, 0.2);
+        }
+
+        .search-module .search-btn {
+            padding: 14px 28px;
+            background: var(--cyan);
+            color: #000;
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            font-weight: 700;
+            border-radius: 8px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: all 0.3s;
+        }
+
+        .search-module .search-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0, 229, 255, 0.15);
+        }
+
+        .scan-result {
+            margin-top: 16px;
+            padding: 14px 18px;
+            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--border-subtle);
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            transition: all 0.3s;
+        }
+
+        .scan-result.success {
+            border-color: var(--green);
+            color: var(--green);
+        }
+
+        .scan-result.error {
+            border-color: #ff4444;
+            color: #ff4444;
+        }
+
+        .scan-result .highlight {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        /* Out of Bounds */
+        .oob-panel {
+            padding: 30px 28px;
+            position: relative;
+            overflow: hidden;
+            border-left: 3px solid var(--pink);
+        }
+
+        .oob-panel .oob-tag {
+            font-family: var(--font-mono);
+            font-size: 0.55rem;
+            color: var(--pink);
+            letter-spacing: 2px;
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .oob-panel h3 {
+            font-family: var(--font-head);
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .oob-panel p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+
+        .oob-panel p strong {
+            color: #fff;
+        }
+
+        .oob-panel .oob-btn {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid rgba(255, 0, 127, 0.15);
+            border-radius: 8px;
+            background: rgba(255, 0, 127, 0.04);
+            color: var(--pink);
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .oob-panel .oob-btn:hover {
+            background: rgba(255, 0, 127, 0.08);
+            border-color: var(--pink);
+            transform: translateY(-2px);
+        }
+
+        .oob-panel .bg-icon {
+            position: absolute;
+            right: -20px;
+            bottom: -20px;
+            font-size: 8rem;
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ============================================================
+           MISSION LOGS
+           ============================================================ */
+        .proof-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        @media (max-width: 900px) {
+            .proof-grid {
+                grid-template-columns: 1fr;
+                max-width: 420px;
+                margin: 0 auto;
+            }
+        }
+
+        .proof-card {
+            padding: 16px;
+            border-radius: var(--radius);
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid var(--border-subtle);
+            transition: all 0.3s;
+            overflow: hidden;
+        }
+
+        .proof-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(212, 175, 55, 0.04);
+        }
+
+        .proof-card .proof-img {
+            height: 220px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-dim);
+            border: 1px solid var(--border-subtle);
+            margin-bottom: 14px;
+            font-size: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .proof-card .proof-img .placeholder-icon {
+            opacity: 0.3;
+        }
+
+        .proof-card .proof-zone {
+            font-family: var(--font-mono);
+            font-size: 0.5rem;
+            color: var(--gold);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .proof-card .proof-zone.cyan {
+            color: var(--cyan);
+        }
+        .proof-card .proof-zone.pink {
+            color: var(--pink);
+        }
+
+        .proof-card h4 {
+            font-family: var(--font-head);
+            font-size: 1rem;
+            font-weight: 700;
+            color: #fff;
+            margin: 6px 0 4px;
+        }
+
+        .proof-card .proof-meta {
+            font-family: var(--font-mono);
+            font-size: 0.6rem;
+            color: var(--text-dim);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .proof-card .proof-meta i {
+            color: var(--cyan);
+            font-size: 0.5rem;
+        }
+
+        /* ============================================================
+           SEO MATRIX
+           ============================================================ */
+        .seo-matrix {
+            padding: 40px 0 20px;
+            border-top: 1px solid var(--border-subtle);
+            margin-top: 40px;
+        }
+
+        .seo-matrix .matrix-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .seo-matrix .matrix-header .blink-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--gold);
+            animation: pulseDot 2s infinite;
+            display: inline-block;
+        }
+
+        .seo-matrix .matrix-header span {
+            font-family: var(--font-mono);
+            font-size: 0.55rem;
+            color: var(--text-dim);
+            letter-spacing: 1px;
+        }
+
+        .seo-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .seo-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+        }
+
+        .seo-col .seo-cat {
+            font-family: var(--font-mono);
+            font-size: 0.5rem;
+            color: var(--gold);
+            letter-spacing: 1.5px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .seo-col ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .seo-col ul li {
+            padding: 4px 0;
+            font-size: 0.78rem;
+            color: var(--text-dim);
+            font-family: var(--font-mono);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .seo-col ul li:last-child {
+            border-bottom: none;
+        }
+
+        /* ============================================================
+           FINAL CTA
+           ============================================================ */
+        .final-cta {
+            padding: 100px 0;
+            text-align: center;
+            border-top: 1px solid rgba(0, 229, 255, 0.04);
+            background: linear-gradient(to top, rgba(0, 229, 255, 0.02), transparent);
+            position: relative;
+        }
+
+        .final-cta .cta-btn {
+            padding: 20px 48px;
+            background: var(--cyan);
+            color: #000;
+            font-family: var(--font-head);
+            font-size: 1rem;
+            font-weight: 800;
+            border-radius: 10px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            margin-top: 30px;
+        }
+
+        .final-cta .cta-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0, 229, 255, 0.15);
+        }
+
+        /* ============================================================
+           FOOTER
+           ============================================================ */
+        .site-footer {
+            padding: 40px 0;
+            background: #000;
+            border-top: 1px solid var(--border-subtle);
+            text-align: center;
+        }
+
+        .site-footer span {
+            font-family: var(--font-mono);
+            font-size: 0.55rem;
+            color: var(--text-dim);
+        }
+
+        .site-footer a {
+            color: var(--text-dim);
+            transition: color 0.3s;
+        }
+
+        .site-footer a:hover {
+            color: var(--text-muted);
+        }
+
+        .site-footer .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 8px;
+            flex-wrap: wrap;
+        }
+
+        /* ============================================================
+           REVEAL
+           ============================================================ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.7s var(--ease-out);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ============================================================
+           RESPONSIVE
+           ============================================================ */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: clamp(2rem, 8vw, 2.8rem);
+            }
+
+            .hero-actions {
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+            }
+
+            .hero-actions .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .hero-trust {
+                flex-direction: column;
+                align-items: center;
+                gap: 8px;
+            }
+
+            .search-module {
+                flex-direction: column;
+            }
+
+            .search-module .search-wrap {
+                min-width: unset;
+            }
+
+            .search-module .search-btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .map-node .node-label {
+                display: none;
+            }
+
+            .zone-card {
+                padding: 18px 16px;
+            }
+
+            .terminal-window .terminal-body {
+                padding: 20px 16px;
+            }
+
+            .oob-panel {
+                padding: 20px 18px;
+            }
+
+            .oob-panel .bg-icon {
+                font-size: 5rem;
+            }
+
+            .proof-card .proof-img {
+                height: 160px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .telem-card .telem-number {
+                font-size: 1.8rem;
+            }
+
+            .section-header h2 {
+                font-size: 1.4rem;
+            }
+
+            .zone-card h3 {
+                font-size: 1rem;
+            }
+
+            .terminal-window .terminal-bar .terminal-title {
+                font-size: 0.4rem;
+            }
+
+            .seo-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .final-cta .cta-btn {
+                padding: 16px 28px;
+                font-size: 0.8rem;
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        /* ============================================================
+           REDUCED MOTION
+           ============================================================ */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            .reveal {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+
+            .scroll-indicator {
+                animation: none;
+            }
+
+            .map-node .node-pulse {
+                animation: none;
+            }
+
+            .btn:hover,
+            .zone-card:hover,
+            .telem-card:hover,
+            .proof-card:hover,
+            .oob-btn:hover {
+                transform: none !important;
+            }
+        }
+    </style>
 </head>
+<body>
 
-<body class="is-dark pricing-theme no-js-override">
+    <!-- ============================================================
+    CURSOR
+    ============================================================ -->
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+    <div class="scroll-progress" id="scrollProgress"></div>
 
-    <!-- ======================================================================
-         PHASE 1: SYSTEM ROUTING (PRELOADER & HUD)
-         ====================================================================== -->
-    <div class="page-transition-overlay" id="transition-engine">
-        <div class="transition-scanline"></div>
-        <div class="transition-text">REROUTING_CONNECTION... <span class="matrix-blink"></span></div>
+    <!-- ============================================================
+    NAVIGATION
+    ============================================================ -->
+    <nav class="site-nav" id="siteNav">
+        <div class="nav-logo">
+            <div class="mark"><i class="fas fa-gem"></i></div>
+            RAPHAEL<span>LEZIUS</span>
+        </div>
+        <div class="nav-links" id="navLinks">
+            <a href="index.html">Start</a>
+            <a href="#sector-data" class="active">Einsatzgebiet</a>
+            <a href="#fleet-status">Telemetrie</a>
+            <a href="#mission-logs">Referenzen</a>
+            <a href="#contact" class="nav-cta">Angebot</a>
+        </div>
+        <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html">Start</a>
+        <a href="#sector-data">Einsatzgebiet</a>
+        <a href="#fleet-status">Telemetrie</a>
+        <a href="#mission-logs">Referenzen</a>
+        <a href="#contact" class="mobile-cta">Angebot</a>
     </div>
-    
-    <div class="noise-overlay"></div>
-    <div class="crt-overlay"></div>
 
-    <!-- Live Coordinate Tracker (Desktop HUD) -->
-    <div class="coordinate-tracker desktop-only" aria-hidden="true">
-        <div class="tracker-header">
-            <span class="matrix-blink"></span> VECTOR_TRACKING
-        </div>
-        <div class="tracker-data">
-            <div class="coord-row">
-                <span class="coord-label">LAT:</span> 
-                <span id="track-lat" class="text-cyan">48.3717</span>° N
+    <!-- ============================================================
+    HERO
+    ============================================================ -->
+    <section class="area-hero" id="home">
+        <div class="map-grid-bg"></div>
+        <div class="container">
+            <div class="hero-badge">
+                <span class="dot"></span> DEPLOYMENT_SECTOR_MAP
             </div>
-            <div class="coord-row">
-                <span class="coord-label">LON:</span> 
-                <span id="track-lon" class="text-cyan">10.8983</span>° E
+
+            <h1 class="hero-title">
+                Einsatzgebiet<br>
+                <span class="gold">Bayern Süd.</span>
+            </h1>
+
+            <p class="hero-sub">
+                Von unserem Headquarter in Augsburg operieren wir in einem hochpräzisen Logistik-Netzwerk. Keine Subunternehmer, keine logistischen Kompromisse. <strong>Absolute Termintreue in definierten Sektoren.</strong>
+            </p>
+
+            <div class="hero-trust">
+                <span><i class="fas fa-shield-alt"></i> 5 Mio. € Haftpflicht</span>
+                <span><i class="fas fa-crosshairs"></i> 100 km Radius</span>
+                <span><i class="fas fa-clock"></i> 24h-Response</span>
+                <span><i class="fas fa-star"></i> 5.0 · 110+ Kunden</span>
+            </div>
+
+            <div class="hero-actions">
+                <a href="#deployment-check" class="btn btn-primary"><i class="fas fa-crosshairs"></i> SEKTOR PRÜFEN</a>
+                <a href="#sector-data" class="btn btn-secondary"><i class="fas fa-map"></i> ZONEN ANSEHEN</a>
+            </div>
+
+            <div class="scroll-indicator">
+                <span>Scroll</span>
+                <i class="fas fa-chevron-down"></i>
             </div>
         </div>
-        <div class="tracker-bar">
-            <div id="track-progress" class="tracker-fill"></div>
+    </section>
+
+    <!-- ============================================================
+    SECTOR MAP
+    ============================================================ -->
+    <section class="section-padding bg-darker" id="sector-data">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">LOGISTICS_ZONES</span>
+                <h2>Einsatz-<span class="highlight">Sektoren.</span></h2>
+                <p>Drei klar definierte Zonen mit festen Logistik-Pauschalen. Transparent, planbar, fair.</p>
+            </div>
+
+            <div class="sector-grid reveal">
+                <!-- Map Terminal -->
+                <div class="map-terminal glass-panel">
+                    <div class="map-header">
+                        <span class="tech-badge">LIVE_SATELLITE_FEED // BAVARIA_SOUTH</span>
+                        <span class="status"><span class="pulse-dot"></span> SYNCED</span>
+                    </div>
+                    <div class="abstract-map">
+                        <div class="map-grid-overlay"></div>
+
+                        <!-- Nodes -->
+                        <div class="map-node node-hq">
+                            <div class="node-pulse"></div>
+                            <div class="node-dot"></div>
+                            <span class="node-label">AUGSBURG_HQ</span>
+                        </div>
+
+                        <div class="map-node node-muc">
+                            <div class="node-dot cyan"></div>
+                            <span class="node-label">MUNICH_CORE</span>
+                        </div>
+
+                        <div class="map-node node-sta">
+                            <div class="node-dot pink"></div>
+                            <span class="node-label">STARNBERG</span>
+                        </div>
+
+                        <div class="map-node node-other">
+                            <div class="node-dot" style="background:#fff;opacity:0.3;"></div>
+                            <span class="node-label">EXTENDED_RANGE</span>
+                        </div>
+
+                        <!-- Links -->
+                        <div class="data-link link-1"></div>
+                        <div class="data-link link-2"></div>
+                    </div>
+                </div>
+
+                <!-- Zone Cards -->
+                <div class="zone-data-stack">
+                    <div class="zone-card reveal" style="animation-delay:0.1s;">
+                        <div class="zone-top">
+                            <span class="zone-id">ZONE_01 // THE_CORE</span>
+                            <span class="zone-ttt">TTT: <strong>15 MIN</strong></span>
+                        </div>
+                        <h3>Augsburg &amp; Umland</h3>
+                        <p>Keine Anfahrtskosten. Maximale Reaktionsgeschwindigkeit im direkten Umkreis des Headquarters.</p>
+                        <div class="zone-cities">STADTBERGEN, NEUSÄSS, FRIEDBERG, GERSTHOFEN</div>
+                    </div>
+
+                    <div class="zone-card cyan-border reveal" style="animation-delay:0.2s;">
+                        <div class="zone-top">
+                            <span class="zone-id cyan">ZONE_02 // TRANSIT</span>
+                            <span class="zone-ttt">TTT: <strong>45 MIN</strong></span>
+                        </div>
+                        <h3>München West / FFB</h3>
+                        <p>Schnelle Anbindung über die A8. Standardisierte Logistikpauschale für den erweiterten Radius.</p>
+                        <div class="zone-cities">DACHAU, FFB, LANDSBERG, OLCHING</div>
+                    </div>
+
+                    <div class="zone-card pink-border reveal" style="animation-delay:0.3s;">
+                        <div class="zone-top">
+                            <span class="zone-id pink">ZONE_03 // DEEP_SOUTH</span>
+                            <span class="zone-ttt">TTT: <strong>60+ MIN</strong></span>
+                        </div>
+                        <h3>München City &amp; Süd</h3>
+                        <p>Dedizierte Tageseinsätze. Premium-Logistik für das Stadtgebiet München und die elitäre Seenregion.</p>
+                        <div class="zone-cities">MÜNCHEN ZENTRUM, STARNBERG, AMMERSEE</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    TELEMETRY
+    ============================================================ -->
+    <section class="section-padding bg-surface" id="fleet-status">
+        <div class="container">
+            <div class="section-header reveal" style="text-align:left;">
+                <span class="section-tag">LIVE_TELEMETRY</span>
+                <h2 style="text-align:left;">Flotten-<span class="highlight">Status.</span></h2>
+                <p style="text-align:left;margin-left:0;">Echtzeit-Ressourcenbindung für maximale Pünktlichkeit. Kapazitäten werden dynamisch nach Auftragsvolumen kalibriert.</p>
+            </div>
+
+            <div class="telemetry-grid reveal">
+                <div class="telem-card">
+                    <div class="telem-top">
+                        <span class="sector">ZONE_01 // AUGSBURG</span>
+                        <span class="status-badge"><i class="fas fa-satellite-dish"></i> ACTIVE</span>
+                    </div>
+                    <div class="telem-number" data-target="65">0<span>%</span></div>
+                    <div class="telem-bar"><div class="fill gold" style="width:0%;"></div></div>
+                    <div class="telem-label">RESSOURCEN_GEBUNDEN</div>
+                </div>
+
+                <div class="telem-card cyan-top">
+                    <div class="telem-top">
+                        <span class="sector">ZONE_02 // TRANSIT</span>
+                        <span class="status-badge"><i class="fas fa-satellite-dish"></i> ACTIVE</span>
+                    </div>
+                    <div class="telem-number" data-target="42">0<span>%</span></div>
+                    <div class="telem-bar"><div class="fill cyan" style="width:0%;"></div></div>
+                    <div class="telem-label">KAPAZITÄT_VERFÜGBAR</div>
+                </div>
+
+                <div class="telem-card pink-top">
+                    <div class="telem-top">
+                        <span class="sector">ZONE_03 // MÜNCHEN</span>
+                        <span class="status-badge warning"><i class="fas fa-exclamation-triangle"></i> HIGH_LOAD</span>
+                    </div>
+                    <div class="telem-number" data-target="88">0<span>%</span></div>
+                    <div class="telem-bar"><div class="fill pink" style="width:0%;"></div></div>
+                    <div class="telem-label">KAPAZITÄTSGRENZE_NAH</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    VERIFICATION
+    ============================================================ -->
+    <section class="section-padding bg-darker" id="deployment-check">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">SECTOR_VERIFICATION</span>
+                <h2>Standort <span class="highlight">verifizieren.</span></h2>
+                <p>Geben Sie Ihre Postleitzahl oder Stadt ein, um Ihre exakte Logistik-Zone zu prüfen.</p>
+            </div>
+
+            <div class="verification-grid reveal">
+                <!-- Terminal -->
+                <div class="terminal-window glass-panel">
+                    <div class="terminal-bar">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                        <span class="terminal-title">SECTOR_QUERY_SYSTEM</span>
+                    </div>
+                    <div class="terminal-body">
+                        <h3>PLZ / Stadt eingeben</h3>
+                        <p>Ermitteln Sie Ihre Zone und verfügbare Kapazität in Echtzeit.</p>
+
+                        <div class="search-module">
+                            <div class="search-wrap">
+                                <i class="fas fa-crosshairs"></i>
+                                <input type="text" id="sectorInput" placeholder="z.B. 86150 oder Augsburg" />
+                            </div>
+                            <button class="search-btn" id="verifyBtn">SCAN <i class="fas fa-satellite-dish"></i></button>
+                        </div>
+
+                        <div class="scan-result" id="scanResult">
+                            <span style="opacity:0.4;">System bereit. Geben Sie eine PLZ ein.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Out of Bounds -->
+                <div class="oob-panel glass-panel">
+                    <span class="oob-tag">RESTRICTED_SECTOR // OVERRIDE</span>
+                    <h3>Projekt außerhalb der Zonen?</h3>
+                    <p>
+                        Für B2B-Großprojekte, komplexe USM-Haller Rollouts oder exklusive Architekten-Villen verlassen wir unser Standard-Einsatzgebiet.
+                    </p>
+                    <p>
+                        Einsätze in <strong>Nürnberg, Stuttgart, Salzburg oder der Schweiz</strong> unterliegen unserem "Extended Range Protocol". Logistik und Übernachtungen werden als individuelle Projektpauschale kalkuliert.
+                    </p>
+                    <button class="oob-btn js-open-contact">SONDERPROJEKT ANFRAGEN <i class="fas fa-lock-open"></i></button>
+                    <i class="fas fa-globe bg-icon"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    MISSION LOGS
+    ============================================================ -->
+    <section class="section-padding bg-surface" id="mission-logs">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">DEPLOYMENT_ARCHIVES</span>
+                <h2>Mission <span class="highlight">Logs.</span></h2>
+                <p>Verifizierte Einsätze in unseren Kernsektoren. Kein Stock-Material. Nur reale, von uns kalibrierte System-Architekturen in Bayern.</p>
+            </div>
+
+            <div class="proof-grid reveal">
+                <div class="proof-card">
+                    <div class="proof-img">
+                        <span class="placeholder-icon"><i class="fas fa-couch"></i></span>
+                    </div>
+                    <span class="proof-zone">ZONE_01 // AUGSBURG HQ</span>
+                    <h4>IKEA PAX Custom Build</h4>
+                    <div class="proof-meta">
+                        <i class="fas fa-check-circle"></i> 4 LFM
+                        <i class="fas fa-check-circle"></i> LASER_LEVEL
+                    </div>
+                </div>
+
+                <div class="proof-card">
+                    <div class="proof-img">
+                        <span class="placeholder-icon"><i class="fas fa-utensils"></i></span>
+                    </div>
+                    <span class="proof-zone cyan">ZONE_03 // STARNBERG</span>
+                    <h4>Premium Küchen-System</h4>
+                    <div class="proof-meta">
+                        <i class="fas fa-check-circle"></i> HEPA_CLEAN
+                        <i class="fas fa-check-circle"></i> WATER_SEALED
+                    </div>
+                </div>
+
+                <div class="proof-card">
+                    <div class="proof-img">
+                        <span class="placeholder-icon"><i class="fas fa-gem"></i></span>
+                    </div>
+                    <span class="proof-zone pink">ZONE_03 // MÜNCHEN</span>
+                    <h4>USM Haller Kanzlei-Setup</h4>
+                    <div class="proof-meta">
+                        <i class="fas fa-check-circle"></i> 48 MODULE
+                        <i class="fas fa-check-circle"></i> ZERO_TOLERANCE
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    SEO MATRIX
+    ============================================================ -->
+    <div class="seo-matrix" id="city-data">
+        <div class="container">
+            <div class="matrix-header">
+                <span class="blink-dot"></span>
+                <span>RAW_DATA // EXTENDED_DEPLOYMENT_GRID</span>
+            </div>
+
+            <div class="seo-grid">
+                <div class="seo-col">
+                    <span class="seo-cat">[ZONE_01_NODES]</span>
+                    <ul>
+                        <li>Augsburg (86150)</li>
+                        <li>Stadtbergen (86391)</li>
+                        <li>Neusäß (86356)</li>
+                        <li>Gersthofen (86368)</li>
+                        <li>Friedberg (86316)</li>
+                        <li>Königsbrunn (86343)</li>
+                    </ul>
+                </div>
+                <div class="seo-col">
+                    <span class="seo-cat">[ZONE_02_NODES]</span>
+                    <ul>
+                        <li>Dachau (85221)</li>
+                        <li>Fürstenfeldbruck (82256)</li>
+                        <li>Landsberg (86899)</li>
+                        <li>Olching (82140)</li>
+                        <li>Germering (82110)</li>
+                        <li>Gilching (82205)</li>
+                    </ul>
+                </div>
+                <div class="seo-col">
+                    <span class="seo-cat">[ZONE_03_NODES]</span>
+                    <ul>
+                        <li>München Zentrum (80331)</li>
+                        <li>München Schwabing (80802)</li>
+                        <li>München Bogenhausen (81675)</li>
+                        <li>Starnberg (82319)</li>
+                        <li>Gauting (82131)</li>
+                        <li>Grünwald (82031)</li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- GLOBAL NAVIGATION INJECTOR -->
-    <div id="global-nav"></div>      
+    <!-- ============================================================
+    FINAL CTA
+    ============================================================ -->
+    <section class="final-cta" id="contact">
+        <div class="container">
+            <span class="section-tag" style="margin-bottom:16px;">SECTOR_CONFIRMED // PROCEED_TO_CALIBRATION</span>
+            <h2 style="font-family:var(--font-head);font-weight:900;font-size:clamp(2.5rem,6vw,4.5rem);color:#fff;line-height:1.05;">
+                Logistik gesichert.<br>
+                <span class="cyan-text">System starten.</span>
+            </h2>
+            <p style="color:var(--text-muted);font-size:1.1rem;max-width:560px;margin:20px auto 0;line-height:1.7;">
+                Ihr Einsatzort liegt in unserem Netzwerk. Übertragen Sie jetzt Ihre Projekt-Metriken in unser MissionOS, um Ihre exakte Kostenstruktur zu generieren.
+            </p>
+            <a href="pricing.html" class="cta-btn">
+                PRICING_MATRIX LADEN <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </section>
 
-    <main>
-        <!-- ======================================================================
-             PHASE 2: CARTOGRAPHY HERO
-             ====================================================================== -->
-        <section class="area-hero">
-            <div class="map-grid-bg"></div>
-            <!-- Optional: JS Particle Terrain Canvas -->
-            <canvas id="tacticalTerrain" class="terrain-canvas desktop-only"></canvas>
-            
-            <div class="hero-content relative-z">
-                <div data-aos="fade-down" data-aos-duration="1000">
-                    <span class="hero-glitch-tag glitch-active" data-text="// DEPLOYMENT_SECTOR_MAP">// DEPLOYMENT_SECTOR_MAP</span>
-                </div>
-                
-                <h1 class="hero-title-massive" data-aos="zoom-in" data-aos-duration="1200" data-aos-delay="200">
-                    Einsatzgebiet<br>
-                    <span class="text-cyan" style="text-shadow: 0 0 40px rgba(0, 229, 255, 0.4);">Bayern Süd.</span>
-                </h1>
-                
-                <p class="hero-description" data-aos="fade-up" data-aos-delay="400">
-                    Von unserem Headquarter in Augsburg operieren wir in einem hochpräzisen Logistik-Netzwerk. Keine Subunternehmer, keine logistischen Kompromisse. Absolute Termintreue in definierten Sektoren.
-                </p>
-
-                <!-- Tactical Hero HUD -->
-                <div class="calibration-hud" data-aos="fade-up" data-aos-delay="600">
-                    <div class="hud-stat">
-                        <span class="hud-label">HQ_COORDINATES</span>
-                        <span class="hud-value">48.3717° N, 10.8983° E</span>
-                    </div>
-                    <div class="hud-stat highlight-cyan">
-                        <span class="hud-label">PRIMARY_RADIUS</span>
-                        <span class="hud-value text-cyan">100 KM</span>
-                    </div>
-                    <div class="hud-stat">
-                        <span class="hud-label">LOGISTIC_STATUS</span>
-                        <span class="hud-value text-green"><span class="pulse-dot" style="display:inline-block; margin-right:5px;"></span> ACTIVE</span>
-                    </div>
-                </div>
-
-                <div data-aos="fade-up" data-aos-delay="800" style="margin-top: 40px;">
-                    <a href="#deployment-check" class="btn-terminal js-magnetic" style="border-color: var(--neon-cyan); color: #fff;">
-                        SEKTOR PRÜFEN <i class="fas fa-crosshairs"></i>
-                    </a>
-                </div>
+    <!-- ============================================================
+    FOOTER
+    ============================================================ -->
+    <footer class="site-footer">
+        <div class="container">
+            <span>&copy; 2026 RAPHAEL LEZIUS // ALL_RIGHTS_RESERVED // VECTOR_MAP_v2.1</span>
+            <div class="footer-links">
+                <a href="#" onclick="alert('Impressum und Datenschutz folgen auf Anfrage.');return false;">Impressum</a>
+                <a href="#" onclick="alert('Impressum und Datenschutz folgen auf Anfrage.');return false;">Datenschutz</a>
             </div>
-        </section>
+        </div>
+    </footer>
 
-        <!-- ======================================================================
-             PHASE 3: SECTOR MAP & ZONES (LOGISTICS)
-             ====================================================================== -->
-        <section class="sector-map-section" id="sector-data">
-            <div class="container relative-z">
-                <div class="sector-grid">
-                    
-                    <!-- LEFT: Abstract Satellite Terminal -->
-                    <div class="map-terminal glass-panel" data-aos="fade-right" data-aos-duration="1000">
-                        <div class="map-header">
-                            <span class="tech-id-badge">LIVE_SATELLITE_FEED // BAVARIA_SOUTH</span>
-                            <div class="status-indicator"><div class="pulse-dot"></div> SYNCED</div>
-                        </div>
-                        
-                        <div class="abstract-map-container">
-                            <div class="map-grid-overlay"></div>
-                            
-                            <!-- Tactical Nodes -->
-                            <div class="map-node node-hq">
-                                <div class="node-pulse"></div>
-                                <span class="node-label">AUGSBURG_HQ</span>
-                            </div>
-                            
-                            <div class="map-node node-muc">
-                                <div class="node-dot"></div>
-                                <span class="node-label">MUNICH_CORE</span>
-                            </div>
-                            
-                            <div class="map-node node-sta">
-                                <div class="node-dot"></div>
-                                <span class="node-label">STARNBERG</span>
-                            </div>
-
-                            <!-- Abstract Connection Lines -->
-                            <div class="data-link link-1"></div>
-                            <div class="data-link link-2"></div>
-                        </div>
-                    </div>
-
-                    <!-- RIGHT: Zone Data Cards -->
-                    <div class="zone-data-stack">
-                        <div data-aos="fade-left">
-                            <span class="hero-glitch-tag">// LOGISTICS_ZONES</span>
-                            <h2 class="section-title-large" style="text-align: left; margin-bottom: 30px;">
-                                Einsatz-<br><span class="text-gold">Sektoren.</span>
-                            </h2>
-                        </div>
-
-                        <!-- Card 01 -->
-                        <div class="zone-data-card glass-panel border-left-gold" data-aos="fade-left" data-aos-delay="100">
-                            <div class="zone-card-header" style="display:flex; justify-content:space-between; margin-bottom: 10px;">
-                                <span class="zone-id text-gold" style="font-family:var(--font-mono); font-size:0.75rem;">ZONE_01 // THE_CORE</span>
-                                <span class="zone-ttt" style="font-family:var(--font-mono); font-size:0.75rem; color:#888;">TTT: <span class="text-white">15 MIN</span></span>
-                            </div>
-                            <h3 class="zone-title" style="font-family:var(--font-head); font-size:1.5rem; color:#fff; margin-bottom:10px;">Augsburg & Umland</h3>
-                            <p class="zone-desc" style="color:#aaa; font-size:0.95rem; line-height:1.6; margin-bottom:15px;">Keine Anfahrtskosten. Maximale Reaktionsgeschwindigkeit im direkten Umkreis des Headquarters.</p>
-                            <div class="zone-cities" style="font-family:var(--font-mono); font-size:0.75rem; color:#555;">STADTBERGEN, NEUSÄSS, FRIEDBERG, GERSTHOFEN</div>
-                        </div>
-
-                        <!-- Card 02 -->
-                        <div class="zone-data-card glass-panel border-left-cyan" data-aos="fade-left" data-aos-delay="200">
-                            <div class="zone-card-header" style="display:flex; justify-content:space-between; margin-bottom: 10px;">
-                                <span class="zone-id text-cyan" style="font-family:var(--font-mono); font-size:0.75rem;">ZONE_02 // TRANSIT</span>
-                                <span class="zone-ttt" style="font-family:var(--font-mono); font-size:0.75rem; color:#888;">TTT: <span class="text-white">45 MIN</span></span>
-                            </div>
-                            <h3 class="zone-title" style="font-family:var(--font-head); font-size:1.5rem; color:#fff; margin-bottom:10px;">München West / FFB</h3>
-                            <p class="zone-desc" style="color:#aaa; font-size:0.95rem; line-height:1.6; margin-bottom:15px;">Schnelle Anbindung über die A8. Standardisierte Logistikpauschale für den erweiterten Radius.</p>
-                            <div class="zone-cities" style="font-family:var(--font-mono); font-size:0.75rem; color:#555;">DACHAU, FFB, LANDSBERG AM LECH, OLCHING</div>
-                        </div>
-
-                        <!-- Card 03 -->
-                        <div class="zone-data-card glass-panel border-left-pink" data-aos="fade-left" data-aos-delay="300">
-                            <div class="zone-card-header" style="display:flex; justify-content:space-between; margin-bottom: 10px;">
-                                <span class="zone-id text-pink" style="font-family:var(--font-mono); font-size:0.75rem;">ZONE_03 // DEEP_SOUTH</span>
-                                <span class="zone-ttt" style="font-family:var(--font-mono); font-size:0.75rem; color:#888;">TTT: <span class="text-white">60+ MIN</span></span>
-                            </div>
-                            <h3 class="zone-title" style="font-family:var(--font-head); font-size:1.5rem; color:#fff; margin-bottom:10px;">München City & Süd</h3>
-                            <p class="zone-desc" style="color:#aaa; font-size:0.95rem; line-height:1.6; margin-bottom:15px;">Dedizierte Tageseinsätze. Premium-Logistik für das Stadtgebiet München und die elitäre Seenregion.</p>
-                            <div class="zone-cities" style="font-family:var(--font-mono); font-size:0.75rem; color:#555;">MÜNCHEN ZENTRUM, STARNBERG, AMMERSEE</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ======================================================================
-             PHASE 4: LIVE FLEET TELEMETRY
-             ====================================================================== -->
-        <section class="fleet-telemetry-section" id="fleet-status">
-            <div class="container relative-z">
-                <div class="section-header-left" data-aos="fade-right">
-                    <span class="hero-glitch-tag">// LIVE_TELEMETRY</span>
-                    <h2 class="section-title-large">Flotten-<br><span class="text-cyan">Status.</span></h2>
-                    <p class="hero-description" style="margin: 20px 0 40px 0; text-align: left; max-width: 500px;">
-                        Echtzeit-Ressourcenbindung für maximale Pünktlichkeit. Kapazitäten werden dynamisch nach Auftragsvolumen kalibriert.
-                    </p>
-                </div>
-
-                <div class="telemetry-grid">
-                    <!-- Telem 1 -->
-                    <div class="telemetry-card glass-panel border-left-gold" data-aos="fade-up" data-aos-delay="100">
-                        <div class="card-top-row">
-                            <span class="sector-name">ZONE_01 // AUGSBURG</span>
-                            <span class="sector-ping text-gold"><i class="fas fa-satellite-dish"></i> ACTIVE</span>
-                        </div>
-                        <div class="capacity-readout">
-                            <span class="cap-number js-live-cap" data-base="65">65</span><span class="cap-percent">%</span>
-                        </div>
-                        <div class="cap-bar-track">
-                            <div class="cap-bar-fill fill-gold js-live-bar" style="width: 65%;"></div>
-                        </div>
-                        <div class="cap-label">RESSOURCEN_GEBUNDEN</div>
-                    </div>
-
-                    <!-- Telem 2 -->
-                    <div class="telemetry-card glass-panel border-left-cyan" data-aos="fade-up" data-aos-delay="200">
-                        <div class="card-top-row">
-                            <span class="sector-name">ZONE_02 // TRANSIT</span>
-                            <span class="sector-ping text-cyan"><i class="fas fa-satellite-dish"></i> ACTIVE</span>
-                        </div>
-                        <div class="capacity-readout">
-                            <span class="cap-number js-live-cap" data-base="42">42</span><span class="cap-percent">%</span>
-                        </div>
-                        <div class="cap-bar-track">
-                            <div class="cap-bar-fill fill-cyan js-live-bar" style="width: 42%;"></div>
-                        </div>
-                        <div class="cap-label">KAPAZITÄT_VERFÜGBAR</div>
-                    </div>
-
-                    <!-- Telem 3 -->
-                    <div class="telemetry-card glass-panel border-left-pink" data-aos="fade-up" data-aos-delay="300">
-                        <div class="card-top-row">
-                            <span class="sector-name">ZONE_03 // MÜNCHEN</span>
-                            <span class="sector-ping text-pink"><i class="fas fa-exclamation-triangle"></i> HIGH_LOAD</span>
-                        </div>
-                        <div class="capacity-readout">
-                            <span class="cap-number js-live-cap" data-base="88">88</span><span class="cap-percent">%</span>
-                        </div>
-                        <div class="cap-bar-track">
-                            <div class="cap-bar-fill fill-pink js-live-bar" style="width: 88%;"></div>
-                        </div>
-                        <div class="cap-label">KAPAZITÄTSGRENZE_NAH</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ======================================================================
-             PHASE 5: VERIFICATION & OUT-OF-BOUNDS B2B
-             ====================================================================== -->
-        <section class="verification-section" id="deployment-check">
-            <div class="container relative-z">
-                <div class="verification-grid">
-                    
-                    <!-- Search Terminal -->
-                    <div class="verify-terminal glass-panel" data-aos="fade-right">
-                        <div class="terminal-top-bar">
-                            <span class="dot-red"></span>
-                            <span class="dot-yellow"></span>
-                            <span class="dot-green"></span>
-                            <span class="terminal-title">SECTOR_QUERY_SYSTEM</span>
-                        </div>
-                        
-                        <div class="verify-content">
-                            <h3 class="verify-heading">Standort verifizieren.</h3>
-                            <p class="verify-desc">Geben Sie Ihre Postleitzahl oder Stadt ein, um Ihre exakte Logistik-Zone und den Status für Ihr System-Setup zu prüfen.</p>
-                            
-                            <div class="search-module">
-                                <div style="position: relative; width: 100%;">
-                                    <i class="fas fa-crosshairs search-icon text-cyan" style="position:absolute; left:15px; top:50%; transform:translateY(-50%);"></i>
-                                    <input type="text" class="cyber-input search-input" placeholder="PLZ oder Stadt eingeben..." id="sectorInput" style="width: 100%; padding: 15px 15px 15px 45px; background: rgba(0,0,0,0.5); border: 1px solid rgba(0, 229, 255, 0.3); color: #fff; border-radius: 4px;">
-                                </div>
-                                <button type="button" class="btn-terminal search-btn js-verify-sector js-magnetic" style="background: var(--neon-cyan); color: #000; border: none; padding: 15px 25px; font-weight: 800; cursor: pointer;">
-                                    SCAN <i class="fas fa-satellite-dish"></i>
-                                </button>
-                            </div>
-                            
-                            <div class="scan-result" id="scanResult"></div>
-                        </div>
-                    </div>
-
-                    <!-- Out of Bounds Warning / B2B Protocol -->
-                    <div class="out-of-bounds-panel glass-panel" data-aos="fade-left" data-aos-delay="200">
-                        <div class="warning-strip"></div>
-                        <div class="oob-content" style="position: relative; z-index: 2;">
-                            <span class="spec-id text-pink" style="font-family: var(--font-mono); font-size: 0.7rem; display:block; margin-bottom: 15px;">RESTRICTED_SECTOR // OVERRIDE</span>
-                            <h3 class="oob-title" style="font-family: var(--font-head); font-size: 1.6rem; color: #fff; margin-bottom: 15px;">Projekt außerhalb der Zonen?</h3>
-                            
-                            <p class="oob-desc" style="color: #aaa; line-height: 1.7; margin-bottom: 15px;">
-                                Für B2B-Großprojekte, komplexe USM-Haller Rollouts oder exklusive Architekten-Villen verlassen wir unser Standard-Einsatzgebiet. 
-                            </p>
-                            <p class="oob-desc" style="color: #aaa; line-height: 1.7; margin-bottom: 25px;">
-                                Einsätze in <strong>Nürnberg, Stuttgart, Salzburg oder der Schweiz</strong> unterliegen unserem "Extended Range Protocol". Logistik und Übernachtungen werden als individuelle Projektpauschale kalkuliert.
-                            </p>
-                            
-                            <button type="button" class="btn-terminal js-open-os js-magnetic" data-sector="B2B // EXTENDED RANGE" style="background: transparent; border: 1px solid var(--neon-pink); color: var(--neon-pink); width: 100%;">
-                                SONDERPROJEKT ANFRAGEN <i class="fas fa-lock-open"></i>
-                            </button>
-                        </div>
-                        <i class="fas fa-globe bg-icon text-pink" style="position: absolute; right: -20px; bottom: -20px; font-size: 10rem; opacity: 0.03; z-index: 1; pointer-events: none;"></i>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ======================================================================
-             PHASE 6: MISSION LOGS (PHOTO PROOF)
-             ====================================================================== -->
-        <section class="proof-section" id="mission-logs" style="padding: 100px 0; background: #030406; border-top: 1px dashed rgba(255,255,255,0.05);">
-            <div class="container relative-z">
-                
-                <div class="section-header-center" data-aos="fade-up" style="text-align: center; margin-bottom: 50px;">
-                    <span class="hero-glitch-tag">// DEPLOYMENT_ARCHIVES</span>
-                    <h2 class="section-title-large">Mission <span class="text-gold">Logs.</span></h2>
-                    <p class="hero-description" style="margin: 20px auto; max-width: 600px;">
-                        Verifizierte Einsätze in unseren Kernsektoren. Kein Stock-Material. Nur reale, von uns kalibrierte System-Architekturen in Bayern.
-                    </p>
-                </div>
-
-                <div class="proof-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
-                    <!-- Log 1 -->
-                    <div class="proof-card glass-panel js-magnetic" style="padding: 15px; position: relative; overflow: hidden;" data-aos="zoom-in" data-aos-delay="100">
-                        <div class="proof-img-wrap" style="height: 250px; overflow: hidden; border-radius: 4px; position: relative;">
-                            <!-- Placeholder image, replace with actual -->
-                            <div style="width: 100%; height: 100%; background: #111; display:flex; align-items:center; justify-content:center; color:#333;"><i class="fas fa-image fa-3x"></i></div>
-                        </div>
-                        <div style="padding: 20px 10px 10px 10px;">
-                            <span class="proof-zone text-gold" style="font-family: var(--font-mono); font-size: 0.65rem;">ZONE_01 // AUGSBURG HQ</span>
-                            <h3 class="proof-title" style="font-family: var(--font-head); color: #fff; font-size: 1.2rem; margin: 10px 0;">IKEA PAX Custom Build</h3>
-                            <div class="proof-tech" style="font-family: var(--font-mono); font-size: 0.75rem; color: #888;">
-                                <i class="fas fa-check-circle text-cyan"></i> 4 LFM // LASER_LEVEL
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Log 2 -->
-                    <div class="proof-card glass-panel js-magnetic" style="padding: 15px; position: relative; overflow: hidden;" data-aos="zoom-in" data-aos-delay="200">
-                        <div class="proof-img-wrap" style="height: 250px; overflow: hidden; border-radius: 4px; position: relative;">
-                            <div style="width: 100%; height: 100%; background: #111; display:flex; align-items:center; justify-content:center; color:#333;"><i class="fas fa-image fa-3x"></i></div>
-                        </div>
-                        <div style="padding: 20px 10px 10px 10px;">
-                            <span class="proof-zone text-cyan" style="font-family: var(--font-mono); font-size: 0.65rem;">ZONE_03 // STARNBERG</span>
-                            <h3 class="proof-title" style="font-family: var(--font-head); color: #fff; font-size: 1.2rem; margin: 10px 0;">Premium Küchen-System</h3>
-                            <div class="proof-tech" style="font-family: var(--font-mono); font-size: 0.75rem; color: #888;">
-                                <i class="fas fa-check-circle text-gold"></i> HEPA_CLEAN // WATER_SEALED
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Log 3 -->
-                    <div class="proof-card glass-panel js-magnetic" style="padding: 15px; position: relative; overflow: hidden;" data-aos="zoom-in" data-aos-delay="300">
-                        <div class="proof-img-wrap" style="height: 250px; overflow: hidden; border-radius: 4px; position: relative;">
-                            <div style="width: 100%; height: 100%; background: #111; display:flex; align-items:center; justify-content:center; color:#333;"><i class="fas fa-image fa-3x"></i></div>
-                        </div>
-                        <div style="padding: 20px 10px 10px 10px;">
-                            <span class="proof-zone text-pink" style="font-family: var(--font-mono); font-size: 0.65rem;">ZONE_03 // MÜNCHEN ZENTRUM</span>
-                            <h3 class="proof-title" style="font-family: var(--font-head); color: #fff; font-size: 1.2rem; margin: 10px 0;">USM Haller Kanzlei-Setup</h3>
-                            <div class="proof-tech" style="font-family: var(--font-mono); font-size: 0.75rem; color: #888;">
-                                <i class="fas fa-check-circle text-pink"></i> 48 MODULE // ZERO_TOLERANCE
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ======================================================================
-             PHASE 7: FINAL CTA ROUTING
-             ====================================================================== -->
-        <section class="final-cta-block area-cta-override" style="padding: 120px 0; text-align: center; position: relative; border-top: 1px solid rgba(0, 229, 255, 0.2); background: linear-gradient(to top, rgba(0, 229, 255, 0.05), transparent);">
-            <div class="map-grid-bg" style="opacity: 0.15; z-index: 0;"></div>
-            <div class="container relative-z" data-aos="zoom-in">
-                <span class="hero-glitch-tag" style="color: var(--neon-cyan); border-color: rgba(0, 229, 255, 0.3);">SECTOR_CONFIRMED // PROCEED_TO_CALIBRATION</span>
-                <h2 class="hero-title-massive" style="margin-bottom: 20px; font-family: var(--font-head); font-size: clamp(2.5rem, 6vw, 4.5rem); color: #fff;">
-                    Logistik gesichert.<br>
-                    <span class="text-cyan">System starten.</span>
-                </h2>
-                
-                <p class="hero-description" style="margin: 0 auto 50px auto; color: #aaa; max-width: 600px; font-size: 1.1rem; line-height: 1.7;">
-                    Ihr Einsatzort liegt in unserem Netzwerk. Übertragen Sie jetzt Ihre Projekt-Metriken in unser MissionOS, um Ihre exakte Kostenstruktur zu generieren.
-                </p>
-
-                <a href="pricing.html" class="btn-terminal js-magnetic" style="background: var(--neon-cyan); color: #000; padding: 20px 40px; font-weight: 800; border-radius: 8px; font-family: var(--font-head); text-transform: uppercase; letter-spacing: 1px; text-decoration: none; display: inline-block;">
-                    PRICING_MATRIX LADEN <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
-        </section>
-
-        <!-- ======================================================================
-             PHASE 8: SEO CITY MATRIX (RAW DATA)
-             ====================================================================== -->
-        <section class="seo-matrix-section">
-            <div class="container relative-z">
-                <div class="matrix-header">
-                    <span class="matrix-blink"></span>
-                    <span class="matrix-title" style="font-family: var(--font-mono); font-size: 0.8rem; color: #888;">RAW_DATA // EXTENDED_DEPLOYMENT_GRID</span>
-                </div>
-                
-                <div class="seo-data-matrix">
-                    <div class="matrix-column" data-aos="fade-up" data-aos-delay="100">
-                        <span class="matrix-category">[ZONE_01_NODES]</span>
-                        <ul class="matrix-list">
-                            <li>Augsburg (86150)</li>
-                            <li>Stadtbergen (86391)</li>
-                            <li>Neusäß (86356)</li>
-                            <li>Gersthofen (86368)</li>
-                            <li>Friedberg (86316)</li>
-                            <li>Königsbrunn (86343)</li>
-                            <li>Bobingen (86399)</li>
-                            <li>Diedorf (86420)</li>
-                        </ul>
-                    </div>
-
-                    <div class="matrix-column" data-aos="fade-up" data-aos-delay="200">
-                        <span class="matrix-category">[ZONE_02_NODES]</span>
-                        <ul class="matrix-list">
-                            <li>Dachau (85221)</li>
-                            <li>Fürstenfeldbruck (82256)</li>
-                            <li>Landsberg am Lech (86899)</li>
-                            <li>Olching (82140)</li>
-                            <li>Puchheim (82178)</li>
-                            <li>Germering (82110)</li>
-                            <li>Gilching (82205)</li>
-                            <li>Maisach (82216)</li>
-                        </ul>
-                    </div>
-
-                    <div class="matrix-column" data-aos="fade-up" data-aos-delay="300">
-                        <span class="matrix-category">[ZONE_03_NODES]</span>
-                        <ul class="matrix-list">
-                            <li>München Zentrum (80331)</li>
-                            <li>München Schwabing (80802)</li>
-                            <li>München Bogenhausen (81675)</li>
-                            <li>Starnberg (82319)</li>
-                            <li>Gauting (82131)</li>
-                            <li>Herrsching (82211)</li>
-                            <li>Tutzing (82327)</li>
-                            <li>Grünwald (82031)</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- GLOBAL INJECTIONS -->
-    <div id="global-footer"></div>
-    <div id="global-os"></div>
-    
-    <!-- SCRIPTS -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="assets/js/main.js" defer></script>
-    
+    <!-- ============================================================
+    SCRIPTS
+    ============================================================ -->
     <script>
-        // Init AOS Animations
-        document.addEventListener('DOMContentLoaded', () => {
-            if (typeof AOS !== 'undefined') {
-                AOS.init({ duration: 800, once: true });
+        (function() {
+            'use strict';
+
+            // ============================================================
+            // 1. CUSTOM CURSOR
+            // ============================================================
+            const dot = document.getElementById('cursorDot');
+            const ring = document.getElementById('cursorRing');
+            let mouseX = 0,
+                mouseY = 0,
+                ringX = 0,
+                ringY = 0;
+
+            if (dot && ring && window.matchMedia('(min-width: 769px)').matches) {
+                document.addEventListener('mousemove', function(e) {
+                    mouseX = e.clientX;
+                    mouseY = e.clientY;
+                    dot.style.left = mouseX + 'px';
+                    dot.style.top = mouseY + 'px';
+                });
+
+                function animateRing() {
+                    ringX += (mouseX - ringX) * 0.18;
+                    ringY += (mouseY - ringY) * 0.18;
+                    ring.style.left = ringX + 'px';
+                    ring.style.top = ringY + 'px';
+                    requestAnimationFrame(animateRing);
+                }
+                animateRing();
+
+                document.addEventListener('mouseover', function(e) {
+                    if (e.target.closest('a, button, .btn, .zone-card, .telem-card, .proof-card, .oob-btn, .cta-btn, .search-btn, .js-open-contact, .nav-cta')) {
+                        dot.classList.add('hovering');
+                        ring.classList.add('hovering');
+                    }
+                });
+                document.addEventListener('mouseout', function(e) {
+                    if (e.target.closest('a, button, .btn, .zone-card, .telem-card, .proof-card, .oob-btn, .cta-btn, .search-btn, .js-open-contact, .nav-cta')) {
+                        dot.classList.remove('hovering');
+                        ring.classList.remove('hovering');
+                    }
+                });
             }
-            
-            // Preloader routing simulation
-            const transition = document.getElementById('transition-engine');
-            if(transition) {
-                setTimeout(() => {
-                    transition.style.opacity = '0';
-                    setTimeout(() => transition.remove(), 500);
-                }, 1200);
+
+            // ============================================================
+            // 2. SCROLL PROGRESS
+            // ============================================================
+            const progressBar = document.getElementById('scrollProgress');
+            window.addEventListener('scroll', function() {
+                const scrollTop = window.scrollY;
+                const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const percent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+                if (progressBar) progressBar.style.width = percent + '%';
+            }, { passive: true });
+
+            // ============================================================
+            // 3. NAVIGATION
+            // ============================================================
+            const nav = document.getElementById('siteNav');
+            window.addEventListener('scroll', function() {
+                if (nav) {
+                    nav.classList.toggle('scrolled', window.scrollY > 50);
+                }
+            }, { passive: true });
+
+            const toggle = document.getElementById('navToggle');
+            const mobileMenu = document.getElementById('mobileMenu');
+            if (toggle && mobileMenu) {
+                toggle.addEventListener('click', function() {
+                    const isOpen = mobileMenu.classList.contains('open');
+                    mobileMenu.classList.toggle('open');
+                    toggle.classList.toggle('active');
+                    toggle.setAttribute('aria-expanded', !isOpen);
+                    document.body.classList.toggle('menu-open', !isOpen);
+                });
+
+                mobileMenu.querySelectorAll('a').forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        mobileMenu.classList.remove('open');
+                        toggle.classList.remove('active');
+                        toggle.setAttribute('aria-expanded', 'false');
+                        document.body.classList.remove('menu-open');
+                    });
+                });
             }
-            
-            // Inject Mission OS (if required on this page)
-            fetch('mission.html')
-                .then(res => res.text())
-                .then(data => document.getElementById('global-os').innerHTML = data)
-                .catch(e => console.log("MissionOS Fetch Notice:", e));
-        });
+
+            // ============================================================
+            // 4. REVEAL ON SCROLL
+            // ============================================================
+            const reveals = document.querySelectorAll('.reveal');
+            const revealObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+            reveals.forEach(function(el) {
+                revealObserver.observe(el);
+            });
+
+            // ============================================================
+            // 5. TELEMETRY COUNTERS
+            // ============================================================
+            const counters = document.querySelectorAll('.telem-number');
+            let countersAnimated = false;
+
+            function animateCounters() {
+                if (countersAnimated) return;
+                countersAnimated = true;
+
+                counters.forEach(function(counter) {
+                    const target = parseInt(counter.dataset.target, 10);
+                    if (!target) return;
+                    const duration = 2000;
+                    const startTime = performance.now();
+
+                    function update(now) {
+                        const elapsed = now - startTime;
+                        const progress = Math.min(elapsed / duration, 1);
+                        const eased = 1 - Math.pow(1 - progress, 3);
+                        const current = Math.round(target * eased);
+                        counter.innerHTML = current + '<span>%</span>';
+                        if (progress < 1) {
+                            requestAnimationFrame(update);
+                        } else {
+                            counter.innerHTML = target + '<span>%</span>';
+                        }
+                    }
+                    requestAnimationFrame(update);
+
+                    // Update bar
+                    const bar = counter.closest('.telem-card').querySelector('.fill');
+                    if (bar) {
+                        setTimeout(function() {
+                            bar.style.width = target + '%';
+                        }, 300);
+                    }
+                });
+            }
+
+            // Trigger counters when visible
+            const telemetrySection = document.getElementById('fleet-status');
+            if (telemetrySection) {
+                const telemetryObserver = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            animateCounters();
+                        }
+                    });
+                }, { threshold: 0.3 });
+                telemetryObserver.observe(telemetrySection);
+            }
+
+            // ============================================================
+            // 6. SECTOR VERIFICATION
+            // ============================================================
+            const verifyBtn = document.getElementById('verifyBtn');
+            const sectorInput = document.getElementById('sectorInput');
+            const scanResult = document.getElementById('scanResult');
+
+            // Zone mapping
+            const zoneMap = {
+                '86150': { zone: 'ZONE_01', name: 'Augsburg Zentrum', color: 'gold', ttt: '15 min' },
+                '86152': { zone: 'ZONE_01', name: 'Augsburg', color: 'gold', ttt: '15 min' },
+                '86153': { zone: 'ZONE_01', name: 'Augsburg', color: 'gold', ttt: '15 min' },
+                '86154': { zone: 'ZONE_01', name: 'Augsburg', color: 'gold', ttt: '15 min' },
+                '86155': { zone: 'ZONE_01', name: 'Augsburg', color: 'gold', ttt: '15 min' },
+                '86156': { zone: 'ZONE_01', name: 'Augsburg', color: 'gold', ttt: '15 min' },
+                '86157': { zone: 'ZONE_01', name: 'Augsburg', color: 'gold', ttt: '15 min' },
+                '86158': { zone: 'ZONE_01', name: 'Augsburg', color: 'gold', ttt: '15 min' },
+                '86159': { zone: 'ZONE_01', name: 'Augsburg', color: 'gold', ttt: '15 min' },
+                '86391': { zone: 'ZONE_01', name: 'Stadtbergen', color: 'gold', ttt: '15 min' },
+                '86356': { zone: 'ZONE_01', name: 'Neusäß', color: 'gold', ttt: '15 min' },
+                '86368': { zone: 'ZONE_01', name: 'Gersthofen', color: 'gold', ttt: '15 min' },
+                '86316': { zone: 'ZONE_01', name: 'Friedberg', color: 'gold', ttt: '15 min' },
+                '86343': { zone: 'ZONE_01', name: 'Königsbrunn', color: 'gold', ttt: '15 min' },
+                '85221': { zone: 'ZONE_02', name: 'Dachau', color: 'cyan', ttt: '45 min' },
+                '82256': { zone: 'ZONE_02', name: 'Fürstenfeldbruck', color: 'cyan', ttt: '45 min' },
+                '86899': { zone: 'ZONE_02', name: 'Landsberg am Lech', color: 'cyan', ttt: '45 min' },
+                '82140': { zone: 'ZONE_02', name: 'Olching', color: 'cyan', ttt: '45 min' },
+                '82110': { zone: 'ZONE_02', name: 'Germering', color: 'cyan', ttt: '45 min' },
+                '82205': { zone: 'ZONE_02', name: 'Gilching', color: 'cyan', ttt: '45 min' },
+                '80331': { zone: 'ZONE_03', name: 'München Zentrum', color: 'pink', ttt: '60+ min' },
+                '80333': { zone: 'ZONE_03', name: 'München', color: 'pink', ttt: '60+ min' },
+                '80335': { zone: 'ZONE_03', name: 'München', color: 'pink', ttt: '60+ min' },
+                '80336': { zone: 'ZONE_03', name: 'München', color: 'pink', ttt: '60+ min' },
+                '80337': { zone: 'ZONE_03', name: 'München', color: 'pink', ttt: '60+ min' },
+                '80339': { zone: 'ZONE_03', name: 'München', color: 'pink', ttt: '60+ min' },
+                '80802': { zone: 'ZONE_03', name: 'München Schwabing', color: 'pink', ttt: '60+ min' },
+                '80803': { zone: 'ZONE_03', name: 'München', color: 'pink', ttt: '60+ min' },
+                '80804': { zone: 'ZONE_03', name: 'München', color: 'pink', ttt: '60+ min' },
+                '81675': { zone: 'ZONE_03', name: 'München Bogenhausen', color: 'pink', ttt: '60+ min' },
+                '82319': { zone: 'ZONE_03', name: 'Starnberg', color: 'pink', ttt: '60+ min' },
+                '82131': { zone: 'ZONE_03', name: 'Gauting', color: 'pink', ttt: '60+ min' },
+                '82031': { zone: 'ZONE_03', name: 'Grünwald', color: 'pink', ttt: '60+ min' },
+                '82211': { zone: 'ZONE_03', name: 'Herrsching', color: 'pink', ttt: '60+ min' },
+                '82327': { zone: 'ZONE_03', name: 'Tutzing', color: 'pink', ttt: '60+ min' },
+                '82152': { zone: 'ZONE_03', name: 'Planegg', color: 'pink', ttt: '60+ min' },
+                '82166': { zone: 'ZONE_03', name: 'Gräfelfing', color: 'pink', ttt: '60+ min' },
+            };
+
+            function normalizeInput(input) {
+                return input.trim().toLowerCase().replace(/\s+/g, '');
+            }
+
+            function findZone(query) {
+                const normalized = normalizeInput(query);
+
+                // Try exact PLZ match
+                if (zoneMap[normalized]) {
+                    return zoneMap[normalized];
+                }
+
+                // Try partial PLZ match (first 2-3 digits)
+                for (const [plz, data] of Object.entries(zoneMap)) {
+                    if (normalized.startsWith(plz.substring(0, 3)) && normalized.length >= 3) {
+                        return data;
+                    }
+                }
+
+                // Try city name match
+                for (const [plz, data] of Object.entries(zoneMap)) {
+                    if (data.name.toLowerCase().includes(normalized) || normalized.includes(data.name.toLowerCase())) {
+                        return data;
+                    }
+                }
+
+                return null;
+            }
+
+            function performVerification() {
+                const input = sectorInput.value.trim();
+                if (!input) {
+                    scanResult.className = 'scan-result error';
+                    scanResult.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Bitte geben Sie eine PLZ oder Stadt ein.';
+                    return;
+                }
+
+                const result = findZone(input);
+
+                if (result) {
+                    const zoneClass = result.color === 'gold' ? 'gold-text' :
+                        result.color === 'cyan' ? 'cyan-text' : 'pink-text';
+
+                    scanResult.className = 'scan-result success';
+                    scanResult.innerHTML = `
+                        <div>
+                            <i class="fas fa-check-circle"></i>
+                            <strong class="${zoneClass}">${result.zone}</strong> — ${result.name}
+                            <span style="color:var(--text-dim);font-size:0.7rem;display:block;margin-top:4px;">
+                                TTT: ${result.ttt} // Kapazität: ${result.color === 'gold' ? 'HOCH' : result.color === 'cyan' ? 'MITTEL' : 'BEGRENZT'}
+                            </span>
+                        </div>
+                    `;
+                } else {
+                    scanResult.className = 'scan-result error';
+                    scanResult.innerHTML = `
+                        <div>
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <strong>Nicht in Kernzonen</strong> — Bitte prüfen Sie das "Extended Range Protocol" für Ihr Projekt.
+                            <span style="color:var(--text-dim);font-size:0.7rem;display:block;margin-top:4px;">
+                                Wir sind auch für Sonderprojekte in ganz Bayern und darüber hinaus verfügbar.
+                            </span>
+                        </div>
+                    `;
+                }
+            }
+
+            if (verifyBtn) {
+                verifyBtn.addEventListener('click', performVerification);
+            }
+
+            if (sectorInput) {
+                sectorInput.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        performVerification();
+                    }
+                });
+            }
+
+            // ============================================================
+            // 7. CONTACT BUTTONS
+            // ============================================================
+            function bindContactButtons() {
+                document.querySelectorAll('.js-open-contact').forEach(function(btn) {
+                    if (btn.dataset.bound) return;
+                    btn.dataset.bound = '1';
+                    btn.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        const target = document.getElementById('contact');
+                        if (target) {
+                            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }
+                        if (mobileMenu && mobileMenu.classList.contains('open')) {
+                            mobileMenu.classList.remove('open');
+                            if (toggle) {
+                                toggle.classList.remove('active');
+                                toggle.setAttribute('aria-expanded', 'false');
+                            }
+                            document.body.classList.remove('menu-open');
+                        }
+                    });
+                });
+            }
+            bindContactButtons();
+
+            // ============================================================
+            // 8. SMOOTH SCROLL FOR ANCHOR LINKS
+            // ============================================================
+            document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+                anchor.addEventListener('click', function(e) {
+                    const id = this.getAttribute('href');
+                    if (id === '#') return;
+                    const target = document.querySelector(id);
+                    if (target) {
+                        e.preventDefault();
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+
+            console.log('✓ Deployment Sector Map · Raphael Lezius 2026');
+
+        })();
     </script>
+
 </body>
 </html>
