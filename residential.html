@@ -3,511 +3,1982 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Premium Küchen & Interieur Montage | Raphael Lezius</title>
+    <title>Premium Küchen & Interieur Montage | Raphael Lezius – Privatkunden</title>
     <meta name="description" content="Millimetergenaue Montage von Einbauküchen, PAX Kleiderschränken und Premium-Wohnmöbeln (Segmüller, XXXLutz) in Augsburg und München. Laser-Nivellierung, Festool, HEPA-staubfrei.">
     <meta name="theme-color" content="#030405">
 
+    <!-- Open Graph -->
+    <meta property="og:title" content="Privatkunden Montage | Raphael Lezius">
+    <meta property="og:description" content="Premium Möbelmontage für Küchen, PAX Schränke und Wohnmöbel. Laser-Nivellierung, Festool, HEPA-staubfrei.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://raphael-lezius.com/residential.html">
+    <meta property="og:image" content="https://raphael-lezius.com/assets/images/og-image.jpg">
+
+    <!-- Schema.org – Local Business -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "name": "Raphael Lezius – Premium Montage",
+            "image": "https://raphael-lezius.com/assets/images/raphael-lezius-logo-front.webp",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Augsburg",
+                "addressRegion": "Bayern",
+                "addressCountry": "DE"
+            },
+            "telephone": "+491608194018",
+            "email": "r.lezius@gmail.com",
+            "priceRange": "€€",
+            "openingHours": "Mo-Fr 08:00-20:00, Sa 09:00-16:00",
+            "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "5.0",
+                "reviewCount": "110"
+            }
+        }
+    </script>
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&family=Montserrat:wght@700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700;800&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- Component Styles -->
     <link rel="stylesheet" href="assets/css/components/nav.css">
     <link rel="stylesheet" href="assets/css/components/footer.css">
-    <link rel="stylesheet" href="assets/css/components/mission-os.css">
-    <link rel="stylesheet" href="assets/css/components/residential.css">
+
+    <style>
+        /* ============================================================
+           RESIDENTIAL PAGE – UNIFIED BRAND COLOR SYSTEM
+           Primary: Gold (#FFD700) – Headlines, CTAs, Logo
+           Secondary: Cyan (#00E5FF) – Accents, Tags, Tech highlights
+           Accent: Cyan (subtle – 10% of page)
+           Background: Deep Black (#020203) with subtle cyan glow
+           ============================================================ */
+
+        /* ── ROOT VARIABLES ── */
+        :root {
+            --brand-gold: #FFD700;
+            --brand-gold-bright: #FFE566;
+            --brand-gold-dim: rgba(255, 215, 0, 0.08);
+            --brand-cyan: #00E5FF;
+            --brand-cyan-bright: #5EF0FF;
+            --brand-cyan-dim: rgba(0, 229, 255, 0.04);
+            --brand-pink: #FF007F;
+            --brand-dark: #020203;
+            --brand-surface: #080B0E;
+            --brand-card: rgba(255, 255, 255, 0.025);
+            --brand-text: #F8FAFC;
+            --brand-muted: #94A3B8;
+            --brand-dim: #64748B;
+            --brand-border: rgba(255, 255, 255, 0.06);
+            --brand-glow-gold: 0 0 40px rgba(255, 215, 0, 0.06);
+            --brand-glow-cyan: 0 0 40px rgba(0, 229, 255, 0.04);
+            --font-head: 'Space Grotesk', system-ui, sans-serif;
+            --font-body: 'Inter', system-ui, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --font-signature: 'Mrs Saint Delafield', cursive;
+            --container: 1200px;
+            --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+            --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* ── RESET & BASE ── */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            background: var(--brand-dark);
+            color: var(--brand-text);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+            padding-top: 0;
+            min-height: 100vh;
+        }
+        body.menu-open {
+            overflow: hidden;
+        }
+        img {
+            max-width: 100%;
+            display: block;
+        }
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+        button {
+            font-family: inherit;
+            border: none;
+            background: none;
+            color: inherit;
+            cursor: pointer;
+        }
+        ul {
+            list-style: none;
+        }
+        ::selection {
+            background: rgba(255, 215, 0, 0.3);
+            color: #fff;
+        }
+
+        /* ── Container ── */
+        .container {
+            max-width: var(--container);
+            margin: 0 auto;
+            padding: 0 clamp(16px, 4vw, 32px);
+        }
+        .section-padding {
+            padding: clamp(60px, 8vw, 110px) 0;
+        }
+        .text-center {
+            text-align: center;
+        }
+
+        /* ── Brand Colors ── */
+        .gold-text {
+            color: var(--brand-gold) !important;
+        }
+        .cyan-text {
+            color: var(--brand-cyan) !important;
+        }
+        .text-muted {
+            color: var(--brand-muted) !important;
+        }
+        .text-dim {
+            color: var(--brand-dim) !important;
+        }
+
+        /* ── Glass Panel ── */
+        .glass-panel {
+            background: rgba(10, 8, 5, 0.72);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid rgba(255, 215, 0, 0.06);
+            border-radius: 14px;
+            padding: 28px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s var(--ease-spring);
+        }
+        .glass-panel:hover {
+            border-color: rgba(255, 215, 0, 0.14);
+            box-shadow: var(--brand-glow-gold);
+        }
+
+        /* ── Badge ── */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 14px;
+            border-radius: 30px;
+            font-family: var(--font-mono);
+            font-size: 0.55rem;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+        }
+        .badge--cyan {
+            background: rgba(0, 229, 255, 0.06);
+            color: var(--brand-cyan);
+            border: 1px solid rgba(0, 229, 255, 0.10);
+        }
+        .badge--gold {
+            background: rgba(255, 215, 0, 0.06);
+            color: var(--brand-gold);
+            border: 1px solid rgba(255, 215, 0, 0.10);
+        }
+        .badge--pink {
+            background: rgba(255, 0, 127, 0.06);
+            color: var(--brand-pink);
+            border: 1px solid rgba(255, 0, 127, 0.08);
+        }
+
+        /* ── Buttons (ALL GOLD) ── */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 34px;
+            border-radius: 10px;
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 0.72rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: all 0.35s var(--ease-smooth);
+            border: 1px solid transparent;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--brand-gold), #e6c200);
+            color: #0f172a;
+            box-shadow: 0 8px 28px rgba(255, 215, 0, 0.25);
+        }
+        .btn-primary:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 16px 44px rgba(255, 215, 0, 0.40);
+        }
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(255, 255, 255, 0.08);
+            color: var(--brand-text);
+        }
+        .btn-secondary:hover {
+            background: rgba(255, 215, 0, 0.06);
+            border-color: var(--brand-gold);
+            transform: translateY(-4px);
+        }
+        .btn-ghost {
+            background: transparent;
+            border-color: rgba(255, 215, 0, 0.20);
+            color: var(--brand-gold);
+        }
+        .btn-ghost:hover {
+            background: rgba(255, 215, 0, 0.06);
+            transform: translateY(-4px);
+        }
+        .btn-block {
+            width: 100%;
+            justify-content: center;
+        }
+        .btn-sm {
+            padding: 10px 20px;
+            font-size: 0.6rem;
+        }
+
+        /* ── Section Header ── */
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .section-header .pre-title {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            letter-spacing: 3px;
+            color: var(--brand-cyan);
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            display: block;
+        }
+        .section-header h2 {
+            font-family: var(--font-head);
+            font-weight: 800;
+            font-size: clamp(2rem, 4.2vw, 3.1rem);
+            line-height: 1.1;
+            margin-bottom: 16px;
+            color: #fff;
+        }
+        .section-header h2 .gold-text {
+            color: var(--brand-gold);
+        }
+        .section-header p {
+            color: var(--brand-muted);
+            max-width: 620px;
+            margin: 0 auto;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        /* ── Reveal ── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.7s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ── Component Loading ── */
+        .component-loading {
+            padding: 20px;
+            text-align: center;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--brand-cyan);
+        }
+
+        /* ============================================================
+           HERO – RESIDENTIAL
+           ============================================================ */
+        .res-hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 0 80px;
+            overflow: hidden;
+        }
+        .res-hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            background:
+                radial-gradient(ellipse at 20% 30%, rgba(0, 229, 255, 0.06), transparent 55%),
+                radial-gradient(ellipse at 80% 70%, rgba(255, 215, 0, 0.04), transparent 50%),
+                var(--brand-dark);
+        }
+        .res-hero-grid-overlay {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            pointer-events: none;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.3;
+            mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+        }
+        .res-hero .container {
+            position: relative;
+            z-index: 2;
+        }
+        .res-hero-grid {
+            display: grid;
+            grid-template-columns: 1.15fr 0.95fr;
+            gap: clamp(28px, 5vw, 56px);
+            align-items: center;
+        }
+        @media (max-width: 1024px) {
+            .res-hero-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        .res-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--font-mono);
+            font-size: clamp(0.6rem, 1.2vw, 0.72rem);
+            letter-spacing: 2.5px;
+            color: var(--brand-cyan);
+            margin-bottom: 18px;
+            text-transform: uppercase;
+        }
+        .res-eyebrow .blink {
+            animation: blinkPulse 1.8s ease-in-out infinite;
+        }
+        @keyframes blinkPulse {
+            0%,
+            100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.25;
+            }
+        }
+
+        .res-mega-title {
+            font-family: var(--font-head);
+            font-weight: 900;
+            font-size: clamp(2.4rem, 7vw, 4.4rem);
+            line-height: 0.98;
+            letter-spacing: -1px;
+            text-transform: uppercase;
+            color: #fff;
+            margin: 0 0 22px;
+        }
+        .res-mega-title .gold-text {
+            color: var(--brand-gold);
+            text-shadow: 0 0 40px rgba(255, 215, 0, 0.15);
+        }
+
+        .res-lead {
+            font-size: clamp(1rem, 1.4vw, 1.15rem);
+            line-height: 1.8;
+            color: var(--brand-muted);
+            max-width: 540px;
+            margin: 0;
+        }
+        .res-lead strong {
+            color: var(--brand-text);
+            font-weight: 600;
+        }
+
+        .res-hero-ctas {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 32px;
+        }
+        .res-hero-ctas .btn {
+            min-width: 180px;
+        }
+
+        .res-trust-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px 22px;
+            margin-top: 28px;
+            font-family: var(--font-mono);
+            font-size: 0.6rem;
+            letter-spacing: 1px;
+            color: var(--brand-dim);
+        }
+        .res-trust-row i {
+            color: var(--brand-gold);
+            margin-right: 6px;
+        }
+
+        /* ── Hero Stats Stack ── */
+        .res-stat-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .res-stat-card {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+            padding: 18px 20px;
+            border-radius: 14px;
+            background: rgba(8, 11, 14, 0.88);
+            border: 1px solid rgba(0, 229, 255, 0.10);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            transition: transform 0.35s var(--ease-spring), border-color 0.35s, box-shadow 0.35s;
+        }
+        .res-stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.5);
+            border-color: rgba(255, 215, 0, 0.20);
+        }
+        .res-stat-card .stat-icon {
+            font-size: 1.5rem;
+            color: var(--brand-cyan);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        .res-stat-card h4 {
+            margin: 0 0 6px;
+            color: #fff;
+            font-family: var(--font-mono);
+            font-size: 1rem;
+            font-weight: 700;
+        }
+        .res-stat-card p {
+            margin: 0;
+            color: var(--brand-muted);
+            font-size: 0.86rem;
+            line-height: 1.45;
+        }
+        .res-stat-card.gold-border {
+            border-color: rgba(255, 215, 0, 0.15);
+        }
+        .res-stat-card.gold-border .stat-icon {
+            color: var(--brand-gold);
+        }
+        .res-stat-card.pink-border {
+            border-color: rgba(255, 0, 127, 0.10);
+        }
+        .res-stat-card.pink-border .stat-icon {
+            color: var(--brand-pink);
+        }
+
+        /* ============================================================
+           HARDWARE STRIP
+           ============================================================ */
+        .res-hardware-section {
+            background: var(--brand-dark);
+            padding: 8px 0 24px;
+            border-top: 1px solid var(--brand-border);
+            border-bottom: 1px solid var(--brand-border);
+        }
+        .hardware-strip {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            padding: 18px 0;
+        }
+        @media (max-width: 768px) {
+            .hardware-strip {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        @media (max-width: 480px) {
+            .hardware-strip {
+                grid-template-columns: 1fr;
+            }
+        }
+        .hw-item {
+            padding: 14px 16px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            text-align: center;
+        }
+        .hw-item .hw-label {
+            display: block;
+            font-family: var(--font-mono);
+            font-size: 0.55rem;
+            letter-spacing: 1.8px;
+            color: var(--brand-dim);
+            margin-bottom: 4px;
+            text-transform: uppercase;
+        }
+        .hw-item .hw-value {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--brand-text);
+            font-family: var(--font-mono);
+        }
+        .hw-item .hw-value.cyan-text {
+            color: var(--brand-cyan);
+        }
+
+        /* ============================================================
+           VALUE PROPOSITION
+           ============================================================ */
+        .res-value-section {
+            background: var(--brand-surface);
+        }
+        .res-value-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.15fr;
+            gap: clamp(28px, 5vw, 52px);
+            align-items: start;
+        }
+        @media (max-width: 768px) {
+            .res-value-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+        .res-value-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+        @media (max-width: 480px) {
+            .res-value-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+        .res-value-card {
+            padding: 22px 20px;
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: border-color 0.3s, transform 0.3s var(--ease-spring), background 0.3s;
+        }
+        .res-value-card:hover {
+            border-color: rgba(255, 215, 0, 0.15);
+            transform: translateY(-4px);
+            background: rgba(255, 215, 0, 0.03);
+        }
+        .res-value-card i {
+            font-size: 1.4rem;
+            color: var(--brand-gold);
+            margin-bottom: 12px;
+            display: block;
+        }
+        .res-value-card h3 {
+            font-family: var(--font-head);
+            font-size: 1rem;
+            font-weight: 700;
+            color: #fff;
+            margin: 0 0 6px;
+        }
+        .res-value-card p {
+            font-size: 0.85rem;
+            color: var(--brand-muted);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* ============================================================
+           MASTERCLASS BENTO
+           ============================================================ */
+        .res-bento-section {
+            background: var(--brand-dark);
+        }
+        .bento-2026 {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 16px;
+        }
+        .bento-cell {
+            grid-column: span 12;
+            padding: clamp(22px, 3vw, 32px);
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            transition: border-color 0.3s, transform 0.3s var(--ease-spring);
+        }
+        .bento-cell:hover {
+            border-color: rgba(255, 215, 0, 0.12);
+            transform: translateY(-4px);
+        }
+        .bento-cell.span-8 {
+            grid-column: span 8;
+        }
+        .bento-cell.span-6 {
+            grid-column: span 6;
+        }
+        .bento-cell.span-4 {
+            grid-column: span 4;
+        }
+        @media (max-width: 1100px) {
+            .bento-cell.span-8,
+            .bento-cell.span-6,
+            .bento-cell.span-4 {
+                grid-column: span 12;
+            }
+        }
+
+        .bento-cell h3 {
+            font-family: var(--font-head);
+            font-size: clamp(1.2rem, 1.8vw, 1.5rem);
+            color: #fff;
+            margin: 0 0 6px;
+        }
+        .bento-cell p {
+            color: var(--brand-muted);
+            font-size: 0.92rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+        .bento-cell .bento-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .bento-cell .bento-head i {
+            font-size: 2.4rem;
+            color: var(--brand-gold);
+        }
+
+        .res-sys-tag {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            padding: 4px 14px;
+            border-radius: 20px;
+            border: 1px solid;
+            white-space: nowrap;
+            letter-spacing: 1.2px;
+        }
+        .res-sys-tag.cyan {
+            color: var(--brand-cyan);
+            border-color: rgba(0, 229, 255, 0.25);
+            background: rgba(0, 229, 255, 0.04);
+        }
+        .res-sys-tag.gold {
+            color: var(--brand-gold);
+            border-color: rgba(255, 215, 0, 0.25);
+            background: rgba(255, 215, 0, 0.04);
+        }
+        .res-sys-tag.pink {
+            color: var(--brand-pink);
+            border-color: rgba(255, 0, 127, 0.20);
+            background: rgba(255, 0, 127, 0.04);
+        }
+
+        .tech-list-2026 {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .tech-list-2026 li {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            font-size: 0.88rem;
+            color: var(--brand-muted);
+            line-height: 1.5;
+        }
+        .tech-list-2026 li i {
+            margin-top: 3px;
+            flex-shrink: 0;
+            color: var(--brand-gold);
+        }
+        .tech-list-2026 li strong {
+            color: var(--brand-text);
+        }
+
+        .res-legal-note {
+            margin-top: 8px;
+            font-size: 0.75rem;
+            color: var(--brand-dim);
+            font-family: var(--font-mono);
+            line-height: 1.5;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            padding-top: 12px;
+        }
+
+        /* Kitchen bento special */
+        .res-bento-kitchen {
+            background: linear-gradient(145deg, rgba(0, 229, 255, 0.04), var(--brand-surface)) !important;
+            border-color: rgba(0, 229, 255, 0.06) !important;
+        }
+        .res-bento-kitchen:hover {
+            border-color: rgba(0, 229, 255, 0.15) !important;
+        }
+        .res-bento-pax {
+            background: linear-gradient(145deg, rgba(255, 215, 0, 0.04), var(--brand-surface)) !important;
+            border-color: rgba(255, 215, 0, 0.06) !important;
+        }
+        .res-bento-pax:hover {
+            border-color: rgba(255, 215, 0, 0.15) !important;
+        }
+
+        /* ============================================================
+           SERVICE LAYERS
+           ============================================================ */
+        .res-layers-section {
+            background: var(--brand-surface);
+        }
+        .res-layers-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-top: 12px;
+        }
+        @media (max-width: 1024px) {
+            .res-layers-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        @media (max-width: 600px) {
+            .res-layers-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .res-layer-card {
+            position: relative;
+            padding: 24px 20px;
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: transform 0.35s var(--ease-spring), border-color 0.35s, box-shadow 0.35s;
+        }
+        .res-layer-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(255, 215, 0, 0.12);
+            box-shadow: var(--brand-glow-gold);
+        }
+        .res-layer-featured {
+            border-color: rgba(255, 215, 0, 0.20);
+            background: linear-gradient(165deg, rgba(255, 215, 0, 0.04), rgba(8, 11, 14, 0.96));
+        }
+        .res-layer-featured .res-layer-badge {
+            display: inline-block;
+            background: var(--brand-gold);
+            color: #000;
+            font-family: var(--font-mono);
+            font-size: 0.5rem;
+            font-weight: 800;
+            letter-spacing: 1.2px;
+            padding: 2px 12px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        .res-layer-num {
+            font-family: var(--font-mono);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.06);
+            margin-bottom: 4px;
+            line-height: 1;
+        }
+        .res-layer-card h3 {
+            font-family: var(--font-head);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #fff;
+            margin: 0 0 2px;
+        }
+        .res-layer-tag {
+            font-family: var(--font-mono);
+            font-size: 0.55rem;
+            letter-spacing: 1px;
+            color: var(--brand-cyan);
+            margin: 0 0 12px;
+        }
+        .res-layer-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 12px;
+        }
+        .res-layer-card ul li {
+            font-size: 0.82rem;
+            color: var(--brand-muted);
+            padding: 6px 0 6px 14px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            position: relative;
+        }
+        .res-layer-card ul li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 12px;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--brand-gold);
+        }
+        .res-layer-fit {
+            font-size: 0.7rem;
+            color: var(--brand-dim);
+            margin: 0;
+            font-style: italic;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            padding-top: 10px;
+        }
+
+        .res-layers-cta {
+            text-align: center;
+            margin-top: 36px;
+        }
+        .res-layers-cta p {
+            color: var(--brand-muted);
+            margin: 0 0 16px;
+        }
+
+        /* ============================================================
+           PROCESS TIMELINE
+           ============================================================ */
+        .res-timeline-section {
+            background: var(--brand-dark);
+        }
+        .res-timeline {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 12px;
+            position: relative;
+        }
+        @media (max-width: 768px) {
+            .res-timeline {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        @media (max-width: 480px) {
+            .res-timeline {
+                grid-template-columns: 1fr;
+            }
+        }
+        .res-timeline::before {
+            content: '';
+            position: absolute;
+            top: 16px;
+            left: 6%;
+            right: 6%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.20), transparent);
+            pointer-events: none;
+        }
+        @media (max-width: 768px) {
+            .res-timeline::before {
+                display: none;
+            }
+        }
+        .res-tl-item {
+            position: relative;
+            padding-top: 42px;
+        }
+        .res-tl-dot {
+            position: absolute;
+            top: 8px;
+            left: 0;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--brand-gold);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+            border: 2px solid var(--brand-dark);
+            z-index: 1;
+        }
+        .res-tl-step {
+            font-family: var(--font-mono);
+            font-size: 0.6rem;
+            letter-spacing: 2px;
+            color: var(--brand-gold);
+            display: block;
+            margin-bottom: 6px;
+        }
+        .res-tl-content h3 {
+            font-size: 1.05rem;
+            color: #fff;
+            margin: 0 0 6px;
+            font-family: var(--font-head);
+        }
+        .res-tl-content p {
+            font-size: 0.85rem;
+            color: var(--brand-muted);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* ============================================================
+           KITCHEN ENGINEERING PANEL
+           ============================================================ */
+        .res-kitchen-panel {
+            border: 1px solid rgba(255, 215, 0, 0.06);
+            border-left: 4px solid var(--brand-gold);
+            border-radius: 14px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 36px 72px rgba(0, 0, 0, 0.6);
+            padding: 0;
+            background: var(--brand-surface);
+        }
+        .res-kitchen-grid-bg {
+            position: absolute;
+            inset: 0;
+            opacity: 0.04;
+            pointer-events: none;
+            background-image:
+                linear-gradient(var(--brand-cyan) 1px, transparent 1px),
+                linear-gradient(90deg, var(--brand-cyan) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+        .res-kitchen-inner {
+            position: relative;
+            z-index: 2;
+            padding: clamp(32px, 5vw, 56px);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+        @media (max-width: 768px) {
+            .res-kitchen-inner {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+        .res-kitchen-copy {
+            flex: 1 1 320px;
+            min-width: 0;
+        }
+        .res-kitchen-copy .res-sys-tag {
+            margin-bottom: 12px;
+            display: inline-block;
+        }
+        .res-kitchen-copy h2 {
+            font-family: var(--font-head);
+            font-weight: 800;
+            font-size: clamp(1.6rem, 3vw, 2.4rem);
+            color: #fff;
+            margin: 0 0 12px;
+        }
+        .res-kitchen-copy p {
+            color: var(--brand-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin: 0 0 16px;
+        }
+        .res-check-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 16px;
+        }
+        .res-check-list li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 6px 0;
+            color: var(--brand-text);
+            font-size: 0.9rem;
+        }
+        .res-check-list li i {
+            color: var(--brand-gold);
+            font-size: 0.8rem;
+        }
+        .res-gold-note {
+            background: rgba(255, 215, 0, 0.04);
+            padding: 14px 16px;
+            border-radius: 8px;
+            border-left: 2px solid var(--brand-gold);
+        }
+        .res-gold-note p {
+            font-size: 0.82rem;
+            color: var(--brand-muted);
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .res-kitchen-visual {
+            flex: 1 1 260px;
+            min-width: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            min-height: 220px;
+        }
+        .res-orbit {
+            width: clamp(180px, 24vw, 280px);
+            height: clamp(180px, 24vw, 280px);
+            border-radius: 50%;
+            border: 1px dashed rgba(255, 215, 0, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: resOrbitSpin 40s linear infinite;
+        }
+        @keyframes resOrbitSpin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        .res-orbit-inner {
+            width: 85%;
+            height: 85%;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            box-shadow: inset 0 0 40px rgba(255, 215, 0, 0.04);
+        }
+        .res-orbit-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: clamp(3rem, 6vw, 4.5rem);
+            color: var(--brand-gold);
+            filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.15));
+            pointer-events: none;
+            z-index: 2;
+        }
+        .res-tool-tag {
+            position: absolute;
+            z-index: 3;
+            background: rgba(5, 5, 5, 0.92);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 6px 12px;
+            font-family: var(--font-mono);
+            font-size: 0.6rem;
+            color: #fff;
+            border-radius: 4px;
+            backdrop-filter: blur(4px);
+        }
+        .res-tool-tag .gold-text {
+            color: var(--brand-gold);
+        }
+        .res-tool-top {
+            top: 10%;
+            left: -5%;
+        }
+        .res-tool-bot {
+            bottom: 12%;
+            right: -5%;
+        }
+
+        /* ============================================================
+           FAQ
+           ============================================================ */
+        .res-faq-section {
+            background: var(--brand-surface);
+        }
+        .res-faq-list {
+            max-width: 820px;
+            margin: 8px auto 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .res-faq-item {
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            background: rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+            transition: border-color 0.3s;
+        }
+        .res-faq-item.is-open {
+            border-color: rgba(255, 215, 0, 0.15);
+        }
+        .res-faq-trigger {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            padding: 16px 20px;
+            text-align: left;
+            background: transparent;
+            border: none;
+            color: #fff;
+            font-size: 0.92rem;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: var(--font-body);
+            line-height: 1.4;
+        }
+        .res-faq-trigger i {
+            color: var(--brand-gold);
+            transition: transform 0.3s;
+            flex-shrink: 0;
+        }
+        .res-faq-item.is-open .res-faq-trigger i {
+            transform: rotate(45deg);
+        }
+        .res-faq-panel {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+        .res-faq-item.is-open .res-faq-panel {
+            max-height: 200px;
+        }
+        .res-faq-panel p {
+            padding: 0 20px 18px 20px;
+            margin: 0;
+            color: var(--brand-muted);
+            font-size: 0.88rem;
+            line-height: 1.6;
+        }
+
+        /* ============================================================
+           FINAL CTA
+           ============================================================ */
+        .res-final-cta {
+            background: linear-gradient(135deg, #050505, #0a0a12);
+            text-align: center;
+            border-top: 1px solid rgba(255, 215, 0, 0.06);
+        }
+        .res-cta-title {
+            font-family: var(--font-head);
+            font-size: clamp(1.8rem, 4.5vw, 3rem);
+            font-weight: 800;
+            color: #fff;
+            margin: 0 0 14px;
+            letter-spacing: -0.5px;
+        }
+        .res-cta-title .gold-text {
+            color: var(--brand-gold);
+        }
+        .res-cta-text {
+            font-size: 1rem;
+            color: var(--brand-muted);
+            margin: 0 auto 28px;
+            max-width: 560px;
+            line-height: 1.65;
+        }
+        .res-cta-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+        }
+        .whatsapp-cta {
+            border-color: rgba(37, 211, 102, 0.35) !important;
+            color: #25d366 !important;
+        }
+        .whatsapp-cta:hover {
+            background: rgba(37, 211, 102, 0.08) !important;
+            box-shadow: 0 0 28px rgba(37, 211, 102, 0.12) !important;
+        }
+
+        /* ============================================================
+           RESPONSIVE
+           ============================================================ */
+        @media (max-width: 768px) {
+            .res-hero {
+                padding: 100px 0 50px;
+                min-height: auto;
+            }
+            .res-hero-ctas {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .res-hero-ctas .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            .res-stat-stack {
+                max-width: 480px;
+                margin: 0 auto;
+            }
+            .res-value-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .res-value-cards {
+                grid-template-columns: 1fr 1fr;
+            }
+            .bento-2026 {
+                gap: 12px;
+            }
+            .bento-cell {
+                padding: 20px 16px;
+            }
+            .res-layers-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .res-kitchen-inner {
+                padding: 24px 18px;
+                text-align: left;
+            }
+            .res-kitchen-visual {
+                min-height: 180px;
+            }
+            .res-orbit {
+                width: 160px;
+                height: 160px;
+            }
+            .res-tool-top {
+                left: 0;
+            }
+            .res-tool-bot {
+                right: 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .res-hero-ctas .btn {
+                font-size: 0.65rem;
+                padding: 14px 20px;
+            }
+            .res-value-cards {
+                grid-template-columns: 1fr;
+            }
+            .res-layers-grid {
+                grid-template-columns: 1fr;
+            }
+            .res-timeline {
+                grid-template-columns: 1fr;
+            }
+            .res-stat-card {
+                padding: 14px 16px;
+            }
+            .res-stat-card h4 {
+                font-size: 0.85rem;
+            }
+            .res-stat-card p {
+                font-size: 0.78rem;
+            }
+            .res-faq-trigger {
+                font-size: 0.82rem;
+                padding: 14px 16px;
+            }
+            .res-kitchen-copy h2 {
+                font-size: 1.4rem;
+            }
+            .res-tool-top,
+            .res-tool-bot {
+                font-size: 0.5rem;
+                padding: 4px 8px;
+            }
+            .res-orbit {
+                width: 140px;
+                height: 140px;
+            }
+            .res-orbit-icon {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* ── Reduced Motion ── */
+        @media (prefers-reduced-motion: reduce) {
+            .res-orbit,
+            .blink,
+            .res-hero-grid-overlay {
+                animation: none !important;
+            }
+            .res-stat-card,
+            .res-value-card,
+            .res-layer-card,
+            .bento-cell,
+            .btn {
+                transition: none !important;
+            }
+            .res-stat-card:hover,
+            .res-value-card:hover,
+            .res-layer-card:hover,
+            .bento-cell:hover,
+            .btn:hover {
+                transform: none !important;
+            }
+            .reveal {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+        }
+
+        /* ── WhatsApp Float (Global style override) ── */
+        .whatsapp-float {
+            position: fixed;
+            right: 20px;
+            bottom: 24px;
+            z-index: 9999;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #25d366;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 8px 32px rgba(37, 211, 102, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.1) translateY(-4px);
+            box-shadow: 0 12px 44px rgba(37, 211, 102, 0.5);
+        }
+        .whatsapp-pulse {
+            position: absolute;
+            inset: -6px;
+            border-radius: 50%;
+            border: 2px solid rgba(37, 211, 102, 0.25);
+            animation: whatsappPulse 2s ease-in-out infinite;
+        }
+        @keyframes whatsappPulse {
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+            50% {
+                transform: scale(1.25);
+                opacity: 0;
+            }
+        }
+        @media (max-width: 600px) {
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                font-size: 1.4rem;
+                right: 14px;
+                bottom: 16px;
+            }
+        }
+
+        /* ── Scrollbar ── */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--brand-dark);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, var(--brand-gold), var(--brand-cyan));
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, var(--brand-gold-bright), var(--brand-cyan-bright));
+        }
+    </style>
 </head>
+<body>
 
-<body class="is-dark no-js-override residential-page">
+    <!-- ============================================================
+    NAV PLACEHOLDER – Component loader will inject here
+    ============================================================ -->
+    <div id="nav-placeholder">
+        <div class="component-loading"><i class="fas fa-sync-alt fa-spin"></i> NAV SYSTEM INIT...</div>
+    </div>
 
-    <div id="global-nav"></div>
+    <!-- ============================================================
+    HERO – RESIDENTIAL
+    ============================================================ -->
+    <section class="res-hero" id="home">
+        <div class="res-hero-bg"></div>
+        <div class="res-hero-grid-overlay" aria-hidden="true"></div>
 
-    <main>
+        <div class="container">
+            <div class="res-hero-grid">
 
-        <!-- ========== HERO ========== -->
-        <section class="neo-hero res-hero">
-            <div class="neo-hero-bg"></div>
-            <div class="res-hero-grid-overlay" aria-hidden="true"></div>
-            <div class="container relative-z">
-                <div class="neo-hero-grid">
-                    <div data-aos="fade-right" data-aos-duration="1000">
-                        <span class="res-eyebrow">
-                            <i class="fas fa-microchip blink"></i> INTERIEUR ARCHITEKTUR 2.0 // PRIVATKUNDEN
-                        </span>
-                        <h1 class="mega-title">
-                            PRÄZISION<br>IST KEIN<br>
-                            <span class="cyan-text res-glow-cyan">ZUFALL.</span>
-                        </h1>
-                        <p class="neo-lead">
-                            Vergessen Sie wackelnde Schränke, klemmende Schubladen und den Frust fehlender Schrauben.
-                            Ich baue Ihre teuren Küchen und Möbelkomplexe nicht nur auf – ich <strong>implementiere</strong> sie
-                            mit industrieller Exaktheit in Ihre Räumlichkeiten. Laser-nivelliert. HEPA-staubfrei. Persönlich.
-                        </p>
-                        <div class="res-hero-ctas">
-                            <button type="button" class="btn btn-gold reactive-btn btn-magnetic js-open-os res-btn-primary">
-                                PROJEKT STARTEN <i class="fas fa-arrow-right"></i>
-                            </button>
-                            <a href="#masterclass" class="btn-holographic reactive-btn res-btn-outline">
-                                FACHBEREICHE ANSEHEN
-                            </a>
-                        </div>
-                        <div class="res-trust-row">
-                            <span><i class="fas fa-star"></i> 5.0 Rating</span>
-                            <span><i class="fas fa-users"></i> 110+ Kunden</span>
-                            <span><i class="fas fa-map-marker-alt"></i> AUG · MUC</span>
+                <!-- Left Column -->
+                <div class="res-hero-content reveal">
+                    <span class="res-eyebrow">
+                        <i class="fas fa-microchip blink"></i> INTERIEUR ARCHITEKTUR // PRIVATKUNDEN
+                    </span>
+                    <h1 class="res-mega-title">
+                        PRÄZISION<br>IST KEIN<br>
+                        <span class="gold-text">ZUFALL.</span>
+                    </h1>
+                    <p class="res-lead">
+                        Vergessen Sie wackelnde Schränke, klemmende Schubladen und den Frust fehlender Schrauben.
+                        Ich baue Ihre teuren Küchen und Möbelkomplexe nicht nur auf – ich <strong>implementiere</strong> sie
+                        mit industrieller Exaktheit in Ihre Räumlichkeiten. Laser-nivelliert. HEPA-staubfrei. Persönlich.
+                    </p>
+                    <div class="res-hero-ctas">
+                        <button type="button" class="btn btn-primary js-open-contact">
+                            <i class="fas fa-rocket"></i> PROJEKT STARTEN
+                        </button>
+                        <a href="#masterclass" class="btn btn-secondary">
+                            <i class="fas fa-layer-group"></i> FACHBEREICHE
+                        </a>
+                        <a href="#process" class="btn btn-ghost">
+                            <i class="fas fa-clock"></i> ABLAUF
+                        </a>
+                    </div>
+                    <div class="res-trust-row">
+                        <span><i class="fas fa-star"></i> 5.0 Rating</span>
+                        <span><i class="fas fa-users"></i> 110+ Kunden</span>
+                        <span><i class="fas fa-map-marker-alt"></i> AUG · MUC</span>
+                        <span><i class="fas fa-shield-alt"></i> 5 Mio. € versichert</span>
+                    </div>
+                </div>
+
+                <!-- Right Column – Stats -->
+                <div class="res-stat-stack reveal">
+                    <div class="res-stat-card">
+                        <i class="fas fa-ruler-combined stat-icon"></i>
+                        <div>
+                            <h4>0 mm Toleranz</h4>
+                            <p>Digitale 360° Laser-Nivellierung gleicht selbst die schiefsten Altbau-Böden aus.</p>
                         </div>
                     </div>
-
-                    <div class="res-stat-stack" data-aos="fade-left" data-aos-duration="1200">
-                        <div class="floating-stat-card">
-                            <i class="fas fa-ruler-combined stat-icon-large"></i>
-                            <div>
-                                <h4>0 mm Toleranz</h4>
-                                <p>Digitale 360° Laser-Nivellierung gleicht selbst die schiefsten Altbau-Böden aus.</p>
-                            </div>
+                    <div class="res-stat-card gold-border">
+                        <i class="fas fa-cut stat-icon" style="color:var(--brand-gold);"></i>
+                        <div>
+                            <h4>Festool Machining</h4>
+                            <p>Ausrissfreie, versiegelte Zuschnitte für Küchenarbeitsplatten direkt vor Ort.</p>
                         </div>
-                        <div class="floating-stat-card res-stat-gold">
-                            <i class="fas fa-cut stat-icon-large" style="color: var(--neon-gold);"></i>
-                            <div>
-                                <h4>Festool Machining</h4>
-                                <p>Ausrissfreie, versiegelte Zuschnitte für Küchenarbeitsplatten direkt vor Ort.</p>
-                            </div>
-                        </div>
-                        <div class="floating-stat-card res-stat-pink">
-                            <i class="fas fa-shield-alt stat-icon-large" style="color: var(--neon-pink);"></i>
-                            <div>
-                                <h4>Schwerlast-Fixierung</h4>
-                                <p>Chemische Anker und Fischer-Systeme verhindern Kippen massiver Schränke.</p>
-                            </div>
+                    </div>
+                    <div class="res-stat-card pink-border">
+                        <i class="fas fa-shield-alt stat-icon" style="color:var(--brand-pink);"></i>
+                        <div>
+                            <h4>Schwerlast-Fixierung</h4>
+                            <p>Chemische Anker und Fischer-Systeme verhindern Kippen massiver Schränke.</p>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
 
-        <!-- ========== HARDWARE STRIP ========== -->
-        <section class="res-hardware-section">
-            <div class="container relative-z" data-aos="fade-up">
-                <div class="hardware-strip">
-                    <div class="hw-item">
-                        <span class="hw-label">// KÜCHENSYSTEME</span>
-                        <span class="hw-value">IKEA METOD &amp; ENHET</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    HARDWARE STRIP
+    ============================================================ -->
+    <section class="res-hardware-section">
+        <div class="container">
+            <div class="hardware-strip">
+                <div class="hw-item">
+                    <span class="hw-label">// KÜCHENSYSTEME</span>
+                    <span class="hw-value">IKEA METOD &amp; ENHET</span>
+                </div>
+                <div class="hw-item">
+                    <span class="hw-label">// SCHRANKSYSTEME</span>
+                    <span class="hw-value">IKEA PAX (Alle Maße)</span>
+                </div>
+                <div class="hw-item">
+                    <span class="hw-label">// PREMIUM MARKEN</span>
+                    <span class="hw-value">Segmüller, XXXLutz, Höffner</span>
+                </div>
+                <div class="hw-item">
+                    <span class="hw-label">// WERKZEUG-KLASSE</span>
+                    <span class="hw-value cyan-text">Bosch Prof. &amp; Festool</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    VALUE PROPOSITION
+    ============================================================ -->
+    <section class="section-padding res-value-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="pre-title">WARUM PRIVATKUNDEN MICH WÄHLEN</span>
+                <h2>Nicht nur Montage.<br><span class="gold-text">Architektur im Wohnraum.</span></h2>
+                <p>Große Möbelhäuser liefern – und überlassen den Aufbau oft dem Zufall. Bei High-End-Küchen,
+                    deckenhohen PAX-Systemen und teuren Boxspringbetten entscheidet die Ausführung über Lebensdauer,
+                    Optik und Alltagstauglichkeit.</p>
+            </div>
+
+            <div class="res-value-grid">
+                <div class="res-value-text reveal">
+                    <p style="color:var(--brand-muted);font-size:1.02rem;line-height:1.8;">
+                        Ich arbeite mit dem gleichen Anspruch wie bei einer Werkstatt-Abnahme:
+                        <strong style="color:var(--brand-text);">messbar, dokumentierbar, ohne Kompromisse.</strong>
+                        Jedes Projekt ist eine Visitenkarte – und ich stehe mit meinem Namen dafür.
+                    </p>
+                </div>
+                <div class="res-value-cards reveal">
+                    <div class="res-value-card">
+                        <i class="fas fa-user-tie"></i>
+                        <h3>Persönlich vor Ort</h3>
+                        <p>Keine Subunternehmer. Ich plane, messe und montiere selbst – von der ersten Schraube bis zur Endjustierung.</p>
                     </div>
-                    <div class="hw-item">
-                        <span class="hw-label">// SCHRANKSYSTEME</span>
-                        <span class="hw-value">IKEA PAX (Alle Maße)</span>
+                    <div class="res-value-card">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                        <h3>Festpreis-Klarheit</h3>
+                        <p>Transparente Angebote vor Start. Keine Überraschungen am Ende – Sie planen mit Sicherheit.</p>
                     </div>
-                    <div class="hw-item">
-                        <span class="hw-label">// PREMIUM MARKEN</span>
-                        <span class="hw-value">Segmüller, XXXLutz, Höffner</span>
+                    <div class="res-value-card">
+                        <i class="fas fa-broom"></i>
+                        <h3>Baustelle bleibt Wohnraum</h3>
+                        <p>HEPA-Absaugung, Schutzfolien, sortierte Kartonagen. Ihr Zuhause bleibt nutzbar und sauber.</p>
                     </div>
-                    <div class="hw-item">
-                        <span class="hw-label">// WERKZEUG-KLASSE</span>
-                        <span class="hw-value cyan-text">Bosch Prof. &amp; Festool</span>
+                    <div class="res-value-card">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Voll versichert</h3>
+                        <p>Betriebshaftpflicht bis 5 Mio. €. Ihr Inventar und Ihre Wände sind abgesichert.</p>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- ========== VALUE PROPOSITION ========== -->
-        <section class="section-padding res-value-section">
-            <div class="container">
-                <div class="res-value-grid">
-                    <div data-aos="fade-right">
-                        <span class="res-label cyan">WARUM PRIVATKUNDEN MICH WÄHLEN</span>
-                        <h2 class="res-section-title">Nicht nur Montage.<br><span class="cyan-text">Architektur im Wohnraum.</span></h2>
-                        <p class="res-body">
-                            Große Möbelhäuser liefern – und überlassen den Aufbau oft dem Zufall. Bei High-End-Küchen,
-                            deckenhohen PAX-Systemen und teuren Boxspringbetten entscheidet die Ausführung über Lebensdauer,
-                            Optik und Alltagstauglichkeit. Ich arbeite mit dem gleichen Anspruch wie bei einer Werkstatt-Abnahme:
-                            messbar, dokumentierbar, ohne Kompromisse.
-                        </p>
-                    </div>
-                    <div class="res-value-cards" data-aos="fade-left">
-                        <article class="res-value-card">
-                            <i class="fas fa-user-tie"></i>
-                            <h3>Persönlich vor Ort</h3>
-                            <p>Keine Subunternehmer. Ich plane, messe und montiere selbst – von der ersten Schraube bis zur Endjustierung.</p>
-                        </article>
-                        <article class="res-value-card">
-                            <i class="fas fa-file-invoice-dollar"></i>
-                            <h3>Festpreis-Klarheit</h3>
-                            <p>Transparente Angebote vor Start. Keine Überraschungen am Ende – Sie planen mit Sicherheit.</p>
-                        </article>
-                        <article class="res-value-card">
-                            <i class="fas fa-broom"></i>
-                            <h3>Baustelle bleibt Wohnraum</h3>
-                            <p>HEPA-Absaugung, Schutzfolien, sortierte Kartonagen. Ihr Zuhause bleibt nutzbar und sauber.</p>
-                        </article>
-                        <article class="res-value-card">
-                            <i class="fas fa-shield-alt"></i>
-                            <h3>Voll versichert</h3>
-                            <p>Betriebshaftpflicht bis 5 Mio. €. Ihr Inventar und Ihre Wände sind abgesichert.</p>
-                        </article>
-                    </div>
-                </div>
+    <!-- ============================================================
+    MASTERCLASS BENTO – SERVICE AREAS
+    ============================================================ -->
+    <section class="section-padding res-bento-section" id="masterclass">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="pre-title">CORE COMPETENCIES</span>
+                <h2>Meine <span class="gold-text">Fachbereiche.</span></h2>
+                <p>Fokus auf Systeme, bei denen Präzision, Statik und Profi-Werkzeug den Unterschied machen.</p>
             </div>
-        </section>
 
-        <!-- ========== MASTERCLASS BENTO ========== -->
-        <section id="masterclass" class="section-padding bg-darker">
-            <div class="container relative-z">
-                <div class="section-header" data-aos="fade-up">
-                    <div class="pre-title res-label cyan">CORE COMPETENCIES</div>
-                    <h2 class="section-heading res-section-title">Meine <span class="cyan-text">Fachbereiche.</span></h2>
-                    <p class="section-subtitle res-body">
-                        Fokus auf Systeme, bei denen Präzision, Statik und Profi-Werkzeug den Unterschied machen.
+            <div class="bento-2026 reveal">
+
+                <!-- Kitchen -->
+                <div class="bento-cell span-8 res-bento-kitchen">
+                    <div class="bento-head">
+                        <i class="fas fa-utensils"></i>
+                        <span class="res-sys-tag cyan">SYSTEM_01</span>
+                    </div>
+                    <h3>Einbauküchen &amp; Küchenzeilen</h3>
+                    <p>
+                        Die Montage einer Einbauküche (z.&nbsp;B. IKEA METOD) ist die Königsdisziplin.
+                        Eine schiefe Zeile führt zu Spannungen in der Arbeitsplatte und langfristig zu Wasserschäden.
+                        Ich bringe Hänge- und Unterschränke mit digitalem Laser absolut in die Waage.
+                    </p>
+                    <ul class="tech-list-2026">
+                        <li><i class="fas fa-cut"></i> <div><strong>Ausrissfreier Zuschnitt:</strong> Festool-Tauchsäge für Spülen- und Kochfeld-Aussparungen auf den Millimeter.</div></li>
+                        <li><i class="fas fa-tint-slash"></i> <div><strong>Versiegelung:</strong> Schnittkanten gegen Feuchtigkeit behandelt.</div></li>
+                        <li><i class="fas fa-plug"></i> <div><strong>Geräteintegration:</strong> Passgenauer mechanischer Einbau Ihrer Elektro-Großgeräte.*</div></li>
+                    </ul>
+                    <p class="res-legal-note">
+                        *Festanschlüsse (Wasser/Starkstrom) müssen aus versicherungstechnischen Gründen durch einen konzessionierten Handwerker erfolgen.
                     </p>
                 </div>
 
-                <div class="bento-2026">
-                    <div class="bento-cell span-8 res-bento-kitchen" data-aos="fade-up">
-                        <div>
-                            <div class="res-bento-head">
-                                <i class="fas fa-utensils"></i>
-                                <span class="res-sys-tag cyan">SYSTEM_01</span>
-                            </div>
-                            <h3>Einbauküchen &amp; Küchenzeilen</h3>
-                            <p>
-                                Die Montage einer Einbauküche (z.&nbsp;B. IKEA METOD) ist die Königsdisziplin.
-                                Eine schiefe Zeile führt zu Spannungen in der Arbeitsplatte und langfristig zu Wasserschäden.
-                                Ich bringe Hänge- und Unterschränke mit digitalem Laser absolut in die Waage.
-                            </p>
-                        </div>
-                        <ul class="tech-list-2026">
-                            <li><i class="fas fa-cut"></i> <div><strong>Ausrissfreier Zuschnitt:</strong> Festool-Tauchsäge für Spülen- und Kochfeld-Aussparungen auf den Millimeter.</div></li>
-                            <li><i class="fas fa-tint-slash"></i> <div><strong>Versiegelung:</strong> Schnittkanten gegen Feuchtigkeit behandelt.</div></li>
-                            <li><i class="fas fa-plug"></i> <div><strong>Geräteintegration:</strong> Passgenauer mechanischer Einbau Ihrer Elektro-Großgeräte.*</div></li>
-                        </ul>
-                        <p class="res-legal-note">
-                            *Festanschlüsse (Wasser/Starkstrom) müssen aus versicherungstechnischen Gründen durch einen konzessionierten Handwerker erfolgen.
+                <!-- PAX -->
+                <div class="bento-cell span-4 res-bento-pax">
+                    <div class="bento-head">
+                        <i class="fas fa-door-open" style="color:var(--brand-gold);"></i>
+                        <span class="res-sys-tag gold">SYSTEM_02</span>
+                    </div>
+                    <h3>IKEA PAX Systeme</h3>
+                    <p>
+                        Deckenhohe PAX-Schränke mit Glasschwebetüren sind kein DIY-Projekt.
+                        Schon minimale Unebenheiten lassen Türen klemmen. Ich nivelliere, verankere und justiere lautlos.
+                    </p>
+                    <ul class="tech-list-2026">
+                        <li><i class="fas fa-check" style="color:var(--brand-gold);"></i> Kompletter KOMPLEMENT-Innenausbau</li>
+                        <li><i class="fas fa-check" style="color:var(--brand-gold);"></i> Schwerlast-Wandsicherung</li>
+                        <li><i class="fas fa-check" style="color:var(--brand-gold);"></i> Schwebetüren-Feinabstimmung</li>
+                    </ul>
+                </div>
+
+                <!-- Altbau -->
+                <div class="bento-cell span-6">
+                    <div class="bento-head">
+                        <i class="fas fa-layer-group" style="color:var(--brand-cyan);"></i>
+                        <span class="res-sys-tag cyan">SYSTEM_03</span>
+                    </div>
+                    <h3>Der Münchener Altbau</h3>
+                    <p>
+                        Schwabing, Maxvorstadt, Haidhausen: schöne Decken – schwierige Substanz.
+                        Sandputz, schiefe Dielen. Ich bringe das Arsenal mit, das hält.
+                    </p>
+                    <ul class="tech-list-2026">
+                        <li><i class="fas fa-ruler-combined" style="color:var(--brand-gold);"></i> Laser-Ausgleich unebener Böden</li>
+                        <li><i class="fas fa-flask" style="color:var(--brand-gold);"></i> Chemische Anker &amp; Injektionsmörtel</li>
+                    </ul>
+                </div>
+
+                <!-- Premium Möbel -->
+                <div class="bento-cell span-6">
+                    <div class="bento-head">
+                        <i class="fas fa-couch" style="color:var(--brand-gold);"></i>
+                        <span class="res-sys-tag gold">SYSTEM_04</span>
+                    </div>
+                    <h3>Premium Möbelhäuser</h3>
+                    <p>
+                        Boxspringbetten, schwebende TV-Boards (BESTÅ), Couch-Landschaften von Segmüller, XXXLutz oder Home24 –
+                        fachgerechter Aufbau inklusive.
+                    </p>
+                    <ul class="tech-list-2026">
+                        <li><i class="fas fa-tv" style="color:var(--brand-gold);"></i> Schwebende Hohlraum-Wandmontagen</li>
+                        <li><i class="fas fa-bed" style="color:var(--brand-gold);"></i> Knarzfreier Betten-Aufbau</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    SERVICE LAYERS – 4-TIER SYSTEM
+    ============================================================ -->
+    <section class="section-padding res-layers-section" id="services-layers">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="pre-title">SERVICE LAYERS</span>
+                <h2>Vom Karton zur <span class="gold-text">fertigen Architektur.</span></h2>
+                <p>Vier klar definierte Leistungsstufen – wählen Sie, was Ihr Projekt braucht.</p>
+            </div>
+
+            <div class="res-layers-grid reveal">
+                <div class="res-layer-card" data-layer="1">
+                    <div class="res-layer-num">01</div>
+                    <h3>Core Assembly</h3>
+                    <p class="res-layer-tag">Standard-Module</p>
+                    <ul>
+                        <li>Korpusaufbau &amp; Ausrichtung</li>
+                        <li>Grundjustierung von Türen/Schubladen</li>
+                        <li>Einfache Wandverankerung</li>
+                        <li>Kartonagen sortiert abstellen</li>
+                    </ul>
+                    <p class="res-layer-fit">Ideal für: Einzelmöbel, Regale, einfache Betten</p>
+                </div>
+
+                <div class="res-layer-card res-layer-featured" data-layer="2">
+                    <div class="res-layer-badge">EMPFOHLEN</div>
+                    <div class="res-layer-num">02</div>
+                    <h3>Precision Plus</h3>
+                    <p class="res-layer-tag">Laser · HEPA · Schwerlast</p>
+                    <ul>
+                        <li>360° Laser-Nivellierung</li>
+                        <li>HEPA-staubfreies Bohren</li>
+                        <li>Schwerlast- &amp; Kippsicherung</li>
+                        <li>Feinabstimmung aller Beschläge</li>
+                        <li>Schutzfolien &amp; Endreinigung Zone</li>
+                    </ul>
+                    <p class="res-layer-fit">Ideal für: PAX, Küchenzeilen, Premium-Schränke</p>
+                </div>
+
+                <div class="res-layer-card" data-layer="3">
+                    <div class="res-layer-num">03</div>
+                    <h3>Kitchen Engineering</h3>
+                    <p class="res-layer-tag">Arbeitsplatte · Geräte</p>
+                    <ul>
+                        <li>Festool-Zuschnitte vor Ort</li>
+                        <li>Versiegelung der Schnittkanten</li>
+                        <li>Mechanischer Geräteeinbau</li>
+                        <li>Spaltmaß-Optimierung Fronten</li>
+                        <li>Koordination mit Sanitär/Elektro*</li>
+                    </ul>
+                    <p class="res-layer-fit">Ideal für: METOD, Premium-Einbauküchen</p>
+                </div>
+
+                <div class="res-layer-card" data-layer="4">
+                    <div class="res-layer-num">04</div>
+                    <h3>Full Residence</h3>
+                    <p class="res-layer-tag">Mehr-Raum · Projektleitung</p>
+                    <ul>
+                        <li>Komplette Wohnung / Haus</li>
+                        <li>Zeitplan &amp; Reihenfolge-Logik</li>
+                        <li>Demontage Altbestand optional</li>
+                        <li>Dokumentation für Wiederaufbau</li>
+                        <li>Nachjustierung nach Setzphase</li>
+                    </ul>
+                    <p class="res-layer-fit">Ideal für: Umzüge, Neubau, Gesamteinrichtung</p>
+                </div>
+            </div>
+
+            <div class="res-layers-cta reveal">
+                <p>Unsicher, welches Layer passt? Senden Sie mir Links und Maße – ich empfehle die passende Stufe mit Festpreis.</p>
+                <button type="button" class="btn btn-primary js-open-contact">
+                    <i class="fas fa-satellite-dish"></i> LAYER EMPFEHLEN LASSEN
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    PROCESS TIMELINE
+    ============================================================ -->
+    <section class="section-padding res-timeline-section" id="process">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="pre-title">WORKFLOW</span>
+                <h2>So läuft Ihr <span class="gold-text">Projekt ab.</span></h2>
+                <p>Vier klare Schritte – von der ersten Idee bis zur strahlenden Abnahme.</p>
+            </div>
+
+            <div class="res-timeline reveal">
+                <div class="res-tl-item">
+                    <div class="res-tl-dot"></div>
+                    <div class="res-tl-content">
+                        <span class="res-tl-step">STEP 01</span>
+                        <h3>Anfrage &amp; Briefing</h3>
+                        <p>Links zu den Möbeln, Raumfotos, Wunschtermin. Ich prüfe Machbarkeit und Komplexität.</p>
+                    </div>
+                </div>
+                <div class="res-tl-item">
+                    <div class="res-tl-dot"></div>
+                    <div class="res-tl-content">
+                        <span class="res-tl-step">STEP 02</span>
+                        <h3>Festpreis-Angebot</h3>
+                        <p>Klares Angebot mit Scope, Dauer und optionalen Extras – ohne versteckte Positionen.</p>
+                    </div>
+                </div>
+                <div class="res-tl-item">
+                    <div class="res-tl-dot"></div>
+                    <div class="res-tl-content">
+                        <span class="res-tl-step">STEP 03</span>
+                        <h3>Montage-Tag</h3>
+                        <p>Schutz der Flächen, Laser, Aufbau, Verankerung, Justierung. Sie bleiben informiert.</p>
+                    </div>
+                </div>
+                <div class="res-tl-item">
+                    <div class="res-tl-dot"></div>
+                    <div class="res-tl-content">
+                        <span class="res-tl-step">STEP 04</span>
+                        <h3>Abnahme &amp; Nachsorge</h3>
+                        <p>Gemeinsame Kontrolle. Kartonagen geregelt. Bei Bedarf Nachjustierung nach dem Setzen.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    KITCHEN ENGINEERING PANEL
+    ============================================================ -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="glass-panel res-kitchen-panel reveal">
+                <div class="res-kitchen-grid-bg" aria-hidden="true"></div>
+                <div class="res-kitchen-inner">
+                    <div class="res-kitchen-copy">
+                        <div class="res-sys-tag cyan" style="display:inline-block;margin-bottom:12px;">KITCHEN_ENGINEERING</div>
+                        <h2>Die Wissenschaft der<br><span class="gold-text">Arbeitsplatte.</span></h2>
+                        <p>
+                            Der Zuschnitt der Arbeitsplatte trennt Amateure von Profis. Ein falscher Schnitt mit der
+                            Baumarkt-Stichsäge – Ränder fransen aus, Feuchtigkeit dringt ein, die Platte quillt auf.
+                            Ich eliminiere dieses Risiko komplett.
                         </p>
-                    </div>
-
-                    <div class="bento-cell span-4 res-bento-pax" data-aos="fade-up" data-aos-delay="100">
-                        <div>
-                            <div class="res-bento-head">
-                                <i class="fas fa-door-open" style="color: var(--neon-gold);"></i>
-                                <span class="res-sys-tag gold">SYSTEM_02</span>
-                            </div>
-                            <h3>IKEA PAX Systeme</h3>
+                        <ul class="res-check-list">
+                            <li><i class="fas fa-circle-notch"></i> <strong>Festool Tauchsäge</strong> mit Präzisions-Führungsschiene</li>
+                            <li><i class="fas fa-circle-notch"></i> <strong>100 % ausrissfreie</strong>, millimetergenaue Schnittkanten</li>
+                            <li><i class="fas fa-circle-notch"></i> <strong>Versiegelung</strong> gegen Wasser an Spüle &amp; Herd</li>
+                        </ul>
+                        <div class="res-gold-note">
                             <p>
-                                Deckenhohe PAX-Schränke mit Glasschwebetüren sind kein DIY-Projekt.
-                                Schon minimale Unebenheiten lassen Türen klemmen. Ich nivelliere, verankere und justiere lautlos.
+                                <strong class="gold-text">WICHTIGER HINWEIS:</strong>
+                                Ich führe reine Montage- und Holzarbeiten aus. Wasserführende Armaturen und Starkstrom
+                                für den Herd dürfen in Deutschland nur von zugelassenen Meisterbetrieben angeschlossen werden.
                             </p>
                         </div>
-                        <ul class="tech-list-2026">
-                            <li><i class="fas fa-check cyan-text"></i> Kompletter KOMPLEMENT-Innenausbau</li>
-                            <li><i class="fas fa-check cyan-text"></i> Schwerlast-Wandsicherung</li>
-                            <li><i class="fas fa-check cyan-text"></i> Schwebetüren-Feinabstimmung</li>
-                        </ul>
                     </div>
-
-                    <div class="bento-cell span-6" data-aos="fade-up">
-                        <div>
-                            <i class="fas fa-layer-group res-bento-icon"></i>
-                            <h3>Der Münchener Altbau</h3>
-                            <p>
-                                Schwabing, Maxvorstadt, Haidhausen: schöne Decken – schwierige Substanz.
-                                Sandputz, schiefe Dielen. Ich bringe das Arsenal mit, das hält.
-                            </p>
+                    <div class="res-kitchen-visual">
+                        <div class="res-orbit">
+                            <div class="res-orbit-inner"></div>
                         </div>
-                        <ul class="tech-list-2026">
-                            <li><i class="fas fa-ruler-combined cyan-text"></i> Laser-Ausgleich unebener Böden</li>
-                            <li><i class="fas fa-flask cyan-text"></i> Chemische Anker &amp; Injektionsmörtel</li>
-                        </ul>
-                    </div>
-
-                    <div class="bento-cell span-6" data-aos="fade-up" data-aos-delay="100">
-                        <div>
-                            <i class="fas fa-couch res-bento-icon"></i>
-                            <h3>Premium Möbelhäuser</h3>
-                            <p>
-                                Boxspringbetten, schwebende TV-Boards (BESTÅ), Couch-Landschaften von Segmüller, XXXLutz oder Home24 –
-                                fachgerechter Aufbau inklusive.
-                            </p>
-                        </div>
-                        <ul class="tech-list-2026">
-                            <li><i class="fas fa-tv cyan-text"></i> Schwebende Hohlraum-Wandmontagen</li>
-                            <li><i class="fas fa-bed cyan-text"></i> Knarzfreier Betten-Aufbau</li>
-                        </ul>
+                        <i class="fas fa-cut res-orbit-icon"></i>
+                        <div class="res-tool-tag res-tool-top">TOOL: <span class="gold-text">FESTOOL TS 55</span></div>
+                        <div class="res-tool-tag res-tool-bot">STATE: <span class="cyan-text">DUST FREE</span></div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- ========== SERVICE LAYERS (NEW) ========== -->
-        <section id="services-layers" class="section-padding res-layers-section">
-            <div class="container">
-                <div class="section-header" data-aos="fade-up">
-                    <div class="pre-title res-label gold">SERVICE LAYERS</div>
-                    <h2 class="res-section-title">Vom Karton zur <span class="gold-text">fertigen Architektur.</span></h2>
-                    <p class="res-body section-subtitle">Vier klar definierte Leistungsstufen – wählen Sie, was Ihr Projekt braucht.</p>
-                </div>
-
-                <div class="res-layers-grid">
-                    <article class="res-layer-card" data-aos="fade-up" data-layer="1">
-                        <div class="res-layer-num">01</div>
-                        <h3>Core Assembly</h3>
-                        <p class="res-layer-tag">Standard-Module</p>
-                        <ul>
-                            <li>Korpusaufbau &amp; Ausrichtung</li>
-                            <li>Grundjustierung von Türen/Schubladen</li>
-                            <li>Einfache Wandverankerung</li>
-                            <li>Kartonagen sortiert abstellen</li>
-                        </ul>
-                        <p class="res-layer-fit">Ideal für: Einzelmöbel, Regale, einfache Betten</p>
-                    </article>
-
-                    <article class="res-layer-card res-layer-featured" data-aos="fade-up" data-aos-delay="80" data-layer="2">
-                        <div class="res-layer-badge">EMPFOHLEN</div>
-                        <div class="res-layer-num">02</div>
-                        <h3>Precision Plus</h3>
-                        <p class="res-layer-tag">Laser · HEPA · Schwerlast</p>
-                        <ul>
-                            <li>360° Laser-Nivellierung</li>
-                            <li>HEPA-staubfreies Bohren</li>
-                            <li>Schwerlast- &amp; Kippsicherung</li>
-                            <li>Feinabstimmung aller Beschläge</li>
-                            <li>Schutzfolien &amp; Endreinigung Zone</li>
-                        </ul>
-                        <p class="res-layer-fit">Ideal für: PAX, Küchenzeilen, Premium-Schränke</p>
-                    </article>
-
-                    <article class="res-layer-card" data-aos="fade-up" data-aos-delay="160" data-layer="3">
-                        <div class="res-layer-num">03</div>
-                        <h3>Kitchen Engineering</h3>
-                        <p class="res-layer-tag">Arbeitsplatte · Geräte</p>
-                        <ul>
-                            <li>Festool-Zuschnitte vor Ort</li>
-                            <li>Versiegelung der Schnittkanten</li>
-                            <li>Mechanischer Geräteeinbau</li>
-                            <li>Spaltmaß-Optimierung Fronten</li>
-                            <li>Koordination mit Sanitär/Elektro*</li>
-                        </ul>
-                        <p class="res-layer-fit">Ideal für: METOD, Premium-Einbauküchen</p>
-                    </article>
-
-                    <article class="res-layer-card" data-aos="fade-up" data-aos-delay="240" data-layer="4">
-                        <div class="res-layer-num">04</div>
-                        <h3>Full Residence</h3>
-                        <p class="res-layer-tag">Mehr-Raum · Projektleitung</p>
-                        <ul>
-                            <li>Komplette Wohnung / Haus</li>
-                            <li>Zeitplan &amp; Reihenfolge-Logik</li>
-                            <li>Demontage Altbestand optional</li>
-                            <li>Dokumentation für Wiederaufbau</li>
-                            <li>Nachjustierung nach Setzphase</li>
-                        </ul>
-                        <p class="res-layer-fit">Ideal für: Umzüge, Neubau, Gesamteinrichtung</p>
-                    </article>
-                </div>
-
-                <div class="res-layers-cta" data-aos="fade-up">
-                    <p>Unsicher, welches Layer passt? Senden Sie Links/Maße – ich empfehle die passende Stufe mit Festpreis.</p>
-                    <button type="button" class="btn btn-gold js-open-os">LAYER EMPFEHLEN LASSEN</button>
-                </div>
+    <!-- ============================================================
+    FAQ – PRIVATE CLIENT SPECIFIC
+    ============================================================ -->
+    <section class="section-padding res-faq-section" id="res-faq">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="pre-title">FAQ</span>
+                <h2>Häufige Fragen zur <span class="gold-text">Privatmontage.</span></h2>
+                <p>Antworten auf die wichtigsten Fragen von privaten Kunden.</p>
             </div>
-        </section>
 
-        <!-- ========== PROCESS TIMELINE (NEW) ========== -->
-        <section id="process" class="section-padding bg-darker">
-            <div class="container">
-                <div class="section-header" data-aos="fade-up">
-                    <div class="pre-title res-label cyan">WORKFLOW</div>
-                    <h2 class="res-section-title">So läuft Ihr <span class="cyan-text">Projekt ab.</span></h2>
-                </div>
-
-                <div class="res-timeline" data-aos="fade-up">
-                    <div class="res-tl-item">
-                        <div class="res-tl-dot"></div>
-                        <div class="res-tl-content">
-                            <span class="res-tl-step">STEP 01</span>
-                            <h3>Anfrage &amp; Briefing</h3>
-                            <p>Links zu den Möbeln, Raumfotos, Wunschtermin. Ich prüfe Machbarkeit und Komplexität.</p>
-                        </div>
-                    </div>
-                    <div class="res-tl-item">
-                        <div class="res-tl-dot"></div>
-                        <div class="res-tl-content">
-                            <span class="res-tl-step">STEP 02</span>
-                            <h3>Festpreis-Angebot</h3>
-                            <p>Klares Angebot mit Scope, Dauer und optionalen Extras – ohne versteckte Positionen.</p>
-                        </div>
-                    </div>
-                    <div class="res-tl-item">
-                        <div class="res-tl-dot"></div>
-                        <div class="res-tl-content">
-                            <span class="res-tl-step">STEP 03</span>
-                            <h3>Montage-Tag</h3>
-                            <p>Schutz der Flächen, Laser, Aufbau, Verankerung, Justierung. Sie bleiben informiert.</p>
-                        </div>
-                    </div>
-                    <div class="res-tl-item">
-                        <div class="res-tl-dot"></div>
-                        <div class="res-tl-content">
-                            <span class="res-tl-step">STEP 04</span>
-                            <h3>Abnahme &amp; Nachsorge</h3>
-                            <p>Gemeinsame Kontrolle. Kartonagen geregelt. Bei Bedarf Nachjustierung nach dem Setzen.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ========== KITCHEN ENGINEERING ========== -->
-        <section class="section-padding bg-dark">
-            <div class="container">
-                <div class="glass-panel res-kitchen-panel" data-aos="zoom-in">
-                    <div class="res-kitchen-grid-bg" aria-hidden="true"></div>
-                    <div class="res-kitchen-inner">
-                        <div class="res-kitchen-copy">
-                            <div class="res-sys-tag cyan solid">KITCHEN_ENGINEERING</div>
-                            <h2 class="res-section-title">
-                                Die Wissenschaft der<br><span class="cyan-text">Arbeitsplatte.</span>
-                            </h2>
-                            <p class="res-body">
-                                Der Zuschnitt der Arbeitsplatte trennt Amateure von Profis. Ein falscher Schnitt mit der
-                                Baumarkt-Stichsäge – Ränder fransen aus, Feuchtigkeit dringt ein, die Platte quillt auf.
-                                Ich eliminiere dieses Risiko komplett.
-                            </p>
-                            <ul class="res-check-list">
-                                <li><i class="fas fa-circle-notch cyan-text"></i> <strong>Festool Tauchsäge</strong> mit Präzisions-Führungsschiene</li>
-                                <li><i class="fas fa-circle-notch cyan-text"></i> <strong>100 % ausrissfreie</strong>, millimetergenaue Schnittkanten</li>
-                                <li><i class="fas fa-circle-notch cyan-text"></i> <strong>Versiegelung</strong> gegen Wasser an Spüle &amp; Herd</li>
-                            </ul>
-                            <div class="res-gold-note">
-                                <p>
-                                    <strong class="gold-text">WICHTIGER HINWEIS:</strong>
-                                    Ich führe reine Montage- und Holzarbeiten aus. Wasserführende Armaturen und Starkstrom
-                                    für den Herd dürfen in Deutschland nur von zugelassenen Meisterbetrieben angeschlossen werden.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="res-kitchen-visual">
-                            <div class="res-orbit">
-                                <div class="res-orbit-inner"></div>
-                            </div>
-                            <i class="fas fa-cut cyan-text res-orbit-icon"></i>
-                            <div class="res-tool-tag res-tool-top">TOOL: <span class="gold-text">FESTOOL TS 55</span></div>
-                            <div class="res-tool-tag res-tool-bot">STATE: <span class="cyan-text">DUST FREE</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ========== FAQ (NEW) ========== -->
-        <section id="res-faq" class="section-padding res-faq-section">
-            <div class="container">
-                <div class="section-header" data-aos="fade-up">
-                    <div class="pre-title res-label cyan">FAQ</div>
-                    <h2 class="res-section-title">Häufige Fragen zur <span class="cyan-text">Privatmontage.</span></h2>
-                </div>
-                <div class="res-faq-list" data-aos="fade-up">
-                    <div class="res-faq-item is-open">
-                        <button type="button" class="res-faq-trigger" aria-expanded="true">
-                            <span>Muss ich selbst Werkzeug oder Anleitungen bereithalten?</span>
-                            <i class="fas fa-plus"></i>
-                        </button>
-                        <div class="res-faq-panel">
-                            <p>Nein. Ich bringe Profi-Werkzeug (Bosch Professional, Festool, Laser) mit. Ideal sind die Original-Anleitungen und alle mitgelieferten Beschläge – den Rest organisiere ich.</p>
-                        </div>
-                    </div>
-                    <div class="res-faq-item">
-                        <button type="button" class="res-faq-trigger" aria-expanded="false">
-                            <span>Wie lange dauert eine typische Küchen- oder PAX-Montage?</span>
-                            <i class="fas fa-plus"></i>
-                        </button>
-                        <div class="res-faq-panel">
-                            <p>Abhängig von Umfang und Untergrund. Eine standardisierte Küchenzeile oder ein größeres PAX-System oft 1–2 Tage. Im Angebot erhalten Sie eine realistische Zeitangabe.</p>
-                        </div>
-                    </div>
-                    <div class="res-faq-item">
-                        <button type="button" class="res-faq-trigger" aria-expanded="false">
-                            <span>Was ist mit schiefen Wänden und Altbau?</span>
-                            <i class="fas fa-plus"></i>
-                        </button>
-                        <div class="res-faq-panel">
-                            <p>Genau dafür ist Laser-Nivellierung und systematisches Ausgleichen da. Bei kritischer Substanz nutze ich geeignete Dübel- und Ankersysteme – inklusive chemischer Anker, wenn nötig.</p>
-                        </div>
-                    </div>
-                    <div class="res-faq-item">
-                        <button type="button" class="res-faq-trigger" aria-expanded="false">
-                            <span>Übernehmen Sie auch Demontage und Entsorgung?</span>
-                            <i class="fas fa-plus"></i>
-                        </button>
-                        <div class="res-faq-panel">
-                            <p>Ja, auf Wunsch: zerstörungsnahe Demontage, Dokumentation für Wiederaufbau und fachgerechte Entsorgung von Verpackungen bzw. Altbestand – als optionales Modul im Angebot.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ========== FINAL CTA ========== -->
-        <section class="section-padding res-final-cta">
-            <div class="container" data-aos="zoom-in">
-                <h2 class="res-cta-title">BEREIT FÜR DEN AUFBAU?</h2>
-                <p class="res-cta-text">
-                    Kein Frust. Kein Chaos. Perfekt ausgerichtet. Senden Sie mir die Links Ihrer Möbel und fordern Sie
-                    Ihr Festpreisangebot für Augsburg oder München an.
-                </p>
-                <div class="res-cta-actions">
-                    <button type="button" class="btn btn-gold reactive-btn js-open-os res-btn-primary">
-                        <i class="fas fa-rocket"></i> PROJEKT INITIALISIEREN
+            <div class="res-faq-list reveal">
+                <div class="res-faq-item is-open">
+                    <button type="button" class="res-faq-trigger" aria-expanded="true">
+                        <span>Muss ich selbst Werkzeug oder Anleitungen bereithalten?</span>
+                        <i class="fas fa-plus"></i>
                     </button>
-                    <a href="https://wa.me/491608194018" target="_blank" rel="noopener" class="res-btn-outline whatsapp-cta">
-                        <i class="fab fa-whatsapp"></i> WHATSAPP
-                    </a>
+                    <div class="res-faq-panel">
+                        <p>Nein. Ich bringe Profi-Werkzeug (Bosch Professional, Festool, Laser) mit. Ideal sind die Original-Anleitungen und alle mitgelieferten Beschläge – den Rest organisiere ich.</p>
+                    </div>
+                </div>
+
+                <div class="res-faq-item">
+                    <button type="button" class="res-faq-trigger" aria-expanded="false">
+                        <span>Wie lange dauert eine typische Küchen- oder PAX-Montage?</span>
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    <div class="res-faq-panel">
+                        <p>Abhängig von Umfang und Untergrund. Eine standardisierte Küchenzeile oder ein größeres PAX-System oft 1–2 Tage. Im Angebot erhalten Sie eine realistische Zeitangabe.</p>
+                    </div>
+                </div>
+
+                <div class="res-faq-item">
+                    <button type="button" class="res-faq-trigger" aria-expanded="false">
+                        <span>Was ist mit schiefen Wänden und Altbau?</span>
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    <div class="res-faq-panel">
+                        <p>Genau dafür ist Laser-Nivellierung und systematisches Ausgleichen da. Bei kritischer Substanz nutze ich geeignete Dübel- und Ankersysteme – inklusive chemischer Anker, wenn nötig.</p>
+                    </div>
+                </div>
+
+                <div class="res-faq-item">
+                    <button type="button" class="res-faq-trigger" aria-expanded="false">
+                        <span>Übernehmen Sie auch Demontage und Entsorgung?</span>
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    <div class="res-faq-panel">
+                        <p>Ja, auf Wunsch: zerstörungsnahe Demontage, Dokumentation für Wiederaufbau und fachgerechte Entsorgung von Verpackungen bzw. Altbestand – als optionales Modul im Angebot.</p>
+                    </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-    </main>
+    <!-- ============================================================
+    FINAL CTA
+    ============================================================ -->
+    <section class="section-padding res-final-cta">
+        <div class="container" data-aos="zoom-in">
+            <h2 class="res-cta-title">BEREIT FÜR DEN <span class="gold-text">AUFBAU?</span></h2>
+            <p class="res-cta-text">
+                Kein Frust. Kein Chaos. Perfekt ausgerichtet. Senden Sie mir die Links Ihrer Möbel und fordern Sie
+                Ihr Festpreisangebot für Augsburg oder München an.
+            </p>
+            <div class="res-cta-actions">
+                <button type="button" class="btn btn-primary js-open-contact">
+                    <i class="fas fa-rocket"></i> PROJEKT INITIALISIEREN
+                </button>
+                <a href="https://wa.me/491608194018" target="_blank" rel="noopener" class="btn btn-ghost whatsapp-cta">
+                    <i class="fab fa-whatsapp"></i> WHATSAPP
+                </a>
+                <a href="tel:+491608194018" class="btn btn-secondary">
+                    <i class="fas fa-phone-alt"></i> ANRUFEN
+                </a>
+            </div>
+            <div style="margin-top:24px;display:flex;justify-content:center;gap:20px;flex-wrap:wrap;font-size:0.6rem;font-family:var(--font-mono);color:var(--brand-muted);">
+                <span><i class="fas fa-star gold-text"></i> 5.0 Rating</span>
+                <span><i class="fas fa-users gold-text"></i> 110+ Kunden</span>
+                <span><i class="fas fa-shield-alt gold-text"></i> 5 Mio. € versichert</span>
+                <span><i class="fas fa-check-circle gold-text"></i> 30 Tage Garantie</span>
+            </div>
+        </div>
+    </section>
 
-    <div id="global-footer"></div>
-    <div id="global-os"></div>
-
-    <a href="https://wa.me/491608194018" target="_blank" rel="noopener" class="whatsapp-float reactive-btn" aria-label="WhatsApp">
-        <div class="whatsapp-pulse"></div>
+    <!-- ============================================================
+    WHATSAPP FLOAT
+    ============================================================ -->
+    <a href="https://wa.me/491608194018" target="_blank" rel="noopener" class="whatsapp-float" aria-label="WhatsApp">
+        <span class="whatsapp-pulse"></span>
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="assets/js/main.js"></script>
+    <!-- ============================================================
+    FOOTER PLACEHOLDER – Component loader will inject here
+    ============================================================ -->
+    <div id="footer-placeholder">
+        <div class="component-loading"><i class="fas fa-sync-alt fa-spin"></i> FOOTER SYSTEM INIT...</div>
+    </div>
+
+    <!-- ============================================================
+    COMPONENT LOADER
+    ============================================================ -->
+    <script src="assets/js/loader.js"></script>
+
+    <!-- ============================================================
+    PAGE-SPECIFIC SCRIPTS
+    ============================================================ -->
     <script>
-    (function () {
-      'use strict';
-      if (typeof AOS !== 'undefined') AOS.init({ once: true, duration: 800, offset: 40 });
+        (function() {
+            'use strict';
 
-      /* FAQ accordion */
-      document.querySelectorAll('.res-faq-trigger').forEach(function (btn) {
-        btn.addEventListener('click', function () {
-          var item = btn.closest('.res-faq-item');
-          var open = item.classList.contains('is-open');
-          document.querySelectorAll('.res-faq-item').forEach(function (el) {
-            el.classList.remove('is-open');
-            var t = el.querySelector('.res-faq-trigger');
-            if (t) t.setAttribute('aria-expanded', 'false');
-          });
-          if (!open) {
-            item.classList.add('is-open');
-            btn.setAttribute('aria-expanded', 'true');
-          }
-        });
-      });
+            // ── Smooth scroll for anchor links ──
+            document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+                anchor.addEventListener('click', function(e) {
+                    var id = this.getAttribute('href');
+                    if (id === '#') return;
+                    var target = document.querySelector(id);
+                    if (target) {
+                        e.preventDefault();
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
 
-      /* Service layer cards – subtle focus */
-      document.querySelectorAll('.res-layer-card').forEach(function (card) {
-        card.addEventListener('mouseenter', function () {
-          document.querySelectorAll('.res-layer-card').forEach(function (c) { c.classList.remove('is-focus'); });
-          card.classList.add('is-focus');
-        });
-      });
-    })();
+            // ── FAQ Accordion ──
+            document.querySelectorAll('.res-faq-trigger').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    var item = btn.closest('.res-faq-item');
+                    var isOpen = item.classList.contains('is-open');
+
+                    // Close all other FAQ items
+                    document.querySelectorAll('.res-faq-item').forEach(function(el) {
+                        el.classList.remove('is-open');
+                        var t = el.querySelector('.res-faq-trigger');
+                        if (t) t.setAttribute('aria-expanded', 'false');
+                    });
+
+                    if (!isOpen) {
+                        item.classList.add('is-open');
+                        btn.setAttribute('aria-expanded', 'true');
+                    }
+                });
+            });
+
+            // ── Service Layer Cards – subtle focus on hover ──
+            document.querySelectorAll('.res-layer-card').forEach(function(card) {
+                card.addEventListener('mouseenter', function() {
+                    document.querySelectorAll('.res-layer-card').forEach(function(c) {
+                        c.classList.remove('is-focus');
+                    });
+                    card.classList.add('is-focus');
+                });
+            });
+
+            // ── Reveal on Scroll ──
+            var reveals = document.querySelectorAll('.reveal');
+            if (reveals.length) {
+                var observer = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                        }
+                    });
+                }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+                reveals.forEach(function(el) {
+                    observer.observe(el);
+                });
+            }
+
+            console.log('✅ Residential page loaded – Unified Brand Color System');
+        })();
     </script>
+
 </body>
 </html>
