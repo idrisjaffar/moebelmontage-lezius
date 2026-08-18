@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Kontakt | Raphael Lezius</title>
+    <meta name="description" content="Kontaktieren Sie mich für Ihre Montage-Anfrage. Ich antworte innerhalb von 24 Stunden – Augsburg, München und Umland." />
+    <meta name="theme-color" content="#0a0805" />
+
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700;800&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <!-- Component Styles -->
+    <link rel="stylesheet" href="assets/css/components/nav.css" />
+    <link rel="stylesheet" href="assets/css/components/footer.css" />
+
+    <style>
+        /* ============================================================
+           KONTAKT PAGE – COMPLETE STYLESHEET
+           ============================================================ */
+
+        :root {
+            --kontakt-gold: #FFD700;
+            --kontakt-cyan: #00e5ff;
+            --kontakt-pink: #ff007f;
+            --kontakt-green: #39ff14;
+            --kontakt-bg: #020203;
+            --kontakt-surface: #080b0e;
+            --kontakt-card: rgba(255, 255, 255, 0.025);
+            --kontakt-text: #f8fafc;
+            --kontakt-muted: #94a3b8;
+            --kontakt-dim: #64748b;
+            --kontakt-border: rgba(255, 255, 255, 0.06);
+            --kontakt-glow: 0 0 40px rgba(255, 215, 0, 0.05);
+            --kontakt-radius: 14px;
+            --font-head: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+            --ease-out: cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        /* ── Reset ── */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            background: var(--kontakt-bg);
+            color: var(--kontakt-text);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+            padding-top: 0;
+            min-height: 100vh;
+        }
+        body.menu-open {
+            overflow: hidden;
+        }
+        img {
+            max-width: 100%;
+            display: block;
+        }
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+        button {
+            font-family: inherit;
+            border: none;
+            background: none;
+            color: inherit;
+            cursor: pointer;
+        }
+        ul {
+            list-style: none;
+        }
+        ::selection {
+            background: rgba(255, 215, 0, 0.3);
+            color: #fff;
+        }
+
+        /* ── Utility ── */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 clamp(16px, 4vw, 32px);
+        }
+        .gold-text {
+            color: var(--kontakt-gold);
+        }
+        .cyan-text {
+            color: var(--kontakt-cyan);
+        }
+        .pink-text {
+            color: var(--kontakt-pink);
+        }
+        .green-text {
+            color: var(--kontakt-green);
+        }
+        .text-muted {
+            color: var(--kontakt-muted);
+        }
+        .text-dim {
+            color: var(--kontakt-dim);
+        }
+        .text-center {
+            text-align: center;
+        }
+
+        .glass-panel {
+            background: rgba(10, 8, 5, 0.72);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid rgba(255, 215, 0, 0.06);
+            border-radius: var(--kontakt-radius);
+            padding: 24px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s var(--ease-spring);
+        }
+        .glass-panel:hover {
+            border-color: rgba(255, 215, 0, 0.12);
+            box-shadow: var(--kontakt-glow);
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 3px 12px;
+            border-radius: 30px;
+            font-family: var(--font-mono);
+            font-size: 0.55rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .badge--success {
+            background: rgba(34, 197, 94, 0.12);
+            color: #22c55e;
+            border: 1px solid rgba(34, 197, 94, 0.15);
+        }
+        .badge--warning {
+            background: rgba(255, 215, 0, 0.12);
+            color: var(--kontakt-gold);
+            border: 1px solid rgba(255, 215, 0, 0.15);
+        }
+        .badge--info {
+            background: rgba(0, 229, 255, 0.08);
+            color: var(--kontakt-cyan);
+            border: 1px solid rgba(0, 229, 255, 0.12);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 0.7rem;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+            cursor: pointer;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--kontakt-gold), #e6c200);
+            color: #000;
+            box-shadow: 0 8px 24px rgba(255, 215, 0, 0.2);
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 36px rgba(255, 215, 0, 0.35);
+        }
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(255, 255, 255, 0.08);
+            color: var(--kontakt-text);
+        }
+        .btn-secondary:hover {
+            background: rgba(255, 215, 0, 0.06);
+            border-color: var(--kontakt-gold);
+            transform: translateY(-3px);
+        }
+        .btn-ghost {
+            background: transparent;
+            border-color: rgba(255, 215, 0, 0.2);
+            color: var(--kontakt-gold);
+        }
+        .btn-ghost:hover {
+            background: rgba(255, 215, 0, 0.06);
+            transform: translateY(-3px);
+        }
+        .btn-sm {
+            padding: 8px 16px;
+            font-size: 0.6rem;
+        }
+        .btn-block {
+            width: 100%;
+            justify-content: center;
+        }
+
+        /* ── Component Loading ── */
+        .component-loading {
+            padding: 20px;
+            text-align: center;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--kontakt-cyan);
+        }
+
+        /* ============================================================
+           PAGE HEADER
+           ============================================================ */
+        .page-header {
+            padding: 120px 0 40px;
+            border-bottom: 1px solid var(--kontakt-border);
+        }
+        .page-header h1 {
+            font-family: var(--font-head);
+            font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+            font-weight: 900;
+            line-height: 1.05;
+            letter-spacing: -1px;
+        }
+        .page-header .subtitle {
+            color: var(--kontakt-muted);
+            font-size: 1.05rem;
+            margin-top: 8px;
+        }
+        .page-header .breadcrumb {
+            display: flex;
+            gap: 8px;
+            font-family: var(--font-mono);
+            font-size: 0.6rem;
+            color: var(--kontakt-dim);
+            margin-top: 12px;
+        }
+        .page-header .breadcrumb a {
+            color: var(--kontakt-cyan);
+            transition: color 0.3s;
+        }
+        .page-header .breadcrumb a:hover {
+            color: var(--kontakt-gold);
+        }
+
+        /* ============================================================
+           QUICK CONTACT CARDS
+           ============================================================ */
+        .quick-contact-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 30px 0 40px;
+        }
+        .quick-contact-card {
+            text-align: center;
+            padding: 28px 20px;
+            transition: transform 0.3s var(--ease-spring), border-color 0.3s;
+        }
+        .quick-contact-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(255, 215, 0, 0.15);
+        }
+        .quick-contact-card .icon-circle {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: rgba(255, 215, 0, 0.06);
+            border: 1px solid rgba(255, 215, 0, 0.10);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 12px;
+            font-size: 1.4rem;
+            color: var(--kontakt-gold);
+            transition: all 0.3s ease;
+        }
+        .quick-contact-card:hover .icon-circle {
+            background: rgba(255, 215, 0, 0.12);
+            border-color: var(--kontakt-gold);
+            transform: scale(1.05);
+        }
+        .quick-contact-card h3 {
+            font-family: var(--font-head);
+            font-size: 1.1rem;
+            font-weight: 800;
+        }
+        .quick-contact-card .contact-detail {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            color: var(--kontakt-text);
+            margin-top: 4px;
+            display: block;
+        }
+        .quick-contact-card .contact-detail a {
+            color: var(--kontakt-cyan);
+            transition: color 0.3s;
+        }
+        .quick-contact-card .contact-detail a:hover {
+            color: var(--kontakt-gold);
+        }
+        .quick-contact-card .contact-label {
+            font-size: 0.7rem;
+            color: var(--kontakt-muted);
+            font-family: var(--font-mono);
+            letter-spacing: 1px;
+        }
+        @media (max-width: 768px) {
+            .quick-contact-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+
+        /* ============================================================
+           TRUST BADGES ROW
+           ============================================================ */
+        .trust-badges-row {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin: 0 0 40px;
+        }
+        .trust-badges-row .badge-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--font-mono);
+            font-size: 0.6rem;
+            letter-spacing: 0.5px;
+            color: var(--kontakt-muted);
+            padding: 6px 16px;
+            border: 1px solid rgba(255, 215, 0, 0.08);
+            border-radius: 40px;
+            background: rgba(255, 215, 0, 0.02);
+            transition: 0.3s;
+        }
+        .trust-badges-row .badge-item:hover {
+            border-color: rgba(255, 215, 0, 0.2);
+            background: rgba(255, 215, 0, 0.05);
+        }
+        .trust-badges-row .badge-item i {
+            color: var(--kontakt-gold);
+            font-size: 0.8rem;
+        }
+        .trust-badges-row .badge-item strong {
+            color: var(--kontakt-text);
+        }
+        @media (max-width: 600px) {
+            .trust-badges-row {
+                gap: 12px;
+            }
+            .trust-badges-row .badge-item {
+                font-size: 0.5rem;
+                padding: 4px 12px;
+            }
+        }
+
+        /* ============================================================
+           BUSINESS HOURS & MAP
+           ============================================================ */
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        .info-card {
+            padding: 24px;
+        }
+        .info-card h3 {
+            font-family: var(--font-head);
+            font-size: 1.2rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .info-card h3 i {
+            color: var(--kontakt-gold);
+        }
+        .hours-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4px 20px;
+            font-size: 0.9rem;
+            color: var(--kontakt-muted);
+        }
+        .hours-grid .day {
+            font-weight: 500;
+            color: var(--kontakt-text);
+        }
+        .hours-grid .time {
+            text-align: right;
+        }
+        .hours-note {
+            margin-top: 12px;
+            font-size: 0.75rem;
+            color: var(--kontakt-cyan);
+            font-family: var(--font-mono);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .hours-note i {
+            color: #22c55e;
+        }
+
+        .map-wrapper {
+            border-radius: var(--kontakt-radius);
+            overflow: hidden;
+            border: 1px solid rgba(255, 215, 0, 0.06);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+            height: 100%;
+            min-height: 200px;
+        }
+        .map-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            min-height: 220px;
+            border: none;
+            display: block;
+            filter: grayscale(0.8) brightness(0.7) contrast(1.1);
+        }
+        @media (max-width: 768px) {
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            .map-wrapper {
+                min-height: 180px;
+            }
+            .map-wrapper iframe {
+                min-height: 180px;
+            }
+        }
+
+        /* ============================================================
+           CONTACT FORM (Detailed)
+           ============================================================ */
+        .form-section {
+            margin: 40px 0 60px;
+        }
+        .form-section .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .form-section .section-header .pre-title {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            letter-spacing: 3px;
+            color: var(--kontakt-cyan);
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .form-section .section-header h2 {
+            font-family: var(--font-head);
+            font-weight: 800;
+            font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+            line-height: 1.1;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 40px;
+            align-items: start;
+        }
+        @media (max-width: 900px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .form-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .form-info .info-block {
+            padding: 20px;
+        }
+        .form-info .info-block h4 {
+            font-family: var(--font-head);
+            font-size: 1rem;
+            font-weight: 800;
+            margin-bottom: 6px;
+        }
+        .form-info .info-block p {
+            color: var(--kontakt-muted);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+        .form-info .referral-cta {
+            padding: 18px 20px;
+            border: 1px dashed rgba(255, 215, 0, 0.2);
+            border-radius: 10px;
+            background: rgba(255, 215, 0, 0.02);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+        .form-info .referral-cta span {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--kontakt-muted);
+        }
+        .form-info .referral-cta span strong {
+            color: var(--kontakt-gold);
+        }
+        .form-info .referral-cta .btn-small {
+            padding: 6px 18px;
+            border-radius: 40px;
+            background: rgba(255, 215, 0, 0.08);
+            border: 1px solid rgba(255, 215, 0, 0.15);
+            color: var(--kontakt-gold);
+            font-family: var(--font-mono);
+            font-size: 0.6rem;
+            letter-spacing: 1px;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        .form-info .referral-cta .btn-small:hover {
+            background: rgba(255, 215, 0, 0.15);
+        }
+
+        .form-wrapper {
+            padding: 32px 28px;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-bottom: 18px;
+            position: relative;
+        }
+        .form-group label {
+            font-family: var(--font-mono);
+            font-size: 0.6rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--kontakt-muted);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .form-group label .required {
+            color: #ff6b6b;
+            font-size: 0.8rem;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea,
+        .form-group .file-upload-wrapper {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 10px;
+            padding: 12px 16px;
+            color: var(--kontakt-text);
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            width: 100%;
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--kontakt-gold);
+            box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.06);
+        }
+        .form-group select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2394a3b8' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+            padding-right: 40px;
+            cursor: pointer;
+        }
+        .form-group select option {
+            background: var(--kontakt-bg);
+            color: var(--kontakt-text);
+        }
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        .form-group .file-upload-wrapper {
+            position: relative;
+            padding: 10px 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+        }
+        .form-group .file-upload-wrapper input[type="file"] {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            cursor: pointer;
+            font-size: 100px;
+        }
+        .form-group .file-upload-wrapper .file-label {
+            color: var(--kontakt-muted);
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .form-group .file-upload-wrapper .file-label i {
+            color: var(--kontakt-gold);
+        }
+        .form-group .file-upload-wrapper .file-name {
+            font-size: 0.7rem;
+            color: var(--kontakt-cyan);
+            margin-left: auto;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 120px;
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        @media (max-width: 500px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Preferred Contact (Checkboxes inline) */
+        .preferred-contact-group {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            padding-top: 4px;
+        }
+        .preferred-contact-group label {
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            text-transform: none;
+            letter-spacing: 0;
+            color: var(--kontakt-muted);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+        }
+        .preferred-contact-group label input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            accent-color: var(--kontakt-gold);
+        }
+
+        /* Privacy Checkbox */
+        .privacy-checkbox {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .privacy-checkbox input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--kontakt-gold);
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        .privacy-checkbox label {
+            font-size: 0.78rem;
+            color: var(--kontakt-muted);
+            font-family: var(--font-body);
+            text-transform: none;
+            letter-spacing: 0;
+            line-height: 1.5;
+        }
+        .privacy-checkbox label a {
+            color: var(--kontakt-gold);
+            transition: color 0.3s;
+        }
+        .privacy-checkbox label a:hover {
+            color: var(--kontakt-cyan);
+        }
+
+        /* Form Trust Badges */
+        .form-trust-badges {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin: 16px 0;
+            font-size: 0.6rem;
+            font-family: var(--font-mono);
+            color: var(--kontakt-muted);
+        }
+        .form-trust-badges span i {
+            color: var(--kontakt-gold);
+        }
+
+        /* Submit Button */
+        .submit-row {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .submit-row .btn {
+            flex: 1;
+            justify-content: center;
+            min-width: 160px;
+        }
+        .submit-row .note {
+            font-size: 0.65rem;
+            color: var(--kontakt-dim);
+            font-family: var(--font-mono);
+        }
+
+        /* ============================================================
+           FAQ SECTION
+           ============================================================ */
+        .faq-section {
+            padding: 40px 0 60px;
+            border-top: 1px solid var(--kontakt-border);
+            margin-top: 20px;
+        }
+        .faq-section .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .faq-section .section-header .pre-title {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            letter-spacing: 3px;
+            color: var(--kontakt-cyan);
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .faq-section .section-header h2 {
+            font-family: var(--font-head);
+            font-weight: 800;
+            font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+            line-height: 1.1;
+        }
+
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .faq-item {
+            border-radius: 12px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.015);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            transition: border-color 0.3s;
+        }
+        .faq-item:hover {
+            border-color: rgba(255, 215, 0, 0.04);
+        }
+        .faq-item .trigger {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            width: 100%;
+            padding: 18px 20px;
+            text-align: left;
+            background: transparent;
+            cursor: pointer;
+        }
+        .faq-item .trigger .icon {
+            width: 34px;
+            height: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            flex-shrink: 0;
+            color: var(--kontakt-cyan);
+        }
+        .faq-item .trigger .wrap {
+            flex: 1;
+        }
+        .faq-item .trigger .wrap .cat {
+            font-family: var(--font-mono);
+            font-size: 0.45rem;
+            letter-spacing: 2px;
+            color: var(--kontakt-muted);
+            text-transform: uppercase;
+            display: block;
+        }
+        .faq-item .trigger .wrap h4 {
+            font-family: var(--font-head);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin: 2px 0 0;
+        }
+        .faq-item .trigger .plus {
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            flex-shrink: 0;
+            transition: 0.3s;
+            font-size: 1.1rem;
+            color: var(--kontakt-muted);
+        }
+        .faq-item.active .trigger .plus {
+            transform: rotate(45deg);
+            color: var(--kontakt-gold);
+        }
+        .faq-item .answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .faq-item.active .answer {
+            max-height: 200px;
+        }
+        .faq-item .answer .inner {
+            padding: 0 20px 20px 70px;
+            color: var(--kontakt-muted);
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+        @media (max-width: 700px) {
+            .faq-item .answer .inner {
+                padding-left: 16px;
+                padding-right: 16px;
+            }
+        }
+
+        /* ============================================================
+           RESPONSIVE
+           ============================================================ */
+        @media (max-width: 768px) {
+            .page-header {
+                padding: 100px 0 30px;
+            }
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+            .form-wrapper {
+                padding: 20px 16px;
+            }
+            .submit-row {
+                flex-direction: column;
+            }
+            .submit-row .btn {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .quick-contact-card {
+                padding: 20px 16px;
+            }
+            .quick-contact-card .icon-circle {
+                width: 44px;
+                height: 44px;
+                font-size: 1.1rem;
+            }
+            .form-trust-badges {
+                gap: 8px;
+            }
+            .form-trust-badges span {
+                font-size: 0.5rem;
+            }
+            .preferred-contact-group {
+                flex-direction: column;
+                gap: 6px;
+            }
+        }
+
+        /* ── Reduced Motion ── */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================================
+    NAV PLACEHOLDER
+    ============================================================ -->
+    <div id="nav-placeholder">
+        <div class="component-loading"><i class="fas fa-sync-alt fa-spin"></i> NAV SYSTEM INIT...</div>
+    </div>
+
+    <!-- ============================================================
+    PAGE HEADER
+    ============================================================ -->
+    <section class="page-header">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Start</a>
+                <span>›</span>
+                <span>Kontakt</span>
+            </div>
+            <h1>Kontakt. <span class="gold-text">Direkt.</span> Persönlich.</h1>
+            <p class="subtitle">Sie haben ein Projekt? Ich freue mich auf Ihre Anfrage.</p>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    QUICK CONTACT CARDS
+    ============================================================ -->
+    <section class="container">
+        <div class="quick-contact-grid">
+            <div class="glass-panel quick-contact-card">
+                <div class="icon-circle"><i class="fas fa-phone-alt"></i></div>
+                <h3>Anruf</h3>
+                <span class="contact-detail"><a href="tel:+491608194018">0160 819 4018</a></span>
+                <span class="contact-label">Mo–Fr 08:00–20:00</span>
+            </div>
+            <div class="glass-panel quick-contact-card">
+                <div class="icon-circle"><i class="fas fa-envelope"></i></div>
+                <h3>E-Mail</h3>
+                <span class="contact-detail"><a href="mailto:r.lezius@gmail.com">r.lezius@gmail.com</a></span>
+                <span class="contact-label">Antwort innerhalb 24h</span>
+            </div>
+            <div class="glass-panel quick-contact-card">
+                <div class="icon-circle" style="color:#25D366;"><i class="fab fa-whatsapp"></i></div>
+                <h3>WhatsApp</h3>
+                <span class="contact-detail"><a href="https://wa.me/491608194018">0160 819 4018</a></span>
+                <span class="contact-label">Schnell &amp; unkompliziert</span>
+            </div>
+        </div>
+
+        <!-- Trust Badges -->
+        <div class="trust-badges-row">
+            <span class="badge-item"><i class="fas fa-star"></i> <strong>5.0</strong> Rating</span>
+            <span class="badge-item"><i class="fas fa-users"></i> <strong>110+</strong> Kunden</span>
+            <span class="badge-item"><i class="fas fa-shield-alt"></i> <strong>5 Mio. €</strong> versichert</span>
+            <span class="badge-item"><i class="fas fa-check-circle"></i> <strong>30 Tage</strong> Garantie</span>
+            <span class="badge-item"><i class="fas fa-clock"></i> <strong>24h</strong> Antwort</span>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    BUSINESS HOURS & MAP
+    ============================================================ -->
+    <section class="container">
+        <div class="info-grid">
+            <div class="glass-panel info-card">
+                <h3><i class="far fa-clock"></i> Geschäftszeiten</h3>
+                <div class="hours-grid">
+                    <span class="day">Montag – Freitag</span>
+                    <span class="time">08:00 – 20:00</span>
+                    <span class="day">Samstag</span>
+                    <span class="time">09:00 – 16:00</span>
+                    <span class="day">Sonntag</span>
+                    <span class="time">Geschlossen</span>
+                </div>
+                <div class="hours-note">
+                    <i class="fas fa-check-circle"></i> Antwort innerhalb 24 Stunden
+                </div>
+                <div style="margin-top:16px;border-top:1px solid var(--kontakt-border);padding-top:16px;">
+                    <h3 style="font-size:1rem;margin-bottom:6px;"><i class="fas fa-map-marker-alt" style="color:var(--kontakt-gold);"></i> Einsatzgebiet</h3>
+                    <p style="color:var(--kontakt-muted);font-size:0.85rem;">Augsburg · München · Umland</p>
+                </div>
+            </div>
+            <div class="map-wrapper">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2660.898342463312!2d10.884196215649!3d48.374199379241!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479effa0df5ddc95%3A0x6f3b5b8c8c7c8f8c!2sAugsburg!5e0!3m2!1sde!2sde!4v1712345678901"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Standort Augsburg"
+                ></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    CONTACT FORM (Detailed)
+    ============================================================ -->
+    <section class="form-section container">
+        <div class="section-header">
+            <span class="pre-title">Anfrage</span>
+            <h2>Jetzt Ihr <span class="gold-text">Projekt starten</span></h2>
+            <p style="color:var(--kontakt-muted);max-width:620px;margin:8px auto 0;">Füllen Sie das Formular aus, laden Sie Fotos hoch und erhalten Sie ein unverbindliches Angebot.</p>
+        </div>
+
+        <div class="form-grid">
+            <!-- Left: Info & Referral -->
+            <div class="form-info">
+                <div class="glass-panel info-block">
+                    <h4><i class="fas fa-bolt" style="color:var(--kontakt-gold);"></i> Schnell &amp; direkt</h4>
+                    <p>Ich antworte innerhalb von <strong>24 Stunden</strong> – oft schon am gleichen Tag. Rufen Sie mich einfach an, schreiben Sie eine WhatsApp oder nutzen Sie das Formular.</p>
+                </div>
+                <div class="glass-panel info-block">
+                    <h4><i class="fas fa-shield-alt" style="color:var(--kontakt-cyan);"></i> Vollständig abgesichert</h4>
+                    <p>Ihre Daten werden vertraulich behandelt. Ich unterliege der <strong>DSGVO</strong> und verfüge über eine Betriebshaftpflicht mit <strong>5 Mio. € Deckung</strong>.</p>
+                </div>
+                <div class="glass-panel info-block">
+                    <h4><i class="fas fa-file-invoice-dollar" style="color:var(--kontakt-gold);"></i> Steuerlich absetzbar</h4>
+                    <p>Als eingetragener Handwerksbetrieb erhalten Sie eine ordentliche Rechnung. Sie können <strong>20% der Arbeitskosten von der Steuer absetzen</strong>.</p>
+                </div>
+                <div class="referral-cta">
+                    <span><i class="fas fa-gift gold-text"></i> <strong>Empfehlen &amp; 50€ Rabatt</strong> – Für Sie und Ihren Freund.</span>
+                    <a href="empfehlen.html" class="btn-small">Jetzt empfehlen <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- Right: Form -->
+            <form class="glass-panel form-wrapper" id="contactForm" novalidate>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Name <span class="required">*</span></label>
+                        <input type="text" id="formName" required placeholder="Ihr vollständiger Name" />
+                    </div>
+                    <div class="form-group">
+                        <label>E-Mail <span class="required">*</span></label>
+                        <input type="email" id="formEmail" required placeholder="ihre@email.de" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Telefon</label>
+                    <input type="tel" id="formPhone" placeholder="+49 160 ..." />
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Projekt-Typ <span class="required">*</span></label>
+                        <select id="formProject" required>
+                            <option value="">Bitte wählen...</option>
+                            <option value="kuechenmontage">Küchenmontage</option>
+                            <option value="usm-haller">USM Haller Montage</option>
+                            <option value="gartenhaus">Gartenhaus / Outdoor</option>
+                            <option value="pax-schrank">PAX Schrank / Kleiderschrank</option>
+                            <option value="demontage">Demontage &amp; Umzug</option>
+                            <option value="buero">Büro / Corporate Einrichtung</option>
+                            <option value="wandmontage">Wandmontage (Bilder, Spiegel, TV)</option>
+                            <option value="sonstiges">Sonstiges</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Dringlichkeit</label>
+                        <select id="formUrgency">
+                            <option value="flexibel">Flexibel (in 2–4 Wochen)</option>
+                            <option value="1-2-wochen">In 1–2 Wochen</option>
+                            <option value="3-tage">In den nächsten 3 Tagen</option>
+                            <option value="sofort">Sofort / Notfall</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Bevorzugte Kontaktaufnahme</label>
+                    <div class="preferred-contact-group">
+                        <label><input type="checkbox" name="contact_pref" value="phone" /> 📞 Anruf</label>
+                        <label><input type="checkbox" name="contact_pref" value="whatsapp" /> 💬 WhatsApp</label>
+                        <label><input type="checkbox" name="contact_pref" value="email" /> ✉️ E-Mail</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Datei hochladen (optional)</label>
+                    <div class="file-upload-wrapper">
+                        <input type="file" id="fileInput" accept="image/*,application/pdf" />
+                        <span class="file-label"><i class="fas fa-cloud-upload-alt"></i> Bild oder PDF auswählen</span>
+                        <span class="file-name" id="fileName">Keine Datei</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Nachricht <span class="required">*</span></label>
+                    <textarea id="formMessage" required placeholder="Beschreiben Sie Ihr Projekt – z.B. Küchenmontage, PAX Schrank, Gartenhaus..."></textarea>
+                </div>
+
+                <!-- Privacy -->
+                <div class="privacy-checkbox">
+                    <input type="checkbox" id="formPrivacy" required />
+                    <label for="formPrivacy">
+                        Ich stimme der <a href="datenschutz.html">Datenschutzerklärung</a> zu und erkläre mich damit einverstanden, dass meine Daten zur Bearbeitung meiner Anfrage gespeichert werden. *
+                    </label>
+                </div>
+
+                <!-- Trust badges near submit -->
+                <div class="form-trust-badges">
+                    <span><i class="fas fa-star"></i> 5.0 Rating</span>
+                    <span><i class="fas fa-users"></i> 110+ Kunden</span>
+                    <span><i class="fas fa-shield-alt"></i> 5 Mio. € versichert</span>
+                    <span><i class="fas fa-check-circle"></i> 30 Tage Garantie</span>
+                    <span><i class="fas fa-clock"></i> 24h Antwort</span>
+                </div>
+
+                <div class="submit-row">
+                    <button type="submit" class="btn btn-primary">Anfrage senden <i class="fas fa-paper-plane"></i></button>
+                    <span class="note">* Pflichtfelder</span>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    FAQ SECTION (Contact-specific)
+    ============================================================ -->
+    <section class="faq-section" id="faq">
+        <div class="container">
+            <div class="section-header">
+                <span class="pre-title">Support Center</span>
+                <h2>Häufige <span class="gold-text">Fragen</span></h2>
+                <p style="color:var(--kontakt-muted);max-width:620px;margin:8px auto 0;">Antworten auf die wichtigsten Fragen rund um Kontakt, Termin und Ablauf.</p>
+            </div>
+
+            <div class="faq-list">
+                <div class="faq-item glass-panel js-faq-item active">
+                    <button class="trigger" type="button">
+                        <div class="icon"><i class="fas fa-clock"></i></div>
+                        <div class="wrap">
+                            <span class="cat">KONTAKT</span>
+                            <h4>Wie schnell antworten Sie?</h4>
+                        </div>
+                        <div class="plus">+</div>
+                    </button>
+                    <div class="answer">
+                        <div class="inner">
+                            Ich antworte innerhalb von <strong>24 Stunden</strong> – oft schon am gleichen Tag. In Notfällen erreichen Sie mich auch außerhalb der Geschäftszeiten unter <a href="tel:+491608194018" style="color:var(--kontakt-cyan);">0160 819 4018</a>.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item glass-panel js-faq-item">
+                    <button class="trigger" type="button">
+                        <div class="icon"><i class="fas fa-phone-alt" style="color:var(--kontakt-gold);"></i></div>
+                        <div class="wrap">
+                            <span class="cat">ERREICHBARKEIT</span>
+                            <h4>Kann ich auch außerhalb der Geschäftszeiten anrufen?</h4>
+                        </div>
+                        <div class="plus">+</div>
+                    </button>
+                    <div class="answer">
+                        <div class="inner">
+                            Ja, in dringenden Fällen bin ich auch abends und am Wochenende erreichbar. Nutzen Sie einfach die <strong>Notfall-Nummer</strong> oder schreiben Sie mir eine WhatsApp – ich melde mich schnellstmöglich zurück.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item glass-panel js-faq-item">
+                    <button class="trigger" type="button">
+                        <div class="icon"><i class="fas fa-camera" style="color:var(--kontakt-cyan);"></i></div>
+                        <div class="wrap">
+                            <span class="cat">PROJEKT-VORBEREITUNG</span>
+                            <h4>Brauchen Sie Fotos von meinem Projekt?</h4>
+                        </div>
+                        <div class="plus">+</div>
+                    </button>
+                    <div class="answer">
+                        <div class="inner">
+                            Ja, das hilft mir enorm bei der Einschätzung! Sie können im Formular <strong>Bilder oder PDFs</strong> hochladen (z.B. Fotos des Raums, Maße oder Bebauungspläne). So kann ich Ihnen ein noch präziseres Angebot erstellen.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item glass-panel js-faq-item">
+                    <button class="trigger" type="button">
+                        <div class="icon"><i class="fas fa-file-invoice-dollar" style="color:#39ff14;"></i></div>
+                        <div class="wrap">
+                            <span class="cat">ABRECHNUNG</span>
+                            <h4>Kann ich die Montage von der Steuer absetzen?</h4>
+                        </div>
+                        <div class="plus">+</div>
+                    </button>
+                    <div class="answer">
+                        <div class="inner">
+                            Ja! Als eingetragener Handwerksbetrieb erhalten Sie eine ordentliche Rechnung. Sie können <strong>20 % der Arbeitskosten</strong> (max. 1.200 € pro Jahr) als haushaltsnahe Dienstleistung von der Steuer absetzen. Ich gebe Ihnen gerne alle nötigen Belege.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    FOOTER PLACEHOLDER
+    ============================================================ -->
+    <div id="footer-placeholder">
+        <div class="component-loading"><i class="fas fa-sync-alt fa-spin"></i> FOOTER SYSTEM INIT...</div>
+    </div>
+
+    <!-- ============================================================
+    COMPONENT LOADER & MAIN SCRIPT
+    ============================================================ -->
+    <script src="assets/js/loader.js"></script>
+
+    <script>
+        (function() {
+            'use strict';
+
+            // ============================================================
+            // FAQ ACCORDION
+            // ============================================================
+            document.querySelectorAll('.js-faq-item .trigger').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    var item = btn.closest('.js-faq-item');
+                    var isActive = item.classList.contains('active');
+
+                    // Close all other items
+                    document.querySelectorAll('.js-faq-item').forEach(function(i) {
+                        i.classList.remove('active');
+                    });
+
+                    if (!isActive) {
+                        item.classList.add('active');
+                    }
+                });
+            });
+
+            // ============================================================
+            // FILE UPLOAD – Show filename
+            // ============================================================
+            var fileInput = document.getElementById('fileInput');
+            var fileNameDisplay = document.getElementById('fileName');
+
+            if (fileInput && fileNameDisplay) {
+                fileInput.addEventListener('change', function() {
+                    if (this.files.length > 0) {
+                        fileNameDisplay.textContent = this.files[0].name;
+                    } else {
+                        fileNameDisplay.textContent = 'Keine Datei';
+                    }
+                });
+            }
+
+            // ============================================================
+            // CONTACT FORM HANDLING
+            // ============================================================
+            var form = document.getElementById('contactForm');
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                // Simple validation check (browser handles required, but we double-check)
+                var name = document.getElementById('formName').value.trim();
+                var email = document.getElementById('formEmail').value.trim();
+                var project = document.getElementById('formProject').value;
+                var message = document.getElementById('formMessage').value.trim();
+                var privacy = document.getElementById('formPrivacy').checked;
+
+                if (!name || !email || !project || !message || !privacy) {
+                    alert('❌ Bitte füllen Sie alle Pflichtfelder aus.');
+                    return;
+                }
+
+                // Simulate sending
+                var btn = form.querySelector('button[type="submit"]');
+                var originalText = btn.innerHTML;
+                btn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Wird gesendet...';
+                btn.disabled = true;
+
+                setTimeout(function() {
+                    btn.innerHTML = '<i class="fas fa-check"></i> Anfrage gesendet';
+                    btn.style.background = 'linear-gradient(135deg, #22c55e, #16a34a)';
+
+                    // Reset form after a moment
+                    setTimeout(function() {
+                        form.reset();
+                        fileNameDisplay.textContent = 'Keine Datei';
+                        btn.innerHTML = originalText;
+                        btn.disabled = false;
+                        btn.style.background = '';
+                        alert('✅ Vielen Dank! Ihre Anfrage wurde übermittelt. Ich melde mich innerhalb von 24 Stunden.');
+                    }, 1500);
+                }, 1200);
+            });
+
+            // ============================================================
+            // SMOOTH SCROLL for anchor links (like #faq)
+            // ============================================================
+            document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+                anchor.addEventListener('click', function(e) {
+                    var id = this.getAttribute('href');
+                    if (id === '#') return;
+                    var target = document.querySelector(id);
+                    if (target) {
+                        e.preventDefault();
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+
+            console.log('✅ Kontakt page initialized');
+        })();
+    </script>
+
+</body>
+</html>
