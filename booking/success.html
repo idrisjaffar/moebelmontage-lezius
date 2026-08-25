@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="light">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    <title>Buchung bestätigt – FIXJORI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&family=Space+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <style>
+        /* Shared booking styles */
+        :root {
+            --fj-teal: #0D9488;
+            --fj-teal-dark: #0F766E;
+            --fj-amber: #F59E0B;
+            --fj-gold: #F5A623;
+            --fj-green: #22C55E;
+            --fj-coral: #FF6B35;
+            --fj-bg: #F8FAFC;
+            --fj-surface: #FFFFFF;
+            --fj-text: #0F172A;
+            --fj-muted: #475569;
+            --fj-dim: #94A3B8;
+            --fj-border: #E2E8F0;
+            --fj-shadow: 0 4px 16px rgba(0,0,0,0.05);
+            --fj-shadow-lg: 0 8px 32px rgba(0,0,0,0.08);
+            --fj-radius: 16px;
+            --fj-radius-sm: 10px;
+            --fj-radius-full: 40px;
+            --font-head: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --nav-height: 68px;
+            --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        [data-theme="dark"] {
+            --fj-bg: #0F172A;
+            --fj-surface: #1A2332;
+            --fj-text: #F8FAFC;
+            --fj-muted: #94A3B8;
+            --fj-dim: #64748B;
+            --fj-border: rgba(255,255,255,0.06);
+            --fj-shadow: 0 4px 16px rgba(0,0,0,0.2);
+            --fj-shadow-lg: 0 8px 32px rgba(0,0,0,0.4);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            background: var(--fj-bg);
+            color: var(--fj-text);
+            transition: background 0.3s, color 0.3s;
+            padding-top: calc(var(--nav-height) + 12px);
+            min-height: 100vh;
+        }
+        a { text-decoration: none; color: inherit; }
+        button { font-family: inherit; border: none; background: none; color: inherit; cursor: pointer; }
+        img { max-width: 100%; display: block; }
+        ul { list-style: none; }
+
+        .container { max-width: 1260px; margin: 0 auto; padding: 0 clamp(16px, 3.5vw, 32px); }
+        .text-teal { color: var(--fj-teal); }
+        .text-muted { color: var(--fj-muted); }
+        .text-dim { color: var(--fj-dim); }
+
+        .btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 12px 28px; border-radius: var(--fj-radius-sm);
+            font-weight: 700; font-size: 0.85rem;
+            transition: all 0.3s var(--ease-smooth);
+            border: none; cursor: pointer; text-decoration: none;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--fj-teal), var(--fj-teal-dark));
+            color: #fff; box-shadow: 0 4px 16px rgba(13,148,136,0.25);
+        }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(13,148,136,0.35); }
+        .btn-secondary {
+            background: var(--fj-surface); border: 1px solid var(--fj-border);
+            color: var(--fj-text);
+        }
+        .btn-secondary:hover { border-color: var(--fj-teal); }
+        .btn-success {
+            background: var(--fj-green); color: #fff;
+        }
+        .btn-success:hover { opacity: 0.85; transform: translateY(-2px); }
+        .btn-amber {
+            background: var(--fj-amber); color: #0F172A;
+            box-shadow: 0 4px 16px rgba(245,158,11,0.25);
+        }
+        .btn-amber:hover { transform: translateY(-2px); }
+
+        .badge {
+            display: inline-block; padding: 2px 12px; border-radius: 30px;
+            font-family: var(--font-mono); font-size: 0.5rem; font-weight: 700;
+            letter-spacing: 0.5px; text-transform: uppercase;
+        }
+        .badge-teal {
+            background: rgba(13,148,136,0.08); color: var(--fj-teal);
+            border: 1px solid rgba(13,148,136,0.10);
+        }
+        .badge-green {
+            background: rgba(34,197,94,0.08); color: var(--fj-green);
+            border: 1px solid rgba(34,197,94,0.10);
+        }
+
+        /* Navigation */
+        .site-nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            height: var(--nav-height);
+            background: rgba(255,255,255,0.85); backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--fj-border);
+            display: flex; align-items: center; padding: 0 16px;
+            transition: background 0.3s, box-shadow 0.3s;
+        }
+        [data-theme="dark"] .site-nav { background: rgba(15,23,42,0.85); }
+        .site-nav.scrolled { box-shadow: var(--fj-shadow); }
+
+        .nav-inner {
+            max-width: 1260px; width: 100%; margin: 0 auto;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .nav-logo {
+            display: flex; align-items: center; gap: 8px;
+            font-family: var(--font-head); font-weight: 900; font-size: 1.3rem; letter-spacing: -0.5px;
+        }
+        .nav-logo span { color: var(--fj-teal); }
+        .nav-logo .logo-icon {
+            width: 32px; height: 32px;
+            background: linear-gradient(135deg, var(--fj-teal), var(--fj-teal-dark));
+            border-radius: 8px; display: flex; align-items: center; justify-content: center;
+            color: #fff; font-size: 1rem;
+        }
+
+        .nav-links { display: flex; gap: 24px; align-items: center; }
+        .nav-links a {
+            font-size: 0.85rem; font-weight: 500; color: var(--fj-muted);
+            transition: color 0.2s; position: relative;
+        }
+        .nav-links a:hover { color: var(--fj-text); }
+        .nav-links a.active::after {
+            content: ''; position: absolute; bottom: -4px; left: 0;
+            width: 100%; height: 2px; background: var(--fj-teal); border-radius: 2px;
+        }
+
+        .nav-actions { display: flex; align-items: center; gap: 8px; }
+        .theme-toggle {
+            width: 36px; height: 36px; border-radius: 50%;
+            border: 1px solid var(--fj-border); background: transparent;
+            color: var(--fj-muted); display: flex; align-items: center; justify-content: center;
+            font-size: 0.95rem; transition: all 0.3s;
+        }
+        .theme-toggle:hover { border-color: var(--fj-teal); color: var(--fj-text); }
+
+        .nav-cta {
+            padding: 6px 16px; border-radius: var(--fj-radius-full);
+            background: linear-gradient(135deg, var(--fj-teal), var(--fj-teal-dark));
+            color: #fff !important; font-weight: 700; font-size: 0.7rem !important;
+            text-transform: uppercase; letter-spacing: 0.5px;
+        }
+        .nav-cta:hover { opacity: 0.9; }
+
+        .mobile-toggle {
+            display: none; flex-direction: column; gap: 4px; padding: 6px;
+            background: none; border: none; cursor: pointer;
+        }
+        .mobile-toggle span {
+            display: block; width: 22px; height: 2px;
+            background: var(--fj-text); border-radius: 2px; transition: 0.3s;
+        }
+        .mobile-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .mobile-toggle.active span:nth-child(2) { opacity: 0; }
+        .mobile-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+        .mobile-menu {
+            position: fixed; top: var(--nav-height); left: 0; right: 0; bottom: 0;
+            background: var(--fj-surface); backdrop-filter: blur(20px);
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            gap: 24px; transform: translateX(100%);
+            transition: transform 0.4s var(--ease-smooth);
+            z-index: 999; padding: 40px 20px;
+        }
+        .mobile-menu.open { transform: translateX(0); }
+        .mobile-menu a { font-size: 1.4rem; font-weight: 600; color: var(--fj-muted); transition: color 0.2s; }
+        .mobile-menu a:hover { color: var(--fj-text); }
+        .mobile-menu .mobile-cta {
+            margin-top: 16px; padding: 12px 40px; border-radius: var(--fj-radius-full);
+            background: linear-gradient(135deg, var(--fj-teal), var(--fj-teal-dark));
+            color: #fff; font-weight: 700; font-size: 0.9rem;
+        }
+
+        @media (max-width: 900px) {
+            .nav-links { display: none; }
+            .mobile-toggle { display: flex; }
+            .mobile-menu { transform: translateX(100%); }
+            .mobile-menu.open { transform: translateX(0); }
+            .nav-actions .nav-cta { display: none; }
+        }
+
+        /* Success-specific styles */
+        .success-hero {
+            text-align: center;
+            padding: 40px 0 20px;
+        }
+        .success-hero .icon-wrap {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba(34,197,94,0.08);
+            color: var(--fj-green);
+            font-size: 3.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+        .success-hero h1 {
+            font-family: var(--font-head);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 900;
+            margin-bottom: 8px;
+        }
+        .success-hero p {
+            color: var(--fj-muted);
+            font-size: 1.05rem;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+
+        .success-details {
+            background: var(--fj-surface);
+            border: 1px solid var(--fj-border);
+            border-radius: var(--fj-radius);
+            padding: 28px 32px;
+            max-width: 640px;
+            margin: 0 auto 32px;
+        }
+        .success-details .row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--fj-border);
+            font-size: 0.95rem;
+        }
+        .success-details .row:last-child {
+            border-bottom: none;
+        }
+        .success-details .row .label {
+            color: var(--fj-muted);
+        }
+        .success-details .row .value {
+            font-weight: 600;
+            color: var(--fj-text);
+        }
+        .success-details .row .value .badge-amber {
+            font-size: 0.6rem;
+            padding: 1px 10px;
+            background: rgba(245,158,11,0.08);
+            color: var(--fj-amber);
+            border: 1px solid rgba(245,158,11,0.10);
+            border-radius: 30px;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .next-steps {
+            max-width: 640px;
+            margin: 0 auto 32px;
+        }
+        .next-steps h3 {
+            font-family: var(--font-head);
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+        .step-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+        @media (max-width: 600px) {
+            .step-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .step-item {
+            background: var(--fj-surface);
+            border: 1px solid var(--fj-border);
+            border-radius: var(--fj-radius-sm);
+            padding: 20px 16px;
+            text-align: center;
+        }
+        .step-item .num {
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--fj-teal);
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.7rem;
+            line-height: 28px;
+            margin-bottom: 8px;
+        }
+        .step-item h4 {
+            font-family: var(--font-head);
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .step-item p {
+            font-size: 0.75rem;
+            color: var(--fj-muted);
+            margin: 0;
+        }
+
+        .success-actions {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
+
+        /* Footer */
+        .site-footer {
+            background: var(--fj-surface); border-top: 1px solid var(--fj-border);
+            padding: 40px 0 24px;
+            margin-top: 40px;
+        }
+        .footer-grid {
+            display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 32px;
+        }
+        @media (max-width: 800px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+        @media (max-width: 480px) { .footer-grid { grid-template-columns: 1fr; } }
+        .footer-brand h4 {
+            font-family: var(--font-head); font-size: 1.2rem; font-weight: 900; margin-bottom: 8px;
+        }
+        .footer-brand h4 span { color: var(--fj-teal); }
+        .footer-brand p { font-size: 0.85rem; color: var(--fj-muted); max-width: 280px; }
+        .footer-col h5 {
+            font-size: 0.8rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.5px; color: var(--fj-dim); margin-bottom: 12px;
+        }
+        .footer-col a {
+            display: block; font-size: 0.85rem; color: var(--fj-muted);
+            padding: 4px 0; transition: color 0.2s;
+        }
+        .footer-col a:hover { color: var(--fj-teal); }
+        .footer-bottom {
+            border-top: 1px solid var(--fj-border); padding-top: 16px;
+            display: flex; justify-content: space-between; flex-wrap: wrap;
+            gap: 12px; font-size: 0.7rem; color: var(--fj-dim);
+        }
+        .footer-bottom a { color: var(--fj-dim); transition: color 0.2s; }
+        .footer-bottom a:hover { color: var(--fj-teal); }
+
+        @media (prefers-reduced-motion: reduce) {
+            * { transition: none !important; transform: none !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-nav" id="siteNav">
+        <div class="nav-inner">
+            <a href="../index.html" class="nav-logo">
+                <div class="logo-icon"><i class="fas fa-tools"></i></div>
+                FIX<span>JORI</span>
+            </a>
+            <nav class="nav-links">
+                <a href="../index.html">Start</a>
+                <a href="../directory/index.html">Handwerker</a>
+                <a href="../services/montage.html">Services</a>
+                <a href="../client/dashboard.html">Mein Konto</a>
+                <a href="step1.html" class="nav-cta" style="background:var(--fj-amber);color:#0F172A !important;">Buchung</a>
+            </nav>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon" id="themeIcon"></i></button>
+                <a href="../client/dashboard.html" class="nav-cta" style="background:transparent;border:1px solid var(--fj-border);color:var(--fj-text);">Login</a>
+                <button class="mobile-toggle" id="mobileToggle"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="../index.html">Start</a>
+        <a href="../directory/index.html">Handwerker</a>
+        <a href="../services/montage.html">Services</a>
+        <a href="../client/dashboard.html">Mein Konto</a>
+        <a href="step1.html" class="mobile-cta">Buchung</a>
+    </div>
+
+    <div class="container">
+        <div class="success-hero">
+            <div class="icon-wrap"><i class="fas fa-check"></i></div>
+            <h1>✅ Buchung bestätigt!</h1>
+            <p>Ihre Anfrage wurde erfolgreich übermittelt. Raphael Lezius wird sich innerhalb von 24 Stunden bei Ihnen melden.</p>
+        </div>
+
+        <div class="success-details">
+            <div class="row">
+                <span class="label">Projekt</span>
+                <span class="value">Küchenmontage</span>
+            </div>
+            <div class="row">
+                <span class="label">Kategorie</span>
+                <span class="value">Montage & Möbel</span>
+            </div>
+            <div class="row">
+                <span class="label">Handwerker</span>
+                <span class="value">Raphael Lezius <span class="badge-amber">⭐ Premium Pro</span></span>
+            </div>
+            <div class="row">
+                <span class="label">Termin</span>
+                <span class="value">Fr 29.08.2026, 10:00 Uhr</span>
+            </div>
+            <div class="row">
+                <span class="label">Ort</span>
+                <span class="value">86150 Augsburg</span>
+            </div>
+            <div class="row">
+                <span class="label">Geschätzter Preis</span>
+                <span class="value" style="color:var(--fj-teal);font-weight:800;">ab 1.200 €</span>
+            </div>
+            <div class="row" style="border-bottom: none; padding-bottom: 0;">
+                <span class="label">Status</span>
+                <span class="value"><span class="badge badge-green"><i class="fas fa-check-circle"></i> Bestätigt</span></span>
+            </div>
+        </div>
+
+        <div class="next-steps">
+            <h3>📌 Nächste Schritte</h3>
+            <div class="step-grid">
+                <div class="step-item">
+                    <div class="num">1</div>
+                    <h4>Bestätigung</h4>
+                    <p>Sie erhalten eine E‑Mail mit allen Details.</p>
+                </div>
+                <div class="step-item">
+                    <div class="num">2</div>
+                    <h4>Kontaktaufnahme</h4>
+                    <p>Raphael meldet sich innerhalb von 24 Stunden bei Ihnen.</p>
+                </div>
+                <div class="step-item">
+                    <div class="num">3</div>
+                    <h4>Umsetzung</h4>
+                    <p>Am vereinbarten Termin wird Ihre Montage durchgeführt.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="success-actions">
+            <a href="../client/dashboard.html" class="btn btn-primary"><i class="fas fa-user-circle"></i> Zum Client Portal</a>
+            <a href="../directory/profile.html?id=raphael" class="btn btn-secondary"><i class="fas fa-user"></i> Handwerker-Profil</a>
+            <a href="../index.html" class="btn btn-secondary"><i class="fas fa-home"></i> Zur Startseite</a>
+        </div>
+
+        <div style="text-align:center;margin-top:32px;padding:16px;background:rgba(13,148,136,0.02);border-radius:var(--fj-radius-sm);border:1px solid rgba(13,148,136,0.06);max-width:640px;margin-left:auto;margin-right:auto;">
+            <p style="font-size:0.85rem;color:var(--fj-muted);margin:0;">
+                <i class="fas fa-phone" style="color:var(--fj-teal);"></i>
+                <strong>Fragen?</strong> Rufen Sie an unter <a href="tel:+491608194018" style="color:var(--fj-teal);font-weight:600;">0160 819 4018</a>
+                oder schreiben Sie eine <a href="https://wa.me/491608194018" target="_blank" style="color:var(--fj-teal);font-weight:600;">WhatsApp</a>.
+            </p>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h4>FIX<span>JORI</span></h4>
+                    <p>Die Plattform für perfekte Montage und Premium-Handwerk.</p>
+                </div>
+                <div class="footer-col">
+                    <h5>Services</h5>
+                    <a href="../services/montage.html">Montage & Möbel</a>
+                    <a href="../services/elektro.html">Elektro & Smart</a>
+                    <a href="../services/sanitaer.html">Sanitär & Wasser</a>
+                </div>
+                <div class="footer-col">
+                    <h5>Plattform</h5>
+                    <a href="../directory/index.html">Handwerker finden</a>
+                    <a href="../client/dashboard.html">Client Portal</a>
+                    <a href="step1.html">Projekt starten</a>
+                </div>
+                <div class="footer-col">
+                    <h5>Rechtliches</h5>
+                    <a href="../impressum.html">Impressum</a>
+                    <a href="../datenschutz.html">Datenschutz</a>
+                    <a href="../agb.html">AGB</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2026 FIXJORI. Alle Rechte vorbehalten.</span>
+                <div style="display:flex;gap:16px;flex-wrap:wrap;">
+                    <a href="../impressum.html">Impressum</a>
+                    <a href="../datenschutz.html">Datenschutz</a>
+                    <a href="../agb.html">AGB</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        (function() {
+            'use strict';
+
+            // Theme toggle
+            const html = document.documentElement;
+            const themeToggle = document.getElementById('themeToggle');
+            const themeIcon = document.getElementById('themeIcon');
+            const storedTheme = localStorage.getItem('fixjori-theme');
+            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            let currentTheme = storedTheme || (systemPrefersDark ? 'dark' : 'light');
+
+            function applyTheme(theme) {
+                html.setAttribute('data-theme', theme);
+                localStorage.setItem('fixjori-theme', theme);
+                themeIcon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+            }
+            applyTheme(currentTheme);
+
+            themeToggle.addEventListener('click', function() {
+                currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+                applyTheme(currentTheme);
+            });
+
+            // Mobile nav
+            const toggleBtn = document.getElementById('mobileToggle');
+            const mobileMenu = document.getElementById('mobileMenu');
+            toggleBtn.addEventListener('click', function() {
+                const isOpen = this.classList.toggle('active');
+                mobileMenu.classList.toggle('open');
+                this.setAttribute('aria-expanded', isOpen);
+                document.body.style.overflow = isOpen ? 'hidden' : '';
+            });
+
+            mobileMenu.querySelectorAll('a').forEach(function(link) {
+                link.addEventListener('click', function() {
+                    toggleBtn.classList.remove('active');
+                    mobileMenu.classList.remove('open');
+                    document.body.style.overflow = '';
+                });
+            });
+
+            // Nav shadow
+            const nav = document.getElementById('siteNav');
+            window.addEventListener('scroll', function() {
+                nav.classList.toggle('scrolled', window.scrollY > 20);
+            }, { passive: true });
+
+            console.log('✅ Booking Success page loaded.');
+        })();
+    </script>
+
+</body>
+</html>

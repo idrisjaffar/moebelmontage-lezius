@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="light">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    <title>Buchung bestätigen – FIXJORI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&family=Space+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <style>
+        /* Shared styles – compact */
+        :root {
+            --fj-teal: #0D9488; --fj-teal-dark: #0F766E; --fj-amber: #F59E0B;
+            --fj-gold: #F5A623; --fj-green: #22C55E; --fj-coral: #FF6B35;
+            --fj-bg: #F8FAFC; --fj-surface: #FFFFFF; --fj-text: #0F172A;
+            --fj-muted: #475569; --fj-dim: #94A3B8; --fj-border: #E2E8F0;
+            --fj-shadow: 0 4px 16px rgba(0,0,0,0.05); --fj-shadow-lg: 0 8px 32px rgba(0,0,0,0.08);
+            --fj-radius: 16px; --fj-radius-sm: 10px; --fj-radius-full: 40px;
+            --font-head: 'Space Grotesk', sans-serif; --font-body: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace; --nav-height: 68px;
+            --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        [data-theme="dark"] {
+            --fj-bg: #0F172A; --fj-surface: #1A2332; --fj-text: #F8FAFC;
+            --fj-muted: #94A3B8; --fj-dim: #64748B; --fj-border: rgba(255,255,255,0.06);
+            --fj-shadow: 0 4px 16px rgba(0,0,0,0.2); --fj-shadow-lg: 0 8px 32px rgba(0,0,0,0.4);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            background: var(--fj-bg);
+            color: var(--fj-text);
+            transition: background 0.3s, color 0.3s;
+            padding-top: calc(var(--nav-height) + 12px);
+            min-height: 100vh;
+        }
+        a { text-decoration: none; color: inherit; }
+        button { font-family: inherit; border: none; background: none; color: inherit; cursor: pointer; }
+        img { max-width: 100%; display: block; }
+        ul { list-style: none; }
+
+        .container { max-width: 1260px; margin: 0 auto; padding: 0 clamp(16px, 3.5vw, 32px); }
+        .text-teal { color: var(--fj-teal); }
+        .text-muted { color: var(--fj-muted); }
+        .text-dim { color: var(--fj-dim); }
+
+        .btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 12px 28px; border-radius: var(--fj-radius-sm);
+            font-weight: 700; font-size: 0.85rem;
+            transition: all 0.3s var(--ease-smooth);
+            border: none; cursor: pointer; text-decoration: none;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--fj-teal), var(--fj-teal-dark));
+            color: #fff; box-shadow: 0 4px 16px rgba(13,148,136,0.25);
+        }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(13,148,136,0.35); }
+        .btn-secondary {
+            background: var(--fj-surface); border: 1px solid var(--fj-border);
+            color: var(--fj-text);
+        }
+        .btn-secondary:hover { border-color: var(--fj-teal); }
+        .btn-success {
+            background: var(--fj-green); color: #fff;
+        }
+        .btn-success:hover { opacity: 0.85; transform: translateY(-2px); }
+
+        .badge {
+            display: inline-block; padding: 2px 12px; border-radius: 30px;
+            font-family: var(--font-mono); font-size: 0.5rem; font-weight: 700;
+            letter-spacing: 0.5px; text-transform: uppercase;
+        }
+        .badge-teal {
+            background: rgba(13,148,136,0.08); color: var(--fj-teal);
+            border: 1px solid rgba(13,148,136,0.10);
+        }
+        .badge-green {
+            background: rgba(34,197,94,0.08); color: var(--fj-green);
+            border: 1px solid rgba(34,197,94,0.10);
+        }
+
+        /* Navigation compact */
+        .site-nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            height: var(--nav-height);
+            background: rgba(255,255,255,0.85); backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--fj-border);
+            display: flex; align-items: center; padding: 0 16px;
+            transition: background 0.3s, box-shadow 0.3s;
+        }
+        [data-theme="dark"] .site-nav { background: rgba(15,23,42,0.85); }
+        .site-nav.scrolled { box-shadow: var(--fj-shadow); }
+
+        .nav-inner {
+            max-width: 1260px; width: 100%; margin: 0 auto;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .nav-logo {
+            display: flex; align-items: center; gap: 8px;
+            font-family: var(--font-head); font-weight: 900; font-size: 1.3rem; letter-spacing: -0.5px;
+        }
+        .nav-logo span { color: var(--fj-teal); }
+        .nav-logo .logo-icon {
+            width: 32px; height: 32px;
+            background: linear-gradient(135deg, var(--fj-teal), var(--fj-teal-dark));
+            border-radius: 8px; display: flex; align-items: center; justify-content: center;
+            color: #fff; font-size: 1rem;
+        }
+
+        .nav-links { display: flex; gap: 24px; align-items: center; }
+        .nav-links a {
+            font-size: 0.85rem; font-weight: 500; color: var(--fj-muted);
+            transition: color 0.2s; position: relative;
+        }
+        .nav-links a:hover { color: var(--fj-text); }
+        .nav-links a.active::after {
+            content: ''; position: absolute; bottom: -4px; left: 0;
+            width: 100%; height: 2px; background: var(--fj-teal); border-radius: 2px;
+        }
+
+        .nav-actions { display: flex; align-items: center; gap: 8px; }
+        .theme-toggle {
+            width: 36px; height: 36px; border-radius: 50%;
+            border: 1px solid var(--fj-border); background: transparent;
+            color: var(--fj-muted); display: flex; align-items: center; justify-content: center;
+            font-size: 0.95rem; transition: all 0.3s;
+        }
+        .theme-toggle:hover { border-color: var(--fj-teal); color: var(--fj-text); }
+
+        .nav-cta {
+            padding: 6px 16px; border-radius: var(--fj-radius-full);
+            background: linear-gradient(135deg, var(--fj-teal), var(--fj-teal-dark));
+            color: #fff !important; font-weight: 700; font-size: 0.7rem !important;
+            text-transform: uppercase; letter-spacing: 0.5px;
+        }
+        .nav-cta:hover { opacity: 0.9; }
+
+        .mobile-toggle {
+            display: none; flex-direction: column; gap: 4px; padding: 6px;
+            background: none; border: none; cursor: pointer;
+        }
+        .mobile-toggle span {
+            display: block; width: 22px; height: 2px;
+            background: var(--fj-text); border-radius: 2px; transition: 0.3s;
+        }
+        .mobile-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .mobile-toggle.active span:nth-child(2) { opacity: 0; }
+        .mobile-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+        .mobile-menu {
+            position: fixed; top: var(--nav-height); left: 0; right: 0; bottom: 0;
+            background: var(--fj-surface); backdrop-filter: blur(20px);
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            gap: 24px; transform: translateX(100%);
+            transition: transform 0.4s var(--ease-smooth);
+            z-index: 999; padding: 40px 20px;
+        }
+        .mobile-menu.open { transform: translateX(0); }
+        .mobile-menu a { font-size: 1.4rem; font-weight: 600; color: var(--fj-muted); transition: color 0.2s; }
+        .mobile-menu a:hover { color: var(--fj-text); }
+        .mobile-menu .mobile-cta {
+            margin-top: 16px; padding: 12px 40px; border-radius: var(--fj-radius-full);
+            background: linear-gradient(135deg, var(--fj-teal), var(--fj-teal-dark));
+            color: #fff; font-weight: 700; font-size: 0.9rem;
+        }
+
+        @media (max-width: 900px) {
+            .nav-links { display: none; }
+            .mobile-toggle { display: flex; }
+            .mobile-menu { transform: translateX(100%); }
+            .mobile-menu.open { transform: translateX(0); }
+            .nav-actions .nav-cta { display: none; }
+        }
+
+        /* Progress Steps */
+        .progress-steps {
+            display: flex; gap: 0; margin-bottom: 32px;
+            position: relative; padding: 0 0 20px 0;
+            border-bottom: 1px solid var(--fj-border);
+        }
+        .progress-steps::before {
+            content: ''; position: absolute; top: 14px; left: 30px; right: 30px;
+            height: 2px; background: var(--fj-border); z-index: 0;
+        }
+        .progress-step {
+            flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px; position: relative; z-index: 1;
+        }
+        .progress-step .circle {
+            width: 28px; height: 28px; border-radius: 50%;
+            background: var(--fj-border); color: var(--fj-muted);
+            display: flex; align-items: center; justify-content: center;
+            font-family: var(--font-head); font-size: 0.7rem; font-weight: 700;
+            transition: all 0.4s; border: 2px solid transparent;
+        }
+        .progress-step .label {
+            font-size: 0.6rem; font-weight: 600; color: var(--fj-muted); text-align: center; transition: color 0.3s;
+        }
+        .progress-step.done .circle {
+            background: var(--fj-green); color: #fff; border-color: var(--fj-green);
+        }
+        .progress-step.done .label { color: var(--fj-green); }
+        .progress-step.active .circle {
+            background: var(--fj-teal); color: #fff; border-color: var(--fj-teal);
+            box-shadow: 0 0 0 4px rgba(13,148,136,0.15);
+        }
+        .progress-step.active .label { color: var(--fj-teal); }
+
+        .booking-layout {
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: 32px;
+            padding: 16px 0 40px;
+        }
+        @media (max-width: 900px) {
+            .booking-layout { grid-template-columns: 1fr; gap: 24px; }
+        }
+
+        .booking-main {
+            background: var(--fj-surface);
+            border-radius: var(--fj-radius);
+            border: 1px solid var(--fj-border);
+            padding: 32px 28px;
+        }
+
+        .booking-sidebar {
+            position: sticky; top: calc(var(--nav-height) + 20px); align-self: start;
+        }
+        @media (max-width: 900px) {
+            .booking-sidebar { position: static; }
+        }
+
+        .sidebar-card {
+            background: var(--fj-surface); border: 1px solid var(--fj-border);
+            border-radius: var(--fj-radius-sm); padding: 20px;
+            display: flex; flex-direction: column; gap: 14px;
+        }
+        .sidebar-card .title {
+            font-family: var(--font-head); font-size: 1.1rem; font-weight: 800;
+        }
+        .sidebar-card .summary-item {
+            display: flex; justify-content: space-between;
+            font-size: 0.85rem; color: var(--fj-muted);
+            padding: 6px 0; border-bottom: 1px solid var(--fj-border);
+        }
+        .sidebar-card .summary-item:last-child { border-bottom: none; }
+        .sidebar-card .summary-item .value { font-weight: 600; color: var(--fj-text); }
+        .sidebar-card .total {
+            display: flex; justify-content: space-between;
+            font-size: 1rem; font-weight: 700; padding-top: 10px;
+            border-top: 2px solid var(--fj-border);
+        }
+        .sidebar-card .total .value { color: var(--fj-teal); }
+        .sidebar-card .step-indicator {
+            font-family: var(--font-mono); font-size: 0.55rem; color: var(--fj-dim);
+            text-align: center; padding: 4px 0;
+        }
+
+        .selected-preview {
+            display: flex; align-items: center; gap: 10px;
+            padding: 8px 12px;
+            background: rgba(13,148,136,0.04);
+            border-radius: var(--fj-radius-sm);
+            border: 1px solid rgba(13,148,136,0.08);
+        }
+        .selected-preview .avatar-sm {
+            width: 32px; height: 32px; border-radius: 50%; background: var(--fj-border); overflow: hidden; flex-shrink: 0;
+        }
+        .selected-preview .avatar-sm img { width: 100%; height: 100%; object-fit: cover; }
+        .selected-preview .info-sm { flex: 1; }
+        .selected-preview .info-sm .name-sm { font-weight: 700; font-size: 0.8rem; }
+        .selected-preview .info-sm .title-sm { font-size: 0.6rem; color: var(--fj-muted); }
+
+        .confirmation-icon {
+            text-align: center; margin-bottom: 16px;
+        }
+        .confirmation-icon .icon {
+            font-size: 4rem; color: var(--fj-green);
+            background: rgba(34,197,94,0.08);
+            width: 80px; height: 80px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto;
+        }
+
+        .details-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+            margin: 20px 0;
+            padding: 16px 0; border-top: 1px solid var(--fj-border);
+            border-bottom: 1px solid var(--fj-border);
+        }
+        @media (max-width: 500px) {
+            .details-grid { grid-template-columns: 1fr; }
+        }
+        .detail-item .label {
+            font-size: 0.6rem; font-weight: 600; text-transform: uppercase;
+            color: var(--fj-dim); font-family: var(--font-mono); letter-spacing: 0.5px;
+        }
+        .detail-item .value {
+            font-weight: 600; font-size: 0.95rem;
+        }
+
+        /* Footer */
+        .site-footer {
+            background: var(--fj-surface); border-top: 1px solid var(--fj-border);
+            padding: 40px 0 24px; margin-top: 40px;
+        }
+        .footer-grid {
+            display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 32px;
+        }
+        @media (max-width: 800px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+        @media (max-width: 480px) { .footer-grid { grid-template-columns: 1fr; } }
+        .footer-brand h4 {
+            font-family: var(--font-head); font-size: 1.2rem; font-weight: 900; margin-bottom: 8px;
+        }
+        .footer-brand h4 span { color: var(--fj-teal); }
+        .footer-brand p { font-size: 0.85rem; color: var(--fj-muted); max-width: 280px; }
+        .footer-col h5 {
+            font-size: 0.8rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.5px; color: var(--fj-dim); margin-bottom: 12px;
+        }
+        .footer-col a {
+            display: block; font-size: 0.85rem; color: var(--fj-muted);
+            padding: 4px 0; transition: color 0.2s;
+        }
+        .footer-col a:hover { color: var(--fj-teal); }
+        .footer-bottom {
+            border-top: 1px solid var(--fj-border); padding-top: 16px;
+            display: flex; justify-content: space-between; flex-wrap: wrap;
+            gap: 12px; font-size: 0.7rem; color: var(--fj-dim);
+        }
+        .footer-bottom a { color: var(--fj-dim); transition: color 0.2s; }
+        .footer-bottom a:hover { color: var(--fj-teal); }
+
+        @media (prefers-reduced-motion: reduce) {
+            * { transition: none !important; transform: none !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-nav" id="siteNav">
+        <div class="nav-inner">
+            <a href="../index.html" class="nav-logo">
+                <div class="logo-icon"><i class="fas fa-tools"></i></div>
+                FIX<span>JORI</span>
+            </a>
+            <nav class="nav-links">
+                <a href="../index.html">Start</a>
+                <a href="../directory/index.html">Handwerker</a>
+                <a href="../services/montage.html">Services</a>
+                <a href="../client/dashboard.html">Mein Konto</a>
+                <a href="step1.html" class="nav-cta" style="background:var(--fj-amber);color:#0F172A !important;">Buchung</a>
+            </nav>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon" id="themeIcon"></i></button>
+                <a href="../client/dashboard.html" class="nav-cta" style="background:transparent;border:1px solid var(--fj-border);color:var(--fj-text);">Login</a>
+                <button class="mobile-toggle" id="mobileToggle"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="../index.html">Start</a>
+        <a href="../directory/index.html">Handwerker</a>
+        <a href="../services/montage.html">Services</a>
+        <a href="../client/dashboard.html">Mein Konto</a>
+        <a href="step1.html" class="mobile-cta">Buchung</a>
+    </div>
+
+    <div class="container">
+        <div class="progress-steps">
+            <div class="progress-step done">
+                <div class="circle"><i class="fas fa-check" style="font-size:0.55rem;"></i></div>
+                <span class="label">Projekt</span>
+            </div>
+            <div class="progress-step done">
+                <div class="circle"><i class="fas fa-check" style="font-size:0.55rem;"></i></div>
+                <span class="label">Handwerker</span>
+            </div>
+            <div class="progress-step done">
+                <div class="circle"><i class="fas fa-check" style="font-size:0.55rem;"></i></div>
+                <span class="label">Termin</span>
+            </div>
+            <div class="progress-step active">
+                <div class="circle">4</div>
+                <span class="label">Bestätigung</span>
+            </div>
+        </div>
+
+        <div class="booking-layout">
+            <div class="booking-main">
+                <div class="confirmation-icon">
+                    <div class="icon"><i class="fas fa-check"></i></div>
+                </div>
+                <h2 style="font-family:var(--font-head);font-size:1.4rem;font-weight:800;text-align:center;margin-bottom:4px;">Buchung fast abgeschlossen! ✅</h2>
+                <p style="text-align:center;color:var(--fj-muted);font-size:0.95rem;margin-bottom:8px;">Bitte überprüfen Sie Ihre Angaben und bestätigen Sie die Buchung.</p>
+
+                <div class="details-grid">
+                    <div class="detail-item">
+                        <span class="label">Kategorie</span>
+                        <div class="value">Montage & Möbel</div>
+                    </div>
+                    <div class="detail-item">
+                        <span class="label">Projekt</span>
+                        <div class="value">Küchenmontage</div>
+                    </div>
+                    <div class="detail-item">
+                        <span class="label">Handwerker</span>
+                        <div class="value">Raphael Lezius ⭐ Premium</div>
+                    </div>
+                    <div class="detail-item">
+                        <span class="label">Termin</span>
+                        <div class="value">Fr 29.08.2026, 10:00 Uhr</div>
+                    </div>
+                    <div class="detail-item">
+                        <span class="label">Ort</span>
+                        <div class="value">86150 Augsburg</div>
+                    </div>
+                    <div class="detail-item">
+                        <span class="label">Dringlichkeit</span>
+                        <div class="value"><span class="badge badge-amber" style="color:var(--fj-amber);border-color:rgba(245,158,11,0.2);">Sofort</span></div>
+                    </div>
+                    <div class="detail-item" style="grid-column: span 2;">
+                        <span class="label">Preis</span>
+                        <div class="value" style="font-size:1.2rem;color:var(--fj-teal);font-weight:800;">ab 1.200 €</div>
+                    </div>
+                </div>
+
+                <div style="background:rgba(13,148,136,0.04);border-radius:var(--fj-radius-sm);padding:14px 18px;margin-bottom:20px;border-left:3px solid var(--fj-teal);">
+                    <p style="font-size:0.85rem;color:var(--fj-muted);margin:0;">
+                        <i class="fas fa-lock" style="color:var(--fj-teal);"></i>
+                        <strong>Zahlung:</strong> Sie erhalten eine Rechnung per E‑Mail. Die Bezahlung erfolgt nach erfolgreicher Montage.
+                        <span style="display:block;font-size:0.7rem;margin-top:4px;color:var(--fj-dim);">
+                            <i class="fas fa-shield-alt"></i> 100% sichere Bezahlung · Keine versteckten Kosten
+                        </span>
+                    </p>
+                </div>
+
+                <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;padding-top:16px;border-top:1px solid var(--fj-border);">
+                    <a href="step3.html" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Zurück</a>
+                    <div style="display:flex;gap:10px;flex-wrap:wrap;">
+                        <a href="../index.html" class="btn btn-secondary">Abbrechen</a>
+                        <a href="success.html" class="btn btn-primary" style="background:linear-gradient(135deg,var(--fj-green),#16A34A);">
+                            <i class="fas fa-check"></i> Buchung bestätigen
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <aside class="booking-sidebar">
+                <div class="sidebar-card">
+                    <span class="step-indicator">Schritt 4 von 4</span>
+                    <div class="title">📌 Zusammenfassung</div>
+                    <div class="summary-item">
+                        <span>Kategorie</span>
+                        <span class="value">Montage & Möbel</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Handwerker</span>
+                        <span class="value">Raphael Lezius</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Termin</span>
+                        <span class="value">Fr 29.08., 10:00</span>
+                    </div>
+                    <div class="summary-item">

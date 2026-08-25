@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="light">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    <title>Raphael Lezius – Premium Pro | FIXJORI</title>
+    <meta name="description" content="Raphael Lezius – Premium Pro auf FIXJORI. USM Haller Spezialist, 8+ Jahre Erfahrung, laser-präzise Montage. Jetzt buchen." />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&family=Space+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <style>
+        /* ============================================================
+           RAPHAEL LEZIUS – PREMIUM PRO PROFILE
+           FIXJORI Brand Integration with Gold Premium Accents
+           ============================================================ */
+
+        :root {
+            --fj-teal: #0D9488;
+            --fj-teal-dark: #0F766E;
+            --fj-teal-light: #14B8A6;
+            --fj-amber: #F59E0B;
+            --fj-gold: #F5A623;
+            --fj-gold-bright: #FFD700;
+            --fj-gold-dim: rgba(245, 166, 35, 0.12);
+            --fj-coral: #FF6B35;
+            --fj-green: #22C55E;
+
+            --fj-bg: #F8FAFC;
+            --fj-surface: #FFFFFF;
+            --fj-text: #0F172A;
+            --fj-muted: #475569;
+            --fj-dim: #94A3B8;
+            --fj-border: #E2E8F0;
+            --fj-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+            --fj-shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.08);
+            --fj-shadow-xl: 0 16px 60px rgba(0, 0, 0, 0.10);
+            --fj-radius: 16px;
+            --fj-radius-sm: 10px;
+            --fj-radius-full: 40px;
+
+            --font-head: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            --nav-height: 68px;
+            --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        [data-theme="dark"] {
+            --fj-bg: #0F172A;
+            --fj-surface: #1A2332;
+            --fj-text: #F8FAFC;
+            --fj-muted: #94A3B8;
+            --fj-dim: #64748B;
+            --fj-border: rgba(255, 255, 255, 0.06);
+            --fj-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+            --fj-shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.3);
+            --fj-shadow-xl: 0 16px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        /* ── Reset ── */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: var(--font-body);
+            background: var(--fj-bg);
+            color: var(--fj-text);
+            transition: background 0.3s ease, color 0.3s ease;
+            padding-top: calc(var(--nav-height) + 20px);
+            min-height: 100vh;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        button {
+            font-family: inherit;
+            border: none;
+            background: none;
+            color: inherit;
+            cursor: pointer;
+        }
+        img {
+            max-width: 100%;
+            display: block;
+        }
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: 1260px;
+            margin: 0 auto;
+            padding: 0 clamp(16px, 3.5vw, 32px);
+        }
+        .section-pad {
+            padding: clamp(40px, 6vw, 80px) 0;
+        }
+
+        .text-gold {
+            color: var(--fj-gold);
+        }
+        .text-teal {
+            color: var(--fj-teal);
+        }
+        .text-muted {
+            color: var(--fj-muted);
+        }
+        .text-dim {
+            color: var(--fj-dim);
+        }
+
+        .badge-premium {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: linear-gradient(135deg, var(--fj-gold), var(--fj-gold-bright));
+            color: #0F172A;
+            padding: 4px 14px;
+            border-radius: 30px;
+            font-family: var(--font-mono);
+            font-size: 0.55rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            box-shadow: 0 2px 12px rgba(245, 166, 35, 0.25);
+        }
+
+        /* ── Buttons ── */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 32px;
+            border-radius: var(--fj-radius-sm);
+            font-weight: 700;
+            font-size: 0.85rem;
+            transition: all 0.3s var(--ease-smooth);
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .btn-gold {
+            background: linear-gradient(135deg, var(--fj-gold), var(--fj-gold-bright));
+            color: #0F172A;
+            box-shadow: 0 4px 16px rgba(245, 166, 35, 0.30);
+        }
+        .btn-gold:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 28px rgba(245, 166, 35, 0.45);
+        }
+        .btn-teal {
+            background: var(--fj-teal);
+            color: #fff;
+            box-shadow: 0 4px 16px rgba(13, 148, 136, 0.20);
+        }
+        .btn-teal:hover {
+            background: var(--fj-teal-dark);
+            transform: translateY(-3px);
+        }
+        .btn-outline {
+            background: transparent;
+            border: 1.5px solid var(--fj-border);
+            color: var(--fj-text);
+        }
+        .btn-outline:hover {
+            border-color: var(--fj-gold);
+            color: var(--fj-gold);
+            transform: translateY(-3px);
+        }
+
+        /* ── Hero Banner ── */
+        .profile-hero {
+            position: relative;
+            padding: 40px 0 30px;
+            background: linear-gradient(180deg, rgba(245, 166, 35, 0.04) 0%, var(--fj-bg) 100%);
+            border-bottom: 1px solid var(--fj-border);
+        }
+        .profile-hero .hero-grid {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+        @media (max-width: 768px) {
+            .profile-hero .hero-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+        .profile-avatar {
+            position: relative;
+        }
+        .profile-avatar img {
+            width: 100%;
+            aspect-ratio: 1/1;
+            border-radius: var(--fj-radius);
+            object-fit: cover;
+            border: 4px solid var(--fj-gold);
+            box-shadow: 0 8px 32px rgba(245, 166, 35, 0.15);
+        }
+        .profile-avatar .badge-premium {
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+        }
+        @media (max-width: 768px) {
+            .profile-avatar .badge-premium {
+                position: static;
+                transform: none;
+                margin-top: 12px;
+            }
+            .profile-avatar {
+                max-width: 280px;
+                margin: 0 auto;
+            }
+        }
+
+        .profile-info h1 {
+            font-family: var(--font-head);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 900;
+            letter-spacing: -0.5px;
+            line-height: 1.1;
+            margin-bottom: 4px;
+        }
+        .profile-info .title-tag {
+            font-size: 1rem;
+            color: var(--fj-muted);
+            margin-bottom: 6px;
+        }
+        .profile-info .location {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.85rem;
+            color: var(--fj-dim);
+            margin-bottom: 12px;
+        }
+        @media (max-width: 768px) {
+            .profile-info .location {
+                justify-content: center;
+            }
+        }
+        .profile-info .rating-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 16px;
+        }
+        @media (max-width: 768px) {
+            .profile-info .rating-row {
+                justify-content: center;
+            }
+        }
+        .profile-info .rating-row .stars {
+            color: var(--fj-gold);
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+        }
+        .profile-info .rating-row .stars span {
+            color: var(--fj-muted);
+            font-size: 0.8rem;
+            letter-spacing: 0;
+        }
+        .profile-info .bio {
+            color: var(--fj-muted);
+            font-size: 1rem;
+            line-height: 1.8;
+            max-width: 560px;
+            margin-bottom: 20px;
+        }
+        @media (max-width: 768px) {
+            .profile-info .bio {
+                max-width: 100%;
+            }
+        }
+        .profile-info .action-row {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        @media (max-width: 768px) {
+            .profile-info .action-row {
+                justify-content: center;
+            }
+        }
+
+        /* ── Quick Stats ── */
+        .quick-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            padding: 24px 0;
+            border-bottom: 1px solid var(--fj-border);
+        }
+        @media (max-width: 600px) {
+            .quick-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        .quick-stat {
+            text-align: center;
+            padding: 16px 12px;
+            background: var(--fj-surface);
+            border-radius: var(--fj-radius-sm);
+            border: 1px solid var(--fj-border);
+            transition: all 0.3s ease;
+        }
+        .quick-stat:hover {
+            border-color: var(--fj-gold);
+            box-shadow: var(--fj-shadow);
+        }
+        .quick-stat .number {
+            font-family: var(--font-head);
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--fj-gold);
+            line-height: 1.2;
+        }
+        .quick-stat .label {
+            font-size: 0.7rem;
+            color: var(--fj-muted);
+            font-weight: 500;
+            display: block;
+            margin-top: 2px;
+        }
+        .quick-stat i {
+            display: block;
+            font-size: 1.2rem;
+            color: var(--fj-gold);
+            margin-bottom: 4px;
+            opacity: 0.6;
+        }
+
+        /* ── Services ── */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        @media (max-width: 700px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .service-item {
+            background: var(--fj-surface);
+            border: 1px solid var(--fj-border);
+            border-radius: var(--fj-radius-sm);
+            padding: 20px 22px;
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+            transition: all 0.3s ease;
+        }
+        .service-item:hover {
+            border-color: var(--fj-gold);
+            box-shadow: var(--fj-shadow);
+            transform: translateY(-4px);
+        }
+        .service-item .icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--fj-gold-dim);
+            color: var(--fj-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        .service-item .content h4 {
+            font-family: var(--font-head);
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+        .service-item .content p {
+            font-size: 0.8rem;
+            color: var(--fj-muted);
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        /* ── Portfolio ── */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+        @media (max-width: 900px) {
+            .portfolio-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 500px) {
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .portfolio-item {
+            aspect-ratio: 1/1;
+            border-radius: var(--fj-radius-sm);
+            overflow: hidden;
+            background: var(--fj-border);
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        .portfolio-item:hover img {
+            transform: scale(1.05);
+        }
+        .portfolio-item .overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(15, 23, 42, 0.7) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            display: flex;
+            align-items: flex-end;
+            padding: 16px;
+        }
+        .portfolio-item:hover .overlay {
+            opacity: 1;
+        }
+        .portfolio-item .overlay span {
+            color: #fff;
+            font-weight: 600;
+            font-size: 0.75rem;
+        }
+
+        /* ── Testimonials ── */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        @media (max-width: 900px) {
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+                margin: 0 auto;
+            }
+        }
+        .testimonial-item {
+            background: var(--fj-surface);
+            border: 1px solid var(--fj-border);
+            border-radius: var(--fj-radius-sm);
+            padding: 20px 22px;
+            transition: all 0.3s ease;
+        }
+        .testimonial-item:hover {
+            border-color: var(--fj-gold);
+            box-shadow: var(--fj-shadow);
+        }
+        .testimonial-item .stars {
+            color: var(--fj-gold);
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+        .testimonial-item blockquote {
+            font-size: 0.85rem;
+            color: var(--fj-muted);
+            line-height: 1.7;
+            font-style: italic;
+            margin-bottom: 12px;
+        }
+        .testimonial-item .client {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .testimonial-item .client .avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--fj-border);
+            flex-shrink: 0;
+        }
+        .testimonial-item .client .name {
+            font-weight: 600;
+            font-size: 0.8rem;
+        }
+        .testimonial-item .client .location {
+            font-size: 0.65rem;
+            color: var(--fj-muted);
+        }
+
+        /* ── Process ── */
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+        @media (max-width: 700px) {
+            .process-steps {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        @media (max-width: 400px) {
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+        }
+        .process-step {
+            text-align: center;
+            padding: 20px 12px;
+            background: var(--fj-surface);
+            border-radius: var(--fj-radius-sm);
+            border: 1px solid var(--fj-border);
+            transition: all 0.3s ease;
+        }
+        .process-step:hover {
+            border-color: var(--fj-gold);
+            transform: translateY(-4px);
+        }
+        .process-step .num {
+            font-family: var(--font-head);
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--fj-gold);
+            opacity: 0.2;
+            line-height: 1;
+        }
+        .process-step .icon {
+            font-size: 1.6rem;
+            color: var(--fj-teal);
+            margin: 4px 0 8px;
+        }
+        .process-step h5 {
+            font-family: var(--font-head);
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+        .process-step p {
+            font-size: 0.7rem;
+            color: var(--fj-muted);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* ── Contact Form ── */
+        .contact-card {
+            background: var(--fj-surface);
+            border: 1px solid var(--fj-border);
+            border-radius: var(--fj-radius);
+            padding: 32px 28px;
+            max-width: 560px;
+            margin: 0 auto;
+        }
+        .contact-card h3 {
+            font-family: var(--font-head);
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+        .contact-card .sub {
+            color: var(--fj-muted);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+        .contact-card .form-group {
+            margin-bottom: 16px;
+        }
+        .contact-card .form-group label {
+            font-family: var(--font-mono);
+            font-size: 0.55rem;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            color: var(--fj-muted);
+            display: block;
+            margin-bottom: 4px;
+        }
+        .contact-card .form-group input,
+        .contact-card .form-group textarea,
+        .contact-card .form-group select {
+            width: 100%;
+            padding: 12px 14px;
+            border-radius: var(--fj-radius-sm);
+            border: 1px solid var(--fj-border);
+            background: var(--fj-bg);
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            color: var(--fj-text);
+            transition: border-color 0.3s;
+        }
+        .contact-card .form-group input:focus,
+        .contact-card .form-group textarea:focus,
+        .contact-card .form-group select:focus {
+            outline: none;
+            border-color: var(--fj-gold);
+            box-shadow: 0 0 0 3px rgba(245, 166, 35, 0.06);
+        }
+        .contact-card .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        .contact-card .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        @media (max-width: 500px) {
+            .contact-card .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ── Section Headers ── */
+        .section-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+        .section-header .tag {
+            display: inline-block;
+            background: var(--fj-gold-dim);
+            color: var(--fj-gold);
+            padding: 3px 14px;
+            border-radius: 30px;
+            font-family: var(--font-mono);
+            font-size: 0.55rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+        .section-header h2 {
+            font-family: var(--font-head);
+            font-size: clamp(1.6rem, 3vw, 2.4rem);
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+        .section-header p {
+            color: var(--fj-muted);
+            font-size: 0.95rem;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 600px) {
+            .profile-hero {
+                padding: 20px 0;
+            }
+            .profile-info .action-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .profile-info .action-row .btn {
+                justify-content: center;
+            }
+            .contact-card {
+                padding: 20px 16px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+            .service-item:hover,
+            .portfolio-item:hover,
+            .testimonial-item:hover,
+            .process-step:hover,
+            .quick-stat:hover {
+                transform: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV COMPONENT -->
+    <div id="nav-placeholder"></div>
+
+    <!-- ============================================================
+       MAIN CONTENT
+       ============================================================ -->
+    <main>
+
+        <!-- ── HERO / PROFILE ── -->
+        <section class="profile-hero">
+            <div class="container">
+                <div class="hero-grid">
+                    <!-- Avatar -->
+                    <div class="profile-avatar">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect fill='%231A2332' width='400' height='400'/%3E%3Ctext x='80' y='200' fill='%2394A3B8' font-family='sans-serif' font-size='36'%3ERL%3C/text%3E%3C/svg%3E" alt="Raphael Lezius" />
+                        <span class="badge-premium"><i class="fas fa-crown"></i> Premium Pro</span>
+                    </div>
+
+                    <!-- Info -->
+                    <div class="profile-info">
+                        <h1>Raphael Lezius</h1>
+                        <div class="title-tag">USM Haller Spezialist · Premium Montage</div>
+                        <div class="location"><i class="fas fa-map-marker-alt" style="color:var(--fj-teal);"></i> Augsburg · München · Umland</div>
+                        <div class="rating-row">
+                            <span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> <span>5.0 (110+ Bewertungen)</span></span>
+                            <span style="font-family:var(--font-mono);font-size:0.65rem;color:var(--fj-muted);"><i class="fas fa-check-circle" style="color:var(--fj-green);"></i> Verifiziert</span>
+                            <span style="font-family:var(--font-mono);font-size:0.65rem;color:var(--fj-muted);"><i class="fas fa-shield-alt" style="color:var(--fj-gold);"></i> 5 Mio. € versichert</span>
+                        </div>
+                        <p class="bio">
+                            Mit über 8 Jahren Erfahrung und Original-USM-Spezialwerkzeug biete ich
+                            höchste Präzision bei der Montage von Möbeln, Küchen und exklusiven Projekten.
+                            Persönlich, zuverlässig, millimetergenau – ohne Subunternehmer.
+                        </p>
+                        <div class="action-row">
+                            <a href="#booking" class="btn btn-gold"><i class="fas fa-bolt"></i> Jetzt buchen</a>
+                            <a href="#portfolio" class="btn btn-outline"><i class="fas fa-images"></i> Portfolio ansehen</a>
+                            <a href="#contact" class="btn btn-teal"><i class="fas fa-envelope"></i> Anfrage senden</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── QUICK STATS ── -->
+        <div class="container">
+            <div class="quick-stats">
+                <div class="quick-stat">
+                    <i class="fas fa-briefcase"></i>
+                    <span class="number">8+</span>
+                    <span class="label">Jahre Erfahrung</span>
+                </div>
+                <div class="quick-stat">
+                    <i class="fas fa-star"></i>
+                    <span class="number">5.0</span>
+                    <span class="label">Ø Bewertung</span>
+                </div>
+                <div class="quick-stat">
+                    <i class="fas fa-users"></i>
+                    <span class="number">110+</span>
+                    <span class="label">Zufriedene Kunden</span>
+                </div>
+                <div class="quick-stat">
+                    <i class="fas fa-shield-alt"></i>
+                    <span class="number">5 Mio.</span>
+                    <span class="label">€ Versicherung</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ── SERVICES ── -->
+        <section class="section-pad" id="services">
+            <div class="container">
+                <div class="section-header">
+                    <span class="tag"><i class="fas fa-cogs"></i> Leistungen</span>
+                    <h2>Meine Premium-<span class="text-gold">Services</span></h2>
+                    <p>Exklusive Montage mit Spezialwerkzeug und laser-präziser Ausrichtung.</p>
+                </div>
+                <div class="services-grid">
+                    <div class="service-item">
+                        <div class="icon"><i class="fas fa-gem"></i></div>
+                        <div class="content">
+                            <h4>USM Haller Montage</h4>
+                            <p>Original USM Spezialwerkzeug für kratzfreie Montage, Demontage und Erweiterung.</p>
+                        </div>
+                    </div>
+                    <div class="service-item">
+                        <div class="icon"><i class="fas fa-network-wired"></i></div>
+                        <div class="content">
+                            <h4>Zero-Cable Protocol</h4>
+                            <p>Unsichtbares Kabelmanagement unter Tischen und in Kabelkanälen.</p>
+                        </div>
+                    </div>
+                    <div class="service-item">
+                        <div class="icon"><i class="fas fa-couch"></i></div>
+                        <div class="content">
+                            <h4>Ergonomische Workspaces</h4>
+                            <p>Höhenverstellbare Tische, Monitorarme und ergonomische Stuhl-Integration.</p>
+                        </div>
+                    </div>
+                    <div class="service-item">
+                        <div class="icon"><i class="fas fa-volume-mute"></i></div>
+                        <div class="content">
+                            <h4>Acoustic Engineering</h4>
+                            <p>Akustikpaneele und Deckensegel mit Schwerlast-Verankerung.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── PORTFOLIO ── -->
+        <section class="section-pad" id="portfolio" style="background:var(--fj-surface);border-top:1px solid var(--fj-border);border-bottom:1px solid var(--fj-border);">
+            <div class="container">
+                <div class="section-header">
+                    <span class="tag"><i class="fas fa-images"></i> Portfolio</span>
+                    <h2>Projekte aus der <span class="text-gold">Praxis</span></h2>
+                    <p>Echte Projekte – millimetergenau, staubfrei, mit Liebe zum Detail.</p>
+                </div>
+                <div class="portfolio-grid">
+                    <div class="portfolio-item">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect fill='%231A2332' width='400' height='400'/%3E%3Ctext x='80' y='200' fill='%2394A3B8' font-family='sans-serif' font-size='20'%3EUSM Haller%3C/text%3E%3C/svg%3E" alt="USM Haller Projekt" />
+                        <div class="overlay"><span>USM Haller – Kanzlei München</span></div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect fill='%231A2332' width='400' height='400'/%3E%3Ctext x='60' y='200' fill='%2394A3B8' font-family='sans-serif' font-size='20'%3EKüchenmontage%3C/text%3E%3C/svg%3E" alt="Küchenmontage" />
+                        <div class="overlay"><span>Premium Küche – Familie Schmidt</span></div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect fill='%231A2332' width='400' height='400'/%3E%3Ctext x='80' y='200' fill='%2394A3B8' font-family='sans-serif' font-size='20'%3EAkustik%3C/text%3E%3C/svg%3E" alt="Akustik" />
+                        <div class="overlay"><span>Akustik-Optimierung – Praxis</span></div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect fill='%231A2332' width='400' height='400'/%3E%3Ctext x='80' y='200' fill='%2394A3B8' font-family='sans-serif' font-size='20'%3EOffice%3C/text%3E%3C/svg%3E" alt="Office" />
+                        <div class="overlay"><span>Büro-Rollout – Creative Agency</span></div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect fill='%231A2332' width='400' height='400'/%3E%3Ctext x='80' y='200' fill='%2394A3B8' font-family='sans-serif' font-size='20'%3EZerocable%3C/text%3E%3C/svg%3E" alt="Zero-Cable" />
+                        <div class="overlay"><span>Zero-Cable Protocol – Konferenzraum</span></div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect fill='%231A2332' width='400' height='400'/%3E%3Ctext x='60' y='200' fill='%2394A3B8' font-family='sans-serif' font-size='20'%3ERenovierung%3C/text%3E%3C/svg%3E" alt="Renovierung" />
+                        <div class="overlay"><span>Renovierung & Innenausbau</span></div>
+                    </div>
+                </div>
+                <div style="text-align:center;margin-top:24px;">
+                    <a href="#" class="btn btn-outline">Alle Projekte ansehen <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── TESTIMONIALS ── -->
+        <section class="section-pad" id="testimonials">
+            <div class="container">
+                <div class="section-header">
+                    <span class="tag"><i class="fas fa-star"></i> Bewertungen</span>
+                    <h2>Was meine <span class="text-gold">Kunden sagen</span></h2>
+                </div>
+                <div class="testimonials-grid">
+                    <div class="testimonial-item">
+                        <div class="stars">★★★★★</div>
+                        <blockquote>„Präzise, sauber und pünktlich – genau das, was ich mir erhofft hatte. Meine Küche steht perfekt.“</blockquote>
+                        <div class="client">
+                            <div class="avatar"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36'%3E%3Crect fill='%23E2E8F0' width='36' height='36'/%3E%3Ctext x='12' y='22' fill='%2364748B' font-size='12'%3ETP%3C/text%3E%3C/svg%3E" alt="TP" /></div>
+                            <div><span class="name">Timothy P.</span><span class="location">Dasing</span></div>
+                        </div>
+                    </div>
+                    <div class="testimonial-item">
+                        <div class="stars">★★★★★</div>
+                        <blockquote>„Absolut professionell. Er hat unsere Möbel aufgebaut, als wären es seine eigenen. Kein Kratzer.“</blockquote>
+                        <div class="client">
+                            <div class="avatar"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36'%3E%3Crect fill='%23E2E8F0' width='36' height='36'/%3E%3Ctext x='12' y='22' fill='%2364748B' font-size='12'%3EAM%3C/text%3E%3C/svg%3E" alt="AM" /></div>
+                            <div><span class="name">Astrid M.</span><span class="location">Augsburg</span></div>
+                        </div>
+                    </div>
+                    <div class="testimonial-item">
+                        <div class="stars">★★★★★</div>
+                        <blockquote>„Raphael ist ein wahrer Glückstreffer. Er hat unsere Küche ohne Anleitung perfekt aufgebaut.“</blockquote>
+                        <div class="client">
+                            <div class="avatar"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36'%3E%3Crect fill='%23E2E8F0' width='36' height='36'/%3E%3Ctext x='12' y='22' fill='%2364748B' font-size='12'%3ENR%3C/text%3E%3C/svg%3E" alt="NR" /></div>
+                            <div><span class="name">Norbert R.</span><span class="location">München</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── HOW IT WORKS ── -->
+        <section class="section-pad" style="background:var(--fj-surface);border-top:1px solid var(--fj-border);border-bottom:1px solid var(--fj-border);">
+            <div class="container">
+                <div class="section-header">
+                    <span class="tag"><i class="fas fa-microchip"></i> Prozess</span>
+                    <h2>So läuft die <span class="text-gold">Buchung</span> ab</h2>
+                </div>
+                <div class="process-steps">
+                    <div class="process-step">
+                        <div class="num">01</div>
+                        <div class="icon"><i class="fas fa-edit"></i></div>
+                        <h5>Anfrage senden</h5>
+                        <p>Beschreiben Sie Ihr Projekt und Ihre Wünsche.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="num">02</div>
+                        <div class="icon"><i class="fas fa-handshake"></i></div>
+                        <h5>Beratung & Angebot</h5>
+                        <p>Ich kläre Details und erstelle ein Festpreis-Angebot.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="num">03</div>
+                        <div class="icon"><i class="fas fa-calendar-check"></i></div>
+                        <h5>Terminvereinbarung</h5>
+                        <p>Flexible Termine – auch am Wochenende.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="num">04</div>
+                        <div class="icon"><i class="fas fa-check-circle"></i></div>
+                        <h5>Ausführung & Übergabe</h5>
+                        <p>Laser-präzise Montage & gemeinsame Abnahme.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── CONTACT / BOOKING ── -->
+        <section class="section-pad" id="contact">
+            <div class="container">
+                <div class="section-header">
+                    <span class="tag"><i class="fas fa-envelope"></i> Kontakt</span>
+                    <h2>Jetzt <span class="text-gold">Anfrage</span> senden</h2>
+                    <p>Ich antworte innerhalb von 24 Stunden – versprochen.</p>
+                </div>
+                <div class="contact-card" id="booking">
+                    <h3>📋 Projektanfrage</h3>
+                    <p class="sub">Beschreiben Sie Ihr Projekt – ich melde mich umgehend.</p>
+                    <form>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Name *</label>
+                                <input type="text" placeholder="Ihr vollständiger Name" required />
+                            </div>
+                            <div class="form-group">
+                                <label>E-Mail *</label>
+                                <input type="email" placeholder="ihre@email.de" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Telefon</label>
+                            <input type="tel" placeholder="+49 160 ..." />
+                        </div>
+                        <div class="form-group">
+                            <label>Projekt-Typ *</label>
+                            <select required>
+                                <option value="">Bitte wählen...</option>
+                                <option value="usm-haller">USM Haller Montage</option>
+                                <option value="kuechenmontage">Küchenmontage</option>
+                                <option value="akustik">Akustik-Optimierung</option>
+                                <option value="buero">Büro-Rollout</option>
+                                <option value="demontage">Demontage & Umzug</option>
+                                <option value="sonstiges">Sonstiges</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Dringlichkeit</label>
+                            <select>
+                                <option value="flexibel">Flexibel (in 2–4 Wochen)</option>
+                                <option value="1-2-wochen">In 1–2 Wochen</option>
+                                <option value="3-tage">In den nächsten 3 Tagen</option>
+                                <option value="sofort">Sofort / Notfall</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Nachricht *</label>
+                            <textarea placeholder="Beschreiben Sie Ihr Projekt – z.B. USM Haller, Küchenmontage, Akustik..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-gold" style="width:100%;justify-content:center;">Anfrage senden <i class="fas fa-paper-plane"></i></button>
+                        <p style="font-family:var(--font-mono);font-size:0.45rem;color:var(--fj-dim);text-align:center;margin-top:12px;">Ihre Daten werden vertraulich behandelt.</p>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER COMPONENT -->
+    <div id="footer-placeholder"></div>
+
+    <!-- ============================================================
+       SCRIPTS
+       ============================================================ -->
+    <script src="assets/js/loader.js"></script>
+    <script>
+        (function() {
+            'use strict';
+
+            // ── Form submission (demo) ──
+            const form = document.querySelector('.contact-card form');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const btn = this.querySelector('button[type="submit"]');
+                    const original = btn.innerHTML;
+                    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Senden...';
+                    btn.style.pointerEvents = 'none';
+                    setTimeout(function() {
+                        btn.innerHTML = '<i class="fas fa-check"></i> Anfrage gesendet!';
+                        btn.style.background = '#22C55E';
+                        btn.style.color = '#fff';
+                        form.reset();
+                        setTimeout(function() {
+                            btn.innerHTML = original;
+                            btn.style.background = '';
+                            btn.style.color = '';
+                            btn.style.pointerEvents = 'auto';
+                        }, 4000);
+                    }, 1500);
+                });
+            }
+
+            console.log('✅ Raphael Lezius – Premium Pro profile loaded.');
+        })();
+    </script>
+
+</body>
+</html>

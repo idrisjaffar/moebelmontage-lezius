@@ -1,1877 +1,1074 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Footer Preview – Raphael Lezius</title>
+<!-- ============================================================
+     FIXJORI – COMPLETE FOOTER COMPONENT
+     China Service App Style | Premium Handwerk Platform
+     ============================================================ -->
+<footer class="fixjori-footer" id="siteFooter" role="contentinfo">
+    <div class="fj-container">
 
-    <!-- Fonts & Icons -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700;800&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+        <!-- ==========================================================
+             TOP BAR – HOTLINE + APP DOWNLOAD + QR
+             ========================================================== -->
+        <div class="fj-top-bar">
+            <!-- Left: Hotline & Service Hours -->
+            <div class="fj-hotline-group">
+                <div class="fj-hotline-icon">
+                    <i class="fas fa-phone-alt"></i>
+                </div>
+                <div class="fj-hotline-text">
+                    <span class="fj-hotline-label">24/7 SERVICE HOTLINE</span>
+                    <a href="tel:+491608194018" class="fj-hotline-number">0160 819 4018</a>
+                    <span class="fj-hotline-hours"><i class="far fa-clock"></i> Mo–Fr 08:00–20:00 · Sa 09:00–16:00</span>
+                </div>
+            </div>
 
-    <style>
-        /* ============================================================
-           FOOTER PREVIEW – Complete Component Styles
-           ============================================================ */
+            <!-- Center: App Download (China-style QR) -->
+            <div class="fj-app-group">
+                <div class="fj-qr-wrapper">
+                    <div class="fj-qr-code">
+                        <!-- QR Code SVG (placeholder – replace with actual QR) -->
+                        <svg viewBox="0 0 80 80" width="56" height="56" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="80" height="80" fill="#0D9488" rx="4"/>
+                            <rect x="8" y="8" width="16" height="16" fill="white" rx="2"/>
+                            <rect x="28" y="8" width="4" height="16" fill="white"/>
+                            <rect x="36" y="8" width="16" height="4" fill="white"/>
+                            <rect x="56" y="8" width="16" height="16" fill="white" rx="2"/>
+                            <rect x="8" y="28" width="4" height="4" fill="white"/>
+                            <rect x="16" y="28" width="4" height="4" fill="white"/>
+                            <rect x="28" y="28" width="16" height="4" fill="white"/>
+                            <rect x="48" y="28" width="4" height="4" fill="white"/>
+                            <rect x="56" y="28" width="16" height="4" fill="white"/>
+                            <rect x="8" y="36" width="4" height="16" fill="white"/>
+                            <rect x="16" y="36" width="4" height="4" fill="white"/>
+                            <rect x="28" y="36" width="16" height="16" fill="white"/>
+                            <rect x="48" y="36" width="4" height="16" fill="white"/>
+                            <rect x="56" y="36" width="16" height="16" fill="white" rx="2"/>
+                            <rect x="8" y="56" width="16" height="16" fill="white" rx="2"/>
+                            <rect x="28" y="56" width="4" height="16" fill="white"/>
+                            <rect x="36" y="56" width="16" height="4" fill="white"/>
+                            <rect x="56" y="56" width="16" height="16" fill="white" rx="2"/>
+                        </svg>
+                    </div>
+                    <div class="fj-qr-text">
+                        <span class="fj-qr-label">APP HERUNTERLADEN</span>
+                        <span class="fj-qr-sub">Scan mit Kamera</span>
+                    </div>
+                </div>
+                <div class="fj-app-badges">
+                    <a href="#" class="fj-app-badge"><i class="fab fa-apple"></i> App Store</a>
+                    <a href="#" class="fj-app-badge"><i class="fab fa-google-play"></i> Google Play</a>
+                    <a href="#" class="fj-app-badge"><i class="fab fa-weixin" style="color:var(--fj-green);"></i> WeChat</a>
+                </div>
+            </div>
 
-        :root {
-            /* ── Primary Colors ── */
-            --ft-gold: #FFD700;
-            --ft-gold-bright: #FFE566;
-            --ft-gold-dim: rgba(255, 215, 0, 0.10);
-            --ft-cyan: #00E5FF;
-            --ft-cyan-bright: #5EF0FF;
-            --ft-cyan-dim: rgba(0, 229, 255, 0.06);
-            --ft-pink: #FF007F;
-            --ft-pink-bright: #FF4DA6;
-            --ft-pink-dim: rgba(255, 0, 127, 0.06);
-            --ft-green: #39FF14;
-            --ft-green-bright: #66FF4D;
-            --ft-green-dim: rgba(57, 255, 20, 0.04);
-            --ft-purple: #A855F7;
-            --ft-purple-bright: #C084FC;
-            --ft-orange: #FF6B35;
-            --ft-orange-bright: #FF8F5E;
-
-            /* ── Neutrals ── */
-            --ft-bg: #030405;
-            --ft-surface: #080B0E;
-            --ft-text: #F8FAFC;
-            --ft-muted: #94A3B8;
-            --ft-dim: #64748B;
-            --ft-border: rgba(255, 255, 255, 0.06);
-            --ft-radius: 16px;
-            --ft-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-
-            /* ── Typography ── */
-            --font-head: 'Space Grotesk', system-ui, sans-serif;
-            --font-body: 'Inter', system-ui, sans-serif;
-            --font-mono: 'JetBrains Mono', monospace;
-            --font-signature: 'Mrs Saint Delafield', cursive;
-
-            /* ── Animations ── */
-            --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
-            --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
-            --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
-        }
-
-        /* ── Reset ── */
-        *,
-        *::before,
-        *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background: var(--ft-bg);
-            color: var(--ft-text);
-            font-family: var(--font-body);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-        }
-
-        /* Preview spacer */
-        .demo-spacer {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 40px 20px;
-            text-align: center;
-        }
-        .demo-spacer h1 {
-            font-family: var(--font-head);
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            font-weight: 900;
-            background: linear-gradient(135deg, var(--ft-gold), var(--ft-cyan), var(--ft-pink));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: gradientShift 6s ease-in-out infinite;
-        }
-        .demo-spacer p {
-            color: var(--ft-muted);
-            margin-top: 8px;
-            font-size: 1.05rem;
-        }
-        @keyframes gradientShift {
-            0%,
-            100% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-        }
-
-        /* ============================================================
-           FOOTER – COMPLETE
-           ============================================================ */
-        .mega-footer-2026 {
-            position: relative;
-            background: var(--ft-bg);
-            color: var(--ft-text);
-            border-top: 1px solid var(--ft-border);
-            overflow: hidden;
-            font-family: var(--font-body);
-            margin-top: 0;
-        }
-
-        /* ── Ambient Layers ── */
-        .footer-ambient {
-            position: absolute;
-            inset: 0;
-            pointer-events: none;
-            z-index: 0;
-            overflow: hidden;
-        }
-        .footer-orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(100px);
-            opacity: 0.20;
-            will-change: transform;
-            animation: orbFloat 22s ease-in-out infinite alternate;
-        }
-        .footer-orb--gold {
-            width: 500px;
-            height: 500px;
-            background: var(--ft-gold);
-            top: -180px;
-            right: -120px;
-            opacity: 0.12;
-            animation-delay: 0s;
-        }
-        .footer-orb--cyan {
-            width: 400px;
-            height: 400px;
-            background: var(--ft-cyan);
-            bottom: -120px;
-            left: -100px;
-            opacity: 0.10;
-            animation-delay: -6s;
-        }
-        .footer-orb--pink {
-            width: 350px;
-            height: 350px;
-            background: var(--ft-pink);
-            top: 40%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            opacity: 0.05;
-            animation-delay: -12s;
-        }
-        .footer-orb--purple {
-            width: 300px;
-            height: 300px;
-            background: var(--ft-purple);
-            bottom: 10%;
-            right: 20%;
-            opacity: 0.04;
-            animation-delay: -4s;
-        }
-        @keyframes orbFloat {
-            0% {
-                transform: translate(0, 0) scale(1);
-            }
-            100% {
-                transform: translate(50px, -40px) scale(1.15);
-            }
-        }
-
-        .footer-grid-lines {
-            position: absolute;
-            inset: 0;
-            background-image:
-                linear-gradient(rgba(255, 255, 255, 0.012) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.012) 1px, transparent 1px);
-            background-size: 50px 50px;
-            opacity: 0.4;
-            mask-image: radial-gradient(ellipse at 50% 80%, black 30%, transparent 80%);
-            -webkit-mask-image: radial-gradient(ellipse at 50% 80%, black 30%, transparent 80%);
-        }
-        .footer-scanline {
-            position: absolute;
-            inset: 0;
-            background: repeating-linear-gradient(0deg,
-                    transparent 0px,
-                    transparent 3px,
-                    rgba(0, 229, 255, 0.010) 3px,
-                    rgba(0, 229, 255, 0.010) 4px);
-            pointer-events: none;
-            opacity: 0.3;
-        }
-
-        .mega-footer-2026 .container {
-            max-width: 1260px;
-            margin: 0 auto;
-            padding: 0 clamp(16px, 4vw, 32px);
-            position: relative;
-            z-index: 1;
-        }
-        .footer-inner {
-            padding: clamp(32px, 5vw, 56px) 0 clamp(20px, 3vw, 32px);
-            display: flex;
-            flex-direction: column;
-            gap: clamp(24px, 3.5vw, 40px);
-        }
-
-        /* ============================================================
-           CTA PANEL
-           ============================================================ */
-        .footer-cta-panel {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            gap: 24px 32px;
-            padding: clamp(24px, 3vw, 36px) clamp(20px, 3vw, 40px);
-            border-radius: var(--ft-radius);
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 215, 0, 0.10);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            position: relative;
-            overflow: hidden;
-            transition: border-color 0.4s ease, box-shadow 0.4s ease;
-        }
-        .footer-cta-panel:hover {
-            border-color: rgba(255, 215, 0, 0.25);
-            box-shadow: 0 0 40px rgba(255, 215, 0, 0.06);
-        }
-        .footer-cta-panel::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background:
-                radial-gradient(ellipse at 70% 30%, rgba(0, 229, 255, 0.04), transparent 60%),
-                radial-gradient(ellipse at 30% 70%, rgba(255, 215, 0, 0.03), transparent 50%),
-                radial-gradient(ellipse at 50% 50%, rgba(168, 85, 247, 0.02), transparent 40%);
-            pointer-events: none;
-        }
-
-        .footer-cta-left {
-            flex: 1 1 360px;
-            position: relative;
-            z-index: 1;
-        }
-        .footer-status-row {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-family: var(--font-mono);
-            font-size: 0.55rem;
-            letter-spacing: 2px;
-            color: var(--ft-muted);
-            text-transform: uppercase;
-            margin-bottom: 10px;
-            flex-wrap: wrap;
-        }
-        .footer-status-badge {
-            background: rgba(0, 229, 255, 0.08);
-            border: 1px solid rgba(0, 229, 255, 0.12);
-            padding: 2px 10px;
-            border-radius: 20px;
-            color: var(--ft-cyan);
-            font-size: 0.5rem;
-            letter-spacing: 1px;
-            animation: statusPulse 3s ease-in-out infinite;
-        }
-        @keyframes statusPulse {
-            0%,
-            100% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0.6;
-            }
-        }
-        .footer-live-dot {
-            display: inline-block;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: #22c55e;
-            box-shadow: 0 0 12px rgba(34, 197, 94, 0.5);
-            animation: ftPulse 2s ease-in-out infinite;
-        }
-        @keyframes ftPulse {
-            0%,
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
-            50% {
-                opacity: 0.4;
-                transform: scale(0.85);
-            }
-        }
-
-        .footer-cta-title {
-            font-family: var(--font-head);
-            font-weight: 900;
-            font-size: clamp(1.4rem, 3.2vw, 2.4rem);
-            line-height: 1.05;
-            color: #fff;
-            margin: 0 0 8px;
-            letter-spacing: -0.5px;
-        }
-        .footer-cta-title .gold-text {
-            background: linear-gradient(135deg, var(--ft-gold), var(--ft-cyan), var(--ft-pink));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .footer-cta-text {
-            font-size: clamp(0.85rem, 1vw, 1rem);
-            color: var(--ft-muted);
-            line-height: 1.6;
-            margin: 0;
-            max-width: 500px;
-        }
-        .cta-free-badge {
-            display: inline-block;
-            background: rgba(0, 229, 255, 0.06);
-            padding: 2px 12px;
-            border-radius: 30px;
-            color: var(--ft-cyan);
-            font-family: var(--font-mono);
-            font-size: 0.6rem;
-            margin-left: 6px;
-            border: 1px solid rgba(0, 229, 255, 0.06);
-            transition: all 0.3s ease;
-        }
-        .cta-free-badge:hover {
-            background: rgba(0, 229, 255, 0.12);
-            border-color: rgba(0, 229, 255, 0.15);
-        }
-        .cta-free-badge i {
-            margin-right: 4px;
-        }
-
-        .footer-cta-right {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 10px;
-            flex-shrink: 0;
-            position: relative;
-            z-index: 1;
-        }
-
-        .footer-btn-primary {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 14px 28px;
-            border-radius: 10px;
-            border: none;
-            background: linear-gradient(135deg, var(--ft-gold), #e6c200);
-            color: #0a0805;
-            font-family: var(--font-mono);
-            font-weight: 800;
-            font-size: 0.75rem;
-            letter-spacing: 1.2px;
-            text-transform: uppercase;
-            text-decoration: none;
-            cursor: pointer;
-            box-shadow: 0 8px 24px rgba(255, 215, 0, 0.20);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        .footer-btn-primary::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), transparent 60%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        .footer-btn-primary:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 16px 40px rgba(255, 215, 0, 0.40);
-        }
-        .footer-btn-primary:hover::after {
-            opacity: 1;
-        }
-        .footer-btn-primary i {
-            font-size: 0.9rem;
-        }
-
-        .footer-btn-ghost {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 14px 24px;
-            border-radius: 10px;
-            border: 1px solid rgba(37, 211, 102, 0.35);
-            background: transparent;
-            color: #25d366;
-            font-family: var(--font-mono);
-            font-weight: 700;
-            font-size: 0.75rem;
-            letter-spacing: 1.2px;
-            text-transform: uppercase;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-        .footer-btn-ghost:hover {
-            background: rgba(37, 211, 102, 0.08);
-            box-shadow: 0 0 28px rgba(37, 211, 102, 0.15);
-            transform: translateY(-2px);
-        }
-
-        .footer-btn-phone {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 14px 24px;
-            border-radius: 10px;
-            border: 1px solid rgba(0, 229, 255, 0.20);
-            background: transparent;
-            color: var(--ft-cyan);
-            font-family: var(--font-mono);
-            font-weight: 700;
-            font-size: 0.75rem;
-            letter-spacing: 1.2px;
-            text-transform: uppercase;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-        .footer-btn-phone:hover {
-            background: rgba(0, 229, 255, 0.08);
-            box-shadow: 0 0 28px rgba(0, 229, 255, 0.12);
-            transform: translateY(-2px);
-        }
-
-        /* ============================================================
-           SPEC BAR – Interactive Glow
-           ============================================================ */
-        .footer-spec-bar {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 12px;
-            padding: 8px 0;
-            border-bottom: 1px solid var(--ft-border);
-        }
-        .footer-spec-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px 16px;
-            border-radius: 12px;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            cursor: default;
-        }
-        .footer-spec-item:hover {
-            border-color: rgba(255, 215, 0, 0.20);
-            background: rgba(255, 255, 255, 0.04);
-            transform: translateY(-3px) scale(1.01);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-        }
-        .spec-icon {
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            background: rgba(255, 215, 0, 0.06);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            color: var(--ft-gold);
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 215, 0, 0.04);
-        }
-        .footer-spec-item:hover .spec-icon {
-            background: rgba(255, 215, 0, 0.15);
-            transform: scale(1.1) rotate(-5deg) translateY(-2px);
-            box-shadow: 0 0 30px rgba(255, 215, 0, 0.10);
-            border-color: rgba(255, 215, 0, 0.15);
-        }
-        .spec-glow {
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 215, 0, 0.04), transparent 60%);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            pointer-events: none;
-        }
-        .footer-spec-item:hover .spec-glow {
-            opacity: 1;
-        }
-        .footer-spec-item > div {
-            display: flex;
-            flex-direction: column;
-            gap: 1px;
-        }
-        .spec-label {
-            font-family: var(--font-mono);
-            font-size: 0.5rem;
-            letter-spacing: 1.4px;
-            color: var(--ft-muted);
-            text-transform: uppercase;
-        }
-        .spec-value {
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: var(--ft-text);
-            font-family: var(--font-mono);
-        }
-
-        /* ── Spec item variations ── */
-        .footer-spec-item:nth-child(1) .spec-icon {
-            color: var(--ft-gold);
-            border-color: rgba(255, 215, 0, 0.08);
-        }
-        .footer-spec-item:nth-child(2) .spec-icon {
-            color: var(--ft-cyan);
-            border-color: rgba(0, 229, 255, 0.08);
-        }
-        .footer-spec-item:nth-child(3) .spec-icon {
-            color: var(--ft-pink);
-            border-color: rgba(255, 0, 127, 0.08);
-        }
-        .footer-spec-item:nth-child(4) .spec-icon {
-            color: var(--ft-green);
-            border-color: rgba(57, 255, 20, 0.08);
-        }
-        .footer-spec-item:nth-child(1):hover .spec-icon {
-            background: rgba(255, 215, 0, 0.15);
-            box-shadow: 0 0 30px rgba(255, 215, 0, 0.10);
-        }
-        .footer-spec-item:nth-child(2):hover .spec-icon {
-            background: rgba(0, 229, 255, 0.15);
-            box-shadow: 0 0 30px rgba(0, 229, 255, 0.10);
-        }
-        .footer-spec-item:nth-child(3):hover .spec-icon {
-            background: rgba(255, 0, 127, 0.15);
-            box-shadow: 0 0 30px rgba(255, 0, 127, 0.10);
-        }
-        .footer-spec-item:nth-child(4):hover .spec-icon {
-            background: rgba(57, 255, 20, 0.15);
-            box-shadow: 0 0 30px rgba(57, 255, 20, 0.10);
-        }
-
-        /* ============================================================
-           AS SEEN ON
-           ============================================================ */
-        .footer-as-seen {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            padding: 14px 0;
-            border-top: 1px solid var(--ft-border);
-            border-bottom: 1px solid var(--ft-border);
-            margin: 4px 0;
-        }
-        .seen-label {
-            font-family: var(--font-mono);
-            font-size: 0.55rem;
-            color: var(--ft-muted);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            opacity: 0.6;
-        }
-        .seen-logos {
-            display: flex;
-            gap: 24px;
-            flex-wrap: wrap;
-            align-items: center;
-        }
-        .seen-logo {
-            font-family: var(--font-head);
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: var(--ft-muted);
-            opacity: 0.4;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            cursor: default;
-        }
-        .seen-logo:hover {
-            opacity: 1;
-            transform: translateY(-3px) scale(1.04);
-            color: var(--ft-text);
-        }
-        .seen-logo i {
-            font-size: 0.7rem;
-        }
-        .seen-logo:nth-child(1) i {
-            color: var(--ft-gold);
-        }
-        .seen-logo:nth-child(2) i {
-            color: var(--ft-cyan);
-        }
-        .seen-logo:nth-child(3) i {
-            color: var(--ft-orange);
-        }
-        .seen-logo:nth-child(4) i {
-            color: var(--ft-cyan-bright);
-        }
-        .seen-logo:nth-child(5) i {
-            color: var(--ft-pink);
-        }
-
-        /* ============================================================
-           MAIN GRID
-           ============================================================ */
-        .footer-main-grid {
-            display: grid;
-            grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
-            gap: clamp(20px, 3vw, 40px);
-            padding: 8px 0;
-        }
-
-        /* ── Brand Column ── */
-        .footer-col--brand {
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-        }
-        .footer-brand-mark {
-            font-family: var(--font-head);
-            font-weight: 900;
-            font-size: clamp(1.5rem, 2.4vw, 2.1rem);
-            line-height: 1;
-            letter-spacing: -0.5px;
-            color: #fff;
-        }
-        .footer-brand-mark .brand-line-1 {
-            display: block;
-            color: var(--ft-text);
-        }
-        .footer-brand-mark .brand-line-2 {
-            display: block;
-            background: linear-gradient(135deg, var(--ft-gold), var(--ft-cyan), var(--ft-pink));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .footer-brand-desc {
-            font-size: 0.85rem;
-            color: var(--ft-muted);
-            line-height: 1.6;
-            max-width: 300px;
-            margin: 0;
-        }
-
-        /* ── Trust Chips ── */
-        .footer-trust-chips {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-        .trust-chip {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 4px 14px;
-            border-radius: 20px;
-            font-family: var(--font-mono);
-            font-size: 0.55rem;
-            letter-spacing: 0.8px;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            color: var(--ft-muted);
-            transition: all 0.3s ease;
-        }
-        .trust-chip:hover {
-            transform: translateY(-3px) scale(1.04);
-        }
-        .trust-chip i {
-            font-size: 0.6rem;
-            color: var(--ft-gold);
-        }
-        .trust-chip--cyan i {
-            color: var(--ft-cyan);
-        }
-        .trust-chip--green i {
-            color: #22c55e;
-        }
-        .trust-chip--gold i {
-            color: var(--ft-gold);
-        }
-        .trust-chip--purple i {
-            color: var(--ft-purple);
-        }
-        .trust-chip--cyan {
-            border-color: rgba(0, 229, 255, 0.10);
-        }
-        .trust-chip--cyan:hover {
-            border-color: rgba(0, 229, 255, 0.30);
-            background: rgba(0, 229, 255, 0.06);
-        }
-        .trust-chip--green {
-            border-color: rgba(34, 197, 94, 0.10);
-        }
-        .trust-chip--green:hover {
-            border-color: rgba(34, 197, 94, 0.30);
-            background: rgba(34, 197, 94, 0.06);
-        }
-        .trust-chip--gold {
-            border-color: rgba(255, 215, 0, 0.10);
-        }
-        .trust-chip--gold:hover {
-            border-color: rgba(255, 215, 0, 0.30);
-            background: rgba(255, 215, 0, 0.06);
-        }
-        .trust-chip--purple {
-            border-color: rgba(168, 85, 247, 0.10);
-        }
-        .trust-chip--purple:hover {
-            border-color: rgba(168, 85, 247, 0.30);
-            background: rgba(168, 85, 247, 0.06);
-        }
-
-        /* ── Social Icons ── */
-        .footer-social {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-        .footer-social-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 42px;
-            height: 42px;
-            border-radius: 50%;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            color: var(--ft-muted);
-            background: rgba(255, 255, 255, 0.02);
-            text-decoration: none;
-            font-size: 1rem;
-            transition: all 0.35s var(--ease-spring);
-            position: relative;
-        }
-        .footer-social-btn::after {
-            content: '';
-            position: absolute;
-            inset: -4px;
-            border-radius: 50%;
-            border: 1px solid transparent;
-            transition: all 0.4s ease;
-            opacity: 0;
-            pointer-events: none;
-        }
-        .footer-social-btn:hover {
-            transform: translateY(-5px) scale(1.1);
-            color: #fff;
-            border-color: var(--social-color, var(--ft-gold));
-            background: rgba(255, 255, 255, 0.06);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-        }
-        .footer-social-btn:hover::after {
-            opacity: 1;
-            border-color: var(--social-color, var(--ft-gold));
-            animation: socialRing 0.9s ease-out;
-        }
-        @keyframes socialRing {
-            0% {
-                transform: scale(0.8);
-                opacity: 1;
-            }
-            100% {
-                transform: scale(1.8);
-                opacity: 0;
-            }
-        }
-        .footer-social-btn:nth-child(1):hover {
-            background: rgba(37, 211, 102, 0.15);
-        }
-        .footer-social-btn:nth-child(2):hover {
-            background: rgba(228, 64, 95, 0.15);
-        }
-        .footer-social-btn:nth-child(3):hover {
-            background: rgba(10, 102, 194, 0.15);
-        }
-        .footer-social-btn:nth-child(4):hover {
-            background: rgba(255, 0, 0, 0.15);
-        }
-        .footer-social-btn:nth-child(5):hover {
-            background: rgba(24, 119, 242, 0.15);
-        }
-        .footer-social-btn:nth-child(6):hover {
-            background: rgba(255, 215, 0, 0.15);
-        }
-
-        /* ── Newsletter ── */
-        .footer-newsletter-glass {
-            margin-top: 4px;
-            padding: 16px 18px 14px;
-            border-radius: 12px;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 215, 0, 0.06);
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
-        }
-        .footer-newsletter-glass:hover {
-            border-color: rgba(255, 215, 0, 0.15);
-            box-shadow: 0 0 40px rgba(255, 215, 0, 0.04);
-        }
-        .footer-col-title {
-            font-family: var(--font-mono);
-            font-size: 0.6rem;
-            letter-spacing: 2.2px;
-            color: var(--ft-muted);
-            text-transform: uppercase;
-            margin: 0 0 12px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .title-accent {
-            display: inline-block;
-            width: 4px;
-            height: 18px;
-            border-radius: 2px;
-            background: var(--ft-cyan);
-            flex-shrink: 0;
-        }
-        .title-accent--cyan {
-            background: var(--ft-cyan);
-        }
-        .title-accent--pink {
-            background: var(--ft-pink);
-        }
-        .title-accent--gold {
-            background: var(--ft-gold);
-        }
-        .title-accent--purple {
-            background: var(--ft-purple);
-        }
-
-        .newsletter-intro {
-            font-size: 0.75rem;
-            color: var(--ft-muted);
-            line-height: 1.5;
-            margin: 0 0 12px;
-        }
-        .newsletter-form {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-        .newsletter-input-group {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 10px;
-            padding: 2px 2px 2px 14px;
-            transition: all 0.3s ease;
-        }
-        .newsletter-input-group:focus-within {
-            border-color: var(--ft-gold);
-            box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.06);
-        }
-        .newsletter-input-group input {
-            flex: 1;
-            background: transparent;
-            border: none;
-            padding: 10px 0;
-            color: var(--ft-text);
-            font-family: var(--font-body);
-            font-size: 0.8rem;
-            outline: none;
-            min-width: 0;
-        }
-        .newsletter-input-group input::placeholder {
-            color: var(--ft-muted);
-        }
-        .newsletter-submit-btn {
-            flex-shrink: 0;
-            width: 38px;
-            height: 38px;
-            border-radius: 8px;
-            border: none;
-            background: linear-gradient(135deg, var(--ft-gold), #e6c200);
-            color: #0a0805;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .newsletter-submit-btn:hover {
-            transform: scale(1.08) rotate(-5deg);
-            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.30);
-        }
-        .newsletter-feedback {
-            font-size: 0.75rem;
-            min-height: 20px;
-            display: none;
-        }
-        .newsletter-feedback span {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .newsletter-note {
-            font-family: var(--font-mono);
-            font-size: 0.5rem;
-            color: var(--ft-muted);
-            margin: 0;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .newsletter-note i {
-            font-size: 0.45rem;
-            color: var(--ft-gold);
-        }
-
-        /* ============================================================
-           COLUMNS
-           ============================================================ */
-        .footer-col-title {
-            font-family: var(--font-mono);
-            font-size: 0.6rem;
-            letter-spacing: 2.2px;
-            color: var(--ft-muted);
-            text-transform: uppercase;
-            margin: 0 0 16px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .title-accent {
-            display: inline-block;
-            width: 4px;
-            height: 18px;
-            border-radius: 2px;
-            background: var(--ft-cyan);
-            flex-shrink: 0;
-        }
-        .title-accent--cyan {
-            background: var(--ft-cyan);
-        }
-        .title-accent--pink {
-            background: var(--ft-pink);
-        }
-        .title-accent--gold {
-            background: var(--ft-gold);
-        }
-
-        .footer-link-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-        .footer-link-list li a {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: var(--ft-muted);
-            text-decoration: none;
-            font-size: 0.85rem;
-            padding: 6px 0;
-            transition: all 0.25s ease;
-            border-bottom: 1px solid transparent;
-        }
-        .footer-link-list li a i {
-            width: 18px;
-            font-size: 0.75rem;
-            color: var(--ft-cyan);
-            flex-shrink: 0;
-            opacity: 0.6;
-            transition: all 0.3s ease;
-        }
-        .footer-link-list li a:hover {
-            color: #fff;
-            transform: translateX(6px);
-        }
-        .footer-link-list li a:hover i {
-            opacity: 1;
-            color: var(--ft-gold);
-        }
-
-        /* ============================================================
-           CONTACT COLUMN
-           ============================================================ */
-        .footer-col--comms {
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-        }
-        .footer-comms-card {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            border-radius: 12px;
-            padding: 14px 16px;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            transition: all 0.3s ease;
-        }
-        .footer-comms-card:hover {
-            border-color: rgba(0, 229, 255, 0.08);
-        }
-        .comms-row {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            padding: 8px 8px 8px 0;
-            text-decoration: none;
-            color: inherit;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-            transition: all 0.2s ease;
-        }
-        .comms-row:last-child {
-            border-bottom: none;
-        }
-        .comms-row:hover {
-            transform: translateX(6px);
-        }
-        .comms-row--static {
-            cursor: default;
-        }
-        .comms-row--static:hover {
-            transform: none;
-        }
-        .comms-icon {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            background: rgba(0, 229, 255, 0.06);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            color: var(--ft-cyan);
-            font-size: 0.75rem;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(0, 229, 255, 0.04);
-        }
-        .comms-row:hover .comms-icon {
-            background: rgba(0, 229, 255, 0.12);
-            transform: scale(1.05);
-        }
-        .comms-meta {
-            display: flex;
-            flex-direction: column;
-            gap: 1px;
-        }
-        .comms-label {
-            font-family: var(--font-mono);
-            font-size: 0.45rem;
-            letter-spacing: 1.4px;
-            color: var(--ft-muted);
-            text-transform: uppercase;
-        }
-        .comms-value {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--ft-text);
-        }
-        .comms-row a .comms-value {
-            color: var(--ft-cyan);
-        }
-        .comms-row a:hover .comms-value {
-            color: var(--ft-gold);
-        }
-
-        /* ── WhatsApp row special ── */
-        .comms-row--whatsapp .comms-icon {
-            background: rgba(37, 211, 102, 0.08);
-            color: #25D366;
-            border-color: rgba(37, 211, 102, 0.08);
-        }
-        .comms-row--whatsapp:hover .comms-icon {
-            background: rgba(37, 211, 102, 0.15);
-            border-color: rgba(37, 211, 102, 0.15);
-        }
-        .comms-row--whatsapp .comms-value {
-            color: #25D366;
-        }
-
-        /* ── Uptime ── */
-        .footer-uptime {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            padding: 12px 16px;
-            border-radius: 10px;
-            background: rgba(34, 197, 94, 0.03);
-            border: 1px solid rgba(34, 197, 94, 0.08);
-            transition: all 0.3s ease;
-        }
-        .footer-uptime:hover {
-            border-color: rgba(34, 197, 94, 0.20);
-            background: rgba(34, 197, 94, 0.06);
-        }
-        .uptime-ring {
-            position: relative;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            border: 2px solid rgba(34, 197, 94, 0.15);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-        .uptime-core {
-            display: block;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: #22c55e;
-            box-shadow: 0 0 16px rgba(34, 197, 94, 0.4);
-            animation: ftPulse 2.4s ease-in-out infinite;
-        }
-        .uptime-ring-pulse {
-            position: absolute;
-            inset: -4px;
-            border-radius: 50%;
-            border: 2px solid rgba(34, 197, 94, 0.2);
-            animation: uptimePulse 2.4s ease-in-out infinite;
-        }
-        @keyframes uptimePulse {
-            0% {
-                transform: scale(1);
-                opacity: 0.5;
-            }
-            100% {
-                transform: scale(1.6);
-                opacity: 0;
-            }
-        }
-        .uptime-text {
-            display: flex;
-            flex-direction: column;
-            gap: 1px;
-        }
-        .uptime-top {
-            font-family: var(--font-mono);
-            font-size: 0.5rem;
-            letter-spacing: 1.6px;
-            color: var(--ft-muted);
-            text-transform: uppercase;
-        }
-        .uptime-bot {
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: var(--ft-text);
-        }
-        .uptime-status {
-            font-size: 0.6rem;
-            color: #22c55e;
-            font-family: var(--font-mono);
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        /* ============================================================
-           BOTTOM BAR
-           ============================================================ */
-        .footer-bottom {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-            gap: 16px 24px;
-            padding-top: clamp(18px, 2.5vw, 28px);
-            border-top: 1px solid var(--ft-border);
-            font-size: 0.75rem;
-            color: var(--ft-muted);
-        }
-        .footer-copy {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-weight: 500;
-            flex-wrap: wrap;
-        }
-        .footer-sep {
-            opacity: 0.3;
-        }
-        .footer-made {
-            font-family: var(--font-mono);
-            font-size: 0.55rem;
-            letter-spacing: 0.8px;
-            color: var(--ft-muted);
-        }
-        .footer-version {
-            font-family: var(--font-mono);
-            font-size: 0.5rem;
-            color: var(--ft-muted);
-            opacity: 0.5;
-        }
-        .footer-legal {
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-        .footer-legal a {
-            color: var(--ft-muted);
-            text-decoration: none;
-            font-size: 0.7rem;
-            font-weight: 500;
-            transition: all 0.25s ease;
-        }
-        .footer-legal a:hover {
-            color: #fff;
-        }
-        .footer-pay {
-            display: flex;
-            gap: 10px;
-            font-size: 1.1rem;
-            color: var(--ft-muted);
-        }
-        .footer-pay i {
-            transition: all 0.3s ease;
-            cursor: default;
-        }
-        .footer-pay i:hover {
-            color: var(--ft-text);
-            transform: translateY(-3px) scale(1.1);
-        }
-        .footer-pay i:nth-child(1):hover {
-            color: #A3AAAE;
-        }
-        .footer-pay i:nth-child(2):hover {
-            color: #4285F4;
-        }
-        .footer-pay i:nth-child(3):hover {
-            color: #003087;
-        }
-        .footer-pay i:nth-child(4):hover {
-            color: #1A1F71;
-        }
-        .footer-pay i:nth-child(5):hover {
-            color: #EB001B;
-        }
-        .footer-pay i:nth-child(6):hover {
-            color: var(--ft-gold);
-        }
-        .footer-dev {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-family: var(--font-mono);
-            font-size: 0.55rem;
-            letter-spacing: 0.8px;
-            color: var(--ft-muted);
-        }
-        .dev-bracket {
-            color: var(--ft-cyan);
-            font-weight: 700;
-        }
-        .footer-dev .gold-text {
-            color: var(--ft-gold);
-        }
-
-        /* ============================================================
-           BACK TO TOP
-           ============================================================ */
-        .footer-btt {
-            position: fixed;
-            bottom: 28px;
-            right: 28px;
-            z-index: 9998;
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background: rgba(255, 215, 0, 0.08);
-            border: 1px solid rgba(255, 215, 0, 0.15);
-            color: var(--ft-gold);
-            font-size: 1.2rem;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            cursor: pointer;
-            transition: all 0.4s var(--ease-spring);
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(20px) scale(0.8);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-        }
-        .footer-btt.visible {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0) scale(1);
-        }
-        .footer-btt:hover {
-            background: rgba(255, 215, 0, 0.20);
-            border-color: var(--ft-gold);
-            transform: translateY(-5px) scale(1.12);
-            box-shadow: 0 12px 45px rgba(255, 215, 0, 0.20);
-        }
-        .footer-btt .btt-tooltip {
-            position: absolute;
-            right: calc(100% + 12px);
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(8px);
-            padding: 4px 12px;
-            border-radius: 6px;
-            font-family: var(--font-mono);
-            font-size: 0.55rem;
-            color: #fff;
-            opacity: 0;
-            transition: all 0.3s ease;
-            pointer-events: none;
-            white-space: nowrap;
-        }
-        .footer-btt:hover .btt-tooltip {
-            opacity: 1;
-        }
-
-        /* ============================================================
-           RESPONSIVE
-           ============================================================ */
-        @media (max-width: 1024px) {
-            .footer-main-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 28px;
-            }
-            .footer-col--brand {
-                grid-column: span 2;
-            }
-            .footer-col--comms {
-                grid-column: span 2;
-            }
-            .footer-spec-bar {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .footer-cta-panel {
-                flex-direction: column;
-                align-items: stretch;
-                text-align: center;
-            }
-            .footer-cta-left {
-                text-align: center;
-            }
-            .footer-cta-text {
-                max-width: 100%;
-            }
-            .footer-status-row {
-                justify-content: center;
-            }
-            .footer-cta-right {
-                justify-content: center;
-            }
-            .footer-main-grid {
-                grid-template-columns: 1fr;
-                gap: 24px;
-            }
-            .footer-col--brand {
-                grid-column: span 1;
-            }
-            .footer-col--comms {
-                grid-column: span 1;
-            }
-            .footer-spec-bar {
-                grid-template-columns: 1fr 1fr;
-            }
-            .footer-bottom {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
-            .footer-legal {
-                justify-content: center;
-            }
-            .footer-pay {
-                justify-content: center;
-            }
-            .footer-dev {
-                justify-content: center;
-            }
-            .footer-as-seen {
-                flex-direction: column;
-                text-align: center;
-                gap: 12px;
-            }
-            .seen-logos {
-                justify-content: center;
-            }
-            .footer-btt {
-                bottom: 18px;
-                right: 18px;
-                width: 40px;
-                height: 40px;
-                font-size: 1rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .footer-spec-bar {
-                grid-template-columns: 1fr;
-            }
-            .footer-cta-right {
-                flex-direction: column;
-                width: 100%;
-            }
-            .footer-btn-primary,
-            .footer-btn-ghost,
-            .footer-btn-phone {
-                width: 100%;
-                justify-content: center;
-            }
-            .footer-brand-desc {
-                max-width: 100%;
-            }
-            .footer-comms-card {
-                padding: 12px;
-            }
-            .footer-newsletter-glass {
-                padding: 12px;
-            }
-            .newsletter-input-group {
-                padding: 2px 2px 2px 10px;
-            }
-            .newsletter-submit-btn {
-                width: 34px;
-                height: 34px;
-                font-size: 0.8rem;
-            }
-            .footer-social-btn {
-                width: 36px;
-                height: 36px;
-                font-size: 0.85rem;
-            }
-        }
-
-        /* ── Reduce Motion ── */
-        @media (prefers-reduced-motion: reduce) {
-            .footer-live-dot,
-            .uptime-core,
-            .uptime-ring-pulse,
-            .footer-orb,
-            .footer-scanline,
-            .demo-spacer h1 {
-                animation: none !important;
-            }
-            .footer-orb {
-                opacity: 0.04 !important;
-            }
-            .footer-btn-primary,
-            .footer-btn-ghost,
-            .footer-btn-phone,
-            .footer-social-btn,
-            .footer-link-list li a,
-            .comms-row,
-            .footer-pay i,
-            .footer-spec-item,
-            .trust-chip {
-                transition: none !important;
-            }
-            .footer-btn-primary:hover,
-            .footer-btn-ghost:hover,
-            .footer-btn-phone:hover,
-            .footer-social-btn:hover {
-                transform: none !important;
-            }
-            .footer-social-btn::after {
-                animation: none !important;
-            }
-        }
-    </style>
-</head>
-<body>
-
-    <!-- ============================================================
-       DEMO CONTENT
-       ============================================================ -->
-    <div class="demo-spacer">
-        <div>
-            <h1>RAPHAEL LEZIUS</h1>
-            <p>Premium Montage · Bayern · Präzision seit 2020</p>
-        </div>
-    </div>
-
-    <!-- ============================================================
-       FOOTER – COMPLETE COMPONENT
-       ============================================================ -->
-    <footer class="mega-footer-2026" id="siteFooter" role="contentinfo">
-
-        <!-- ── Ambient Layers ── -->
-        <div class="footer-ambient" aria-hidden="true">
-            <div class="footer-orb footer-orb--gold"></div>
-            <div class="footer-orb footer-orb--cyan"></div>
-            <div class="footer-orb footer-orb--pink"></div>
-            <div class="footer-orb footer-orb--purple"></div>
-            <div class="footer-grid-lines"></div>
-            <div class="footer-scanline"></div>
+            <!-- Right: Trust & Security -->
+            <div class="fj-trust-badges">
+                <div class="fj-trust-badge">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>10 Mio. € versichert</span>
+                </div>
+                <div class="fj-trust-badge">
+                    <i class="fas fa-user-check"></i>
+                    <span>Verifizierte Profile</span>
+                </div>
+                <div class="fj-trust-badge">
+                    <i class="fas fa-lock"></i>
+                    <span>SSL-verschlüsselt</span>
+                </div>
+            </div>
         </div>
 
-        <div class="container footer-inner">
+        <!-- ==========================================================
+             MIDDLE – MAIN GRID
+             ========================================================== -->
+        <div class="fj-main-grid">
 
-            <!-- ===== TOP CTA STRIP ===== -->
-            <div class="footer-cta-panel">
-                <div class="footer-cta-left">
-                    <div class="footer-status-row">
-                        <span class="footer-live-dot"></span>
-                        <span class="footer-status-label">SYSTEM ONLINE // MUC · AUG</span>
-                        <span class="footer-status-badge">🔵 24/7 ERREICHBAR</span>
-                    </div>
-                    <h2 class="footer-cta-title">
-                        Ihr nächstes Projekt.<br />
-                        <span class="gold-text">Millimetergenau.</span>
-                    </h2>
-                    <p class="footer-cta-text">
-                        Kostenloser Projekt-Check · Festpreise · Persönliche Umsetzung ohne Subunternehmer.
-                        <span class="cta-free-badge">
-                            <i class="fas fa-check-circle"></i> KOSTENLOS
-                        </span>
-                    </p>
+            <!-- Brand Column -->
+            <div class="fj-col fj-col--brand">
+                <div class="fj-brand-mark">
+                    <svg viewBox="0 0 180 42" width="180" height="42" xmlns="http://www.w3.org/2000/svg">
+                        <text x="0" y="34" font-family="'Space Grotesk', sans-serif" font-weight="900" font-size="32" fill="var(--fj-text)" letter-spacing="-1">FIX</text>
+                        <polygon points="72,6 90,18 90,36 72,48 54,36 54,18" fill="var(--fj-teal)"/>
+                        <text x="96" y="34" font-family="'Space Grotesk', sans-serif" font-weight="900" font-size="32" fill="var(--fj-text)" letter-spacing="-1">ORI</text>
+                    </svg>
                 </div>
-                <div class="footer-cta-right">
-                    <a href="kontakt.html" class="footer-btn-primary js-open-contact">
-                        <span>PROJEKT STARTEN</span>
-                        <i class="fas fa-bolt"></i>
-                    </a>
-                    <a href="https://wa.me/491608194018" target="_blank" rel="noopener" class="footer-btn-ghost">
-                        <i class="fab fa-whatsapp"></i>
-                        <span>WHATSAPP</span>
-                    </a>
-                    <a href="tel:+491608194018" class="footer-btn-phone">
-                        <i class="fas fa-phone-alt"></i>
-                        <span>ANRUFEN</span>
-                    </a>
+                <p class="fj-brand-desc">
+                    Die Plattform für perfekte Montage und Premium-Handwerk.
+                    Verifizierte Experten · Festpreise · Persönliche Betreuung.
+                </p>
+                <div class="fj-trust-chips">
+                    <span class="fj-chip"><i class="fas fa-check-circle"></i> VERIFIZIERT</span>
+                    <span class="fj-chip fj-chip--amber"><i class="fas fa-star"></i> 4.9/5</span>
+                    <span class="fj-chip fj-chip--teal"><i class="fas fa-microchip"></i> SMART</span>
+                    <span class="fj-chip fj-chip--coral"><i class="fas fa-award"></i> PREMIUM</span>
+                </div>
+                <!-- Social Icons -->
+                <div class="fj-social">
+                    <a href="https://wa.me/491608194018" target="_blank" class="fj-social-btn" style="--fj-social:#25D366;" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" target="_blank" class="fj-social-btn" style="--fj-social:#E4405F;" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" target="_blank" class="fj-social-btn" style="--fj-social:#0A66C2;" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" target="_blank" class="fj-social-btn" style="--fj-social:#FF0000;" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="#" target="_blank" class="fj-social-btn" style="--fj-social:#1877F2;" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="mailto:r.lezius@gmail.com" class="fj-social-btn" style="--fj-social:var(--fj-amber);" aria-label="E-Mail"><i class="fas fa-envelope"></i></a>
                 </div>
             </div>
 
-            <!-- ===== SPEC BAR ===== -->
-            <div class="footer-spec-bar" id="specBar">
-                <div class="footer-spec-item" data-spec="precision">
-                    <div class="spec-icon"><i class="fas fa-ruler-combined"></i></div>
-                    <div>
-                        <span class="spec-label">PRÄZISION</span>
-                        <span class="spec-value">Laser-Nivellierung</span>
-                    </div>
-                    <div class="spec-glow"></div>
-                </div>
-                <div class="footer-spec-item" data-spec="environment">
-                    <div class="spec-icon"><i class="fas fa-wind"></i></div>
-                    <div>
-                        <span class="spec-label">UMGEBUNG</span>
-                        <span class="spec-value">HEPA Staubfrei</span>
-                    </div>
-                    <div class="spec-glow"></div>
-                </div>
-                <div class="footer-spec-item" data-spec="protection">
-                    <div class="spec-icon"><i class="fas fa-shield-alt"></i></div>
-                    <div>
-                        <span class="spec-label">SCHUTZ</span>
-                        <span class="spec-value">Haftpflicht 5 Mio. €</span>
-                    </div>
-                    <div class="spec-glow"></div>
-                </div>
-                <div class="footer-spec-item" data-spec="rating">
-                    <div class="spec-icon"><i class="fas fa-star"></i></div>
-                    <div>
-                        <span class="spec-label">RATING</span>
-                        <span class="spec-value">5.0 · 110+ Kunden</span>
-                    </div>
-                    <div class="spec-glow"></div>
+            <!-- Services Column -->
+            <div class="fj-col">
+                <h4 class="fj-col-title">SERVICES</h4>
+                <ul class="fj-link-list">
+                    <li><a href="services-montage.html"><i class="fas fa-couch"></i> Montage &amp; Möbel</a></li>
+                    <li><a href="services-elektro.html"><i class="fas fa-bolt"></i> Elektro &amp; Smart Home</a></li>
+                    <li><a href="services-garten.html"><i class="fas fa-tree"></i> Garten &amp; Outdoor</a></li>
+                    <li><a href="services-demontage.html"><i class="fas fa-tools"></i> Demontage &amp; Rückbau</a></li>
+                    <li><a href="services-renovierung.html"><i class="fas fa-paint-roller"></i> Renovierung &amp; Malerei</a></li>
+                </ul>
+            </div>
+
+            <!-- Platform Column -->
+            <div class="fj-col">
+                <h4 class="fj-col-title">PLATTFORM</h4>
+                <ul class="fj-link-list">
+                    <li><a href="ueber-uns.html"><i class="fas fa-info-circle"></i> Über FIXJORI</a></li>
+                    <li><a href="prozess.html"><i class="fas fa-sliders-h"></i> Prozess &amp; Preise</a></li>
+                    <li><a href="region.html"><i class="fas fa-map-marker-alt"></i> Einsatzgebiet</a></li>
+                    <li><a href="galerie.html"><i class="fas fa-images"></i> Projektgalerie</a></li>
+                    <li><a href="magazin.html"><i class="fas fa-book-open"></i> Magazin</a></li>
+                    <li><a href="portal.html"><i class="fas fa-user-circle"></i> Client Portal</a></li>
+                </ul>
+            </div>
+
+            <!-- Partner & Legal Column -->
+            <div class="fj-col">
+                <h4 class="fj-col-title">PARTNER &amp; RECHT</h4>
+                <ul class="fj-link-list">
+                    <li><a href="partner-werden.html"><i class="fas fa-handshake"></i> Partner werden</a></li>
+                    <li><a href="faq.html"><i class="fas fa-question-circle"></i> Hilfe &amp; FAQ</a></li>
+                    <li><a href="garantie.html"><i class="fas fa-shield-alt"></i> 30 Tage Garantie</a></li>
+                    <li><a href="empfehlen.html"><i class="fas fa-gift"></i> Empfehlen &amp; Profitieren</a></li>
+                    <li><a href="impressum.html"><i class="fas fa-gavel"></i> Impressum</a></li>
+                    <li><a href="datenschutz.html"><i class="fas fa-lock"></i> Datenschutz</a></li>
+                    <li><a href="agb.html"><i class="fas fa-file-contract"></i> AGB</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ==========================================================
+             BOTTOM – AS SEEN ON + PAYMENT BADGES + UPTIME
+             ========================================================== -->
+        <div class="fj-bottom-bar">
+            <!-- As Seen On -->
+            <div class="fj-as-seen">
+                <span class="fj-seen-label">Vertrauen von</span>
+                <div class="fj-seen-logos">
+                    <span class="fj-seen-logo"><i class="fas fa-star"></i> MyHammer</span>
+                    <span class="fj-seen-logo"><i class="fas fa-check-circle"></i> CHECK24</span>
+                    <span class="fj-seen-logo"><i class="fas fa-building"></i> Segmüller</span>
+                    <span class="fj-seen-logo"><i class="fas fa-tools"></i> Bosch Pro</span>
+                    <span class="fj-seen-logo"><i class="fas fa-gem"></i> USM Haller</span>
                 </div>
             </div>
 
-            <!-- ===== AS SEEN ON ===== -->
-            <div class="footer-as-seen">
-                <span class="seen-label">Vertrauen von</span>
-                <div class="seen-logos">
-                    <span class="seen-logo"><i class="fas fa-star"></i> MyHammer</span>
-                    <span class="seen-logo"><i class="fas fa-check-circle"></i> CHECK24</span>
-                    <span class="seen-logo"><i class="fas fa-building"></i> Segmüller</span>
-                    <span class="seen-logo"><i class="fas fa-tools"></i> Bosch Professional</span>
-                    <span class="seen-logo"><i class="fas fa-gem"></i> USM Haller</span>
-                </div>
-            </div>
-
-            <!-- ===== MAIN GRID ===== -->
-            <div class="footer-main-grid">
-
-                <!-- Brand Column -->
-                <div class="footer-col footer-col--brand">
-                    <div class="footer-brand-mark">
-                        <span class="brand-line-1">RAPHAEL</span>
-                        <span class="brand-line-2">LEZIUS</span>
-                    </div>
-                    <p class="footer-brand-desc">
-                        Zertifizierter Montage-Experte für High-End Einrichtungen in Bayern.
-                        Präzision. Qualität. Persönliche Verantwortung.
-                    </p>
-                    <div class="footer-trust-chips">
-                        <span class="trust-chip"><i class="fas fa-check-circle"></i> VERSICHERT</span>
-                        <span class="trust-chip trust-chip--cyan"><i class="fas fa-microchip"></i> BOSCH PRO</span>
-                        <span class="trust-chip trust-chip--green"><i class="fas fa-leaf"></i> HEPA</span>
-                        <span class="trust-chip trust-chip--gold"><i class="fas fa-award"></i> ZERTIFIZIERT</span>
-                        <span class="trust-chip trust-chip--purple"><i class="fas fa-shield-alt"></i> GARANTIE</span>
-                    </div>
-
-                    <!-- Social Icons -->
-                    <div class="footer-social">
-                        <a href="https://wa.me/491608194018" target="_blank" rel="noopener" class="footer-social-btn" aria-label="WhatsApp" style="--social-color:#25D366;">
-                            <i class="fab fa-whatsapp"></i>
-                        </a>
-                        <a href="#" target="_blank" rel="noopener" class="footer-social-btn" aria-label="Instagram" style="--social-color:#E4405F;">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#" target="_blank" rel="noopener" class="footer-social-btn" aria-label="LinkedIn" style="--social-color:#0A66C2;">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="#" target="_blank" rel="noopener" class="footer-social-btn" aria-label="YouTube" style="--social-color:#FF0000;">
-                            <i class="fab fa-youtube"></i>
-                        </a>
-                        <a href="#" target="_blank" rel="noopener" class="footer-social-btn" aria-label="Facebook" style="--social-color:#1877F2;">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="mailto:r.lezius@gmail.com" class="footer-social-btn" aria-label="E-Mail" style="--social-color:#FFD700;">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                    </div>
-
-                    <!-- Newsletter -->
-                    <div class="footer-newsletter-glass">
-                        <h5 class="footer-col-title">
-                            <span class="title-accent title-accent--gold"></span> NEWSLETTER
-                        </h5>
-                        <p class="newsletter-intro">Exklusive Angebote, Montage-Tipps &amp; 10% Rabatt auf Ihre erste Anfrage.</p>
-                        <form class="newsletter-form" id="newsletterForm" novalidate>
-                            <div class="newsletter-input-group">
-                                <input type="email" id="newsletterEmail" placeholder="Ihre E-Mail-Adresse" required />
-                                <button type="submit" class="newsletter-submit-btn">
-                                    <i class="fas fa-paper-plane"></i>
-                                </button>
-                            </div>
-                            <div class="newsletter-feedback" id="newsletterFeedback"></div>
-                            <p class="newsletter-note">
-                                <i class="fas fa-lock"></i> Kein Spam. Jederzeit abmelden.
-                            </p>
-                        </form>
-                    </div>
-                </div>
-
-                <!-- Services Column -->
-                <div class="footer-col">
-                    <h4 class="footer-col-title">
-                        <span class="title-accent"></span> LEISTUNGEN
-                    </h4>
-                    <ul class="footer-link-list">
-                        <li><a href="residential.html"><i class="fas fa-couch"></i> Privatkunden · Möbelmontage</a></li>
-                        <li><a href="office.html"><i class="fas fa-building"></i> Firmenkunden · Büro &amp; Gewerbe</a></li>
-                        <li><a href="outdoor.html"><i class="fas fa-tree"></i> Outdoor · Terrassen &amp; Holzbau</a></li>
-                        <li><a href="demontage.html"><i class="fas fa-tools"></i> Demontage &amp; Entsorgung</a></li>
-                    </ul>
-                </div>
-
-                <!-- System Column -->
-                <div class="footer-col">
-                    <h4 class="footer-col-title">
-                        <span class="title-accent title-accent--cyan"></span> SYSTEM
-                    </h4>
-                    <ul class="footer-link-list">
-                        <li><a href="process-pricing.html"><i class="fas fa-sliders-h"></i> Prozess &amp; Preise</a></li>
-                        <li><a href="area.html"><i class="fas fa-map-marker-alt"></i> Einsatzgebiet</a></li>
-                        <li><a href="gallery.html"><i class="fas fa-images"></i> Projektgalerie</a></li>
-                        <li><a href="magazine.html"><i class="fas fa-book-open"></i> Magazin</a></li>
-                        <li><a href="client-portal.html"><i class="fas fa-user-circle" style="color:var(--ft-cyan);"></i> Client Portal</a></li>
-                        <li><a href="garantie.html"><i class="fas fa-shield-alt" style="color:var(--ft-gold);"></i> 30 Tage Garantie</a></li>
-                        <li><a href="empfehlen.html"><i class="fas fa-gift" style="color:var(--ft-pink);"></i> Empfehlen &amp; 50€ Rabatt</a></li>
-                        <li><a href="sustainability.html"><i class="fas fa-leaf" style="color:var(--ft-green);"></i> Nachhaltigkeit</a></li>
-                    </ul>
-                </div>
-
-                <!-- Contact Column -->
-                <div class="footer-col footer-col--comms">
-                    <h4 class="footer-col-title">
-                        <span class="title-accent title-accent--pink"></span> KONTAKT
-                    </h4>
-                    <div class="footer-comms-card">
-                        <a href="tel:+491608194018" class="comms-row">
-                            <div class="comms-icon"><i class="fas fa-phone-alt"></i></div>
-                            <div class="comms-meta">
-                                <span class="comms-label">DIREKTWAHL</span>
-                                <span class="comms-value">0160 819 4018</span>
-                            </div>
-                        </a>
-                        <a href="mailto:r.lezius@gmail.com" class="comms-row">
-                            <div class="comms-icon"><i class="far fa-envelope"></i></div>
-                            <div class="comms-meta">
-                                <span class="comms-label">E-MAIL</span>
-                                <span class="comms-value">r.lezius@gmail.com</span>
-                            </div>
-                        </a>
-                        <a href="https://wa.me/491608194018" target="_blank" class="comms-row comms-row--whatsapp">
-                            <div class="comms-icon"><i class="fab fa-whatsapp"></i></div>
-                            <div class="comms-meta">
-                                <span class="comms-label">WHATSAPP</span>
-                                <span class="comms-value">0160 819 4018</span>
-                            </div>
-                        </a>
-                        <div class="comms-row comms-row--static">
-                            <div class="comms-icon"><i class="fas fa-map-marker-alt"></i></div>
-                            <div class="comms-meta">
-                                <span class="comms-label">REGION</span>
-                                <span class="comms-value">Augsburg · München · Umland</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="footer-uptime">
-                        <div class="uptime-ring">
-                            <span class="uptime-core"></span>
-                            <span class="uptime-ring-pulse"></span>
-                        </div>
-                        <div class="uptime-text">
-                            <span class="uptime-top">RESPONSE</span>
-                            <span class="uptime-bot">innerhalb 24 Std.</span>
-                            <span class="uptime-status">✅ Garantiert</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ===== BOTTOM BAR ===== -->
-            <div class="footer-bottom">
-                <div class="footer-copy">
-                    <span>&copy; <span id="copyright-year">2026</span> RAPHAEL LEZIUS</span>
-                    <span class="footer-sep">·</span>
-                    <span class="footer-made">MADE IN BAVARIA</span>
-                    <span class="footer-sep">·</span>
-                    <span class="footer-version">v2.0</span>
-                </div>
-                <div class="footer-legal">
-                    <a href="impressum.html">Impressum</a>
-                    <a href="datenschutz.html">Datenschutz</a>
-                    <a href="agb.html">AGB</a>
-                    <a href="cookie-policy.html">Cookie-Richtlinie</a>
-                </div>
-                <div class="footer-pay">
+            <!-- Payment Badges -->
+            <div class="fj-payment">
+                <span class="fj-payment-label">Zahlungsarten</span>
+                <div class="fj-payment-icons">
                     <i class="fab fa-apple" title="Apple Pay"></i>
                     <i class="fab fa-google" title="Google Pay"></i>
                     <i class="fab fa-cc-paypal" title="PayPal"></i>
                     <i class="fab fa-cc-visa" title="Visa"></i>
                     <i class="fab fa-cc-mastercard" title="Mastercard"></i>
                     <i class="fas fa-university" title="Banküberweisung"></i>
+                    <i class="fas fa-credit-card" title="EC-Karte"></i>
                 </div>
-                <div class="footer-dev">
-                    <span class="dev-bracket">&lt;/&gt;</span>
-                    <span>SYS_DEV <strong class="gold-text">IDRIS</strong></span>
+            </div>
+
+            <!-- Uptime / Status -->
+            <div class="fj-uptime">
+                <div class="fj-uptime-ring">
+                    <span class="fj-uptime-core"></span>
+                    <span class="fj-uptime-pulse"></span>
+                </div>
+                <div class="fj-uptime-text">
+                    <span class="fj-uptime-top">SYSTEM STATUS</span>
+                    <span class="fj-uptime-bot">Online · 99.9%</span>
+                    <span class="fj-uptime-status">✅ Antwort innerhalb 24 Std.</span>
                 </div>
             </div>
         </div>
-    </footer>
 
-    <!-- ===== BACK TO TOP BUTTON ===== -->
-    <button class="footer-btt" id="footerBackToTop" aria-label="Nach oben">
+        <!-- ==========================================================
+             FOOTER BOTTOM – COPYRIGHT + LEGAL
+             ========================================================== -->
+        <div class="fj-footer-bottom">
+            <div class="fj-copy">
+                <span>&copy; <span id="fj-copy-year">2026</span> FIXJORI</span>
+                <span class="fj-sep">·</span>
+                <span class="fj-made">MADE IN GERMANY</span>
+                <span class="fj-sep">·</span>
+                <span class="fj-version">v2.0</span>
+            </div>
+            <div class="fj-legal">
+                <a href="impressum.html">Impressum</a>
+                <a href="datenschutz.html">Datenschutz</a>
+                <a href="agb.html">AGB</a>
+                <a href="cookie-policy.html">Cookie-Richtlinie</a>
+            </div>
+            <div class="fj-dev">
+                <span class="fj-dev-bracket">&lt;/&gt;</span>
+                <span>SYS_DEV <strong class="fj-dev-gold">FIXJORI</strong></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================================
+         BACK TO TOP BUTTON
+         ========================================================== -->
+    <button class="fj-btt" id="fjBtt" aria-label="Nach oben">
         <i class="fas fa-chevron-up"></i>
-        <span class="btt-tooltip">Top</span>
+        <span class="fj-btt-tooltip">Top</span>
     </button>
+</footer>
 
-    <!-- ============================================================
-       FOOTER JAVASCRIPT
-       ============================================================ -->
-    <script>
-        (function() {
-            'use strict';
 
-            // ---- Dynamic Year ----
-            var yearEl = document.getElementById('copyright-year');
-            if (yearEl) yearEl.textContent = new Date().getFullYear();
+<!-- ============================================================
+     FOOTER STYLESHEET (Separate or in your main CSS)
+     ============================================================ -->
+<style>
+    /* ── Theme Variables ── */
+    .fixjori-footer {
+        --fj-teal: #0D9488;
+        --fj-teal-dark: #0F766E;
+        --fj-teal-light: #14B8A6;
+        --fj-amber: #F59E0B;
+        --fj-amber-glow: rgba(245, 158, 11, 0.3);
+        --fj-coral: #FF6B35;
+        --fj-green: #22C55E;
+        --fj-purple: #A855F7;
+        --fj-bg: #020617;
+        --fj-surface: #0F172A;
+        --fj-card: rgba(255, 255, 255, 0.03);
+        --fj-text: #F8FAFC;
+        --fj-muted: #94A3B8;
+        --fj-dim: #64748B;
+        --fj-border: rgba(255, 255, 255, 0.06);
+        --fj-radius: 16px;
+        --fj-radius-sm: 10px;
+        --fj-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+        --font-head: 'Space Grotesk', sans-serif;
+        --font-body: 'Inter', sans-serif;
+        --font-mono: 'JetBrains Mono', monospace;
+        --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+        --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+        --container: 1260px;
+        position: relative;
+        background: var(--fj-bg);
+        color: var(--fj-text);
+        border-top: 1px solid var(--fj-border);
+        font-family: var(--font-body);
+        overflow: hidden;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+    }
 
-            // ---- Back to Top ----
-            var btt = document.getElementById('footerBackToTop');
-            if (btt) {
-                window.addEventListener('scroll', function() {
-                    if (window.scrollY > 400) {
-                        btt.classList.add('visible');
-                    } else {
-                        btt.classList.remove('visible');
-                    }
-                }, { passive: true });
+    .fixjori-footer .fj-container {
+        max-width: var(--container);
+        margin: 0 auto;
+        padding: 0 clamp(16px, 4vw, 32px);
+        position: relative;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        padding-top: clamp(24px, 4vw, 40px);
+        padding-bottom: clamp(16px, 2.5vw, 24px);
+    }
 
-                btt.addEventListener('click', function() {
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                });
-            }
+    /* ── Ambient Background ── */
+    .fixjori-footer::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        z-index: 0;
+        background:
+            radial-gradient(ellipse at 70% 20%, rgba(13, 148, 136, 0.06), transparent 50%),
+            radial-gradient(ellipse at 30% 80%, rgba(245, 158, 11, 0.04), transparent 40%),
+            radial-gradient(ellipse at 50% 50%, rgba(168, 85, 247, 0.02), transparent 30%);
+    }
 
-            // ---- Newsletter ----
-            var form = document.getElementById('newsletterForm');
-            var feedback = document.getElementById('newsletterFeedback');
-            var emailInput = document.getElementById('newsletterEmail');
+    /* ── Top Bar ── */
+    .fj-top-bar {
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        gap: 20px 32px;
+        align-items: center;
+        padding: 16px 20px;
+        background: var(--fj-card);
+        border-radius: var(--fj-radius);
+        border: 1px solid var(--fj-border);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        position: relative;
+        z-index: 1;
+    }
+    @media (max-width: 1024px) {
+        .fj-top-bar {
+            grid-template-columns: 1fr;
+            gap: 16px;
+            text-align: center;
+        }
+    }
 
-            if (form && feedback && emailInput) {
-                form.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    var email = emailInput.value.trim();
+    /* ── Hotline ── */
+    .fj-hotline-group {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        flex-wrap: wrap;
+    }
+    @media (max-width: 1024px) {
+        .fj-hotline-group {
+            justify-content: center;
+        }
+    }
+    .fj-hotline-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: rgba(13, 148, 136, 0.12);
+        border: 1px solid rgba(13, 148, 136, 0.15);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--fj-teal);
+        font-size: 1.2rem;
+        flex-shrink: 0;
+        transition: all 0.3s ease;
+    }
+    .fj-hotline-group:hover .fj-hotline-icon {
+        background: rgba(13, 148, 136, 0.20);
+        transform: scale(1.05);
+    }
+    .fj-hotline-text {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+    }
+    .fj-hotline-label {
+        font-family: var(--font-mono);
+        font-size: 0.55rem;
+        letter-spacing: 1.8px;
+        color: var(--fj-muted);
+        text-transform: uppercase;
+    }
+    .fj-hotline-number {
+        font-family: var(--font-head);
+        font-size: 1.4rem;
+        font-weight: 900;
+        color: var(--fj-teal);
+        text-decoration: none;
+        transition: color 0.3s ease;
+        letter-spacing: 0.5px;
+    }
+    .fj-hotline-number:hover {
+        color: var(--fj-teal-light);
+    }
+    .fj-hotline-hours {
+        font-size: 0.7rem;
+        color: var(--fj-muted);
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+    .fj-hotline-hours i {
+        font-size: 0.6rem;
+        color: var(--fj-amber);
+    }
 
-                    if (!email || !email.includes('@') || !email.includes('.')) {
-                        feedback.innerHTML =
-                            '<span style="color:#ff6b6b;"><i class="fas fa-exclamation-circle"></i> Bitte gültige E-Mail eingeben.</span>';
-                        feedback.style.display = 'block';
-                        return;
-                    }
+    /* ── App Group ── */
+    .fj-app-group {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .fj-qr-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 6px 12px 6px 6px;
+        border-radius: var(--fj-radius-sm);
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.04);
+        transition: all 0.3s ease;
+        cursor: default;
+    }
+    .fj-qr-wrapper:hover {
+        border-color: rgba(13, 148, 136, 0.15);
+        background: rgba(13, 148, 136, 0.04);
+    }
+    .fj-qr-code {
+        width: 56px;
+        height: 56px;
+        border-radius: 6px;
+        overflow: hidden;
+        background: var(--fj-teal);
+        flex-shrink: 0;
+    }
+    .fj-qr-code svg {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+    .fj-qr-text {
+        display: flex;
+        flex-direction: column;
+        gap: 1px;
+    }
+    .fj-qr-label {
+        font-family: var(--font-mono);
+        font-size: 0.5rem;
+        letter-spacing: 1.4px;
+        color: var(--fj-muted);
+        text-transform: uppercase;
+    }
+    .fj-qr-sub {
+        font-size: 0.65rem;
+        color: var(--fj-text);
+        font-weight: 500;
+    }
+    .fj-app-badges {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+    }
+    .fj-app-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 14px;
+        border-radius: 30px;
+        font-size: 0.6rem;
+        font-weight: 600;
+        font-family: var(--font-mono);
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid var(--fj-border);
+        color: var(--fj-muted);
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+    .fj-app-badge:hover {
+        background: rgba(13, 148, 136, 0.10);
+        border-color: var(--fj-teal);
+        color: var(--fj-text);
+        transform: translateY(-2px);
+    }
+    .fj-app-badge i {
+        font-size: 0.8rem;
+    }
 
-                    feedback.innerHTML =
-                        '<span style="color:#51cf66;"><i class="fas fa-check-circle"></i> Vielen Dank! Sie sind jetzt angemeldet.</span>';
-                    feedback.style.display = 'block';
-                    emailInput.value = '';
+    /* ── Trust Badges ── */
+    .fj-trust-badges {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+    }
+    @media (max-width: 1024px) {
+        .fj-trust-badges {
+            justify-content: center;
+        }
+    }
+    .fj-trust-badge {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.7rem;
+        font-weight: 500;
+        color: var(--fj-muted);
+        padding: 4px 12px;
+        border-radius: 30px;
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.04);
+        transition: all 0.3s ease;
+    }
+    .fj-trust-badge:hover {
+        border-color: rgba(13, 148, 136, 0.15);
+        color: var(--fj-text);
+    }
+    .fj-trust-badge i {
+        color: var(--fj-teal);
+        font-size: 0.8rem;
+    }
 
-                    setTimeout(function() {
-                        feedback.style.display = 'none';
-                    }, 5000);
-                });
-            }
+    /* ── Main Grid ── */
+    .fj-main-grid {
+        display: grid;
+        grid-template-columns: 1.6fr 1fr 1fr 1.2fr;
+        gap: clamp(20px, 3vw, 40px);
+        padding: 8px 0;
+        border-top: 1px solid var(--fj-border);
+        border-bottom: 1px solid var(--fj-border);
+    }
+    @media (max-width: 1024px) {
+        .fj-main-grid {
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+        }
+    }
+    @media (max-width: 600px) {
+        .fj-main-grid {
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+    }
 
-            // ---- Contact Button Scroll ----
-            document.querySelectorAll('.js-open-contact').forEach(function(btn) {
-                btn.addEventListener('click', function(e) {
-                    var target = document.getElementById('contact');
-                    if (target) {
-                        e.preventDefault();
-                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }
-                });
+    /* ── Brand Column ── */
+    .fj-col--brand {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+    }
+    .fj-brand-mark {
+        display: inline-block;
+    }
+    .fj-brand-mark svg {
+        height: 36px;
+        width: auto;
+        display: block;
+    }
+    .fj-brand-desc {
+        font-size: 0.85rem;
+        color: var(--fj-muted);
+        line-height: 1.7;
+        max-width: 320px;
+        margin: 0;
+    }
+    @media (max-width: 600px) {
+        .fj-brand-desc {
+            max-width: 100%;
+        }
+    }
+
+    /* ── Trust Chips ── */
+    .fj-trust-chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+    .fj-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        padding: 3px 12px;
+        border-radius: 20px;
+        font-family: var(--font-mono);
+        font-size: 0.5rem;
+        letter-spacing: 0.8px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid var(--fj-border);
+        color: var(--fj-muted);
+        transition: all 0.3s ease;
+    }
+    .fj-chip i {
+        font-size: 0.5rem;
+        color: var(--fj-teal);
+    }
+    .fj-chip--amber i {
+        color: var(--fj-amber);
+    }
+    .fj-chip--teal i {
+        color: var(--fj-teal);
+    }
+    .fj-chip--coral i {
+        color: var(--fj-coral);
+    }
+    .fj-chip:hover {
+        transform: translateY(-2px);
+        border-color: rgba(13, 148, 136, 0.15);
+        background: rgba(13, 148, 136, 0.04);
+    }
+
+    /* ── Social ── */
+    .fj-social {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-top: 2px;
+    }
+    .fj-social-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        border: 1px solid var(--fj-border);
+        color: var(--fj-muted);
+        background: rgba(255, 255, 255, 0.02);
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: all 0.35s var(--ease-spring);
+        position: relative;
+    }
+    .fj-social-btn:hover {
+        transform: translateY(-4px) scale(1.08);
+        color: #fff;
+        border-color: var(--fj-social, var(--fj-teal));
+        background: rgba(255, 255, 255, 0.06);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    }
+
+    /* ── Column Titles & Links ── */
+    .fj-col-title {
+        font-family: var(--font-mono);
+        font-size: 0.6rem;
+        letter-spacing: 2.2px;
+        color: var(--fj-muted);
+        text-transform: uppercase;
+        margin: 0 0 14px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--fj-border);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .fj-col-title::before {
+        content: '';
+        display: inline-block;
+        width: 4px;
+        height: 18px;
+        border-radius: 2px;
+        background: var(--fj-teal);
+        flex-shrink: 0;
+    }
+    .fj-link-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+    .fj-link-list li a {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--fj-muted);
+        text-decoration: none;
+        font-size: 0.82rem;
+        padding: 5px 0;
+        transition: all 0.25s ease;
+        border-bottom: 1px solid transparent;
+    }
+    .fj-link-list li a i {
+        width: 18px;
+        font-size: 0.7rem;
+        color: var(--fj-teal);
+        flex-shrink: 0;
+        opacity: 0.5;
+        transition: all 0.3s ease;
+    }
+    .fj-link-list li a:hover {
+        color: var(--fj-text);
+        transform: translateX(6px);
+    }
+    .fj-link-list li a:hover i {
+        opacity: 1;
+        color: var(--fj-amber);
+    }
+
+    /* ── Bottom Bar ── */
+    .fj-bottom-bar {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px 24px;
+        padding: 12px 0 4px;
+    }
+    @media (max-width: 768px) {
+        .fj-bottom-bar {
+            flex-direction: column;
+            align-items: stretch;
+            text-align: center;
+        }
+    }
+
+    /* ── As Seen On ── */
+    .fj-as-seen {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+    @media (max-width: 768px) {
+        .fj-as-seen {
+            justify-content: center;
+        }
+    }
+    .fj-seen-label {
+        font-family: var(--font-mono);
+        font-size: 0.5rem;
+        letter-spacing: 1.6px;
+        color: var(--fj-muted);
+        text-transform: uppercase;
+        opacity: 0.6;
+    }
+    .fj-seen-logos {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+    .fj-seen-logo {
+        font-family: var(--font-head);
+        font-size: 0.7rem;
+        font-weight: 600;
+        color: var(--fj-muted);
+        opacity: 0.4;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        cursor: default;
+    }
+    .fj-seen-logo:hover {
+        opacity: 1;
+        color: var(--fj-text);
+        transform: translateY(-2px);
+    }
+    .fj-seen-logo i {
+        font-size: 0.6rem;
+        color: var(--fj-amber);
+    }
+
+    /* ── Payment ── */
+    .fj-payment {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+    @media (max-width: 768px) {
+        .fj-payment {
+            justify-content: center;
+        }
+    }
+    .fj-payment-label {
+        font-family: var(--font-mono);
+        font-size: 0.5rem;
+        letter-spacing: 1.4px;
+        color: var(--fj-muted);
+        text-transform: uppercase;
+        opacity: 0.6;
+    }
+    .fj-payment-icons {
+        display: flex;
+        gap: 10px;
+        font-size: 1.2rem;
+        color: var(--fj-muted);
+    }
+    .fj-payment-icons i {
+        transition: all 0.3s ease;
+        cursor: default;
+    }
+    .fj-payment-icons i:hover {
+        color: var(--fj-text);
+        transform: translateY(-3px) scale(1.1);
+    }
+
+    /* ── Uptime ── */
+    .fj-uptime {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 6px 14px;
+        border-radius: var(--fj-radius-sm);
+        background: rgba(34, 197, 94, 0.03);
+        border: 1px solid rgba(34, 197, 94, 0.08);
+        transition: all 0.3s ease;
+    }
+    .fj-uptime:hover {
+        border-color: rgba(34, 197, 94, 0.20);
+        background: rgba(34, 197, 94, 0.06);
+    }
+    .fj-uptime-ring {
+        position: relative;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 2px solid rgba(34, 197, 94, 0.15);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+    .fj-uptime-core {
+        display: block;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #22c55e;
+        box-shadow: 0 0 16px rgba(34, 197, 94, 0.4);
+        animation: fjPulse 2.4s ease-in-out infinite;
+    }
+    .fj-uptime-pulse {
+        position: absolute;
+        inset: -4px;
+        border-radius: 50%;
+        border: 2px solid rgba(34, 197, 94, 0.2);
+        animation: fjUptimePulse 2.4s ease-in-out infinite;
+    }
+    @keyframes fjPulse {
+        0%, 100% { transform: scale(1); opacity: 1; }
+        50% { transform: scale(0.8); opacity: 0.5; }
+    }
+    @keyframes fjUptimePulse {
+        0% { transform: scale(1); opacity: 0.5; }
+        100% { transform: scale(1.8); opacity: 0; }
+    }
+    .fj-uptime-text {
+        display: flex;
+        flex-direction: column;
+        gap: 0px;
+    }
+    .fj-uptime-top {
+        font-family: var(--font-mono);
+        font-size: 0.45rem;
+        letter-spacing: 1.4px;
+        color: var(--fj-muted);
+        text-transform: uppercase;
+    }
+    .fj-uptime-bot {
+        font-size: 0.7rem;
+        font-weight: 600;
+        color: var(--fj-text);
+    }
+    .fj-uptime-status {
+        font-size: 0.55rem;
+        color: #22c55e;
+        font-family: var(--font-mono);
+        display: flex;
+        align-items: center;
+        gap: 4px;
+    }
+
+    /* ── Footer Bottom ── */
+    .fj-footer-bottom {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px 20px;
+        padding-top: 16px;
+        border-top: 1px solid var(--fj-border);
+        font-size: 0.7rem;
+        color: var(--fj-muted);
+    }
+    @media (max-width: 768px) {
+        .fj-footer-bottom {
+            flex-direction: column;
+            text-align: center;
+        }
+    }
+    .fj-copy {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        flex-wrap: wrap;
+        font-weight: 500;
+    }
+    .fj-sep {
+        opacity: 0.3;
+    }
+    .fj-made {
+        font-family: var(--font-mono);
+        font-size: 0.5rem;
+        letter-spacing: 0.8px;
+    }
+    .fj-version {
+        font-family: var(--font-mono);
+        font-size: 0.45rem;
+        opacity: 0.4;
+    }
+    .fj-legal {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+    }
+    .fj-legal a {
+        color: var(--fj-muted);
+        text-decoration: none;
+        font-size: 0.65rem;
+        font-weight: 500;
+        transition: color 0.25s ease;
+    }
+    .fj-legal a:hover {
+        color: var(--fj-text);
+    }
+    .fj-dev {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-family: var(--font-mono);
+        font-size: 0.5rem;
+        letter-spacing: 0.8px;
+    }
+    .fj-dev-bracket {
+        color: var(--fj-teal);
+        font-weight: 700;
+    }
+    .fj-dev-gold {
+        color: var(--fj-amber);
+    }
+
+    /* ── Back to Top ── */
+    .fj-btt {
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        z-index: 9998;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: rgba(13, 148, 136, 0.10);
+        border: 1px solid rgba(13, 148, 136, 0.15);
+        color: var(--fj-teal);
+        font-size: 1.1rem;
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        cursor: pointer;
+        transition: all 0.4s var(--ease-spring);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(20px) scale(0.8);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    }
+    .fj-btt.visible {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0) scale(1);
+    }
+    .fj-btt:hover {
+        background: rgba(13, 148, 136, 0.25);
+        border-color: var(--fj-teal);
+        transform: translateY(-4px) scale(1.08);
+        box-shadow: 0 12px 40px rgba(13, 148, 136, 0.20);
+    }
+    .fj-btt-tooltip {
+        position: absolute;
+        right: calc(100% + 10px);
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(0, 0, 0, 0.85);
+        backdrop-filter: blur(8px);
+        padding: 3px 10px;
+        border-radius: 4px;
+        font-family: var(--font-mono);
+        font-size: 0.5rem;
+        color: #fff;
+        opacity: 0;
+        transition: all 0.3s ease;
+        pointer-events: none;
+        white-space: nowrap;
+    }
+    .fj-btt:hover .fj-btt-tooltip {
+        opacity: 1;
+    }
+
+    /* ── Responsive Fine-Tuning ── */
+    @media (max-width: 480px) {
+        .fj-top-bar {
+            padding: 12px;
+        }
+        .fj-qr-wrapper {
+            padding: 4px 10px 4px 4px;
+        }
+        .fj-qr-code {
+            width: 44px;
+            height: 44px;
+        }
+        .fj-hotline-number {
+            font-size: 1.1rem;
+        }
+        .fj-app-badge {
+            font-size: 0.5rem;
+            padding: 4px 10px;
+        }
+        .fj-trust-badge {
+            font-size: 0.6rem;
+            padding: 3px 10px;
+        }
+        .fj-btt {
+            width: 38px;
+            height: 38px;
+            font-size: 0.9rem;
+            bottom: 16px;
+            right: 16px;
+        }
+    }
+
+    /* ── Reduce Motion ── */
+    @media (prefers-reduced-motion: reduce) {
+        .fj-uptime-core,
+        .fj-uptime-pulse {
+            animation: none !important;
+        }
+        .fj-social-btn,
+        .fj-app-badge,
+        .fj-link-list li a,
+        .fj-chip,
+        .fj-trust-badge,
+        .fj-seen-logo,
+        .fj-payment-icons i,
+        .fj-btt {
+            transition: none !important;
+        }
+        .fj-social-btn:hover,
+        .fj-app-badge:hover,
+        .fj-btt:hover {
+            transform: none !important;
+        }
+    }
+</style>
+
+
+<!-- ============================================================
+     FOOTER JAVASCRIPT
+     ============================================================ -->
+<script>
+    (function() {
+        'use strict';
+
+        // ---- Dynamic Year ----
+        var yearEl = document.getElementById('fj-copy-year');
+        if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+        // ---- Back to Top ----
+        var btt = document.getElementById('fjBtt');
+        if (btt) {
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 400) {
+                    btt.classList.add('visible');
+                } else {
+                    btt.classList.remove('visible');
+                }
+            }, { passive: true });
+
+            btt.addEventListener('click', function() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             });
+        }
 
-            // ---- SPEC BAR MOUSE GLOW ----
-            var specItems = document.querySelectorAll('.footer-spec-item');
-            specItems.forEach(function(item) {
-                item.addEventListener('mousemove', function(e) {
-                    var rect = this.getBoundingClientRect();
-                    var x = ((e.clientX - rect.left) / rect.width) * 100;
-                    var y = ((e.clientY - rect.top) / rect.height) * 100;
-                    this.style.setProperty('--mouse-x', x + '%');
-                    this.style.setProperty('--mouse-y', y + '%');
-                });
-            });
+        // ---- Newsletter (if you add a form in the footer) ----
+        // You can add a newsletter form inside the brand column if desired
 
-            console.log('✅ Footer initialized – vibrant & interactive');
-        })();
-    </script>
-
-</body>
-</html>
+        console.log('✅ FIXJORI Footer loaded – China service app style');
+    })();
+</script>

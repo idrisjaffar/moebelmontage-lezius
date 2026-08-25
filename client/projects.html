@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="light">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    <title>Meine Projekte – FIXJORI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&family=Space+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <style>
+        /* ============================================================
+           GLOBAL VARIABLES & RESET
+           ============================================================ */
+        :root {
+            --fj-teal: #0D9488;
+            --fj-teal-dark: #0F766E;
+            --fj-amber: #F59E0B;
+            --fj-gold: #F5A623;
+            --fj-green: #22C55E;
+            --fj-coral: #FF6B35;
+            --fj-pink: #FF007F;
+            --fj-bg: #F8FAFC;
+            --fj-surface: #FFFFFF;
+            --fj-text: #0F172A;
+            --fj-muted: #475569;
+            --fj-dim: #94A3B8;
+            --fj-border: #E2E8F0;
+            --fj-shadow: 0 4px 16px rgba(0,0,0,0.05);
+            --fj-shadow-lg: 0 8px 32px rgba(0,0,0,0.08);
+            --fj-radius: 16px;
+            --fj-radius-sm: 10px;
+            --fj-radius-full: 40px;
+            --font-head: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --nav-height: 68px;
+            --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        [data-theme="dark"] {
+            --fj-bg: #0F172A;
+            --fj-surface: #1A2332;
+            --fj-text: #F8FAFC;
+            --fj-muted: #94A3B8;
+            --fj-dim: #64748B;
+            --fj-border: rgba(255,255,255,0.06);
+            --fj-shadow: 0 4px 16px rgba(0,0,0,0.2);
+            --fj-shadow-lg: 0 8px 32px rgba(0,0,0,0.4);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            background: var(--fj-bg);
+            color: var(--fj-text);
+            transition: background 0.3s, color 0.3s;
+            padding-top: calc(var(--nav-height) + 12px);
+            min-height: 100vh;
+        }
+        a { text-decoration: none; color: inherit; }
+        button { font-family: inherit; border: none; background: none; color: inherit; cursor: pointer; }
+        img { max-width: 100%; display: block; }
+        ul { list-style: none; }
+
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 clamp(16px, 3.5vw, 32px); }
+        .text-teal { color: var(--fj-teal); }
+        .text-muted { color: var(--fj-muted); }
+        .text-dim { color: var(--fj-dim); }
+        .text-green { color: var(--fj-green); }
+        .text-amber { color: var(--fj-amber); }
+        .text-pink { color: var(--fj-pink); }
+
+        .badge {
+            display: inline-block; padding: 2px 12px; border-radius: 30px;
+            font-family: var(--font-mono); font-size: 0.5rem; font-weight: 700;
+            letter-spacing: 0.5px; text-transform: uppercase;
+        }
+        .badge-teal {
+            background: rgba(13,148,136,0.08); color: var(--fj-teal);
+            border: 1px solid rgba(13,148,136,0.10);
+        }
+        .badge-amber {
+            background: rgba(245,158,11,0.08); color: var(--fj-amber);
+            border: 1px solid rgba(245,158,11,0.10);
+        }
+        .badge-green {
+            background: rgba(34,197,94,0.08); color: var(--fj-green);
+            border: 1px solid rgba(34,197,94,0.10);
+        }
+        .badge-pink {
+            background: rgba(255,0,127,0.08); color: var(--fj-pink);
+            border: 1px solid rgba(255,0,127,0.10);
+        }
+
+        /* ============================================================
+           BUTTONS
+           ============================================================ */
+        .btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 10px 22px; border-radius: var(--fj-radius-sm);
+            font-weight: 700; font-size: 0.8rem;
+            transition: all 0.3s var(--ease-smooth);
+            border: none; cursor: pointer; text-decoration: none;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--fj-teal), var(--fj-teal-dark));
+            color: #fff; box-shadow: 0 4px 16px rgba(13,148,136,0.25);
+        }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(13,148,136,0.35); }
+        .btn-secondary {
+            background: var(--fj-surface); border: 1px solid var(--fj-border);
+            color: var(--fj-text);
+        }
+        .btn-secondary:hover { border-color: var(--fj-teal); }
+        .btn-outline {
+            background: transparent; border: 1.5px solid var(--fj-border);
+            color: var(--fj-text);
+        }
+        .btn-outline:hover { border-color: var(--fj-teal); color: var(--fj-teal); }
+        .btn-amber {
+            background: var(--fj-amber); color: #0F172A;
+            box-shadow: 0 4px 16px rgba(245,158,11,0.25);
+        }
+        .btn-amber:hover { transform: translateY(-2px); }
+        .btn-sm { padding: 6px 14px; font-size: 0.7rem; }
+
+        /* ============================================================
+           NAVIGATION
+           ============================================================ */
+        .site-nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            height: var(--nav-height);
+            background: rgba(255,255,255,0.85); backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--fj-border);
+            display: flex; align-items: center; padding: 0 16px;
+            transition: background 0.3s, box-shadow 0.3s;
+        }
+        [data-theme="dark"] .site-nav { background: rgba(15,23,42,0.85); }
+        .site-nav.scrolled { box-shadow: var(--fj-shadow); }
+
+        .nav-inner {
+            max-width: 1280px; width: 100%; margin: 0 auto;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .nav-logo {
+            display: flex; align-items: center; gap: 8px;
+            font-family: var(--font-head); font-weight: 900; font-size: 1.3rem; letter-spacing: -0.5px;
+        }
+        .nav-logo span { color: var(--fj-teal); }
+        .nav-logo .logo-icon {
+            width: 32px; height: 32px;
+            background: linear-gradient(135deg, var(--fj-teal), var(--fj-teal-dark));
+            border-radius: 8px; display: flex; align-items: center; justify-content: center;
+            color: #fff; font-size: 1rem;
+        }
+
+        .nav-links { display: flex; gap: 24px; align-items: center; }
+        .nav-links a {
+            font-size: 0.85rem; font-weight: 500; color: var(--fj-muted);
+            transition: color 0.2s; position: relative;
+        }
+        .nav-links a:hover { color: var(--fj-text); }
+        .nav-links a.active::after {
+            content: ''; position: absolute; bottom: -4px; left: 0;
+            width: 100%; height: 2px; background: var(--fj-teal); border-radius: 2px;
+        }
+
+        .nav-actions { display: flex; align-items: center; gap: 8px; }
+        .theme-toggle {
+            width: 36px; height: 36px; border-radius: 50%;
+            border: 1px solid var(--fj-border); background: transparent;
+            color: var(--fj-muted); display: flex; align-items: center; justify-content: center;
+            font-size: 0.95rem; transition: all 0.3s;
+        }
+        .theme-toggle:hover { border-color: var(--fj-teal); color: var(--fj-text); }
+
+        .nav-cta {
+            padding: 6px 16px; border-radius: var(--fj-radius-full);
+            background: linear-gradient(135deg, var(--fj-teal), var(--fj-teal-dark));
+            color: #fff !important; font-weight: 700; font-size: 0.7rem !important;
+            text-transform: uppercase; letter-spacing: 0.5px;
+        }
+        .nav-cta:hover { opacity: 0.9; }
+
+        .mobile-toggle {
+            display: none; flex-direction: column; gap: 4px; padding: 6px;
+            background: none; border: none; cursor: pointer;
+        }
+        .mobile-toggle span {
+            display: block; width: 22px; height: 2px;
+            background: var(--fj-text); border-radius: 2px; transition: 0.3s;
+        }
+        .mobile-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .mobile-toggle.active span:nth-child(2) { opacity: 0; }
+        .mobile-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+        .mobile-menu {
+            position: fixed; top: var(--nav-height); left: 0; right: 0; bottom: 0;
+            background: var(--fj-surface); backdrop-filter: blur(20px);
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            gap: 24px; transform: translateX(100%);
+            transition: transform 0.4s var(--ease-smooth);
+            z-index: 999; padding: 40px 20px;
+        }
+        .mobile-menu.open { transform: translateX(0); }
+        .mobile-menu a { font-size: 1.4rem; font-weight: 600; color: var(--fj-muted); transition: color 0.2s; }
+        .mobile-menu a:hover { color: var(--fj-text); }
+        .mobile-menu .mobile-cta {
+            margin-top: 16px; padding: 12px 40px; border-radius: var(--fj-radius-full);
+            background: linear-gradient(135deg, var(--fj-teal), var(--fj-teal-dark));
+            color: #fff; font-weight: 700; font-size: 0.9rem;
+        }
+
+        @media (max-width: 900px) {
+            .nav-links { display: none; }
+            .mobile-toggle { display: flex; }
+            .mobile-menu { transform: translateX(100%); }
+            .mobile-menu.open { transform: translateX(0); }
+            .nav-actions .nav-cta { display: none; }
+        }
+
+        /* ============================================================
+           PAGE HEADER
+           ============================================================ */
+        .page-header {
+            display: flex; justify-content: space-between; align-items: center;
+            flex-wrap: wrap; gap: 12px 20px;
+            padding: 16px 0 20px;
+            border-bottom: 1px solid var(--fj-border);
+        }
+        .page-header h1 {
+            font-family: var(--font-head);
+            font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+            font-weight: 900;
+            letter-spacing: -0.5px;
+        }
+        .page-header .sub {
+            color: var(--fj-muted);
+            font-size: 0.9rem;
+            margin-top: 2px;
+        }
+        .page-header .actions {
+            display: flex; gap: 8px; flex-wrap: wrap;
+        }
+
+        /* ============================================================
+           STATS ROW
+           ============================================================ */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            padding: 16px 0 20px;
+        }
+        @media (max-width: 700px) {
+            .stats-row { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (max-width: 450px) {
+            .stats-row { grid-template-columns: repeat(2, 1fr); }
+        }
+        .stat-mini {
+            background: var(--fj-surface);
+            border: 1px solid var(--fj-border);
+            border-radius: var(--fj-radius-sm);
+            padding: 10px 14px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .stat-mini:hover {
+            border-color: var(--fj-teal);
+            box-shadow: var(--fj-shadow);
+        }
+        .stat-mini .num {
+            font-family: var(--font-head);
+            font-size: 1.3rem;
+            font-weight: 900;
+            color: var(--fj-teal);
+            line-height: 1.2;
+        }
+        .stat-mini .label {
+            font-size: 0.6rem;
+            color: var(--fj-muted);
+            font-weight: 500;
+            display: block;
+            margin-top: 1px;
+        }
+
+        /* ============================================================
+           TABS (Meituan-style)
+           ============================================================ */
+        .tabs-wrapper {
+            display: flex;
+            gap: 4px;
+            padding: 16px 0 8px;
+            border-bottom: 1px solid var(--fj-border);
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        .tabs-wrapper::-webkit-scrollbar { height: 0; }
+        .tab-btn {
+            padding: 8px 20px;
+            border-radius: var(--fj-radius-full);
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--fj-muted);
+            cursor: pointer;
+            transition: all 0.25s;
+            white-space: nowrap;
+            border: 1px solid transparent;
+        }
+        .tab-btn:hover {
+            color: var(--fj-text);
+            background: rgba(13,148,136,0.04);
+        }
+        .tab-btn.active {
+            color: var(--fj-teal);
+            background: rgba(13,148,136,0.08);
+            border-color: rgba(13,148,136,0.12);
+        }
+        .tab-btn .count {
+            font-size: 0.6rem;
+            font-weight: 700;
+            background: var(--fj-border);
+            padding: 1px 8px;
+            border-radius: 30px;
+            margin-left: 4px;
+            color: var(--fj-muted);
+        }
+        .tab-btn.active .count {
+            background: rgba(13,148,136,0.12);
+            color: var(--fj-teal);
+        }
+
+        /* ============================================================
+           SEARCH & FILTERS
+           ============================================================ */
+        .controls-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 16px 0 20px;
+            align-items: center;
+        }
+        .controls-row .search-box {
+            flex: 1;
+            min-width: 200px;
+            display: flex;
+            align-items: center;
+            background: var(--fj-surface);
+            border: 1px solid var(--fj-border);
+            border-radius: var(--fj-radius-full);
+            padding: 4px 4px 4px 18px;
+            transition: border-color 0.3s;
+        }
+        .controls-row .search-box:focus-within {
+            border-color: var(--fj-teal);
+            box-shadow: 0 0 0 3px rgba(13,148,136,0.06);
+        }
+        .controls-row .search-box input {
+            flex: 1;
+            padding: 8px 6px;
+            border: none;
+            outline: none;
+            background: transparent;
+            font-size: 0.85rem;
+            color: var(--fj-text);
+            min-width: 0;
+        }
+        .controls-row .search-box input::placeholder { color: var(--fj-dim); }
+        .controls-row .search-box button {
+            padding: 6px 18px;
+            border-radius: var(--fj-radius-full);
+            background: linear-gradient(135deg, var(--fj-teal), var(--fj-teal-dark));
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.7rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+        .controls-row .search-box button:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 16px rgba(13,148,136,0.20);
+        }
+
+        .controls-row .filter-group {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .controls-row .filter-group select {
+            padding: 6px 32px 6px 14px;
+            border-radius: var(--fj-radius-full);
+            border: 1px solid var(--fj-border);
+            background: var(--fj-surface);
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--fj-muted);
+            appearance: none;
+            -webkit-appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2394A3B8' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            cursor: pointer;
+            font-family: var(--font-body);
+            transition: border-color 0.25s;
+        }
+        .controls-row .filter-group select:hover {
+            border-color: var(--fj-teal);
+            color: var(--fj-text);
+        }
+        .controls-row .filter-group select:focus {
+            outline: none;
+            border-color: var(--fj-teal);
+        }
+
+        /* ============================================================
+           PROJECT LIST
+           ============================================================ */
+        .project-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            padding-bottom: 16px;
+        }
+
+        .project-card {
+            background: var(--fj-surface);
+            border: 1px solid var(--fj-border);
+            border-radius: var(--fj-radius-sm);
+            padding: 18px 22px;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 14px 20px;
+            transition: all 0.3s var(--ease-smooth);
+            align-items: start;
+        }
+        .project-card:hover {
+            border-color: var(--fj-teal);
+            box-shadow: var(--fj-shadow-lg);
+        }
+        @media (max-width: 700px) {
+            .project-card {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+        }
+
+        .project-card .main-info {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .project-card .main-info .title-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .project-card .main-info .title-row .name {
+            font-weight: 700;
+            font-size: 1rem;
+        }
+        .project-card .main-info .title-row .status-badge {
+            font-size: 0.55rem;
+            font-weight: 700;
+            font-family: var(--font-mono);
+            padding: 2px 12px;
+            border-radius: 30px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .project-card .main-info .title-row .status-badge.active {
+            background: rgba(13,148,136,0.08);
+            color: var(--fj-teal);
+            border: 1px solid rgba(13,148,136,0.10);
+        }
+        .project-card .main-info .title-row .status-badge.completed {
+            background: rgba(34,197,94,0.08);
+            color: var(--fj-green);
+            border: 1px solid rgba(34,197,94,0.10);
+        }
+        .project-card .main-info .title-row .status-badge.planning {
+            background: rgba(245,158,11,0.08);
+            color: var(--fj-amber);
+            border: 1px solid rgba(245,158,11,0.10);
+        }
+        .project-card .main-info .title-row .status-badge.cancelled {
+            background: rgba(255,0,127,0.08);
+            color: var(--fj-pink);
+            border: 1px solid rgba(255,0,127,0.10);
+        }
+        .project-card .main-info .title-row .premium-tag {
+            font-size: 0.45rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #0F172A;
+            background: var(--fj-amber);
+            padding: 1px 10px;
+            border-radius: 30px;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .project-card .main-info .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 4px 16px;
+            font-size: 0.75rem;
+            color: var(--fj-muted);
+        }
+        .project-card .main-info .meta-grid i {
+            color: var(--fj-teal);
+            width: 16px;
+        }
+        .project-card .main-info .meta-grid .value {
+            font-weight: 500;
+            color: var(--fj-text);
+        }
+        .project-card .main-info .progress-section {
+            margin-top: 4px;
+        }
+        .project-card .main-info .progress-section .progress-bar {
+            width: 100%;
+            height: 4px;
+            background: var(--fj-border);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 4px;
+        }
+        .project-card .main-info .progress-section .progress-bar .fill {
+            height: 100%;
+            border-radius: 4px;
+            background: linear-gradient(90deg, var(--fj-teal), var(--fj-teal-light));
+            transition: width 0.6s ease;
+        }
+        .project-card .main-info .progress-section .progress-label {
+            font-size: 0.65rem;
+            color: var(--fj-muted);
+            font-weight: 600;
+        }
+
+        .project-card .actions-col {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            align-items: flex-end;
+            justify-content: flex-start;
+        }
+        @media (max-width: 700px) {
+            .project-card .actions-col {
+                flex-direction: row;
+                flex-wrap: wrap;
+                align-items: center;
+                justify-content: flex-start;
+                border-top: 1px solid var(--fj-border);
+                padding-top: 10px;
+            }
+        }
+        .project-card .actions-col .price {
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--fj-teal);
+        }
+        .project-card .actions-col .handyman {
+            font-size: 0.7rem;
+            color: var(--fj-muted);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .project-card .actions-col .handyman .avatar-sm {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--fj-border);
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        .project-card .actions-col .handyman .avatar-sm img { width: 100%; height: 100%; object-fit: cover; }
+        .project-card .actions-col .btn-group {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        /* ============================================================
+           EMPTY STATE
+           ============================================================ */
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+        }
+        .empty-state .icon {
+            font-size: 3rem;
+            color: var(--fj-dim);
+            opacity: 0.3;
+            margin-bottom: 16px;
+        }
+        .empty-state h3 {
+            font-family: var(--font-head);
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .empty-state p {
+            color: var(--fj-muted);
+            font-size: 0.9rem;
+            max-width: 400px;
+            margin: 0 auto 20px;
+        }
+
+        /* ============================================================
+           PAGINATION
+           ============================================================ */
+        .pagination {
+            display: flex;
+            gap: 6px;
+            justify-content: center;
+            padding: 20px 0 10px;
+            border-top: 1px solid var(--fj-border);
+        }
+        .pagination .page {
+            padding: 6px 14px;
+            border-radius: var(--fj-radius-sm);
+            border: 1px solid var(--fj-border);
+            background: var(--fj-surface);
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--fj-muted);
+            transition: all 0.25s;
+            cursor: pointer;
+            min-width: 36px;
+            text-align: center;
+        }
+        .pagination .page:hover {
+            border-color: var(--fj-teal);
+            color: var(--fj-text);
+        }
+        .pagination .page.active {
+            background: var(--fj-teal);
+            color: #fff;
+            border-color: var(--fj-teal);
+        }
+        .pagination .page.arrow {
+            background: transparent;
+            border: none;
+            font-size: 1.1rem;
+        }
+
+        /* ============================================================
+           FOOTER
+           ============================================================ */
+        .site-footer {
+            background: var(--fj-surface);
+            border-top: 1px solid var(--fj-border);
+            padding: 40px 0 24px;
+            margin-top: 20px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 32px;
+        }
+        @media (max-width: 800px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+        @media (max-width: 480px) { .footer-grid { grid-template-columns: 1fr; } }
+        .footer-brand h4 {
+            font-family: var(--font-head); font-size: 1.2rem; font-weight: 900; margin-bottom: 8px;
+        }
+        .footer-brand h4 span { color: var(--fj-teal); }
+        .footer-brand p { font-size: 0.85rem; color: var(--fj-muted); max-width: 280px; }
+        .footer-col h5 {
+            font-size: 0.8rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.5px; color: var(--fj-dim); margin-bottom: 12px;
+        }
+        .footer-col a {
+            display: block; font-size: 0.85rem; color: var(--fj-muted);
+            padding: 4px 0; transition: color 0.2s;
+        }
+        .footer-col a:hover { color: var(--fj-teal); }
+        .footer-bottom {
+            border-top: 1px solid var(--fj-border); padding-top: 16px;
+            display: flex; justify-content: space-between; flex-wrap: wrap;
+            gap: 12px; font-size: 0.7rem; color: var(--fj-dim);
+        }
+        .footer-bottom a { color: var(--fj-dim); transition: color 0.2s; }
+        .footer-bottom a:hover { color: var(--fj-teal); }
+
+        /* ============================================================
+           RESPONSIVE
+           ============================================================ */
+        @media (max-width: 768px) {
+            .page-header { flex-direction: column; align-items: stretch; text-align: center; }
+            .page-header .actions { justify-content: center; }
+            .controls-row { flex-direction: column; }
+            .controls-row .search-box { width: 100%; }
+            .controls-row .filter-group { width: 100%; justify-content: center; }
+            .project-card { padding: 14px 16px; }
+            .project-card .main-info .meta-grid { grid-template-columns: 1fr; }
+            .stats-row { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (max-width: 480px) {
+            .stats-row { grid-template-columns: repeat(2, 1fr); }
+            .tab-btn { font-size: 0.7rem; padding: 6px 14px; }
+            .project-card .main-info .title-row .name { font-size: 0.9rem; }
+            .project-card .actions-col .btn-group .btn { font-size: 0.65rem; padding: 4px 12px; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * { transition: none !important; transform: none !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================================
+       NAVIGATION
+       ============================================================ -->
+    <header class="site-nav" id="siteNav">
+        <div class="nav-inner">
+            <a href="../index.html" class="nav-logo">
+                <div class="logo-icon"><i class="fas fa-tools"></i></div>
+                FIX<span>JORI</span>
+            </a>
+            <nav class="nav-links">
+                <a href="../index.html">Start</a>
+                <a href="../directory/index.html">Handwerker</a>
+                <a href="../services/montage.html">Services</a>
+                <a href="dashboard.html">Mein Konto</a>
+                <a href="projects.html" class="active">Projekte</a>
+                <a href="../booking/step1.html" class="nav-cta">Projekt starten</a>
+            </nav>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon" id="themeIcon"></i></button>
+                <a href="dashboard.html" class="nav-cta" style="background:transparent;border:1px solid var(--fj-border);color:var(--fj-text);">Dashboard</a>
+                <button class="mobile-toggle" id="mobileToggle"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="../index.html">Start</a>
+        <a href="../directory/index.html">Handwerker</a>
+        <a href="../services/montage.html">Services</a>
+        <a href="dashboard.html">Mein Konto</a>
+        <a href="projects.html">Projekte</a>
+        <a href="../booking/step1.html" class="mobile-cta">Projekt starten</a>
+    </div>
+
+    <!-- ============================================================
+       MAIN CONTENT
+       ============================================================ -->
+    <div class="container">
+
+        <!-- Page Header -->
+        <div class="page-header">
+            <div>
+                <h1>📋 Meine Projekte</h1>
+                <div class="sub">Alle Ihre Projekte auf einen Blick – Status, Fortschritt und Details.</div>
+            </div>
+            <div class="actions">
+                <a href="../booking/step1.html" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i> Neues Projekt</a>
+                <a href="dashboard.html" class="btn btn-secondary btn-sm"><i class="fas fa-arrow-left"></i> Zurück</a>
+            </div>
+        </div>
+
+        <!-- Stats Row -->
+        <div class="stats-row">
+            <div class="stat-mini">
+                <span class="num">8</span>
+                <span class="label">Gesamt</span>
+            </div>
+            <div class="stat-mini">
+                <span class="num" style="color:var(--fj-teal);">2</span>
+                <span class="label">Aktiv</span>
+            </div>
+            <div class="stat-mini">
+                <span class="num" style="color:var(--fj-amber);">1</span>
+                <span class="label">Planung</span>
+            </div>
+            <div class="stat-mini">
+                <span class="num" style="color:var(--fj-green);">4</span>
+                <span class="label">Abgeschlossen</span>
+            </div>
+            <div class="stat-mini">
+                <span class="num" style="color:var(--fj-pink);">1</span>
+                <span class="label">Storniert</span>
+            </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="tabs-wrapper" id="tabWrapper">
+            <button class="tab-btn active" data-filter="all">Alle <span class="count">8</span></button>
+            <button class="tab-btn" data-filter="active">Aktiv <span class="count">2</span></button>
+            <button class="tab-btn" data-filter="planning">Planung <span class="count">1</span></button>
+            <button class="tab-btn" data-filter="completed">Abgeschlossen <span class="count">4</span></button>
+            <button class="tab-btn" data-filter="cancelled">Storniert <span class="count">1</span></button>
+        </div>
+
+        <!-- Controls -->
+        <div class="controls-row">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Projekt suchen..." />
+                <button id="searchBtn"><i class="fas fa-search"></i> Suchen</button>
+            </div>
+            <div class="filter-group">
+                <select id="sortSelect">
+                    <option value="newest">Neueste zuerst</option>
+                    <option value="oldest">Älteste zuerst</option>
+                    <option value="progress">Fortschritt</option>
+                    <option value="budget">Budget</option>
+                </select>
+                <select id="handymanFilter">
+                    <option value="all">Alle Handwerker</option>
+                    <option value="raphael">Raphael Lezius</option>
+                    <option value="jaffar">Jaffar Shariff</option>
+                    <option value="michael">Michael Weber</option>
+                    <option value="anna">Anna Schmidt</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Project List -->
+        <div class="project-list" id="projectList">
+
+            <!-- Project 1: Active -->
+            <div class="project-card" data-status="active" data-handyman="raphael">
+                <div class="main-info">
+                    <div class="title-row">
+                        <span class="name">Küchenmontage – Familie Schmidt</span>
+                        <span class="status-badge active"><i class="fas fa-spinner fa-pulse"></i> In Bearbeitung</span>
+                        <span class="premium-tag"><i class="fas fa-crown"></i> Premium Pro</span>
+                    </div>
+                    <div class="meta-grid">
+                        <span><i class="fas fa-calendar-alt"></i> Start: <span class="value">12. Aug 2026</span></span>
+                        <span><i class="fas fa-calendar-check"></i> Ende: <span class="value">30. Aug 2026</span></span>
+                        <span><i class="fas fa-user"></i> Handwerker: <span class="value">Raphael Lezius</span></span>
+                        <span><i class="fas fa-tag"></i> Kategorie: <span class="value">Montage & Möbel</span></span>
+                    </div>
+                    <div class="progress-section">
+                        <div style="display:flex;justify-content:space-between;align-items:center;">
+                            <span class="progress-label">Fortschritt: 67%</span>
+                            <span class="progress-label" style="color:var(--fj-teal);">Noch 8 Tage</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="fill" style="width:67%;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="actions-col">
+                    <div class="price">1.280,00 €</div>
+                    <div class="handyman">
+                        <span class="avatar-sm"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Crect fill='%23E2E8F0' width='24' height='24'/%3E%3Ctext x='6' y='16' fill='%2364748B' font-size='8'%3ERL%3C/text%3E%3C/svg%3E" alt="RL" /></span>
+                        <span>Raphael Lezius</span>
+                    </div>
+                    <div class="btn-group">
+                        <a href="project-detail.html?id=schmidt" class="btn btn-secondary btn-sm">Details</a>
+                        <a href="messages.html?project=schmidt" class="btn btn-outline btn-sm"><i class="fas fa-comment"></i></a>
+                        <button class="btn btn-outline btn-sm" style="border-color:rgba(255,0,127,0.15);color:var(--fj-pink);">Stornieren</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2: Active -->
+            <div class="project-card" data-status="active" data-handyman="jaffar">
+                <div class="main-info">
+                    <div class="title-row">
+                        <span class="name">Büro-Rollout – Creative Agency</span>
+                        <span class="status-badge active"><i class="fas fa-spinner fa-pulse"></i> In Bearbeitung</span>
+                    </div>
+                    <div class="meta-grid">
+                        <span><i class="fas fa-calendar-alt"></i> Start: <span class="value">20. Aug 2026</span></span>
+                        <span><i class="fas fa-calendar-check"></i> Ende: <span class="value">10. Sep 2026</span></span>
+                        <span><i class="fas fa-user"></i> Handwerker: <span class="value">Jaffar Shariff</span></span>
+                        <span><i class="fas fa-tag"></i> Kategorie: <span class="value">Elektro & Smart</span></span>
+                    </div>
+                    <div class="progress-section">
+                        <div style="display:flex;justify-content:space-between;align-items:center;">
+                            <span class="progress-label">Fortschritt: 20%</span>
+                            <span class="progress-label" style="color:var(--fj-amber);">In Planung</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="fill" style="width:20%;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="actions-col">
+                    <div class="price">3.200,00 €</div>
+                    <div class="handyman">
+                        <span class="avatar-sm"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Crect fill='%23E2E8F0' width='24' height='24'/%3E%3Ctext x='6' y='16' fill='%2364748B' font-size='8'%3EJS%3C/text%3E%3C/svg%3E" alt="JS" /></span>
+                        <span>Jaffar Shariff</span>
+                    </div>
+                    <div class="btn-group">
+                        <a href="project-detail.html?id=agency" class="btn btn-secondary btn-sm">Details</a>
+                        <a href="messages.html?project=agency" class="btn btn-outline btn-sm"><i class="fas fa-comment"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3: Planning -->
+            <div class="project-card" data-status="planning" data-handyman="michael">
+                <div class="main-info">
+                    <div class="title-row">
+                        <span class="name">Sanitär-Renovierung – Wohnung Wagner</span>
+                        <span class="status-badge planning"><i class="fas fa-clock"></i> Planung</span>
+                    </div>
+                    <div class="meta-grid">
+                        <span><i class="fas fa-calendar-alt"></i> Start: <span class="value">01. Sep 2026</span></span>
+                        <span><i class="fas fa-calendar-check"></i> Ende: <span class="value">15. Sep 2026</span></span>
+                        <span><i class="fas fa-user"></i> Handwerker: <span class="value">Michael Weber</span></span>
+                        <span><i class="fas fa-tag"></i> Kategorie: <span class="value">Sanitär & Wasser</span></span>
+                    </div>
+                    <div class="progress-section">
+                        <div style="display:flex;justify-content:space-between;align-items:center;">
+                            <span class="progress-label">Fortschritt: 5%</span>
+                            <span class="progress-label" style="color:var(--fj-dim);">Noch nicht begonnen</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="fill" style="width:5%;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="actions-col">
+                    <div class="price">1.850,00 €</div>
+                    <div class="handyman">
+                        <span class="avatar-sm"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Crect fill='%23E2E8F0' width='24' height='24'/%3E%3Ctext x='6' y='16' fill='%2364748B' font-size='8'%3EMW%3C/text%3E%3C/svg%3E" alt="MW" /></span>
+                        <span>Michael Weber</span>
+                    </div>
+                    <div class="btn-group">
+                        <a href="project-detail.html?id=wagner" class="btn btn-secondary btn-sm">Details</a>
+                        <a href="messages.html?project=wagner" class="btn btn-outline btn-sm"><i class="fas fa-comment"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 4: Completed -->
+            <div class="project-card" data-status="completed" data-handyman="raphael">
+                <div class="main-info">
+                    <div class="title-row">
+                        <span class="name">USM Haller – Kanzlei Dr. Weber</span>
+                        <span class="status-badge completed"><i class="fas fa-check-circle"></i> Abgeschlossen</span>
+                        <span class="premium-tag"><i class="fas fa-crown"></i> Premium Pro</span>
+                    </div>
+                    <div class="meta-grid">
+                        <span><i class="fas fa-calendar-alt"></i> Start: <span class="value">01. Jul 2026</span></span>
+                        <span><i class="fas fa-calendar-check"></i> Ende: <span class="value">15. Jul 2026</span></span>
+                        <span><i class="fas fa-user"></i> Handwerker: <span class="value">Raphael Lezius</span></span>
+                        <span><i class="fas fa-tag"></i> Kategorie: <span class="value">Montage & Möbel</span></span>
+                    </div>
+                    <div class="progress-section">
+                        <div style="display:flex;justify-content:space-between;align-items:center;">
+                            <span class="progress-label">Fortschritt: 100%</span>
+                            <span class="progress-label" style="color:var(--fj-green);"><i class="fas fa-check"></i> Fertiggestellt</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="fill" style="width:100%;background:linear-gradient(90deg,var(--fj-green),#16A34A);"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="actions-col">
+                    <div class="price">2.450,00 €</div>
+                    <div class="handyman">
+                        <span class="avatar-sm"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Crect fill='%23E2E8F0' width='24' height='24'/%3E%3Ctext x='6' y='16' fill='%2364748B' font-size='8'%3ERL%3C/text%3E%3C/svg%3E" alt="RL" /></span>
+                        <span>Raphael Lezius</span>
+                    </div>
+                    <div class="btn-group">
+                        <a href="project-detail.html?id=weber" class="btn btn-secondary btn-sm">Details</a>
+                        <a href="reviews.html?project=weber" class="btn btn-amber btn-sm"><i class="fas fa-star"></i> Bewerten</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 5: Completed -->
+            <div class="project-card" data-status="completed" data-handyman="anna">
+                <div class="main-info">
+                    <div class="title-row">
+                        <span class="name">Wohnungsrenovierung – Familie Müller</span>
+                        <span class="status-badge completed"><i class="fas fa-check-circle"></i> Abgeschlossen</span>
+                    </div>
+                    <div class="meta-grid">
+                        <span><i class="fas fa-calendar-alt"></i> Start: <span class="value">10. Jun 2026</span></span>
+                        <span><i class="fas fa-calendar-check"></i> Ende: <span class="value">28. Jun 2026</span></span>
+                        <span><i class="fas fa-user"></i> Handwerker: <span class="value">Anna Schmidt</span></span>
+                        <span><i class="fas fa-tag"></i> Kategorie: <span class="value">Renovierung & Malerei</span></span>
+                    </div>
+                    <div class="progress-section">
+                        <div style="display:flex;justify-content:space-between;align-items:center;">
+                            <span class="progress-label">Fortschritt: 100%</span>
+                            <span class="progress-label" style="color:var(--fj-green);"><i class="fas fa-check"></i> Fertiggestellt</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="fill" style="width:100%;background:linear-gradient(90deg,var(--fj-green),#16A34A);"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="actions-col">
+                    <div class="price">1.650,00 €</div>
+                    <div class="handyman">
+                        <span class="avatar-sm"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Crect fill='%23E2E8F0' width='24' height='24'/%3E%3Ctext x='6' y='16' fill='%2364748B' font-size='8'%3EAS%3C/text%3E%3C/svg%3E" alt="AS" /></span>
+                        <span>Anna Schmidt</span>
+                    </div>
+                    <div class="btn-group">
+                        <a href="project-detail.html?id=muller" class="btn btn-secondary btn-sm">Details</a>
+                        <a href="reviews.html?project=muller" class="btn btn-amber btn-sm"><i class="fas fa-star"></i> Bewerten</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 6: Cancelled -->
+            <div class="project-card" data-status="cancelled" data-handyman="michael">
+                <div class="main-info">
+                    <div class="title-row">
+                        <span class="name">Keller-Sanierung – Familie Richter</span>
+                        <span class="status-badge cancelled"><i class="fas fa-times-circle"></i> Storniert</span>
+                    </div>
+                    <div class="meta-grid">
+                        <span><i class="fas fa-calendar-alt"></i> Start: <span class="value">05. Aug 2026</span></span>
+                        <span><i class="fas fa-calendar-check"></i> Ende: <span class="value">–</span></span>
+                        <span><i class="fas fa-user"></i> Handwerker: <span class="value">Michael Weber</span></span>
+                        <span><i class="fas fa-tag"></i> Kategorie: <span class="value">Sanitär & Wasser</span></span>
+                    </div>
+                    <div class="progress-section">
+                        <div style="display:flex;justify-content:space-between;align-items:center;">
+                            <span class="progress-label">Status: Storniert</span>
+                            <span class="progress-label" style="color:var(--fj-pink);">Grund: Terminüberschneidung</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="fill" style="width:0%;background:var(--fj-border);"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="actions-col">
+                    <div class="price">0,00 €</div>
+                    <div class="handyman">
+                        <span class="avatar-sm"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Crect fill='%23E2E8F0' width='24' height='24'/%3E%3Ctext x='6' y='16' fill='%2364748B' font-size='8'%3EMW%3C/text%3E%3C/svg%3E" alt="MW" /></span>
+                        <span>Michael Weber</span>
+                    </div>
+                    <div class="btn-group">
+                        <a href="project-detail.html?id=richter" class="btn btn-secondary btn-sm">Details</a>
+                        <button class="btn btn-outline btn-sm" style="border-color:var(--fj-teal);color:var(--fj-teal);">Neu planen</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination">
+            <span class="page arrow"><i class="fas fa-chevron-left"></i></span>
+            <span class="page active">1</span>
+            <span class="page">2</span>
+            <span class="page">3</span>
+            <span class="page">4</span>
+            <span class="page arrow"><i class="fas fa-chevron-right"></i></span>
+        </div>
+
+    </div>
+
+    <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h4>FIX<span>JORI</span></h4>
+                    <p>Die Plattform für perfekte Montage und Premium-Handwerk. Verifizierte Experten, Festpreise, persönliche Betreuung.</p>
+                </div>
+                <div class="footer-col">
+                    <h5>Services</h5>
+                    <a href="../services/montage.html">Montage & Möbel</a>
+                    <a href="../services/elektro.html">Elektro & Smart</a>
+                    <a href="../services/sanitaer.html">Sanitär & Wasser</a>
+                    <a href="../services/garten.html">Garten & Outdoor</a>
+                </div>
+                <div class="footer-col">
+                    <h5>Plattform</h5>
+                    <a href="../directory/index.html">Handwerker finden</a>
+                    <a href="dashboard.html">Client Portal</a>
+                    <a href="../handyman/dashboard.html">Handyman Portal</a>
+                    <a href="../booking/step1.html">Projekt starten</a>
+                </div>
+                <div class="footer-col">
+                    <h5>Rechtliches</h5>
+                    <a href="../impressum.html">Impressum</a>
+                    <a href="../datenschutz.html">Datenschutz</a>
+                    <a href="../agb.html">AGB</a>
+                    <a href="../garantie.html">Garantie</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2026 FIXJORI. Alle Rechte vorbehalten.</span>
+                <div style="display:flex;gap:16px;flex-wrap:wrap;">
+                    <a href="../impressum.html">Impressum</a>
+                    <a href="../datenschutz.html">Datenschutz</a>
+                    <a href="../agb.html">AGB</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================================================
+       SCRIPTS
+       ============================================================ -->
+    <script>
+        (function() {
+            'use strict';
+
+            // ── THEME TOGGLE ──
+            const html = document.documentElement;
+            const themeToggle = document.getElementById('themeToggle');
+            const themeIcon = document.getElementById('themeIcon');
+            const storedTheme = localStorage.getItem('fixjori-theme');
+            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            let currentTheme = storedTheme || (systemPrefersDark ? 'dark' : 'light');
+
+            function applyTheme(theme) {
+                html.setAttribute('data-theme', theme);
+                localStorage.setItem('fixjori-theme', theme);
+                themeIcon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+            }
+            applyTheme(currentTheme);
+
+            themeToggle.addEventListener('click', function() {
+                currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+                applyTheme(currentTheme);
+            });
+
+            // ── NAV TOGGLE ──
+            const toggleBtn = document.getElementById('mobileToggle');
+            const mobileMenu = document.getElementById('mobileMenu');
+
+            toggleBtn.addEventListener('click', function() {
+                const isOpen = this.classList.toggle('active');
+                mobileMenu.classList.toggle('open');
+                this.setAttribute('aria-expanded', isOpen);
+                document.body.style.overflow = isOpen ? 'hidden' : '';
+            });
+
+            mobileMenu.querySelectorAll('a').forEach(function(link) {
+                link.addEventListener('click', function() {
+                    toggleBtn.classList.remove('active');
+                    mobileMenu.classList.remove('open');
+                    document.body.style.overflow = '';
+                });
+            });
+
+            // ── TABS ──
+            const tabs = document.querySelectorAll('.tab-btn');
+            const cards = document.querySelectorAll('.project-card');
+
+            tabs.forEach(function(tab) {
+                tab.addEventListener('click', function() {
+                    tabs.forEach(function(t) { t.classList.remove('active'); });
+                    this.classList.add('active');
+
+                    const filter = this.dataset.filter;
+                    cards.forEach(function(card) {
+                        const status = card.dataset.status;
+                        if (filter === 'all' || status === filter) {
+                            card.style.display = '';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
+            // ── SEARCH ──
+            const searchInput = document.getElementById('searchInput');
+            const searchBtn = document.getElementById('searchBtn');
+
+            function filterProjects() {
+                const term = searchInput.value.toLowerCase().trim();
+                cards.forEach(function(card) {
+                    const text = card.textContent.toLowerCase();
+                    if (term === '' || text.includes(term)) {
+                        card.style.display = '';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            }
+
+            searchBtn.addEventListener('click', filterProjects);
+            searchInput.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') filterProjects();
+            });
+
+            // ── SORT ──
+            const sortSelect = document.getElementById('sortSelect');
+            const list = document.getElementById('projectList');
+
+            sortSelect.addEventListener('change', function() {
+                const cardsArray = Array.from(cards);
+                const sort = this.value;
+
+                cardsArray.sort(function(a, b) {
+                    if (sort === 'newest') {
+                        const dateA = a.querySelector('.meta-grid .value')?.textContent || '';
+                        return dateA.localeCompare(dateB) || 0;
+                    } else if (sort === 'progress') {
+                        const pA = parseInt(a.querySelector('.fill')?.style?.width || '0');
+                        const pB = parseInt(b.querySelector('.fill')?.style?.width || '0');
+                        return pB - pA;
+                    } else if (sort === 'budget') {
+                        const priceA = parseFloat(a.querySelector('.price')?.textContent?.replace(/[^0-9,.]/g, '').replace(',', '.') ||
+                        0);
+                        const priceB = parseFloat(b.querySelector('.price')?.textContent?.replace(/[^0-9,.]/g, '').replace(',', '.') ||
+                        0);
+                        return priceB - priceA;
+                    }
+                    return 0;
+                });
+
+                cardsArray.forEach(function(card) {
+                    list.appendChild(card);
+                });
+            });
+
+            // ── HANDYMAN FILTER ──
+            const handymanFilter = document.getElementById('handymanFilter');
+            handymanFilter.addEventListener('change', function() {
+                const filter = this.value;
+                cards.forEach(function(card) {
+                    const handyman = card.dataset.handyman;
+                    if (filter === 'all' || handyman === filter) {
+                        card.style.display = '';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+
+            // ── PAGINATION (demo) ──
+            document.querySelectorAll('.pagination .page:not(.arrow)').forEach(function(page) {
+                page.addEventListener('click', function() {
+                    document.querySelectorAll('.pagination .page').forEach(function(p) { p.classList.remove('active'); });
+                    this.classList.add('active');
+                    window.scrollTo({ top: document.querySelector('.page-header').offsetTop - 100, behavior: 'smooth' });
+                });
+            });
+
+            // ── SCROLL NAV SHADOW ──
+            const nav = document.getElementById('siteNav');
+            window.addEventListener('scroll', function() {
+                nav.classList.toggle('scrolled', window.scrollY > 20);
+            }, { passive: true });
+
+            console.log('✅ Projects page loaded.');
+        })();
+    </script>
+
+</body>
+</html>
