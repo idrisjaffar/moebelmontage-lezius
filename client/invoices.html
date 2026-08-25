@@ -1,0 +1,2206 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="light">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    <title>Rechnungen – FIXJORI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&family=Space+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <style>
+        /* ============================================================
+           GLOBAL VARIABLES & RESET
+           ============================================================ */
+        :root {
+            --fj-teal: #0D9488;
+            --fj-teal-dark: #0F766E;
+            --fj-teal-light: #14B8A6;
+            --fj-amber: #F59E0B;
+            --fj-gold: #F5A623;
+            --fj-green: #22C55E;
+            --fj-coral: #FF6B35;
+            --fj-pink: #FF007F;
+            --fj-red: #EF4444;
+            --fj-bg: #F8FAFC;
+            --fj-surface: #FFFFFF;
+            --fj-text: #0F172A;
+            --fj-muted: #475569;
+            --fj-dim: #94A3B8;
+            --fj-border: #E2E8F0;
+            --fj-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+            --fj-shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.08);
+            --fj-shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.10);
+            --fj-radius: 16px;
+            --fj-radius-sm: 10px;
+            --fj-radius-full: 40px;
+            --font-head: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --nav-height: 68px;
+            --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        [data-theme="dark"] {
+            --fj-bg: #0F172A;
+            --fj-surface: #1A2332;
+            --fj-text: #F8FAFC;
+            --fj-muted: #94A3B8;
+            --fj-dim: #64748B;
+            --fj-border: rgba(255, 255, 255, 0.06);
+            --fj-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+            --fj-shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.4);
+            --fj-shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.5);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: var(--font-body);
+            background: var(--fj-bg);
+            color: var(--fj-text);
+            transition: background 0.3s, color 0.3s;
+            padding-top: calc(var(--nav-height) + 12px);
+            min-height: 100vh;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        button {
+            font-family: inherit;
+            border: none;
+            background: none;
+            color: inherit;
+            cursor: pointer;
+        }
+        img {
+            max-width: 100%;
+            display: block;
+        }
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 clamp(16px, 3.5vw, 32px);
+        }
+        .text-teal {
+            color: var(--fj-teal);
+        }
+        .text-muted {
+            color: var(--fj-muted);
+        }
+        .text-dim {
+            color: var(--fj-dim);
+        }
+        .text-green {
+            color: var(--fj-green);
+        }
+        .text-amber {
+            color: var(--fj-amber);
+        }
+        .text-pink {
+            color: var(--fj-pink);
+        }
+        .text-red {
+            color: var(--fj-red);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 2px 12px;
+            border-radius: 30px;
+            font-family: var(--font-mono);
+            font-size: 0.5rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        .badge-teal {
+            background: rgba(13, 148, 136, 0.08);
+            color: var(--fj-teal);
+            border: 1px solid rgba(13, 148, 136, 0.10);
+        }
+        .badge-amber {
+            background: rgba(245, 158, 11, 0.08);
+            color: var(--fj-amber);
+            border: 1px solid rgba(245, 158, 11, 0.10);
+        }
+        .badge-green {
+            background: rgba(34, 197, 94, 0.08);
+            color: var(--fj-green);
+            border: 1px solid rgba(34, 197, 94, 0.10);
+        }
+        .badge-pink {
+            background: rgba(255, 0, 127, 0.08);
+            color: var(--fj-pink);
+            border: 1px solid rgba(255, 0, 127, 0.10);
+        }
+        .badge-red {
+            background: rgba(239, 68, 68, 0.08);
+            color: var(--fj-red);
+            border: 1px solid rgba(239, 68, 68, 0.10);
+        }
+
+        /* ============================================================
+           BUTTONS
+           ============================================================ */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 22px;
+            border-radius: var(--fj-radius-sm);
+            font-weight: 700;
+            font-size: 0.8rem;
+            transition: all 0.3s var(--ease-smooth);
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--fj-teal), var(--fj-teal-dark));
+            color: #fff;
+            box-shadow: 0 4px 16px rgba(13, 148, 136, 0.25);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(13, 148, 136, 0.35);
+        }
+        .btn-secondary {
+            background: var(--fj-surface);
+            border: 1px solid var(--fj-border);
+            color: var(--fj-text);
+        }
+        .btn-secondary:hover {
+            border-color: var(--fj-teal);
+        }
+        .btn-outline {
+            background: transparent;
+            border: 1.5px solid var(--fj-border);
+            color: var(--fj-text);
+        }
+        .btn-outline:hover {
+            border-color: var(--fj-teal);
+            color: var(--fj-teal);
+        }
+        .btn-amber {
+            background: var(--fj-amber);
+            color: #0F172A;
+            box-shadow: 0 4px 16px rgba(245, 158, 11, 0.25);
+        }
+        .btn-amber:hover {
+            transform: translateY(-2px);
+        }
+        .btn-sm {
+            padding: 6px 14px;
+            font-size: 0.7rem;
+        }
+        .btn-xs {
+            padding: 4px 10px;
+            font-size: 0.6rem;
+        }
+
+        /* ============================================================
+           NAVIGATION
+           ============================================================ */
+        .site-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            height: var(--nav-height);
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--fj-border);
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            transition: background 0.3s, box-shadow 0.3s;
+        }
+        [data-theme="dark"] .site-nav {
+            background: rgba(15, 23, 42, 0.85);
+        }
+        .site-nav.scrolled {
+            box-shadow: var(--fj-shadow);
+        }
+
+        .nav-inner {
+            max-width: 1280px;
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-head);
+            font-weight: 900;
+            font-size: 1.3rem;
+            letter-spacing: -0.5px;
+        }
+        .nav-logo span {
+            color: var(--fj-teal);
+        }
+        .nav-logo .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--fj-teal), var(--fj-teal-dark));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+        }
+        .nav-links a {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--fj-muted);
+            transition: color 0.2s;
+            position: relative;
+        }
+        .nav-links a:hover {
+            color: var(--fj-text);
+        }
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--fj-teal);
+            border-radius: 2px;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .theme-toggle {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 1px solid var(--fj-border);
+            background: transparent;
+            color: var(--fj-muted);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+        }
+        .theme-toggle:hover {
+            border-color: var(--fj-teal);
+            color: var(--fj-text);
+        }
+
+        .nav-cta {
+            padding: 6px 16px;
+            border-radius: var(--fj-radius-full);
+            background: linear-gradient(135deg, var(--fj-teal), var(--fj-teal-dark));
+            color: #fff !important;
+            font-weight: 700;
+            font-size: 0.7rem !important;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .nav-cta:hover {
+            opacity: 0.9;
+        }
+
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            padding: 6px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        .mobile-toggle span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: var(--fj-text);
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+        .mobile-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .mobile-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .mobile-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: var(--nav-height);
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--fj-surface);
+            backdrop-filter: blur(20px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            transform: translateX(100%);
+            transition: transform 0.4s var(--ease-smooth);
+            z-index: 999;
+            padding: 40px 20px;
+        }
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+        .mobile-menu a {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--fj-muted);
+            transition: color 0.2s;
+        }
+        .mobile-menu a:hover {
+            color: var(--fj-text);
+        }
+        .mobile-menu .mobile-cta {
+            margin-top: 16px;
+            padding: 12px 40px;
+            border-radius: var(--fj-radius-full);
+            background: linear-gradient(135deg, var(--fj-teal), var(--fj-teal-dark));
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 900px) {
+            .nav-links {
+                display: none;
+            }
+            .mobile-toggle {
+                display: flex;
+            }
+            .mobile-menu {
+                transform: translateX(100%);
+            }
+            .mobile-menu.open {
+                transform: translateX(0);
+            }
+            .nav-actions .nav-cta {
+                display: none;
+            }
+        }
+
+        /* ============================================================
+           PAGE HEADER
+           ============================================================ */
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px 20px;
+            padding: 16px 0 20px;
+            border-bottom: 1px solid var(--fj-border);
+        }
+        .page-header h1 {
+            font-family: var(--font-head);
+            font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+            font-weight: 900;
+            letter-spacing: -0.5px;
+        }
+        .page-header .sub {
+            color: var(--fj-muted);
+            font-size: 0.9rem;
+            margin-top: 2px;
+        }
+        .page-header .actions {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        /* ============================================================
+           STATS ROW – Meituan-style dense metrics
+           ============================================================ */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            padding: 16px 0 20px;
+        }
+        @media (max-width: 700px) {
+            .stats-row {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        @media (max-width: 450px) {
+            .stats-row {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        .stat-mini {
+            background: var(--fj-surface);
+            border: 1px solid var(--fj-border);
+            border-radius: var(--fj-radius-sm);
+            padding: 10px 14px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .stat-mini:hover {
+            border-color: var(--fj-teal);
+            box-shadow: var(--fj-shadow);
+        }
+        .stat-mini .num {
+            font-family: var(--font-head);
+            font-size: 1.3rem;
+            font-weight: 900;
+            line-height: 1.2;
+        }
+        .stat-mini .num.teal {
+            color: var(--fj-teal);
+        }
+        .stat-mini .num.green {
+            color: var(--fj-green);
+        }
+        .stat-mini .num.amber {
+            color: var(--fj-amber);
+        }
+        .stat-mini .num.red {
+            color: var(--fj-red);
+        }
+        .stat-mini .num.pink {
+            color: var(--fj-pink);
+        }
+        .stat-mini .label {
+            font-size: 0.6rem;
+            color: var(--fj-muted);
+            font-weight: 500;
+            display: block;
+            margin-top: 1px;
+        }
+
+        /* ============================================================
+           TABS – Meituan-style
+           ============================================================ */
+        .tabs-wrapper {
+            display: flex;
+            gap: 4px;
+            padding: 16px 0 8px;
+            border-bottom: 1px solid var(--fj-border);
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        .tabs-wrapper::-webkit-scrollbar {
+            height: 0;
+        }
+        .tab-btn {
+            padding: 8px 20px;
+            border-radius: var(--fj-radius-full);
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--fj-muted);
+            cursor: pointer;
+            transition: all 0.25s;
+            white-space: nowrap;
+            border: 1px solid transparent;
+        }
+        .tab-btn:hover {
+            color: var(--fj-text);
+            background: rgba(13, 148, 136, 0.04);
+        }
+        .tab-btn.active {
+            color: var(--fj-teal);
+            background: rgba(13, 148, 136, 0.08);
+            border-color: rgba(13, 148, 136, 0.12);
+        }
+        .tab-btn .count {
+            font-size: 0.6rem;
+            font-weight: 700;
+            background: var(--fj-border);
+            padding: 1px 8px;
+            border-radius: 30px;
+            margin-left: 4px;
+            color: var(--fj-muted);
+        }
+        .tab-btn.active .count {
+            background: rgba(13, 148, 136, 0.12);
+            color: var(--fj-teal);
+        }
+
+        /* ============================================================
+           CONTROLS – Search & Filter
+           ============================================================ */
+        .controls-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 16px 0 20px;
+            align-items: center;
+        }
+        .controls-row .search-box {
+            flex: 1;
+            min-width: 200px;
+            display: flex;
+            align-items: center;
+            background: var(--fj-surface);
+            border: 1px solid var(--fj-border);
+            border-radius: var(--fj-radius-full);
+            padding: 4px 4px 4px 18px;
+            transition: border-color 0.3s;
+        }
+        .controls-row .search-box:focus-within {
+            border-color: var(--fj-teal);
+            box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.06);
+        }
+        .controls-row .search-box input {
+            flex: 1;
+            padding: 8px 6px;
+            border: none;
+            outline: none;
+            background: transparent;
+            font-size: 0.85rem;
+            color: var(--fj-text);
+            min-width: 0;
+        }
+        .controls-row .search-box input::placeholder {
+            color: var(--fj-dim);
+        }
+        .controls-row .search-box button {
+            padding: 6px 18px;
+            border-radius: var(--fj-radius-full);
+            background: linear-gradient(135deg, var(--fj-teal), var(--fj-teal-dark));
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.7rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+        .controls-row .search-box button:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 16px rgba(13, 148, 136, 0.20);
+        }
+
+        .controls-row .filter-group {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .controls-row .filter-group select {
+            padding: 6px 32px 6px 14px;
+            border-radius: var(--fj-radius-full);
+            border: 1px solid var(--fj-border);
+            background: var(--fj-surface);
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--fj-muted);
+            appearance: none;
+            -webkit-appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2394A3B8' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            cursor: pointer;
+            font-family: var(--font-body);
+            transition: border-color 0.25s;
+        }
+        .controls-row .filter-group select:hover {
+            border-color: var(--fj-teal);
+            color: var(--fj-text);
+        }
+        .controls-row .filter-group select:focus {
+            outline: none;
+            border-color: var(--fj-teal);
+        }
+
+        /* ============================================================
+           INVOICE LIST – Dense, Meituan-style cards
+           ============================================================ */
+        .invoice-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            padding-bottom: 16px;
+        }
+
+        .invoice-card {
+            background: var(--fj-surface);
+            border: 1px solid var(--fj-border);
+            border-radius: var(--fj-radius-sm);
+            padding: 16px 20px;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 12px 24px;
+            transition: all 0.3s var(--ease-smooth);
+            align-items: start;
+            cursor: pointer;
+            position: relative;
+        }
+        .invoice-card:hover {
+            border-color: var(--fj-teal);
+            box-shadow: var(--fj-shadow-lg);
+            transform: translateY(-2px);
+        }
+        .invoice-card .click-overlay {
+            position: absolute;
+            inset: 0;
+            cursor: pointer;
+        }
+        @media (max-width: 700px) {
+            .invoice-card {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+        }
+
+        .invoice-card .main-info {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            position: relative;
+            z-index: 1;
+        }
+        .invoice-card .main-info .title-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .invoice-card .main-info .title-row .inv-number {
+            font-weight: 700;
+            font-size: 0.95rem;
+            font-family: var(--font-mono);
+            letter-spacing: -0.3px;
+        }
+        .invoice-card .main-info .title-row .status-badge {
+            font-size: 0.55rem;
+            font-weight: 700;
+            font-family: var(--font-mono);
+            padding: 2px 12px;
+            border-radius: 30px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .invoice-card .main-info .title-row .status-badge.paid {
+            background: rgba(34, 197, 94, 0.08);
+            color: var(--fj-green);
+            border: 1px solid rgba(34, 197, 94, 0.10);
+        }
+        .invoice-card .main-info .title-row .status-badge.pending {
+            background: rgba(245, 158, 11, 0.08);
+            color: var(--fj-amber);
+            border: 1px solid rgba(245, 158, 11, 0.10);
+        }
+        .invoice-card .main-info .title-row .status-badge.overdue {
+            background: rgba(239, 68, 68, 0.08);
+            color: var(--fj-red);
+            border: 1px solid rgba(239, 68, 68, 0.10);
+        }
+        .invoice-card .main-info .title-row .status-badge.cancelled {
+            background: rgba(255, 0, 127, 0.08);
+            color: var(--fj-pink);
+            border: 1px solid rgba(255, 0, 127, 0.10);
+        }
+        .invoice-card .main-info .title-row .project-tag {
+            font-size: 0.6rem;
+            font-weight: 600;
+            color: var(--fj-muted);
+            background: var(--fj-bg);
+            padding: 2px 12px;
+            border-radius: 30px;
+            border: 1px solid var(--fj-border);
+        }
+
+        .invoice-card .main-info .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 4px 16px;
+            font-size: 0.75rem;
+            color: var(--fj-muted);
+        }
+        .invoice-card .main-info .meta-grid i {
+            color: var(--fj-teal);
+            width: 16px;
+        }
+        .invoice-card .main-info .meta-grid .value {
+            font-weight: 500;
+            color: var(--fj-text);
+        }
+
+        .invoice-card .main-info .items-preview {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px 12px;
+            margin-top: 4px;
+            font-size: 0.7rem;
+            color: var(--fj-muted);
+        }
+        .invoice-card .main-info .items-preview .item-chip {
+            background: var(--fj-bg);
+            padding: 2px 10px;
+            border-radius: 30px;
+            border: 1px solid var(--fj-border);
+            font-size: 0.6rem;
+        }
+
+        .invoice-card .actions-col {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            align-items: flex-end;
+            justify-content: flex-start;
+            position: relative;
+            z-index: 1;
+        }
+        @media (max-width: 700px) {
+            .invoice-card .actions-col {
+                flex-direction: row;
+                flex-wrap: wrap;
+                align-items: center;
+                justify-content: flex-start;
+                border-top: 1px solid var(--fj-border);
+                padding-top: 10px;
+            }
+        }
+        .invoice-card .actions-col .amount {
+            font-weight: 800;
+            font-size: 1.05rem;
+            color: var(--fj-teal);
+        }
+        .invoice-card .actions-col .amount .currency {
+            font-weight: 400;
+            font-size: 0.7rem;
+            color: var(--fj-muted);
+        }
+        .invoice-card .actions-col .due-date {
+            font-size: 0.65rem;
+            color: var(--fj-muted);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .invoice-card .actions-col .due-date.overdue {
+            color: var(--fj-red);
+            font-weight: 600;
+        }
+        .invoice-card .actions-col .btn-group {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        /* ============================================================
+           INVOICE DETAIL – Modal / Slide-in (Meituan-style)
+           ============================================================ */
+        .invoice-detail-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(4px);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .invoice-detail-overlay.open {
+            display: flex;
+            opacity: 1;
+        }
+        .invoice-detail-overlay .detail-panel {
+            background: var(--fj-surface);
+            border-radius: var(--fj-radius);
+            max-width: 720px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 32px 36px;
+            box-shadow: var(--fj-shadow-xl);
+            transform: scale(0.96) translateY(10px);
+            transition: transform 0.3s var(--ease-spring), opacity 0.3s ease;
+            opacity: 0;
+            position: relative;
+        }
+        .invoice-detail-overlay.open .detail-panel {
+            transform: scale(1) translateY(0);
+            opacity: 1;
+        }
+        .invoice-detail-overlay .detail-panel::-webkit-scrollbar {
+            width: 4px;
+        }
+        .invoice-detail-overlay .detail-panel::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .invoice-detail-overlay .detail-panel::-webkit-scrollbar-thumb {
+            background: var(--fj-border);
+            border-radius: 2px;
+        }
+
+        .detail-panel .close-btn {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            font-size: 1.3rem;
+            color: var(--fj-dim);
+            padding: 4px 8px;
+            border-radius: 8px;
+            transition: all 0.3s;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+        .detail-panel .close-btn:hover {
+            background: rgba(13, 148, 136, 0.06);
+            color: var(--fj-text);
+        }
+
+        .detail-panel .detail-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--fj-border);
+        }
+        .detail-panel .detail-header .left .inv-number {
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        .detail-panel .detail-header .left .inv-date {
+            font-size: 0.8rem;
+            color: var(--fj-muted);
+        }
+        .detail-panel .detail-header .right {
+            text-align: right;
+        }
+        .detail-panel .detail-header .right .amount-large {
+            font-family: var(--font-head);
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--fj-teal);
+        }
+        .detail-panel .detail-header .right .amount-large .currency {
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--fj-muted);
+        }
+
+        .detail-panel .detail-body {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .detail-panel .detail-body .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px 24px;
+            background: var(--fj-bg);
+            padding: 16px 20px;
+            border-radius: var(--fj-radius-sm);
+            border: 1px solid var(--fj-border);
+        }
+        @media (max-width: 500px) {
+            .detail-panel .detail-body .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .detail-panel .detail-body .info-grid .label {
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--fj-dim);
+        }
+        .detail-panel .detail-body .info-grid .value {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .detail-panel .detail-body .items-table {
+            border: 1px solid var(--fj-border);
+            border-radius: var(--fj-radius-sm);
+            overflow: hidden;
+        }
+        .detail-panel .detail-body .items-table .item-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            padding: 10px 16px;
+            border-bottom: 1px solid var(--fj-border);
+            font-size: 0.85rem;
+            gap: 8px;
+        }
+        .detail-panel .detail-body .items-table .item-row:last-child {
+            border-bottom: none;
+        }
+        .detail-panel .detail-body .items-table .item-row.header {
+            font-weight: 700;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--fj-muted);
+            background: var(--fj-bg);
+            border-bottom: 1px solid var(--fj-border);
+        }
+        .detail-panel .detail-body .items-table .item-row .right {
+            text-align: right;
+        }
+        .detail-panel .detail-body .items-table .item-row .center {
+            text-align: center;
+        }
+
+        .detail-panel .detail-body .total-row {
+            display: flex;
+            justify-content: flex-end;
+            padding: 12px 16px 4px;
+            font-size: 0.85rem;
+            border-top: 2px solid var(--fj-border);
+        }
+        .detail-panel .detail-body .total-row .label {
+            font-weight: 600;
+            color: var(--fj-muted);
+            margin-right: 24px;
+        }
+        .detail-panel .detail-body .total-row .amount {
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: var(--fj-teal);
+        }
+
+        .detail-panel .detail-footer {
+            display: flex;
+            gap: 10px;
+            margin-top: 24px;
+            padding-top: 16px;
+            border-top: 1px solid var(--fj-border);
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        /* ============================================================
+           EMPTY STATE
+           ============================================================ */
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+        }
+        .empty-state .icon {
+            font-size: 3rem;
+            color: var(--fj-dim);
+            opacity: 0.3;
+            margin-bottom: 16px;
+        }
+        .empty-state h3 {
+            font-family: var(--font-head);
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .empty-state p {
+            color: var(--fj-muted);
+            font-size: 0.9rem;
+            max-width: 400px;
+            margin: 0 auto 20px;
+        }
+
+        /* ============================================================
+           PAGINATION
+           ============================================================ */
+        .pagination {
+            display: flex;
+            gap: 6px;
+            justify-content: center;
+            padding: 20px 0 10px;
+            border-top: 1px solid var(--fj-border);
+        }
+        .pagination .page {
+            padding: 6px 14px;
+            border-radius: var(--fj-radius-sm);
+            border: 1px solid var(--fj-border);
+            background: var(--fj-surface);
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--fj-muted);
+            transition: all 0.25s;
+            cursor: pointer;
+            min-width: 36px;
+            text-align: center;
+        }
+        .pagination .page:hover {
+            border-color: var(--fj-teal);
+            color: var(--fj-text);
+        }
+        .pagination .page.active {
+            background: var(--fj-teal);
+            color: #fff;
+            border-color: var(--fj-teal);
+        }
+        .pagination .page.arrow {
+            background: transparent;
+            border: none;
+            font-size: 1.1rem;
+        }
+
+        /* ============================================================
+           FOOTER
+           ============================================================ */
+        .site-footer {
+            background: var(--fj-surface);
+            border-top: 1px solid var(--fj-border);
+            padding: 40px 0 24px;
+            margin-top: 20px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 32px;
+        }
+        @media (max-width: 800px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        @media (max-width: 480px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .footer-brand h4 {
+            font-family: var(--font-head);
+            font-size: 1.2rem;
+            font-weight: 900;
+            margin-bottom: 8px;
+        }
+        .footer-brand h4 span {
+            color: var(--fj-teal);
+        }
+        .footer-brand p {
+            font-size: 0.85rem;
+            color: var(--fj-muted);
+            max-width: 280px;
+        }
+        .footer-col h5 {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--fj-dim);
+            margin-bottom: 12px;
+        }
+        .footer-col a {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--fj-muted);
+            padding: 4px 0;
+            transition: color 0.2s;
+        }
+        .footer-col a:hover {
+            color: var(--fj-teal);
+        }
+        .footer-bottom {
+            border-top: 1px solid var(--fj-border);
+            padding-top: 16px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            font-size: 0.7rem;
+            color: var(--fj-dim);
+        }
+        .footer-bottom a {
+            color: var(--fj-dim);
+            transition: color 0.2s;
+        }
+        .footer-bottom a:hover {
+            color: var(--fj-teal);
+        }
+
+        /* ============================================================
+           RESPONSIVE
+           ============================================================ */
+        @media (max-width: 768px) {
+            .page-header {
+                flex-direction: column;
+                align-items: stretch;
+                text-align: center;
+            }
+            .page-header .actions {
+                justify-content: center;
+            }
+            .controls-row {
+                flex-direction: column;
+            }
+            .controls-row .search-box {
+                width: 100%;
+            }
+            .controls-row .filter-group {
+                width: 100%;
+                justify-content: center;
+            }
+            .invoice-card {
+                padding: 14px 16px;
+            }
+            .invoice-card .main-info .meta-grid {
+                grid-template-columns: 1fr;
+            }
+            .stats-row {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .invoice-detail-overlay .detail-panel {
+                padding: 24px 18px;
+                max-height: 95vh;
+            }
+            .detail-panel .detail-body .info-grid {
+                grid-template-columns: 1fr;
+            }
+            .detail-panel .detail-body .items-table .item-row {
+                grid-template-columns: 1fr;
+                gap: 2px;
+            }
+            .detail-panel .detail-body .items-table .item-row .right,
+            .detail-panel .detail-body .items-table .item-row .center {
+                text-align: left;
+            }
+            .detail-panel .detail-body .total-row {
+                flex-direction: column;
+                align-items: flex-end;
+                gap: 4px;
+            }
+        }
+        @media (max-width: 480px) {
+            .stats-row {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .tab-btn {
+                font-size: 0.7rem;
+                padding: 6px 14px;
+            }
+            .invoice-card .main-info .title-row .inv-number {
+                font-size: 0.85rem;
+            }
+            .invoice-card .actions-col .amount {
+                font-size: 0.9rem;
+            }
+            .detail-panel .detail-header .right .amount-large {
+                font-size: 1.4rem;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                transition: none !important;
+                transform: none !important;
+            }
+            .invoice-detail-overlay .detail-panel {
+                transform: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================================
+       NAVIGATION
+       ============================================================ -->
+    <header class="site-nav" id="siteNav">
+        <div class="nav-inner">
+            <a href="../index.html" class="nav-logo">
+                <div class="logo-icon"><i class="fas fa-tools"></i></div>
+                FIX<span>JORI</span>
+            </a>
+            <nav class="nav-links">
+                <a href="../index.html">Start</a>
+                <a href="../directory/index.html">Handwerker</a>
+                <a href="../services/montage.html">Services</a>
+                <a href="dashboard.html">Mein Konto</a>
+                <a href="projects.html">Projekte</a>
+                <a href="invoices.html" class="active">Rechnungen</a>
+                <a href="../booking/step1.html" class="nav-cta">Projekt starten</a>
+            </nav>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon" id="themeIcon"></i></button>
+                <a href="dashboard.html" class="nav-cta" style="background:transparent;border:1px solid var(--fj-border);color:var(--fj-text);">Dashboard</a>
+                <button class="mobile-toggle" id="mobileToggle"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="../index.html">Start</a>
+        <a href="../directory/index.html">Handwerker</a>
+        <a href="../services/montage.html">Services</a>
+        <a href="dashboard.html">Mein Konto</a>
+        <a href="projects.html">Projekte</a>
+        <a href="invoices.html">Rechnungen</a>
+        <a href="../booking/step1.html" class="mobile-cta">Projekt starten</a>
+    </div>
+
+    <!-- ============================================================
+       MAIN CONTENT
+       ============================================================ -->
+    <div class="container">
+
+        <!-- Page Header -->
+        <div class="page-header">
+            <div>
+                <h1>📄 Rechnungen</h1>
+                <div class="sub">Alle Ihre Rechnungen auf einen Blick – zahlen, verwalten, archivieren.</div>
+            </div>
+            <div class="actions">
+                <a href="invoices.html?filter=open" class="btn btn-primary btn-sm"><i class="fas fa-euro-sign"></i> Offene zahlen</a>
+                <a href="dashboard.html" class="btn btn-secondary btn-sm"><i class="fas fa-arrow-left"></i> Zurück</a>
+            </div>
+        </div>
+
+        <!-- Stats Row – Meituan-style dense metrics -->
+        <div class="stats-row">
+            <div class="stat-mini">
+                <span class="num teal">8</span>
+                <span class="label">Gesamt</span>
+            </div>
+            <div class="stat-mini">
+                <span class="num green">4</span>
+                <span class="label">Bezahlt</span>
+            </div>
+            <div class="stat-mini">
+                <span class="num amber">2</span>
+                <span class="label">Offen</span>
+            </div>
+            <div class="stat-mini">
+                <span class="num red">1</span>
+                <span class="label">Überfällig</span>
+            </div>
+            <div class="stat-mini">
+                <span class="num pink">1</span>
+                <span class="label">Storniert</span>
+            </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="tabs-wrapper" id="tabWrapper">
+            <button class="tab-btn active" data-filter="all">Alle <span class="count">8</span></button>
+            <button class="tab-btn" data-filter="paid">Bezahlt <span class="count">4</span></button>
+            <button class="tab-btn" data-filter="pending">Offen <span class="count">2</span></button>
+            <button class="tab-btn" data-filter="overdue">Überfällig <span class="count">1</span></button>
+            <button class="tab-btn" data-filter="cancelled">Storniert <span class="count">1</span></button>
+        </div>
+
+        <!-- Controls -->
+        <div class="controls-row">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Rechnung suchen (Nr., Projekt, Handwerker)..." />
+                <button id="searchBtn"><i class="fas fa-search"></i> Suchen</button>
+            </div>
+            <div class="filter-group">
+                <select id="sortSelect">
+                    <option value="newest">Neueste zuerst</option>
+                    <option value="oldest">Älteste zuerst</option>
+                    <option value="amount">Betrag absteigend</option>
+                    <option value="amount-asc">Betrag aufsteigend</option>
+                </select>
+                <select id="handymanFilter">
+                    <option value="all">Alle Handwerker</option>
+                    <option value="raphael">Raphael Lezius</option>
+                    <option value="jaffar">Jaffar Shariff</option>
+                    <option value="michael">Michael Weber</option>
+                    <option value="anna">Anna Schmidt</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Invoice List -->
+        <div class="invoice-list" id="invoiceList">
+
+            <!-- Invoice 1: Pending -->
+            <div class="invoice-card" data-status="pending" data-handyman="raphael" data-id="INV-2026-0042">
+                <div class="main-info">
+                    <div class="title-row">
+                        <span class="inv-number">INV-2026-0042</span>
+                        <span class="status-badge pending"><i class="fas fa-clock"></i> Offen</span>
+                        <span class="project-tag">Küchenmontage – Familie Schmidt</span>
+                    </div>
+                    <div class="meta-grid">
+                        <span><i class="fas fa-calendar-alt"></i> Ausgestellt: <span class="value">12. Aug 2026</span></span>
+                        <span><i class="fas fa-calendar-check"></i> Fällig: <span class="value">26. Aug 2026</span></span>
+                        <span><i class="fas fa-user"></i> Handwerker: <span class="value">Raphael Lezius</span></span>
+                        <span><i class="fas fa-tag"></i> Kategorie: <span class="value">Montage & Möbel</span></span>
+                    </div>
+                    <div class="items-preview">
+                        <span class="item-chip">Arbeitsplatte zuschneiden</span>
+                        <span class="item-chip">Kochfeld einbauen</span>
+                        <span class="item-chip">Spüle montieren</span>
+                        <span class="item-chip">+2 weitere</span>
+                    </div>
+                </div>
+                <div class="actions-col">
+                    <div class="amount">1.280,00 € <span class="currency">EUR</span></div>
+                    <div class="due-date"><i class="fas fa-hourglass-half"></i> Noch 4 Tage</div>
+                    <div class="btn-group">
+                        <button class="btn btn-amber btn-sm" onclick="openDetail('INV-2026-0042')"><i class="fas fa-eye"></i> Details</button>
+                        <button class="btn btn-primary btn-sm" onclick="payInvoice('INV-2026-0042')"><i class="fas fa-credit-card"></i> Bezahlen</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Invoice 2: Pending -->
+            <div class="invoice-card" data-status="pending" data-handyman="jaffar" data-id="INV-2026-0043">
+                <div class="main-info">
+                    <div class="title-row">
+                        <span class="inv-number">INV-2026-0043</span>
+                        <span class="status-badge pending"><i class="fas fa-clock"></i> Offen</span>
+                        <span class="project-tag">Büro-Rollout – Creative Agency</span>
+                    </div>
+                    <div class="meta-grid">
+                        <span><i class="fas fa-calendar-alt"></i> Ausgestellt: <span class="value">16. Aug 2026</span></span>
+                        <span><i class="fas fa-calendar-check"></i> Fällig: <span class="value">30. Aug 2026</span></span>
+                        <span><i class="fas fa-user"></i> Handwerker: <span class="value">Jaffar Shariff</span></span>
+                        <span><i class="fas fa-tag"></i> Kategorie: <span class="value">Elektro & Smart</span></span>
+                    </div>
+                    <div class="items-preview">
+                        <span class="item-chip">KNX-Grundinstallation</span>
+                        <span class="item-chip">Beleuchtungssteuerung</span>
+                        <span class="item-chip">Smart Home Gateway</span>
+                    </div>
+                </div>
+                <div class="actions-col">
+                    <div class="amount">350,00 € <span class="currency">EUR</span></div>
+                    <div class="due-date"><i class="fas fa-hourglass-half"></i> Noch 8 Tage</div>
+                    <div class="btn-group">
+                        <button class="btn btn-amber btn-sm" onclick="openDetail('INV-2026-0043')"><i class="fas fa-eye"></i> Details</button>
+                        <button class="btn btn-primary btn-sm" onclick="payInvoice('INV-2026-0043')"><i class="fas fa-credit-card"></i> Bezahlen</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Invoice 3: Overdue -->
+            <div class="invoice-card" data-status="overdue" data-handyman="raphael" data-id="INV-2026-0038">
+                <div class="main-info">
+                    <div class="title-row">
+                        <span class="inv-number">INV-2026-0038</span>
+                        <span class="status-badge overdue"><i class="fas fa-exclamation-triangle"></i> Überfällig</span>
+                        <span class="project-tag">USM Haller – Kanzlei Dr. Weber</span>
+                        <span class="badge badge-amber" style="font-size:0.45rem;">⭐ Premium Pro</span>
+                    </div>
+                    <div class="meta-grid">
+                        <span><i class="fas fa-calendar-alt"></i> Ausgestellt: <span class="value">15. Jul 2026</span></span>
+                        <span><i class="fas fa-calendar-check"></i> Fällig: <span class="value">29. Jul 2026</span></span>
+                        <span><i class="fas fa-user"></i> Handwerker: <span class="value">Raphael Lezius</span></span>
+                        <span><i class="fas fa-tag"></i> Kategorie: <span class="value">Montage & Möbel</span></span>
+                    </div>
+                    <div class="items-preview">
+                        <span class="item-chip">USM Haller Montage</span>
+                        <span class="item-chip">Schreibtischkonfiguration</span>
+                        <span class="item-chip">Regalsystem</span>
+                    </div>
+                </div>
+                <div class="actions-col">
+                    <div class="amount">2.450,00 € <span class="currency">EUR</span></div>
+                    <div class="due-date overdue"><i class="fas fa-times-circle"></i> Überfällig seit 5 Tagen</div>
+                    <div class="btn-group">
+                        <button class="btn btn-amber btn-sm" onclick="openDetail('INV-2026-0038')"><i class="fas fa-eye"></i> Details</button>
+                        <button class="btn btn-primary btn-sm" onclick="payInvoice('INV-2026-0038')"><i class="fas fa-credit-card"></i> Jetzt zahlen</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Invoice 4: Paid -->
+            <div class="invoice-card" data-status="paid" data-handyman="anna" data-id="INV-2026-0029">
+                <div class="main-info">
+                    <div class="title-row">
+                        <span class="inv-number">INV-2026-0029</span>
+                        <span class="status-badge paid"><i class="fas fa-check-circle"></i> Bezahlt</span>
+                        <span class="project-tag">Wohnungsrenovierung – Familie Müller</span>
+                    </div>
+                    <div class="meta-grid">
+                        <span><i class="fas fa-calendar-alt"></i> Ausgestellt: <span class="value">28. Jun 2026</span></span>
+                        <span><i class="fas fa-calendar-check"></i> Bezahlt: <span class="value">05. Jul 2026</span></span>
+                        <span><i class="fas fa-user"></i> Handwerker: <span class="value">Anna Schmidt</span></span>
+                        <span><i class="fas fa-tag"></i> Kategorie: <span class="value">Renovierung & Malerei</span></span>
+                    </div>
+                    <div class="items-preview">
+                        <span class="item-chip">Wände streichen</span>
+                        <span class="item-chip">Tapete anbringen</span>
+                        <span class="item-chip">Deckenrenovierung</span>
+                    </div>
+                </div>
+                <div class="actions-col">
+                    <div class="amount" style="color:var(--fj-green);">1.650,00 € <span class="currency">EUR</span></div>
+                    <div class="due-date" style="color:var(--fj-green);"><i class="fas fa-check-circle"></i> Bezahlt am 05.07.2026</div>
+                    <div class="btn-group">
+                        <button class="btn btn-secondary btn-sm" onclick="openDetail('INV-2026-0029')"><i class="fas fa-eye"></i> Details</button>
+                        <button class="btn btn-outline btn-sm"><i class="fas fa-download"></i> PDF</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Invoice 5: Paid -->
+            <div class="invoice-card" data-status="paid" data-handyman="raphael" data-id="INV-2026-0022">
+                <div class="main-info">
+                    <div class="title-row">
+                        <span class="inv-number">INV-2026-0022</span>
+                        <span class="status-badge paid"><i class="fas fa-check-circle"></i> Bezahlt</span>
+                        <span class="project-tag">Büromöbel – Startup Hub</span>
+                        <span class="badge badge-amber" style="font-size:0.45rem;">⭐ Premium Pro</span>
+                    </div>
+                    <div class="meta-grid">
+                        <span><i class="fas fa-calendar-alt"></i> Ausgestellt: <span class="value">10. Jun 2026</span></span>
+                        <span><i class="fas fa-calendar-check"></i> Bezahlt: <span class="value">18. Jun 2026</span></span>
+                        <span><i class="fas fa-user"></i> Handwerker: <span class="value">Raphael Lezius</span></span>
+                        <span><i class="fas fa-tag"></i> Kategorie: <span class="value">Montage & Möbel</span></span>
+                    </div>
+                    <div class="items-preview">
+                        <span class="item-chip">10x Bürotische montieren</span>
+                        <span class="item-chip">Stühle aufbauen</span>
+                        <span class="item-chip">Regale installieren</span>
+                    </div>
+                </div>
+                <div class="actions-col">
+                    <div class="amount" style="color:var(--fj-green);">3.800,00 € <span class="currency">EUR</span></div>
+                    <div class="due-date" style="color:var(--fj-green);"><i class="fas fa-check-circle"></i> Bezahlt am 18.06.2026</div>
+                    <div class="btn-group">
+                        <button class="btn btn-secondary btn-sm" onclick="openDetail('INV-2026-0022')"><i class="fas fa-eye"></i> Details</button>
+                        <button class="btn btn-outline btn-sm"><i class="fas fa-download"></i> PDF</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Invoice 6: Paid -->
+            <div class="invoice-card" data-status="paid" data-handyman="michael" data-id="INV-2026-0015">
+                <div class="main-info">
+                    <div class="title-row">
+                        <span class="inv-number">INV-2026-0015</span>
+                        <span class="status-badge paid"><i class="fas fa-check-circle"></i> Bezahlt</span>
+                        <span class="project-tag">Badrenovierung – Wohnung König</span>
+                    </div>
+                    <div class="meta-grid">
+                        <span><i class="fas fa-calendar-alt"></i> Ausgestellt: <span class="value">22. Mai 2026</span></span>
+                        <span><i class="fas fa-calendar-check"></i> Bezahlt: <span class="value">30. Mai 2026</span></span>
+                        <span><i class="fas fa-user"></i> Handwerker: <span class="value">Michael Weber</span></span>
+                        <span><i class="fas fa-tag"></i> Kategorie: <span class="value">Sanitär & Wasser</span></span>
+                    </div>
+                    <div class="items-preview">
+                        <span class="item-chip">Duschwanne montieren</span>
+                        <span class="item-chip">Waschbecken installieren</span>
+                        <span class="item-chip">Armaturen anbringen</span>
+                    </div>
+                </div>
+                <div class="actions-col">
+                    <div class="amount" style="color:var(--fj-green);">980,00 € <span class="currency">EUR</span></div>
+                    <div class="due-date" style="color:var(--fj-green);"><i class="fas fa-check-circle"></i> Bezahlt am 30.05.2026</div>
+                    <div class="btn-group">
+                        <button class="btn btn-secondary btn-sm" onclick="openDetail('INV-2026-0015')"><i class="fas fa-eye"></i> Details</button>
+                        <button class="btn btn-outline btn-sm"><i class="fas fa-download"></i> PDF</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Invoice 7: Paid -->
+            <div class="invoice-card" data-status="paid" data-handyman="jaffar" data-id="INV-2026-0009">
+                <div class="main-info">
+                    <div class="title-row">
+                        <span class="inv-number">INV-2026-0009</span>
+                        <span class="status-badge paid"><i class="fas fa-check-circle"></i> Bezahlt</span>
+                        <span class="project-tag">Smart Home – Villa Bergmann</span>
+                    </div>
+                    <div class="meta-grid">
+                        <span><i class="fas fa-calendar-alt"></i> Ausgestellt: <span class="value">05. Mai 2026</span></span>
+                        <span><i class="fas fa-calendar-check"></i> Bezahlt: <span class="value">12. Mai 2026</span></span>
+                        <span><i class="fas fa-user"></i> Handwerker: <span class="value">Jaffar Shariff</span></span>
+                        <span><i class="fas fa-tag"></i> Kategorie: <span class="value">Elektro & Smart</span></span>
+                    </div>
+                    <div class="items-preview">
+                        <span class="item-chip">Vollvernetzung KNX</span>
+                        <span class="item-chip">Sicherheitssystem</span>
+                        <span class="item-chip">Lichtsteuerung</span>
+                    </div>
+                </div>
+                <div class="actions-col">
+                    <div class="amount" style="color:var(--fj-green);">5.200,00 € <span class="currency">EUR</span></div>
+                    <div class="due-date" style="color:var(--fj-green);"><i class="fas fa-check-circle"></i> Bezahlt am 12.05.2026</div>
+                    <div class="btn-group">
+                        <button class="btn btn-secondary btn-sm" onclick="openDetail('INV-2026-0009')"><i class="fas fa-eye"></i> Details</button>
+                        <button class="btn btn-outline btn-sm"><i class="fas fa-download"></i> PDF</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Invoice 8: Cancelled -->
+            <div class="invoice-card" data-status="cancelled" data-handyman="michael" data-id="INV-2026-0040">
+                <div class="main-info">
+                    <div class="title-row">
+                        <span class="inv-number">INV-2026-0040</span>
+                        <span class="status-badge cancelled"><i class="fas fa-times-circle"></i> Storniert</span>
+                        <span class="project-tag">Keller-Sanierung – Familie Richter</span>
+                    </div>
+                    <div class="meta-grid">
+                        <span><i class="fas fa-calendar-alt"></i> Ausgestellt: <span class="value">05. Aug 2026</span></span>
+                        <span><i class="fas fa-calendar-check"></i> Fällig: <span class="value">19. Aug 2026</span></span>
+                        <span><i class="fas fa-user"></i> Handwerker: <span class="value">Michael Weber</span></span>
+                        <span><i class="fas fa-tag"></i> Kategorie: <span class="value">Sanitär & Wasser</span></span>
+                    </div>
+                    <div class="items-preview">
+                        <span class="item-chip">Kellerentwässerung</span>
+                        <span class="item-chip">Wandabdichtung</span>
+                    </div>
+                </div>
+                <div class="actions-col">
+                    <div class="amount" style="color:var(--fj-dim);">0,00 € <span class="currency">EUR</span></div>
+                    <div class="due-date" style="color:var(--fj-dim);"><i class="fas fa-ban"></i> Storniert</div>
+                    <div class="btn-group">
+                        <button class="btn btn-secondary btn-sm" onclick="openDetail('INV-2026-0040')"><i class="fas fa-eye"></i> Details</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination">
+            <span class="page arrow"><i class="fas fa-chevron-left"></i></span>
+            <span class="page active">1</span>
+            <span class="page">2</span>
+            <span class="page">3</span>
+            <span class="page arrow"><i class="fas fa-chevron-right"></i></span>
+        </div>
+
+    </div>
+
+    <!-- ============================================================
+       INVOICE DETAIL OVERLAY
+       ============================================================ -->
+    <div class="invoice-detail-overlay" id="detailOverlay">
+        <div class="detail-panel" id="detailPanel">
+            <button class="close-btn" id="detailCloseBtn"><i class="fas fa-times"></i></button>
+
+            <div class="detail-header">
+                <div class="left">
+                    <div class="inv-number" id="detailNumber">INV-2026-0042</div>
+                    <div class="inv-date" id="detailDate">Ausgestellt: 12. Aug 2026</div>
+                </div>
+                <div class="right">
+                    <div class="amount-large" id="detailAmount">1.280,00 <span class="currency">EUR</span></div>
+                    <span class="badge" id="detailStatusBadge" style="margin-top:4px;">Offen</span>
+                </div>
+            </div>
+
+            <div class="detail-body">
+                <!-- Info Grid -->
+                <div class="info-grid">
+                    <div>
+                        <div class="label">Projekt</div>
+                        <div class="value" id="detailProject">Küchenmontage – Familie Schmidt</div>
+                    </div>
+                    <div>
+                        <div class="label">Handwerker</div>
+                        <div class="value" id="detailHandyman">Raphael Lezius <span class="badge badge-amber" style="font-size:0.45rem;">⭐ Premium</span></div>
+                    </div>
+                    <div>
+                        <div class="label">Fällig am</div>
+                        <div class="value" id="detailDue">26. Aug 2026</div>
+                    </div>
+                    <div>
+                        <div class="label">Status</div>
+                        <div class="value" id="detailStatusText">Offen · Noch 4 Tage</div>
+                    </div>
+                </div>
+
+                <!-- Items Table -->
+                <div class="items-table" id="detailItems">
+                    <div class="item-row header">
+                        <span>Leistung</span>
+                        <span class="center">Menge</span>
+                        <span class="right">Betrag</span>
+                    </div>
+                    <div class="item-row">
+                        <span>Arbeitsplatte zuschneiden und einbauen</span>
+                        <span class="center">1</span>
+                        <span class="right">450,00 €</span>
+                    </div>
+                    <div class="item-row">
+                        <span>Kochfeld einbauen (Induktion)</span>
+                        <span class="center">1</span>
+                        <span class="right">380,00 €</span>
+                    </div>
+                    <div class="item-row">
+                        <span>Spüle montieren inkl. Anschluss</span>
+                        <span class="center">1</span>
+                        <span class="right">250,00 €</span>
+                    </div>
+                    <div class="item-row">
+                        <span>Arbeitsplattenverlängerung</span>
+                        <span class="center">2</span>
+                        <span class="right">200,00 €</span>
+                    </div>
+                </div>
+
+                <!-- Total -->
+                <div class="total-row">
+                    <span class="label">Gesamtbetrag</span>
+                    <span class="amount" id="detailTotal">1.280,00 €</span>
+                </div>
+            </div>
+
+            <div class="detail-footer" id="detailFooter">
+                <button class="btn btn-secondary btn-sm" onclick="closeDetail()"><i class="fas fa-arrow-left"></i> Zurück</button>
+                <button class="btn btn-outline btn-sm"><i class="fas fa-download"></i> PDF herunterladen</button>
+                <button class="btn btn-primary btn-sm" id="detailPayBtn"><i class="fas fa-credit-card"></i> Jetzt bezahlen</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h4>FIX<span>JORI</span></h4>
+                    <p>Die Plattform für perfekte Montage und Premium-Handwerk. Verifizierte Experten, Festpreise, persönliche Betreuung.</p>
+                </div>
+                <div class="footer-col">
+                    <h5>Services</h5>
+                    <a href="../services/montage.html">Montage & Möbel</a>
+                    <a href="../services/elektro.html">Elektro & Smart</a>
+                    <a href="../services/sanitaer.html">Sanitär & Wasser</a>
+                    <a href="../services/garten.html">Garten & Outdoor</a>
+                </div>
+                <div class="footer-col">
+                    <h5>Plattform</h5>
+                    <a href="../directory/index.html">Handwerker finden</a>
+                    <a href="dashboard.html">Client Portal</a>
+                    <a href="../handyman/dashboard.html">Handyman Portal</a>
+                    <a href="../booking/step1.html">Projekt starten</a>
+                </div>
+                <div class="footer-col">
+                    <h5>Rechtliches</h5>
+                    <a href="../impressum.html">Impressum</a>
+                    <a href="../datenschutz.html">Datenschutz</a>
+                    <a href="../agb.html">AGB</a>
+                    <a href="../garantie.html">Garantie</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2026 FIXJORI. Alle Rechte vorbehalten.</span>
+                <div style="display:flex;gap:16px;flex-wrap:wrap;">
+                    <a href="../impressum.html">Impressum</a>
+                    <a href="../datenschutz.html">Datenschutz</a>
+                    <a href="../agb.html">AGB</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================================================
+       SCRIPTS
+       ============================================================ -->
+    <script>
+        (function() {
+            'use strict';
+
+            // ── THEME TOGGLE ──
+            const html = document.documentElement;
+            const themeToggle = document.getElementById('themeToggle');
+            const themeIcon = document.getElementById('themeIcon');
+            const storedTheme = localStorage.getItem('fixjori-theme');
+            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            let currentTheme = storedTheme || (systemPrefersDark ? 'dark' : 'light');
+
+            function applyTheme(theme) {
+                html.setAttribute('data-theme', theme);
+                localStorage.setItem('fixjori-theme', theme);
+                themeIcon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+            }
+            applyTheme(currentTheme);
+
+            themeToggle.addEventListener('click', function() {
+                currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+                applyTheme(currentTheme);
+            });
+
+            // ── NAV TOGGLE ──
+            const toggleBtn = document.getElementById('mobileToggle');
+            const mobileMenu = document.getElementById('mobileMenu');
+
+            toggleBtn.addEventListener('click', function() {
+                const isOpen = this.classList.toggle('active');
+                mobileMenu.classList.toggle('open');
+                this.setAttribute('aria-expanded', isOpen);
+                document.body.style.overflow = isOpen ? 'hidden' : '';
+            });
+
+            mobileMenu.querySelectorAll('a').forEach(function(link) {
+                link.addEventListener('click', function() {
+                    toggleBtn.classList.remove('active');
+                    mobileMenu.classList.remove('open');
+                    document.body.style.overflow = '';
+                });
+            });
+
+            // ── TABS ──
+            const tabs = document.querySelectorAll('.tab-btn');
+            const cards = document.querySelectorAll('.invoice-card');
+
+            tabs.forEach(function(tab) {
+                tab.addEventListener('click', function() {
+                    tabs.forEach(function(t) { t.classList.remove('active'); });
+                    this.classList.add('active');
+
+                    const filter = this.dataset.filter;
+                    cards.forEach(function(card) {
+                        const status = card.dataset.status;
+                        if (filter === 'all' || status === filter) {
+                            card.style.display = '';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
+            // ── SEARCH ──
+            const searchInput = document.getElementById('searchInput');
+            const searchBtn = document.getElementById('searchBtn');
+
+            function filterInvoices() {
+                const term = searchInput.value.toLowerCase().trim();
+                cards.forEach(function(card) {
+                    const text = card.textContent.toLowerCase();
+                    if (term === '' || text.includes(term)) {
+                        card.style.display = '';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            }
+
+            searchBtn.addEventListener('click', filterInvoices);
+            searchInput.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') filterInvoices();
+            });
+
+            // ── SORT ──
+            const sortSelect = document.getElementById('sortSelect');
+            const list = document.getElementById('invoiceList');
+
+            sortSelect.addEventListener('change', function() {
+                const cardsArray = Array.from(cards);
+                const sort = this.value;
+
+                cardsArray.sort(function(a, b) {
+                    if (sort === 'newest') {
+                        const dateA = a.querySelector('.meta-grid .value')?.textContent || '';
+                        const dateB = b.querySelector('.meta-grid .value')?.textContent || '';
+                        return dateB.localeCompare(dateA) || 0;
+                    } else if (sort === 'oldest') {
+                        const dateA = a.querySelector('.meta-grid .value')?.textContent || '';
+                        const dateB = b.querySelector('.meta-grid .value')?.textContent || '';
+                        return dateA.localeCompare(dateB) || 0;
+                    } else if (sort === 'amount') {
+                        const priceA = parseFloat(a.querySelector('.amount')?.textContent?.replace(/[^0-9,.]/g, '')
+                            .replace(',', '.') || 0);
+                        const priceB = parseFloat(b.querySelector('.amount')?.textContent?.replace(/[^0-9,.]/g, '')
+                            .replace(',', '.') || 0);
+                        return priceB - priceA;
+                    } else if (sort === 'amount-asc') {
+                        const priceA = parseFloat(a.querySelector('.amount')?.textContent?.replace(/[^0-9,.]/g, '')
+                            .replace(',', '.') || 0);
+                        const priceB = parseFloat(b.querySelector('.amount')?.textContent?.replace(/[^0-9,.]/g, '')
+                            .replace(',', '.') || 0);
+                        return priceA - priceB;
+                    }
+                    return 0;
+                });
+
+                cardsArray.forEach(function(card) {
+                    list.appendChild(card);
+                });
+            });
+
+            // ── HANDYMAN FILTER ──
+            const handymanFilter = document.getElementById('handymanFilter');
+            handymanFilter.addEventListener('change', function() {
+                const filter = this.value;
+                cards.forEach(function(card) {
+                    const handyman = card.dataset.handyman;
+                    if (filter === 'all' || handyman === filter) {
+                        card.style.display = '';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+
+            // ── INVOICE DETAIL OVERLAY ──
+            const overlay = document.getElementById('detailOverlay');
+            const closeBtn = document.getElementById('detailCloseBtn');
+
+            // Invoice data store (simulated)
+            const invoiceData = {
+                'INV-2026-0042': {
+                    number: 'INV-2026-0042',
+                    date: '12. Aug 2026',
+                    due: '26. Aug 2026',
+                    status: 'pending',
+                    statusLabel: 'Offen · Noch 4 Tage',
+                    statusBadge: 'pending',
+                    project: 'Küchenmontage – Familie Schmidt',
+                    handyman: 'Raphael Lezius',
+                    handymanPremium: true,
+                    amount: '1.280,00 €',
+                    items: [
+                        { desc: 'Arbeitsplatte zuschneiden und einbauen', qty: 1, price: '450,00 €' },
+                        { desc: 'Kochfeld einbauen (Induktion)', qty: 1, price: '380,00 €' },
+                        { desc: 'Spüle montieren inkl. Anschluss', qty: 1, price: '250,00 €' },
+                        { desc: 'Arbeitsplattenverlängerung', qty: 2, price: '200,00 €' },
+                    ],
+                    footerActions: ['pay']
+                },
+                'INV-2026-0043': {
+                    number: 'INV-2026-0043',
+                    date: '16. Aug 2026',
+                    due: '30. Aug 2026',
+                    status: 'pending',
+                    statusLabel: 'Offen · Noch 8 Tage',
+                    statusBadge: 'pending',
+                    project: 'Büro-Rollout – Creative Agency',
+                    handyman: 'Jaffar Shariff',
+                    handymanPremium: false,
+                    amount: '350,00 €',
+                    items: [
+                        { desc: 'KNX-Grundinstallation', qty: 1, price: '150,00 €' },
+                        { desc: 'Beleuchtungssteuerung', qty: 1, price: '120,00 €' },
+                        { desc: 'Smart Home Gateway', qty: 1, price: '80,00 €' },
+                    ],
+                    footerActions: ['pay']
+                },
+                'INV-2026-0038': {
+                    number: 'INV-2026-0038',
+                    date: '15. Jul 2026',
+                    due: '29. Jul 2026',
+                    status: 'overdue',
+                    statusLabel: 'Überfällig seit 5 Tagen',
+                    statusBadge: 'overdue',
+                    project: 'USM Haller – Kanzlei Dr. Weber',
+                    handyman: 'Raphael Lezius',
+                    handymanPremium: true,
+                    amount: '2.450,00 €',
+                    items: [
+                        { desc: 'USM Haller Montage (3 Module)', qty: 1, price: '1.200,00 €' },
+                        { desc: 'Schreibtischkonfiguration', qty: 2, price: '600,00 €' },
+                        { desc: 'Regalsystem', qty: 1, price: '650,00 €' },
+                    ],
+                    footerActions: ['pay']
+                },
+                'INV-2026-0029': {
+                    number: 'INV-2026-0029',
+                    date: '28. Jun 2026',
+                    due: '05. Jul 2026',
+                    status: 'paid',
+                    statusLabel: 'Bezahlt am 05.07.2026',
+                    statusBadge: 'paid',
+                    project: 'Wohnungsrenovierung – Familie Müller',
+                    handyman: 'Anna Schmidt',
+                    handymanPremium: false,
+                    amount: '1.650,00 €',
+                    items: [
+                        { desc: 'Wände streichen (120m²)', qty: 1, price: '800,00 €' },
+                        { desc: 'Tapete anbringen', qty: 1, price: '450,00 €' },
+                        { desc: 'Deckenrenovierung', qty: 1, price: '400,00 €' },
+                    ],
+                    footerActions: ['download']
+                },
+                'INV-2026-0022': {
+                    number: 'INV-2026-0022',
+                    date: '10. Jun 2026',
+                    due: '18. Jun 2026',
+                    status: 'paid',
+                    statusLabel: 'Bezahlt am 18.06.2026',
+                    statusBadge: 'paid',
+                    project: 'Büromöbel – Startup Hub',
+                    handyman: 'Raphael Lezius',
+                    handymanPremium: true,
+                    amount: '3.800,00 €',
+                    items: [
+                        { desc: '10x Bürotische montieren', qty: 10, price: '2.000,00 €' },
+                        { desc: 'Stühle aufbauen (20 Stk.)', qty: 20, price: '800,00 €' },
+                        { desc: 'Regale installieren', qty: 5, price: '1.000,00 €' },
+                    ],
+                    footerActions: ['download']
+                },
+                'INV-2026-0015': {
+                    number: 'INV-2026-0015',
+                    date: '22. Mai 2026',
+                    due: '30. Mai 2026',
+                    status: 'paid',
+                    statusLabel: 'Bezahlt am 30.05.2026',
+                    statusBadge: 'paid',
+                    project: 'Badrenovierung – Wohnung König',
+                    handyman: 'Michael Weber',
+                    handymanPremium: false,
+                    amount: '980,00 €',
+                    items: [
+                        { desc: 'Duschwanne montieren', qty: 1, price: '350,00 €' },
+                        { desc: 'Waschbecken installieren', qty: 1, price: '280,00 €' },
+                        { desc: 'Armaturen anbringen', qty: 2, price: '350,00 €' },
+                    ],
+                    footerActions: ['download']
+                },
+                'INV-2026-0009': {
+                    number: 'INV-2026-0009',
+                    date: '05. Mai 2026',
+                    due: '12. Mai 2026',
+                    status: 'paid',
+                    statusLabel: 'Bezahlt am 12.05.2026',
+                    statusBadge: 'paid',
+                    project: 'Smart Home – Villa Bergmann',
+                    handyman: 'Jaffar Shariff',
+                    handymanPremium: false,
+                    amount: '5.200,00 €',
+                    items: [
+                        { desc: 'Vollvernetzung KNX', qty: 1, price: '2.800,00 €' },
+                        { desc: 'Sicherheitssystem', qty: 1, price: '1.200,00 €' },
+                        { desc: 'Lichtsteuerung', qty: 1, price: '1.200,00 €' },
+                    ],
+                    footerActions: ['download']
+                },
+                'INV-2026-0040': {
+                    number: 'INV-2026-0040',
+                    date: '05. Aug 2026',
+                    due: '19. Aug 2026',
+                    status: 'cancelled',
+                    statusLabel: 'Storniert',
+                    statusBadge: 'cancelled',
+                    project: 'Keller-Sanierung – Familie Richter',
+                    handyman: 'Michael Weber',
+                    handymanPremium: false,
+                    amount: '0,00 €',
+                    items: [
+                        { desc: 'Kellerentwässerung', qty: 1, price: '0,00 €' },
+                        { desc: 'Wandabdichtung', qty: 1, price: '0,00 €' },
+                    ],
+                    footerActions: []
+                }
+            };
+
+            window.openDetail = function(id) {
+                const data = invoiceData[id];
+                if (!data) return;
+
+                // Populate detail panel
+                document.getElementById('detailNumber').textContent = data.number;
+                document.getElementById('detailDate').textContent = 'Ausgestellt: ' + data.date;
+                document.getElementById('detailAmount').innerHTML = data.amount.replace('€', '') + ' <span class="currency">EUR</span>';
+                document.getElementById('detailProject').textContent = data.project;
+                document.getElementById('detailHandyman').innerHTML = data.handyman + (data.handymanPremium ?
+                    ' <span class="badge badge-amber" style="font-size:0.45rem;">⭐ Premium</span>' : '');
+                document.getElementById('detailDue').textContent = data.due;
+                document.getElementById('detailStatusText').textContent = data.statusLabel;
+
+                // Status badge
+                const badge = document.getElementById('detailStatusBadge');
+                const statusMap = {
+                    pending: 'badge-amber',
+                    paid: 'badge-green',
+                    overdue: 'badge-red',
+                    cancelled: 'badge-pink'
+                };
+                badge.className = 'badge ' + (statusMap[data.status] || 'badge-amber');
+                badge.textContent = data.statusLabel.split('·')[0].trim() || data.status;
+
+                // Items
+                const itemsContainer = document.getElementById('detailItems');
+                let itemsHtml = `
+                    <div class="item-row header">
+                        <span>Leistung</span>
+                        <span class="center">Menge</span>
+                        <span class="right">Betrag</span>
+                    </div>
+                `;
+                data.items.forEach(function(item) {
+                    itemsHtml += `
+                        <div class="item-row">
+                            <span>${item.desc}</span>
+                            <span class="center">${item.qty}</span>
+                            <span class="right">${item.price}</span>
+                        </div>
+                    `;
+                });
+                itemsContainer.innerHTML = itemsHtml;
+
+                // Total
+                document.getElementById('detailTotal').textContent = data.amount;
+
+                // Footer actions
+                const footer = document.getElementById('detailFooter');
+                let footerHtml = `
+                    <button class="btn btn-secondary btn-sm" onclick="closeDetail()"><i class="fas fa-arrow-left"></i> Zurück</button>
+                `;
+                if (data.footerActions.includes('download')) {
+                    footerHtml +=
+                        `<button class="btn btn-outline btn-sm"><i class="fas fa-download"></i> PDF herunterladen</button>`;
+                }
+                if (data.footerActions.includes('pay')) {
+                    footerHtml +=
+                        `<button class="btn btn-primary btn-sm" onclick="payInvoice('${id}')"><i class="fas fa-credit-card"></i> Jetzt bezahlen</button>`;
+                }
+                footer.innerHTML = footerHtml;
+
+                // Show overlay
+                overlay.classList.add('open');
+                document.body.style.overflow = 'hidden';
+            };
+
+            window.closeDetail = function() {
+                overlay.classList.remove('open');
+                document.body.style.overflow = '';
+            };
+
+            closeBtn.addEventListener('click', closeDetail);
+            overlay.addEventListener('click', function(e) {
+                if (e.target === this) closeDetail();
+            });
+
+            // ── PAY INVOICE ──
+            window.payInvoice = function(id) {
+                closeDetail();
+                // Simulate payment flow
+                const card = document.querySelector(`.invoice-card[data-id="${id}"]`);
+                if (card) {
+                    const statusBadge = card.querySelector('.status-badge');
+                    const amountEl = card.querySelector('.amount');
+                    const dueEl = card.querySelector('.due-date');
+                    const btnGroup = card.querySelector('.btn-group');
+
+                    // Update UI
+                    statusBadge.className = 'status-badge paid';
+                    statusBadge.innerHTML = '<i class="fas fa-check-circle"></i> Bezahlt';
+                    if (amountEl) {
+                        amountEl.style.color = 'var(--fj-green)';
+                    }
+                    if (dueEl) {
+                        dueEl.style.color = 'var(--fj-green)';
+                        dueEl.innerHTML = '<i class="fas fa-check-circle"></i> Bezahlt heute';
+                    }
+                    if (btnGroup) {
+                        btnGroup.innerHTML = `
+                            <button class="btn btn-secondary btn-sm" onclick="openDetail('${id}')"><i class="fas fa-eye"></i> Details</button>
+                            <button class="btn btn-outline btn-sm"><i class="fas fa-download"></i> PDF</button>
+                        `;
+                    }
+                    // Update dataset status
+                    card.dataset.status = 'paid';
+
+                    // Show toast-like feedback
+                    showToast('✅ Rechnung ' + id + ' wurde erfolgreich bezahlt!');
+                }
+            };
+
+            // ── TOAST NOTIFICATION ──
+            function showToast(message) {
+                const existing = document.querySelector('.toast-notification');
+                if (existing) existing.remove();
+
+                const toast = document.createElement('div');
+                toast.className = 'toast-notification';
+                toast.style.cssText = `
+                    position: fixed;
+                    bottom: 24px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    background: var(--fj-surface);
+                    border: 1px solid var(--fj-border);
+                    border-radius: var(--fj-radius-sm);
+                    padding: 14px 28px;
+                    box-shadow: var(--fj-shadow-xl);
+                    font-weight: 600;
+                    font-size: 0.9rem;
+                    color: var(--fj-text);
+                    z-index: 3000;
+                    display: flex;
+                    align-items: center;
+                    gap: 12px;
+                    max-width: 90%;
+                    animation: slideUp 0.4s var(--ease-spring);
+                    border-left: 4px solid var(--fj-green);
+                `;
+                toast.innerHTML = `<span>${message}</span> <button style="background:none;border:none;font-size:1.2rem;color:var(--fj-dim);cursor:pointer;" onclick="this.parentElement.remove()">×</button>`;
+
+                // Add keyframe animation
+                if (!document.getElementById('toastStyles')) {
+                    const style = document.createElement('style');
+                    style.id = 'toastStyles';
+                    style.textContent = `
+                        @keyframes slideUp {
+                            0% { transform: translateX(-50%) translateY(20px); opacity: 0; }
+                            100% { transform: translateX(-50%) translateY(0); opacity: 1; }
+                        }
+                    `;
+                    document.head.appendChild(style);
+                }
+
+                document.body.appendChild(toast);
+
+                setTimeout(function() {
+                    if (toast.parentElement) toast.remove();
+                }, 5000);
+            }
+
+            // ── PAGINATION ──
+            document.querySelectorAll('.pagination .page:not(.arrow)').forEach(function(page) {
+                page.addEventListener('click', function() {
+                    document.querySelectorAll('.pagination .page').forEach(function(p) { p.classList.remove(
+                            'active'); });
+                    this.classList.add('active');
+                    window.scrollTo({ top: document.querySelector('.page-header').offsetTop - 100,
+                        behavior: 'smooth' });
+                });
+            });
+
+            // ── SCROLL NAV SHADOW ──
+            const nav = document.getElementById('siteNav');
+            window.addEventListener('scroll', function() {
+                nav.classList.toggle('scrolled', window.scrollY > 20);
+            }, { passive: true });
+
+            console.log('✅ Invoices page loaded (Meituan-style).');
+
+        })();
+    </script>
+
+</body>
+</html>

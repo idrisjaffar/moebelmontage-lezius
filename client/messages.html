@@ -2,10 +2,8 @@
 <html lang="de" data-theme="light">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Chat: Raphael Lezius – FIXJORI</title>
-    
-    <!-- Fonts & Icons -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    <title>Nachrichten – FIXJORI</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&family=Space+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -13,7 +11,7 @@
 
     <style>
         /* ============================================================
-           GLOBAL VARIABLES & RESET (Exakt wie in deinen Vorlagen)
+           GLOBAL VARIABLES & RESET
            ============================================================ */
         :root {
             --fj-teal: #0D9488;
@@ -31,19 +29,17 @@
             --fj-dim: #94A3B8;
             --fj-border: #E2E8F0;
             --fj-shadow: 0 4px 16px rgba(0,0,0,0.05);
+            --fj-shadow-lg: 0 8px 32px rgba(0,0,0,0.08);
+            --fj-shadow-xl: 0 16px 48px rgba(0,0,0,0.10);
             --fj-radius: 16px;
             --fj-radius-sm: 10px;
             --fj-radius-full: 40px;
             --font-head: 'Space Grotesk', sans-serif;
             --font-body: 'Inter', sans-serif;
             --font-mono: 'JetBrains Mono', monospace;
-            
-            /* Chat Specific Colors */
-            --chat-client-bg: var(--fj-teal);
-            --chat-client-text: #FFFFFF;
-            --chat-pro-bg: var(--fj-surface);
-            --chat-pro-text: var(--fj-text);
-            --chat-system-bg: rgba(13, 148, 136, 0.08);
+            --nav-height: 68px;
+            --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
         [data-theme="dark"] {
@@ -54,388 +50,1172 @@
             --fj-dim: #64748B;
             --fj-border: rgba(255,255,255,0.06);
             --fj-shadow: 0 4px 16px rgba(0,0,0,0.2);
-            --chat-system-bg: rgba(13, 148, 136, 0.15);
-            --chat-pro-bg: #222F43;
+            --fj-shadow-lg: 0 8px 32px rgba(0,0,0,0.4);
+            --fj-shadow-xl: 0 16px 48px rgba(0,0,0,0.5);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        /* App-Feeling: Kein Scrollen des Bodys */
-        body, html {
+        html { scroll-behavior: smooth; }
+        body {
             font-family: var(--font-body);
             background: var(--fj-bg);
             color: var(--fj-text);
-            height: 100vh;
-            width: 100vw;
-            overflow: hidden; 
-            display: flex;
-            justify-content: center; /* Zentrierung für Desktop */
+            transition: background 0.3s, color 0.3s;
+            padding-top: calc(var(--nav-height) + 12px);
+            min-height: 100vh;
         }
+        a { text-decoration: none; color: inherit; }
+        button { font-family: inherit; border: none; background: none; color: inherit; cursor: pointer; }
+        img { max-width: 100%; display: block; }
+        ul { list-style: none; }
 
-        /* Container, um auf Desktop wie ein Phone zu wirken (Meituan Style) */
-        .chat-container {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            max-width: 800px; /* Begrenzung für Desktop */
-            height: 100%;
-            background: var(--fj-bg);
-            position: relative;
-            box-shadow: var(--fj-shadow);
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 clamp(16px, 3.5vw, 32px); }
+        .text-teal { color: var(--fj-teal); }
+        .text-amber { color: var(--fj-amber); }
+        .text-muted { color: var(--fj-muted); }
+        .text-dim { color: var(--fj-dim); }
+        .text-green { color: var(--fj-green); }
+        .text-pink { color: var(--fj-pink); }
+
+        .badge {
+            display: inline-block;
+            padding: 2px 12px;
+            border-radius: 30px;
+            font-family: var(--font-mono);
+            font-size: 0.5rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
         }
-        
-        @media (min-width: 801px) {
-            .chat-container { border-left: 1px solid var(--fj-border); border-right: 1px solid var(--fj-border); }
+        .badge-teal {
+            background: rgba(13,148,136,0.08);
+            color: var(--fj-teal);
+            border: 1px solid rgba(13,148,136,0.10);
+        }
+        .badge-pink {
+            background: rgba(255,0,127,0.08);
+            color: var(--fj-pink);
+            border: 1px solid rgba(255,0,127,0.10);
         }
 
         /* ============================================================
-           HEADER (App-Style)
+           BUTTONS
            ============================================================ */
-        .chat-header {
-            background: var(--fj-surface);
-            backdrop-filter: blur(16px);
-            border-bottom: 1px solid var(--fj-border);
-            display: flex;
+        .btn {
+            display: inline-flex;
             align-items: center;
-            justify-content: space-between;
-            padding: 12px 16px;
-            z-index: 100;
-        }
-        .header-btn {
-            width: 40px; height: 40px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.2rem; color: var(--fj-text);
-            border-radius: 50%; transition: background 0.2s;
+            gap: 8px;
+            padding: 10px 22px;
+            border-radius: var(--fj-radius-sm);
+            font-weight: 700;
+            font-size: 0.8rem;
+            transition: all 0.3s var(--ease-smooth);
+            border: none;
+            cursor: pointer;
             text-decoration: none;
         }
-        .header-btn:hover { background: rgba(13,148,136,0.1); color: var(--fj-teal); }
-        
-        .pro-info {
-            text-align: center;
-            flex: 1;
+        .btn-primary {
+            background: linear-gradient(135deg, var(--fj-teal), var(--fj-teal-dark));
+            color: #fff;
+            box-shadow: 0 4px 16px rgba(13,148,136,0.25);
         }
-        .pro-name {
-            font-family: var(--font-head);
-            font-weight: 700;
-            font-size: 1rem;
-            display: flex; align-items: center; justify-content: center; gap: 6px;
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(13,148,136,0.35); }
+        .btn-secondary {
+            background: var(--fj-surface);
+            border: 1px solid var(--fj-border);
+            color: var(--fj-text);
         }
-        .premium-tag {
-            font-family: var(--font-mono); font-size: 0.5rem;
-            background: var(--fj-amber); color: #0F172A;
-            padding: 2px 8px; border-radius: 30px; text-transform: uppercase;
+        .btn-secondary:hover { border-color: var(--fj-teal); }
+        .btn-outline {
+            background: transparent;
+            border: 1.5px solid var(--fj-border);
+            color: var(--fj-text);
         }
-        .pro-status {
-            font-size: 0.7rem; color: var(--fj-green); font-weight: 500;
-            display: flex; align-items: center; justify-content: center; gap: 4px;
-            margin-top: 2px;
+        .btn-outline:hover { border-color: var(--fj-teal); color: var(--fj-teal); }
+        .btn-sm { padding: 6px 14px; font-size: 0.7rem; }
+        .btn-xs { padding: 4px 10px; font-size: 0.6rem; }
+        .btn-icon { padding: 8px; font-size: 0.9rem; border-radius: 50%; }
+
+        /* ============================================================
+           NAVIGATION
+           ============================================================ */
+        .site-nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            height: var(--nav-height);
+            background: rgba(255,255,255,0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--fj-border);
+            display: flex; align-items: center; padding: 0 16px;
+            transition: background 0.3s, box-shadow 0.3s;
+        }
+        [data-theme="dark"] .site-nav { background: rgba(15,23,42,0.85); }
+        .site-nav.scrolled { box-shadow: var(--fj-shadow); }
+
+        .nav-inner {
+            max-width: 1280px; width: 100%; margin: 0 auto;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .nav-logo {
+            display: flex; align-items: center; gap: 8px;
+            font-family: var(--font-head); font-weight: 900; font-size: 1.3rem; letter-spacing: -0.5px;
+        }
+        .nav-logo span { color: var(--fj-teal); }
+        .nav-logo .logo-icon {
+            width: 32px; height: 32px;
+            background: linear-gradient(135deg, var(--fj-teal), var(--fj-teal-dark));
+            border-radius: 8px; display: flex; align-items: center; justify-content: center;
+            color: #fff; font-size: 1rem;
+        }
+
+        .nav-links { display: flex; gap: 24px; align-items: center; }
+        .nav-links a {
+            font-size: 0.85rem; font-weight: 500; color: var(--fj-muted);
+            transition: color 0.2s; position: relative;
+        }
+        .nav-links a:hover { color: var(--fj-text); }
+        .nav-links a.active::after {
+            content: ''; position: absolute; bottom: -4px; left: 0;
+            width: 100%; height: 2px; background: var(--fj-teal); border-radius: 2px;
+        }
+
+        .nav-actions { display: flex; align-items: center; gap: 8px; }
+        .theme-toggle {
+            width: 36px; height: 36px; border-radius: 50%;
+            border: 1px solid var(--fj-border); background: transparent;
+            color: var(--fj-muted); display: flex; align-items: center; justify-content: center;
+            font-size: 0.95rem; transition: all 0.3s;
+        }
+        .theme-toggle:hover { border-color: var(--fj-teal); color: var(--fj-text); }
+
+        .nav-cta {
+            padding: 6px 16px; border-radius: var(--fj-radius-full);
+            background: linear-gradient(135deg, var(--fj-teal), var(--fj-teal-dark));
+            color: #fff !important; font-weight: 700; font-size: 0.7rem !important;
+            text-transform: uppercase; letter-spacing: 0.5px;
+        }
+        .nav-cta:hover { opacity: 0.9; }
+
+        .mobile-toggle {
+            display: none; flex-direction: column; gap: 4px; padding: 6px;
+            background: none; border: none; cursor: pointer;
+        }
+        .mobile-toggle span {
+            display: block; width: 22px; height: 2px;
+            background: var(--fj-text); border-radius: 2px; transition: 0.3s;
+        }
+        .mobile-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .mobile-toggle.active span:nth-child(2) { opacity: 0; }
+        .mobile-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+        .mobile-menu {
+            position: fixed; top: var(--nav-height); left: 0; right: 0; bottom: 0;
+            background: var(--fj-surface); backdrop-filter: blur(20px);
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            gap: 24px; transform: translateX(100%);
+            transition: transform 0.4s var(--ease-smooth);
+            z-index: 999; padding: 40px 20px;
+        }
+        .mobile-menu.open { transform: translateX(0); }
+        .mobile-menu a { font-size: 1.4rem; font-weight: 600; color: var(--fj-muted); transition: color 0.2s; }
+        .mobile-menu a:hover { color: var(--fj-text); }
+        .mobile-menu .mobile-cta {
+            margin-top: 16px; padding: 12px 40px; border-radius: var(--fj-radius-full);
+            background: linear-gradient(135deg, var(--fj-teal), var(--fj-teal-dark));
+            color: #fff; font-weight: 700; font-size: 0.9rem;
+        }
+
+        @media (max-width: 900px) {
+            .nav-links { display: none; }
+            .mobile-toggle { display: flex; }
+            .mobile-menu { transform: translateX(100%); }
+            .mobile-menu.open { transform: translateX(0); }
+            .nav-actions .nav-cta { display: none; }
         }
 
         /* ============================================================
-           PINNED PROJECT CONTEXT (Meituan Density)
+           MESSAGES – MAIN LAYOUT
            ============================================================ */
-        .project-context {
-            background: var(--fj-surface);
-            padding: 12px 16px;
-            border-bottom: 1px solid var(--fj-border);
+        .page-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
-            z-index: 99;
+            flex-wrap: wrap;
+            gap: 12px 20px;
+            padding: 16px 0 20px;
+            border-bottom: 1px solid var(--fj-border);
         }
-        .project-details { flex: 1; }
-        .project-details h4 {
-            font-size: 0.9rem; font-weight: 700; margin-bottom: 4px;
+        .page-header h1 {
+            font-family: var(--font-head);
+            font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+            font-weight: 900;
+            letter-spacing: -0.5px;
         }
-        .project-details p {
-            font-size: 0.7rem; color: var(--fj-muted);
-            display: flex; gap: 10px; flex-wrap: wrap;
+        .page-header .sub {
+            color: var(--fj-muted);
+            font-size: 0.9rem;
         }
-        .project-details p span { display: flex; align-items: center; gap: 4px; }
-        .project-details i { color: var(--fj-teal); }
-        
-        .btn-context {
-            font-size: 0.7rem; font-weight: 600;
-            padding: 6px 14px; border-radius: 30px;
-            background: var(--fj-bg); border: 1px solid var(--fj-border);
-            color: var(--fj-text); transition: all 0.2s;
-            text-decoration: none; white-space: nowrap;
-        }
-        .btn-context:hover { border-color: var(--fj-teal); color: var(--fj-teal); }
-
-        /* ============================================================
-           CHAT AREA
-           ============================================================ */
-        .chat-area {
-            flex: 1;
-            padding: 20px 16px;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            scroll-behavior: smooth;
-        }
-
-        .msg-time {
-            text-align: center; font-size: 0.65rem;
-            color: var(--fj-dim); margin: 8px 0; font-weight: 500;
-        }
-        
-        /* System Message (Order Updates) */
-        .msg-system {
-            background-color: var(--chat-system-bg);
-            border: 1px solid rgba(13,148,136,0.1);
-            align-self: center;
-            padding: 8px 16px;
-            border-radius: var(--fj-radius-full);
-            font-size: 0.7rem; font-weight: 500;
-            color: var(--fj-teal);
-            max-width: 85%;
-            text-align: center;
-            display: flex; align-items: center; gap: 6px;
-        }
-
-        /* Message Bubbles */
-        .msg-row { display: flex; gap: 10px; align-items: flex-end; }
-        .msg-row.client { justify-content: flex-end; }
-        
-        .avatar {
-            width: 32px; height: 32px; border-radius: 50%;
-            object-fit: cover; background: var(--fj-border);
-            flex-shrink: 0;
-        }
-        
-        .bubble {
-            padding: 10px 14px;
-            border-radius: 16px;
-            font-size: 0.85rem;
-            line-height: 1.4;
-            max-width: 75%;
-            word-wrap: break-word;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-        }
-        
-        .msg-row.pro .bubble {
-            background: var(--chat-pro-bg);
-            color: var(--chat-pro-text);
-            border: 1px solid var(--fj-border);
-            border-bottom-left-radius: 4px;
-        }
-        .msg-row.client .bubble {
-            background: linear-gradient(135deg, var(--fj-teal), var(--fj-teal-dark));
-            color: var(--chat-client-text);
-            border-bottom-right-radius: 4px;
-        }
-
-        /* Rich Content Bubble (Quotation) */
-        .bubble-rich {
-            background: var(--fj-surface);
-            border: 1px solid var(--fj-border);
-            border-radius: 12px;
-            padding: 12px;
-            width: 240px;
-        }
-        .bubble-rich .title { font-weight: 700; font-size: 0.8rem; margin-bottom: 8px; }
-        .bubble-rich .price { color: var(--fj-teal); font-weight: 800; font-size: 1.1rem; margin-bottom: 10px; }
-        .bubble-rich .btn-action {
-            display: block; text-align: center; background: var(--fj-teal);
-            color: #fff; padding: 6px; border-radius: 6px; font-size: 0.75rem;
-            font-weight: 600; text-decoration: none;
-        }
-
-        /* ============================================================
-           FOOTER / INPUT AREA
-           ============================================================ */
-        .chat-footer {
-            background: var(--fj-surface);
-            border-top: 1px solid var(--fj-border);
-            padding: 12px 16px;
-            padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px)); /* iPhone Home Bar Fix */
-            z-index: 100;
-        }
-
-        /* Quick Replies (Horizontal Scroll) */
-        .quick-replies {
+        .page-header .actions {
             display: flex;
             gap: 8px;
-            overflow-x: auto;
-            padding-bottom: 12px;
-            scrollbar-width: none; /* Firefox */
+            flex-wrap: wrap;
         }
-        .quick-replies::-webkit-scrollbar { display: none; }
-        .chip {
-            background: var(--fj-bg);
-            border: 1px solid var(--fj-border);
-            padding: 6px 14px;
-            border-radius: 30px;
-            font-size: 0.75rem;
-            font-weight: 500;
-            white-space: nowrap;
-            color: var(--fj-text);
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        .chip:hover { border-color: var(--fj-teal); color: var(--fj-teal); }
 
-        .input-row {
+        .messages-layout {
+            display: grid;
+            grid-template-columns: 360px 1fr;
+            gap: 0;
+            background: var(--fj-surface);
+            border-radius: var(--fj-radius);
+            border: 1px solid var(--fj-border);
+            overflow: hidden;
+            min-height: 600px;
+            margin-top: 16px;
+        }
+        @media (max-width: 900px) {
+            .messages-layout {
+                grid-template-columns: 1fr;
+                min-height: auto;
+            }
+        }
+
+        /* ============================================================
+           CONVERSATION LIST (Left Panel)
+           ============================================================ */
+        .conv-list {
+            border-right: 1px solid var(--fj-border);
+            display: flex;
+            flex-direction: column;
+            max-height: 700px;
+            overflow: hidden;
+        }
+        @media (max-width: 900px) {
+            .conv-list { border-right: none; border-bottom: 1px solid var(--fj-border); max-height: 400px; }
+        }
+
+        .conv-list .search-conv {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--fj-border);
             display: flex;
             align-items: center;
             gap: 10px;
         }
-        .icon-btn {
-            background: var(--fj-bg);
-            border: 1px solid var(--fj-border);
-            width: 38px; height: 38px; border-radius: 50%;
-            font-size: 1rem; color: var(--fj-muted);
-            display: flex; align-items: center; justify-content: center;
-            transition: all 0.2s;
-        }
-        .icon-btn:hover { color: var(--fj-teal); border-color: var(--fj-teal); }
-        
-        .chat-input {
+        .conv-list .search-conv input {
             flex: 1;
-            background: var(--fj-bg);
+            padding: 8px 14px;
+            border-radius: var(--fj-radius-full);
             border: 1px solid var(--fj-border);
-            padding: 10px 16px;
-            border-radius: 24px;
-            font-size: 0.9rem;
+            background: var(--fj-bg);
+            font-size: 0.85rem;
             color: var(--fj-text);
             outline: none;
-            transition: border-color 0.2s;
+            transition: border-color 0.3s;
+            font-family: var(--font-body);
         }
-        .chat-input:focus { border-color: var(--fj-teal); }
-        .chat-input::placeholder { color: var(--fj-dim); }
-        
-        .send-btn {
+        .conv-list .search-conv input:focus {
+            border-color: var(--fj-teal);
+            box-shadow: 0 0 0 3px rgba(13,148,136,0.06);
+        }
+        .conv-list .search-conv input::placeholder {
+            color: var(--fj-dim);
+        }
+
+        .conv-list .conv-items {
+            flex: 1;
+            overflow-y: auto;
+            padding: 4px 0;
+        }
+        .conv-list .conv-items::-webkit-scrollbar {
+            width: 4px;
+        }
+        .conv-list .conv-items::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .conv-list .conv-items::-webkit-scrollbar-thumb {
+            background: var(--fj-border);
+            border-radius: 2px;
+        }
+
+        .conv-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            cursor: pointer;
+            transition: all 0.2s var(--ease-smooth);
+            border-left: 3px solid transparent;
+            position: relative;
+        }
+        .conv-item:hover {
+            background: rgba(13,148,136,0.03);
+        }
+        .conv-item.active {
+            background: rgba(13,148,136,0.06);
+            border-left-color: var(--fj-teal);
+        }
+        .conv-item .avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--fj-border);
+            flex-shrink: 0;
+            overflow: hidden;
+            position: relative;
+        }
+        .conv-item .avatar img { width: 100%; height: 100%; object-fit: cover; }
+        .conv-item .avatar .online-dot {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--fj-green);
+            border: 2px solid var(--fj-surface);
+        }
+        .conv-item .info {
+            flex: 1;
+            min-width: 0;
+        }
+        .conv-item .info .name {
+            font-weight: 700;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+        .conv-item .info .name .premium-badge {
+            font-size: 0.4rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #0F172A;
+            background: var(--fj-amber);
+            padding: 0 8px;
+            border-radius: 30px;
+            display: inline-flex;
+            align-items: center;
+            gap: 2px;
+        }
+        .conv-item .info .last-msg {
+            font-size: 0.75rem;
+            color: var(--fj-muted);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .conv-item .info .last-msg .sender {
+            font-weight: 600;
+            color: var(--fj-text);
+        }
+        .conv-item .meta {
+            text-align: right;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 4px;
+        }
+        .conv-item .meta .time {
+            font-size: 0.6rem;
+            color: var(--fj-dim);
+        }
+        .conv-item .meta .unread {
+            font-family: var(--font-mono);
+            font-size: 0.5rem;
+            font-weight: 700;
+            background: var(--fj-pink);
+            color: #fff;
+            padding: 1px 8px;
+            border-radius: 30px;
+            line-height: 1.5;
+            min-width: 18px;
+            text-align: center;
+        }
+        .conv-item .meta .unread.hidden { display: none; }
+        .conv-item .meta .pinned {
+            color: var(--fj-amber);
+            font-size: 0.6rem;
+        }
+
+        /* ============================================================
+           CHAT VIEW (Right Panel)
+           ============================================================ */
+        .chat-view {
+            display: flex;
+            flex-direction: column;
+            background: var(--fj-bg);
+            min-height: 600px;
+        }
+        @media (max-width: 900px) {
+            .chat-view { min-height: 500px; }
+        }
+
+        .chat-view .chat-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 20px;
+            border-bottom: 1px solid var(--fj-border);
+            background: var(--fj-surface);
+            flex-shrink: 0;
+        }
+        .chat-view .chat-header .left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .chat-view .chat-header .left .back-btn {
+            display: none;
+            font-size: 1.1rem;
+            color: var(--fj-muted);
+            padding: 4px 8px;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+        .chat-view .chat-header .left .back-btn:hover {
+            background: rgba(13,148,136,0.06);
+            color: var(--fj-teal);
+        }
+        @media (max-width: 900px) {
+            .chat-view .chat-header .left .back-btn { display: block; }
+        }
+        .chat-view .chat-header .left .avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--fj-border);
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        .chat-view .chat-header .left .avatar img { width: 100%; height: 100%; object-fit: cover; }
+        .chat-view .chat-header .left .info .name {
+            font-weight: 700;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .chat-view .chat-header .left .info .status {
+            font-size: 0.65rem;
+            color: var(--fj-green);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .chat-view .chat-header .left .info .status .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--fj-green);
+        }
+        .chat-view .chat-header .actions {
+            display: flex;
+            gap: 4px;
+        }
+        .chat-view .chat-header .actions button {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--fj-muted);
+            transition: all 0.3s;
+            font-size: 0.85rem;
+        }
+        .chat-view .chat-header .actions button:hover {
+            background: rgba(13,148,136,0.06);
+            color: var(--fj-teal);
+        }
+
+        /* ── Messages ── */
+        .chat-view .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 16px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .chat-view .chat-messages::-webkit-scrollbar {
+            width: 4px;
+        }
+        .chat-view .chat-messages::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .chat-view .chat-messages::-webkit-scrollbar-thumb {
+            background: var(--fj-border);
+            border-radius: 2px;
+        }
+
+        .msg-date-divider {
+            text-align: center;
+            font-size: 0.65rem;
+            color: var(--fj-dim);
+            padding: 12px 0 8px;
+            font-weight: 500;
+        }
+        .msg-date-divider span {
+            background: var(--fj-surface);
+            padding: 2px 16px;
+            border-radius: 30px;
+            border: 1px solid var(--fj-border);
+        }
+
+        .msg {
+            max-width: 80%;
+            padding: 10px 16px;
+            border-radius: var(--fj-radius-sm);
+            font-size: 0.88rem;
+            line-height: 1.5;
+            position: relative;
+            word-wrap: break-word;
+        }
+        .msg.sent {
+            align-self: flex-end;
+            background: var(--fj-teal);
+            color: #fff;
+            border-bottom-right-radius: 4px;
+        }
+        .msg.sent .time {
+            color: rgba(255,255,255,0.6);
+        }
+        .msg.received {
+            align-self: flex-start;
+            background: var(--fj-surface);
+            border: 1px solid var(--fj-border);
+            border-bottom-left-radius: 4px;
+            color: var(--fj-text);
+        }
+        .msg.received .time {
+            color: var(--fj-dim);
+        }
+        .msg .time {
+            font-size: 0.55rem;
+            font-weight: 400;
+            margin-top: 4px;
+            display: block;
+            text-align: right;
+        }
+        .msg .msg-avatar {
+            position: absolute;
+            bottom: -6px;
+            left: -24px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--fj-border);
+            overflow: hidden;
+            border: 2px solid var(--fj-surface);
+        }
+        .msg .msg-avatar img { width: 100%; height: 100%; object-fit: cover; }
+        .msg .file-attachment {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 12px;
+            background: rgba(255,255,255,0.06);
+            border-radius: 8px;
+            margin-top: 6px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        .msg .file-attachment i {
+            font-size: 1.2rem;
+            color: var(--fj-amber);
+        }
+        .msg .file-attachment .file-info .file-name {
+            font-weight: 600;
+            font-size: 0.8rem;
+        }
+        .msg .file-attachment .file-info .file-size {
+            font-size: 0.6rem;
+            opacity: 0.7;
+        }
+        .msg .file-attachment.dark {
+            border-color: rgba(255,255,255,0.05);
+        }
+
+        .msg.sent .file-attachment {
+            background: rgba(255,255,255,0.08);
+            border-color: rgba(255,255,255,0.05);
+        }
+
+        .msg .image-attachment {
+            max-width: 200px;
+            border-radius: 8px;
+            margin-top: 6px;
+            cursor: pointer;
+            border: 1px solid rgba(255,255,255,0.06);
+            overflow: hidden;
+        }
+        .msg .image-attachment img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ── Typing Indicator ── */
+        .typing-indicator {
+            align-self: flex-start;
+            padding: 8px 16px;
+            background: var(--fj-surface);
+            border: 1px solid var(--fj-border);
+            border-radius: var(--fj-radius-sm);
+            border-bottom-left-radius: 4px;
+            display: none;
+            gap: 4px;
+            align-items: center;
+        }
+        .typing-indicator .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--fj-muted);
+            animation: typingBounce 1.4s infinite;
+        }
+        .typing-indicator .dot:nth-child(2) { animation-delay: 0.2s; }
+        .typing-indicator .dot:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes typingBounce {
+            0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+            30% { transform: translateY(-6px); opacity: 1; }
+        }
+
+        /* ── Chat Input ── */
+        .chat-view .chat-input {
+            display: flex;
+            align-items: flex-end;
+            gap: 8px;
+            padding: 12px 16px;
+            border-top: 1px solid var(--fj-border);
+            background: var(--fj-surface);
+            flex-shrink: 0;
+        }
+        .chat-view .chat-input .input-wrap {
+            flex: 1;
+            display: flex;
+            align-items: flex-end;
+            gap: 8px;
+            background: var(--fj-bg);
+            border: 1px solid var(--fj-border);
+            border-radius: var(--fj-radius-full);
+            padding: 4px 4px 4px 16px;
+            transition: border-color 0.3s;
+        }
+        .chat-view .chat-input .input-wrap:focus-within {
+            border-color: var(--fj-teal);
+            box-shadow: 0 0 0 3px rgba(13,148,136,0.06);
+        }
+        .chat-view .chat-input .input-wrap textarea {
+            flex: 1;
+            border: none;
+            outline: none;
+            resize: none;
+            padding: 8px 0;
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            color: var(--fj-text);
+            background: transparent;
+            max-height: 100px;
+            min-height: 36px;
+            line-height: 1.4;
+        }
+        .chat-view .chat-input .input-wrap textarea::placeholder {
+            color: var(--fj-dim);
+        }
+        .chat-view .chat-input .input-wrap .attachments-btn {
+            color: var(--fj-muted);
+            font-size: 1.1rem;
+            padding: 6px 4px;
+            transition: all 0.3s;
+            cursor: pointer;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .chat-view .chat-input .input-wrap .attachments-btn:hover {
+            color: var(--fj-teal);
+            background: rgba(13,148,136,0.06);
+        }
+        .chat-view .chat-input .send-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
             background: linear-gradient(135deg, var(--fj-teal), var(--fj-teal-dark));
             color: #fff;
-            border: none;
-            width: 38px; height: 38px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-size: 1rem;
-            transition: transform 0.2s;
+            flex-shrink: 0;
+            transition: all 0.3s var(--ease-spring);
+            box-shadow: 0 4px 12px rgba(13,148,136,0.25);
         }
-        .send-btn:active { transform: scale(0.95); }
+        .chat-view .chat-input .send-btn:hover {
+            transform: scale(1.06);
+            box-shadow: 0 8px 24px rgba(13,148,136,0.35);
+        }
+        .chat-view .chat-input .send-btn:disabled {
+            opacity: 0.4;
+            transform: scale(0.95);
+            box-shadow: none;
+            cursor: not-allowed;
+        }
 
+        /* ── Attachment Preview ── */
+        .attachment-preview {
+            display: none;
+            padding: 6px 16px;
+            background: var(--fj-bg);
+            border-top: 1px solid var(--fj-border);
+            align-items: center;
+            gap: 12px;
+        }
+        .attachment-preview.active { display: flex; }
+        .attachment-preview .file-info {
+            flex: 1;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .attachment-preview .file-info i {
+            color: var(--fj-amber);
+            font-size: 1.2rem;
+        }
+        .attachment-preview .file-info .name {
+            font-weight: 600;
+        }
+        .attachment-preview .file-info .size {
+            color: var(--fj-muted);
+            font-size: 0.65rem;
+        }
+        .attachment-preview .remove-attachment {
+            color: var(--fj-pink);
+            font-size: 1rem;
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: 6px;
+            transition: all 0.3s;
+        }
+        .attachment-preview .remove-attachment:hover {
+            background: rgba(255,0,127,0.06);
+        }
+
+        /* ============================================================
+           EMPTY CHAT STATE
+           ============================================================ */
+        .empty-chat {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+            color: var(--fj-muted);
+            text-align: center;
+            padding: 40px 20px;
+        }
+        .empty-chat .icon {
+            font-size: 3.5rem;
+            color: var(--fj-teal);
+            opacity: 0.15;
+            margin-bottom: 16px;
+        }
+        .empty-chat h3 {
+            font-family: var(--font-head);
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--fj-text);
+            margin-bottom: 8px;
+        }
+        .empty-chat p {
+            max-width: 300px;
+        }
+
+        /* ============================================================
+           FOOTER
+           ============================================================ */
+        .site-footer {
+            background: var(--fj-surface);
+            border-top: 1px solid var(--fj-border);
+            padding: 40px 0 24px;
+            margin-top: 40px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 32px;
+        }
+        @media (max-width: 800px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+        @media (max-width: 480px) { .footer-grid { grid-template-columns: 1fr; } }
+        .footer-brand h4 {
+            font-family: var(--font-head);
+            font-size: 1.2rem;
+            font-weight: 900;
+            margin-bottom: 8px;
+        }
+        .footer-brand h4 span { color: var(--fj-teal); }
+        .footer-brand p { font-size: 0.85rem; color: var(--fj-muted); max-width: 280px; }
+        .footer-col h5 {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--fj-dim);
+            margin-bottom: 12px;
+        }
+        .footer-col a {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--fj-muted);
+            padding: 4px 0;
+            transition: color 0.2s;
+        }
+        .footer-col a:hover { color: var(--fj-teal); }
+        .footer-bottom {
+            border-top: 1px solid var(--fj-border);
+            padding-top: 16px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            font-size: 0.7rem;
+            color: var(--fj-dim);
+        }
+        .footer-bottom a { color: var(--fj-dim); transition: color 0.2s; }
+        .footer-bottom a:hover { color: var(--fj-teal); }
+
+        /* ============================================================
+           RESPONSIVE
+           ============================================================ */
+        @media (max-width: 768px) {
+            .page-header { flex-direction: column; align-items: stretch; text-align: center; }
+            .page-header .actions { justify-content: center; }
+            .messages-layout { border-radius: var(--fj-radius-sm); }
+            .conv-list { max-height: 300px; }
+            .chat-view .chat-messages { padding: 12px 14px; }
+            .msg { max-width: 90%; }
+            .chat-view .chat-header { padding: 10px 14px; }
+            .chat-view .chat-input { padding: 8px 12px; }
+            .chat-view .chat-input .input-wrap { padding: 2px 2px 2px 12px; }
+            .chat-view .chat-input .input-wrap textarea { font-size: 0.85rem; padding: 6px 0; }
+            .msg .image-attachment { max-width: 150px; }
+        }
+        @media (max-width: 480px) {
+            .conv-item { padding: 10px 12px; }
+            .conv-item .avatar { width: 36px; height: 36px; }
+            .conv-item .info .name { font-size: 0.8rem; }
+            .chat-view .chat-header .left .info .name { font-size: 0.85rem; }
+            .msg { max-width: 95%; font-size: 0.82rem; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * { transition: none !important; transform: none !important; }
+            .typing-indicator .dot { animation: none !important; }
+        }
     </style>
 </head>
 <body>
 
-    <div class="chat-container">
-        <!-- ============================================================
-             HEADER
-             ============================================================ -->
-        <header class="chat-header">
-            <a href="projects.html" class="header-btn"><i class="fas fa-chevron-left"></i></a>
-            
-            <div class="pro-info">
-                <div class="pro-name">
-                    Raphael Lezius 
-                    <span class="premium-tag"><i class="fas fa-crown"></i> Pro</span>
-                </div>
-                <div class="pro-status">
-                    <i class="fas fa-circle" style="font-size:0.4rem;"></i> Online
-                </div>
+    <!-- ============================================================
+       NAVIGATION
+       ============================================================ -->
+    <header class="site-nav" id="siteNav">
+        <div class="nav-inner">
+            <a href="../index.html" class="nav-logo">
+                <div class="logo-icon"><i class="fas fa-tools"></i></div>
+                FIX<span>JORI</span>
+            </a>
+            <nav class="nav-links">
+                <a href="../index.html">Start</a>
+                <a href="../directory/index.html">Handwerker</a>
+                <a href="../services/montage.html">Services</a>
+                <a href="dashboard.html" class="active">Mein Konto</a>
+                <a href="../booking/step1.html" class="nav-cta">Projekt starten</a>
+            </nav>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon" id="themeIcon"></i></button>
+                <a href="dashboard.html" class="nav-cta" style="background:transparent;border:1px solid var(--fj-border);color:var(--fj-text);">Profil</a>
+                <button class="mobile-toggle" id="mobileToggle"><span></span><span></span><span></span></button>
             </div>
-            
-            <div style="display:flex; gap: 4px;">
-                <button class="header-btn" id="themeToggle"><i class="fas fa-moon" id="themeIcon"></i></button>
-                <a href="tel:+49123456789" class="header-btn"><i class="fas fa-phone-alt"></i></a>
-            </div>
-        </header>
-
-        <!-- ============================================================
-             PINNED CONTEXT (Best Practice Meituan)
-             ============================================================ -->
-        <div class="project-context">
-            <div class="project-details">
-                <h4>Küchenmontage – Familie Schmidt</h4>
-                <p>
-                    <span><i class="fas fa-calendar-alt"></i> 12. Aug</span>
-                    <span><i class="fas fa-map-marker-alt"></i> Augsburg, Maxstr.</span>
-                </p>
-            </div>
-            <a href="project-detail.html?id=schmidt" class="btn-context">Details</a>
         </div>
+    </header>
 
-        <!-- ============================================================
-             CHAT AREA
-             ============================================================ -->
-        <main class="chat-area" id="chatArea">
-            
-            <div class="msg-time">Gestern 14:30</div>
-            
-            <div class="msg-system">
-                <i class="fas fa-check-circle"></i> Projekt "Küchenmontage" wurde bestätigt.
-            </div>
-
-            <div class="msg-row pro">
-                <div class="avatar"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Crect fill='%23E2E8F0' width='32' height='32'/%3E%3Ctext x='8' y='20' fill='%2364748B' font-size='10'%3ERL%3C/text%3E%3C/svg%3E" alt="RL" /></div>
-                <div class="bubble">
-                    Hallo Michael! Vielen Dank für die Bestätigung. Ich werde am 12. August gegen 08:00 Uhr bei Ihnen eintreffen.
-                </div>
-            </div>
-
-            <div class="msg-row client">
-                <div class="bubble">
-                    Perfekt, danke Raphael. Bringen Sie das Werkzeug für den Starkstromanschluss direkt mit?
-                </div>
-            </div>
-
-            <div class="msg-row pro">
-                <div class="avatar"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Crect fill='%23E2E8F0' width='32' height='32'/%3E%3Ctext x='8' y='20' fill='%2364748B' font-size='10'%3ERL%3C/text%3E%3C/svg%3E" alt="RL" /></div>
-                <div class="bubble">
-                    Ja, als zertifizierte Elektrofachkraft (EFFT) habe ich alle Messgeräte und Werkzeuge dabei. Der Herdanschluss ist im Preis inklusive.
-                </div>
-            </div>
-
-            <div class="msg-time">Heute 09:15</div>
-
-            <div class="msg-row pro">
-                <div class="avatar"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Crect fill='%23E2E8F0' width='32' height='32'/%3E%3Ctext x='8' y='20' fill='%2364748B' font-size='10'%3ERL%3C/text%3E%3C/svg%3E" alt="RL" /></div>
-                <div class="bubble">
-                    Kurze Frage vorab: Ist der Starkstromanschluss in der Wand bereits frei zugänglich, oder steht da noch ein alter Schrank davor?
-                </div>
-            </div>
-
-            <!-- Interaktive Bubble (Angebot/Zusatzleistung) -->
-            <div class="msg-row pro">
-                <div class="avatar"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Crect fill='%23E2E8F0' width='32' height='32'/%3E%3Ctext x='8' y='20' fill='%2364748B' font-size='10'%3ERL%3C/text%3E%3C/svg%3E" alt="RL" /></div>
-                <div class="bubble-rich">
-                    <div class="title"><i class="fas fa-file-invoice" style="color:var(--fj-teal);"></i> Zusatzleistung: Demontage Altgerät</div>
-                    <div class="price">45,00 €</div>
-                    <a href="#" class="btn-action">Angebot ansehen</a>
-                </div>
-            </div>
-
-        </main>
-
-        <!-- ============================================================
-             FOOTER / INPUT
-             ============================================================ -->
-        <footer class="chat-footer">
-            
-            <!-- Quick Replies (Meituan Style) -->
-            <div class="quick-replies">
-                <div class="chip" onclick="fillInput('Der Anschluss ist frei zugänglich.')">Anschluss ist frei</div>
-                <div class="chip" onclick="fillInput('Das alte Gerät muss noch weg.')">Altgerät muss weg</div>
-                <div class="chip" onclick="fillInput('Gibt es Parkmöglichkeiten?')">Parkplatz Info</div>
-                <div class="chip" onclick="fillInput('Ich rufe Sie kurz an.')">Anrufen</div>
-            </div>
-
-            <div class="input-row">
-                <button class="icon-btn"><i class="fas fa-plus"></i></button>
-                <input type="text" id="chatInput" class="chat-input" placeholder="Nachricht tippen..." autocomplete="off">
-                <button class="send-btn" onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
-            </div>
-        </footer>
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="../index.html">Start</a>
+        <a href="../directory/index.html">Handwerker</a>
+        <a href="../services/montage.html">Services</a>
+        <a href="dashboard.html">Mein Konto</a>
+        <a href="../booking/step1.html" class="mobile-cta">Projekt starten</a>
     </div>
 
     <!-- ============================================================
-         SCRIPTS
-         ============================================================ -->
+       MESSAGES CONTENT
+       ============================================================ -->
+    <div class="container">
+
+        <!-- Page Header -->
+        <div class="page-header">
+            <div>
+                <h1>💬 Nachrichten</h1>
+                <span class="sub">Alle Ihre Unterhaltungen mit Handwerkern an einem Ort.</span>
+            </div>
+            <div class="actions">
+                <a href="../directory/index.html" class="btn btn-primary btn-sm"><i class="fas fa-user-plus"></i> Neuer Chat</a>
+                <a href="dashboard.html" class="btn btn-secondary btn-sm"><i class="fas fa-arrow-left"></i> Zurück</a>
+            </div>
+        </div>
+
+        <!-- Messages Layout -->
+        <div class="messages-layout">
+
+            <!-- ===== LEFT: Conversation List ===== -->
+            <div class="conv-list">
+
+                <!-- Search -->
+                <div class="search-conv">
+                    <i class="fas fa-search" style="color:var(--fj-dim);"></i>
+                    <input type="text" placeholder="Nachrichten durchsuchen..." id="convSearch" />
+                </div>
+
+                <!-- Conversations -->
+                <div class="conv-items" id="convItems">
+
+                    <!-- Conv 1: Raphael Lezius (Active) -->
+                    <div class="conv-item active" data-id="raphael" data-name="Raphael Lezius">
+                        <div class="avatar">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44'%3E%3Crect fill='%23E2E8F0' width='44' height='44'/%3E%3Ctext x='12' y='28' fill='%2364748B' font-size='14'%3ERL%3C/text%3E%3C/svg%3E" alt="RL" />
+                            <span class="online-dot"></span>
+                        </div>
+                        <div class="info">
+                            <div class="name">
+                                Raphael Lezius
+                                <span class="premium-badge">⭐ Premium</span>
+                            </div>
+                            <div class="last-msg"><span class="sender">Raphael:</span> Die Arbeitsplatte wurde heute zugeschnitten. Alles läuft nach Plan.</div>
+                        </div>
+                        <div class="meta">
+                            <span class="time">12:45</span>
+                            <span class="unread">2</span>
+                            <span class="pinned"><i class="fas fa-thumbtack"></i></span>
+                        </div>
+                    </div>
+
+                    <!-- Conv 2: Jaffar Shariff -->
+                    <div class="conv-item" data-id="jaffar" data-name="Jaffar Shariff">
+                        <div class="avatar">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44'%3E%3Crect fill='%23E2E8F0' width='44' height='44'/%3E%3Ctext x='12' y='28' fill='%2364748B' font-size='14'%3EJS%3C/text%3E%3C/svg%3E" alt="JS" />
+                            <span class="online-dot"></span>
+                        </div>
+                        <div class="info">
+                            <div class="name">Jaffar Shariff</div>
+                            <div class="last-msg"><span class="sender">Jaffar:</span> Können Sie bitte die Farbe der Griffe final bestätigen?</div>
+                        </div>
+                        <div class="meta">
+                            <span class="time">Gestern</span>
+                            <span class="unread">1</span>
+                        </div>
+                    </div>
+
+                    <!-- Conv 3: Michael Weber -->
+                    <div class="conv-item" data-id="michael" data-name="Michael Weber">
+                        <div class="avatar">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44'%3E%3Crect fill='%23E2E8F0' width='44' height='44'/%3E%3Ctext x='10' y='28' fill='%2364748B' font-size='14'%3EMW%3C/text%3E%3C/svg%3E" alt="MW" />
+                        </div>
+                        <div class="info">
+                            <div class="name">Michael Weber</div>
+                            <div class="last-msg"><span class="sender">Sie:</span> Vielen Dank für die schnelle Rückmeldung!</div>
+                        </div>
+                        <div class="meta">
+                            <span class="time">Gestern</span>
+                            <span class="unread hidden">0</span>
+                        </div>
+                    </div>
+
+                    <!-- Conv 4: Anna Schmidt -->
+                    <div class="conv-item" data-id="anna" data-name="Anna Schmidt">
+                        <div class="avatar">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44'%3E%3Crect fill='%23E2E8F0' width='44' height='44'/%3E%3Ctext x='12' y='28' fill='%2364748B' font-size='14'%3EAS%3C/text%3E%3C/svg%3E" alt="AS" />
+                        </div>
+                        <div class="info">
+                            <div class="name">Anna Schmidt</div>
+                            <div class="last-msg"><span class="sender">Anna:</span> Die Arbeiten sind abgeschlossen. Bitte prüfen Sie alles.</div>
+                        </div>
+                        <div class="meta">
+                            <span class="time">Di</span>
+                            <span class="unread hidden">0</span>
+                        </div>
+                    </div>
+
+                    <!-- Conv 5: Thomas Bauer -->
+                    <div class="conv-item" data-id="thomas" data-name="Thomas Bauer">
+                        <div class="avatar">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44'%3E%3Crect fill='%23E2E8F0' width='44' height='44'/%3E%3Ctext x='10' y='28' fill='%2364748B' font-size='14'%3ETB%3C/text%3E%3C/svg%3E" alt="TB" />
+                        </div>
+                        <div class="info">
+                            <div class="name">Thomas Bauer</div>
+                            <div class="last-msg"><span class="sender">Sie:</span> Ich melde mich nächste Woche bei Ihnen.</div>
+                        </div>
+                        <div class="meta">
+                            <span class="time">Di</span>
+                            <span class="unread hidden">0</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- ===== RIGHT: Chat View ===== -->
+            <div class="chat-view" id="chatView">
+
+                <!-- Chat Header -->
+                <div class="chat-header">
+                    <div class="left">
+                        <button class="back-btn" id="chatBackBtn"><i class="fas fa-arrow-left"></i></button>
+                        <div class="avatar"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36'%3E%3Crect fill='%23E2E8F0' width='36' height='36'/%3E%3Ctext x='10' y='22' fill='%2364748B' font-size='12'%3ERL%3C/text%3E%3C/svg%3E" alt="RL" /></div>
+                        <div class="info">
+                            <div class="name">Raphael Lezius <span class="badge badge-amber" style="font-size:0.45rem;padding:0 8px;">⭐ Premium</span></div>
+                            <div class="status"><span class="dot"></span> Online</div>
+                        </div>
+                    </div>
+                    <div class="actions">
+                        <button title="Anrufen"><i class="fas fa-phone"></i></button>
+                        <button title="Videoanruf"><i class="fas fa-video"></i></button>
+                        <button title="Mehr"><i class="fas fa-ellipsis-v"></i></button>
+                    </div>
+                </div>
+
+                <!-- Messages -->
+                <div class="chat-messages" id="chatMessages">
+
+                    <div class="msg-date-divider"><span>Heute</span></div>
+
+                    <div class="msg received">
+                        Guten Morgen! Ich wollte Sie nur kurz informieren, dass die Arbeitsplatte heute zugeschnitten wurde. Alles läuft nach Plan.
+                        <span class="time">09:32</span>
+                    </div>
+
+                    <div class="msg sent">
+                        Vielen Dank für die Info! Das klingt super.
+                        <span class="time">09:45</span>
+                    </div>
+
+                    <div class="msg received">
+                        <div class="image-attachment">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='200'%3E%3Crect fill='%231A2332' width='300' height='200'/%3E%3Ctext x='40' y='110' fill='%2394A3B8' font-size='16'%3EArbeitsplatte%3C/text%3E%3C/svg%3E" alt="Arbeitsplatte" />
+                        </div>
+                        Hier sehen Sie bereits den Fortschritt. Die Fräsungen für das Kochfeld sind fertig.
+                        <span class="time">10:00</span>
+                    </div>
+
+                    <div class="msg sent">
+                        Sieht wirklich gut aus! Vielen Dank für das Foto.
+                        <span class="time">10:15</span>
+                    </div>
+
+                    <div class="msg received">
+                        Gerne! Ich schicke Ihnen heute Nachmittag noch ein Update zur Spülenmontage.
+                        <span class="time">10:18</span>
+                    </div>
+
+                    <div class="msg received">
+                        <div class="file-attachment">
+                            <i class="fas fa-file-pdf"></i>
+                            <div class="file-info">
+                                <div class="file-name">Montageplan_Küche.pdf</div>
+                                <div class="file-size">2.4 MB</div>
+                            </div>
+                            <i class="fas fa-download" style="opacity:0.5;"></i>
+                        </div>
+                        Hier ist noch der aktualisierte Montageplan.
+                        <span class="time">10:20</span>
+                    </div>
+
+                    <!-- Typing indicator -->
+                    <div class="typing-indicator" id="typingIndicator">
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span style="font-size:0.7rem;color:var(--fj-muted);margin-left:6px;">Raphael schreibt...</span>
+                    </div>
+
+                </div>
+
+                <!-- Attachment Preview -->
+                <div class="attachment-preview" id="attachmentPreview">
+                    <div class="file-info">
+                        <i class="fas fa-file-image"></i>
+                        <span class="name" id="attachmentName">photo.jpg</span>
+                        <span class="size" id="attachmentSize">2.1 MB</span>
+                    </div>
+                    <button class="remove-attachment" id="removeAttachment"><i class="fas fa-times"></i></button>
+                </div>
+
+                <!-- Chat Input -->
+                <div class="chat-input">
+                    <div class="input-wrap">
+                        <button class="attachments-btn" id="attachBtn" title="Datei anhängen"><i class="fas fa-paperclip"></i></button>
+                        <input type="file" id="fileInput" style="display:none;" accept="image/*,.pdf,.doc,.docx,.xlsx" />
+                        <textarea id="msgInput" rows="1" placeholder="Nachricht schreiben..." aria-label="Nachricht eingeben"></textarea>
+                    </div>
+                    <button class="send-btn" id="sendBtn"><i class="fas fa-paper-plane"></i></button>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h4>FIX<span>JORI</span></h4>
+                    <p>Die Plattform für perfekte Montage und Premium-Handwerk. Verifizierte Experten, Festpreise, persönliche Betreuung.</p>
+                </div>
+                <div class="footer-col">
+                    <h5>Services</h5>
+                    <a href="../services/montage.html">Montage & Möbel</a>
+                    <a href="../services/elektro.html">Elektro & Smart</a>
+                    <a href="../services/sanitaer.html">Sanitär & Wasser</a>
+                    <a href="../services/garten.html">Garten & Outdoor</a>
+                </div>
+                <div class="footer-col">
+                    <h5>Plattform</h5>
+                    <a href="../directory/index.html">Handwerker finden</a>
+                    <a href="dashboard.html">Client Portal</a>
+                    <a href="../handyman/dashboard.html">Handyman Portal</a>
+                    <a href="../booking/step1.html">Projekt starten</a>
+                </div>
+                <div class="footer-col">
+                    <h5>Rechtliches</h5>
+                    <a href="../impressum.html">Impressum</a>
+                    <a href="../datenschutz.html">Datenschutz</a>
+                    <a href="../agb.html">AGB</a>
+                    <a href="../garantie.html">Garantie</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2026 FIXJORI. Alle Rechte vorbehalten.</span>
+                <div style="display:flex;gap:16px;flex-wrap:wrap;">
+                    <a href="../impressum.html">Impressum</a>
+                    <a href="../datenschutz.html">Datenschutz</a>
+                    <a href="../agb.html">AGB</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================================================
+       SCRIPTS
+       ============================================================ -->
     <script>
         (function() {
             'use strict';
@@ -460,63 +1240,329 @@
                 applyTheme(currentTheme);
             });
 
-            // ── CHAT LOGIC ──
-            const chatArea = document.getElementById('chatArea');
-            const chatInput = document.getElementById('chatInput');
+            // ── NAV TOGGLE ──
+            const toggleBtn = document.getElementById('mobileToggle');
+            const mobileMenu = document.getElementById('mobileMenu');
 
-            // Scroll to bottom on load
-            function scrollToBottom() {
-                chatArea.scrollTop = chatArea.scrollHeight;
+            toggleBtn.addEventListener('click', function() {
+                const isOpen = this.classList.toggle('active');
+                mobileMenu.classList.toggle('open');
+                this.setAttribute('aria-expanded', isOpen);
+                document.body.style.overflow = isOpen ? 'hidden' : '';
+            });
+
+            mobileMenu.querySelectorAll('a').forEach(function(link) {
+                link.addEventListener('click', function() {
+                    toggleBtn.classList.remove('active');
+                    mobileMenu.classList.remove('open');
+                    document.body.style.overflow = '';
+                });
+            });
+
+            // ── CONVERSATION SELECTION ──
+            const convItems = document.querySelectorAll('.conv-item');
+            const chatView = document.getElementById('chatView');
+            const convSearch = document.getElementById('convSearch');
+            const backBtn = document.getElementById('chatBackBtn');
+            const msgInput = document.getElementById('msgInput');
+            const sendBtn = document.getElementById('sendBtn');
+            const attachBtn = document.getElementById('attachBtn');
+            const fileInput = document.getElementById('fileInput');
+            const attachmentPreview = document.getElementById('attachmentPreview');
+            const removeAttachment = document.getElementById('removeAttachment');
+            const attachmentName = document.getElementById('attachmentName');
+            const attachmentSize = document.getElementById('attachmentSize');
+            const typingIndicator = document.getElementById('typingIndicator');
+
+            let selectedFile = null;
+            let activeConvId = 'raphael';
+
+            function selectConversation(id) {
+                convItems.forEach(function(item) {
+                    item.classList.toggle('active', item.dataset.id === id);
+                });
+                activeConvId = id;
+                // On mobile, hide the conversation list when a chat is selected
+                if (window.innerWidth <= 900) {
+                    document.querySelector('.conv-list').style.display = 'none';
+                    chatView.style.display = 'flex';
+                }
+                // Reset attachment preview
+                clearAttachment();
+                // Focus input
+                msgInput.focus();
+                // Simulate typing indicator after a delay
+                showTyping();
             }
-            scrollToBottom();
 
-            // Fill input from Quick Replies
-            window.fillInput = function(text) {
-                chatInput.value = text;
-                chatInput.focus();
-            };
+            convItems.forEach(function(item) {
+                item.addEventListener('click', function() {
+                    selectConversation(this.dataset.id);
+                });
+            });
 
-            // Send Message Function
-            window.sendMessage = function() {
-                const text = chatInput.value.trim();
-                if (!text) return;
-
-                // Create Message Bubble
-                const msgRow = document.createElement('div');
-                msgRow.className = 'msg-row client';
-                
-                const bubble = document.createElement('div');
-                bubble.className = 'bubble';
-                bubble.textContent = text;
-                
-                msgRow.appendChild(bubble);
-                chatArea.appendChild(msgRow);
-                
-                // Clear & Scroll
-                chatInput.value = '';
-                scrollToBottom();
-
-                // Fake Auto-Reply for Demo
-                setTimeout(() => {
-                    const replyRow = document.createElement('div');
-                    replyRow.className = 'msg-row pro';
-                    replyRow.innerHTML = `
-                        <div class="avatar"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Crect fill='%23E2E8F0' width='32' height='32'/%3E%3Ctext x='8' y='20' fill='%2364748B' font-size='10'%3ERL%3C/text%3E%3C/svg%3E" alt="RL" /></div>
-                        <div class="bubble">Alles klar, danke für die Rückmeldung. Bis zum 12.!</div>
-                    `;
-                    chatArea.appendChild(replyRow);
-                    scrollToBottom();
-                }, 1500);
-            };
-
-            // Enter Key Listener
-            chatInput.addEventListener('keydown', function(e) {
-                if (e.key === 'Enter') {
-                    sendMessage();
+            // Back button for mobile
+            backBtn.addEventListener('click', function() {
+                document.querySelector('.conv-list').style.display = 'flex';
+                chatView.style.display = 'flex';
+                // On mobile, hide the chat view
+                if (window.innerWidth <= 900) {
+                    chatView.style.display = 'none';
                 }
             });
 
+            // Responsive: reset display on resize
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 900) {
+                    document.querySelector('.conv-list').style.display = 'flex';
+                    chatView.style.display = 'flex';
+                } else {
+                    // On mobile, only show chat if a conversation is active
+                    const active = document.querySelector('.conv-item.active');
+                    if (active) {
+                        document.querySelector('.conv-list').style.display = 'none';
+                        chatView.style.display = 'flex';
+                    } else {
+                        document.querySelector('.conv-list').style.display = 'flex';
+                        chatView.style.display = 'none';
+                    }
+                }
+            });
+
+            // ── SEARCH CONVERSATIONS ──
+            convSearch.addEventListener('input', function() {
+                const term = this.value.toLowerCase().trim();
+                convItems.forEach(function(item) {
+                    const text = item.textContent.toLowerCase();
+                    item.style.display = term === '' || text.includes(term) ? '' : 'none';
+                });
+            });
+
+            // ── SEND MESSAGE ──
+            function sendMessage() {
+                const text = msgInput.value.trim();
+                if (!text && !selectedFile) return;
+
+                const messagesContainer = document.getElementById('chatMessages');
+                const time = new Date();
+                const timeStr = time.getHours().toString().padStart(2, '0') + ':' + time.getMinutes().toString().padStart(2,
+                '0');
+
+                // Create sent message
+                const msgDiv = document.createElement('div');
+                msgDiv.className = 'msg sent';
+
+                let content = text ? text : '';
+
+                // If there's a file attachment
+                if (selectedFile) {
+                    const isImage = selectedFile.type.startsWith('image/');
+                    const fileSize = (selectedFile.size / 1024 / 1024).toFixed(1) + ' MB';
+
+                    if (isImage) {
+                        const reader = new FileReader();
+                        reader.onload = function(e) {
+                            const imgDiv = document.createElement('div');
+                            imgDiv.className = 'image-attachment';
+                            const img = document.createElement('img');
+                            img.src = e.target.result;
+                            img.alt = selectedFile.name;
+                            imgDiv.appendChild(img);
+                            msgDiv.appendChild(imgDiv);
+                            if (text) {
+                                const textNode = document.createTextNode(text);
+                                msgDiv.appendChild(textNode);
+                            }
+                            const timeSpan = document.createElement('span');
+                            timeSpan.className = 'time';
+                            timeSpan.textContent = timeStr;
+                            msgDiv.appendChild(timeSpan);
+                            messagesContainer.appendChild(msgDiv);
+                            scrollToBottom();
+                            clearAttachment();
+                            msgInput.value = '';
+                            toggleSendButton();
+                        };
+                        reader.readAsDataURL(selectedFile);
+                        // The rest is handled in the onload
+                        return;
+                    } else {
+                        const fileDiv = document.createElement('div');
+                        fileDiv.className = 'file-attachment dark';
+                        let icon = 'fa-file';
+                        if (selectedFile.type.includes('pdf')) icon = 'fa-file-pdf';
+                        else if (selectedFile.type.includes('image')) icon = 'fa-file-image';
+                        else if (selectedFile.type.includes('word')) icon = 'fa-file-word';
+                        else if (selectedFile.type.includes('excel')) icon = 'fa-file-excel';
+                        fileDiv.innerHTML = `
+                            <i class="fas ${icon}"></i>
+                            <div class="file-info">
+                                <div class="file-name">${selectedFile.name}</div>
+                                <div class="file-size">${fileSize}</div>
+                            </div>
+                            <i class="fas fa-paperclip" style="opacity:0.3;"></i>
+                        `;
+                        msgDiv.appendChild(fileDiv);
+                        content = text;
+                    }
+                }
+
+                if (content) {
+                    const textNode = document.createTextNode(content);
+                    msgDiv.appendChild(textNode);
+                }
+
+                const timeSpan = document.createElement('span');
+                timeSpan.className = 'time';
+                timeSpan.textContent = timeStr;
+                msgDiv.appendChild(timeSpan);
+
+                messagesContainer.appendChild(msgDiv);
+                scrollToBottom();
+
+                // Clear input
+                msgInput.value = '';
+                clearAttachment();
+                toggleSendButton();
+
+                // Simulate auto-reply
+                simulateReply();
+            }
+
+            function simulateReply() {
+                showTyping();
+                setTimeout(function() {
+                    hideTyping();
+                    const messagesContainer = document.getElementById('chatMessages');
+                    const time = new Date();
+                    const timeStr = time.getHours().toString().padStart(2, '0') + ':' + time.getMinutes().toString()
+                        .padStart(2, '0');
+
+                    const replies = [
+                        'Vielen Dank für Ihre Nachricht! Ich melde mich gleich bei Ihnen.',
+                        'Perfekt, das habe ich verstanden. Ich kümmere mich darum.',
+                        'Gerne! Soll ich Ihnen ein Angebot dafür erstellen?',
+                        'Alles klar, ich setze mich heute noch dran.',
+                        'Danke für die Info! Das hilft mir sehr weiter.',
+                        'Das klingt gut. Wann passt es Ihnen am besten?',
+                    ];
+
+                    const reply = replies[Math.floor(Math.random() * replies.length)];
+
+                    const msgDiv = document.createElement('div');
+                    msgDiv.className = 'msg received';
+                    msgDiv.textContent = reply;
+                    const timeSpan = document.createElement('span');
+                    timeSpan.className = 'time';
+                    timeSpan.textContent = timeStr;
+                    msgDiv.appendChild(timeSpan);
+                    messagesContainer.appendChild(msgDiv);
+                    scrollToBottom();
+
+                    // Update last message in conversation list
+                    updateLastMessage(reply);
+                }, 1500 + Math.random() * 2000);
+            }
+
+            function updateLastMessage(text) {
+                const activeItem = document.querySelector('.conv-item.active');
+                if (activeItem) {
+                    const lastMsg = activeItem.querySelector('.last-msg');
+                    if (lastMsg) {
+                        const senderSpan = lastMsg.querySelector('.sender');
+                        if (senderSpan) {
+                            lastMsg.innerHTML = `<span class="sender">Raphael:</span> ${text}`;
+                        } else {
+                            lastMsg.textContent = text;
+                        }
+                    }
+                }
+            }
+
+            function showTyping() {
+                typingIndicator.style.display = 'flex';
+                scrollToBottom();
+            }
+
+            function hideTyping() {
+                typingIndicator.style.display = 'none';
+            }
+
+            function scrollToBottom() {
+                const container = document.getElementById('chatMessages');
+                container.scrollTop = container.scrollHeight;
+            }
+
+            function toggleSendButton() {
+                const hasText = msgInput.value.trim().length > 0;
+                const hasFile = selectedFile !== null;
+                sendBtn.disabled = !(hasText || hasFile);
+            }
+
+            function clearAttachment() {
+                selectedFile = null;
+                attachmentPreview.classList.remove('active');
+                attachmentName.textContent = '';
+                attachmentSize.textContent = '';
+                fileInput.value = '';
+                toggleSendButton();
+            }
+
+            // ── EVENT LISTENERS ──
+            sendBtn.addEventListener('click', sendMessage);
+
+            msgInput.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    sendMessage();
+                }
+                toggleSendButton();
+            });
+
+            msgInput.addEventListener('input', toggleSendButton);
+
+            attachBtn.addEventListener('click', function() {
+                fileInput.click();
+            });
+
+            fileInput.addEventListener('change', function() {
+                if (this.files && this.files.length > 0) {
+                    const file = this.files[0];
+                    selectedFile = file;
+                    const size = (file.size / 1024 / 1024).toFixed(1) + ' MB';
+                    attachmentName.textContent = file.name;
+                    attachmentSize.textContent = size;
+                    attachmentPreview.classList.add('active');
+                    toggleSendButton();
+                }
+            });
+
+            removeAttachment.addEventListener('click', clearAttachment);
+
+            // ── AUTO-RESIZE TEXTAREA ──
+            msgInput.addEventListener('input', function() {
+                this.style.height = 'auto';
+                this.style.height = Math.min(this.scrollHeight, 100) + 'px';
+            });
+
+            // ── SCROLL NAV SHADOW ──
+            const nav = document.getElementById('siteNav');
+            window.addEventListener('scroll', function() {
+                nav.classList.toggle('scrolled', window.scrollY > 20);
+            }, { passive: true });
+
+            // ── INIT ──
+            // On mobile, hide chat view initially
+            if (window.innerWidth <= 900) {
+                chatView.style.display = 'none';
+            }
+
+            // Auto-scroll to bottom on load
+            setTimeout(scrollToBottom, 300);
+
+            console.log('✅ Messages page loaded.');
         })();
     </script>
+
 </body>
 </html>

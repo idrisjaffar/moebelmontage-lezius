@@ -1,0 +1,1823 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="light">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    <title>Mein Profil – FIXJORI Handyman</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&family=Space+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <style>
+        /* ============================================================
+           GLOBAL VARIABLES & RESET
+           ============================================================ */
+        :root {
+            --fj-teal: #0D9488;
+            --fj-teal-dark: #0F766E;
+            --fj-teal-light: #14B8A6;
+            --fj-amber: #F59E0B;
+            --fj-gold: #F5A623;
+            --fj-green: #22C55E;
+            --fj-coral: #FF6B35;
+            --fj-pink: #FF007F;
+            --fj-red: #EF4444;
+            --fj-bg: #F8FAFC;
+            --fj-surface: #FFFFFF;
+            --fj-text: #0F172A;
+            --fj-muted: #475569;
+            --fj-dim: #94A3B8;
+            --fj-border: #E2E8F0;
+            --fj-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+            --fj-shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.08);
+            --fj-shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.10);
+            --fj-radius: 16px;
+            --fj-radius-sm: 10px;
+            --fj-radius-full: 40px;
+            --font-head: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --nav-height: 68px;
+            --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        [data-theme="dark"] {
+            --fj-bg: #0F172A;
+            --fj-surface: #1A2332;
+            --fj-text: #F8FAFC;
+            --fj-muted: #94A3B8;
+            --fj-dim: #64748B;
+            --fj-border: rgba(255, 255, 255, 0.06);
+            --fj-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+            --fj-shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.4);
+            --fj-shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.5);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: var(--font-body);
+            background: var(--fj-bg);
+            color: var(--fj-text);
+            transition: background 0.3s, color 0.3s;
+            padding-top: calc(var(--nav-height) + 12px);
+            min-height: 100vh;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        button {
+            font-family: inherit;
+            border: none;
+            background: none;
+            color: inherit;
+            cursor: pointer;
+        }
+        img {
+            max-width: 100%;
+            display: block;
+        }
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 clamp(16px, 3.5vw, 32px);
+        }
+        .text-teal {
+            color: var(--fj-teal);
+        }
+        .text-muted {
+            color: var(--fj-muted);
+        }
+        .text-dim {
+            color: var(--fj-dim);
+        }
+        .text-green {
+            color: var(--fj-green);
+        }
+        .text-amber {
+            color: var(--fj-amber);
+        }
+        .text-pink {
+            color: var(--fj-pink);
+        }
+        .text-red {
+            color: var(--fj-red);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 2px 12px;
+            border-radius: 30px;
+            font-family: var(--font-mono);
+            font-size: 0.5rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        .badge-teal {
+            background: rgba(13, 148, 136, 0.08);
+            color: var(--fj-teal);
+            border: 1px solid rgba(13, 148, 136, 0.10);
+        }
+        .badge-amber {
+            background: rgba(245, 158, 11, 0.08);
+            color: var(--fj-amber);
+            border: 1px solid rgba(245, 158, 11, 0.10);
+        }
+        .badge-green {
+            background: rgba(34, 197, 94, 0.08);
+            color: var(--fj-green);
+            border: 1px solid rgba(34, 197, 94, 0.10);
+        }
+        .badge-pink {
+            background: rgba(255, 0, 127, 0.08);
+            color: var(--fj-pink);
+            border: 1px solid rgba(255, 0, 127, 0.10);
+        }
+        .badge-red {
+            background: rgba(239, 68, 68, 0.08);
+            color: var(--fj-red);
+            border: 1px solid rgba(239, 68, 68, 0.10);
+        }
+
+        /* ============================================================
+           BUTTONS
+           ============================================================ */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 22px;
+            border-radius: var(--fj-radius-sm);
+            font-weight: 700;
+            font-size: 0.8rem;
+            transition: all 0.3s var(--ease-smooth);
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--fj-teal), var(--fj-teal-dark));
+            color: #fff;
+            box-shadow: 0 4px 16px rgba(13, 148, 136, 0.25);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(13, 148, 136, 0.35);
+        }
+        .btn-secondary {
+            background: var(--fj-surface);
+            border: 1px solid var(--fj-border);
+            color: var(--fj-text);
+        }
+        .btn-secondary:hover {
+            border-color: var(--fj-teal);
+        }
+        .btn-outline {
+            background: transparent;
+            border: 1.5px solid var(--fj-border);
+            color: var(--fj-text);
+        }
+        .btn-outline:hover {
+            border-color: var(--fj-teal);
+            color: var(--fj-teal);
+        }
+        .btn-amber {
+            background: var(--fj-amber);
+            color: #0F172A;
+            box-shadow: 0 4px 16px rgba(245, 158, 11, 0.25);
+        }
+        .btn-amber:hover {
+            transform: translateY(-2px);
+        }
+        .btn-green {
+            background: var(--fj-green);
+            color: #fff;
+            box-shadow: 0 4px 16px rgba(34, 197, 94, 0.25);
+        }
+        .btn-green:hover {
+            transform: translateY(-2px);
+        }
+        .btn-sm {
+            padding: 6px 14px;
+            font-size: 0.7rem;
+        }
+        .btn-xs {
+            padding: 4px 10px;
+            font-size: 0.6rem;
+        }
+        .btn-block {
+            width: 100%;
+            justify-content: center;
+        }
+
+        /* ============================================================
+           NAVIGATION
+           ============================================================ */
+        .site-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            height: var(--nav-height);
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--fj-border);
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            transition: background 0.3s, box-shadow 0.3s;
+        }
+        [data-theme="dark"] .site-nav {
+            background: rgba(15, 23, 42, 0.85);
+        }
+        .site-nav.scrolled {
+            box-shadow: var(--fj-shadow);
+        }
+
+        .nav-inner {
+            max-width: 1280px;
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-head);
+            font-weight: 900;
+            font-size: 1.3rem;
+            letter-spacing: -0.5px;
+        }
+        .nav-logo span {
+            color: var(--fj-teal);
+        }
+        .nav-logo .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--fj-teal), var(--fj-teal-dark));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+        }
+        .nav-links a {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--fj-muted);
+            transition: color 0.2s;
+            position: relative;
+        }
+        .nav-links a:hover {
+            color: var(--fj-text);
+        }
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--fj-teal);
+            border-radius: 2px;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .theme-toggle {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 1px solid var(--fj-border);
+            background: transparent;
+            color: var(--fj-muted);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+        }
+        .theme-toggle:hover {
+            border-color: var(--fj-teal);
+            color: var(--fj-text);
+        }
+
+        .nav-cta {
+            padding: 6px 16px;
+            border-radius: var(--fj-radius-full);
+            background: linear-gradient(135deg, var(--fj-teal), var(--fj-teal-dark));
+            color: #fff !important;
+            font-weight: 700;
+            font-size: 0.7rem !important;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .nav-cta:hover {
+            opacity: 0.9;
+        }
+
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            padding: 6px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        .mobile-toggle span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: var(--fj-text);
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+        .mobile-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .mobile-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .mobile-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: var(--nav-height);
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--fj-surface);
+            backdrop-filter: blur(20px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            transform: translateX(100%);
+            transition: transform 0.4s var(--ease-smooth);
+            z-index: 999;
+            padding: 40px 20px;
+        }
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+        .mobile-menu a {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--fj-muted);
+            transition: color 0.2s;
+        }
+        .mobile-menu a:hover {
+            color: var(--fj-text);
+        }
+        .mobile-menu .mobile-cta {
+            margin-top: 16px;
+            padding: 12px 40px;
+            border-radius: var(--fj-radius-full);
+            background: linear-gradient(135deg, var(--fj-teal), var(--fj-teal-dark));
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 900px) {
+            .nav-links {
+                display: none;
+            }
+            .mobile-toggle {
+                display: flex;
+            }
+            .mobile-menu {
+                transform: translateX(100%);
+            }
+            .mobile-menu.open {
+                transform: translateX(0);
+            }
+            .nav-actions .nav-cta {
+                display: none;
+            }
+        }
+
+        /* ============================================================
+           PAGE HEADER
+           ============================================================ */
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px 20px;
+            padding: 16px 0 20px;
+            border-bottom: 1px solid var(--fj-border);
+        }
+        .page-header h1 {
+            font-family: var(--font-head);
+            font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+            font-weight: 900;
+            letter-spacing: -0.5px;
+        }
+        .page-header .sub {
+            color: var(--fj-muted);
+            font-size: 0.9rem;
+            margin-top: 2px;
+        }
+        .page-header .actions {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        /* ============================================================
+           PROFILE COVER / HEADER
+           ============================================================ */
+        .profile-cover {
+            background: var(--fj-surface);
+            border: 1px solid var(--fj-border);
+            border-radius: var(--fj-radius);
+            padding: 24px 28px;
+            margin: 16px 0 20px;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 20px 28px;
+            align-items: start;
+            position: relative;
+            overflow: hidden;
+        }
+        .profile-cover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--fj-teal), var(--fj-amber), var(--fj-teal));
+            opacity: 0.6;
+        }
+        @media (max-width: 800px) {
+            .profile-cover {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding: 20px 16px;
+            }
+        }
+
+        .profile-cover .avatar-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+        .profile-cover .avatar-section .avatar {
+            width: 96px;
+            height: 96px;
+            border-radius: 50%;
+            background: var(--fj-border);
+            overflow: hidden;
+            border: 3px solid var(--fj-teal);
+            flex-shrink: 0;
+            position: relative;
+        }
+        .profile-cover .avatar-section .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .profile-cover .avatar-section .avatar .online-dot {
+            position: absolute;
+            bottom: 4px;
+            right: 4px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--fj-green);
+            border: 2px solid var(--fj-surface);
+        }
+        .profile-cover .avatar-section .change-avatar {
+            font-size: 0.6rem;
+            color: var(--fj-teal);
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .profile-cover .info-section {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            padding-top: 4px;
+        }
+        .profile-cover .info-section .name-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .profile-cover .info-section .name-row .name {
+            font-family: var(--font-head);
+            font-size: 1.6rem;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+        }
+        .profile-cover .info-section .title {
+            font-size: 0.9rem;
+            color: var(--fj-muted);
+        }
+        .profile-cover .info-section .meta-row {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-top: 4px;
+            font-size: 0.8rem;
+            color: var(--fj-muted);
+        }
+        .profile-cover .info-section .meta-row .item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .profile-cover .info-section .meta-row .item i {
+            color: var(--fj-teal);
+            width: 16px;
+        }
+        .profile-cover .info-section .meta-row .item .stars {
+            color: var(--fj-amber);
+        }
+
+        .profile-cover .actions-section {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            align-items: flex-end;
+            justify-content: center;
+            height: 100%;
+        }
+        @media (max-width: 800px) {
+            .profile-cover .actions-section {
+                align-items: center;
+            }
+        }
+        .profile-cover .actions-section .status-toggle {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 4px 14px 4px 4px;
+            border-radius: var(--fj-radius-full);
+            border: 1px solid var(--fj-border);
+            background: var(--fj-surface);
+            font-size: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .profile-cover .actions-section .status-toggle .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--fj-green);
+            transition: background 0.3s;
+        }
+        .profile-cover .actions-section .status-toggle.offline .dot {
+            background: var(--fj-dim);
+        }
+        .profile-cover .actions-section .status-toggle .status-text {
+            color: var(--fj-text);
+        }
+
+        /* ============================================================
+           STATS ROW – Meituan-style
+           ============================================================ */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            padding: 0 0 20px;
+        }
+        @media (max-width: 700px) {
+            .stats-row {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        @media (max-width: 450px) {
+            .stats-row {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        .stat-mini {
+            background: var(--fj-surface);
+            border: 1px solid var(--fj-border);
+            border-radius: var(--fj-radius-sm);
+            padding: 10px 14px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .stat-mini:hover {
+            border-color: var(--fj-teal);
+            box-shadow: var(--fj-shadow);
+        }
+        .stat-mini .num {
+            font-family: var(--font-head);
+            font-size: 1.3rem;
+            font-weight: 900;
+            line-height: 1.2;
+        }
+        .stat-mini .num.teal {
+            color: var(--fj-teal);
+        }
+        .stat-mini .num.green {
+            color: var(--fj-green);
+        }
+        .stat-mini .num.amber {
+            color: var(--fj-amber);
+        }
+        .stat-mini .num.pink {
+            color: var(--fj-pink);
+        }
+        .stat-mini .label {
+            font-size: 0.6rem;
+            color: var(--fj-muted);
+            font-weight: 500;
+            display: block;
+            margin-top: 1px;
+        }
+
+        /* ============================================================
+           PROFILE GRID – Main Content
+           ============================================================ */
+        .profile-grid {
+            display: grid;
+            grid-template-columns: 1fr 340px;
+            gap: 24px;
+            padding: 4px 0 40px;
+        }
+        @media (max-width: 1024px) {
+            .profile-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Section Titles */
+        .section-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 14px;
+        }
+        .section-title h2 {
+            font-family: var(--font-head);
+            font-size: 1.05rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .section-title .edit-link {
+            font-size: 0.7rem;
+            color: var(--fj-teal);
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .section-title .edit-link:hover {
+            text-decoration: underline;
+        }
+
+        /* ============================================================
+           ABOUT SECTION
+           ============================================================ */
+        .about-card {
+            background: var(--fj-surface);
+            border: 1px solid var(--fj-border);
+            border-radius: var(--fj-radius-sm);
+            padding: 18px 20px;
+            margin-bottom: 20px;
+        }
+        .about-card .bio {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: var(--fj-muted);
+        }
+        .about-card .bio .highlight {
+            color: var(--fj-text);
+            font-weight: 500;
+        }
+
+        /* ============================================================
+           SKILLS & SERVICES – Grid
+           ============================================================ */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .skill-item {
+            background: var(--fj-surface);
+            border: 1px solid var(--fj-border);
+            border-radius: var(--fj-radius-sm);
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s;
+        }
+        .skill-item:hover {
+            border-color: var(--fj-teal);
+            box-shadow: var(--fj-shadow);
+        }
+        .skill-item .icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(13, 148, 136, 0.08);
+            color: var(--fj-teal);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+        }
+        .skill-item .info .name {
+            font-weight: 600;
+            font-size: 0.8rem;
+        }
+        .skill-item .info .desc {
+            font-size: 0.6rem;
+            color: var(--fj-muted);
+        }
+        .skill-item .info .price-tag {
+            font-size: 0.6rem;
+            font-weight: 700;
+            color: var(--fj-teal);
+        }
+
+        /* ============================================================
+           PORTFOLIO GALLERY
+           ============================================================ */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        @media (max-width: 600px) {
+            .portfolio-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        .portfolio-item {
+            aspect-ratio: 1 / 1;
+            border-radius: var(--fj-radius-sm);
+            overflow: hidden;
+            background: var(--fj-border);
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 1px solid var(--fj-border);
+        }
+        .portfolio-item:hover {
+            transform: scale(1.02);
+            border-color: var(--fj-teal);
+            box-shadow: var(--fj-shadow-lg);
+        }
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .portfolio-item .overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(0deg, rgba(0, 0, 0, 0.5) 0%, transparent 60%);
+            display: flex;
+            align-items: flex-end;
+            padding: 10px 12px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .portfolio-item:hover .overlay {
+            opacity: 1;
+        }
+        .portfolio-item .overlay .label {
+            color: #fff;
+            font-size: 0.6rem;
+            font-weight: 600;
+        }
+        .portfolio-item .add-more {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: var(--fj-bg);
+            border: 2px dashed var(--fj-border);
+            color: var(--fj-dim);
+            font-size: 0.7rem;
+            font-weight: 600;
+            gap: 4px;
+        }
+        .portfolio-item .add-more i {
+            font-size: 1.4rem;
+            color: var(--fj-teal);
+        }
+
+        /* ============================================================
+           REVIEWS
+           ============================================================ */
+        .review-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        .review-card {
+            background: var(--fj-surface);
+            border: 1px solid var(--fj-border);
+            border-radius: var(--fj-radius-sm);
+            padding: 14px 18px;
+            display: flex;
+            gap: 14px;
+        }
+        @media (max-width: 500px) {
+            .review-card {
+                flex-direction: column;
+            }
+        }
+        .review-card .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--fj-border);
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+        .review-card .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .review-card .content {
+            flex: 1;
+        }
+        .review-card .content .name {
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+        .review-card .content .stars {
+            color: var(--fj-amber);
+            font-size: 0.7rem;
+        }
+        .review-card .content .text {
+            font-size: 0.8rem;
+            color: var(--fj-muted);
+            margin-top: 2px;
+            line-height: 1.4;
+        }
+        .review-card .content .date {
+            font-size: 0.6rem;
+            color: var(--fj-dim);
+            margin-top: 4px;
+        }
+
+        /* ============================================================
+           SIDEBAR CARDS
+           ============================================================ */
+        .sidebar-card {
+            background: var(--fj-surface);
+            border: 1px solid var(--fj-border);
+            border-radius: var(--fj-radius-sm);
+            padding: 18px 20px;
+            margin-bottom: 20px;
+        }
+        .sidebar-card:last-child {
+            margin-bottom: 0;
+        }
+        .sidebar-card .card-title {
+            font-family: var(--font-head);
+            font-size: 0.95rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Contact Info */
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--fj-border);
+            font-size: 0.8rem;
+        }
+        .contact-item:last-child {
+            border-bottom: none;
+        }
+        .contact-item .icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: rgba(13, 148, 136, 0.06);
+            color: var(--fj-teal);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            flex-shrink: 0;
+        }
+        .contact-item .value {
+            color: var(--fj-text);
+            font-weight: 500;
+        }
+        .contact-item .label {
+            color: var(--fj-muted);
+            font-size: 0.65rem;
+        }
+
+        /* Availability */
+        .availability-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px 12px;
+            font-size: 0.75rem;
+        }
+        .availability-grid .day {
+            display: flex;
+            justify-content: space-between;
+            padding: 4px 0;
+            border-bottom: 1px solid var(--fj-border);
+        }
+        .availability-grid .day .day-name {
+            font-weight: 500;
+        }
+        .availability-grid .day .hours {
+            color: var(--fj-muted);
+            font-size: 0.65rem;
+        }
+        .availability-grid .day .hours.available {
+            color: var(--fj-green);
+            font-weight: 600;
+        }
+
+        /* Documents / Certificates */
+        .doc-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--fj-border);
+        }
+        .doc-item:last-child {
+            border-bottom: none;
+        }
+        .doc-item .icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: rgba(13, 148, 136, 0.06);
+            color: var(--fj-teal);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+        .doc-item .info .name {
+            font-weight: 600;
+            font-size: 0.8rem;
+        }
+        .doc-item .info .meta {
+            font-size: 0.6rem;
+            color: var(--fj-muted);
+        }
+        .doc-item .status {
+            margin-left: auto;
+            font-size: 0.5rem;
+            font-weight: 700;
+            padding: 2px 10px;
+            border-radius: 30px;
+            text-transform: uppercase;
+        }
+        .doc-item .status.verified {
+            background: rgba(34, 197, 94, 0.08);
+            color: var(--fj-green);
+            border: 1px solid rgba(34, 197, 94, 0.10);
+        }
+        .doc-item .status.pending {
+            background: rgba(245, 158, 11, 0.08);
+            color: var(--fj-amber);
+            border: 1px solid rgba(245, 158, 11, 0.10);
+        }
+
+        /* ============================================================
+           EDIT MODE OVERLAY
+           ============================================================ */
+        .edit-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(4px);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .edit-overlay.open {
+            display: flex;
+            opacity: 1;
+        }
+        .edit-overlay .edit-panel {
+            background: var(--fj-surface);
+            border-radius: var(--fj-radius);
+            max-width: 560px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 32px 36px;
+            box-shadow: var(--fj-shadow-xl);
+            transform: scale(0.96) translateY(10px);
+            transition: transform 0.3s var(--ease-spring), opacity 0.3s ease;
+            opacity: 0;
+        }
+        .edit-overlay.open .edit-panel {
+            transform: scale(1) translateY(0);
+            opacity: 1;
+        }
+        .edit-panel .close-btn {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            font-size: 1.3rem;
+            color: var(--fj-dim);
+            padding: 4px 8px;
+            border-radius: 8px;
+            transition: all 0.3s;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+        .edit-panel .close-btn:hover {
+            background: rgba(13, 148, 136, 0.06);
+            color: var(--fj-text);
+        }
+        .edit-panel {
+            position: relative;
+        }
+        .edit-panel h2 {
+            font-family: var(--font-head);
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+        .edit-panel .form-group {
+            margin-bottom: 16px;
+        }
+        .edit-panel .form-group label {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--fj-muted);
+            margin-bottom: 4px;
+        }
+        .edit-panel .form-group input,
+        .edit-panel .form-group textarea,
+        .edit-panel .form-group select {
+            width: 100%;
+            padding: 10px 14px;
+            border-radius: var(--fj-radius-sm);
+            border: 1px solid var(--fj-border);
+            background: var(--fj-bg);
+            font-size: 0.85rem;
+            color: var(--fj-text);
+            font-family: var(--font-body);
+            transition: border-color 0.3s;
+            outline: none;
+        }
+        .edit-panel .form-group input:focus,
+        .edit-panel .form-group textarea:focus,
+        .edit-panel .form-group select:focus {
+            border-color: var(--fj-teal);
+            box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.06);
+        }
+        .edit-panel .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        .edit-panel .form-actions {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+            margin-top: 20px;
+            padding-top: 16px;
+            border-top: 1px solid var(--fj-border);
+        }
+
+        /* ============================================================
+           FOOTER
+           ============================================================ */
+        .site-footer {
+            background: var(--fj-surface);
+            border-top: 1px solid var(--fj-border);
+            padding: 40px 0 24px;
+            margin-top: 20px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 32px;
+        }
+        @media (max-width: 800px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        @media (max-width: 480px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .footer-brand h4 {
+            font-family: var(--font-head);
+            font-size: 1.2rem;
+            font-weight: 900;
+            margin-bottom: 8px;
+        }
+        .footer-brand h4 span {
+            color: var(--fj-teal);
+        }
+        .footer-brand p {
+            font-size: 0.85rem;
+            color: var(--fj-muted);
+            max-width: 280px;
+        }
+        .footer-col h5 {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--fj-dim);
+            margin-bottom: 12px;
+        }
+        .footer-col a {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--fj-muted);
+            padding: 4px 0;
+            transition: color 0.2s;
+        }
+        .footer-col a:hover {
+            color: var(--fj-teal);
+        }
+        .footer-bottom {
+            border-top: 1px solid var(--fj-border);
+            padding-top: 16px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            font-size: 0.7rem;
+            color: var(--fj-dim);
+        }
+        .footer-bottom a {
+            color: var(--fj-dim);
+            transition: color 0.2s;
+        }
+        .footer-bottom a:hover {
+            color: var(--fj-teal);
+        }
+
+        /* ============================================================
+           RESPONSIVE
+           ============================================================ */
+        @media (max-width: 768px) {
+            .page-header {
+                flex-direction: column;
+                align-items: stretch;
+                text-align: center;
+            }
+            .page-header .actions {
+                justify-content: center;
+            }
+            .profile-cover {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .profile-cover .info-section .name-row {
+                justify-content: center;
+            }
+            .profile-cover .info-section .meta-row {
+                justify-content: center;
+            }
+            .profile-cover .actions-section {
+                align-items: center;
+            }
+            .profile-grid {
+                grid-template-columns: 1fr;
+            }
+            .stats-row {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .portfolio-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .availability-grid {
+                grid-template-columns: 1fr;
+            }
+            .edit-overlay .edit-panel {
+                padding: 24px 18px;
+            }
+        }
+        @media (max-width: 480px) {
+            .stats-row {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+            .portfolio-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .profile-cover .avatar-section .avatar {
+                width: 72px;
+                height: 72px;
+            }
+            .profile-cover .info-section .name-row .name {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                transition: none !important;
+                transform: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================================
+       NAVIGATION
+       ============================================================ -->
+    <header class="site-nav" id="siteNav">
+        <div class="nav-inner">
+            <a href="../index.html" class="nav-logo">
+                <div class="logo-icon"><i class="fas fa-tools"></i></div>
+                FIX<span>JORI</span>
+            </a>
+            <nav class="nav-links">
+                <a href="../index.html">Start</a>
+                <a href="../directory/index.html">Handwerker</a>
+                <a href="../services/montage.html">Services</a>
+                <a href="../client/dashboard.html">Client Portal</a>
+                <a href="dashboard.html">Handyman Portal</a>
+                <a href="profile.html" class="active">Mein Profil</a>
+                <a href="../booking/step1.html" class="nav-cta">Projekt starten</a>
+            </nav>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon" id="themeIcon"></i></button>
+                <a href="dashboard.html" class="nav-cta" style="background:transparent;border:1px solid var(--fj-border);color:var(--fj-text);">Dashboard</a>
+                <button class="mobile-toggle" id="mobileToggle"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="../index.html">Start</a>
+        <a href="../directory/index.html">Handwerker</a>
+        <a href="../services/montage.html">Services</a>
+        <a href="../client/dashboard.html">Client Portal</a>
+        <a href="dashboard.html">Handyman Portal</a>
+        <a href="profile.html">Mein Profil</a>
+        <a href="../booking/step1.html" class="mobile-cta">Projekt starten</a>
+    </div>
+
+    <!-- ============================================================
+       MAIN CONTENT
+       ============================================================ -->
+    <div class="container">
+
+        <!-- Page Header -->
+        <div class="page-header">
+            <div>
+                <h1>👤 Mein Profil</h1>
+                <div class="sub">Verwalten Sie Ihre persönlichen Daten, Fähigkeiten und Portfolio.</div>
+            </div>
+            <div class="actions">
+                <button class="btn btn-primary btn-sm" onclick="openEdit()"><i class="fas fa-edit"></i> Profil bearbeiten</button>
+                <a href="dashboard.html" class="btn btn-secondary btn-sm"><i class="fas fa-arrow-left"></i> Dashboard</a>
+            </div>
+        </div>
+
+        <!-- Profile Cover -->
+        <div class="profile-cover">
+            <div class="avatar-section">
+                <div class="avatar">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96'%3E%3Crect fill='%23E2E8F0' width='96' height='96'/%3E%3Ctext x='28' y='60' fill='%2364748B' font-size='32'%3ERL%3C/text%3E%3C/svg%3E" alt="Raphael Lezius" />
+                    <span class="online-dot"></span>
+                </div>
+                <span class="change-avatar" onclick="alert('Avatar ändern (simuliert)')"><i class="fas fa-camera"></i> Foto ändern</span>
+            </div>
+
+            <div class="info-section">
+                <div class="name-row">
+                    <span class="name">Raphael Lezius</span>
+                    <span class="badge badge-amber" style="font-size:0.55rem;padding:3px 14px;">⭐ Premium Pro</span>
+                    <span class="badge badge-teal" style="font-size:0.5rem;"><i class="fas fa-check-circle"></i> Verifiziert</span>
+                </div>
+                <div class="title">USM Haller & Küchenmontage Spezialist · 12 Jahre Erfahrung</div>
+                <div class="meta-row">
+                    <span class="item"><i class="fas fa-star stars"></i> <span style="font-weight:700;color:var(--fj-text);">4.9</span> (124 Bewertungen)</span>
+                    <span class="item"><i class="fas fa-briefcase"></i> 234 abgeschlossene Aufträge</span>
+                    <span class="item"><i class="fas fa-map-pin"></i> Mannheim, Deutschland</span>
+                    <span class="item"><i class="fas fa-clock"></i> Mitglied seit 2021</span>
+                </div>
+            </div>
+
+            <div class="actions-section">
+                <div class="status-toggle" id="statusToggle">
+                    <span class="dot" id="statusDot"></span>
+                    <span class="status-text" id="statusText">Online</span>
+                    <span style="color:var(--fj-dim);">|</span>
+                    <span style="color:var(--fj-muted);font-weight:500;font-size:0.65rem;">Verfügbar</span>
+                </div>
+                <div style="display:flex;gap:6px;flex-wrap:wrap;justify-content:center;">
+                    <button class="btn btn-secondary btn-sm" onclick="openEdit()"><i class="fas fa-edit"></i> Bearbeiten</button>
+                    <button class="btn btn-outline btn-sm" onclick="alert('Profil teilen (simuliert)')"><i class="fas fa-share-alt"></i> Teilen</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats Row -->
+        <div class="stats-row">
+            <div class="stat-mini">
+                <span class="num teal">€ 4.250</span>
+                <span class="label">Verdienst (dieser Monat)</span>
+            </div>
+            <div class="stat-mini">
+                <span class="num green">234</span>
+                <span class="label">Aufträge abgeschlossen</span>
+            </div>
+            <div class="stat-mini">
+                <span class="num amber">4,9</span>
+                <span class="label">Ø Bewertung</span>
+            </div>
+            <div class="stat-mini">
+                <span class="num pink">98%</span>
+                <span class="label">Weiterempfehlungsrate</span>
+            </div>
+            <div class="stat-mini">
+                <span class="num teal">3</span>
+                <span class="label">Aktive Aufträge</span>
+            </div>
+        </div>
+
+        <!-- Profile Grid -->
+        <div class="profile-grid">
+
+            <!-- ===== LEFT COLUMN ===== -->
+            <div>
+
+                <!-- About -->
+                <div class="about-card">
+                    <div class="section-title">
+                        <h2><i class="fas fa-user" style="color:var(--fj-teal);"></i> Über mich</h2>
+                        <span class="edit-link" onclick="openEdit()">Bearbeiten</span>
+                    </div>
+                    <div class="bio">
+                        <span class="highlight">Raphael Lezius</span> – leidenschaftlicher Handwerker mit über 12 Jahren Erfahrung in der Montage von hochwertigen Möbeln und Einrichtungslösungen. Spezialisiert auf <span class="highlight">USM Haller</span>, Küchenmontage und individuelle Einbauten. Meine Arbeitsweise zeichnet sich durch <span class="highlight">millimetergenaue Präzision</span>, Zuverlässigkeit und ein Auge fürs Detail aus. Ich arbeite ausschließlich mit zertifizierten Materialien und garantiere eine saubere, termingerechte Ausführung.
+                    </div>
+                </div>
+
+                <!-- Skills & Services -->
+                <div class="section-title">
+                    <h2><i class="fas fa-tools" style="color:var(--fj-teal);"></i> Meine Services</h2>
+                    <span class="edit-link" onclick="openEdit()">Bearbeiten</span>
+                </div>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <div class="icon"><i class="fas fa-couch"></i></div>
+                        <div class="info">
+                            <div class="name">USM Haller Montage</div>
+                            <div class="desc">Module, Tische, Regale</div>
+                            <div class="price-tag">ab € 1.200</div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="icon"><i class="fas fa-kitchen-set"></i></div>
+                        <div class="info">
+                            <div class="name">Küchenmontage</div>
+                            <div class="desc">Komplett & Teilmontage</div>
+                            <div class="price-tag">ab € 850</div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="icon"><i class="fas fa-chair"></i></div>
+                        <div class="info">
+                            <div class="name">Möbelaufbau</div>
+                            <div class="desc">Alle Hersteller</div>
+                            <div class="price-tag">ab € 450</div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="icon"><i class="fas fa-cabinet-filing"></i></div>
+                        <div class="info">
+                            <div class="name">Einbauschränke</div>
+                            <div class="desc">Maßanfertigung</div>
+                            <div class="price-tag">ab € 1.500</div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="icon"><i class="fas fa-wrench"></i></div>
+                        <div class="info">
+                            <div class="name">Reparatur & Service</div>
+                            <div class="desc">Wartung & Instandhaltung</div>
+                            <div class="price-tag">ab € 180</div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="icon"><i class="fas fa-crown"></i></div>
+                        <div class="info">
+                            <div class="name">Premium Pro Service</div>
+                            <div class="desc">Exklusive Betreuung</div>
+                            <div class="price-tag">auf Anfrage</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio -->
+                <div class="section-title">
+                    <h2><i class="fas fa-images" style="color:var(--fj-teal);"></i> Portfolio</h2>
+                    <span class="edit-link" onclick="alert('Portfolio bearbeiten (simuliert)')">+ Bild hinzufügen</span>
+                </div>
+                <div class="portfolio-grid">
+                    <div class="portfolio-item">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Crect fill='%231A2332' width='200' height='200'/%3E%3Ctext x='30' y='110' fill='%2394A3B8' font-size='16'%3EKüche%3C/text%3E%3C/svg%3E" alt="Küchenmontage" />
+                        <div class="overlay"><span class="label">Küchenmontage · 2026</span></div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Crect fill='%231A2332' width='200' height='200'/%3E%3Ctext x='20' y='110' fill='%2394A3B8' font-size='16'%3EUSM Haller%3C/text%3E%3C/svg%3E" alt="USM Haller" />
+                        <div class="overlay"><span class="label">USM Haller · 2026</span></div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Crect fill='%231A2332' width='200' height='200'/%3E%3Ctext x='30' y='110' fill='%2394A3B8' font-size='16'%3EBüro%3C/text%3E%3C/svg%3E" alt="Büro" />
+                        <div class="overlay"><span class="label">Büro-Rollout · 2025</span></div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Crect fill='%231A2332' width='200' height='200'/%3E%3Ctext x='20' y='110' fill='%2394A3B8' font-size='16'%3ERegal%3C/text%3E%3C/svg%3E" alt="Regal" />
+                        <div class="overlay"><span class="label">Einbauschrank · 2025</span></div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Crect fill='%231A2332' width='200' height='200'/%3E%3Ctext x='30' y='110' fill='%2394A3B8' font-size='16'%3ETisch%3C/text%3E%3C/svg%3E" alt="Tisch" />
+                        <div class="overlay"><span class="label">Konferenztisch · 2025</span></div>
+                    </div>
+                    <div class="portfolio-item add-more" onclick="alert('Bild hinzufügen (simuliert)')">
+                        <i class="fas fa-plus-circle"></i>
+                        <span>Bild hinzufügen</span>
+                    </div>
+                </div>
+
+                <!-- Reviews -->
+                <div class="section-title">
+                    <h2><i class="fas fa-star" style="color:var(--fj-amber);"></i> Bewertungen</h2>
+                    <span class="edit-link" style="color:var(--fj-muted);">4.9 Ø · 124 Bewertungen</span>
+                </div>
+                <div class="review-list">
+                    <div class="review-card">
+                        <div class="avatar"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Crect fill='%23E2E8F0' width='40' height='40'/%3E%3Ctext x='10' y='26' fill='%2364748B' font-size='14'%3EM%3C/text%3E%3C/svg%3E" alt="M" /></div>
+                        <div class="content">
+                            <div class="name">Michael S.</div>
+                            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <div class="text">"Absolute Präzision! Raphael hat unsere USM Haller Module perfekt montiert. Jeder Handgriff saß, sauberer geht es nicht. Klare Empfehlung!"</div>
+                            <div class="date">vor 3 Tagen · Küchenmontage</div>
+                        </div>
+                    </div>
+                    <div class="review-card">
+                        <div class="avatar"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Crect fill='%23E2E8F0' width='40' height='40'/%3E%3Ctext x='10' y='26' fill='%2364748B' font-size='14'%3EA%3C/text%3E%3C/svg%3E" alt="A" /></div>
+                        <div class="content">
+                            <div class="name">Anna K.</div>
+                            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <div class="text">"Sehr zuverlässig und termintreu. Die Küche wurde in Rekordzeit montiert und sieht fantastisch aus. Jederzeit wieder!"</div>
+                            <div class="date">vor 2 Wochen · Küchenmontage</div>
+                        </div>
+                    </div>
+                    <div class="review-card">
+                        <div class="avatar"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Crect fill='%23E2E8F0' width='40' height='40'/%3E%3Ctext x='10' y='26' fill='%2364748B' font-size='14'%3ED%3C/text%3E%3C/svg%3E" alt="D" /></div>
+                        <div class="content">
+                            <div class="name">Dr. Weber</div>
+                            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <div class="text">"Professionell von A bis Z. Raphael hat unsere gesamte Kanzlei mit USM Haller ausgestattet. Perfekte Beratung und Ausführung."</div>
+                            <div class="date">vor 1 Monat · Büromöbel</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- ===== RIGHT COLUMN: Sidebar ===== -->
+
+            <!-- Contact -->
+            <div class="sidebar-card">
+                <div class="card-title">
+                    <i class="fas fa-address-card" style="color:var(--fj-teal);"></i> Kontakt
+                </div>
+                <div class="contact-item">
+                    <span class="icon"><i class="fas fa-phone"></i></span>
+                    <div>
+                        <div class="value">+49 176 1234 5678</div>
+                        <div class="label">Mobil</div>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <span class="icon"><i class="fas fa-envelope"></i></span>
+                    <div>
+                        <div class="value">raphael@fixjori.de</div>
+                        <div class="label">E-Mail</div>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <span class="icon"><i class="fas fa-map-marker-alt"></i></span>
+                    <div>
+                        <div class="value">Mannheim, Deutschland</div>
+                        <div class="label">Standort</div>
+                    </div>
+                </div>
+                <div style="margin-top:10px;">
+                    <button class="btn btn-secondary btn-sm btn-block" onclick="alert('Kontaktdaten bearbeiten (simuliert)')"><i class="fas fa-edit"></i> Kontakt bearbeiten</button>
+                </div>
+            </div>
+
+            <!-- Availability -->
+            <div class="sidebar-card">
+                <div class="card-title">
+                    <i class="fas fa-calendar-alt" style="color:var(--fj-teal);"></i> Verfügbarkeit
+                    <span class="badge badge-green" style="font-size:0.45rem;margin-left:auto;">Aktuell frei</span>
+                </div>
+                <div class="availability-grid">
+                    <div class="day"><span class="day-name">Montag</span> <span class="hours available">09:00 – 18:00</span></div>
+                    <div class="day"><span class="day-name">Dienstag</span> <span class="hours available">09:00 – 18:00</span></div>
+                    <div class="day"><span class="day-name">Mittwoch</span> <span class="hours available">09:00 – 18:00</span></div>
+                    <div class="day"><span class="day-name">Donnerstag</span> <span class="hours available">09:00 – 18:00</span></div>
+                    <div class="day"><span class="day-name">Freitag</span> <span class="hours available">09:00 – 16:00</span></div>
+                    <div class="day"><span class="day-name">Samstag</span> <span class="hours" style="color:var(--fj-dim);">Auf Anfrage</span></div>
+                    <div class="day"><span class="day-name">Sonntag</span> <span class="hours" style="color:var(--fj-dim);">Geschlossen</span></div>
+                </div>
+                <div style="margin-top:10px;">
+                    <button class="btn btn-secondary btn-sm btn-block" onclick="alert('Verfügbarkeit bearbeiten (simuliert)')"><i class="fas fa-edit"></i> Zeiten anpassen</button>
+                </div>
+            </div>
+
+            <!-- Documents / Certificates -->
+            <div class="sidebar-card">
+                <div class="card-title">
+                    <i class="fas fa-certificate" style="color:var(--fj-amber);"></i> Zertifikate & Dokumente
+                </div>
+                <div class="doc-item">
+                    <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                    <div class="info">
+                        <div class="name">Handwerksmeister-Prüfung</div>
+                        <div class="meta">HWK Mannheim · 2020</div>
+                    </div>
+                    <span class="status verified">Verifiziert</span>
+                </div>
+                <div class="doc-item">
+                    <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                    <div class="info">
+                        <div class="name">USM Haller Zertifizierung</div>
+                        <div class="meta">USM Academy · 2022</div>
+                    </div>
+                    <span class="status verified">Verifiziert</span>
+                </div>
+                <div class="doc-item">
+                    <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                    <div class="info">
+                        <div class="name">Sicherheitsunterweisung</div>
+                        <div class="meta">BG BAU · 2025</div>
+                    </div>
+                    <span class="status verified">Verifiziert</span>
+                </div>
+                <div class="doc-item">
+                    <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                    <div class="info">
+                        <div class="name">Haftpflichtversicherung</div>
+                        <div class="meta">10 Mio. € · 2026</div>
+                    </div>
+                    <span class="status verified">Verifiziert</span>
+                </div>
+                <div style="margin-top:10px;">
+                    <button class="btn btn-secondary btn-sm btn-block" onclick="alert('Dokumente verwalten (simuliert)')"><i class="fas fa-upload"></i> Dokument hinzufügen</button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ============================================================
+       EDIT PROFILE OVERLAY
+       ============================================================ -->
+    <div class="edit-overlay" id="editOverlay">
+        <div class="edit-panel">
+            <button class="close-btn" onclick="closeEdit()"><i class="fas fa-times"></i></button>
+            <h2><i class="fas fa-edit" style="color:var(--fj-teal);"></i> Profil bearbeiten</h2>
+            <form id="editForm" onsubmit="saveProfile(event)">
+                <div class="form-group">
+                    <label>Vollständiger Name</label>
+                    <input type="text" value="Raphael Lezius" />
+                </div>
+                <div class="form-group">
+                    <label>Titel / Spezialisierung</label>
+                    <input type="text" value="USM Haller & Küchenmontage Spezialist" />
+                </div>
+                <div class="form-group">
+                    <label>Über mich</label>
+                    <textarea>Leidenschaftlicher Handwerker mit über 12 Jahren Erfahrung in der Montage von hochwertigen Möbeln und Einrichtungslösungen. Spezialisiert auf USM Haller, Küchenmontage und individuelle Einbauten. Meine Arbeitsweise zeichnet sich durch millimetergenaue Präzision, Zuverlässigkeit und ein Auge fürs Detail aus.</textarea>
+                </div>
+                <div class="form-group">
+                    <label>Standort</label>
+                    <input type="text" value="Mannheim, Deutschland" />
+                </div>
+                <div class="form-group">
+                    <label>Telefon</label>
+                    <input type="text" value="+49 176 1234 5678" />
+                </div>
+                <div class="form-group">
+                    <label>E-Mail</label>
+                    <input type="email" value="raphael@fixjori.de" />
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeEdit()">Abbrechen</button>
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Speichern</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h4>FIX<span>JORI</span></h4>
+                    <p>Die Plattform für perfekte Montage und Premium-Handwerk. Verifizierte Experten, Festpreise, persönliche Betreuung.</p>
+                </div>
+                <div class="footer-col">
+                    <h5>Services</h5>
+                    <a href="../services/montage.html">Montage & Möbel</a>
+                    <a href="../services/elektro.html">Elektro & Smart</a>
+                    <a href="../services/sanitaer.html">Sanitär & Wasser</a>
+                    <a href="../services/garten.html">Garten & Outdoor</a>
+                </div>
+                <div class="footer-col">
+                    <h5>Plattform</h5>
+                    <a href="../directory/index.html">Handwerker finden</a>
+                    <a href="../client/dashboard.html">Client Portal</a>
+                    <a href="dashboard.html">Handyman Portal</a>
+                    <a href="../booking/step1.html">Projekt starten</a>
+                </div>
+                <div class="footer-col">
+                    <h5>Rechtliches</h5>
+                    <a href="../impressum.html">Impressum</a>
+                    <a href="../datenschutz.html">Datenschutz</a>
+                    <a href="../agb.html">AGB</a>
+                    <a href="../garantie.html">Garantie</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2026 FIXJORI. Alle Rechte vorbehalten.</span>
+                <div style="display:flex;gap:16px;flex-wrap:wrap;">
+                    <a href="../impressum.html">Impressum</a>
+                    <a href="../datenschutz.html">Datenschutz</a>
+                    <a href="../agb.html">AGB</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================================================
+       SCRIPTS
+       ============================================================ -->
+    <script>
+        (function() {
+            'use strict';
+
+            // ── THEME TOGGLE ──
+            const html = document.documentElement;
+            const themeToggle = document.getElementById('themeToggle');
+            const themeIcon = document.getElementById('themeIcon');
+            const storedTheme = localStorage.getItem('fixjori-theme');
+            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            let currentTheme = storedTheme || (systemPrefersDark ? 'dark' : 'light');
+
+            function applyTheme(theme) {
+                html.setAttribute('data-theme', theme);
+                localStorage.setItem('fixjori-theme', theme);
+                themeIcon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+            }
+            applyTheme(currentTheme);
+
+            themeToggle.addEventListener('click', function() {
+                currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+                applyTheme(currentTheme);
+            });
+
+            // ── NAV TOGGLE ──
+            const toggleBtn = document.getElementById('mobileToggle');
+            const mobileMenu = document.getElementById('mobileMenu');
+
+            toggleBtn.addEventListener('click', function() {
+                const isOpen = this.classList.toggle('active');
+                mobileMenu.classList.toggle('open');
+                this.setAttribute('aria-expanded', isOpen);
+                document.body.style.overflow = isOpen ? 'hidden' : '';
+            });
+
+            mobileMenu.querySelectorAll('a').forEach(function(link) {
+                link.addEventListener('click', function() {
+                    toggleBtn.classList.remove('active');
+                    mobileMenu.classList.remove('open');
+                    document.body.style.overflow = '';
+                });
+            });
+
+            // ── STATUS TOGGLE ──
+            const statusToggle = document.getElementById('statusToggle');
+            const statusDot = document.getElementById('statusDot');
+            const statusText = document.getElementById('statusText');
+
+            statusToggle.addEventListener('click', function() {
+                this.classList.toggle('offline');
+                const isOffline = this.classList.contains('offline');
+                statusDot.style.background = isOffline ? 'var(--fj-dim)' : 'var(--fj-green)';
+                statusText.textContent = isOffline ? 'Offline' : 'Online';
+            });
+
+            // ── EDIT PROFILE ──
+            window.openEdit = function() {
+                document.getElementById('editOverlay').classList.add('open');
+                document.body.style.overflow = 'hidden';
+            };
+
+            window.closeEdit = function() {
+                document.getElementById('editOverlay').classList.remove('open');
+                document.body.style.overflow = '';
+            };
+
+            // Close on overlay click
+            document.getElementById('editOverlay').addEventListener('click', function(e) {
+                if (e.target === this) closeEdit();
+            });
+
+            // ── SAVE PROFILE ──
+            window.saveProfile = function(e) {
+                e.preventDefault();
+                alert('✅ Profil erfolgreich gespeichert!');
+                closeEdit();
+            };
+
+            // ── SCROLL NAV SHADOW ──
+            const nav = document.getElementById('siteNav');
+            window.addEventListener('scroll', function() {
+                nav.classList.toggle('scrolled', window.scrollY > 20);
+            }, { passive: true });
+
+            console.log('✅ Profile page (Meituan-style) loaded.');
+        })();
+    </script>
+
+</body>
+</html>

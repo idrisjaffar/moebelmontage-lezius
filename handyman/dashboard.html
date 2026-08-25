@@ -1,0 +1,1736 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="light">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    <title>Handyman Dashboard – FIXJORI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&family=Space+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <style>
+        /* ============================================================
+           GLOBAL VARIABLES & RESET (exactly matching client style)
+           ============================================================ */
+        :root {
+            --fj-teal: #0D9488;
+            --fj-teal-dark: #0F766E;
+            --fj-teal-light: #14B8A6;
+            --fj-amber: #F59E0B;
+            --fj-gold: #F5A623;
+            --fj-green: #22C55E;
+            --fj-coral: #FF6B35;
+            --fj-pink: #FF007F;
+            --fj-red: #EF4444;
+            --fj-bg: #F8FAFC;
+            --fj-surface: #FFFFFF;
+            --fj-text: #0F172A;
+            --fj-muted: #475569;
+            --fj-dim: #94A3B8;
+            --fj-border: #E2E8F0;
+            --fj-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+            --fj-shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.08);
+            --fj-shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.10);
+            --fj-radius: 16px;
+            --fj-radius-sm: 10px;
+            --fj-radius-full: 40px;
+            --font-head: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --nav-height: 68px;
+            --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        [data-theme="dark"] {
+            --fj-bg: #0F172A;
+            --fj-surface: #1A2332;
+            --fj-text: #F8FAFC;
+            --fj-muted: #94A3B8;
+            --fj-dim: #64748B;
+            --fj-border: rgba(255, 255, 255, 0.06);
+            --fj-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+            --fj-shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.4);
+            --fj-shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.5);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: var(--font-body);
+            background: var(--fj-bg);
+            color: var(--fj-text);
+            transition: background 0.3s, color 0.3s;
+            padding-top: calc(var(--nav-height) + 12px);
+            min-height: 100vh;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        button {
+            font-family: inherit;
+            border: none;
+            background: none;
+            color: inherit;
+            cursor: pointer;
+        }
+        img {
+            max-width: 100%;
+            display: block;
+        }
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 clamp(16px, 3.5vw, 32px);
+        }
+        .text-teal {
+            color: var(--fj-teal);
+        }
+        .text-muted {
+            color: var(--fj-muted);
+        }
+        .text-dim {
+            color: var(--fj-dim);
+        }
+        .text-green {
+            color: var(--fj-green);
+        }
+        .text-amber {
+            color: var(--fj-amber);
+        }
+        .text-pink {
+            color: var(--fj-pink);
+        }
+        .text-red {
+            color: var(--fj-red);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 2px 12px;
+            border-radius: 30px;
+            font-family: var(--font-mono);
+            font-size: 0.5rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        .badge-teal {
+            background: rgba(13, 148, 136, 0.08);
+            color: var(--fj-teal);
+            border: 1px solid rgba(13, 148, 136, 0.10);
+        }
+        .badge-amber {
+            background: rgba(245, 158, 11, 0.08);
+            color: var(--fj-amber);
+            border: 1px solid rgba(245, 158, 11, 0.10);
+        }
+        .badge-green {
+            background: rgba(34, 197, 94, 0.08);
+            color: var(--fj-green);
+            border: 1px solid rgba(34, 197, 94, 0.10);
+        }
+        .badge-pink {
+            background: rgba(255, 0, 127, 0.08);
+            color: var(--fj-pink);
+            border: 1px solid rgba(255, 0, 127, 0.10);
+        }
+        .badge-red {
+            background: rgba(239, 68, 68, 0.08);
+            color: var(--fj-red);
+            border: 1px solid rgba(239, 68, 68, 0.10);
+        }
+
+        /* ============================================================
+           BUTTONS
+           ============================================================ */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 22px;
+            border-radius: var(--fj-radius-sm);
+            font-weight: 700;
+            font-size: 0.8rem;
+            transition: all 0.3s var(--ease-smooth);
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--fj-teal), var(--fj-teal-dark));
+            color: #fff;
+            box-shadow: 0 4px 16px rgba(13, 148, 136, 0.25);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(13, 148, 136, 0.35);
+        }
+        .btn-secondary {
+            background: var(--fj-surface);
+            border: 1px solid var(--fj-border);
+            color: var(--fj-text);
+        }
+        .btn-secondary:hover {
+            border-color: var(--fj-teal);
+        }
+        .btn-outline {
+            background: transparent;
+            border: 1.5px solid var(--fj-border);
+            color: var(--fj-text);
+        }
+        .btn-outline:hover {
+            border-color: var(--fj-teal);
+            color: var(--fj-teal);
+        }
+        .btn-amber {
+            background: var(--fj-amber);
+            color: #0F172A;
+            box-shadow: 0 4px 16px rgba(245, 158, 11, 0.25);
+        }
+        .btn-amber:hover {
+            transform: translateY(-2px);
+        }
+        .btn-green {
+            background: var(--fj-green);
+            color: #fff;
+            box-shadow: 0 4px 16px rgba(34, 197, 94, 0.25);
+        }
+        .btn-green:hover {
+            transform: translateY(-2px);
+        }
+        .btn-sm {
+            padding: 6px 14px;
+            font-size: 0.7rem;
+        }
+        .btn-xs {
+            padding: 4px 10px;
+            font-size: 0.6rem;
+        }
+
+        /* ============================================================
+           NAVIGATION
+           ============================================================ */
+        .site-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            height: var(--nav-height);
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--fj-border);
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            transition: background 0.3s, box-shadow 0.3s;
+        }
+        [data-theme="dark"] .site-nav {
+            background: rgba(15, 23, 42, 0.85);
+        }
+        .site-nav.scrolled {
+            box-shadow: var(--fj-shadow);
+        }
+
+        .nav-inner {
+            max-width: 1280px;
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-head);
+            font-weight: 900;
+            font-size: 1.3rem;
+            letter-spacing: -0.5px;
+        }
+        .nav-logo span {
+            color: var(--fj-teal);
+        }
+        .nav-logo .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--fj-teal), var(--fj-teal-dark));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+        }
+        .nav-links a {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--fj-muted);
+            transition: color 0.2s;
+            position: relative;
+        }
+        .nav-links a:hover {
+            color: var(--fj-text);
+        }
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--fj-teal);
+            border-radius: 2px;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .theme-toggle {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 1px solid var(--fj-border);
+            background: transparent;
+            color: var(--fj-muted);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+        }
+        .theme-toggle:hover {
+            border-color: var(--fj-teal);
+            color: var(--fj-text);
+        }
+
+        .nav-cta {
+            padding: 6px 16px;
+            border-radius: var(--fj-radius-full);
+            background: linear-gradient(135deg, var(--fj-teal), var(--fj-teal-dark));
+            color: #fff !important;
+            font-weight: 700;
+            font-size: 0.7rem !important;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .nav-cta:hover {
+            opacity: 0.9;
+        }
+
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            padding: 6px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        .mobile-toggle span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: var(--fj-text);
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+        .mobile-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .mobile-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .mobile-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: var(--nav-height);
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--fj-surface);
+            backdrop-filter: blur(20px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            transform: translateX(100%);
+            transition: transform 0.4s var(--ease-smooth);
+            z-index: 999;
+            padding: 40px 20px;
+        }
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+        .mobile-menu a {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--fj-muted);
+            transition: color 0.2s;
+        }
+        .mobile-menu a:hover {
+            color: var(--fj-text);
+        }
+        .mobile-menu .mobile-cta {
+            margin-top: 16px;
+            padding: 12px 40px;
+            border-radius: var(--fj-radius-full);
+            background: linear-gradient(135deg, var(--fj-teal), var(--fj-teal-dark));
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 900px) {
+            .nav-links {
+                display: none;
+            }
+            .mobile-toggle {
+                display: flex;
+            }
+            .mobile-menu {
+                transform: translateX(100%);
+            }
+            .mobile-menu.open {
+                transform: translateX(0);
+            }
+            .nav-actions .nav-cta {
+                display: none;
+            }
+        }
+
+        /* ============================================================
+           HERO / HEADER (Handyman Profile)
+           ============================================================ */
+        .profile-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px 24px;
+            padding: 16px 0 20px;
+            border-bottom: 1px solid var(--fj-border);
+        }
+        .profile-header .left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .profile-header .left .avatar {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: var(--fj-border);
+            overflow: hidden;
+            border: 2px solid var(--fj-teal);
+            flex-shrink: 0;
+        }
+        .profile-header .left .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .profile-header .left .info .name {
+            font-family: var(--font-head);
+            font-size: 1.4rem;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+        }
+        .profile-header .left .info .title {
+            font-size: 0.85rem;
+            color: var(--fj-muted);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .profile-header .left .info .title .rating {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            color: var(--fj-amber);
+            font-weight: 700;
+        }
+        .profile-header .right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .profile-header .right .status-toggle {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 4px 14px 4px 4px;
+            border-radius: var(--fj-radius-full);
+            border: 1px solid var(--fj-border);
+            background: var(--fj-surface);
+            font-size: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .profile-header .right .status-toggle .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--fj-green);
+            transition: background 0.3s;
+        }
+        .profile-header .right .status-toggle.offline .dot {
+            background: var(--fj-dim);
+        }
+        .profile-header .right .status-toggle .label {
+            color: var(--fj-muted);
+        }
+        .profile-header .right .status-toggle .status-text {
+            color: var(--fj-text);
+        }
+
+        /* ============================================================
+           STATS ROW – Meituan-style dense metrics
+           ============================================================ */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            padding: 20px 0 20px;
+        }
+        @media (max-width: 700px) {
+            .stats-row {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        @media (max-width: 450px) {
+            .stats-row {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        .stat-mini {
+            background: var(--fj-surface);
+            border: 1px solid var(--fj-border);
+            border-radius: var(--fj-radius-sm);
+            padding: 12px 16px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .stat-mini:hover {
+            border-color: var(--fj-teal);
+            box-shadow: var(--fj-shadow);
+        }
+        .stat-mini .num {
+            font-family: var(--font-head);
+            font-size: 1.4rem;
+            font-weight: 900;
+            line-height: 1.2;
+        }
+        .stat-mini .num.teal {
+            color: var(--fj-teal);
+        }
+        .stat-mini .num.green {
+            color: var(--fj-green);
+        }
+        .stat-mini .num.amber {
+            color: var(--fj-amber);
+        }
+        .stat-mini .num.pink {
+            color: var(--fj-pink);
+        }
+        .stat-mini .label {
+            font-size: 0.65rem;
+            color: var(--fj-muted);
+            font-weight: 500;
+            display: block;
+            margin-top: 2px;
+        }
+
+        /* ============================================================
+           KING KONG AREA (Quick Actions)
+           ============================================================ */
+        .kk-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            padding: 16px 0 24px;
+            border-bottom: 1px solid var(--fj-border);
+        }
+        @media (max-width: 600px) {
+            .kk-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        .kk-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 16px 8px;
+            border-radius: var(--fj-radius-sm);
+            background: var(--fj-surface);
+            border: 1px solid var(--fj-border);
+            transition: all 0.3s var(--ease-smooth);
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+        }
+        .kk-item:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--fj-shadow-lg);
+            border-color: var(--fj-teal);
+        }
+        .kk-item .icon-wrap {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(13, 148, 136, 0.08);
+            color: var(--fj-teal);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            margin-bottom: 6px;
+            transition: all 0.3s;
+        }
+        .kk-item:hover .icon-wrap {
+            background: var(--fj-teal);
+            color: #fff;
+        }
+        .kk-item .name {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-align: center;
+        }
+        .kk-item .count {
+            font-size: 0.55rem;
+            color: var(--fj-dim);
+            font-family: var(--font-mono);
+        }
+        .kk-item.amber .icon-wrap {
+            background: rgba(245, 158, 11, 0.10);
+            color: var(--fj-amber);
+        }
+        .kk-item.amber:hover .icon-wrap {
+            background: var(--fj-amber);
+            color: #0F172A;
+        }
+        .kk-item.green .icon-wrap {
+            background: rgba(34, 197, 94, 0.10);
+            color: var(--fj-green);
+        }
+        .kk-item.green:hover .icon-wrap {
+            background: var(--fj-green);
+            color: #fff;
+        }
+
+        /* ============================================================
+           GOAL / MOTIVATION BAR (Better than Meituan)
+           ============================================================ */
+        .goal-card {
+            background: var(--fj-surface);
+            border: 1px solid var(--fj-border);
+            border-radius: var(--fj-radius-sm);
+            padding: 16px 20px;
+            margin: 16px 0 24px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px 20px;
+            border-left: 4px solid var(--fj-amber);
+        }
+        .goal-card .goal-text {
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        .goal-card .goal-text .highlight {
+            color: var(--fj-teal);
+        }
+        .goal-card .goal-bar {
+            flex: 1;
+            min-width: 120px;
+            height: 6px;
+            background: var(--fj-border);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .goal-card .goal-bar .fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--fj-teal), var(--fj-amber));
+            border-radius: 6px;
+            width: 78%;
+            transition: width 1s ease;
+        }
+        .goal-card .goal-percent {
+            font-family: var(--font-head);
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: var(--fj-teal);
+        }
+        .goal-card .goal-cta {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--fj-teal);
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        /* ============================================================
+           DASHBOARD GRID (Main Content)
+           ============================================================ */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1fr 340px;
+            gap: 24px;
+            padding: 16px 0 40px;
+        }
+        @media (max-width: 1024px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Section Titles */
+        .section-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        .section-title h2 {
+            font-family: var(--font-head);
+            font-size: 1.1rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .section-title a {
+            font-size: 0.8rem;
+            color: var(--fj-teal);
+            font-weight: 600;
+        }
+        .section-title a:hover {
+            text-decoration: underline;
+        }
+
+        /* Tabs for Jobs */
+        .job-tabs {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 16px;
+            border-bottom: 1px solid var(--fj-border);
+            padding-bottom: 8px;
+        }
+        .job-tab {
+            padding: 6px 18px;
+            border-radius: var(--fj-radius-full);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--fj-muted);
+            cursor: pointer;
+            transition: all 0.25s;
+            border: 1px solid transparent;
+        }
+        .job-tab:hover {
+            color: var(--fj-text);
+            background: rgba(13, 148, 136, 0.04);
+        }
+        .job-tab.active {
+            color: var(--fj-teal);
+            background: rgba(13, 148, 136, 0.08);
+            border-color: rgba(13, 148, 136, 0.12);
+        }
+        .job-tab .count {
+            font-size: 0.55rem;
+            font-weight: 700;
+            background: var(--fj-border);
+            padding: 1px 8px;
+            border-radius: 30px;
+            margin-left: 4px;
+            color: var(--fj-muted);
+        }
+        .job-tab.active .count {
+            background: rgba(13, 148, 136, 0.12);
+            color: var(--fj-teal);
+        }
+
+        /* Job Cards */
+        .job-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .job-card {
+            background: var(--fj-surface);
+            border: 1px solid var(--fj-border);
+            border-radius: var(--fj-radius-sm);
+            padding: 14px 18px;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 10px 16px;
+            transition: all 0.3s var(--ease-smooth);
+            align-items: start;
+        }
+        .job-card:hover {
+            border-color: var(--fj-teal);
+            box-shadow: var(--fj-shadow);
+        }
+        @media (max-width: 600px) {
+            .job-card {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+        }
+
+        .job-card .main-info .title-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .job-card .main-info .title-row .job-title {
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+        .job-card .main-info .title-row .job-badge {
+            font-size: 0.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 1px 10px;
+            border-radius: 30px;
+        }
+        .job-card .main-info .title-row .job-badge.urgent {
+            background: rgba(239, 68, 68, 0.08);
+            color: var(--fj-red);
+            border: 1px solid rgba(239, 68, 68, 0.10);
+        }
+        .job-card .main-info .title-row .job-badge.high-pay {
+            background: rgba(34, 197, 94, 0.08);
+            color: var(--fj-green);
+            border: 1px solid rgba(34, 197, 94, 0.10);
+        }
+        .job-card .main-info .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 2px 16px;
+            font-size: 0.75rem;
+            color: var(--fj-muted);
+            margin-top: 4px;
+        }
+        .job-card .main-info .meta-grid i {
+            color: var(--fj-teal);
+            width: 14px;
+        }
+        .job-card .main-info .meta-grid .value {
+            font-weight: 500;
+            color: var(--fj-text);
+        }
+
+        .job-card .actions-col {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            align-items: flex-end;
+            justify-content: flex-start;
+        }
+        @media (max-width: 600px) {
+            .job-card .actions-col {
+                flex-direction: row;
+                flex-wrap: wrap;
+                align-items: center;
+                justify-content: flex-start;
+                border-top: 1px solid var(--fj-border);
+                padding-top: 10px;
+            }
+        }
+        .job-card .actions-col .price {
+            font-weight: 800;
+            font-size: 0.95rem;
+            color: var(--fj-teal);
+        }
+        .job-card .actions-col .btn-group {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+        .job-card .actions-col .job-status {
+            font-size: 0.65rem;
+            font-weight: 600;
+            font-family: var(--font-mono);
+            padding: 2px 12px;
+            border-radius: 30px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .job-card .actions-col .job-status.active {
+            background: rgba(13, 148, 136, 0.08);
+            color: var(--fj-teal);
+            border: 1px solid rgba(13, 148, 136, 0.10);
+        }
+        .job-card .actions-col .job-status.completed {
+            background: rgba(34, 197, 94, 0.08);
+            color: var(--fj-green);
+            border: 1px solid rgba(34, 197, 94, 0.10);
+        }
+        .job-card .actions-col .job-status.pending {
+            background: rgba(245, 158, 11, 0.08);
+            color: var(--fj-amber);
+            border: 1px solid rgba(245, 158, 11, 0.10);
+        }
+
+        /* Progress Bar inside Job Card */
+        .progress-section {
+            margin-top: 4px;
+            width: 100%;
+        }
+        .progress-section .progress-bar {
+            width: 100%;
+            height: 4px;
+            background: var(--fj-border);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 4px;
+        }
+        .progress-section .progress-bar .fill {
+            height: 100%;
+            border-radius: 4px;
+            background: linear-gradient(90deg, var(--fj-teal), var(--fj-teal-light));
+            transition: width 0.6s ease;
+        }
+        .progress-section .progress-label {
+            font-size: 0.65rem;
+            color: var(--fj-muted);
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* ============================================================
+           SIDEBAR CARDS
+           ============================================================ */
+        .sidebar-card {
+            background: var(--fj-surface);
+            border: 1px solid var(--fj-border);
+            border-radius: var(--fj-radius-sm);
+            padding: 18px 20px;
+            margin-bottom: 20px;
+        }
+        .sidebar-card:last-child {
+            margin-bottom: 0;
+        }
+        .sidebar-card .card-title {
+            font-family: var(--font-head);
+            font-size: 0.95rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Earnings Chart (CSS only) */
+        .earnings-chart {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            height: 80px;
+            gap: 4px;
+            padding: 4px 0;
+        }
+        .earnings-chart .bar-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100%;
+            justify-content: flex-end;
+        }
+        .earnings-chart .bar-wrapper .bar {
+            width: 100%;
+            max-width: 28px;
+            border-radius: 4px 4px 0 0;
+            background: var(--fj-teal);
+            transition: height 0.6s ease;
+            min-height: 4px;
+            opacity: 0.7;
+        }
+        .earnings-chart .bar-wrapper .bar.high {
+            opacity: 1;
+            background: var(--fj-amber);
+        }
+        .earnings-chart .bar-wrapper .label {
+            font-size: 0.5rem;
+            color: var(--fj-muted);
+            margin-top: 4px;
+            font-weight: 600;
+        }
+        .earnings-total {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0 0;
+            border-top: 1px solid var(--fj-border);
+            margin-top: 8px;
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+
+        /* Review Items */
+        .review-item {
+            display: flex;
+            gap: 12px;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--fj-border);
+        }
+        .review-item:last-child {
+            border-bottom: none;
+        }
+        .review-item .avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--fj-border);
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+        .review-item .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .review-item .content .name {
+            font-weight: 600;
+            font-size: 0.8rem;
+        }
+        .review-item .content .stars {
+            color: var(--fj-amber);
+            font-size: 0.7rem;
+        }
+        .review-item .content .text {
+            font-size: 0.75rem;
+            color: var(--fj-muted);
+        }
+
+        /* Schedule Item */
+        .schedule-item {
+            display: flex;
+            gap: 12px;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--fj-border);
+            align-items: center;
+        }
+        .schedule-item:last-child {
+            border-bottom: none;
+        }
+        .schedule-item .time {
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 0.7rem;
+            color: var(--fj-teal);
+            background: rgba(13, 148, 136, 0.06);
+            padding: 2px 10px;
+            border-radius: 30px;
+            white-space: nowrap;
+        }
+        .schedule-item .info .title {
+            font-weight: 600;
+            font-size: 0.8rem;
+        }
+        .schedule-item .info .location {
+            font-size: 0.65rem;
+            color: var(--fj-muted);
+        }
+
+        /* ============================================================
+           FOOTER
+           ============================================================ */
+        .site-footer {
+            background: var(--fj-surface);
+            border-top: 1px solid var(--fj-border);
+            padding: 40px 0 24px;
+            margin-top: 20px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 32px;
+        }
+        @media (max-width: 800px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        @media (max-width: 480px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .footer-brand h4 {
+            font-family: var(--font-head);
+            font-size: 1.2rem;
+            font-weight: 900;
+            margin-bottom: 8px;
+        }
+        .footer-brand h4 span {
+            color: var(--fj-teal);
+        }
+        .footer-brand p {
+            font-size: 0.85rem;
+            color: var(--fj-muted);
+            max-width: 280px;
+        }
+        .footer-col h5 {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--fj-dim);
+            margin-bottom: 12px;
+        }
+        .footer-col a {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--fj-muted);
+            padding: 4px 0;
+            transition: color 0.2s;
+        }
+        .footer-col a:hover {
+            color: var(--fj-teal);
+        }
+        .footer-bottom {
+            border-top: 1px solid var(--fj-border);
+            padding-top: 16px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            font-size: 0.7rem;
+            color: var(--fj-dim);
+        }
+        .footer-bottom a {
+            color: var(--fj-dim);
+            transition: color 0.2s;
+        }
+        .footer-bottom a:hover {
+            color: var(--fj-teal);
+        }
+
+        /* ============================================================
+           RESPONSIVE
+           ============================================================ */
+        @media (max-width: 768px) {
+            .profile-header {
+                flex-direction: column;
+                align-items: stretch;
+                text-align: center;
+            }
+            .profile-header .left {
+                flex-direction: column;
+            }
+            .profile-header .right {
+                justify-content: center;
+            }
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+            .kk-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .stats-row {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .goal-card {
+                flex-direction: column;
+                text-align: center;
+            }
+            .goal-card .goal-bar {
+                width: 100%;
+            }
+        }
+        @media (max-width: 480px) {
+            .stats-row {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .job-card .main-info .meta-grid {
+                grid-template-columns: 1fr;
+            }
+            .job-card {
+                padding: 12px 14px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                transition: none !important;
+                transform: none !important;
+            }
+            .goal-card .goal-bar .fill {
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================================
+       NAVIGATION
+       ============================================================ -->
+    <header class="site-nav" id="siteNav">
+        <div class="nav-inner">
+            <a href="../index.html" class="nav-logo">
+                <div class="logo-icon"><i class="fas fa-tools"></i></div>
+                FIX<span>JORI</span>
+            </a>
+            <nav class="nav-links">
+                <a href="../index.html">Start</a>
+                <a href="../directory/index.html">Handwerker</a>
+                <a href="../services/montage.html">Services</a>
+                <a href="../client/dashboard.html">Client Portal</a>
+                <a href="dashboard.html" class="active">Handyman Portal</a>
+                <a href="../booking/step1.html" class="nav-cta">Projekt starten</a>
+            </nav>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon" id="themeIcon"></i></button>
+                <a href="profile.html" class="nav-cta" style="background:transparent;border:1px solid var(--fj-border);color:var(--fj-text);">Mein Profil</a>
+                <button class="mobile-toggle" id="mobileToggle"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="../index.html">Start</a>
+        <a href="../directory/index.html">Handwerker</a>
+        <a href="../services/montage.html">Services</a>
+        <a href="../client/dashboard.html">Client Portal</a>
+        <a href="dashboard.html">Handyman Portal</a>
+        <a href="../booking/step1.html" class="mobile-cta">Projekt starten</a>
+    </div>
+
+    <!-- ============================================================
+       MAIN CONTENT
+       ============================================================ -->
+    <div class="container">
+
+        <!-- Profile Header -->
+        <div class="profile-header">
+            <div class="left">
+                <div class="avatar">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64'%3E%3Crect fill='%23E2E8F0' width='64' height='64'/%3E%3Ctext x='18' y='40' fill='%2364748B' font-size='20'%3ERL%3C/text%3E%3C/svg%3E" alt="Raphael Lezius" />
+                </div>
+                <div class="info">
+                    <div class="name">Raphael Lezius <span class="badge badge-amber" style="font-size:0.5rem;">⭐ Premium Pro</span></div>
+                    <div class="title">
+                        USM Haller & Küchenmontage Spezialist
+                        <span class="rating"><i class="fas fa-star"></i> 4.9 (124 Bewertungen)</span>
+                        <span class="badge badge-teal"><i class="fas fa-check-circle"></i> Verifiziert</span>
+                    </div>
+                </div>
+            </div>
+            <div class="right">
+                <div class="status-toggle" id="statusToggle">
+                    <span class="dot" id="statusDot"></span>
+                    <span class="status-text" id="statusText">Online</span>
+                    <span class="label">|</span>
+                    <span class="label">Verfügbar</span>
+                </div>
+                <a href="earnings.html" class="btn btn-secondary btn-sm"><i class="fas fa-euro-sign"></i> Auszahlen</a>
+                <a href="profile.html" class="btn btn-outline btn-sm"><i class="fas fa-user-edit"></i></a>
+            </div>
+        </div>
+
+        <!-- Stats Row -->
+        <div class="stats-row">
+            <div class="stat-mini">
+                <span class="num teal">€ 4.250</span>
+                <span class="label">Verdienst (dieser Monat)</span>
+            </div>
+            <div class="stat-mini">
+                <span class="num green">12</span>
+                <span class="label">Aufträge abgeschlossen</span>
+            </div>
+            <div class="stat-mini">
+                <span class="num amber">4,9</span>
+                <span class="label">Ø Bewertung</span>
+            </div>
+            <div class="stat-mini">
+                <span class="num pink">3</span>
+                <span class="label">Neue Anfragen</span>
+            </div>
+            <div class="stat-mini">
+                <span class="num teal">2</span>
+                <span class="label">Aktive Aufträge</span>
+            </div>
+        </div>
+
+        <!-- Meituan-style 金剛區 (Quick Actions) -->
+        <div class="kk-grid">
+            <a href="jobs.html?filter=available" class="kk-item amber">
+                <div class="icon-wrap"><i class="fas fa-briefcase"></i></div>
+                <span class="name">Neue Aufträge</span>
+                <span class="count">5 verfügbar</span>
+            </a>
+            <a href="schedule.html" class="kk-item">
+                <div class="icon-wrap"><i class="fas fa-calendar-alt"></i></div>
+                <span class="name">Mein Kalender</span>
+                <span class="count">3 Termine</span>
+            </a>
+            <a href="earnings.html" class="kk-item green">
+                <div class="icon-wrap"><i class="fas fa-chart-line"></i></div>
+                <span class="name">Finanzen</span>
+                <span class="count">€ 4.250</span>
+            </a>
+            <a href="profile.html" class="kk-item">
+                <div class="icon-wrap"><i class="fas fa-user-cog"></i></div>
+                <span class="name">Profil verwalten</span>
+                <span class="count">Einstellungen</span>
+            </a>
+        </div>
+
+        <!-- Goal Card (Motivational - Better than Meituan) -->
+        <div class="goal-card">
+            <span class="goal-text">🎯 Monatsziel: <span class="highlight">€ 5.000</span> verdienen</span>
+            <div class="goal-bar"><div class="fill" style="width:78%;"></div></div>
+            <span class="goal-percent">78%</span>
+            <span class="goal-cta" onclick="alert('Tipp: Nehmen Sie mehr Premium-Aufträge an!')">Mehr erfahren →</span>
+        </div>
+
+        <!-- Dashboard Grid -->
+        <div class="dashboard-grid">
+
+            <!-- ===== LEFT: Jobs ===== -->
+            <div>
+                <!-- Job Tabs -->
+                <div class="job-tabs">
+                    <button class="job-tab active" data-tab="available">Verfügbar <span class="count">5</span></button>
+                    <button class="job-tab" data-tab="active">Meine Aufträge <span class="count">3</span></button>
+                    <button class="job-tab" data-tab="completed">Abgeschlossen <span class="count">12</span></button>
+                </div>
+
+                <!-- Job List Container -->
+                <div id="jobContainer">
+
+                    <!-- Available Jobs -->
+                    <div class="job-list" id="availableJobs">
+                        <div class="job-card">
+                            <div class="main-info">
+                                <div class="title-row">
+                                    <span class="job-title">USM Haller Montage – Kanzlei Dr. Weber</span>
+                                    <span class="job-badge urgent">⚡ Dringend</span>
+                                    <span class="job-badge high-pay">💰 Top Bezahlt</span>
+                                </div>
+                                <div class="meta-grid">
+                                    <span><i class="fas fa-map-pin"></i> <span class="value">Ludwigshafen</span> <span class="text-dim">(2,5 km)</span></span>
+                                    <span><i class="fas fa-clock"></i> <span class="value">Sofort</span></span>
+                                    <span><i class="fas fa-tag"></i> <span class="value">Montage & Möbel</span></span>
+                                </div>
+                            </div>
+                            <div class="actions-col">
+                                <span class="price">€ 1.200</span>
+                                <div class="btn-group">
+                                    <button class="btn btn-primary btn-sm">Angebot abgeben</button>
+                                    <button class="btn btn-secondary btn-sm"><i class="fas fa-heart"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="job-card">
+                            <div class="main-info">
+                                <div class="title-row">
+                                    <span class="job-title">Küchenmontage – Familie Schmidt</span>
+                                    <span class="job-badge urgent">⚡ Dringend</span>
+                                </div>
+                                <div class="meta-grid">
+                                    <span><i class="fas fa-map-pin"></i> <span class="value">Mannheim</span> <span class="text-dim">(5,1 km)</span></span>
+                                    <span><i class="fas fa-clock"></i> <span class="value">Morgen 10:00</span></span>
+                                    <span><i class="fas fa-tag"></i> <span class="value">Montage & Möbel</span></span>
+                                </div>
+                            </div>
+                            <div class="actions-col">
+                                <span class="price">€ 850</span>
+                                <div class="btn-group">
+                                    <button class="btn btn-primary btn-sm">Angebot abgeben</button>
+                                    <button class="btn btn-secondary btn-sm"><i class="fas fa-heart"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="job-card">
+                            <div class="main-info">
+                                <div class="title-row">
+                                    <span class="job-title">Smart Home Installation – Villa Bergmann</span>
+                                </div>
+                                <div class="meta-grid">
+                                    <span><i class="fas fa-map-pin"></i> <span class="value">Heidelberg</span> <span class="text-dim">(8,3 km)</span></span>
+                                    <span><i class="fas fa-clock"></i> <span class="value">Nächste Woche</span></span>
+                                    <span><i class="fas fa-tag"></i> <span class="value">Elektro & Smart</span></span>
+                                </div>
+                            </div>
+                            <div class="actions-col">
+                                <span class="price">€ 1.450</span>
+                                <div class="btn-group">
+                                    <button class="btn btn-primary btn-sm">Angebot abgeben</button>
+                                    <button class="btn btn-secondary btn-sm"><i class="fas fa-heart"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Active Jobs (Hidden by default) -->
+                    <div class="job-list" id="activeJobs" style="display:none;">
+                        <div class="job-card">
+                            <div class="main-info">
+                                <div class="title-row">
+                                    <span class="job-title">Büro-Rollout – Creative Agency</span>
+                                    <span class="job-status active"><i class="fas fa-spinner fa-pulse"></i> In Bearbeitung</span>
+                                </div>
+                                <div class="meta-grid">
+                                    <span><i class="fas fa-user"></i> <span class="value">Client: Michael</span></span>
+                                    <span><i class="fas fa-calendar-alt"></i> <span class="value">Start: 20. Aug 2026</span></span>
+                                    <span><i class="fas fa-map-pin"></i> <span class="value">Mannheim</span></span>
+                                </div>
+                                <div class="progress-section">
+                                    <div class="progress-label">
+                                        <span>Fortschritt</span>
+                                        <span>67%</span>
+                                    </div>
+                                    <div class="progress-bar"><div class="fill" style="width:67%;"></div></div>
+                                </div>
+                            </div>
+                            <div class="actions-col">
+                                <div class="btn-group">
+                                    <button class="btn btn-green btn-sm"><i class="fas fa-check"></i> Check-in</button>
+                                    <button class="btn btn-secondary btn-sm"><i class="fas fa-comment"></i></button>
+                                    <button class="btn btn-outline btn-sm">Details</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="job-card">
+                            <div class="main-info">
+                                <div class="title-row">
+                                    <span class="job-title">Wohnungsrenovierung – Familie Müller</span>
+                                    <span class="job-status active"><i class="fas fa-spinner fa-pulse"></i> In Bearbeitung</span>
+                                </div>
+                                <div class="meta-grid">
+                                    <span><i class="fas fa-user"></i> <span class="value">Client: Anna</span></span>
+                                    <span><i class="fas fa-calendar-alt"></i> <span class="value">Start: 10. Jun 2026</span></span>
+                                    <span><i class="fas fa-map-pin"></i> <span class="value">Kaufering</span></span>
+                                </div>
+                                <div class="progress-section">
+                                    <div class="progress-label">
+                                        <span>Fortschritt</span>
+                                        <span>20%</span>
+                                    </div>
+                                    <div class="progress-bar"><div class="fill" style="width:20%;"></div></div>
+                                </div>
+                            </div>
+                            <div class="actions-col">
+                                <div class="btn-group">
+                                    <button class="btn btn-green btn-sm"><i class="fas fa-check"></i> Check-in</button>
+                                    <button class="btn btn-secondary btn-sm"><i class="fas fa-comment"></i></button>
+                                    <button class="btn btn-outline btn-sm">Details</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Completed Jobs (Hidden by default) -->
+                    <div class="job-list" id="completedJobs" style="display:none;">
+                        <div class="job-card">
+                            <div class="main-info">
+                                <div class="title-row">
+                                    <span class="job-title">USM Haller – Kanzlei Dr. Weber</span>
+                                    <span class="job-status completed"><i class="fas fa-check-circle"></i> Abgeschlossen</span>
+                                    <span class="badge badge-amber" style="font-size:0.45rem;">⭐ Premium Pro</span>
+                                </div>
+                                <div class="meta-grid">
+                                    <span><i class="fas fa-user"></i> <span class="value">Client: Dr. Weber</span></span>
+                                    <span><i class="fas fa-calendar-alt"></i> <span class="value">Abgeschlossen: 15. Jul 2026</span></span>
+                                    <span><i class="fas fa-star" style="color:var(--fj-amber);"></i> <span class="value">5.0 Bewertung</span></span>
+                                </div>
+                            </div>
+                            <div class="actions-col">
+                                <span class="price" style="color:var(--fj-green);">€ 2.450</span>
+                                <div class="btn-group">
+                                    <button class="btn btn-secondary btn-sm">Details</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- View All -->
+                <div style="text-align:center;margin-top:8px;">
+                    <a href="jobs.html" class="btn btn-secondary btn-sm" style="width:100%;justify-content:center;">Alle Aufträge anzeigen →</a>
+                </div>
+            </div>
+
+            <!-- ===== RIGHT: Sidebar ===== -->
+            <div>
+
+                <!-- Earnings Chart -->
+                <div class="sidebar-card">
+                    <div class="card-title">
+                        <i class="fas fa-chart-line" style="color:var(--fj-teal);"></i> Verdienstübersicht
+                        <span class="badge badge-teal">Diese Woche</span>
+                    </div>
+                    <div class="earnings-chart">
+                        <div class="bar-wrapper"><div class="bar" style="height:45px;"></div><span class="label">Mo</span></div>
+                        <div class="bar-wrapper"><div class="bar" style="height:32px;"></div><span class="label">Di</span></div>
+                        <div class="bar-wrapper"><div class="bar high" style="height:70px;"></div><span class="label">Mi</span></div>
+                        <div class="bar-wrapper"><div class="bar" style="height:50px;"></div><span class="label">Do</span></div>
+                        <div class="bar-wrapper"><div class="bar" style="height:25px;"></div><span class="label">Fr</span></div>
+                        <div class="bar-wrapper"><div class="bar" style="height:15px;"></div><span class="label">Sa</span></div>
+                        <div class="bar-wrapper"><div class="bar" style="height:10px;"></div><span class="label">So</span></div>
+                    </div>
+                    <div class="earnings-total">
+                        <span>Gesamt diese Woche</span>
+                        <span style="color:var(--fj-teal);">€ 1.280</span>
+                    </div>
+                </div>
+
+                <!-- Recent Reviews -->
+                <div class="sidebar-card">
+                    <div class="card-title">
+                        <i class="fas fa-star" style="color:var(--fj-amber);"></i> Aktuelle Bewertungen
+                        <span class="badge badge-amber">4.9</span>
+                    </div>
+                    <div class="review-item">
+                        <div class="avatar"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36'%3E%3Crect fill='%23E2E8F0' width='36' height='36'/%3E%3Ctext x='10' y='24' fill='%2364748B' font-size='12'%3EM%3C/text%3E%3C/svg%3E" alt="M" /></div>
+                        <div class="content">
+                            <div class="name">Michael S.</div>
+                            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <div class="text">"Sehr sauber gearbeitet! Absolute Präzision."</div>
+                        </div>
+                    </div>
+                    <div class="review-item">
+                        <div class="avatar"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36'%3E%3Crect fill='%23E2E8F0' width='36' height='36'/%3E%3Ctext x='10' y='24' fill='%2364748B' font-size='12'%3EA%3C/text%3E%3C/svg%3E" alt="A" /></div>
+                        <div class="content">
+                            <div class="name">Anna K.</div>
+                            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <div class="text">"Perfekte Montage, jederzeit wieder!"</div>
+                        </div>
+                    </div>
+                    <div style="margin-top:8px;">
+                        <a href="reviews.html" class="btn btn-secondary btn-sm" style="width:100%;justify-content:center;">Alle Bewertungen anzeigen</a>
+                    </div>
+                </div>
+
+                <!-- Upcoming Schedule -->
+                <div class="sidebar-card">
+                    <div class="card-title">
+                        <i class="fas fa-calendar-alt" style="color:var(--fj-teal);"></i> Nächste Termine
+                    </div>
+                    <div class="schedule-item">
+                        <span class="time">Heute 14:00</span>
+                        <div class="info">
+                            <div class="title">Küchenmontage – Schmidt</div>
+                            <div class="location"><i class="fas fa-map-pin"></i> Mannheim</div>
+                        </div>
+                    </div>
+                    <div class="schedule-item">
+                        <span class="time">Morgen 09:30</span>
+                        <div class="info">
+                            <div class="title">USM Haller – Dr. Weber</div>
+                            <div class="location"><i class="fas fa-map-pin"></i> Ludwigshafen</div>
+                        </div>
+                    </div>
+                    <div style="margin-top:8px;">
+                        <a href="schedule.html" class="btn btn-secondary btn-sm" style="width:100%;justify-content:center;">Kalender öffnen</a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h4>FIX<span>JORI</span></h4>
+                    <p>Die Plattform für perfekte Montage und Premium-Handwerk. Verifizierte Experten, Festpreise, persönliche Betreuung.</p>
+                </div>
+                <div class="footer-col">
+                    <h5>Services</h5>
+                    <a href="../services/montage.html">Montage & Möbel</a>
+                    <a href="../services/elektro.html">Elektro & Smart</a>
+                    <a href="../services/sanitaer.html">Sanitär & Wasser</a>
+                    <a href="../services/garten.html">Garten & Outdoor</a>
+                </div>
+                <div class="footer-col">
+                    <h5>Plattform</h5>
+                    <a href="../directory/index.html">Handwerker finden</a>
+                    <a href="../client/dashboard.html">Client Portal</a>
+                    <a href="dashboard.html">Handyman Portal</a>
+                    <a href="../booking/step1.html">Projekt starten</a>
+                </div>
+                <div class="footer-col">
+                    <h5>Rechtliches</h5>
+                    <a href="../impressum.html">Impressum</a>
+                    <a href="../datenschutz.html">Datenschutz</a>
+                    <a href="../agb.html">AGB</a>
+                    <a href="../garantie.html">Garantie</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2026 FIXJORI. Alle Rechte vorbehalten.</span>
+                <div style="display:flex;gap:16px;flex-wrap:wrap;">
+                    <a href="../impressum.html">Impressum</a>
+                    <a href="../datenschutz.html">Datenschutz</a>
+                    <a href="../agb.html">AGB</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================================================
+       SCRIPTS
+       ============================================================ -->
+    <script>
+        (function() {
+            'use strict';
+
+            // ── THEME TOGGLE ──
+            const html = document.documentElement;
+            const themeToggle = document.getElementById('themeToggle');
+            const themeIcon = document.getElementById('themeIcon');
+            const storedTheme = localStorage.getItem('fixjori-theme');
+            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            let currentTheme = storedTheme || (systemPrefersDark ? 'dark' : 'light');
+
+            function applyTheme(theme) {
+                html.setAttribute('data-theme', theme);
+                localStorage.setItem('fixjori-theme', theme);
+                themeIcon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+            }
+            applyTheme(currentTheme);
+
+            themeToggle.addEventListener('click', function() {
+                currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+                applyTheme(currentTheme);
+            });
+
+            // ── NAV TOGGLE ──
+            const toggleBtn = document.getElementById('mobileToggle');
+            const mobileMenu = document.getElementById('mobileMenu');
+
+            toggleBtn.addEventListener('click', function() {
+                const isOpen = this.classList.toggle('active');
+                mobileMenu.classList.toggle('open');
+                this.setAttribute('aria-expanded', isOpen);
+                document.body.style.overflow = isOpen ? 'hidden' : '';
+            });
+
+            mobileMenu.querySelectorAll('a').forEach(function(link) {
+                link.addEventListener('click', function() {
+                    toggleBtn.classList.remove('active');
+                    mobileMenu.classList.remove('open');
+                    document.body.style.overflow = '';
+                });
+            });
+
+            // ── STATUS TOGGLE ──
+            const statusToggle = document.getElementById('statusToggle');
+            const statusDot = document.getElementById('statusDot');
+            const statusText = document.getElementById('statusText');
+
+            statusToggle.addEventListener('click', function() {
+                this.classList.toggle('offline');
+                const isOffline = this.classList.contains('offline');
+                statusDot.style.background = isOffline ? 'var(--fj-dim)' : 'var(--fj-green)';
+                statusText.textContent = isOffline ? 'Offline' : 'Online';
+            });
+
+            // ── JOB TABS ──
+            const tabs = document.querySelectorAll('.job-tab');
+            const availableJobs = document.getElementById('availableJobs');
+            const activeJobs = document.getElementById('activeJobs');
+            const completedJobs = document.getElementById('completedJobs');
+
+            tabs.forEach(function(tab) {
+                tab.addEventListener('click', function() {
+                    tabs.forEach(function(t) { t.classList.remove('active'); });
+                    this.classList.add('active');
+
+                    const tabId = this.dataset.tab;
+                    availableJobs.style.display = 'none';
+                    activeJobs.style.display = 'none';
+                    completedJobs.style.display = 'none';
+
+                    if (tabId === 'available') availableJobs.style.display = 'flex';
+                    else if (tabId === 'active') activeJobs.style.display = 'flex';
+                    else if (tabId === 'completed') completedJobs.style.display = 'flex';
+                });
+            });
+
+            // ── INTERACTIVE BUTTONS (Demo) ──
+            document.querySelectorAll('.btn-primary').forEach(function(btn) {
+                if (btn.textContent.trim() === 'Angebot abgeben') {
+                    btn.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        alert('✅ Angebot erfolgreich abgegeben! Der Client wird benachrichtigt.');
+                        this.textContent = '✅ Angebot gesendet';
+                        this.disabled = true;
+                        this.style.opacity = '0.6';
+                    });
+                }
+            });
+
+            document.querySelectorAll('.btn-green').forEach(function(btn) {
+                if (btn.textContent.trim() === 'Check-in') {
+                    btn.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        alert('📍 Check-in erfolgreich! Der Client wurde über Ihre Ankunft informiert.');
+                        this.textContent = '✅ Eingecheckt';
+                        this.disabled = true;
+                        this.style.opacity = '0.6';
+                    });
+                }
+            });
+
+            // ── SCROLL NAV SHADOW ──
+            const nav = document.getElementById('siteNav');
+            window.addEventListener('scroll', function() {
+                nav.classList.toggle('scrolled', window.scrollY > 20);
+            }, { passive: true });
+
+            console.log('✅ Handyman Dashboard (Better than Meituan) loaded.');
+        })();
+    </script>
+
+</body>
+</html>
