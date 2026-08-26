@@ -1,0 +1,1323 @@
+<!-- ============================================================
+     FIXJORI | SEARCH COMPONENT V1.0
+     Meituan-Style · Dense · Information-Rich · Reusable
+     ============================================================ -->
+
+<!--
+     USAGE:
+     ======
+     Include this file in any page where you need a search component.
+
+     Basic usage:
+     <div id="search-component"></div>
+     <script src="components/search-bar.html"></script>
+
+     Or directly embed the HTML and CSS/JS in your page.
+
+     The search component will automatically initialize when the DOM is ready.
+     It supports:
+     - Autocomplete suggestions
+     - Category filters
+     - Location integration
+     - Recent searches (stored in localStorage)
+     - Popular search suggestions
+     - Keyboard navigation (arrow keys, Enter, Escape)
+-->
+
+<style>
+    /* ── SEARCH COMPONENT STYLES ── */
+    .fj-search-component {
+        --fj-teal: #0D9488;
+        --fj-teal-dark: #0F766E;
+        --fj-teal-light: #14B8A6;
+        --fj-amber: #F59E0B;
+        --fj-gold: #F5A623;
+        --fj-green: #22C55E;
+        --fj-blue: #3B82F6;
+        --fj-purple: #8B5CF6;
+        --fj-red: #EF4444;
+        --fj-pink: #EC4899;
+
+        --fj-text: #0F172A;
+        --fj-muted: #475569;
+        --fj-dim: #94A3B8;
+        --fj-border: #E2E8F0;
+        --fj-bg: #F8FAFC;
+        --fj-surface: #FFFFFF;
+        --fj-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+        --fj-shadow-lg: 0 8px 48px rgba(0, 0, 0, 0.10);
+        --fj-radius: 12px;
+        --fj-radius-full: 40px;
+
+        --font-head: 'Space Grotesk', sans-serif;
+        --font-body: 'Inter', sans-serif;
+        --font-mono: 'JetBrains Mono', monospace;
+
+        --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+        --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+        font-family: var(--font-body);
+        width: 100%;
+        max-width: 720px;
+        margin: 0 auto;
+        position: relative;
+        color: var(--fj-text);
+    }
+
+    /* Dark mode support */
+    [data-theme="dark"] .fj-search-component {
+        --fj-text: #F8FAFC;
+        --fj-muted: #94A3B8;
+        --fj-dim: #64748B;
+        --fj-border: rgba(255, 255, 255, 0.06);
+        --fj-bg: #0F172A;
+        --fj-surface: #1A2332;
+        --fj-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+        --fj-shadow-lg: 0 8px 48px rgba(0, 0, 0, 0.4);
+    }
+
+    /* ── MAIN SEARCH INPUT ── */
+    .fj-search-wrapper {
+        position: relative;
+        width: 100%;
+    }
+
+    .fj-search-input-wrap {
+        display: flex;
+        align-items: center;
+        background: var(--fj-surface);
+        border: 2px solid var(--fj-border);
+        border-radius: var(--fj-radius-full);
+        padding: 4px 4px 4px 20px;
+        transition: all 0.3s var(--ease-smooth);
+        box-shadow: var(--fj-shadow);
+        position: relative;
+        z-index: 10;
+    }
+
+    .fj-search-input-wrap:focus-within {
+        border-color: var(--fj-teal);
+        box-shadow: 0 8px 32px rgba(13, 148, 136, 0.10);
+        transform: translateY(-2px);
+    }
+
+    .fj-search-input-wrap .fj-search-icon {
+        color: var(--fj-dim);
+        font-size: 0.95rem;
+        flex-shrink: 0;
+        margin-right: 4px;
+    }
+
+    .fj-search-input-wrap input {
+        flex: 1;
+        padding: 14px 12px;
+        border: none;
+        outline: none;
+        font-size: 1rem;
+        background: transparent;
+        color: var(--fj-text);
+        min-width: 0;
+        font-family: var(--font-body);
+        line-height: 1.4;
+    }
+
+    .fj-search-input-wrap input::placeholder {
+        color: var(--fj-dim);
+    }
+
+    .fj-search-input-wrap .fj-search-clear {
+        display: none;
+        align-items: center;
+        justify-content: center;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: var(--fj-border);
+        color: var(--fj-dim);
+        font-size: 0.7rem;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        flex-shrink: 0;
+        margin-right: 4px;
+    }
+    .fj-search-input-wrap .fj-search-clear:hover {
+        background: var(--fj-teal);
+        color: #fff;
+    }
+    .fj-search-input-wrap .fj-search-clear.visible {
+        display: flex;
+    }
+
+    .fj-search-input-wrap .fj-search-submit {
+        padding: 12px 28px;
+        border-radius: var(--fj-radius-full);
+        background: linear-gradient(135deg, var(--fj-teal), var(--fj-teal-dark));
+        color: #fff;
+        font-weight: 700;
+        font-size: 0.85rem;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        transition: all 0.3s var(--ease-spring);
+        border: none;
+        cursor: pointer;
+        white-space: nowrap;
+        flex-shrink: 0;
+        font-family: var(--font-body);
+    }
+    .fj-search-input-wrap .fj-search-submit:hover {
+        transform: scale(1.04);
+        box-shadow: 0 8px 28px rgba(13, 148, 136, 0.30);
+    }
+    .fj-search-input-wrap .fj-search-submit:active {
+        transform: scale(0.96);
+    }
+
+    /* ── LOADING SPINNER ── */
+    .fj-search-spinner {
+        display: none;
+        width: 20px;
+        height: 20px;
+        border: 2px solid var(--fj-border);
+        border-top-color: var(--fj-teal);
+        border-radius: 50%;
+        animation: fj-search-spin 0.6s linear infinite;
+        flex-shrink: 0;
+        margin-right: 8px;
+    }
+    .fj-search-spinner.active {
+        display: block;
+    }
+    @keyframes fj-search-spin {
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    /* ── SEARCH DROPDOWN (Meituan-style dense) ── */
+    .fj-search-dropdown {
+        position: absolute;
+        top: calc(100% + 6px);
+        left: 0;
+        right: 0;
+        background: var(--fj-surface);
+        border: 1px solid var(--fj-border);
+        border-radius: var(--fj-radius);
+        box-shadow: var(--fj-shadow-lg);
+        max-height: 480px;
+        overflow-y: auto;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transform: translateY(8px) scale(0.97);
+        transition: all 0.3s var(--ease-smooth);
+        z-index: 100;
+        padding: 8px 0;
+    }
+    .fj-search-dropdown.is-open {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: translateY(0) scale(1);
+    }
+
+    .fj-search-dropdown::-webkit-scrollbar {
+        width: 4px;
+    }
+    .fj-search-dropdown::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    .fj-search-dropdown::-webkit-scrollbar-thumb {
+        background: var(--fj-border);
+        border-radius: 2px;
+    }
+
+    /* ── DROPDOWN SECTIONS ── */
+    .fj-search-section {
+        padding: 4px 0;
+    }
+    .fj-search-section:not(:last-child) {
+        border-bottom: 1px solid var(--fj-border);
+    }
+
+    .fj-search-section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 6px 18px 4px;
+        font-size: 0.6rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        color: var(--fj-dim);
+    }
+    .fj-search-section-header .fj-search-section-action {
+        font-size: 0.55rem;
+        font-weight: 600;
+        color: var(--fj-teal);
+        cursor: pointer;
+        background: none;
+        border: none;
+        padding: 2px 8px;
+        border-radius: 30px;
+        transition: background 0.2s;
+        font-family: var(--font-body);
+    }
+    .fj-search-section-header .fj-search-section-action:hover {
+        background: rgba(13, 148, 136, 0.06);
+    }
+
+    /* ── RECENT SEARCHES ── */
+    .fj-search-recent-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 8px 18px;
+        cursor: pointer;
+        transition: background 0.2s ease;
+        border-radius: 6px;
+        margin: 0 4px;
+    }
+    .fj-search-recent-item:hover {
+        background: rgba(13, 148, 136, 0.04);
+    }
+    .fj-search-recent-item .fj-search-recent-icon {
+        color: var(--fj-dim);
+        font-size: 0.75rem;
+        width: 20px;
+        text-align: center;
+    }
+    .fj-search-recent-item .fj-search-recent-text {
+        flex: 1;
+        font-size: 0.85rem;
+        color: var(--fj-muted);
+    }
+    .fj-search-recent-item .fj-search-recent-remove {
+        color: var(--fj-dim);
+        font-size: 0.6rem;
+        cursor: pointer;
+        padding: 4px 8px;
+        border-radius: 30px;
+        transition: all 0.2s;
+        background: none;
+        border: none;
+        font-family: var(--font-body);
+    }
+    .fj-search-recent-item .fj-search-recent-remove:hover {
+        background: rgba(239, 68, 68, 0.08);
+        color: var(--fj-red);
+    }
+
+    /* ── POPULAR SEARCHES (Meituan-style tags) ── */
+    .fj-search-popular-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        padding: 4px 14px 8px;
+    }
+    .fj-search-popular-tag {
+        padding: 4px 14px;
+        border-radius: var(--fj-radius-full);
+        background: var(--fj-bg);
+        border: 1px solid var(--fj-border);
+        font-size: 0.75rem;
+        color: var(--fj-muted);
+        cursor: pointer;
+        transition: all 0.25s ease;
+        font-family: var(--font-body);
+    }
+    .fj-search-popular-tag:hover {
+        border-color: var(--fj-teal);
+        color: var(--fj-text);
+        background: rgba(13, 148, 136, 0.04);
+        transform: translateY(-2px);
+        box-shadow: var(--fj-shadow);
+    }
+    .fj-search-popular-tag .fj-search-tag-count {
+        font-size: 0.55rem;
+        color: var(--fj-dim);
+        margin-left: 4px;
+    }
+    .fj-search-popular-tag .fj-search-tag-icon {
+        margin-right: 4px;
+        font-size: 0.65rem;
+    }
+
+    /* ── AUTOCOMPLETE SUGGESTIONS ── */
+    .fj-search-suggestion-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 8px 18px;
+        cursor: pointer;
+        transition: background 0.15s ease;
+        border-radius: 6px;
+        margin: 0 4px;
+    }
+    .fj-search-suggestion-item:hover,
+    .fj-search-suggestion-item.active {
+        background: rgba(13, 148, 136, 0.06);
+    }
+    .fj-search-suggestion-item .fj-search-suggestion-icon {
+        color: var(--fj-dim);
+        font-size: 0.8rem;
+        width: 20px;
+        text-align: center;
+        flex-shrink: 0;
+    }
+    .fj-search-suggestion-item .fj-search-suggestion-text {
+        flex: 1;
+        font-size: 0.85rem;
+        color: var(--fj-text);
+    }
+    .fj-search-suggestion-item .fj-search-suggestion-text .highlight {
+        color: var(--fj-teal);
+        font-weight: 700;
+    }
+    .fj-search-suggestion-item .fj-search-suggestion-category {
+        font-size: 0.6rem;
+        color: var(--fj-dim);
+        background: var(--fj-bg);
+        padding: 1px 10px;
+        border-radius: 30px;
+        border: 1px solid var(--fj-border);
+        white-space: nowrap;
+    }
+
+    /* ── CATEGORY FILTERS (inline with search) ── */
+    .fj-search-categories {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        padding: 12px 4px 4px;
+        justify-content: center;
+    }
+    .fj-search-category {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        padding: 4px 14px;
+        border-radius: var(--fj-radius-full);
+        background: transparent;
+        border: 1px solid var(--fj-border);
+        font-size: 0.7rem;
+        font-weight: 500;
+        color: var(--fj-muted);
+        cursor: pointer;
+        transition: all 0.25s ease;
+        font-family: var(--font-body);
+    }
+    .fj-search-category:hover {
+        border-color: var(--fj-teal);
+        color: var(--fj-text);
+        transform: translateY(-2px);
+    }
+    .fj-search-category.active {
+        background: var(--fj-teal);
+        color: #fff;
+        border-color: var(--fj-teal);
+        box-shadow: 0 4px 16px rgba(13, 148, 136, 0.20);
+    }
+    .fj-search-category i {
+        font-size: 0.7rem;
+    }
+    .fj-search-category .fj-search-category-count {
+        font-size: 0.5rem;
+        opacity: 0.6;
+        margin-left: 2px;
+        font-family: var(--font-mono);
+    }
+    .fj-search-category.active .fj-search-category-count {
+        opacity: 0.8;
+    }
+
+    /* ── EMPTY STATE ── */
+    .fj-search-empty {
+        text-align: center;
+        padding: 24px 20px;
+        color: var(--fj-muted);
+    }
+    .fj-search-empty i {
+        font-size: 2rem;
+        color: var(--fj-dim);
+        opacity: 0.3;
+        display: block;
+        margin-bottom: 8px;
+    }
+    .fj-search-empty p {
+        font-size: 0.85rem;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+        .fj-search-input-wrap {
+            flex-wrap: wrap;
+            background: transparent;
+            border: none;
+            box-shadow: none;
+            padding: 0;
+            gap: 8px;
+        }
+        .fj-search-input-wrap:focus-within {
+            transform: none;
+            box-shadow: none;
+        }
+        .fj-search-input-wrap .fj-search-icon {
+            display: none;
+        }
+        .fj-search-input-wrap input {
+            width: 100%;
+            background: var(--fj-surface);
+            border-radius: var(--fj-radius-full);
+            padding: 12px 18px;
+            border: 1px solid var(--fj-border);
+            box-shadow: var(--fj-shadow);
+            font-size: 0.95rem;
+        }
+        .fj-search-input-wrap input:focus {
+            border-color: var(--fj-teal);
+            box-shadow: 0 8px 32px rgba(13, 148, 136, 0.10);
+        }
+        .fj-search-input-wrap .fj-search-submit {
+            width: 100%;
+            border-radius: var(--fj-radius-full);
+            padding: 12px;
+            justify-content: center;
+        }
+        .fj-search-dropdown {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            max-height: 100vh;
+            border-radius: 0;
+            padding: 20px 16px;
+            z-index: 999;
+            transform: translateY(0) scale(1);
+            background: var(--fj-surface);
+        }
+        .fj-search-dropdown.is-open {
+            transform: translateY(0) scale(1);
+        }
+        .fj-search-dropdown .fj-search-close-mobile {
+            display: flex !important;
+            position: absolute;
+            top: 12px;
+            right: 16px;
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            color: var(--fj-muted);
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 8px;
+            font-family: var(--font-body);
+        }
+        .fj-search-dropdown .fj-search-close-mobile:hover {
+            background: rgba(13, 148, 136, 0.06);
+        }
+        .fj-search-categories {
+            gap: 4px;
+        }
+        .fj-search-category {
+            font-size: 0.65rem;
+            padding: 3px 10px;
+        }
+        .fj-search-popular-tags {
+            padding: 4px 8px 8px;
+        }
+        .fj-search-popular-tag {
+            font-size: 0.7rem;
+            padding: 3px 10px;
+        }
+    }
+
+    /* Mobile close button (hidden by default) */
+    .fj-search-close-mobile {
+        display: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .fj-search-input-wrap,
+        .fj-search-input-wrap input,
+        .fj-search-dropdown,
+        .fj-search-popular-tag,
+        .fj-search-category,
+        .fj-search-suggestion-item,
+        .fj-search-recent-item {
+            transition: none !important;
+            transform: none !important;
+        }
+        .fj-search-input-wrap .fj-search-submit:hover {
+            transform: none !important;
+        }
+        .fj-search-spinner {
+            animation-duration: 0s;
+        }
+    }
+</style>
+
+<!-- ============================================================
+     SEARCH COMPONENT HTML
+     ============================================================ -->
+<div class="fj-search-component" id="fjSearchComponent" role="search" aria-label="Suche">
+    <div class="fj-search-wrapper">
+
+        <!-- Search Input -->
+        <div class="fj-search-input-wrap">
+            <i class="fas fa-search fj-search-icon"></i>
+            <input
+            type="text"
+            id="fjSearchInput"
+            placeholder="Was suchen Sie? z.B. USM Haller Montage, Badrenovierung..."
+            autocomplete="off"
+            aria-label="Suchbegriff eingeben"
+            aria-expanded="false"
+            aria-controls="fjSearchDropdown"
+            />
+            <button class="fj-search-clear" id="fjSearchClear" aria-label="Suche löschen">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="fj-search-spinner" id="fjSearchSpinner"></div>
+            <button class="fj-search-submit" id="fjSearchSubmit">
+                <i class="fas fa-arrow-right"></i> Suchen
+            </button>
+        </div>
+
+        <!-- Category Filters (Meituan-style quick filters) -->
+        <div class="fj-search-categories" id="fjSearchCategories">
+            <button class="fj-search-category active" data-category="all">
+                <i class="fas fa-th-list"></i> Alle
+                <span class="fj-search-category-count">(1.2k)</span>
+            </button>
+            <button class="fj-search-category" data-category="montage">
+                <i class="fas fa-couch"></i> Montage
+                <span class="fj-search-category-count">(342)</span>
+            </button>
+            <button class="fj-search-category" data-category="elektro">
+                <i class="fas fa-bolt"></i> Elektro
+                <span class="fj-search-category-count">(256)</span>
+            </button>
+            <button class="fj-search-category" data-category="sanitaer">
+                <i class="fas fa-faucet-drip"></i> Sanitär
+                <span class="fj-search-category-count">(189)</span>
+            </button>
+            <button class="fj-search-category" data-category="garten">
+                <i class="fas fa-tree"></i> Garten
+                <span class="fj-search-category-count">(134)</span>
+            </button>
+            <button class="fj-search-category" data-category="renovierung">
+                <i class="fas fa-paint-roller"></i> Renovierung
+                <span class="fj-search-category-count">(278)</span>
+            </button>
+            <button class="fj-search-category" data-category="premium">
+                <i class="fas fa-crown" style="color:var(--fj-amber);"></i> Premium
+                <span class="fj-search-category-count">(48)</span>
+            </button>
+        </div>
+
+        <!-- Search Dropdown -->
+        <div class="fj-search-dropdown" id="fjSearchDropdown" role="listbox">
+            <button class="fj-search-close-mobile" id="fjSearchCloseMobile">
+                <i class="fas fa-times"></i>
+            </button>
+
+            <!-- Recent Searches -->
+            <div class="fj-search-section" id="fjSearchRecentSection">
+                <div class="fj-search-section-header">
+                    <span>🕐 Zuletzt gesucht</span>
+                    <button class="fj-search-section-action" id="fjSearchClearRecent">Alle löschen</button>
+                </div>
+                <div id="fjSearchRecentList">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+
+            <!-- Popular Searches -->
+            <div class="fj-search-section">
+                <div class="fj-search-section-header">
+                    <span>🔥 Beliebte Suchbegriffe</span>
+                </div>
+                <div class="fj-search-popular-tags" id="fjSearchPopularTags">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+
+            <!-- Autocomplete Suggestions -->
+            <div class="fj-search-section" id="fjSearchSuggestionsSection" style="display:none;">
+                <div class="fj-search-section-header">
+                    <span>💡 Vorschläge</span>
+                </div>
+                <div id="fjSearchSuggestionsList">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+
+            <!-- Empty State -->
+            <div class="fj-search-empty" id="fjSearchEmpty" style="display:none;">
+                <i class="fas fa-search"></i>
+                <p>Keine Ergebnisse gefunden.<br />Versuchen Sie es mit einem anderen Begriff.</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- ============================================================
+     SEARCH COMPONENT JAVASCRIPT
+     ============================================================ -->
+<script>
+    (function() {
+        'use strict';
+
+        // ── CONFIGURATION ──
+        const CONFIG = {
+            maxRecentSearches: 8,
+            debounceDelay: 300,
+            storageKey: 'fj_search_history',
+            minCharsForSuggestions: 2,
+        };
+
+        // ── DATA ──
+        // Sample data – in production, this would come from an API
+        const SUGGESTION_DATA = {
+            services: [
+                'USM Haller Montage',
+                'Küchenmontage',
+                'Smart Home Installation',
+                'Badrenovierung',
+                'Garten Landschaftsbau',
+                'Elektroinstallation',
+                'Sanitärinstallation',
+                'Malerarbeiten',
+                'Tapete anbringen',
+                'Bodenverlegung',
+                'Trockenbau',
+                'Dachdeckerei',
+                'Heizungsinstallation',
+                'Klimaanlage installieren',
+                'Rolladen montieren',
+                'Wandverkleidung',
+                'Deckenrenovierung',
+                'Fenster einbauen',
+                'Tür montieren',
+                'Treppenbau'
+            ],
+            handymen: [
+                'Raphael Lezius',
+                'Jaffar Shariff',
+                'Anna Schmidt',
+                'Michael Weber',
+                'Thomas Bauer',
+                'Claudia Richter',
+                'Stefan König',
+                'Peter Müller'
+            ],
+            locations: [
+                'Augsburg',
+                'München',
+                'Berlin',
+                'Hamburg',
+                'Köln',
+                'Frankfurt am Main',
+                'Stuttgart',
+                'Düsseldorf',
+                'Ingolstadt',
+                'Regensburg',
+                'Nürnberg',
+                'Mannheim'
+            ]
+        };
+
+        // Popular search tags with counts
+        const POPULAR_TAGS = [
+            { label: 'USM Haller Montage', count: 342, icon: 'fa-couch' },
+            { label: 'Küchenmontage', count: 287, icon: 'fa-kitchen-set' },
+            { label: 'Smart Home', count: 215, icon: 'fa-microchip' },
+            { label: 'Badrenovierung', count: 189, icon: 'fa-bath' },
+            { label: 'Malerarbeiten', count: 156, icon: 'fa-paint-brush' },
+            { label: 'Sanitärinstallation', count: 134, icon: 'fa-faucet-drip' },
+            { label: 'Elektroinstallation', count: 112, icon: 'fa-bolt' },
+            { label: 'Gartenbau', count: 98, icon: 'fa-tree' },
+            { label: 'Trockenbau', count: 76, icon: 'fa-cubes' },
+            { label: 'Bodenverlegung', count: 65, icon: 'fa-carpet' },
+        ];
+
+        // ── DOM REFS ──
+        const container = document.getElementById('fjSearchComponent');
+        if (!container) return;
+
+        const input = document.getElementById('fjSearchInput');
+        const submitBtn = document.getElementById('fjSearchSubmit');
+        const clearBtn = document.getElementById('fjSearchClear');
+        const spinner = document.getElementById('fjSearchSpinner');
+        const dropdown = document.getElementById('fjSearchDropdown');
+        const closeMobile = document.getElementById('fjSearchCloseMobile');
+        const recentList = document.getElementById('fjSearchRecentList');
+        const popularTags = document.getElementById('fjSearchPopularTags');
+        const suggestionsSection = document.getElementById('fjSearchSuggestionsSection');
+        const suggestionsList = document.getElementById('fjSearchSuggestionsList');
+        const emptyState = document.getElementById('fjSearchEmpty');
+        const clearRecentBtn = document.getElementById('fjSearchClearRecent');
+        const categoryBtns = document.querySelectorAll('.fj-search-category');
+
+        // ── STATE ──
+        let recentSearches = [];
+        let currentCategory = 'all';
+        let isOpen = false;
+        let activeIndex = -1;
+        let suggestionItems = [];
+        let debounceTimer = null;
+        let isMobile = window.innerWidth <= 600;
+
+        // ── INIT ──
+        function init() {
+            loadRecentSearches();
+            renderRecentSearches();
+            renderPopularTags();
+            setupEventListeners();
+            updateMobileState();
+
+            // Check for URL query parameter
+            const urlParams = new URLSearchParams(window.location.search);
+            const query = urlParams.get('q');
+            if (query) {
+                input.value = decodeURIComponent(query);
+                performSearch(query);
+            }
+
+            console.log('✅ FIXJORI Search Component initialized.');
+        }
+
+        // ── RECENT SEARCHES ──
+        function loadRecentSearches() {
+            try {
+                const stored = localStorage.getItem(CONFIG.storageKey);
+                recentSearches = stored ? JSON.parse(stored) : [];
+            } catch (e) {
+                recentSearches = [];
+            }
+            // Ensure we have an array
+            if (!Array.isArray(recentSearches)) recentSearches = [];
+            // Limit
+            if (recentSearches.length > CONFIG.maxRecentSearches) {
+                recentSearches = recentSearches.slice(0, CONFIG.maxRecentSearches);
+            }
+        }
+
+        function saveRecentSearches() {
+            try {
+                localStorage.setItem(CONFIG.storageKey, JSON.stringify(recentSearches));
+            } catch (e) { /* ignore */ }
+        }
+
+        function addRecentSearch(query) {
+            query = query.trim();
+            if (!query) return;
+
+            // Remove if exists
+            recentSearches = recentSearches.filter(item => item.toLowerCase() !== query.toLowerCase());
+            // Add to front
+            recentSearches.unshift(query);
+            // Limit
+            if (recentSearches.length > CONFIG.maxRecentSearches) {
+                recentSearches = recentSearches.slice(0, CONFIG.maxRecentSearches);
+            }
+            saveRecentSearches();
+            renderRecentSearches();
+        }
+
+        function removeRecentSearch(query) {
+            recentSearches = recentSearches.filter(item => item !== query);
+            saveRecentSearches();
+            renderRecentSearches();
+        }
+
+        function clearRecentSearches() {
+            recentSearches = [];
+            saveRecentSearches();
+            renderRecentSearches();
+        }
+
+        function renderRecentSearches() {
+            const section = document.getElementById('fjSearchRecentSection');
+            if (!recentSearches.length) {
+                section.style.display = 'none';
+                return;
+            }
+            section.style.display = 'block';
+
+            recentList.innerHTML = '';
+            recentSearches.forEach(function(query) {
+                const div = document.createElement('div');
+                div.className = 'fj-search-recent-item';
+                div.setAttribute('role', 'option');
+                div.innerHTML = `
+                    <span class="fj-search-recent-icon"><i class="fas fa-clock"></i></span>
+                    <span class="fj-search-recent-text">${escapeHtml(query)}</span>
+                    <button class="fj-search-recent-remove" data-query="${escapeHtml(query)}" aria-label="Löschen: ${escapeHtml(query)}">
+                        <i class="fas fa-times"></i>
+                    </button>
+                `;
+                // Click on item → search
+                div.addEventListener('click', function(e) {
+                    if (e.target.closest('.fj-search-recent-remove')) return;
+                    const text = this.querySelector('.fj-search-recent-text').textContent;
+                    input.value = text;
+                    performSearch(text);
+                    closeDropdown();
+                });
+                // Remove button
+                const removeBtn = div.querySelector('.fj-search-recent-remove');
+                removeBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const query = this.dataset.query;
+                    removeRecentSearch(query);
+                });
+                recentList.appendChild(div);
+            });
+        }
+
+        // ── POPULAR TAGS ──
+        function renderPopularTags() {
+            popularTags.innerHTML = '';
+            POPULAR_TAGS.forEach(function(tag) {
+                const span = document.createElement('span');
+                span.className = 'fj-search-popular-tag';
+                span.innerHTML = `
+                    <i class="fas ${tag.icon} fj-search-tag-icon"></i>
+                    ${escapeHtml(tag.label)}
+                    <span class="fj-search-tag-count">(${tag.count})</span>
+                `;
+                span.addEventListener('click', function() {
+                    input.value = tag.label;
+                    performSearch(tag.label);
+                    closeDropdown();
+                });
+                popularTags.appendChild(span);
+            });
+        }
+
+        // ── AUTOCOMPLETE SUGGESTIONS ──
+        function getSuggestions(query) {
+            if (!query || query.length < CONFIG.minCharsForSuggestions) {
+                return [];
+            }
+
+            const lowerQuery = query.toLowerCase();
+            const results = [];
+
+            // Search in services
+            SUGGESTION_DATA.services.forEach(function(item) {
+                if (item.toLowerCase().includes(lowerQuery)) {
+                    results.push({ text: item, category: 'Service', icon: 'fa-tools' });
+                }
+            });
+
+            // Search in handymen
+            SUGGESTION_DATA.handymen.forEach(function(item) {
+                if (item.toLowerCase().includes(lowerQuery)) {
+                    results.push({ text: item, category: 'Handwerker', icon: 'fa-hard-hat' });
+                }
+            });
+
+            // Search in locations
+            SUGGESTION_DATA.locations.forEach(function(item) {
+                if (item.toLowerCase().includes(lowerQuery)) {
+                    results.push({ text: item, category: 'Standort', icon: 'fa-map-marker-alt' });
+                }
+            });
+
+            // Sort: exact matches first, then by length
+            results.sort(function(a, b) {
+                const aExact = a.text.toLowerCase() === lowerQuery;
+                const bExact = b.text.toLowerCase() === lowerQuery;
+                if (aExact && !bExact) return -1;
+                if (!aExact && bExact) return 1;
+                return a.text.length - b.text.length;
+            });
+
+            // Limit
+            return results.slice(0, 8);
+        }
+
+        function renderSuggestions(suggestions) {
+            suggestionItems = suggestions;
+
+            if (!suggestions.length) {
+                suggestionsSection.style.display = 'none';
+                emptyState.style.display = 'block';
+                return;
+            }
+
+            suggestionsSection.style.display = 'block';
+            emptyState.style.display = 'none';
+
+            suggestionsList.innerHTML = '';
+            suggestions.forEach(function(item, index) {
+                const div = document.createElement('div');
+                div.className = 'fj-search-suggestion-item';
+                div.setAttribute('role', 'option');
+                div.dataset.index = index;
+
+                // Highlight matching part
+                const query = input.value.trim().toLowerCase();
+                let displayText = item.text;
+                if (query) {
+                    const idx = item.text.toLowerCase().indexOf(query);
+                    if (idx !== -1) {
+                        displayText =
+                            item.text.substring(0, idx) +
+                            '<span class="highlight">' +
+                            item.text.substring(idx, idx + query.length) +
+                            '</span>' +
+                            item.text.substring(idx + query.length);
+                    }
+                }
+
+                div.innerHTML = `
+                    <span class="fj-search-suggestion-icon"><i class="fas ${item.icon}"></i></span>
+                    <span class="fj-search-suggestion-text">${displayText}</span>
+                    <span class="fj-search-suggestion-category">${item.category}</span>
+                `;
+
+                div.addEventListener('click', function() {
+                    input.value = item.text;
+                    performSearch(item.text);
+                    closeDropdown();
+                });
+
+                // Hover to set active index
+                div.addEventListener('mouseenter', function() {
+                    setActiveIndex(index);
+                });
+
+                suggestionsList.appendChild(div);
+            });
+        }
+
+        // ── SEARCH ──
+        function performSearch(query) {
+            query = query.trim();
+            if (!query) {
+                input.focus();
+                return;
+            }
+
+            // Add to recent
+            addRecentSearch(query);
+
+            // Show loading
+            spinner.classList.add('active');
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+
+            // Simulate API call
+            setTimeout(function() {
+                spinner.classList.remove('active');
+                submitBtn.innerHTML = '<i class="fas fa-arrow-right"></i> Suchen';
+
+                // Build search URL with query and category
+                let url = 'directory/index.html?q=' + encodeURIComponent(query);
+                if (currentCategory !== 'all') {
+                    url += '&category=' + encodeURIComponent(currentCategory);
+                }
+
+                // Navigate
+                window.location.href = url;
+            }, 400);
+        }
+
+        // ── DROPDOWN ──
+        function openDropdown() {
+            if (isOpen) return;
+            isOpen = true;
+            dropdown.classList.add('is-open');
+            input.setAttribute('aria-expanded', 'true');
+
+            // On mobile, we need to handle differently
+            if (isMobile) {
+                document.body.style.overflow = 'hidden';
+            }
+
+            // Render suggestions if there's input
+            const query = input.value.trim();
+            if (query.length >= CONFIG.minCharsForSuggestions) {
+                const suggestions = getSuggestions(query);
+                renderSuggestions(suggestions);
+            } else {
+                suggestionsSection.style.display = 'none';
+                emptyState.style.display = 'none';
+                // Show recent and popular
+                document.getElementById('fjSearchRecentSection').style.display =
+                    recentSearches.length ? 'block' : 'none';
+            }
+        }
+
+        function closeDropdown() {
+            if (!isOpen) return;
+            isOpen = false;
+            dropdown.classList.remove('is-open');
+            input.setAttribute('aria-expanded', 'false');
+
+            if (isMobile) {
+                document.body.style.overflow = '';
+            }
+
+            activeIndex = -1;
+            suggestionItems = [];
+        }
+
+        function toggleDropdown() {
+            if (isOpen) {
+                closeDropdown();
+            } else {
+                openDropdown();
+            }
+        }
+
+        // ── NAVIGATION ──
+        function setActiveIndex(index) {
+            activeIndex = index;
+            const items = suggestionsList.querySelectorAll('.fj-search-suggestion-item');
+            items.forEach(function(item, i) {
+                item.classList.toggle('active', i === index);
+            });
+
+            // Scroll into view
+            if (index >= 0 && index < items.length) {
+                items[index].scrollIntoView({ block: 'nearest' });
+            }
+        }
+
+        function navigateSuggestions(direction) {
+            if (!isOpen) return;
+
+            const items = suggestionsList.querySelectorAll('.fj-search-suggestion-item');
+            if (!items.length) return;
+
+            let newIndex = activeIndex + direction;
+            if (newIndex < -1) newIndex = items.length - 1;
+            if (newIndex >= items.length) newIndex = -1;
+
+            setActiveIndex(newIndex);
+        }
+
+        function selectActiveSuggestion() {
+            if (activeIndex < 0 || activeIndex >= suggestionItems.length) return;
+
+            const item = suggestionItems[activeIndex];
+            if (item) {
+                input.value = item.text;
+                performSearch(item.text);
+                closeDropdown();
+            }
+        }
+
+        // ── EVENT LISTENERS ──
+        function setupEventListeners() {
+            // Input
+            input.addEventListener('focus', function() {
+                // Show recent searches on focus
+                const query = this.value.trim();
+                if (!query) {
+                    renderRecentSearches();
+                    suggestionsSection.style.display = 'none';
+                    emptyState.style.display = 'none';
+                    document.getElementById('fjSearchRecentSection').style.display =
+                        recentSearches.length ? 'block' : 'none';
+                    openDropdown();
+                } else {
+                    openDropdown();
+                }
+            });
+
+            input.addEventListener('input', function() {
+                const query = this.value.trim();
+
+                // Show/hide clear button
+                clearBtn.classList.toggle('visible', query.length > 0);
+
+                // Clear previous timer
+                clearTimeout(debounceTimer);
+
+                if (query.length >= CONFIG.minCharsForSuggestions) {
+                    // Show suggestions with debounce
+                    debounceTimer = setTimeout(function() {
+                        const suggestions = getSuggestions(query);
+                        renderSuggestions(suggestions);
+                        openDropdown();
+                    }, CONFIG.debounceDelay);
+                } else {
+                    // Show recent searches
+                    suggestionsSection.style.display = 'none';
+                    emptyState.style.display = 'none';
+                    document.getElementById('fjSearchRecentSection').style.display =
+                        recentSearches.length ? 'block' : 'none';
+                    if (!isOpen) openDropdown();
+                }
+            });
+
+            // Clear button
+            clearBtn.addEventListener('click', function() {
+                input.value = '';
+                input.focus();
+                clearBtn.classList.remove('visible');
+                // Show recent searches
+                renderRecentSearches();
+                suggestionsSection.style.display = 'none';
+                emptyState.style.display = 'none';
+                document.getElementById('fjSearchRecentSection').style.display =
+                    recentSearches.length ? 'block' : 'none';
+                if (!isOpen) openDropdown();
+            });
+
+            // Submit
+            submitBtn.addEventListener('click', function() {
+                const query = input.value.trim();
+                if (query) {
+                    performSearch(query);
+                    closeDropdown();
+                } else {
+                    input.focus();
+                    if (!isOpen) openDropdown();
+                }
+            });
+
+            input.addEventListener('keydown', function(e) {
+                switch (e.key) {
+                    case 'Enter':
+                        e.preventDefault();
+                        if (activeIndex >= 0) {
+                            selectActiveSuggestion();
+                        } else {
+                            const query = this.value.trim();
+                            if (query) {
+                                performSearch(query);
+                                closeDropdown();
+                            }
+                        }
+                        break;
+
+                    case 'ArrowDown':
+                        e.preventDefault();
+                        navigateSuggestions(1);
+                        break;
+
+                    case 'ArrowUp':
+                        e.preventDefault();
+                        navigateSuggestions(-1);
+                        break;
+
+                    case 'Escape':
+                        e.preventDefault();
+                        closeDropdown();
+                        this.blur();
+                        break;
+                }
+            });
+
+            // Click outside to close
+            document.addEventListener('click', function(e) {
+                const component = document.getElementById('fjSearchComponent');
+                if (component && !component.contains(e.target)) {
+                    closeDropdown();
+                }
+            });
+
+            // Close mobile
+            if (closeMobile) {
+                closeMobile.addEventListener('click', function() {
+                    closeDropdown();
+                });
+            }
+
+            // Clear recent searches
+            if (clearRecentBtn) {
+                clearRecentBtn.addEventListener('click', function() {
+                    if (recentSearches.length && confirm('Alle letzten Suchbegriffe löschen?')) {
+                        clearRecentSearches();
+                    }
+                });
+            }
+
+            // Category filters
+            categoryBtns.forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    categoryBtns.forEach(function(b) { b.classList.remove('active'); });
+                    this.classList.add('active');
+                    currentCategory = this.dataset.category;
+
+                    // If there's a query, perform search with new category
+                    const query = input.value.trim();
+                    if (query) {
+                        performSearch(query);
+                        closeDropdown();
+                    } else {
+                        input.focus();
+                        openDropdown();
+                    }
+                });
+            });
+
+            // Window resize
+            window.addEventListener('resize', function() {
+                updateMobileState();
+            });
+
+            // Close dropdown on scroll (on mobile)
+            if (isMobile) {
+                window.addEventListener('scroll', function() {
+                    if (isOpen) closeDropdown();
+                }, { passive: true });
+            }
+        }
+
+        // ── HELPERS ──
+        function updateMobileState() {
+            isMobile = window.innerWidth <= 600;
+            if (isMobile && isOpen) {
+                // Re-open to adjust styling
+                closeDropdown();
+                setTimeout(openDropdown, 50);
+            }
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // ── INIT ──
+        // Auto-initialize when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }
+
+        // Expose for external use
+        window.FJSearch = {
+            setQuery: function(query) {
+                if (input) {
+                    input.value = query;
+                    performSearch(query);
+                }
+            },
+            getQuery: function() {
+                return input ? input.value : '';
+            },
+            setCategory: function(category) {
+                categoryBtns.forEach(function(btn) {
+                    btn.classList.toggle('active', btn.dataset.category === category);
+                });
+                currentCategory = category || 'all';
+            },
+            open: openDropdown,
+            close: closeDropdown,
+        };
+
+    })();
+</script>

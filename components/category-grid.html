@@ -1,0 +1,669 @@
+<!-- ============================================================
+     FIXJORI | 金刚区 COMPONENT V1.0 – KING KONG AREA
+     Meituan-Style · Dense · Information-Rich · Reusable
+     ============================================================ -->
+
+<!--
+     USAGE:
+     ======
+     Include this file in any page where you need the King Kong Area.
+
+     Basic usage:
+     <div id="king-kong-area"></div>
+     <script src="components/category-grid.html"></script>
+
+     Or directly embed the HTML and CSS/JS in your page.
+
+     The component supports:
+     - 8 service categories with icons, labels, and counts
+     - Premium category highlighting
+     - Hover animations (lift, scale, shadow)
+     - Mobile responsive (4 columns → 3 columns)
+     - Dark mode support
+     - Click navigation to service pages
+     - Optional custom data via data attributes
+-->
+
+<style>
+    /* ── KING KONG AREA STYLES ── */
+    .fj-kk-area {
+        --fj-teal: #0D9488;
+        --fj-teal-dark: #0F766E;
+        --fj-teal-light: #14B8A6;
+        --fj-amber: #F59E0B;
+        --fj-gold: #F5A623;
+        --fj-green: #22C55E;
+        --fj-blue: #3B82F6;
+        --fj-purple: #8B5CF6;
+        --fj-red: #EF4444;
+        --fj-pink: #EC4899;
+
+        --fj-text: #0F172A;
+        --fj-muted: #475569;
+        --fj-dim: #94A3B8;
+        --fj-border: #E2E8F0;
+        --fj-bg: #F8FAFC;
+        --fj-surface: #FFFFFF;
+        --fj-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+        --fj-shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.08);
+        --fj-radius: 12px;
+        --fj-radius-full: 40px;
+
+        --font-head: 'Space Grotesk', sans-serif;
+        --font-body: 'Inter', sans-serif;
+        --font-mono: 'JetBrains Mono', monospace;
+
+        --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+        --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+        font-family: var(--font-body);
+        width: 100%;
+        color: var(--fj-text);
+    }
+
+    /* Dark mode support */
+    [data-theme="dark"] .fj-kk-area {
+        --fj-text: #F8FAFC;
+        --fj-muted: #94A3B8;
+        --fj-dim: #64748B;
+        --fj-border: rgba(255, 255, 255, 0.06);
+        --fj-bg: #0F172A;
+        --fj-surface: #1A2332;
+        --fj-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+        --fj-shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.4);
+    }
+
+    /* ── SECTION HEADER ── */
+    .fj-kk-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 16px;
+        padding: 0 4px;
+    }
+    .fj-kk-header .fj-kk-title {
+        font-family: var(--font-head);
+        font-size: 1.1rem;
+        font-weight: 800;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--fj-text);
+    }
+    .fj-kk-header .fj-kk-title .fj-kk-title-icon {
+        color: var(--fj-teal);
+        font-size: 1rem;
+    }
+    .fj-kk-header .fj-kk-title .fj-kk-title-badge {
+        font-family: var(--font-mono);
+        font-size: 0.5rem;
+        font-weight: 700;
+        background: var(--fj-teal);
+        color: #fff;
+        padding: 1px 10px;
+        border-radius: 30px;
+        letter-spacing: 0.5px;
+    }
+    .fj-kk-header .fj-kk-view-all {
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: var(--fj-teal);
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        transition: gap 0.3s ease;
+        cursor: pointer;
+        background: none;
+        border: none;
+        font-family: var(--font-body);
+        padding: 4px 8px;
+        border-radius: var(--radius-full);
+    }
+    .fj-kk-header .fj-kk-view-all:hover {
+        gap: 10px;
+        background: rgba(13, 148, 136, 0.06);
+    }
+
+    /* ── GRID CONTAINER ── */
+    .fj-kk-grid {
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        gap: 12px;
+        padding: 4px;
+    }
+
+    /* ── CATEGORY ITEM ── */
+    .fj-kk-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 16px 8px 14px;
+        border-radius: var(--fj-radius);
+        background: var(--fj-surface);
+        border: 1px solid var(--fj-border);
+        transition: all 0.35s var(--ease-spring);
+        cursor: pointer;
+        text-decoration: none;
+        color: inherit;
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+        user-select: none;
+    }
+
+    /* Subtle hover glow */
+    .fj-kk-item::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at 50% 0%, var(--fj-teal), transparent 70%);
+        opacity: 0;
+        transition: opacity 0.4s var(--ease-smooth);
+        pointer-events: none;
+    }
+
+    .fj-kk-item:hover {
+        transform: translateY(-6px);
+        box-shadow: var(--fj-shadow-lg);
+        border-color: var(--fj-teal);
+    }
+    .fj-kk-item:hover::before {
+        opacity: 0.04;
+    }
+
+    .fj-kk-item:active {
+        transform: translateY(-2px) scale(0.96);
+    }
+
+    /* ── ICON WRAPPER ── */
+    .fj-kk-item .fj-kk-icon-wrap {
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        background: var(--fj-teal);
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.4rem;
+        margin-bottom: 8px;
+        transition: all 0.35s var(--ease-spring);
+        position: relative;
+        z-index: 1;
+        flex-shrink: 0;
+    }
+
+    .fj-kk-item:hover .fj-kk-icon-wrap {
+        transform: scale(1.08) rotate(-2deg);
+        box-shadow: 0 8px 24px rgba(13, 148, 136, 0.25);
+    }
+
+    /* Icon variant colors based on category */
+    .fj-kk-item[data-color="teal"] .fj-kk-icon-wrap {
+        background: var(--fj-teal);
+    }
+    .fj-kk-item[data-color="amber"] .fj-kk-icon-wrap {
+        background: var(--fj-amber);
+        color: #0F172A;
+    }
+    .fj-kk-item[data-color="blue"] .fj-kk-icon-wrap {
+        background: var(--fj-blue);
+    }
+    .fj-kk-item[data-color="purple"] .fj-kk-icon-wrap {
+        background: var(--fj-purple);
+    }
+    .fj-kk-item[data-color="green"] .fj-kk-icon-wrap {
+        background: var(--fj-green);
+    }
+    .fj-kk-item[data-color="pink"] .fj-kk-icon-wrap {
+        background: var(--fj-pink);
+    }
+    .fj-kk-item[data-color="gold"] .fj-kk-icon-wrap {
+        background: var(--fj-gold);
+        color: #0F172A;
+    }
+    .fj-kk-item[data-color="red"] .fj-kk-icon-wrap {
+        background: var(--fj-red);
+    }
+
+    /* ── ITEM NAME ── */
+    .fj-kk-item .fj-kk-name {
+        font-size: 0.72rem;
+        font-weight: 600;
+        color: var(--fj-text);
+        position: relative;
+        z-index: 1;
+        line-height: 1.3;
+        margin-bottom: 2px;
+    }
+
+    /* ── COUNT BADGE ── */
+    .fj-kk-item .fj-kk-count {
+        font-size: 0.5rem;
+        color: var(--fj-dim);
+        font-family: var(--font-mono);
+        position: relative;
+        z-index: 1;
+        background: var(--fj-bg);
+        padding: 0 8px;
+        border-radius: 30px;
+        border: 1px solid var(--fj-border);
+        line-height: 1.6;
+        transition: all 0.3s ease;
+        margin-top: 2px;
+    }
+
+    .fj-kk-item:hover .fj-kk-count {
+        border-color: var(--fj-teal);
+        color: var(--fj-teal);
+        background: rgba(13, 148, 136, 0.04);
+    }
+
+    /* ── PREMIUM BADGE (floating) ── */
+    .fj-kk-item.fj-kk-premium {
+        border-color: rgba(245, 158, 11, 0.20);
+        border-width: 1.5px;
+    }
+    .fj-kk-item.fj-kk-premium .fj-kk-premium-badge {
+        position: absolute;
+        top: -6px;
+        right: -4px;
+        font-family: var(--font-mono);
+        font-size: 0.45rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: #0F172A;
+        background: var(--fj-amber);
+        padding: 0 10px;
+        border-radius: 30px;
+        line-height: 1.8;
+        box-shadow: 0 2px 12px rgba(245, 158, 11, 0.20);
+        z-index: 2;
+    }
+    [data-theme="dark"] .fj-kk-item.fj-kk-premium .fj-kk-premium-badge {
+        color: #F8FAFC;
+    }
+
+    .fj-kk-item.fj-kk-premium:hover {
+        border-color: var(--fj-amber);
+        box-shadow: 0 8px 32px rgba(245, 158, 11, 0.12);
+    }
+    .fj-kk-item.fj-kk-premium:hover .fj-kk-icon-wrap {
+        box-shadow: 0 8px 24px rgba(245, 158, 11, 0.25);
+    }
+
+    .fj-kk-item.fj-kk-premium[data-color="gold"] .fj-kk-icon-wrap {
+        background: var(--fj-gold);
+        color: #0F172A;
+    }
+    .fj-kk-item.fj-kk-premium .fj-kk-count {
+        color: var(--fj-amber);
+        border-color: rgba(245, 158, 11, 0.15);
+    }
+
+    /* ── HOT TAG (small indicator) ── */
+    .fj-kk-item .fj-kk-hot-tag {
+        position: absolute;
+        top: 4px;
+        left: 4px;
+        font-family: var(--font-mono);
+        font-size: 0.4rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: #fff;
+        background: var(--fj-red);
+        padding: 0 8px;
+        border-radius: 30px;
+        line-height: 1.8;
+        z-index: 2;
+        animation: fj-kk-pulse 2s ease-in-out infinite;
+    }
+    @keyframes fj-kk-pulse {
+        0%,
+        100% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.05);
+        }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+        .fj-kk-grid {
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+    }
+
+    @media (max-width: 520px) {
+        .fj-kk-grid {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+        }
+        .fj-kk-item {
+            padding: 12px 6px 10px;
+        }
+        .fj-kk-item .fj-kk-icon-wrap {
+            width: 44px;
+            height: 44px;
+            font-size: 1.2rem;
+            margin-bottom: 6px;
+        }
+        .fj-kk-item .fj-kk-name {
+            font-size: 0.65rem;
+        }
+        .fj-kk-item .fj-kk-count {
+            font-size: 0.45rem;
+            padding: 0 6px;
+        }
+        .fj-kk-item.fj-kk-premium .fj-kk-premium-badge {
+            font-size: 0.4rem;
+            padding: 0 8px;
+            line-height: 1.6;
+            top: -4px;
+            right: -2px;
+        }
+        .fj-kk-header .fj-kk-title {
+            font-size: 0.95rem;
+        }
+        .fj-kk-header .fj-kk-view-all {
+            font-size: 0.7rem;
+        }
+    }
+
+    @media (max-width: 380px) {
+        .fj-kk-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 6px;
+        }
+        .fj-kk-item .fj-kk-icon-wrap {
+            width: 38px;
+            height: 38px;
+            font-size: 1rem;
+        }
+        .fj-kk-item .fj-kk-name {
+            font-size: 0.6rem;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .fj-kk-item,
+        .fj-kk-item .fj-kk-icon-wrap,
+        .fj-kk-item .fj-kk-count,
+        .fj-kk-header .fj-kk-view-all {
+            transition: none !important;
+            transform: none !important;
+        }
+        .fj-kk-item::before {
+            opacity: 0 !important;
+        }
+        .fj-kk-item.fj-kk-premium .fj-kk-premium-badge {
+            animation: none !important;
+        }
+        @keyframes fj-kk-pulse {
+            0%,
+            100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1);
+            }
+        }
+    }
+</style>
+
+<!-- ============================================================
+     KING KONG AREA HTML
+     ============================================================ -->
+<div class="fj-kk-area" id="fjKingKongArea" role="navigation" aria-label="Service-Kategorien">
+
+    <!-- Header -->
+    <div class="fj-kk-header">
+        <div class="fj-kk-title">
+            <i class="fas fa-th-large fj-kk-title-icon"></i>
+            <span>Services</span>
+            <span class="fj-kk-title-badge">8</span>
+        </div>
+        <button class="fj-kk-view-all" id="fjKkViewAll">
+            Alle anzeigen <i class="fas fa-arrow-right"></i>
+        </button>
+    </div>
+
+    <!-- Grid -->
+    <div class="fj-kk-grid" id="fjKkGrid">
+        <!-- Each item will be populated by JavaScript -->
+    </div>
+
+</div>
+
+<!-- ============================================================
+     KING KONG AREA JAVASCRIPT
+     ============================================================ -->
+<script>
+    (function() {
+        'use strict';
+
+        // ── CATEGORY DATA ──
+        // In production, this could come from an API or JSON file
+        const CATEGORY_DATA = [{
+            id: 'montage',
+            name: 'Montage & Möbel',
+            icon: 'fa-couch',
+            color: 'teal',
+            count: '1.2k',
+            href: 'services/montage.html',
+            premium: false,
+            hot: true,
+        }, {
+            id: 'elektro',
+            name: 'Elektro & Smart',
+            icon: 'fa-bolt',
+            color: 'blue',
+            count: '856',
+            href: 'services/elektro.html',
+            premium: false,
+            hot: false,
+        }, {
+            id: 'sanitaer',
+            name: 'Sanitär & Wasser',
+            icon: 'fa-faucet-drip',
+            color: 'purple',
+            count: '432',
+            href: 'services/sanitaer.html',
+            premium: false,
+            hot: false,
+        }, {
+            id: 'garten',
+            name: 'Garten & Outdoor',
+            icon: 'fa-tree',
+            color: 'green',
+            count: '674',
+            href: 'services/garten.html',
+            premium: false,
+            hot: false,
+        }, {
+            id: 'demontage',
+            name: 'Demontage & Umzug',
+            icon: 'fa-tools',
+            color: 'pink',
+            count: '321',
+            href: 'services/demontage.html',
+            premium: false,
+            hot: false,
+        }, {
+            id: 'renovierung',
+            name: 'Renovierung & Malerei',
+            icon: 'fa-paint-roller',
+            color: 'red',
+            count: '567',
+            href: 'services/renovierung.html',
+            premium: false,
+            hot: false,
+        }, {
+            id: 'reinigung',
+            name: 'Reinigung & Pflege',
+            icon: 'fa-spray-can',
+            color: 'teal',
+            count: '234',
+            href: 'services/reinigung.html',
+            premium: false,
+            hot: false,
+        }, {
+            id: 'premium',
+            name: 'Premium Pro',
+            icon: 'fa-crown',
+            color: 'gold',
+            count: '⭐ Exklusiv',
+            href: 'services/premium.html',
+            premium: true,
+            hot: false,
+        }];
+
+        // ── DOM REFS ──
+        const container = document.getElementById('fjKingKongArea');
+        if (!container) return;
+
+        const grid = document.getElementById('fjKkGrid');
+        const viewAllBtn = document.getElementById('fjKkViewAll');
+
+        // ── RENDER ──
+        function render() {
+            if (!grid) return;
+
+            grid.innerHTML = '';
+
+            CATEGORY_DATA.forEach(function(cat) {
+                const item = document.createElement('a');
+                item.className = 'fj-kk-item';
+                if (cat.premium) item.classList.add('fj-kk-premium');
+                if (cat.hot) item.classList.add('fj-kk-hot');
+                item.setAttribute('data-color', cat.color);
+                item.setAttribute('href', cat.href);
+                item.setAttribute('aria-label', cat.name + ' – ' + cat.count + ' Experten');
+
+                // Hot tag
+                let hotTag = '';
+                if (cat.hot) {
+                    hotTag = `<span class="fj-kk-hot-tag">🔥 Hot</span>`;
+                }
+
+                // Premium badge
+                let premiumBadge = '';
+                if (cat.premium) {
+                    premiumBadge = `<span class="fj-kk-premium-badge">⭐ Premium</span>`;
+                }
+
+                item.innerHTML = `
+                    ${hotTag}
+                    ${premiumBadge}
+                    <span class="fj-kk-icon-wrap">
+                        <i class="fas ${cat.icon}"></i>
+                    </span>
+                    <span class="fj-kk-name">${cat.name}</span>
+                    <span class="fj-kk-count">${cat.count}</span>
+                `;
+
+                // Click handler
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const href = this.getAttribute('href');
+                    if (href) {
+                        // Smooth navigation with a subtle animation
+                        this.style.transition = 'transform 0.15s ease';
+                        this.style.transform = 'scale(0.92)';
+                        setTimeout(function() {
+                            window.location.href = href;
+                        }, 150);
+                    }
+                });
+
+                grid.appendChild(item);
+            });
+        }
+
+        // ── VIEW ALL ──
+        if (viewAllBtn) {
+            viewAllBtn.addEventListener('click', function() {
+                // Navigate to services page
+                window.location.href = 'services.html';
+            });
+        }
+
+        // ── KEYBOARD NAVIGATION ──
+        // Allow arrow key navigation between items
+        if (grid) {
+            grid.addEventListener('keydown', function(e) {
+                const items = grid.querySelectorAll('.fj-kk-item');
+                const current = document.activeElement;
+                let currentIndex = -1;
+
+                items.forEach(function(item, idx) {
+                    if (item === current) currentIndex = idx;
+                });
+
+                if (currentIndex === -1) return;
+
+                let newIndex = currentIndex;
+                switch (e.key) {
+                    case 'ArrowRight':
+                    case 'ArrowDown':
+                        e.preventDefault();
+                        newIndex = (currentIndex + 1) % items.length;
+                        break;
+                    case 'ArrowLeft':
+                    case 'ArrowUp':
+                        e.preventDefault();
+                        newIndex = (currentIndex - 1 + items.length) % items.length;
+                        break;
+                    case 'Enter':
+                    case ' ':
+                        e.preventDefault();
+                        if (current) current.click();
+                        return;
+                    default:
+                        return;
+                }
+
+                if (newIndex >= 0 && newIndex < items.length) {
+                    items[newIndex].focus();
+                }
+            });
+
+            // Make items focusable
+            grid.querySelectorAll('.fj-kk-item').forEach(function(item) {
+                item.setAttribute('tabindex', '0');
+                item.setAttribute('role', 'link');
+            });
+        }
+
+        // ── THEME AWARENESS ──
+        // The component automatically responds to data-theme changes
+        // No additional code needed – CSS handles it via [data-theme]
+
+        // ── INIT ──
+        render();
+
+        // ── EXTERNAL API ──
+        window.FJKingKong = {
+            refresh: render,
+            getCategories: function() { return CATEGORY_DATA; },
+            setCategoryData: function(data) {
+                // Allow external data override
+                if (Array.isArray(data) && data.length > 0) {
+                    // This would require re-render with new data
+                    // For simplicity, we'll just log
+                    console.warn('FJKingKong.setCategoryData: Data override not implemented.');
+                    console.log('Passed data:', data);
+                }
+            },
+        };
+
+        console.log('✅ FIXJORI 金刚区 (King Kong Area) component loaded.');
+        console.log('📊 ' + CATEGORY_DATA.length + ' service categories rendered.');
+
+    })();
+</script>

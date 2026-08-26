@@ -1,6 +1,6 @@
 <!-- ============================================================
-     FIXJORI | INTELLIGENT NAVIGATION v3.0
-     China Service App Style | Clean · Fast · Modular
+     FIXJORI | INTELLIGENT NAVIGATION V6.0
+     Role-Based · Auto-Location · Reactive Services
      ============================================================ -->
 
 <header class="fj-nav" id="mainNav" role="banner" aria-label="Hauptnavigation">
@@ -9,59 +9,92 @@
         <!-- ===== LEFT: BRAND ===== -->
         <div class="fj-nav-left">
             <a href="index.html" class="fj-brand" aria-label="FIXJORI – Zur Startseite">
-                <svg class="fj-logo" viewBox="0 0 180 42" xmlns="http://www.w3.org/2000/svg">
-                    <text x="0" y="34" font-family="'Space Grotesk', sans-serif" font-weight="900" font-size="32" fill="var(--fj-text)" letter-spacing="-1">FIX</text>
+                <svg class="fj-logo" viewBox="0 0 180 42" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <text x="0" y="34" font-family="'Space Grotesk', sans-serif" font-weight="900" font-size="32" fill="currentColor" letter-spacing="-1">FIX</text>
                     <polygon points="72,6 90,18 90,36 72,48 54,36 54,18" fill="var(--fj-teal)"/>
-                    <text x="96" y="34" font-family="'Space Grotesk', sans-serif" font-weight="900" font-size="32" fill="var(--fj-text)" letter-spacing="-1">ORI</text>
+                    <text x="96" y="34" font-family="'Space Grotesk', sans-serif" font-weight="900" font-size="32" fill="currentColor" letter-spacing="-1">ORI</text>
                 </svg>
                 <span class="fj-brand-badge">Premium</span>
             </a>
         </div>
 
-        <!-- ===== CENTER: DESKTOP NAV ===== -->
+        <!-- ===== CENTER: MAIN NAVIGATION ===== -->
         <nav class="fj-nav-center" aria-label="Hauptnavigation">
-            <a href="services.html" class="fj-nav-link">Services</a>
-            <a href="directory.html" class="fj-nav-link">Experten</a>
-            <a href="process.html" class="fj-nav-link">Ablauf</a>
-            <a href="about.html" class="fj-nav-link">Über uns</a>
+            <a href="index.html" class="fj-nav-link active" data-nav="home">Start</a>
+
+            <!-- Services Mega Menu Trigger -->
+            <button class="fj-nav-link fj-nav-link--mega" id="servicesTrigger" aria-expanded="false">
+                Services <i class="fas fa-chevron-down"></i>
+            </button>
+
+            <a href="directory/index.html" class="fj-nav-link" data-nav="directory">Experten</a>
+            <a href="process.html" class="fj-nav-link" data-nav="process">Ablauf</a>
+
+            <!-- Role-based links (hidden by default, shown via JS) -->
+            <a href="client/dashboard.html" class="fj-nav-link fj-nav-link--role fj-nav-link--client" data-nav="client" style="display:none;">Mein Konto</a>
+            <a href="handyman/dashboard.html" class="fj-nav-link fj-nav-link--role fj-nav-link--handyman" data-nav="handyman" style="display:none;">Handyman</a>
+            <a href="admin/index.html" class="fj-nav-link fj-nav-link--role fj-nav-link--admin" data-nav="admin" style="display:none;">Admin</a>
         </nav>
 
         <!-- ===== RIGHT: ACTIONS ===== -->
         <div class="fj-nav-right">
 
-            <!-- Location Selector (China app style) -->
+            <!-- Location Selector (Intelligent) -->
             <div class="fj-location-dropdown">
                 <button class="fj-location-btn" id="locationToggle" aria-expanded="false">
                     <i class="fas fa-map-marker-alt"></i>
-                    <span>Augsburg</span>
+                    <span id="currentLocation">Standort</span>
                     <i class="fas fa-chevron-down"></i>
                 </button>
                 <div class="fj-location-menu" id="locationMenu">
-                    <a href="#" data-location="augsburg">Augsburg</a>
-                    <a href="#" data-location="muenchen">München</a>
-                    <a href="#" data-location="ingolstadt">Ingolstadt</a>
-                    <a href="#" data-location="deutschlandweit">Deutschlandweit</a>
+                    <div class="fj-location-search">
+                        <input type="text" id="locationSearch" placeholder="Stadt suchen..." />
+                    </div>
+                    <div class="fj-location-list" id="locationList">
+                        <!-- Populated by JS -->
+                    </div>
+                    <div class="fj-location-divider"></div>
+                    <button class="fj-location-detect" id="locationDetect">
+                        <i class="fas fa-crosshairs"></i> Standort automatisch erkennen
+                    </button>
                 </div>
             </div>
 
-            <!-- Theme Toggle (Dark / Light) -->
+            <!-- Search Toggle -->
+            <button class="fj-search-toggle" id="searchToggle" aria-label="Suche öffnen">
+                <i class="fas fa-search"></i>
+            </button>
+
+            <!-- Theme Toggle -->
             <button class="fj-theme-toggle" id="themeToggle" aria-label="Theme umschalten">
                 <i class="fas fa-moon" id="themeIcon"></i>
             </button>
 
-            <!-- QR Code Scanner (China app hallmark) -->
-            <button class="fj-qr-toggle" id="qrToggle" aria-label="QR Code scannen">
-                <i class="fas fa-qrcode"></i>
-            </button>
+            <!-- Notifications (role-based) -->
+            <div class="fj-notification-dropdown" id="notificationDropdown" style="display:none;">
+                <button class="fj-notification-btn" id="notificationToggle" aria-expanded="false">
+                    <i class="fas fa-bell"></i>
+                    <span class="fj-notification-dot">3</span>
+                </button>
+                <div class="fj-notification-menu" id="notificationMenu">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
 
             <!-- User / Login -->
-            <a href="login.html" class="fj-user-btn">
-                <i class="fas fa-user-circle"></i>
-                <span>Anmelden</span>
-            </a>
+            <div class="fj-user-dropdown">
+                <button class="fj-user-btn" id="userToggle" aria-expanded="false" data-logged-in="false">
+                    <i class="fas fa-user-circle"></i>
+                    <span id="userBtnLabel">Anmelden</span>
+                    <i class="fas fa-chevron-down" style="font-size:0.6rem;color:var(--fj-dim);"></i>
+                </button>
+                <div class="fj-user-menu" id="userMenu">
+                    <!-- Populated by JS based on role -->
+                </div>
+            </div>
 
             <!-- CTA Button -->
-            <a href="projekt-starten.html" class="fj-cta-btn">
+            <a href="booking/step1.html" class="fj-cta-btn" id="ctaButton">
                 <span>Projekt starten</span>
                 <i class="fas fa-bolt"></i>
             </a>
@@ -75,7 +108,83 @@
         </div>
     </div>
 
-    <!-- Mobile Menu Overlay -->
+    <!-- ===== SERVICES MEGA MENU ===== -->
+    <div class="fj-mega-menu" id="servicesMenu">
+        <div class="fj-mega-grid">
+            <!-- Column 1: Hauptkategorien -->
+            <div class="fj-mega-col">
+                <h4><i class="fas fa-th-large" style="color:var(--fj-teal);"></i> Alle Services</h4>
+                <a href="services/montage.html"><i class="fas fa-couch"></i> Montage &amp; Möbel</a>
+                <a href="services/elektro.html"><i class="fas fa-bolt"></i> Elektro &amp; Smart</a>
+                <a href="services/sanitaer.html"><i class="fas fa-faucet-drip"></i> Sanitär &amp; Wasser</a>
+                <a href="services/garten.html"><i class="fas fa-tree"></i> Garten &amp; Outdoor</a>
+                <a href="services/demontage.html"><i class="fas fa-tools"></i> Demontage &amp; Umzug</a>
+                <a href="services/renovierung.html"><i class="fas fa-paint-roller"></i> Renovierung &amp; Malerei</a>
+                <a href="services/reinigung.html"><i class="fas fa-spray-can"></i> Reinigung &amp; Pflege</a>
+                <a href="services/premium.html" style="color:var(--fj-amber);font-weight:700;"><i class="fas fa-crown"></i> Premium Pro</a>
+            </div>
+
+            <!-- Column 2: Für Kunden -->
+            <div class="fj-mega-col">
+                <h4><i class="fas fa-user" style="color:var(--fj-blue);"></i> Für Kunden</h4>
+                <a href="client/dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                <a href="client/projects.html"><i class="fas fa-project-diagram"></i> Meine Projekte</a>
+                <a href="client/messages.html"><i class="fas fa-envelope"></i> Nachrichten</a>
+                <a href="client/invoices.html"><i class="fas fa-file-invoice"></i> Rechnungen</a>
+                <a href="booking/step1.html"><i class="fas fa-rocket"></i> Projekt starten</a>
+                <a href="directory/index.html"><i class="fas fa-search"></i> Experten finden</a>
+            </div>
+
+            <!-- Column 3: Für Handwerker -->
+            <div class="fj-mega-col">
+                <h4><i class="fas fa-hard-hat" style="color:var(--fj-amber);"></i> Für Handwerker</h4>
+                <a href="handyman/join.html"><i class="fas fa-user-plus"></i> Bewerben</a>
+                <a href="handyman/dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                <a href="handyman/jobs.html"><i class="fas fa-briefcase"></i> Aufträge</a>
+                <a href="handyman/earnings.html"><i class="fas fa-euro-sign"></i> Einnahmen</a>
+                <a href="handyman/profile.html"><i class="fas fa-user-edit"></i> Profil</a>
+            </div>
+
+            <!-- Column 4: Admin & Support (role-based visibility) -->
+            <div class="fj-mega-col fj-mega-col--admin" id="megaAdminCol" style="display:none;">
+                <h4><i class="fas fa-shield-alt" style="color:var(--fj-purple);"></i> Admin</h4>
+                <a href="admin/index.html"><i class="fas fa-chart-pie"></i> Dashboard</a>
+                <a href="admin/users.html"><i class="fas fa-users"></i> Benutzer</a>
+                <a href="admin/handymen.html"><i class="fas fa-hard-hat"></i> Handwerker</a>
+                <a href="admin/projects.html"><i class="fas fa-project-diagram"></i> Projekte</a>
+                <a href="admin/disputes.html"><i class="fas fa-gavel"></i> Streitfälle</a>
+            </div>
+        </div>
+
+        <!-- Mega Menu Footer -->
+        <div class="fj-mega-footer">
+            <div class="fj-mega-footer-left">
+                <span><i class="fas fa-clock"></i> Support: Mo–Fr 08:00–18:00</span>
+                <span><i class="fas fa-phone"></i> +49 821 1234567</span>
+                <span><i class="fas fa-envelope"></i> support@fixjori.de</span>
+            </div>
+            <div class="fj-mega-footer-right">
+                <a href="booking/step1.html" class="btn btn-primary btn-sm">Jetzt Projekt starten <i class="fas fa-bolt"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SEARCH OVERLAY ===== -->
+    <div class="fj-search-overlay" id="searchOverlay">
+        <div class="fj-search-modal">
+            <button class="fj-search-close" id="searchClose"><i class="fas fa-times"></i></button>
+            <div class="fj-search-input-wrap">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Was suchen Sie? (z.B. USM Haller Montage, Badrenovierung...)" id="searchInput" />
+                <button class="fj-search-submit" id="searchSubmit"><i class="fas fa-arrow-right"></i></button>
+            </div>
+            <div class="fj-search-suggestions" id="searchSuggestions">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== MOBILE MENU ===== -->
     <div class="fj-mobile-overlay" id="mobileMenu">
         <div class="fj-mobile-inner">
             <div class="fj-mobile-header">
@@ -84,43 +193,67 @@
                     <i class="fas fa-times"></i>
                 </button>
             </div>
-            <nav class="fj-mobile-nav">
-                <a href="services.html" class="fj-mobile-link">Services</a>
-                <a href="directory.html" class="fj-mobile-link">Experten</a>
-                <a href="process.html" class="fj-mobile-link">Ablauf</a>
-                <a href="about.html" class="fj-mobile-link">Über uns</a>
-                <a href="login.html" class="fj-mobile-link fj-mobile-link--gold">Anmelden</a>
-                <a href="projekt-starten.html" class="fj-mobile-cta">
-                    Projekt starten <i class="fas fa-bolt"></i>
-                </a>
+
+            <!-- Mobile User Info (dynamic) -->
+            <div class="fj-mobile-user" id="mobileUser">
+                <div class="fj-mobile-user-avatar">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+                <div class="fj-mobile-user-info">
+                    <div class="fj-mobile-user-name" id="mobileUserName">Gast</div>
+                    <div class="fj-mobile-user-email" id="mobileUserEmail">Nicht angemeldet</div>
+                </div>
+                <a href="login.html" class="fj-mobile-user-login" id="mobileUserLogin">Anmelden</a>
+            </div>
+
+            <nav class="fj-mobile-nav" id="mobileNav">
+                <!-- Populated by JS -->
             </nav>
+
+            <div class="fj-mobile-actions">
+                <a href="booking/step1.html" class="fj-mobile-cta">
+                    <i class="fas fa-bolt"></i> Projekt starten
+                </a>
+                <div class="fj-mobile-location">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span id="mobileLocationText">Standort: Augsburg</span>
+                    <button class="fj-mobile-location-change" id="mobileLocationChange">Ändern</button>
+                </div>
+            </div>
         </div>
     </div>
 </header>
 
 
 <!-- ============================================================
-     CSS – COMPLETE NAVIGATION STYLING
+     CSS – COMPLETE STYLING WITH FIXED READABILITY
      ============================================================ -->
 <style>
-    /* ── THEME VARIABLES (FIXJORI) ── */
+    /* ── ROOT VARIABLES ── */
     .fj-nav {
         --fj-teal: #0D9488;
         --fj-teal-dark: #0F766E;
+        --fj-teal-light: #14B8A6;
         --fj-amber: #F59E0B;
-        --fj-coral: #FF6B35;
+        --fj-gold: #F5A623;
         --fj-green: #22C55E;
+        --fj-blue: #3B82F6;
+        --fj-purple: #8B5CF6;
+        --fj-red: #EF4444;
+        --fj-pink: #EC4899;
 
-        --fj-bg: var(--fj-surface);
-        --fj-surface: rgba(15, 23, 42, 0.82);
-        --fj-surface-solid: #0F172A;
-        --fj-text: #F8FAFC;
-        --fj-muted: #94A3B8;
-        --fj-dim: #64748B;
-        --fj-border: rgba(255, 255, 255, 0.06);
-        --fj-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-        --fj-radius: 12px;
-        --fj-radius-full: 40px;
+        /* Solid backgrounds for readability */
+        --fj-nav-bg: rgba(255, 255, 255, 0.92);
+        --fj-nav-bg-dark: rgba(15, 23, 42, 0.92);
+        --fj-dropdown-bg: #FFFFFF;
+        --fj-dropdown-bg-dark: #1A2332;
+
+        --fj-text: #0F172A;
+        --fj-muted: #475569;
+        --fj-dim: #94A3B8;
+        --fj-border: #E2E8F0;
+        --fj-shadow: 0 8px 32px rgba(0, 0, 0, 0.10);
+        --fj-shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.12);
 
         --font-head: 'Space Grotesk', sans-serif;
         --font-body: 'Inter', sans-serif;
@@ -130,52 +263,58 @@
         --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
 
         --nav-height: 68px;
+        --radius: 12px;
+        --radius-full: 40px;
+
         position: fixed;
         top: 0;
         left: 0;
-        width: 100%;
+        right: 0;
         z-index: 99999;
-        padding: 10px 20px;
-        background: transparent;
-        transition: background 0.4s ease, box-shadow 0.4s ease, padding 0.4s ease;
-        font-family: var(--font-body);
-    }
-    .fj-nav.is-scrolled {
-        background: var(--fj-bg);
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
+        padding: 0 16px;
+        background: var(--fj-nav-bg);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
         border-bottom: 1px solid var(--fj-border);
-        padding: 6px 20px;
-        box-shadow: var(--fj-shadow);
+        box-shadow: 0 2px 16px rgba(0, 0, 0, 0.04);
+        transition: all 0.3s var(--ease-smooth);
+        font-family: var(--font-body);
+        color: var(--fj-text);
+        height: var(--nav-height);
     }
 
+    /* Dark Mode with solid background */
     [data-theme="dark"] .fj-nav {
-        --fj-bg: rgba(15, 23, 42, 0.92);
-        --fj-surface: rgba(15, 23, 42, 0.82);
-        --fj-surface-solid: #0F172A;
+        --fj-nav-bg: rgba(15, 23, 42, 0.95);
+        --fj-dropdown-bg: #1A2332;
         --fj-text: #F8FAFC;
         --fj-muted: #94A3B8;
         --fj-dim: #64748B;
         --fj-border: rgba(255, 255, 255, 0.06);
+        --fj-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        --fj-shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.5);
+        background: var(--fj-nav-bg);
+        border-bottom: 1px solid var(--fj-border);
     }
-    [data-theme="light"] .fj-nav {
-        --fj-bg: rgba(255, 255, 255, 0.92);
-        --fj-surface: rgba(255, 255, 255, 0.82);
-        --fj-surface-solid: #FFFFFF;
-        --fj-text: #0F172A;
-        --fj-muted: #475569;
-        --fj-dim: #94A3B8;
-        --fj-border: rgba(0, 0, 0, 0.06);
+
+    .fj-nav.is-scrolled {
+        box-shadow: var(--fj-shadow);
+    }
+
+    .fj-nav.is-hidden {
+        transform: translateY(-100%);
+        opacity: 0;
+        pointer-events: none;
     }
 
     .fj-nav-container {
-        max-width: 1460px;
-        margin: 0 auto;
         display: flex;
         align-items: center;
         justify-content: space-between;
         height: var(--nav-height);
-        gap: 12px;
+        max-width: 1460px;
+        margin: 0 auto;
+        gap: 8px;
         position: relative;
     }
 
@@ -191,11 +330,19 @@
         gap: 8px;
         text-decoration: none;
         color: inherit;
+        transition: opacity 0.3s ease;
+    }
+    .fj-brand:hover {
+        opacity: 0.85;
     }
     .fj-logo {
         height: 32px;
         width: auto;
         display: block;
+        color: var(--fj-text);
+    }
+    [data-theme="dark"] .fj-logo text {
+        fill: var(--fj-text);
     }
     .fj-brand-badge {
         font-family: var(--font-mono);
@@ -220,7 +367,7 @@
     .fj-nav-center {
         display: flex;
         align-items: center;
-        gap: 6px;
+        gap: 2px;
         flex: 1 1 auto;
         justify-content: center;
     }
@@ -230,15 +377,21 @@
         font-weight: 500;
         color: var(--fj-muted);
         padding: 6px 16px;
-        border-radius: var(--fj-radius);
+        border-radius: var(--radius);
         text-decoration: none;
+        background: transparent;
+        border: none;
+        cursor: pointer;
         transition: all 0.25s var(--ease-smooth);
         position: relative;
         white-space: nowrap;
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
     }
     .fj-nav-link:hover {
         color: var(--fj-text);
-        background: rgba(255, 255, 255, 0.04);
+        background: rgba(13, 148, 136, 0.06);
     }
     .fj-nav-link::after {
         content: '';
@@ -252,21 +405,28 @@
         background: var(--fj-teal);
         transition: width 0.3s var(--ease-smooth);
     }
-    .fj-nav-link:hover::after {
+    .fj-nav-link:hover::after,
+    .fj-nav-link.active::after {
         width: 60%;
     }
     .fj-nav-link.active {
         color: var(--fj-text);
+        font-weight: 600;
     }
-    .fj-nav-link.active::after {
-        width: 60%;
+    .fj-nav-link--mega i {
+        font-size: 0.6rem;
+        transition: transform 0.3s ease;
+        color: var(--fj-dim);
+    }
+    .fj-nav-link--mega[aria-expanded="true"] i {
+        transform: rotate(180deg);
     }
 
     /* ── RIGHT: ACTIONS ── */
     .fj-nav-right {
         display: flex;
         align-items: center;
-        gap: 8px;
+        gap: 4px;
         flex-shrink: 0;
     }
 
@@ -279,7 +439,7 @@
         align-items: center;
         gap: 6px;
         padding: 6px 12px;
-        border-radius: var(--fj-radius);
+        border-radius: var(--radius);
         border: 1px solid var(--fj-border);
         background: transparent;
         color: var(--fj-muted);
@@ -307,19 +467,17 @@
     .fj-location-menu {
         position: absolute;
         top: calc(100% + 8px);
-        left: 0;
-        min-width: 160px;
-        background: var(--fj-surface-solid);
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
+        left: 50%;
+        transform: translateX(-50%) translateY(8px) scale(0.96);
+        min-width: 260px;
+        background: var(--fj-dropdown-bg);
         border: 1px solid var(--fj-border);
-        border-radius: var(--fj-radius);
+        border-radius: var(--radius);
         box-shadow: var(--fj-shadow);
-        padding: 6px;
+        padding: 12px;
         opacity: 0;
         visibility: hidden;
         pointer-events: none;
-        transform: translateY(8px);
         transition: all 0.3s var(--ease-smooth);
         z-index: 999;
     }
@@ -327,21 +485,103 @@
         opacity: 1;
         visibility: visible;
         pointer-events: auto;
-        transform: translateY(0);
+        transform: translateX(-50%) translateY(0) scale(1);
     }
-    .fj-location-menu a {
-        display: block;
+    .fj-location-search input {
+        width: 100%;
         padding: 8px 14px;
-        border-radius: 8px;
-        font-size: 0.85rem;
+        border-radius: var(--radius-full);
+        border: 1px solid var(--fj-border);
+        background: var(--fj-nav-bg);
+        font-size: 0.8rem;
+        color: var(--fj-text);
+        outline: none;
+        font-family: var(--font-body);
+        transition: border-color 0.3s;
+    }
+    .fj-location-search input:focus {
+        border-color: var(--fj-teal);
+    }
+    .fj-location-search input::placeholder {
+        color: var(--fj-dim);
+    }
+    .fj-location-list {
+        max-height: 200px;
+        overflow-y: auto;
+        margin-top: 8px;
+    }
+    .fj-location-list::-webkit-scrollbar {
+        width: 4px;
+    }
+    .fj-location-list::-webkit-scrollbar-thumb {
+        background: var(--fj-border);
+        border-radius: 2px;
+    }
+    .fj-location-list a {
+        display: block;
+        padding: 6px 12px;
+        border-radius: 6px;
+        font-size: 0.8rem;
         color: var(--fj-muted);
         text-decoration: none;
         transition: all 0.2s ease;
         cursor: pointer;
     }
-    .fj-location-menu a:hover {
-        background: rgba(13, 148, 136, 0.08);
+    .fj-location-list a:hover {
+        background: rgba(13, 148, 136, 0.06);
         color: var(--fj-text);
+    }
+    .fj-location-list a .highlight {
+        font-weight: 600;
+        color: var(--fj-teal);
+    }
+    .fj-location-divider {
+        height: 1px;
+        background: var(--fj-border);
+        margin: 8px 0;
+    }
+    .fj-location-detect {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 8px 12px;
+        border: none;
+        background: rgba(13, 148, 136, 0.06);
+        border-radius: 6px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: var(--fj-teal);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-family: var(--font-body);
+    }
+    .fj-location-detect:hover {
+        background: rgba(13, 148, 136, 0.10);
+    }
+    .fj-location-detect i {
+        font-size: 0.8rem;
+    }
+
+    /* Search Toggle */
+    .fj-search-toggle {
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        border: 1px solid var(--fj-border);
+        background: transparent;
+        color: var(--fj-muted);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.95rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    .fj-search-toggle:hover {
+        border-color: var(--fj-teal);
+        color: var(--fj-text);
+        transform: scale(1.05);
     }
 
     /* Theme Toggle */
@@ -365,8 +605,12 @@
         transform: rotate(30deg);
     }
 
-    /* QR Toggle */
-    .fj-qr-toggle {
+    /* Notification Dropdown */
+    .fj-notification-dropdown {
+        position: relative;
+    }
+    .fj-notification-btn {
+        position: relative;
         width: 38px;
         height: 38px;
         border-radius: 50%;
@@ -376,38 +620,283 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 1rem;
+        font-size: 0.95rem;
         cursor: pointer;
         transition: all 0.3s ease;
     }
-    .fj-qr-toggle:hover {
-        border-color: var(--fj-amber);
-        color: var(--fj-amber);
-        transform: scale(1.05);
+    .fj-notification-btn:hover {
+        border-color: var(--fj-teal);
+        color: var(--fj-text);
+    }
+    .fj-notification-dot {
+        position: absolute;
+        top: -2px;
+        right: -2px;
+        min-width: 18px;
+        height: 18px;
+        border-radius: 30px;
+        background: var(--fj-red);
+        color: #fff;
+        font-size: 0.5rem;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 4px;
+        border: 2px solid var(--fj-nav-bg);
+        font-family: var(--font-mono);
+    }
+    .fj-notification-menu {
+        position: absolute;
+        top: calc(100% + 8px);
+        right: 0;
+        width: 360px;
+        max-width: calc(100vw - 20px);
+        max-height: 420px;
+        background: var(--fj-dropdown-bg);
+        border: 1px solid var(--fj-border);
+        border-radius: var(--radius);
+        box-shadow: var(--fj-shadow);
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transform: translateY(8px) scale(0.96);
+        transition: all 0.3s var(--ease-smooth);
+        z-index: 999;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+    }
+    .fj-notification-menu.is-open {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: translateY(0) scale(1);
+    }
+    .fj-notification-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 16px;
+        border-bottom: 1px solid var(--fj-border);
+        font-weight: 700;
+        font-size: 0.85rem;
+        flex-shrink: 0;
+        background: var(--fj-nav-bg);
+    }
+    .fj-notification-mark-all {
+        font-size: 0.65rem;
+        font-weight: 600;
+        color: var(--fj-teal);
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 2px 8px;
+        border-radius: 30px;
+        transition: background 0.2s;
+        font-family: var(--font-body);
+    }
+    .fj-notification-mark-all:hover {
+        background: rgba(13, 148, 136, 0.06);
+    }
+    .fj-notification-list {
+        flex: 1;
+        overflow-y: auto;
+        padding: 4px 0;
+        background: var(--fj-dropdown-bg);
+    }
+    .fj-notification-list::-webkit-scrollbar {
+        width: 4px;
+    }
+    .fj-notification-list::-webkit-scrollbar-thumb {
+        background: var(--fj-border);
+        border-radius: 2px;
+    }
+    .fj-notification-item {
+        display: flex;
+        gap: 12px;
+        padding: 10px 16px;
+        border-bottom: 1px solid var(--fj-border);
+        transition: background 0.2s;
+        cursor: pointer;
+        background: var(--fj-dropdown-bg);
+    }
+    .fj-notification-item:hover {
+        background: rgba(13, 148, 136, 0.03);
+    }
+    .fj-notification-item.unread {
+        background: rgba(13, 148, 136, 0.04);
+        border-left: 3px solid var(--fj-teal);
+    }
+    .fj-notification-item:last-child {
+        border-bottom: none;
+    }
+    .fj-notification-icon {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: rgba(13, 148, 136, 0.06);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.8rem;
+        flex-shrink: 0;
+    }
+    .fj-notification-content {
+        flex: 1;
+        min-width: 0;
+    }
+    .fj-notification-text {
+        font-size: 0.8rem;
+        color: var(--fj-muted);
+        line-height: 1.4;
+    }
+    .fj-notification-text strong {
+        color: var(--fj-text);
+        font-weight: 600;
+    }
+    .fj-notification-time {
+        font-size: 0.6rem;
+        color: var(--fj-dim);
+        margin-top: 2px;
+    }
+    .fj-notification-footer {
+        padding: 10px 16px;
+        border-top: 1px solid var(--fj-border);
+        text-align: center;
+        flex-shrink: 0;
+        background: var(--fj-nav-bg);
+    }
+    .fj-notification-footer a {
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: var(--fj-teal);
+        text-decoration: none;
+    }
+    .fj-notification-footer a:hover {
+        text-decoration: underline;
     }
 
-    /* User Button */
+    /* User Dropdown */
+    .fj-user-dropdown {
+        position: relative;
+    }
     .fj-user-btn {
         display: flex;
         align-items: center;
         gap: 6px;
         padding: 6px 14px 6px 10px;
-        border-radius: var(--fj-radius);
+        border-radius: var(--radius);
         border: 1px solid var(--fj-border);
+        background: transparent;
         color: var(--fj-muted);
-        text-decoration: none;
         font-size: 0.8rem;
         font-weight: 500;
+        cursor: pointer;
         transition: all 0.25s ease;
+        font-family: var(--font-body);
+    }
+    .fj-user-btn:hover {
+        border-color: var(--fj-teal);
+        color: var(--fj-text);
     }
     .fj-user-btn i {
         font-size: 1.2rem;
         color: var(--fj-teal);
     }
-    .fj-user-btn:hover {
-        border-color: var(--fj-teal);
+    .fj-user-menu {
+        position: absolute;
+        top: calc(100% + 8px);
+        right: 0;
+        width: 260px;
+        background: var(--fj-dropdown-bg);
+        border: 1px solid var(--fj-border);
+        border-radius: var(--radius);
+        box-shadow: var(--fj-shadow);
+        padding: 6px;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transform: translateY(8px) scale(0.96);
+        transition: all 0.3s var(--ease-smooth);
+        z-index: 999;
+    }
+    .fj-user-menu.is-open {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: translateY(0) scale(1);
+    }
+    .fj-user-menu-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 8px 12px 12px;
+        border-bottom: 1px solid var(--fj-border);
+    }
+    .fj-user-avatar {
+        font-size: 2.4rem;
+        color: var(--fj-dim);
+        flex-shrink: 0;
+    }
+    .fj-user-info .fj-user-name {
+        font-weight: 700;
+        font-size: 0.9rem;
         color: var(--fj-text);
-        background: rgba(13, 148, 136, 0.04);
+    }
+    .fj-user-info .fj-user-email {
+        font-size: 0.7rem;
+        color: var(--fj-muted);
+    }
+    .fj-user-menu-divider {
+        height: 1px;
+        background: var(--fj-border);
+        margin: 4px 8px;
+    }
+    .fj-user-menu-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 8px 14px;
+        border-radius: 8px;
+        font-size: 0.8rem;
+        color: var(--fj-muted);
+        text-decoration: none;
+        transition: all 0.2s ease;
+        cursor: pointer;
+        background: transparent;
+        border: none;
+        width: 100%;
+        font-family: var(--font-body);
+    }
+    .fj-user-menu-item:hover {
+        background: rgba(13, 148, 136, 0.06);
+        color: var(--fj-text);
+    }
+    .fj-user-menu-item i {
+        width: 18px;
+        text-align: center;
+        font-size: 0.9rem;
+        color: var(--fj-dim);
+    }
+    .fj-user-menu-item .badge-role {
+        margin-left: auto;
+        font-size: 0.5rem;
+        font-weight: 700;
+        padding: 1px 10px;
+        border-radius: 30px;
+        text-transform: uppercase;
+        font-family: var(--font-mono);
+    }
+    .fj-user-menu-item .badge-role.admin {
+        background: rgba(139, 92, 246, 0.10);
+        color: var(--fj-purple);
+        border: 1px solid rgba(139, 92, 246, 0.10);
+    }
+    .fj-user-menu-item .badge-role.handyman {
+        background: rgba(245, 158, 11, 0.10);
+        color: var(--fj-amber);
+        border: 1px solid rgba(245, 158, 11, 0.10);
     }
 
     /* CTA Button */
@@ -416,7 +905,7 @@
         align-items: center;
         gap: 8px;
         padding: 8px 20px;
-        border-radius: var(--fj-radius-full);
+        border-radius: var(--radius-full);
         background: linear-gradient(135deg, var(--fj-teal), var(--fj-teal-dark));
         color: #fff;
         font-family: var(--font-head);
@@ -479,7 +968,248 @@
         background: var(--fj-teal);
     }
 
-    /* ── Mobile Overlay ── */
+    /* ── SERVICES MEGA MENU ── */
+    .fj-mega-menu {
+        position: absolute;
+        top: calc(100% + 4px);
+        left: 50%;
+        transform: translateX(-50%) translateY(8px) scale(0.96);
+        width: calc(100% - 32px);
+        max-width: 1100px;
+        background: var(--fj-dropdown-bg);
+        border: 1px solid var(--fj-border);
+        border-radius: var(--radius);
+        box-shadow: var(--fj-shadow-lg);
+        padding: 24px 28px 16px;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: all 0.35s var(--ease-smooth);
+        z-index: 998;
+    }
+    .fj-mega-menu.is-open {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: translateX(-50%) translateY(0) scale(1);
+    }
+    .fj-mega-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+    }
+    .fj-mega-col h4 {
+        font-family: var(--font-head);
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        color: var(--fj-dim);
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+    .fj-mega-col a {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 4px 0;
+        font-size: 0.85rem;
+        color: var(--fj-muted);
+        text-decoration: none;
+        transition: color 0.2s ease;
+    }
+    .fj-mega-col a:hover {
+        color: var(--fj-text);
+    }
+    .fj-mega-col a i {
+        width: 18px;
+        color: var(--fj-dim);
+        font-size: 0.8rem;
+    }
+    .fj-mega-col--admin {
+        background: rgba(139, 92, 246, 0.04);
+        border-radius: var(--radius);
+        padding: 12px 16px;
+        border: 1px solid rgba(139, 92, 246, 0.06);
+    }
+    .fj-mega-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 16px;
+        margin-top: 16px;
+        border-top: 1px solid var(--fj-border);
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    .fj-mega-footer-left {
+        display: flex;
+        gap: 20px;
+        font-size: 0.75rem;
+        color: var(--fj-muted);
+    }
+    .fj-mega-footer-left i {
+        color: var(--fj-teal);
+        width: 16px;
+    }
+    .fj-mega-footer-right .btn {
+        padding: 6px 18px;
+        font-size: 0.7rem;
+        border-radius: var(--radius-full);
+        background: linear-gradient(135deg, var(--fj-teal), var(--fj-teal-dark));
+        color: #fff;
+        font-weight: 700;
+        border: none;
+        cursor: pointer;
+        font-family: var(--font-body);
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+    }
+    .fj-mega-footer-right .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 16px rgba(13, 148, 136, 0.25);
+    }
+
+    /* ── SEARCH OVERLAY ── */
+    .fj-search-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 99998;
+        background: rgba(15, 23, 42, 0.6);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: all 0.4s var(--ease-smooth);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+    }
+    .fj-search-overlay.is-open {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+    }
+    .fj-search-modal {
+        background: var(--fj-dropdown-bg);
+        border: 1px solid var(--fj-border);
+        border-radius: var(--radius);
+        max-width: 680px;
+        width: 100%;
+        padding: 32px 36px;
+        box-shadow: var(--fj-shadow-lg);
+        transform: translateY(20px) scale(0.96);
+        transition: transform 0.4s var(--ease-spring), opacity 0.4s ease;
+        opacity: 0;
+        position: relative;
+    }
+    .fj-search-overlay.is-open .fj-search-modal {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+    .fj-search-close {
+        position: absolute;
+        top: 12px;
+        right: 16px;
+        background: none;
+        border: none;
+        color: var(--fj-dim);
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: color 0.3s ease;
+    }
+    .fj-search-close:hover {
+        color: var(--fj-text);
+    }
+    .fj-search-input-wrap {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        border-bottom: 2px solid var(--fj-border);
+        padding-bottom: 12px;
+    }
+    .fj-search-input-wrap i {
+        color: var(--fj-dim);
+        font-size: 1.1rem;
+    }
+    .fj-search-input-wrap input {
+        flex: 1;
+        border: none;
+        outline: none;
+        background: transparent;
+        font-size: 1.1rem;
+        font-family: var(--font-body);
+        color: var(--fj-text);
+        padding: 4px 0;
+    }
+    .fj-search-input-wrap input::placeholder {
+        color: var(--fj-dim);
+    }
+    .fj-search-submit {
+        background: linear-gradient(135deg, var(--fj-teal), var(--fj-teal-dark));
+        color: #fff;
+        border: none;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        flex-shrink: 0;
+    }
+    .fj-search-submit:hover {
+        transform: scale(1.06);
+        box-shadow: 0 4px 16px rgba(13, 148, 136, 0.25);
+    }
+    .fj-search-suggestions {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+    .fj-suggestion-group {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+    .fj-suggestion-label {
+        font-size: 0.65rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: var(--fj-dim);
+    }
+    .fj-suggestion-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+    .fj-suggestion-tags span {
+        padding: 4px 14px;
+        border-radius: var(--radius-full);
+        background: rgba(13, 148, 136, 0.06);
+        border: 1px solid rgba(13, 148, 136, 0.06);
+        font-size: 0.75rem;
+        color: var(--fj-muted);
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+    .fj-suggestion-tags span:hover {
+        background: rgba(13, 148, 136, 0.10);
+        border-color: var(--fj-teal);
+        color: var(--fj-text);
+    }
+
+    /* ── MOBILE MENU ── */
     .fj-mobile-overlay {
         position: fixed;
         inset: 0;
@@ -494,40 +1224,43 @@
         overflow-y: auto;
         padding: 20px;
     }
+    [data-theme="dark"] .fj-mobile-overlay {
+        background: rgba(15, 23, 42, 0.99);
+    }
     .fj-mobile-overlay.is-open {
         opacity: 1;
         visibility: visible;
         pointer-events: auto;
     }
     .fj-mobile-inner {
-        max-width: 440px;
+        max-width: 480px;
         margin: 0 auto;
         display: flex;
         flex-direction: column;
         min-height: 100%;
-        padding: 40px 0 20px;
-        gap: 20px;
+        padding: 20px 0 10px;
+        gap: 16px;
     }
     .fj-mobile-header {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding-bottom: 16px;
-        border-bottom: 1px solid var(--fj-border);
+        padding-bottom: 12px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     }
     .fj-mobile-title {
         font-family: var(--font-head);
         font-size: 1.4rem;
         font-weight: 800;
-        color: var(--fj-text);
+        color: #fff;
     }
     .fj-mobile-close {
         width: 40px;
         height: 40px;
         border-radius: 10px;
-        border: 1px solid var(--fj-border);
+        border: 1px solid rgba(255, 255, 255, 0.06);
         background: transparent;
-        color: var(--fj-muted);
+        color: rgba(255, 255, 255, 0.6);
         font-size: 1.2rem;
         cursor: pointer;
         transition: all 0.3s ease;
@@ -537,33 +1270,79 @@
     }
     .fj-mobile-close:hover {
         border-color: var(--fj-teal);
-        color: var(--fj-text);
+        color: #fff;
         transform: rotate(90deg);
     }
+
+    .fj-mobile-user {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 16px;
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: var(--radius);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .fj-mobile-user-avatar {
+        font-size: 2.4rem;
+        color: rgba(255, 255, 255, 0.4);
+    }
+    .fj-mobile-user-info {
+        flex: 1;
+    }
+    .fj-mobile-user-name {
+        font-weight: 700;
+        font-size: 0.9rem;
+        color: #fff;
+    }
+    .fj-mobile-user-email {
+        font-size: 0.7rem;
+        color: rgba(255, 255, 255, 0.5);
+    }
+    .fj-mobile-user-login {
+        padding: 6px 16px;
+        border-radius: var(--radius-full);
+        background: var(--fj-teal);
+        color: #fff;
+        font-size: 0.7rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        white-space: nowrap;
+    }
+    .fj-mobile-user-login:hover {
+        background: var(--fj-teal-dark);
+    }
+
     .fj-mobile-nav {
         display: flex;
         flex-direction: column;
-        gap: 6px;
+        gap: 2px;
     }
     .fj-mobile-link {
         font-family: var(--font-head);
-        font-size: 1.1rem;
+        font-size: 1.05rem;
         font-weight: 600;
-        color: var(--fj-muted);
-        padding: 12px 16px;
-        border-radius: var(--fj-radius);
+        color: rgba(255, 255, 255, 0.5);
+        padding: 10px 16px;
+        border-radius: var(--radius);
         border: 1px solid transparent;
         text-decoration: none;
         transition: all 0.3s ease;
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        gap: 10px;
     }
     .fj-mobile-link:hover {
-        color: var(--fj-text);
+        color: #fff;
         background: rgba(255, 255, 255, 0.04);
-        border-color: var(--fj-border);
-        transform: translateX(6px);
+        border-color: rgba(255, 255, 255, 0.06);
+        transform: translateX(4px);
+    }
+    .fj-mobile-link.active {
+        color: #fff;
+        background: rgba(13, 148, 136, 0.10);
+        border-color: rgba(13, 148, 136, 0.15);
     }
     .fj-mobile-link--gold {
         color: var(--fj-amber);
@@ -574,28 +1353,67 @@
         background: rgba(245, 158, 11, 0.08);
         border-color: rgba(245, 158, 11, 0.15);
     }
+    .fj-mobile-divider {
+        height: 1px;
+        background: rgba(255, 255, 255, 0.06);
+        margin: 4px 8px;
+    }
+
+    .fj-mobile-actions {
+        margin-top: 8px;
+    }
     .fj-mobile-cta {
         display: flex;
         align-items: center;
         justify-content: center;
         gap: 8px;
-        padding: 16px;
-        border-radius: var(--fj-radius);
+        padding: 14px;
+        border-radius: var(--radius);
         background: linear-gradient(135deg, var(--fj-teal), var(--fj-teal-dark));
         color: #fff;
         font-family: var(--font-head);
         font-weight: 700;
         font-size: 0.9rem;
         text-decoration: none;
-        margin-top: 12px;
         box-shadow: 0 4px 16px rgba(13, 148, 136, 0.25);
         transition: all 0.3s ease;
+        width: 100%;
     }
     .fj-mobile-cta:active {
         transform: scale(0.97);
     }
     .fj-mobile-cta i {
         font-size: 0.9rem;
+    }
+    .fj-mobile-location {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 16px;
+        margin-top: 10px;
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+        font-size: 0.85rem;
+        color: rgba(255, 255, 255, 0.5);
+    }
+    .fj-mobile-location i {
+        color: var(--fj-teal);
+    }
+    .fj-mobile-location-change {
+        margin-left: auto;
+        background: none;
+        border: none;
+        color: var(--fj-teal);
+        font-weight: 600;
+        font-size: 0.75rem;
+        cursor: pointer;
+        padding: 4px 12px;
+        border-radius: var(--radius-full);
+        border: 1px solid rgba(13, 148, 136, 0.10);
+        transition: all 0.3s ease;
+        font-family: var(--font-body);
+    }
+    .fj-mobile-location-change:hover {
+        background: rgba(13, 148, 136, 0.10);
     }
 
     /* ── RESPONSIVE ── */
@@ -605,12 +1423,6 @@
         }
         .fj-mobile-toggle {
             display: flex !important;
-        }
-        .fj-nav {
-            padding: 8px 16px;
-        }
-        .fj-nav.is-scrolled {
-            padding: 4px 16px;
         }
         .fj-cta-btn span {
             display: none;
@@ -623,18 +1435,38 @@
         }
         .fj-user-btn {
             padding: 6px 10px;
+            border: none;
         }
         .fj-location-btn span {
             display: none;
+        }
+        .fj-location-btn {
+            padding: 6px 10px;
+            border: none;
+        }
+        .fj-mega-menu {
+            display: none !important;
+        }
+        .fj-notification-menu {
+            width: 320px;
+            right: -80px;
+        }
+        .fj-user-menu {
+            right: -60px;
+        }
+        .fj-location-menu {
+            left: auto;
+            right: 0;
+            transform: translateX(0) translateY(8px) scale(0.96);
+        }
+        .fj-location-menu.is-open {
+            transform: translateX(0) translateY(0) scale(1);
         }
     }
 
     @media (max-width: 600px) {
         .fj-nav {
-            padding: 6px 12px;
-        }
-        .fj-nav.is-scrolled {
-            padding: 4px 12px;
+            padding: 0 10px;
         }
         .fj-logo {
             height: 26px;
@@ -649,13 +1481,23 @@
         .fj-cta-btn i {
             font-size: 0.7rem;
         }
-        .fj-qr-toggle {
+        .fj-search-toggle {
             display: none;
         }
         .fj-theme-toggle {
             width: 32px;
             height: 32px;
             font-size: 0.85rem;
+        }
+        .fj-notification-btn {
+            width: 32px;
+            height: 32px;
+            font-size: 0.85rem;
+        }
+        .fj-notification-dot {
+            min-width: 14px;
+            height: 14px;
+            font-size: 0.4rem;
         }
         .fj-user-btn {
             padding: 4px 8px;
@@ -664,25 +1506,87 @@
         .fj-user-btn i {
             font-size: 1.2rem;
         }
+        .fj-location-btn {
+            padding: 4px 8px;
+            border: none;
+        }
+        .fj-search-modal {
+            padding: 20px 18px;
+        }
+        .fj-search-input-wrap input {
+            font-size: 1rem;
+        }
+        .fj-mobile-inner {
+            padding: 10px 0 5px;
+        }
+        .fj-mobile-link {
+            font-size: 0.95rem;
+            padding: 8px 12px;
+        }
+        .fj-notification-menu {
+            width: calc(100vw - 20px);
+            right: -10px;
+            max-height: 380px;
+        }
+        .fj-user-menu {
+            width: calc(100vw - 20px);
+            right: -10px;
+        }
+        .fj-location-menu {
+            width: calc(100vw - 20px);
+            min-width: auto;
+        }
+        .fj-mega-grid {
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        .fj-mega-footer {
+            flex-direction: column;
+            align-items: stretch;
+            text-align: center;
+        }
+        .fj-mega-footer-left {
+            flex-direction: column;
+            gap: 6px;
+        }
     }
 
     @media (max-width: 380px) {
         .fj-location-btn {
             display: none;
         }
+        .fj-user-btn {
+            display: none;
+        }
+        .fj-cta-btn {
+            padding: 6px 8px;
+            font-size: 0.65rem;
+        }
+        .fj-mega-grid {
+            grid-template-columns: 1fr;
+        }
     }
 
-    /* ── Reduce Motion ── */
     @media (prefers-reduced-motion: reduce) {
+        .fj-nav,
         .fj-nav-link::after,
         .fj-location-menu,
         .fj-cta-btn,
+        .fj-mega-menu,
+        .fj-search-overlay,
+        .fj-mobile-overlay,
+        .fj-theme-toggle,
         .fj-mobile-close,
         .fj-mobile-link,
-        .fj-theme-toggle {
+        .fj-notification-menu,
+        .fj-user-menu {
             transition: none !important;
+            transform: none !important;
         }
         .fj-cta-btn:hover {
+            transform: none !important;
+        }
+        .fj-mobile-toggle.is-active .fj-toggle-line {
             transform: none !important;
         }
     }
@@ -690,64 +1594,110 @@
 
 
 <!-- ============================================================
-     JAVASCRIPT – INTELLIGENT & INTERACTIVE
+     JAVASCRIPT – COMPLETE INTELLIGENT INTERACTIVITY
      ============================================================ -->
 <script>
     (function() {
         'use strict';
 
-        // ── 1. MOBILE MENU ──
-        const toggleBtn = document.getElementById('mobileToggle');
-        const closeBtn = document.getElementById('mobileClose');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const body = document.body;
+        // ── 1. GERMAN CITIES DATABASE ──
+        const GERMAN_CITIES = [
+            'Augsburg', 'München', 'Berlin', 'Hamburg', 'Köln', 'Frankfurt am Main',
+            'Stuttgart', 'Düsseldorf', 'Dortmund', 'Essen', 'Leipzig', 'Bremen',
+            'Dresden', 'Hannover', 'Nürnberg', 'Duisburg', 'Bochum', 'Wuppertal',
+            'Bielefeld', 'Bonn', 'Münster', 'Karlsruhe', 'Mannheim', 'Ingolstadt',
+            'Regensburg', 'Freiburg im Breisgau', 'Ludwigshafen', 'Mainz', 'Kiel',
+            'Gelsenkirchen', 'Aachen', 'Mönchengladbach', 'Oberhausen', 'Rostock',
+            'Kassel', 'Hagen', 'Saarbrücken', 'Potsdam', 'Heidelberg', 'Darmstadt',
+            'Würzburg', 'Braunschweig', 'Krefeld', 'Halle (Saale)', 'Magdeburg',
+            'Kaiserslautern', 'Göttingen', 'Ulm', 'Koblenz', 'Esslingen am Neckar',
+            'Trier', 'Bamberg', 'Passau', 'Bayreuth', 'Cottbus', 'Jena', 'Oldenburg',
+            'Osnabrück', 'Lübeck', 'Erfurt', 'Weimar', 'Flensburg', 'Bremerhaven',
+            'Wilhelmshaven', 'Salzgitter', 'Wolfsburg', 'Remscheid', 'Leverkusen',
+            'Bergisch Gladbach', 'Neuss', 'Pforzheim', 'Offenbach am Main', 'Hamm',
+            'Herne', 'Mülheim an der Ruhr', 'Solingen', 'Leverkusen', 'Neubrandenburg',
+            'Stralsund', 'Greifswald', 'Schwerin', 'Wismar', 'Rostock', 'Heilbronn',
+            'Ulm', 'Neu-Ulm', 'Kempten', 'Memmingen', 'Landsberg am Lech', 'Kaufbeuren'
+        ];
 
-        function openMenu() {
-            mobileMenu.classList.add('is-open');
-            toggleBtn.classList.add('is-active');
-            toggleBtn.setAttribute('aria-expanded', 'true');
-            body.style.overflow = 'hidden';
+        // ── 2. SEARCH SUGGESTIONS DATA ──
+        const SEARCH_SUGGESTIONS = {
+            services: [
+                'USM Haller Montage', 'Küchenmontage', 'Smart Home Installation',
+                'Badrenovierung', 'Garten Landschaftsbau', 'Elektroinstallation',
+                'Sanitärinstallation', 'Malerarbeiten', 'Tapete anbringen',
+                'Bodenverlegung', 'Trockenbau', 'Dachdeckerei', 'Heizungsinstallation',
+                'Klimaanlage installieren', 'Rolladen montieren'
+            ],
+            handymen: ['Raphael Lezius', 'Jaffar Shariff', 'Anna Schmidt', 'Michael Weber'],
+            locations: GERMAN_CITIES.slice(0, 12)
+        };
+
+        // ── 3. ROLE MANAGEMENT ──
+        // Simulated user state (in real app, this would come from a backend session)
+        let currentUser = {
+            isLoggedIn: false,
+            role: 'guest', // 'guest', 'user', 'handyman', 'admin'
+            name: 'Gast',
+            email: 'Nicht angemeldet'
+        };
+
+        // Check for stored session (demo)
+        const storedSession = localStorage.getItem('fjori_session');
+        if (storedSession) {
+            try {
+                const session = JSON.parse(storedSession);
+                if (session.isLoggedIn) {
+                    currentUser = session;
+                }
+            } catch (e) { /* ignore */ }
         }
 
-        function closeMenu() {
-            mobileMenu.classList.remove('is-open');
-            toggleBtn.classList.remove('is-active');
-            toggleBtn.setAttribute('aria-expanded', 'false');
-            body.style.overflow = '';
-        }
-
-        if (toggleBtn) {
-            toggleBtn.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                mobileMenu.classList.contains('is-open') ? closeMenu() : openMenu();
-            });
-        }
-        if (closeBtn) {
-            closeBtn.addEventListener('click', closeMenu);
-        }
-
-        // Close menu on link click
-        mobileMenu.querySelectorAll('a').forEach(function(link) {
-            link.addEventListener('click', closeMenu);
-        });
-
-        // Close on backdrop click
-        mobileMenu.addEventListener('click', function(e) {
-            if (e.target === mobileMenu) closeMenu();
-        });
-
-        // ESC key
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') closeMenu();
-        });
-
-        // ── 2. THEME TOGGLE ──
+        // ── 4. DOM REFS ──
+        const nav = document.getElementById('mainNav');
         const themeToggle = document.getElementById('themeToggle');
         const themeIcon = document.getElementById('themeIcon');
         const html = document.documentElement;
 
-        // Get stored theme or system preference
+        const mobileToggle = document.getElementById('mobileToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileClose = document.getElementById('mobileClose');
+        const body = document.body;
+
+        const locationBtn = document.getElementById('locationToggle');
+        const locationMenu = document.getElementById('locationMenu');
+        const locationSearch = document.getElementById('locationSearch');
+        const locationList = document.getElementById('locationList');
+        const locationDetect = document.getElementById('locationDetect');
+        const currentLocationEl = document.getElementById('currentLocation');
+
+        const servicesTrigger = document.getElementById('servicesTrigger');
+        const servicesMenu = document.getElementById('servicesMenu');
+
+        const userBtn = document.getElementById('userToggle');
+        const userMenu = document.getElementById('userMenu');
+        const userBtnLabel = document.getElementById('userBtnLabel');
+
+        const notificationBtn = document.getElementById('notificationToggle');
+        const notificationMenu = document.getElementById('notificationMenu');
+        const notificationDropdown = document.getElementById('notificationDropdown');
+
+        const searchToggle = document.getElementById('searchToggle');
+        const searchOverlay = document.getElementById('searchOverlay');
+        const searchClose = document.getElementById('searchClose');
+        const searchInput = document.getElementById('searchInput');
+        const searchSubmit = document.getElementById('searchSubmit');
+        const searchSuggestions = document.getElementById('searchSuggestions');
+
+        const mobileNav = document.getElementById('mobileNav');
+        const mobileUserName = document.getElementById('mobileUserName');
+        const mobileUserEmail = document.getElementById('mobileUserEmail');
+        const mobileUserLogin = document.getElementById('mobileUserLogin');
+        const mobileLocationText = document.getElementById('mobileLocationText');
+
+        const ctaButton = document.getElementById('ctaButton');
+
+        // ── 5. THEME TOGGLE ──
         const storedTheme = localStorage.getItem('fixjori-theme');
         const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         let currentTheme = storedTheme || (systemPrefersDark ? 'dark' : 'light');
@@ -755,7 +1705,7 @@
         function applyTheme(theme) {
             html.setAttribute('data-theme', theme);
             localStorage.setItem('fixjori-theme', theme);
-            themeIcon.className = theme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
+            themeIcon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
         }
         applyTheme(currentTheme);
 
@@ -764,43 +1714,641 @@
             applyTheme(currentTheme);
         });
 
-        // ── 3. LOCATION DROPDOWN ──
-        const locationBtn = document.getElementById('locationToggle');
-        const locationMenu = document.getElementById('locationMenu');
+        // ── 6. MOBILE MENU ──
+        function openMobileMenu() {
+            mobileMenu.classList.add('is-open');
+            mobileToggle.classList.add('is-active');
+            mobileToggle.setAttribute('aria-expanded', 'true');
+            body.style.overflow = 'hidden';
+        }
 
-        if (locationBtn && locationMenu) {
-            locationBtn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                const isOpen = locationMenu.classList.contains('is-open');
-                locationMenu.classList.toggle('is-open');
-                locationBtn.setAttribute('aria-expanded', !isOpen);
+        function closeMobileMenu() {
+            mobileMenu.classList.remove('is-open');
+            mobileToggle.classList.remove('is-active');
+            mobileToggle.setAttribute('aria-expanded', 'false');
+            body.style.overflow = '';
+        }
+
+        mobileToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            mobileMenu.classList.contains('is-open') ? closeMobileMenu() : openMobileMenu();
+        });
+
+        mobileClose.addEventListener('click', closeMobileMenu);
+
+        mobileMenu.querySelectorAll('a').forEach(function(link) {
+            link.addEventListener('click', closeMobileMenu);
+        });
+
+        mobileMenu.addEventListener('click', function(e) {
+            if (e.target === mobileMenu) closeMobileMenu();
+        });
+
+        // ── 7. LOCATION ──
+        let selectedLocation = localStorage.getItem('fjori_location') || 'Augsburg';
+        currentLocationEl.textContent = selectedLocation;
+        mobileLocationText.textContent = 'Standort: ' + selectedLocation;
+
+        function renderLocationList(filter) {
+            const term = filter ? filter.toLowerCase().trim() : '';
+            const filtered = GERMAN_CITIES.filter(function(city) {
+                return term === '' || city.toLowerCase().includes(term);
             });
 
-            // Close when clicking outside
-            document.addEventListener('click', function(e) {
-                if (!locationBtn.contains(e.target) && !locationMenu.contains(e.target)) {
-                    locationMenu.classList.remove('is-open');
-                    locationBtn.setAttribute('aria-expanded', 'false');
+            locationList.innerHTML = '';
+            if (filtered.length === 0) {
+                locationList.innerHTML =
+                    '<div style="padding:12px;color:var(--fj-dim);font-size:0.8rem;text-align:center;">Keine Städte gefunden</div>';
+                return;
+            }
+
+            filtered.forEach(function(city) {
+                const a = document.createElement('a');
+                a.textContent = city;
+                if (term) {
+                    const idx = city.toLowerCase().indexOf(term);
+                    if (idx !== -1) {
+                        a.innerHTML = city.substring(0, idx) +
+                            '<span class="highlight">' + city.substring(idx, idx + term.length) + '</span>' +
+                            city.substring(idx + term.length);
+                    }
                 }
-            });
-
-            // Select location
-            locationMenu.querySelectorAll('a').forEach(function(item) {
-                item.addEventListener('click', function(e) {
+                a.addEventListener('click', function(e) {
                     e.preventDefault();
-                    const location = this.dataset.location;
-                    const name = this.textContent;
-                    locationBtn.innerHTML =
-                        `<i class="fas fa-map-marker-alt"></i><span>${name}</span><i class="fas fa-chevron-down"></i>`;
+                    selectedLocation = city;
+                    currentLocationEl.textContent = city;
+                    mobileLocationText.textContent = 'Standort: ' + city;
+                    localStorage.setItem('fjori_location', city);
                     locationMenu.classList.remove('is-open');
                     locationBtn.setAttribute('aria-expanded', 'false');
+                });
+                locationList.appendChild(a);
+            });
+        }
+
+        // Populate location list initially
+        renderLocationList();
+
+        // Location dropdown toggle
+        locationBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const isOpen = locationMenu.classList.contains('is-open');
+            locationMenu.classList.toggle('is-open');
+            locationBtn.setAttribute('aria-expanded', !isOpen);
+            if (!isOpen) {
+                locationSearch.value = '';
+                renderLocationList();
+                setTimeout(function() { locationSearch.focus(); }, 100);
+            }
+        });
+
+        // Location search
+        locationSearch.addEventListener('input', function() {
+            renderLocationList(this.value);
+        });
+
+        // Location detect (Geolocation API)
+        locationDetect.addEventListener('click', function() {
+            if ('geolocation' in navigator) {
+                locationDetect.textContent = '⏳ Suche...';
+                locationDetect.disabled = true;
+                navigator.geolocation.getCurrentPosition(
+                    function(pos) {
+                        // Reverse geocode using free API
+                        const url =
+                            `https://nominatim.openstreetmap.org/reverse?lat=${pos.coords.latitude}&lon=${pos.coords.longitude}&format=json&zoom=10&accept-language=de`;
+                        fetch(url)
+                            .then(function(res) { return res.json(); })
+                            .then(function(data) {
+                                const city = data.address?.city ||
+                                    data.address?.town ||
+                                    data.address?.village ||
+                                    'Deutschland';
+                                // Check if city is in our list
+                                const found = GERMAN_CITIES.find(function(c) {
+                                    return c.toLowerCase() === city.toLowerCase();
+                                });
+                                if (found) {
+                                    selectedLocation = found;
+                                    currentLocationEl.textContent = found;
+                                    mobileLocationText.textContent = 'Standort: ' + found;
+                                    localStorage.setItem('fjori_location', found);
+                                    locationDetect.textContent = '✅ ' + found + ' erkannt';
+                                } else {
+                                    selectedLocation = city;
+                                    currentLocationEl.textContent = city;
+                                    mobileLocationText.textContent = 'Standort: ' + city;
+                                    localStorage.setItem('fjori_location', city);
+                                    locationDetect.textContent = '✅ ' + city + ' erkannt';
+                                }
+                                setTimeout(function() {
+                                    locationDetect.innerHTML =
+                                        '<i class="fas fa-crosshairs"></i> Standort automatisch erkennen';
+                                    locationDetect.disabled = false;
+                                    locationMenu.classList.remove('is-open');
+                                    locationBtn.setAttribute('aria-expanded', 'false');
+                                }, 1500);
+                            })
+                            .catch(function() {
+                                locationDetect.textContent = '❌ Ort nicht gefunden';
+                                setTimeout(function() {
+                                    locationDetect.innerHTML =
+                                        '<i class="fas fa-crosshairs"></i> Standort automatisch erkennen';
+                                    locationDetect.disabled = false;
+                                }, 1500);
+                            });
+                    },
+                    function() {
+                        locationDetect.textContent = '❌ Zugriff verweigert';
+                        setTimeout(function() {
+                            locationDetect.innerHTML =
+                                '<i class="fas fa-crosshairs"></i> Standort automatisch erkennen';
+                            locationDetect.disabled = false;
+                        }, 1500);
+                    }
+                );
+            } else {
+                alert('Geolocation wird von Ihrem Browser nicht unterstützt.');
+            }
+        });
+
+        // Close location menu on outside click
+        document.addEventListener('click', function(e) {
+            if (!locationBtn.contains(e.target) && !locationMenu.contains(e.target)) {
+                locationMenu.classList.remove('is-open');
+                locationBtn.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        // ── 8. SERVICES MEGA MENU ──
+        function closeServicesMenu() {
+            servicesMenu.classList.remove('is-open');
+            servicesTrigger.setAttribute('aria-expanded', 'false');
+        }
+
+        servicesTrigger.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const isOpen = servicesMenu.classList.contains('is-open');
+            servicesMenu.classList.toggle('is-open');
+            this.setAttribute('aria-expanded', !isOpen);
+            // Close other open menus
+            if (!isOpen) {
+                locationMenu.classList.remove('is-open');
+                userMenu.classList.remove('is-open');
+                notificationMenu.classList.remove('is-open');
+                locationBtn.setAttribute('aria-expanded', 'false');
+                userBtn.setAttribute('aria-expanded', 'false');
+                notificationBtn.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        document.addEventListener('click', function(e) {
+            if (!servicesTrigger.contains(e.target) && !servicesMenu.contains(e.target)) {
+                closeServicesMenu();
+            }
+        });
+
+        // ── 9. USER / LOGIN DROPDOWN ──
+        function renderUserMenu() {
+            const isLoggedIn = currentUser.isLoggedIn;
+            const role = currentUser.role;
+
+            let html = '';
+
+            if (isLoggedIn) {
+                html += `
+                    <div class="fj-user-menu-header">
+                        <div class="fj-user-avatar"><i class="fas fa-user-circle"></i></div>
+                        <div class="fj-user-info">
+                            <div class="fj-user-name">${currentUser.name}</div>
+                            <div class="fj-user-email">${currentUser.email}</div>
+                        </div>
+                    </div>
+                    <div class="fj-user-menu-divider"></div>
+                    <a href="client/dashboard.html" class="fj-user-menu-item"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                    <a href="client/projects.html" class="fj-user-menu-item"><i class="fas fa-project-diagram"></i> Meine Projekte</a>
+                    <a href="client/messages.html" class="fj-user-menu-item"><i class="fas fa-envelope"></i> Nachrichten</a>
+                    <a href="client/invoices.html" class="fj-user-menu-item"><i class="fas fa-file-invoice"></i> Rechnungen</a>
+                `;
+
+                if (role === 'handyman' || role === 'admin') {
+                    html += `<div class="fj-user-menu-divider"></div>`;
+                    if (role === 'handyman') {
+                        html += `
+                            <a href="handyman/dashboard.html" class="fj-user-menu-item"><i class="fas fa-tools"></i> Handyman Portal</a>
+                            <a href="handyman/jobs.html" class="fj-user-menu-item"><i class="fas fa-briefcase"></i> Aufträge</a>
+                            <a href="handyman/earnings.html" class="fj-user-menu-item"><i class="fas fa-euro-sign"></i> Einnahmen</a>
+                        `;
+                    }
+                    if (role === 'admin') {
+                        html += `
+                            <a href="admin/index.html" class="fj-user-menu-item"><i class="fas fa-shield-alt"></i> Admin Dashboard <span class="badge-role admin">Admin</span></a>
+                            <a href="admin/users.html" class="fj-user-menu-item"><i class="fas fa-users"></i> Benutzer verwalten</a>
+                            <a href="admin/handymen.html" class="fj-user-menu-item"><i class="fas fa-hard-hat"></i> Handwerker prüfen</a>
+                        `;
+                    }
+                }
+
+                html += `
+                    <div class="fj-user-menu-divider"></div>
+                    <button class="fj-user-menu-item" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Abmelden</button>
+                `;
+            } else {
+                html += `
+                    <div class="fj-user-menu-header">
+                        <div class="fj-user-avatar"><i class="fas fa-user-circle"></i></div>
+                        <div class="fj-user-info">
+                            <div class="fj-user-name">Gast</div>
+                            <div class="fj-user-email">Nicht angemeldet</div>
+                        </div>
+                    </div>
+                    <div class="fj-user-menu-divider"></div>
+                    <a href="login.html" class="fj-user-menu-item"><i class="fas fa-sign-in-alt"></i> Anmelden</a>
+                    <a href="register.html" class="fj-user-menu-item"><i class="fas fa-user-plus"></i> Registrieren</a>
+                    <div class="fj-user-menu-divider"></div>
+                    <a href="handyman/join.html" class="fj-user-menu-item"><i class="fas fa-hard-hat"></i> Als Handwerker bewerben</a>
+                    <a href="help.html" class="fj-user-menu-item"><i class="fas fa-question-circle"></i> Hilfe &amp; Support</a>
+                `;
+            }
+
+            userMenu.innerHTML = html;
+
+            // Handle logout
+            const logoutBtn = document.getElementById('logoutBtn');
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', function() {
+                    if (confirm('Möchten Sie sich abmelden?')) {
+                        currentUser = {
+                            isLoggedIn: false,
+                            role: 'guest',
+                            name: 'Gast',
+                            email: 'Nicht angemeldet'
+                        };
+                        localStorage.removeItem('fjori_session');
+                        updateUI();
+                        renderUserMenu();
+                        closeUserMenu();
+                        // Refresh page to reset state
+                        window.location.reload();
+                    }
+                });
+            }
+        }
+
+        function closeUserMenu() {
+            userMenu.classList.remove('is-open');
+            userBtn.setAttribute('aria-expanded', 'false');
+        }
+
+        userBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const isOpen = userMenu.classList.contains('is-open');
+            userMenu.classList.toggle('is-open');
+            this.setAttribute('aria-expanded', !isOpen);
+            if (!isOpen) {
+                locationMenu.classList.remove('is-open');
+                servicesMenu.classList.remove('is-open');
+                notificationMenu.classList.remove('is-open');
+                locationBtn.setAttribute('aria-expanded', 'false');
+                servicesTrigger.setAttribute('aria-expanded', 'false');
+                notificationBtn.setAttribute('aria-expanded', 'false');
+                renderUserMenu();
+            }
+        });
+
+        document.addEventListener('click', function(e) {
+            if (!userBtn.contains(e.target) && !userMenu.contains(e.target)) {
+                closeUserMenu();
+            }
+        });
+
+        // ── 10. NOTIFICATIONS ──
+        function renderNotifications() {
+            const notifications = [
+                { icon: 'fa-check-circle', color: 'var(--fj-green)', text: 'Projekt <strong>Küchenmontage</strong> wurde abgeschlossen',
+                    time: 'vor 12 min', unread: true },
+                { icon: 'fa-comment', color: 'var(--fj-blue)', text: 'Neue Nachricht von <strong>Raphael Lezius</strong>',
+                    time: 'vor 1 Std', unread: true },
+                { icon: 'fa-star', color: 'var(--fj-amber)', text: 'Sie haben eine neue <strong>5★ Bewertung</strong> erhalten',
+                    time: 'vor 3 Std', unread: false },
+                { icon: 'fa-calendar-check', color: 'var(--fj-teal)',
+                    text: 'Termin für <strong>Badrenovierung</strong> bestätigt', time: 'vor 1 Tag', unread: false }
+            ];
+
+            let unreadCount = 0;
+            let listHtml = '';
+
+            notifications.forEach(function(n) {
+                if (n.unread) unreadCount++;
+                listHtml += `
+                    <div class="fj-notification-item ${n.unread ? 'unread' : ''}">
+                        <div class="fj-notification-icon"><i class="fas ${n.icon}" style="color:${n.color};"></i></div>
+                        <div class="fj-notification-content">
+                            <div class="fj-notification-text">${n.text}</div>
+                            <div class="fj-notification-time">${n.time}</div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            const dot = notificationBtn.querySelector('.fj-notification-dot');
+            if (dot) {
+                if (unreadCount === 0) {
+                    dot.style.display = 'none';
+                } else {
+                    dot.textContent = unreadCount;
+                    dot.style.display = 'flex';
+                }
+            }
+
+            notificationMenu.innerHTML = `
+                <div class="fj-notification-header">
+                    <span>Benachrichtigungen</span>
+                    <button class="fj-notification-mark-all">Alle gelesen</button>
+                </div>
+                <div class="fj-notification-list">${listHtml}</div>
+                <div class="fj-notification-footer">
+                    <a href="client/messages.html">Alle Nachrichten anzeigen →</a>
+                </div>
+            `;
+
+            // Mark all as read
+            const markAll = notificationMenu.querySelector('.fj-notification-mark-all');
+            if (markAll) {
+                markAll.addEventListener('click', function() {
+                    notificationMenu.querySelectorAll('.fj-notification-item.unread').forEach(function(item) {
+                        item.classList.remove('unread');
+                    });
+                    const dot2 = notificationBtn.querySelector('.fj-notification-dot');
+                    if (dot2) {
+                        dot2.style.display = 'none';
+                    }
+                });
+            }
+
+            // Click notification
+            notificationMenu.querySelectorAll('.fj-notification-item').forEach(function(item) {
+                item.addEventListener('click', function() {
+                    this.classList.remove('unread');
+                    const unreadLeft = notificationMenu.querySelectorAll('.fj-notification-item.unread')
+                    .length;
+                    const dot2 = notificationBtn.querySelector('.fj-notification-dot');
+                    if (dot2) {
+                        if (unreadLeft === 0) {
+                            dot2.style.display = 'none';
+                        } else {
+                            dot2.textContent = unreadLeft;
+                        }
+                    }
+                    window.location.href = 'client/messages.html';
                 });
             });
         }
 
-        // ── 4. STICKY NAV ──
-        const nav = document.getElementById('mainNav');
+        function closeNotifications() {
+            notificationMenu.classList.remove('is-open');
+            notificationBtn.setAttribute('aria-expanded', 'false');
+        }
+
+        if (notificationBtn) {
+            notificationBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const isOpen = notificationMenu.classList.contains('is-open');
+                notificationMenu.classList.toggle('is-open');
+                this.setAttribute('aria-expanded', !isOpen);
+                if (!isOpen) {
+                    locationMenu.classList.remove('is-open');
+                    servicesMenu.classList.remove('is-open');
+                    userMenu.classList.remove('is-open');
+                    locationBtn.setAttribute('aria-expanded', 'false');
+                    servicesTrigger.setAttribute('aria-expanded', 'false');
+                    userBtn.setAttribute('aria-expanded', 'false');
+                    renderNotifications();
+                }
+            });
+
+            document.addEventListener('click', function(e) {
+                if (!notificationBtn.contains(e.target) && !notificationMenu.contains(e.target)) {
+                    closeNotifications();
+                }
+            });
+        }
+
+        // ── 11. SEARCH ──
+        function openSearch() {
+            searchOverlay.classList.add('is-open');
+            body.style.overflow = 'hidden';
+            setTimeout(function() {
+                if (searchInput) searchInput.focus();
+            }, 300);
+            renderSearchSuggestions();
+        }
+
+        function closeSearch() {
+            searchOverlay.classList.remove('is-open');
+            body.style.overflow = '';
+        }
+
+        searchToggle.addEventListener('click', openSearch);
+        searchClose.addEventListener('click', closeSearch);
+        searchOverlay.addEventListener('click', function(e) {
+            if (e.target === searchOverlay) closeSearch();
+        });
+
+        function renderSearchSuggestions() {
+            let html = '';
+            // Services
+            html += `
+                <div class="fj-suggestion-group">
+                    <span class="fj-suggestion-label">🔥 Beliebte Services</span>
+                    <div class="fj-suggestion-tags">
+                        ${SEARCH_SUGGESTIONS.services.slice(0, 6).map(function(s) {
+                            return `<span data-query="${s}">${s}</span>`;
+                        }).join('')}
+                    </div>
+                </div>
+                <div class="fj-suggestion-group">
+                    <span class="fj-suggestion-label">⭐ Top Handwerker</span>
+                    <div class="fj-suggestion-tags">
+                        ${SEARCH_SUGGESTIONS.handymen.map(function(h) {
+                            return `<span data-query="${h}">${h}</span>`;
+                        }).join('')}
+                    </div>
+                </div>
+                <div class="fj-suggestion-group">
+                    <span class="fj-suggestion-label">📍 In Ihrer Nähe (${selectedLocation})</span>
+                    <div class="fj-suggestion-tags">
+                        ${SEARCH_SUGGESTIONS.locations.slice(0, 6).map(function(l) {
+                            return `<span data-query="${l}">${l}</span>`;
+                        }).join('')}
+                    </div>
+                </div>
+            `;
+            searchSuggestions.innerHTML = html;
+
+            // Add click handlers for suggestion tags
+            searchSuggestions.querySelectorAll('.fj-suggestion-tags span').forEach(function(tag) {
+                tag.addEventListener('click', function() {
+                    const query = this.dataset.query || this.textContent;
+                    searchInput.value = query;
+                    searchSubmit.click();
+                });
+            });
+        }
+
+        searchSubmit.addEventListener('click', function() {
+            const query = searchInput.value.trim();
+            if (query) {
+                window.location.href = 'directory/index.html?q=' + encodeURIComponent(query);
+            }
+        });
+
+        searchInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                searchSubmit.click();
+            }
+        });
+
+        // ── 12. ROLE-BASED UI UPDATE ──
+        function updateUI() {
+            const isLoggedIn = currentUser.isLoggedIn;
+            const role = currentUser.role;
+
+            // Update user button
+            if (isLoggedIn) {
+                userBtnLabel.textContent = currentUser.name;
+                userBtn.dataset.loggedIn = 'true';
+            } else {
+                userBtnLabel.textContent = 'Anmelden';
+                userBtn.dataset.loggedIn = 'false';
+            }
+
+            // Update mobile user
+            mobileUserName.textContent = currentUser.name;
+            mobileUserEmail.textContent = currentUser.email;
+            if (isLoggedIn) {
+                mobileUserLogin.textContent = 'Profil';
+                mobileUserLogin.href = 'client/dashboard.html';
+            } else {
+                mobileUserLogin.textContent = 'Anmelden';
+                mobileUserLogin.href = 'login.html';
+            }
+
+            // Show/hide role-specific nav links
+            const roleLinks = document.querySelectorAll('.fj-nav-link--role');
+            roleLinks.forEach(function(link) {
+                link.style.display = 'none';
+            });
+
+            // Client links
+            const clientLinks = document.querySelectorAll('.fj-nav-link--client');
+            clientLinks.forEach(function(link) {
+                if (isLoggedIn) link.style.display = 'flex';
+            });
+
+            // Handyman links
+            const handymanLinks = document.querySelectorAll('.fj-nav-link--handyman');
+            handymanLinks.forEach(function(link) {
+                if (role === 'handyman' || role === 'admin') link.style.display = 'flex';
+            });
+
+            // Admin links
+            const adminLinks = document.querySelectorAll('.fj-nav-link--admin');
+            adminLinks.forEach(function(link) {
+                if (role === 'admin') link.style.display = 'flex';
+            });
+
+            // Admin mega menu column
+            const adminCol = document.getElementById('megaAdminCol');
+            if (adminCol) {
+                adminCol.style.display = (role === 'admin') ? 'block' : 'none';
+            }
+
+            // Notification dropdown
+            notificationDropdown.style.display = (isLoggedIn) ? 'block' : 'none';
+
+            // CTA button - change text if logged in
+            if (isLoggedIn) {
+                ctaButton.innerHTML = '<span>Projekt starten</span> <i class="fas fa-bolt"></i>';
+            }
+
+            // Update mobile nav
+            renderMobileNav();
+        }
+
+        // ── 13. MOBILE NAV ──
+        function renderMobileNav() {
+            const isLoggedIn = currentUser.isLoggedIn;
+            const role = currentUser.role;
+
+            let links = `
+                <a href="index.html" class="fj-mobile-link active">🏠 Start</a>
+                <a href="services.html" class="fj-mobile-link">🛠️ Services</a>
+                <a href="directory/index.html" class="fj-mobile-link">🔍 Experten</a>
+                <a href="process.html" class="fj-mobile-link">📋 Ablauf</a>
+            `;
+
+            if (isLoggedIn) {
+                links += `
+                    <div class="fj-mobile-divider"></div>
+                    <a href="client/dashboard.html" class="fj-mobile-link">📊 Dashboard</a>
+                    <a href="client/projects.html" class="fj-mobile-link">📋 Meine Projekte</a>
+                    <a href="client/messages.html" class="fj-mobile-link">💬 Nachrichten</a>
+                    <a href="client/invoices.html" class="fj-mobile-link">🧾 Rechnungen</a>
+                `;
+                if (role === 'handyman' || role === 'admin') {
+                    links += `<div class="fj-mobile-divider"></div>`;
+                    if (role === 'handyman') {
+                        links += `
+                            <a href="handyman/dashboard.html" class="fj-mobile-link">🛠️ Handyman Portal</a>
+                            <a href="handyman/jobs.html" class="fj-mobile-link">💼 Aufträge</a>
+                            <a href="handyman/earnings.html" class="fj-mobile-link">💰 Einnahmen</a>
+                        `;
+                    }
+                    if (role === 'admin') {
+                        links += `
+                            <a href="admin/index.html" class="fj-mobile-link" style="color:var(--fj-purple);">⚙️ Admin Dashboard</a>
+                            <a href="admin/users.html" class="fj-mobile-link" style="color:var(--fj-dim);">👥 Benutzer</a>
+                            <a href="admin/handymen.html" class="fj-mobile-link" style="color:var(--fj-dim);">🛠️ Handwerker</a>
+                        `;
+                    }
+                }
+            } else {
+                links += `
+                    <div class="fj-mobile-divider"></div>
+                    <a href="login.html" class="fj-mobile-link">🔑 Anmelden</a>
+                    <a href="register.html" class="fj-mobile-link">📝 Registrieren</a>
+                `;
+            }
+
+            links += `
+                <div class="fj-mobile-divider"></div>
+                <a href="handyman/join.html" class="fj-mobile-link fj-mobile-link--gold">🛠️ Als Handwerker bewerben</a>
+                <a href="help.html" class="fj-mobile-link" style="color:rgba(255,255,255,0.3);font-size:0.85rem;">❓ Hilfe &amp; Support</a>
+            `;
+
+            mobileNav.innerHTML = links;
+
+            // Mark active link
+            const currentPath = window.location.pathname;
+            mobileNav.querySelectorAll('.fj-mobile-link').forEach(function(link) {
+                const href = link.getAttribute('href');
+                if (href && href !== '#' && href !== '') {
+                    const linkPath = href.replace(/^\.\.\//g, '').replace(/^\.\//g, '').replace(/\/$/, '');
+                    let currentPathNorm = currentPath.replace(/^\.\.\//g, '').replace(/^\.\//g, '').replace(/\/$/, '');
+                    if (currentPathNorm === '' || currentPathNorm === 'index.html') currentPathNorm = 'index.html';
+                    if (linkPath === currentPathNorm || (linkPath === 'index.html' && currentPathNorm === '')) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
+                }
+            });
+        }
+
+        // ── 14. STICKY NAV ──
         let lastScrollY = 0;
+        let scrollTimeout;
 
         window.addEventListener('scroll', function() {
             const currentScrollY = window.scrollY;
@@ -811,28 +2359,62 @@
                 nav.classList.remove('is-scrolled');
             }
 
-            // Hide nav on scroll down, show on scroll up (clean UX)
             if (currentScrollY > 120) {
                 if (currentScrollY > lastScrollY) {
-                    nav.style.transform = 'translateY(-120%)';
+                    nav.classList.add('is-hidden');
                 } else {
-                    nav.style.transform = 'translateY(0)';
+                    nav.classList.remove('is-hidden');
                 }
             } else {
-                nav.style.transform = 'translateY(0)';
+                nav.classList.remove('is-hidden');
             }
 
             lastScrollY = currentScrollY;
         }, { passive: true });
 
-        // ── 5. QR TOGGLE (Demo) ──
-        const qrBtn = document.getElementById('qrToggle');
-        if (qrBtn) {
-            qrBtn.addEventListener('click', function() {
-                alert('📱 QR-Code Scanner würde hier geöffnet werden.\n(Simuliert)');
+        // ── 15. MOBILE LOCATION CHANGE ──
+        const mobileLocChange = document.getElementById('mobileLocationChange');
+        if (mobileLocChange) {
+            mobileLocChange.addEventListener('click', function() {
+                if (window.innerWidth > 600) {
+                    locationBtn.click();
+                } else {
+                    const newLoc = prompt('Standort ändern (z.B. Augsburg, München, Ingolstadt):', selectedLocation);
+                    if (newLoc && newLoc.trim()) {
+                        const found = GERMAN_CITIES.find(function(c) {
+                            return c.toLowerCase() === newLoc.trim().toLowerCase();
+                        });
+                        const city = found || newLoc.trim();
+                        selectedLocation = city;
+                        currentLocationEl.textContent = city;
+                        mobileLocationText.textContent = 'Standort: ' + city;
+                        localStorage.setItem('fjori_location', city);
+                    }
+                }
             });
         }
 
-        console.log('✅ FIXJORI Navigation v3.0 loaded successfully.');
+        // ── 16. ESC KEY ──
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeMobileMenu();
+                closeSearch();
+                closeServicesMenu();
+                closeUserMenu();
+                closeNotifications();
+                locationMenu.classList.remove('is-open');
+                locationBtn.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        // ── 17. INIT ──
+        renderUserMenu();
+        renderNotifications();
+        updateUI();
+        renderMobileNav();
+
+        console.log('✅ FIXJORI Navigation V6.0 (Intelligent · Role-Based · Auto-Location) loaded.');
+        console.log('📍 Current Location:', selectedLocation);
+        console.log('👤 User Role:', currentUser.role);
     })();
 </script>

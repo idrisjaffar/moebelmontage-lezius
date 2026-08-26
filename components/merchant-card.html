@@ -1,0 +1,1115 @@
+<!-- ============================================================
+     FIXJORI | MERCHANT CARD COMPONENT V1.0
+     Meituan-Style · Dense · Information-Rich · Reusable
+     ============================================================ -->
+
+<!--
+     USAGE:
+     ======
+     Include this file in any page where you need handyman/service cards.
+
+     Basic usage:
+     <div id="merchant-cards-container"></div>
+     <script src="components/merchant-card.html"></script>
+
+     Or directly embed the HTML and CSS/JS in your page.
+
+     The component supports:
+     - Grid and list layouts
+     - Premium badge
+     - Rating with star display
+     - Skills/tags
+     - Price display
+     - Action buttons (Hire, View Profile, Book)
+     - Availability status
+     - Distance/location
+     - Responsive design
+     - Dark mode support
+     - Click handlers
+-->
+
+<style>
+    /* ── MERCHANT CARD STYLES ── */
+    .fj-merchant-card {
+        --fj-teal: #0D9488;
+        --fj-teal-dark: #0F766E;
+        --fj-teal-light: #14B8A6;
+        --fj-amber: #F59E0B;
+        --fj-gold: #F5A623;
+        --fj-green: #22C55E;
+        --fj-blue: #3B82F6;
+        --fj-purple: #8B5CF6;
+        --fj-red: #EF4444;
+        --fj-pink: #EC4899;
+        --fj-coral: #FF6B35;
+
+        --fj-text: #0F172A;
+        --fj-muted: #475569;
+        --fj-dim: #94A3B8;
+        --fj-border: #E2E8F0;
+        --fj-bg: #F8FAFC;
+        --fj-surface: #FFFFFF;
+        --fj-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+        --fj-shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.08);
+        --fj-radius: 12px;
+        --fj-radius-sm: 8px;
+        --fj-radius-full: 40px;
+
+        --font-head: 'Space Grotesk', sans-serif;
+        --font-body: 'Inter', sans-serif;
+        --font-mono: 'JetBrains Mono', monospace;
+
+        --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+        --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+        font-family: var(--font-body);
+        color: var(--fj-text);
+        display: flex;
+        flex-direction: column;
+        background: var(--fj-surface);
+        border: 1px solid var(--fj-border);
+        border-radius: var(--fj-radius);
+        padding: 16px 18px;
+        transition: all 0.35s var(--ease-spring);
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        min-height: 180px;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    /* Dark mode support */
+    [data-theme="dark"] .fj-merchant-card {
+        --fj-text: #F8FAFC;
+        --fj-muted: #94A3B8;
+        --fj-dim: #64748B;
+        --fj-border: rgba(255, 255, 255, 0.06);
+        --fj-bg: #0F172A;
+        --fj-surface: #1A2332;
+        --fj-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+        --fj-shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.4);
+    }
+
+    .fj-merchant-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--fj-shadow-lg);
+        border-color: var(--fj-teal);
+    }
+
+    .fj-merchant-card:active {
+        transform: translateY(-2px) scale(0.98);
+    }
+
+    /* ── CARD LAYOUT ── */
+    .fj-merchant-card .fj-card-top {
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+        margin-bottom: 10px;
+    }
+
+    .fj-merchant-card .fj-card-avatar {
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        background: var(--fj-border);
+        overflow: hidden;
+        flex-shrink: 0;
+        border: 2px solid var(--fj-border);
+        transition: border-color 0.3s ease;
+        position: relative;
+    }
+    .fj-merchant-card:hover .fj-card-avatar {
+        border-color: var(--fj-teal);
+    }
+    .fj-merchant-card .fj-card-avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    .fj-merchant-card .fj-card-avatar .fj-avatar-placeholder {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        font-family: var(--font-head);
+        font-weight: 700;
+        font-size: 1.2rem;
+        color: var(--fj-dim);
+        background: var(--fj-bg);
+    }
+
+    /* Online status dot */
+    .fj-merchant-card .fj-card-avatar .fj-avatar-status {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        border: 2px solid var(--fj-surface);
+        background: var(--fj-green);
+    }
+    .fj-merchant-card .fj-card-avatar .fj-avatar-status.offline {
+        background: var(--fj-dim);
+    }
+    .fj-merchant-card .fj-card-avatar .fj-avatar-status.busy {
+        background: var(--fj-amber);
+    }
+
+    /* ── CARD INFO ── */
+    .fj-merchant-card .fj-card-info {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .fj-merchant-card .fj-card-name-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-bottom: 2px;
+    }
+    .fj-merchant-card .fj-card-name {
+        font-family: var(--font-head);
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--fj-text);
+        line-height: 1.3;
+    }
+    .fj-merchant-card .fj-card-title {
+        font-size: 0.7rem;
+        color: var(--fj-muted);
+        line-height: 1.4;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        flex-wrap: wrap;
+    }
+    .fj-merchant-card .fj-card-title .fj-card-location {
+        display: inline-flex;
+        align-items: center;
+        gap: 3px;
+        color: var(--fj-dim);
+        font-size: 0.6rem;
+    }
+    .fj-merchant-card .fj-card-title .fj-card-location i {
+        font-size: 0.55rem;
+    }
+
+    /* ── BADGES ── */
+    .fj-merchant-card .fj-card-badges {
+        display: flex;
+        gap: 4px;
+        flex-wrap: wrap;
+        margin-top: 2px;
+    }
+    .fj-merchant-card .fj-card-badge {
+        font-family: var(--font-mono);
+        font-size: 0.45rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        padding: 1px 10px;
+        border-radius: 30px;
+        line-height: 1.8;
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        border: 1px solid transparent;
+    }
+    .fj-merchant-card .fj-card-badge.premium {
+        color: #0F172A;
+        background: var(--fj-amber);
+        border-color: var(--fj-amber);
+        box-shadow: 0 2px 8px rgba(245, 158, 11, 0.15);
+    }
+    [data-theme="dark"] .fj-merchant-card .fj-card-badge.premium {
+        color: #F8FAFC;
+    }
+    .fj-merchant-card .fj-card-badge.verified {
+        color: var(--fj-teal);
+        background: rgba(13, 148, 136, 0.08);
+        border-color: rgba(13, 148, 136, 0.10);
+    }
+    .fj-merchant-card .fj-card-badge.verified i {
+        color: var(--fj-teal);
+    }
+    .fj-merchant-card .fj-card-badge.available {
+        color: var(--fj-green);
+        background: rgba(34, 197, 94, 0.08);
+        border-color: rgba(34, 197, 94, 0.10);
+    }
+    .fj-merchant-card .fj-card-badge.available i {
+        color: var(--fj-green);
+    }
+    .fj-merchant-card .fj-card-badge.new {
+        color: var(--fj-blue);
+        background: rgba(59, 130, 246, 0.08);
+        border-color: rgba(59, 130, 246, 0.10);
+    }
+
+    /* ── RATING ── */
+    .fj-merchant-card .fj-card-rating {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        margin-top: 4px;
+    }
+    .fj-merchant-card .fj-card-rating .fj-stars {
+        display: flex;
+        align-items: center;
+        gap: 1px;
+        color: var(--fj-amber);
+        font-size: 0.7rem;
+    }
+    .fj-merchant-card .fj-card-rating .fj-stars i {
+        font-size: 0.7rem;
+    }
+    .fj-merchant-card .fj-card-rating .fj-stars i.empty {
+        color: var(--fj-border);
+        opacity: 0.5;
+    }
+    .fj-merchant-card .fj-card-rating .fj-rating-value {
+        font-weight: 700;
+        font-size: 0.85rem;
+        color: var(--fj-text);
+    }
+    .fj-merchant-card .fj-card-rating .fj-rating-count {
+        font-size: 0.65rem;
+        color: var(--fj-muted);
+    }
+
+    /* ── SKILLS / TAGS ── */
+    .fj-merchant-card .fj-card-skills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px;
+        margin-top: 8px;
+    }
+    .fj-merchant-card .fj-card-skill {
+        font-size: 0.55rem;
+        font-weight: 600;
+        color: var(--fj-teal);
+        background: rgba(13, 148, 136, 0.06);
+        padding: 2px 12px;
+        border-radius: 30px;
+        border: 1px solid rgba(13, 148, 136, 0.06);
+        transition: all 0.3s ease;
+        white-space: nowrap;
+    }
+    .fj-merchant-card:hover .fj-card-skill {
+        border-color: rgba(13, 148, 136, 0.12);
+        background: rgba(13, 148, 136, 0.04);
+    }
+
+    /* ── CARD BOTTOM ── */
+    .fj-merchant-card .fj-card-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 12px;
+        padding-top: 12px;
+        border-top: 1px solid var(--fj-border);
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .fj-merchant-card .fj-card-price {
+        display: flex;
+        flex-direction: column;
+    }
+    .fj-merchant-card .fj-card-price .fj-price-amount {
+        font-family: var(--font-head);
+        font-size: 1.05rem;
+        font-weight: 800;
+        color: var(--fj-teal);
+        line-height: 1.2;
+    }
+    .fj-merchant-card .fj-card-price .fj-price-label {
+        font-size: 0.6rem;
+        color: var(--fj-muted);
+        font-weight: 500;
+    }
+    .fj-merchant-card .fj-card-price .fj-price-unit {
+        font-size: 0.6rem;
+        font-weight: 400;
+        color: var(--fj-dim);
+    }
+
+    .fj-merchant-card .fj-card-actions {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+    }
+
+    /* ── ACTION BUTTONS ── */
+    .fj-merchant-card .fj-card-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 16px;
+        border-radius: var(--fj-radius-full);
+        font-weight: 700;
+        font-size: 0.65rem;
+        text-decoration: none;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s var(--ease-spring);
+        font-family: var(--font-body);
+        white-space: nowrap;
+        text-transform: uppercase;
+        letter-spacing: 0.3px;
+    }
+    .fj-merchant-card .fj-card-btn-primary {
+        background: linear-gradient(135deg, var(--fj-teal), var(--fj-teal-dark));
+        color: #fff;
+        box-shadow: 0 4px 12px rgba(13, 148, 136, 0.20);
+    }
+    .fj-merchant-card .fj-card-btn-primary:hover {
+        transform: translateY(-2px) scale(1.02);
+        box-shadow: 0 8px 24px rgba(13, 148, 136, 0.30);
+    }
+    .fj-merchant-card .fj-card-btn-secondary {
+        background: var(--fj-surface);
+        border: 1px solid var(--fj-border);
+        color: var(--fj-muted);
+    }
+    .fj-merchant-card .fj-card-btn-secondary:hover {
+        border-color: var(--fj-teal);
+        color: var(--fj-teal);
+        transform: translateY(-2px);
+    }
+    .fj-merchant-card .fj-card-btn-amber {
+        background: var(--fj-amber);
+        color: #0F172A;
+        box-shadow: 0 4px 12px rgba(245, 158, 11, 0.20);
+    }
+    .fj-merchant-card .fj-card-btn-amber:hover {
+        transform: translateY(-2px) scale(1.02);
+        box-shadow: 0 8px 24px rgba(245, 158, 11, 0.30);
+    }
+    [data-theme="dark"] .fj-merchant-card .fj-card-btn-amber {
+        color: #F8FAFC;
+    }
+    .fj-merchant-card .fj-card-btn-outline {
+        background: transparent;
+        border: 1.5px solid var(--fj-border);
+        color: var(--fj-muted);
+    }
+    .fj-merchant-card .fj-card-btn-outline:hover {
+        border-color: var(--fj-teal);
+        color: var(--fj-teal);
+        transform: translateY(-2px);
+    }
+
+    /* ── AVAILABILITY INDICATOR ── */
+    .fj-merchant-card .fj-card-availability {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        font-size: 0.6rem;
+        font-weight: 600;
+        color: var(--fj-green);
+        margin-top: 4px;
+    }
+    .fj-merchant-card .fj-card-availability i {
+        font-size: 0.5rem;
+    }
+    .fj-merchant-card .fj-card-availability.busy {
+        color: var(--fj-amber);
+    }
+    .fj-merchant-card .fj-card-availability.offline {
+        color: var(--fj-dim);
+    }
+
+    /* ── PREMIUM CARD VARIANT ── */
+    .fj-merchant-card.fj-card-premium {
+        border: 2px solid var(--fj-amber);
+        position: relative;
+    }
+    .fj-merchant-card.fj-card-premium::before {
+        content: '⭐ Premium Pro';
+        position: absolute;
+        top: -10px;
+        right: 16px;
+        font-family: var(--font-mono);
+        font-size: 0.45rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: #0F172A;
+        background: var(--fj-amber);
+        padding: 1px 14px;
+        border-radius: 30px;
+        box-shadow: 0 2px 12px rgba(245, 158, 11, 0.20);
+        z-index: 2;
+    }
+    [data-theme="dark"] .fj-merchant-card.fj-card-premium::before {
+        color: #F8FAFC;
+    }
+    .fj-merchant-card.fj-card-premium:hover {
+        border-color: var(--fj-amber);
+        box-shadow: 0 8px 32px rgba(245, 158, 11, 0.12);
+    }
+    .fj-merchant-card.fj-card-premium .fj-card-price .fj-price-amount {
+        color: var(--fj-amber);
+    }
+
+    /* ── GRID LAYOUT (default) ── */
+    .fj-merchant-card-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 20px;
+        padding: 4px;
+    }
+
+    /* ── LIST LAYOUT ── */
+    .fj-merchant-card-list .fj-merchant-card {
+        flex-direction: row;
+        align-items: stretch;
+        padding: 14px 18px;
+        min-height: 140px;
+    }
+    .fj-merchant-card-list .fj-merchant-card .fj-card-top {
+        flex: 0 0 auto;
+        margin-bottom: 0;
+        margin-right: 16px;
+        align-items: center;
+    }
+    .fj-merchant-card-list .fj-merchant-card .fj-card-info {
+        flex: 1;
+    }
+    .fj-merchant-card-list .fj-merchant-card .fj-card-bottom {
+        flex: 0 0 auto;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-end;
+        border-top: none;
+        padding-top: 0;
+        margin-top: 0;
+        gap: 8px;
+    }
+    .fj-merchant-card-list .fj-merchant-card .fj-card-avatar {
+        width: 64px;
+        height: 64px;
+    }
+    .fj-merchant-card-list .fj-merchant-card .fj-card-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .fj-merchant-card-list .fj-merchant-card .fj-card-actions .fj-card-btn {
+        justify-content: center;
+    }
+
+    @media (max-width: 768px) {
+        .fj-merchant-card-list .fj-merchant-card {
+            flex-direction: column;
+            align-items: stretch;
+            padding: 14px 16px;
+        }
+        .fj-merchant-card-list .fj-merchant-card .fj-card-top {
+            margin-right: 0;
+            margin-bottom: 10px;
+        }
+        .fj-merchant-card-list .fj-merchant-card .fj-card-bottom {
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid var(--fj-border);
+            padding-top: 12px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+        .fj-merchant-card-list .fj-merchant-card .fj-card-actions {
+            flex-direction: row;
+        }
+        .fj-merchant-card-list .fj-merchant-card .fj-card-avatar {
+            width: 52px;
+            height: 52px;
+        }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+        .fj-merchant-card-grid {
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+        .fj-merchant-card {
+            padding: 14px 14px;
+        }
+        .fj-merchant-card .fj-card-avatar {
+            width: 48px;
+            height: 48px;
+        }
+        .fj-merchant-card .fj-card-name {
+            font-size: 0.9rem;
+        }
+        .fj-merchant-card .fj-card-price .fj-price-amount {
+            font-size: 0.9rem;
+        }
+        .fj-merchant-card .fj-card-skills {
+            gap: 3px;
+        }
+        .fj-merchant-card .fj-card-skill {
+            font-size: 0.5rem;
+            padding: 1px 10px;
+        }
+        .fj-merchant-card .fj-card-btn {
+            font-size: 0.6rem;
+            padding: 4px 12px;
+        }
+        .fj-merchant-card .fj-card-bottom {
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+    }
+
+    @media (max-width: 400px) {
+        .fj-merchant-card .fj-card-top {
+            flex-wrap: wrap;
+        }
+        .fj-merchant-card .fj-card-bottom {
+            flex-direction: column;
+            align-items: stretch;
+        }
+        .fj-merchant-card .fj-card-actions {
+            justify-content: center;
+        }
+        .fj-merchant-card .fj-card-btn {
+            width: 100%;
+            justify-content: center;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .fj-merchant-card,
+        .fj-merchant-card .fj-card-btn,
+        .fj-merchant-card .fj-card-skill,
+        .fj-merchant-card .fj-card-avatar {
+            transition: none !important;
+            transform: none !important;
+        }
+        .fj-merchant-card:active {
+            transform: none !important;
+        }
+        .fj-merchant-card .fj-card-btn-primary:hover,
+        .fj-merchant-card .fj-card-btn-amber:hover {
+            transform: none !important;
+        }
+    }
+</style>
+
+<!-- ============================================================
+     MERCHANT CARD HTML
+     ============================================================ -->
+<div class="fj-merchant-card-grid" id="fjMerchantContainer" role="list" aria-label="Handwerker-Liste">
+    <!-- Cards will be populated by JavaScript -->
+</div>
+
+<!-- ============================================================
+     MERCHANT CARD JAVASCRIPT
+     ============================================================ -->
+<script>
+    (function() {
+        'use strict';
+
+        // ── SAMPLE DATA ──
+        // In production, this would come from an API
+        const SAMPLE_MERCHANTS = [{
+            id: 1,
+            name: 'Raphael Lezius',
+            title: 'USM Haller Spezialist & Küchenmontage',
+            avatar: '',
+            initials: 'RL',
+            rating: 5.0,
+            reviewCount: 124,
+            skills: ['USM Haller', 'Küchenmontage', 'Akustik'],
+            price: 1200,
+            priceLabel: 'ab',
+            priceUnit: '/ Projekt',
+            location: 'Mannheim',
+            distance: '2,5 km',
+            available: true,
+            status: 'online',
+            premium: true,
+            verified: true,
+            new: false,
+            badge: 'premium',
+            href: 'directory/profile.html?id=raphael',
+            buttonText: 'Anfragen',
+            buttonType: 'primary',
+        }, {
+            id: 2,
+            name: 'Jaffar Shariff',
+            title: 'Smart Home Experte & Elektroinstallation',
+            avatar: '',
+            initials: 'JS',
+            rating: 4.9,
+            reviewCount: 85,
+            skills: ['KNX', 'Smart Home', 'Beleuchtung'],
+            price: 950,
+            priceLabel: 'ab',
+            priceUnit: '/ Projekt',
+            location: 'Heidelberg',
+            distance: '8,3 km',
+            available: true,
+            status: 'online',
+            premium: false,
+            verified: true,
+            new: false,
+            badge: 'verified',
+            href: 'directory/profile.html?id=jaffar',
+            buttonText: 'Anfragen',
+            buttonType: 'primary',
+        }, {
+            id: 3,
+            name: 'Michael Weber',
+            title: 'Sanitär & Heizung · Meisterbetrieb',
+            avatar: '',
+            initials: 'MW',
+            rating: 4.8,
+            reviewCount: 62,
+            skills: ['Sanitär', 'Heizung', 'Reparatur'],
+            price: 650,
+            priceLabel: 'ab',
+            priceUnit: '/ Projekt',
+            location: 'Ludwigshafen',
+            distance: '3,0 km',
+            available: true,
+            status: 'busy',
+            premium: false,
+            verified: true,
+            new: false,
+            badge: 'available',
+            href: 'directory/profile.html?id=michael',
+            buttonText: 'Anfragen',
+            buttonType: 'primary',
+        }, {
+            id: 4,
+            name: 'Anna Schmidt',
+            title: 'Malerin & Restauratorin · Meisterin',
+            avatar: '',
+            initials: 'AS',
+            rating: 4.9,
+            reviewCount: 43,
+            skills: ['Malerei', 'Tapete', 'Restaurierung'],
+            price: 480,
+            priceLabel: 'ab',
+            priceUnit: '/ Projekt',
+            location: 'Kaufering',
+            distance: '12,5 km',
+            available: false,
+            status: 'offline',
+            premium: true,
+            verified: true,
+            new: false,
+            badge: 'premium',
+            href: 'directory/profile.html?id=anna',
+            buttonText: 'Anfragen',
+            buttonType: 'primary',
+        }, {
+            id: 5,
+            name: 'Thomas Bauer',
+            title: 'Garten- & Landschaftsbau',
+            avatar: '',
+            initials: 'TB',
+            rating: 4.2,
+            reviewCount: 18,
+            skills: ['Gartenbau', 'Pflasterarbeiten', 'Teichbau'],
+            price: 720,
+            priceLabel: 'ab',
+            priceUnit: '/ Projekt',
+            location: 'Mannheim',
+            distance: '4,1 km',
+            available: true,
+            status: 'online',
+            premium: false,
+            verified: false,
+            new: true,
+            badge: 'new',
+            href: 'directory/profile.html?id=thomas',
+            buttonText: 'Anfragen',
+            buttonType: 'primary',
+        }, {
+            id: 6,
+            name: 'Claudia Richter',
+            title: 'Elektromeisterin · Smart Home Spezialistin',
+            avatar: '',
+            initials: 'CR',
+            rating: 4.7,
+            reviewCount: 32,
+            skills: ['Elektro', 'Smart Home', 'Sicherheitstechnik'],
+            price: 880,
+            priceLabel: 'ab',
+            priceUnit: '/ Projekt',
+            location: 'Mannheim',
+            distance: '1,8 km',
+            available: true,
+            status: 'online',
+            premium: false,
+            verified: true,
+            new: false,
+            badge: 'verified',
+            href: 'directory/profile.html?id=claudia',
+            buttonText: 'Anfragen',
+            buttonType: 'primary',
+        }];
+
+        // ── DOM REFS ──
+        const container = document.getElementById('fjMerchantContainer');
+
+        // ── HELPERS ──
+        function renderStars(rating) {
+            const fullStars = Math.floor(rating);
+            const hasHalf = rating % 1 >= 0.5;
+            const emptyStars = 5 - fullStars - (hasHalf ? 1 : 0);
+
+            let html = '';
+            for (let i = 0; i < fullStars; i++) {
+                html += '<i class="fas fa-star"></i>';
+            }
+            if (hasHalf) {
+                html += '<i class="fas fa-star-half-alt"></i>';
+            }
+            for (let i = 0; i < emptyStars; i++) {
+                html += '<i class="fas fa-star empty"></i>';
+            }
+            return html;
+        }
+
+        function getInitials(name) {
+            return name.split(' ').map(word => word.charAt(0)).join('').toUpperCase().substring(0, 2);
+        }
+
+        function getStatusDot(status) {
+            const classes = {
+                online: '',
+                busy: 'busy',
+                offline: 'offline'
+            };
+            return classes[status] || '';
+        }
+
+        function getAvailabilityText(status) {
+            const texts = {
+                online: '🟢 Verfügbar',
+                busy: '🟡 Beschäftigt',
+                offline: '⚪ Nicht verfügbar'
+            };
+            return texts[status] || texts.offline;
+        }
+
+        function getBadgeHTML(badge) {
+            const badges = {
+                premium: '<span class="fj-card-badge premium">⭐ Premium</span>',
+                verified: '<span class="fj-card-badge verified"><i class="fas fa-check-circle"></i> Verifiziert</span>',
+                available: '<span class="fj-card-badge available"><i class="fas fa-circle"></i> Verfügbar</span>',
+                new: '<span class="fj-card-badge new"><i class="fas fa-sparkles"></i> Neu</span>',
+            };
+            return badges[badge] || '';
+        }
+
+        function getButtonClass(type) {
+            const classes = {
+                primary: 'fj-card-btn-primary',
+                secondary: 'fj-card-btn-secondary',
+                amber: 'fj-card-btn-amber',
+                outline: 'fj-card-btn-outline',
+            };
+            return classes[type] || classes.secondary;
+        }
+
+        // ── RENDER ──
+        function renderCards(merchants, layout) {
+            if (!container) return;
+
+            // Set layout class
+            container.className = layout === 'list' ? 'fj-merchant-card-list' : 'fj-merchant-card-grid';
+
+            container.innerHTML = '';
+
+            if (!merchants || merchants.length === 0) {
+                container.innerHTML = `
+                    <div style="text-align:center;padding:40px 20px;color:var(--fj-muted);grid-column:1/-1;">
+                        <i class="fas fa-search" style="font-size:2rem;display:block;margin-bottom:12px;opacity:0.3;"></i>
+                        <p style="font-size:1rem;font-weight:600;">Keine Handwerker gefunden</p>
+                        <p style="font-size:0.85rem;margin-top:4px;">Versuchen Sie es mit anderen Suchkriterien.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            merchants.forEach(function(merchant) {
+                const card = document.createElement('div');
+                card.className = 'fj-merchant-card';
+                if (merchant.premium) card.classList.add('fj-card-premium');
+                card.setAttribute('role', 'listitem');
+                card.setAttribute('data-id', merchant.id);
+
+                const statusDot = getStatusDot(merchant.status);
+                const availabilityText = getAvailabilityText(merchant.status);
+                const badgeHTML = getBadgeHTML(merchant.badge);
+                const buttonClass = getButtonClass(merchant.buttonType);
+                const initials = merchant.initials || getInitials(merchant.name);
+
+                // Avatar HTML
+                let avatarHTML = '';
+                if (merchant.avatar) {
+                    avatarHTML = `<img src="${merchant.avatar}" alt="${merchant.name}" />`;
+                } else {
+                    avatarHTML = `<span class="fj-avatar-placeholder">${initials}</span>`;
+                }
+
+                card.innerHTML = `
+                    <div class="fj-card-top">
+                        <div class="fj-card-avatar">
+                            ${avatarHTML}
+                            <span class="fj-avatar-status ${statusDot}"></span>
+                        </div>
+                        <div class="fj-card-info">
+                            <div class="fj-card-name-row">
+                                <span class="fj-card-name">${merchant.name}</span>
+                                ${badgeHTML}
+                            </div>
+                            <div class="fj-card-title">
+                                ${merchant.title}
+                                ${merchant.location ? `<span class="fj-card-location"><i class="fas fa-map-marker-alt"></i> ${merchant.location} ${merchant.distance ? '· ' + merchant.distance : ''}</span>` : ''}
+                            </div>
+                            <div class="fj-card-rating">
+                                <span class="fj-stars">${renderStars(merchant.rating)}</span>
+                                <span class="fj-rating-value">${merchant.rating.toFixed(1)}</span>
+                                <span class="fj-rating-count">(${merchant.reviewCount})</span>
+                            </div>
+                            ${merchant.skills && merchant.skills.length ? `
+                                <div class="fj-card-skills">
+                                    ${merchant.skills.map(function(skill) {
+                                        return `<span class="fj-card-skill">${skill}</span>`;
+                                    }).join('')}
+                                </div>
+                            ` : ''}
+                            <div class="fj-card-availability ${merchant.status === 'busy' ? 'busy' : merchant.status === 'offline' ? 'offline' : ''}">
+                                <i class="fas fa-circle"></i> ${availabilityText}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fj-card-bottom">
+                        <div class="fj-card-price">
+                            <span class="fj-price-amount">
+                                ${merchant.priceLabel ? merchant.priceLabel + ' ' : ''}
+                                ${merchant.price ? '€ ' + merchant.price.toLocaleString('de-DE') : 'Auf Anfrage'}
+                                <span class="fj-price-unit">${merchant.priceUnit || ''}</span>
+                            </span>
+                            <span class="fj-price-label">${merchant.priceLabel === 'ab' ? 'Mindestpreis' : 'Festpreis'}</span>
+                        </div>
+                        <div class="fj-card-actions">
+                            <a href="${merchant.href || '#'}" class="fj-card-btn ${buttonClass}">
+                                ${merchant.buttonIcon ? `<i class="${merchant.buttonIcon}"></i>` : ''}
+                                ${merchant.buttonText || 'Anfragen'}
+                            </a>
+                            <button class="fj-card-btn fj-card-btn-secondary" data-action="favorite" data-id="${merchant.id}">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+
+                // Click handler for the whole card (except buttons)
+                card.addEventListener('click', function(e) {
+                    // Ignore if click is on a button or link
+                    if (e.target.closest('.fj-card-btn') || e.target.closest('a')) return;
+                    if (merchant.href) {
+                        window.location.href = merchant.href;
+                    }
+                });
+
+                // Favorite button handler
+                const favBtn = card.querySelector('[data-action="favorite"]');
+                if (favBtn) {
+                    favBtn.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        const icon = this.querySelector('i');
+                        if (icon.classList.contains('far')) {
+                            icon.classList.remove('far');
+                            icon.classList.add('fas');
+                            this.style.color = 'var(--fj-red)';
+                            this.style.borderColor = 'var(--fj-red)';
+                            // Show toast notification
+                            showToast('❤️ ' + merchant.name + ' zu Favoriten hinzugefügt');
+                        } else {
+                            icon.classList.remove('fas');
+                            icon.classList.add('far');
+                            this.style.color = '';
+                            this.style.borderColor = '';
+                            showToast('💔 ' + merchant.name + ' von Favoriten entfernt');
+                        }
+                    });
+                }
+
+                container.appendChild(card);
+            });
+        }
+
+        // ── TOAST NOTIFICATION ──
+        function showToast(message) {
+            // Remove existing toast
+            const existing = document.querySelector('.fj-toast-notification');
+            if (existing) existing.remove();
+
+            const toast = document.createElement('div');
+            toast.className = 'fj-toast-notification';
+            Object.assign(toast.style, {
+                position: 'fixed',
+                bottom: '24px',
+                left: '50%',
+                transform: 'translateX(-50%)',
+                background: 'var(--fj-surface)',
+                border: '1px solid var(--fj-border)',
+                borderRadius: 'var(--fj-radius)',
+                padding: '12px 24px',
+                boxShadow: 'var(--fj-shadow-lg)',
+                fontWeight: '600',
+                fontSize: '0.85rem',
+                color: 'var(--fj-text)',
+                zIndex: '3000',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '12px',
+                maxWidth: '90%',
+                animation: 'fj-toast-slide-up 0.4s var(--ease-spring)',
+                borderLeft: '4px solid var(--fj-teal)',
+                fontFamily: 'var(--font-body)',
+            });
+
+            toast.innerHTML = `
+                <span>${message}</span>
+                <button style="background:none;border:none;font-size:1.1rem;color:var(--fj-dim);cursor:pointer;padding:0 4px;" onclick="this.parentElement.remove()">×</button>
+            `;
+
+            // Add keyframe if not exists
+            if (!document.getElementById('fjToastStyles')) {
+                const style = document.createElement('style');
+                style.id = 'fjToastStyles';
+                style.textContent = `
+                    @keyframes fj-toast-slide-up {
+                        0% { transform: translateX(-50%) translateY(20px); opacity: 0; }
+                        100% { transform: translateX(-50%) translateY(0); opacity: 1; }
+                    }
+                    @keyframes fj-toast-fade-out {
+                        0% { opacity: 1; transform: translateX(-50%) translateY(0); }
+                        100% { opacity: 0; transform: translateX(-50%) translateY(10px); }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+
+            document.body.appendChild(toast);
+
+            // Auto-dismiss after 3.5s
+            setTimeout(function() {
+                if (toast.parentElement) {
+                    toast.style.animation = 'fj-toast-fade-out 0.4s ease forwards';
+                    setTimeout(function() {
+                        if (toast.parentElement) toast.remove();
+                    }, 400);
+                }
+            }, 3500);
+        }
+
+        // ── API ──
+        window.FJMerchantCard = {
+            render: function(merchants, layout) {
+                const data = merchants || SAMPLE_MERCHANTS;
+                renderCards(data, layout || 'grid');
+            },
+            getSampleData: function() {
+                return SAMPLE_MERCHANTS;
+            },
+            // Filter merchants by criteria
+            filter: function(merchants, filters) {
+                return merchants.filter(function(m) {
+                    let match = true;
+                    if (filters.search) {
+                        const search = filters.search.toLowerCase();
+                        match = match && (m.name.toLowerCase().includes(search) ||
+                            m.title.toLowerCase().includes(search) ||
+                            m.skills.some(function(s) { return s.toLowerCase().includes(search); }));
+                    }
+                    if (filters.premium !== undefined) {
+                        match = match && m.premium === filters.premium;
+                    }
+                    if (filters.available !== undefined) {
+                        match = match && m.available === filters.available;
+                    }
+                    if (filters.minRating) {
+                        match = match && m.rating >= filters.minRating;
+                    }
+                    if (filters.maxPrice) {
+                        match = match && (m.price || 0) <= filters.maxPrice;
+                    }
+                    return match;
+                });
+            },
+            // Sort merchants
+            sort: function(merchants, sortBy) {
+                const sorted = [...merchants];
+                switch (sortBy) {
+                    case 'rating':
+                        sorted.sort(function(a, b) { return b.rating - a.rating; });
+                        break;
+                    case 'price-asc':
+                        sorted.sort(function(a, b) { return (a.price || 0) - (b.price || 0); });
+                        break;
+                    case 'price-desc':
+                        sorted.sort(function(a, b) { return (b.price || 0) - (a.price || 0); });
+                        break;
+                    case 'distance':
+                        sorted.sort(function(a, b) {
+                            const distA = parseFloat((a.distance || '99').replace(',', '.'));
+                            const distB = parseFloat((b.distance || '99').replace(',', '.'));
+                            return distA - distB;
+                        });
+                        break;
+                    case 'name':
+                        sorted.sort(function(a, b) { return a.name.localeCompare(b.name); });
+                        break;
+                    default:
+                        break;
+                }
+                return sorted;
+            }
+        };
+
+        // ── AUTO-INIT ──
+        function init() {
+            // Check if container exists
+            if (!document.getElementById('fjMerchantContainer')) {
+                // If container not found, create one
+                const wrapper = document.createElement('div');
+                wrapper.id = 'fjMerchantContainer';
+                wrapper.className = 'fj-merchant-card-grid';
+                // Find a parent or append to body
+                const target = document.querySelector('.fj-kk-area')?.parentElement || document.body;
+                target.appendChild(wrapper);
+            }
+
+            // Render with sample data
+            renderCards(SAMPLE_MERCHANTS, 'grid');
+
+            console.log('✅ FIXJORI Merchant Card component loaded.');
+            console.log('📊 ' + SAMPLE_MERCHANTS.length + ' merchants rendered.');
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }
+
+    })();
+</script>
