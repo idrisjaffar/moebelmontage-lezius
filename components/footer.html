@@ -1,1126 +1,172 @@
-<!-- ============================================================
-     FIXJORI | FOOTER V2.0 – SECURE · MODERN · MEITUAN-STRATEGY
-     Progressive · Accessible · GDPR-Ready · Germany 2026
-     ============================================================ -->
+<!-- components/footer.html -->
+<footer class="rl-footer">
+  <div class="container">
 
-<footer class="fj-footer" id="mainFooter" role="contentinfo" aria-label="Fusszeile">
-    <div class="fj-footer-container">
-
-        <!-- ============================================================
-             SECTION 1: BRAND + NEWSLETTER + TRUST
-             ============================================================ -->
-        <div class="fj-footer-top">
-
-            <!-- LEFT: Brand & Trust -->
-            <div class="fj-footer-brand">
-                <div class="fj-footer-logo">
-                    <svg viewBox="0 0 180 42" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                        <text x="0" y="34" font-family="'Space Grotesk', sans-serif" font-weight="900" font-size="32" fill="currentColor" letter-spacing="-1">FIX</text>
-                        <polygon points="72,6 90,18 90,36 72,48 54,36 54,18" fill="var(--fj-teal)"/>
-                        <text x="96" y="34" font-family="'Space Grotesk', sans-serif" font-weight="900" font-size="32" fill="currentColor" letter-spacing="-1">ORI</text>
-                    </svg>
-                    <span class="fj-footer-badge">Premium</span>
-                    <span class="fj-footer-badge-germany">
-                        <i class="fas fa-flag"></i> Made in Germany
-                    </span>
-                </div>
-
-                <p class="fj-footer-description">
-                    Die Plattform für perfekte Montage und Premium-Handwerk.<br />
-                    Verifizierte Experten, Festpreise, persönliche Betreuung.
-                </p>
-
-                <div class="fj-footer-trust-badges">
-                    <span><i class="fas fa-shield-check"></i> Verifiziert</span>
-                    <span><i class="fas fa-file-contract"></i> 10 Mio. € versichert</span>
-                    <span><i class="fas fa-star"></i> 4.9 ★ Ø Bewertung</span>
-                    <span><i class="fas fa-medal"></i> Top-Service 2026</span>
-                    <span><i class="fas fa-lock"></i> SSL-verschlüsselt</span>
-                </div>
-
-                <!-- Security Seals (GDPR & Compliance) -->
-                <div class="fj-footer-security-seals">
-                    <span class="fj-footer-seal">
-                        <i class="fas fa-check-circle"></i> DSGVO-konform
-                    </span>
-                    <span class="fj-footer-seal">
-                        <i class="fas fa-check-circle"></i> Zahlungssicher
-                    </span>
-                    <span class="fj-footer-seal">
-                        <i class="fas fa-check-circle"></i> 14 Tage Widerruf
-                    </span>
-                </div>
-            </div>
-
-            <!-- RIGHT: Newsletter -->
-            <div class="fj-footer-newsletter">
-                <h4><i class="fas fa-envelope"></i> Newsletter</h4>
-                <p>Exklusive Angebote &amp; Handwerker-Tipps – einmal im Monat.</p>
-
-                <form class="fj-footer-newsletter-form" id="newsletterForm" novalidate>
-                    <div class="fj-footer-newsletter-input">
-                        <i class="fas fa-envelope"></i>
-                        <input type="email" placeholder="Ihre E-Mail-Adresse" id="newsletterEmail" required aria-label="E-Mail für Newsletter" />
-                        <button type="submit" class="fj-footer-newsletter-btn">
-                            <i class="fas fa-arrow-right"></i> Anmelden
-                        </button>
-                    </div>
-
-                    <div class="fj-footer-newsletter-checkbox">
-                        <input type="checkbox" id="newsletterConsent" required />
-                        <label for="newsletterConsent">
-                            Ich stimme der <a href="datenschutz.html">Datenschutzerklärung</a> zu und
-                            möchte den Newsletter erhalten.
-                        </label>
-                    </div>
-
-                    <div id="newsletterMessage" class="fj-footer-newsletter-message" role="alert" aria-live="polite"></div>
-                </form>
-            </div>
-
+    <!-- Top Section -->
+    <div class="rl-footer-top">
+      <div class="rl-footer-brand">
+        <div class="logo">Raphael <span>Lezius</span></div>
+        <p>
+          Ich freue mich, dass Sie hier sind.<br>
+          Premium Montage mit echter Leidenschaft – millimetergenau, staubfrei und immer mit Herz.
+        </p>
+        <div class="rl-footer-trust">
+          <span><i class="fas fa-shield-alt"></i> 5 Mio. € versichert</span>
+          <span><i class="fas fa-star"></i> 5.0 ★ von 110+ Menschen</span>
+          <span><i class="fas fa-clock"></i> Antwort innerhalb 24 h</span>
+          <span><i class="fas fa-heart"></i> 1 Jahr persönliche Garantie</span>
         </div>
+      </div>
 
-        <!-- ============================================================
-             SECTION 2: LINK COLUMNS (Dense · Hierarchical)
-             ============================================================ -->
-        <div class="fj-footer-grid">
-
-            <!-- Column 1: Services -->
-            <div class="fj-footer-col">
-                <h5><i class="fas fa-tools"></i> Services</h5>
-                <ul>
-                    <li><a href="services/montage.html">Montage &amp; Möbel</a></li>
-                    <li><a href="services/elektro.html">Elektro &amp; Smart</a></li>
-                    <li><a href="services/sanitaer.html">Sanitär &amp; Wasser</a></li>
-                    <li><a href="services/garten.html">Garten &amp; Outdoor</a></li>
-                    <li><a href="services/demontage.html">Demontage &amp; Umzug</a></li>
-                    <li><a href="services/renovierung.html">Renovierung &amp; Malerei</a></li>
-                    <li><a href="services/reinigung.html">Reinigung &amp; Pflege</a></li>
-                    <li><a href="services/premium.html" class="fj-footer-link-premium">⭐ Premium Pro</a></li>
-                </ul>
-            </div>
-
-            <!-- Column 2: Für Kunden -->
-            <div class="fj-footer-col">
-                <h5><i class="fas fa-user"></i> Für Kunden</h5>
-                <ul>
-                    <li><a href="client/dashboard.html">Mein Dashboard</a></li>
-                    <li><a href="client/projects.html">Meine Projekte</a></li>
-                    <li><a href="client/messages.html">Nachrichten</a></li>
-                    <li><a href="client/invoices.html">Rechnungen</a></li>
-                    <li><a href="booking/step1.html">Projekt starten</a></li>
-                    <li><a href="directory/index.html">Experten finden</a></li>
-                    <li><a href="faq.html">FAQ – Häufige Fragen</a></li>
-                </ul>
-            </div>
-
-            <!-- Column 3: Für Handwerker -->
-            <div class="fj-footer-col">
-                <h5><i class="fas fa-hard-hat"></i> Für Handwerker</h5>
-                <ul>
-                    <li><a href="handyman/join.html">Als Handwerker bewerben</a></li>
-                    <li><a href="handyman/dashboard.html">Handyman Portal</a></li>
-                    <li><a href="handyman/jobs.html">Aufträge verwalten</a></li>
-                    <li><a href="handyman/earnings.html">Einnahmen</a></li>
-                    <li><a href="handyman/profile.html">Profil verwalten</a></li>
-                    <li><a href="handyman/resources.html">Ressourcen &amp; Tipps</a></li>
-                </ul>
-            </div>
-
-            <!-- Column 4: Über uns + Support + Legal -->
-            <div class="fj-footer-col">
-                <h5><i class="fas fa-info-circle"></i> Über uns</h5>
-                <ul>
-                    <li><a href="about.html">Über FIXJORI</a></li>
-                    <li><a href="team.html">Unser Team</a></li>
-                    <li><a href="careers.html">Karriere</a></li>
-                    <li><a href="press.html">Presse &amp; News</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                </ul>
-
-                <h5 style="margin-top:14px;"><i class="fas fa-headset"></i> Support</h5>
-                <ul>
-                    <li><a href="help.html">Hilfe &amp; Support</a></li>
-                    <li><a href="contact.html">Kontakt</a></li>
-                    <li><a href="tel:+498211234567"><i class="fas fa-phone"></i> +49 821 1234567</a></li>
-                    <li><a href="mailto:support@fixjori.de"><i class="fas fa-envelope"></i> support@fixjori.de</a></li>
-                </ul>
-            </div>
-
+      <div class="rl-footer-newsletter">
+        <h4>
+          <i class="fas fa-envelope-open-text" style="color:var(--rl-primary)"></i>
+          Bleiben Sie in Verbindung
+        </h4>
+        <p>Einmal im Monat sende ich Ihnen nützliche Tipps und exklusive Angebote – nur wenn Sie möchten.</p>
+        
+        <form class="newsletter-form" id="newsletterForm">
+          <input type="email" placeholder="Ihre E-Mail-Adresse" required aria-label="E-Mail für Newsletter" />
+          <button type="submit" class="magnetic-btn">Gerne dabei sein</button>
+        </form>
+        
+        <div class="newsletter-consent">
+          <input type="checkbox" id="consent" required />
+          <label for="consent">
+            Ich stimme der 
+            <a href="/legal/datenschutz.html" style="color:var(--rl-primary); text-decoration:underline;">Datenschutzerklärung</a> 
+            zu und freue mich auf Ihre Nachrichten.
+          </label>
         </div>
-
-        <!-- ============================================================
-             SECTION 3: TRUST SEAL BAR (Meituan Dense Strategy)
-             ============================================================ -->
-        <div class="fj-footer-trust-bar">
-            <div class="fj-footer-trust-item">
-                <i class="fas fa-check-circle"></i>
-                <div>
-                    <span class="fj-footer-trust-label">Verifizierte Experten</span>
-                    <span class="fj-footer-trust-value">1.200+ Handwerker</span>
-                </div>
-            </div>
-            <div class="fj-footer-trust-item">
-                <i class="fas fa-star"></i>
-                <div>
-                    <span class="fj-footer-trust-label">Kundenbewertung</span>
-                    <span class="fj-footer-trust-value">4.9 ★ (2.400+)</span>
-                </div>
-            </div>
-            <div class="fj-footer-trust-item">
-                <i class="fas fa-clock"></i>
-                <div>
-                    <span class="fj-footer-trust-label">Schnelle Vermittlung</span>
-                    <span class="fj-footer-trust-value">Durchschnitt 4,2 Std.</span>
-                </div>
-            </div>
-            <div class="fj-footer-trust-item">
-                <i class="fas fa-euro-sign"></i>
-                <div>
-                    <span class="fj-footer-trust-label">Festpreis-Garantie</span>
-                    <span class="fj-footer-trust-value">Keine versteckten Kosten</span>
-                </div>
-            </div>
-            <div class="fj-footer-trust-item">
-                <i class="fas fa-shield-virus"></i>
-                <div>
-                    <span class="fj-footer-trust-label">Sicherheit</span>
-                    <span class="fj-footer-trust-value">SSL &amp; DSGVO konform</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- ============================================================
-             SECTION 4: BOTTOM BAR – Legal · Social · Language
-             ============================================================ -->
-        <div class="fj-footer-bottom">
-
-            <!-- Left: Copyright -->
-            <div class="fj-footer-bottom-left">
-                <span>© 2026 FIXJORI. Alle Rechte vorbehalten.</span>
-                <span class="fj-footer-divider">|</span>
-                <span>
-                    Made with <i class="fas fa-heart" style="color:var(--fj-red);"></i>
-                    in <span style="font-weight:600;">Augsburg</span>
-                </span>
-                <span class="fj-footer-divider">|</span>
-                <span class="fj-footer-version">v2.0.1</span>
-            </div>
-
-            <!-- Center: Legal Links (Secure & GDPR-ready) -->
-            <div class="fj-footer-bottom-center">
-                <a href="impressum.html">Impressum</a>
-                <a href="datenschutz.html">Datenschutz</a>
-                <a href="agb.html">AGB</a>
-                <a href="widerruf.html">Widerruf</a>
-                <a href="cookie.html">Cookie-Einstellungen</a>
-                <a href="sitemap.html">Sitemap</a>
-            </div>
-
-            <!-- Right: Language + Social -->
-            <div class="fj-footer-bottom-right">
-                <span class="fj-footer-language" aria-label="Sprache: Deutsch">
-                    <i class="fas fa-globe"></i> DE
-                </span>
-
-                <div class="fj-footer-social">
-                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#" aria-label="Xing"><i class="fab fa-xing"></i></a>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- ============================================================
-             SECTION 5: BACK TO TOP BUTTON
-             ============================================================ -->
-        <button class="fj-footer-back-to-top" id="backToTop" aria-label="Zum Seitenanfang">
-            <i class="fas fa-arrow-up"></i>
-        </button>
-
+      </div>
     </div>
+
+    <!-- Link Grid -->
+    <div class="rl-footer-grid">
+      <div class="rl-footer-col">
+        <h5>Was ich für Sie tue</h5>
+        <a href="/services/moebel-kuechen.html">Möbel & Küchen</a>
+        <a href="/services/usm-haller.html">USM Haller Spezialist</a>
+        <a href="/services/garten-outdoor.html">Garten & Outdoor</a>
+        <a href="/services/demontage-umzug.html">Demontage & Umzug</a>
+        <a href="/services/premium-pro.html">Premium Pro Service</a>
+      </div>
+
+      <div class="rl-footer-col">
+        <h5>Für Sie</h5>
+        <a href="/anfrage/">Kostenloses Gespräch</a>
+        <a href="/reviews.html">Ihre Stimmen</a>
+        <a href="/faq.html">Häufige Fragen</a>
+        <a href="/contact.html">Direkter Kontakt</a>
+      </div>
+
+      <div class="rl-footer-col">
+        <h5>Über mich</h5>
+        <a href="/#about">Wer ich bin</a>
+        <a href="/about.html#philosophie">Meine Philosophie</a>
+        <a href="/legal/impressum.html">Impressum</a>
+      </div>
+
+      <div class="rl-footer-col">
+        <h5>Unterstützung</h5>
+        <a href="tel:+491608194018">
+          <i class="fas fa-phone-alt" style="margin-right:6px; opacity:0.7;"></i>
+          +49 160 8194018
+        </a>
+        <a href="https://wa.me/491608194018" target="_blank" rel="noopener">
+          <i class="fab fa-whatsapp" style="margin-right:6px; opacity:0.7;"></i>
+          WhatsApp schreiben
+        </a>
+        <a href="/legal/datenschutz.html">Datenschutz</a>
+        <a href="/legal/agb.html">AGB</a>
+      </div>
+    </div>
+
+    <!-- Trust Bar -->
+    <div class="rl-footer-trustbar">
+      <div class="trustbar-item">
+        <i class="fas fa-users"></i>
+        <div>
+          <div class="label">Vertrauen</div>
+          <div class="value">110+ glückliche Kunden</div>
+        </div>
+      </div>
+      <div class="trustbar-item">
+        <i class="fas fa-star"></i>
+        <div>
+          <div class="label">Bewertung</div>
+          <div class="value">5.0 ★ Durchschnitt</div>
+        </div>
+      </div>
+      <div class="trustbar-item">
+        <i class="fas fa-bolt"></i>
+        <div>
+          <div class="label">Reaktion</div>
+          <div class="value">meist innerhalb 24 h</div>
+        </div>
+      </div>
+      <div class="trustbar-item">
+        <i class="fas fa-shield-alt"></i>
+        <div>
+          <div class="label">Sicherheit</div>
+          <div class="value">5 Mio. € versichert</div>
+        </div>
+      </div>
+      <div class="trustbar-item">
+        <i class="fas fa-hand-holding-heart"></i>
+        <div>
+          <div class="label">Service</div>
+          <div class="value">White-Glove mit Herz</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom -->
+    <div class="rl-footer-bottom">
+      <div>
+        © 2026 Raphael Lezius · Mit Sorgfalt gemacht in Augsburg
+      </div>
+      
+      <div>
+        <a href="/legal/impressum.html">Impressum</a>
+        <a href="/legal/datenschutz.html">Datenschutz</a>
+        <a href="/legal/agb.html">AGB</a>
+      </div>
+      
+      <div class="rl-footer-social">
+        <a href="#" aria-label="Instagram" title="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="#" aria-label="LinkedIn" title="LinkedIn">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="#" aria-label="YouTube" title="YouTube">
+          <i class="fab fa-youtube"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- Small kind closing line -->
+    <div style="text-align:center; margin-top:28px; font-size:0.88rem; color:var(--rl-dim);">
+      <i class="fas fa-heart" style="color:var(--rl-primary); margin-right:6px;"></i>
+      Danke, dass Sie sich die Zeit genommen haben. Es bedeutet mir viel.
+    </div>
+
+  </div>
 </footer>
 
-
-<!-- ============================================================
-     CSS – COMPLETE FOOTER STYLING (SECURE · MODERN)
-     ============================================================ -->
-<style>
-    /* ── ROOT VARIABLES ── */
-    .fj-footer {
-        --fj-teal: #0D9488;
-        --fj-teal-dark: #0F766E;
-        --fj-teal-light: #14B8A6;
-        --fj-amber: #F59E0B;
-        --fj-gold: #F5A623;
-        --fj-green: #22C55E;
-        --fj-blue: #3B82F6;
-        --fj-purple: #8B5CF6;
-        --fj-red: #EF4444;
-        --fj-pink: #EC4899;
-
-        --fj-text: #0F172A;
-        --fj-muted: #475569;
-        --fj-dim: #94A3B8;
-        --fj-border: #E2E8F0;
-        --fj-bg: #F8FAFC;
-        --fj-surface: #FFFFFF;
-
-        /* Footer-specific */
-        --fj-footer-bg: #0F172A;
-        --fj-footer-text: #F8FAFC;
-        --fj-footer-muted: #94A3B8;
-        --fj-footer-dim: #64748B;
-        --fj-footer-border: rgba(255, 255, 255, 0.06);
-        --fj-footer-shadow: 0 -4px 32px rgba(0, 0, 0, 0.04);
-
-        --font-head: 'Space Grotesk', sans-serif;
-        --font-body: 'Inter', sans-serif;
-        --font-mono: 'JetBrains Mono', monospace;
-
-        --radius: 12px;
-        --radius-full: 40px;
-        --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
-        --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
-
-        font-family: var(--font-body);
-        background: var(--fj-footer-bg);
-        color: var(--fj-footer-text);
-        padding: 48px 20px 20px;
-        margin-top: 60px;
-        border-top: 1px solid var(--fj-footer-border);
-        transition: background 0.4s, color 0.4s;
-        line-height: 1.6;
-    }
-
-    /* ── LIGHT MODE ── */
-    [data-theme="light"] .fj-footer {
-        --fj-footer-bg: #F8FAFC;
-        --fj-footer-text: #0F172A;
-        --fj-footer-muted: #475569;
-        --fj-footer-dim: #94A3B8;
-        --fj-footer-border: #E2E8F0;
-        --fj-footer-shadow: 0 -4px 32px rgba(0, 0, 0, 0.04);
-        background: var(--fj-footer-bg);
-        color: var(--fj-footer-text);
-        border-top: 1px solid var(--fj-footer-border);
-    }
-
-    .fj-footer-container {
-        max-width: 1260px;
-        margin: 0 auto;
-        position: relative;
-    }
-
-    /* ── SECTION 1: TOP ── */
-    .fj-footer-top {
-        display: grid;
-        grid-template-columns: 1.4fr 1fr;
-        gap: 40px 60px;
-        padding-bottom: 32px;
-        border-bottom: 1px solid var(--fj-footer-border);
-        margin-bottom: 32px;
-    }
-
-    /* ── BRAND ── */
-    .fj-footer-brand .fj-footer-logo {
-        display: flex;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 8px 12px;
-        margin-bottom: 12px;
-    }
-    .fj-footer-brand .fj-footer-logo svg {
-        height: 30px;
-        width: auto;
-        color: var(--fj-footer-text);
-    }
-    [data-theme="light"] .fj-footer-brand .fj-footer-logo svg text {
-        fill: var(--fj-footer-text);
-    }
-    [data-theme="dark"] .fj-footer-brand .fj-footer-logo svg text {
-        fill: #F8FAFC;
-    }
-    .fj-footer-badge {
-        font-family: var(--font-mono);
-        font-size: 0.4rem;
-        font-weight: 700;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-        color: var(--fj-amber);
-        background: rgba(245, 158, 11, 0.10);
-        border: 1px solid rgba(245, 158, 11, 0.15);
-        padding: 2px 10px;
-        border-radius: 30px;
-        line-height: 1.4;
-    }
-    .fj-footer-badge-germany {
-        font-family: var(--font-mono);
-        font-size: 0.4rem;
-        font-weight: 700;
-        letter-spacing: 0.5px;
-        color: var(--fj-footer-muted);
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid var(--fj-footer-border);
-        padding: 2px 10px;
-        border-radius: 30px;
-        line-height: 1.4;
-        display: inline-flex;
-        align-items: center;
-        gap: 4px;
-    }
-    [data-theme="light"] .fj-footer-badge-germany {
-        background: rgba(0, 0, 0, 0.02);
-        border-color: var(--fj-border);
-    }
-    .fj-footer-badge-germany i {
-        color: var(--fj-teal);
-        font-size: 0.5rem;
-    }
-
-    .fj-footer-description {
-        font-size: 0.85rem;
-        color: var(--fj-footer-muted);
-        line-height: 1.7;
-        margin-bottom: 14px;
-        max-width: 440px;
-    }
-
-    .fj-footer-trust-badges {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 6px 12px;
-    }
-    .fj-footer-trust-badges span {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        font-size: 0.7rem;
-        font-weight: 500;
-        color: var(--fj-footer-muted);
-        background: rgba(255, 255, 255, 0.02);
-        padding: 3px 12px;
-        border-radius: 30px;
-        border: 1px solid var(--fj-footer-border);
-        transition: all 0.3s ease;
-    }
-    [data-theme="light"] .fj-footer-trust-badges span {
-        background: rgba(0, 0, 0, 0.01);
-    }
-    .fj-footer-trust-badges span i {
-        color: var(--fj-teal);
-        font-size: 0.65rem;
-    }
-    .fj-footer-trust-badges span:hover {
-        border-color: var(--fj-teal);
-        color: var(--fj-footer-text);
-        transform: translateY(-2px);
-    }
-
-    /* ── SECURITY SEALS ── */
-    .fj-footer-security-seals {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px 16px;
-        margin-top: 12px;
-    }
-    .fj-footer-seal {
-        font-size: 0.65rem;
-        font-weight: 500;
-        color: var(--fj-footer-muted);
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-    }
-    .fj-footer-seal i {
-        color: var(--fj-green);
-        font-size: 0.7rem;
-    }
-
-    /* ── NEWSLETTER ── */
-    .fj-footer-newsletter h4 {
-        font-family: var(--font-head);
-        font-size: 0.95rem;
-        font-weight: 800;
-        margin-bottom: 4px;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-    }
-    .fj-footer-newsletter p {
-        font-size: 0.75rem;
-        color: var(--fj-footer-muted);
-        margin-bottom: 14px;
-    }
-    .fj-footer-newsletter-input {
-        display: flex;
-        align-items: center;
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid var(--fj-footer-border);
-        border-radius: var(--radius-full);
-        padding: 4px 4px 4px 16px;
-        transition: all 0.3s ease;
-    }
-    [data-theme="light"] .fj-footer-newsletter-input {
-        background: var(--fj-surface);
-        border-color: var(--fj-border);
-    }
-    .fj-footer-newsletter-input:focus-within {
-        border-color: var(--fj-teal);
-        box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.08);
-    }
-    .fj-footer-newsletter-input i {
-        color: var(--fj-footer-dim);
-        font-size: 0.8rem;
-    }
-    .fj-footer-newsletter-input input {
-        flex: 1;
-        padding: 10px 12px;
-        border: none;
-        outline: none;
-        background: transparent;
-        font-size: 0.85rem;
-        color: var(--fj-footer-text);
-        font-family: var(--font-body);
-        min-width: 0;
-    }
-    .fj-footer-newsletter-input input::placeholder {
-        color: var(--fj-footer-dim);
-    }
-    .fj-footer-newsletter-btn {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        padding: 8px 20px;
-        border-radius: var(--radius-full);
-        background: linear-gradient(135deg, var(--fj-teal), var(--fj-teal-dark));
-        color: #fff;
-        font-weight: 700;
-        font-size: 0.7rem;
-        border: none;
-        cursor: pointer;
-        transition: all 0.3s var(--ease-spring);
-        white-space: nowrap;
-        font-family: var(--font-body);
-    }
-    .fj-footer-newsletter-btn:hover {
-        transform: translateY(-2px) scale(1.02);
-        box-shadow: 0 4px 16px rgba(13, 148, 136, 0.25);
-    }
-    .fj-footer-newsletter-btn:disabled {
-        opacity: 0.6;
-        cursor: not-allowed;
-        transform: none !important;
-    }
-
-    .fj-footer-newsletter-checkbox {
-        display: flex;
-        align-items: flex-start;
-        gap: 8px;
-        margin-top: 10px;
-        font-size: 0.65rem;
-        color: var(--fj-footer-muted);
-    }
-    .fj-footer-newsletter-checkbox input[type="checkbox"] {
-        width: 14px;
-        height: 14px;
-        margin-top: 2px;
-        accent-color: var(--fj-teal);
-        flex-shrink: 0;
-        cursor: pointer;
-    }
-    .fj-footer-newsletter-checkbox label {
-        cursor: pointer;
-        line-height: 1.5;
-    }
-    .fj-footer-newsletter-checkbox label a {
-        color: var(--fj-teal);
-        text-decoration: underline;
-        text-underline-offset: 2px;
-    }
-    .fj-footer-newsletter-checkbox label a:hover {
-        opacity: 0.8;
-    }
-
-    .fj-footer-newsletter-message {
-        margin-top: 8px;
-        font-size: 0.75rem;
-        font-weight: 600;
-        min-height: 20px;
-    }
-    .fj-footer-newsletter-message.success {
-        color: var(--fj-green);
-    }
-    .fj-footer-newsletter-message.error {
-        color: var(--fj-red);
-    }
-
-    /* ── SECTION 2: LINK COLUMNS ── */
-    .fj-footer-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 32px 40px;
-        padding-bottom: 32px;
-        border-bottom: 1px solid var(--fj-footer-border);
-        margin-bottom: 28px;
-    }
-
-    .fj-footer-col h5 {
-        font-family: var(--font-head);
-        font-size: 0.75rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.8px;
-        color: var(--fj-footer-dim);
-        margin-bottom: 14px;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-    }
-    .fj-footer-col ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
-    .fj-footer-col ul li {
-        margin-bottom: 6px;
-    }
-    .fj-footer-col ul li a {
-        font-size: 0.8rem;
-        color: var(--fj-footer-muted);
-        text-decoration: none;
-        transition: all 0.2s ease;
-        display: inline-flex;
-        align-items: center;
-        gap: 4px;
-        padding: 2px 0;
-    }
-    .fj-footer-col ul li a:hover {
-        color: var(--fj-teal);
-        transform: translateX(4px);
-    }
-    .fj-footer-col ul li a i {
-        font-size: 0.6rem;
-        color: var(--fj-footer-dim);
-    }
-    .fj-footer-col ul li a.fj-footer-link-premium {
-        color: var(--fj-amber);
-        font-weight: 600;
-    }
-    .fj-footer-col ul li a.fj-footer-link-premium:hover {
-        color: var(--fj-amber);
-        opacity: 0.8;
-    }
-
-    /* ── SECTION 3: TRUST BAR ── */
-    .fj-footer-trust-bar {
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        gap: 12px 20px;
-        padding: 16px 0 12px;
-        border-bottom: 1px solid var(--fj-footer-border);
-        margin-bottom: 20px;
-    }
-
-    .fj-footer-trust-item {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        padding: 8px 12px;
-        border-radius: var(--radius);
-        background: rgba(255, 255, 255, 0.01);
-        border: 1px solid var(--fj-footer-border);
-        transition: all 0.3s ease;
-    }
-    [data-theme="light"] .fj-footer-trust-item {
-        background: rgba(0, 0, 0, 0.005);
-    }
-    .fj-footer-trust-item:hover {
-        border-color: var(--fj-teal);
-        background: rgba(13, 148, 136, 0.03);
-        transform: translateY(-2px);
-    }
-    .fj-footer-trust-item i {
-        font-size: 1.2rem;
-        color: var(--fj-teal);
-        flex-shrink: 0;
-        width: 28px;
-        text-align: center;
-    }
-    .fj-footer-trust-item div {
-        display: flex;
-        flex-direction: column;
-    }
-    .fj-footer-trust-label {
-        font-size: 0.55rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        color: var(--fj-footer-dim);
-    }
-    .fj-footer-trust-value {
-        font-size: 0.75rem;
-        font-weight: 600;
-        color: var(--fj-footer-text);
-        margin-top: 1px;
-    }
-
-    /* ── SECTION 4: BOTTOM BAR ── */
-    .fj-footer-bottom {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 12px 20px;
-        padding-top: 4px;
-    }
-
-    .fj-footer-bottom-left {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        flex-wrap: wrap;
-        font-size: 0.7rem;
-        color: var(--fj-footer-dim);
-    }
-    .fj-footer-bottom-left .fj-footer-divider {
-        color: var(--fj-footer-border);
-    }
-    .fj-footer-bottom-left .fj-footer-version {
-        font-family: var(--font-mono);
-        font-size: 0.5rem;
-        background: rgba(13, 148, 136, 0.08);
-        color: var(--fj-teal);
-        padding: 1px 8px;
-        border-radius: 30px;
-        border: 1px solid rgba(13, 148, 136, 0.10);
-    }
-    .fj-footer-bottom-left .fa-heart {
-        animation: pulse-heart 2s ease-in-out infinite;
-        display: inline-block;
-    }
-    @keyframes pulse-heart {
-        0%,
-        100% {
-            transform: scale(1);
-        }
-        50% {
-            transform: scale(1.15);
-        }
-    }
-
-    .fj-footer-bottom-center {
-        display: flex;
-        gap: 16px;
-        flex-wrap: wrap;
-        font-size: 0.7rem;
-    }
-    .fj-footer-bottom-center a {
-        color: var(--fj-footer-muted);
-        text-decoration: none;
-        transition: color 0.2s ease;
-        padding: 2px 0;
-    }
-    .fj-footer-bottom-center a:hover {
-        color: var(--fj-teal);
-    }
-
-    .fj-footer-bottom-right {
-        display: flex;
-        align-items: center;
-        gap: 16px;
-        flex-wrap: wrap;
-    }
-    .fj-footer-language {
-        display: flex;
-        align-items: center;
-        gap: 4px;
-        font-size: 0.7rem;
-        font-weight: 600;
-        color: var(--fj-footer-muted);
-        padding: 4px 12px;
-        border: 1px solid var(--fj-footer-border);
-        border-radius: var(--radius-full);
-        cursor: default;
-    }
-    .fj-footer-language i {
-        color: var(--fj-teal);
-    }
-
-    .fj-footer-social {
-        display: flex;
-        gap: 4px;
-    }
-    .fj-footer-social a {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 34px;
-        height: 34px;
-        border-radius: 50%;
-        border: 1px solid var(--fj-footer-border);
-        color: var(--fj-footer-muted);
-        font-size: 0.75rem;
-        transition: all 0.3s ease;
-        text-decoration: none;
-    }
-    .fj-footer-social a:hover {
-        border-color: var(--fj-teal);
-        color: var(--fj-teal);
-        transform: translateY(-3px);
-        box-shadow: 0 4px 16px rgba(13, 148, 136, 0.08);
-    }
-    [data-theme="light"] .fj-footer-social a {
-        border-color: var(--fj-border);
-        color: var(--fj-muted);
-    }
-    [data-theme="light"] .fj-footer-social a:hover {
-        border-color: var(--fj-teal);
-        color: var(--fj-teal);
-    }
-
-    /* ── BACK TO TOP ── */
-    .fj-footer-back-to-top {
-        position: fixed;
-        bottom: 28px;
-        right: 28px;
-        width: 46px;
-        height: 46px;
-        border-radius: 50%;
-        background: linear-gradient(135deg, var(--fj-teal), var(--fj-teal-dark));
-        color: #fff;
-        border: none;
-        box-shadow: 0 4px 20px rgba(13, 148, 136, 0.30);
-        cursor: pointer;
-        font-size: 1.1rem;
-        transition: all 0.3s var(--ease-spring);
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(20px) scale(0.8);
-        z-index: 9999;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    .fj-footer-back-to-top.visible {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0) scale(1);
-    }
-    .fj-footer-back-to-top:hover {
-        transform: translateY(-4px) scale(1.06);
-        box-shadow: 0 8px 32px rgba(13, 148, 136, 0.40);
-    }
-    .fj-footer-back-to-top:active {
-        transform: scale(0.92);
-    }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 1100px) {
-        .fj-footer-trust-bar {
-            grid-template-columns: repeat(3, 1fr);
-        }
-    }
-
-    @media (max-width: 992px) {
-        .fj-footer-top {
-            grid-template-columns: 1fr;
-            gap: 24px;
-        }
-        .fj-footer-grid {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 24px 32px;
-        }
-        .fj-footer-bottom {
-            flex-direction: column;
-            align-items: stretch;
-            text-align: center;
-            gap: 12px;
-        }
-        .fj-footer-bottom-center {
-            justify-content: center;
-        }
-        .fj-footer-bottom-right {
-            justify-content: center;
-        }
-        .fj-footer-trust-bar {
-            grid-template-columns: repeat(3, 1fr);
-        }
-    }
-
-    @media (max-width: 700px) {
-        .fj-footer {
-            padding: 32px 16px 16px;
-        }
-        .fj-footer-grid {
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-        .fj-footer-trust-bar {
-            grid-template-columns: 1fr 1fr;
-            gap: 8px;
-        }
-        .fj-footer-trust-item {
-            padding: 6px 10px;
-        }
-        .fj-footer-trust-item i {
-            font-size: 1rem;
-            width: 24px;
-        }
-        .fj-footer-trust-value {
-            font-size: 0.7rem;
-        }
-        .fj-footer-newsletter-input {
-            flex-wrap: wrap;
-            background: transparent;
-            border: none;
-            padding: 0;
-            gap: 8px;
-        }
-        .fj-footer-newsletter-input input {
-            width: 100%;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--fj-footer-border);
-            border-radius: var(--radius-full);
-            padding: 10px 16px;
-        }
-        [data-theme="light"] .fj-footer-newsletter-input input {
-            background: var(--fj-surface);
-            border-color: var(--fj-border);
-        }
-        .fj-footer-newsletter-btn {
-            width: 100%;
-            justify-content: center;
-            padding: 10px;
-        }
-        .fj-footer-bottom-center {
-            gap: 10px;
-            font-size: 0.65rem;
-        }
-        .fj-footer-back-to-top {
-            bottom: 16px;
-            right: 16px;
-            width: 40px;
-            height: 40px;
-            font-size: 0.9rem;
-        }
-        .fj-footer-trust-badges span {
-            font-size: 0.6rem;
-            padding: 2px 10px;
-        }
-        .fj-footer-description {
-            font-size: 0.8rem;
-        }
-        .fj-footer-security-seals {
-            gap: 6px 12px;
-        }
-        .fj-footer-seal {
-            font-size: 0.6rem;
-        }
-    }
-
-    @media (max-width: 480px) {
-        .fj-footer-grid {
-            grid-template-columns: 1fr;
-            gap: 20px;
-        }
-        .fj-footer-trust-bar {
-            grid-template-columns: 1fr 1fr;
-        }
-        .fj-footer-trust-item {
-            flex-direction: column;
-            text-align: center;
-            gap: 4px;
-            padding: 10px 8px;
-        }
-        .fj-footer-trust-item i {
-            font-size: 1.2rem;
-            width: auto;
-        }
-        .fj-footer-bottom-center {
-            flex-direction: column;
-            gap: 6px;
-        }
-        .fj-footer-bottom-left {
-            flex-direction: column;
-            gap: 4px;
-        }
-        .fj-footer-bottom-right {
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        .fj-footer-brand .fj-footer-logo svg {
-            height: 24px;
-        }
-        .fj-footer-brand .fj-footer-logo {
-            justify-content: center;
-        }
-        .fj-footer-description {
-            text-align: center;
-        }
-        .fj-footer-trust-badges {
-            justify-content: center;
-        }
-        .fj-footer-security-seals {
-            justify-content: center;
-        }
-        .fj-footer-newsletter {
-            text-align: center;
-        }
-        .fj-footer-newsletter-checkbox {
-            text-align: left;
-        }
-        .fj-footer-social {
-            gap: 3px;
-        }
-        .fj-footer-social a {
-            width: 30px;
-            height: 30px;
-            font-size: 0.65rem;
-        }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-        .fj-footer-trust-item,
-        .fj-footer-social a,
-        .fj-footer-newsletter-btn,
-        .fj-footer-back-to-top,
-        .fj-footer-col ul li a,
-        .fj-footer-trust-badges span {
-            transition: none !important;
-            transform: none !important;
-        }
-        .fj-footer-back-to-top {
-            transition: none !important;
-        }
-        @keyframes pulse-heart {
-            0%,
-            100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1);
-            }
-        }
-    }
-</style>
-
-
-<!-- ============================================================
-     JAVASCRIPT – PROGRESSIVE INTERACTIONS
-     ============================================================ -->
 <script>
-    (function() {
-        'use strict';
-
-        // ── 1. BACK TO TOP ──
-        const backToTop = document.getElementById('backToTop');
-
-        function toggleBackToTop() {
-            const scrollY = window.scrollY;
-            if (scrollY > 500) {
-                backToTop.classList.add('visible');
-            } else {
-                backToTop.classList.remove('visible');
-            }
-        }
-
-        window.addEventListener('scroll', toggleBackToTop, { passive: true });
-        toggleBackToTop();
-
-        backToTop.addEventListener('click', function() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-
-        // ── 2. NEWSLETTER FORM (Secure · GDPR-ready) ──
-        const newsletterForm = document.getElementById('newsletterForm');
-        const newsletterEmail = document.getElementById('newsletterEmail');
-        const newsletterConsent = document.getElementById('newsletterConsent');
-        const newsletterMessage = document.getElementById('newsletterMessage');
-
-        if (newsletterForm) {
-            newsletterForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-
-                // Reset
-                newsletterMessage.textContent = '';
-                newsletterMessage.className = 'fj-footer-newsletter-message';
-
-                // ── Validation ──
-                const email = newsletterEmail.value.trim();
-
-                // Email required
-                if (!email) {
-                    newsletterMessage.textContent = '⚠️ Bitte geben Sie Ihre E-Mail-Adresse ein.';
-                    newsletterMessage.className = 'fj-footer-newsletter-message error';
-                    newsletterEmail.focus();
-                    return;
-                }
-
-                // Email format
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (!emailRegex.test(email)) {
-                    newsletterMessage.textContent = '⚠️ Bitte geben Sie eine gültige E-Mail-Adresse ein.';
-                    newsletterMessage.className = 'fj-footer-newsletter-message error';
-                    newsletterEmail.focus();
-                    return;
-                }
-
-                // Consent required
-                if (!newsletterConsent.checked) {
-                    newsletterMessage.textContent =
-                    '⚠️ Bitte stimmen Sie der Datenschutzerklärung zu.';
-                    newsletterMessage.className = 'fj-footer-newsletter-message error';
-                    newsletterConsent.focus();
-                    return;
-                }
-
-                // ── Simulate API call (secure) ──
-                const btn = newsletterForm.querySelector('.fj-footer-newsletter-btn');
-                const originalText = btn.innerHTML;
-                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Wird gesendet...';
-                btn.disabled = true;
-
-                // Simulate network delay
-                setTimeout(function() {
-                    // Success
-                    newsletterMessage.textContent =
-                        '✅ Vielen Dank! Sie erhalten in Kürze eine Bestätigungs-E-Mail.';
-                    newsletterMessage.className = 'fj-footer-newsletter-message success';
-
-                    // Reset form
-                    newsletterEmail.value = '';
-                    newsletterConsent.checked = false;
-
-                    // Restore button
-                    btn.innerHTML = originalText;
-                    btn.disabled = false;
-
-                    // Auto-hide after 6s
-                    setTimeout(function() {
-                        newsletterMessage.textContent = '';
-                        newsletterMessage.className = 'fj-footer-newsletter-message';
-                    }, 6000);
-
-                }, 1200);
-            });
-        }
-
-        // ── 3. THEME AWARENESS ──
-        // The footer automatically adapts via [data-theme] CSS.
-        // No additional JavaScript needed.
-
-        // ── 4. KEYBOARD ACCESSIBILITY ──
-        // All interactive elements are keyboard-accessible by default.
-        // Back to top button has proper aria-label.
-
-        console.log('✅ FIXJORI Footer V2.0 (Secure · Modern · Meituan-Strategy) loaded.');
-        console.log('🔒 GDPR-konform | SSL-gesichert | Keine sensiblen Daten im Footer.');
-    })();
+  // Gentle newsletter success feedback
+  document.getElementById('newsletterForm')?.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const btn = this.querySelector('button');
+    const original = btn.innerHTML;
+    btn.innerHTML = '<i class="fas fa-check"></i> Willkommen an Bord!';
+    btn.style.background = 'var(--rl-gradient-hover)';
+    
+    setTimeout(() => {
+      btn.innerHTML = original;
+      this.reset();
+    }, 2800);
+  });
 </script>

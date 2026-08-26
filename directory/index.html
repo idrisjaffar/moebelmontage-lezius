@@ -1,863 +1,642 @@
+<!-- ============================================================
+   RAPHAEL LEZIUS | HOMEPAGE (Priority 2)
+   Clean Hero · Unified Trust · Merged Porcelain · Premium Footer
+   ============================================================ -->
+
 <!DOCTYPE html>
-<html lang="de" data-theme="light">
+<html lang="de" data-theme="dark">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-    <title>Handwerker finden – FIXJORI</title>
-    <meta name="description" content="Finden Sie den perfekten Handwerker in Ihrer Nähe. Verifizierte Experten für Montage, Elektro, Sanitär, Garten und mehr." />
+    <title>Raphael Lezius – Premium Montage &amp; Interior Tech</title>
+    <meta name="description" content="Premium Montage aus Leidenschaft – Raphael Lezius. Millimetergenaue Präzision, Bosch Professional, Augsburg & München." />
+    <meta name="theme-color" content="#020203" />
 
-    <!-- Fonts & Icons -->
+    <!-- JSON-LD Schema -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "name": "Raphael Lezius – Premium Montage",
+            "telephone": "+491608194018",
+            "email": "r.lezius@gmail.com",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Augsburg",
+                "addressCountry": "DE"
+            },
+            "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "5.0",
+                "reviewCount": "110",
+                "bestRating": "5"
+            },
+            "priceRange": "€€",
+            "openingHours": "Mo-Fr 08:00-20:00, Sa 09:00-16:00"
+        }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&family=Space+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
+    <!-- Theme System -->
+    <link rel="stylesheet" href="assets/css/theme.css" />
+
     <style>
-        /* ============================================================
-           GLOBAL VARIABLES & RESET (same as homepage)
-           ============================================================ */
-        :root {
-            --fj-teal: #0D9488;
-            --fj-teal-dark: #0F766E;
-            --fj-teal-light: #14B8A6;
-            --fj-amber: #F59E0B;
-            --fj-coral: #FF6B35;
-            --fj-green: #22C55E;
-            --fj-gold: #F5A623;
+        /* ── HOMEPAGE SPECIFIC STYLES (Priority 2) ── */
 
-            --fj-bg: #F8FAFC;
-            --fj-surface: #FFFFFF;
-            --fj-text: #0F172A;
-            --fj-muted: #475569;
-            --fj-dim: #94A3B8;
-            --fj-border: #E2E8F0;
-            --fj-shadow: 0 4px 16px rgba(0,0,0,0.05);
-            --fj-shadow-lg: 0 8px 32px rgba(0,0,0,0.08);
-            --fj-radius: 16px;
-            --fj-radius-sm: 10px;
-            --fj-radius-full: 40px;
-
-            --font-head: 'Space Grotesk', sans-serif;
-            --font-body: 'Inter', sans-serif;
-            --font-mono: 'JetBrains Mono', monospace;
-
-            --nav-height: 68px;
-            --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
-            --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        [data-theme="dark"] {
-            --fj-bg: #0F172A;
-            --fj-surface: #1A2332;
-            --fj-text: #F8FAFC;
-            --fj-muted: #94A3B8;
-            --fj-dim: #64748B;
-            --fj-border: rgba(255,255,255,0.06);
-            --fj-shadow: 0 4px 16px rgba(0,0,0,0.2);
-            --fj-shadow-lg: 0 8px 32px rgba(0,0,0,0.4);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        html {
-            scroll-behavior: smooth;
-        }
-        body {
-            font-family: var(--font-body);
-            background: var(--fj-bg);
-            color: var(--fj-text);
-            transition: background 0.3s, color 0.3s;
-            padding-top: calc(var(--nav-height) + 12px);
+        /* Hero (same as Priority 1, kept clean) */
+        .rl-hero {
+            position: relative;
             min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 100px 0 50px;
+            overflow: hidden;
+            background: var(--color-bg);
         }
-        a {
-            text-decoration: none;
-            color: inherit;
+        .rl-hero .rl-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 720px;
         }
-        button {
-            font-family: inherit;
-            border: none;
-            background: none;
-            color: inherit;
-            cursor: pointer;
-        }
-        img {
-            max-width: 100%;
-            display: block;
-        }
-        ul {
-            list-style: none;
-        }
-
-        .container {
-            max-width: 1260px;
-            margin: 0 auto;
-            padding: 0 clamp(16px, 3.5vw, 32px);
-        }
-        .section-pad {
-            padding: clamp(24px, 4vw, 48px) 0;
-        }
-        .text-teal {
-            color: var(--fj-teal);
-        }
-        .text-amber {
-            color: var(--fj-amber);
-        }
-        .text-muted {
-            color: var(--fj-muted);
-        }
-        .text-dim {
-            color: var(--fj-dim);
-        }
-
-        /* ============================================================
-           BUTTONS & BADGES
-           ============================================================ */
-        .btn {
+        .rl-hero .rl-hero-content .rl-hero-badge {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 10px 20px;
-            border-radius: var(--fj-radius-sm);
+            padding: 4px 14px;
+            border-radius: 40px;
+            font-family: var(--font-mono);
+            font-size: 0.55rem;
+            letter-spacing: 1px;
+            background: var(--color-gold-dim);
+            border: 1px solid var(--color-border-strong);
+            color: var(--color-gold);
+            margin-bottom: 20px;
+        }
+        .rl-hero .rl-hero-content .rl-hero-badge .dot {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--color-gold);
+            display: inline-block;
+            animation: pulse-dot 2s infinite;
+        }
+        @keyframes pulse-dot {
+            0%,
+            100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.2;
+            }
+        }
+        .rl-hero .rl-hero-content h1 {
+            font-family: var(--font-head);
+            font-weight: 900;
+            font-size: clamp(2.2rem, 5.5vw, 3.8rem);
+            line-height: 1.05;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            color: var(--color-text);
+        }
+        .rl-hero .rl-hero-content h1 .gold {
+            color: var(--color-gold);
+        }
+        .rl-hero .rl-hero-content .sub {
+            font-size: clamp(0.95rem, 1.1vw, 1.1rem);
+            color: var(--color-text-muted);
+            max-width: 520px;
+            margin-bottom: 28px;
+            line-height: 1.7;
+        }
+        .rl-hero .rl-hero-content .sub strong {
+            color: var(--color-text);
+            font-weight: 600;
+        }
+        .rl-hero .rl-hero-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 24px;
+        }
+        .rl-hero .rl-hero-actions .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 28px;
+            border-radius: 10px;
+            font-family: var(--font-mono);
             font-weight: 700;
-            font-size: 0.8rem;
-            transition: all 0.3s var(--ease-smooth);
-            border: none;
+            font-size: 0.7rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: all .3s var(--ease-out-expo);
+            border: 1px solid transparent;
             cursor: pointer;
             text-decoration: none;
         }
-        .btn-primary {
-            background: linear-gradient(135deg, var(--fj-teal), var(--fj-teal-dark));
-            color: #fff;
-            box-shadow: 0 4px 16px rgba(13,148,136,0.25);
+        .rl-hero .rl-hero-actions .btn-primary {
+            background: linear-gradient(135deg, var(--color-gold), var(--color-gold-soft));
+            color: #000;
+            box-shadow: 0 4px 20px rgba(255, 215, 0, 0.15);
         }
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(13,148,136,0.35);
+        .rl-hero .rl-hero-actions .btn-primary:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 35px rgba(255, 215, 0, 0.2);
         }
-        .btn-outline {
-            background: transparent;
-            border: 1.5px solid var(--fj-border);
-            color: var(--fj-text);
+        .rl-hero .rl-hero-actions .btn-secondary {
+            background: rgba(255, 255, 255, 0.02);
+            border-color: var(--color-border-strong);
+            color: var(--color-text);
         }
-        .btn-outline:hover {
-            border-color: var(--fj-teal);
-            color: var(--fj-teal);
-        }
-        .btn-sm {
-            padding: 6px 14px;
-            font-size: 0.7rem;
+        .rl-hero .rl-hero-actions .btn-secondary:hover {
+            background: var(--color-gold-dim);
+            border-color: var(--color-gold);
+            transform: translateY(-3px);
         }
 
-        .badge {
-            display: inline-block;
-            padding: 2px 12px;
-            border-radius: 30px;
+        .rl-promise {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 24px;
+            padding: 12px 20px;
+            border-radius: var(--radius);
+            background: var(--color-gold-dim);
+            border: 1px solid var(--color-border-strong);
+            backdrop-filter: blur(8px);
+            max-width: 640px;
+        }
+        .rl-promise .promise-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-family: var(--font-mono);
+            font-size: 0.55rem;
+            color: var(--color-text-muted);
+            letter-spacing: 0.3px;
+        }
+        .rl-promise .promise-item i {
+            color: var(--color-gold);
+            font-size: 0.7rem;
+        }
+        .rl-promise .promise-item strong {
+            color: var(--color-text);
+        }
+
+        .rl-stats {
+            display: flex;
+            justify-content: center;
+            gap: clamp(20px, 3vw, 48px);
+            padding: 20px 0;
+            border-top: 1px solid var(--color-border);
+            flex-wrap: wrap;
+            max-width: 640px;
+        }
+        .rl-stats .stat-item {
+            text-align: center;
+        }
+        .rl-stats .stat-item .number {
+            font-family: var(--font-head);
+            font-size: clamp(1.2rem, 1.8vw, 1.6rem);
+            font-weight: 900;
+            color: var(--color-text);
+            letter-spacing: -0.5px;
+        }
+        .rl-stats .stat-item .number .plus {
+            color: var(--color-gold);
+        }
+        .rl-stats .stat-item .label {
+            font-size: 0.55rem;
+            color: var(--color-text-muted);
+            font-weight: 500;
+            display: block;
+            margin-top: 2px;
+            font-family: var(--font-mono);
+            letter-spacing: 0.5px;
+        }
+
+        /* ── King Kong Area (unchanged, solid) ── */
+        .rl-kk-area {
+            padding: clamp(20px, 3vw, 36px) 0;
+            border-top: 1px solid var(--color-border);
+            border-bottom: 1px solid var(--color-border);
+            background: rgba(0, 0, 0, 0.15);
+        }
+        .rl-kk-area .kk-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        .rl-kk-area .kk-header .kk-title {
+            font-family: var(--font-head);
+            font-size: 1rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--color-text);
+        }
+        .rl-kk-area .kk-header .kk-title .kk-icon {
+            color: var(--color-gold);
+        }
+        .rl-kk-area .kk-header .kk-title .kk-badge {
+            font-family: var(--font-mono);
+            font-size: 0.45rem;
+            font-weight: 700;
+            background: var(--color-gold);
+            color: #000;
+            padding: 1px 10px;
+            border-radius: var(--radius-full);
+        }
+        .rl-kk-area .kk-header .kk-view-all {
+            font-family: var(--font-mono);
+            font-size: 0.55rem;
+            color: var(--color-cyan);
+            letter-spacing: 0.5px;
+            transition: gap 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .rl-kk-area .kk-header .kk-view-all:hover {
+            gap: 10px;
+            color: var(--color-cyan-soft);
+        }
+
+        .rl-kk-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 10px;
+        }
+        @media (max-width: 900px) {
+            .rl-kk-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        @media (max-width: 480px) {
+            .rl-kk-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 6px;
+            }
+        }
+
+        .rl-kk-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 14px 6px 12px;
+            border-radius: var(--radius);
+            background: var(--glass-bg);
+            backdrop-filter: blur(8px);
+            border: 1px solid var(--color-border);
+            transition: all 0.35s var(--ease-spring);
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .rl-kk-item:hover {
+            transform: translateY(-4px);
+            border-color: var(--color-gold);
+            box-shadow: var(--color-shadow-gold);
+        }
+        .rl-kk-item .kk-icon-wrap {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--color-gold-dim);
+            color: var(--color-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            margin-bottom: 4px;
+            transition: all 0.35s var(--ease-spring);
+            position: relative;
+            z-index: 1;
+        }
+        .rl-kk-item:hover .kk-icon-wrap {
+            background: var(--color-gold);
+            color: #000;
+            transform: scale(1.08);
+            box-shadow: 0 8px 24px rgba(255, 215, 0, 0.08);
+        }
+        .rl-kk-item .kk-name {
+            font-size: 0.6rem;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+            line-height: 1.2;
+            color: var(--color-text);
+        }
+        .rl-kk-item .kk-count {
+            font-size: 0.4rem;
+            color: var(--color-text-muted);
+            font-family: var(--font-mono);
+            position: relative;
+            z-index: 1;
+            background: rgba(255, 255, 255, 0.02);
+            padding: 0 8px;
+            border-radius: var(--radius-full);
+            border: 1px solid var(--color-border);
+            line-height: 1.6;
+            margin-top: 2px;
+            transition: all 0.3s;
+        }
+        .rl-kk-item:hover .kk-count {
+            border-color: var(--color-gold);
+            color: var(--color-gold);
+        }
+        .rl-kk-item.is-premium {
+            border-color: var(--color-border-strong);
+            border-width: 1.5px;
+        }
+        .rl-kk-item.is-premium .kk-premium-tag {
+            position: absolute;
+            top: -5px;
+            right: -2px;
+            font-family: var(--font-mono);
+            font-size: 0.35rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #000;
+            background: var(--color-gold);
+            padding: 0 8px;
+            border-radius: var(--radius-full);
+            line-height: 1.8;
+            box-shadow: 0 2px 12px rgba(255, 215, 0, 0.08);
+            z-index: 2;
+        }
+        .rl-kk-item.is-premium:hover {
+            border-color: var(--color-gold);
+            box-shadow: 0 8px 32px rgba(255, 215, 0, 0.04);
+        }
+
+        /* ── PORCELAIN – MERGED & DIFFERENTIATED ── */
+        .rl-porcelain-area {
+            padding: clamp(16px, 2vw, 28px) 0;
+        }
+        .rl-porcelain-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            gap: 6px 12px;
+            margin-bottom: 16px;
+        }
+        .rl-porcelain-header .left .label {
             font-family: var(--font-mono);
             font-size: 0.5rem;
             font-weight: 700;
-            letter-spacing: 0.5px;
             text-transform: uppercase;
-        }
-        .badge-teal {
-            background: rgba(13,148,136,0.08);
-            color: var(--fj-teal);
-            border: 1px solid rgba(13,148,136,0.10);
-        }
-        .badge-amber {
-            background: rgba(245,158,11,0.08);
-            color: var(--fj-amber);
-            border: 1px solid rgba(245,158,11,0.10);
-        }
-
-        /* ============================================================
-           NAVIGATION (inline – consistent with homepage)
-           ============================================================ */
-        .site-nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            height: var(--nav-height);
-            background: rgba(255,255,255,0.85);
-            backdrop-filter: blur(16px);
-            border-bottom: 1px solid var(--fj-border);
-            display: flex;
-            align-items: center;
-            padding: 0 16px;
-            transition: background 0.3s, box-shadow 0.3s;
-        }
-        [data-theme="dark"] .site-nav {
-            background: rgba(15,23,42,0.85);
-        }
-        .site-nav.scrolled {
-            box-shadow: var(--fj-shadow);
-        }
-
-        .nav-inner {
-            max-width: 1260px;
-            width: 100%;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .nav-logo {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-family: var(--font-head);
-            font-weight: 900;
-            font-size: 1.3rem;
-            letter-spacing: -0.5px;
-        }
-        .nav-logo span {
-            color: var(--fj-teal);
-        }
-        .nav-logo .logo-icon {
-            width: 32px;
-            height: 32px;
-            background: linear-gradient(135deg, var(--fj-teal), var(--fj-teal-dark));
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            font-size: 1rem;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 24px;
-            align-items: center;
-        }
-        .nav-links a {
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: var(--fj-muted);
-            transition: color 0.2s;
-            position: relative;
-        }
-        .nav-links a:hover {
-            color: var(--fj-text);
-        }
-        .nav-links a.active::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: var(--fj-teal);
-            border-radius: 2px;
-        }
-
-        .nav-actions {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .theme-toggle {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            border: 1px solid var(--fj-border);
-            background: transparent;
-            color: var(--fj-muted);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.95rem;
-            transition: all 0.3s;
-        }
-        .theme-toggle:hover {
-            border-color: var(--fj-teal);
-            color: var(--fj-text);
-        }
-
-        .nav-cta {
-            padding: 6px 16px;
-            border-radius: var(--fj-radius-full);
-            background: linear-gradient(135deg, var(--fj-teal), var(--fj-teal-dark));
-            color: #fff !important;
-            font-weight: 700;
-            font-size: 0.7rem !important;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        .nav-cta:hover {
-            opacity: 0.9;
-        }
-
-        .mobile-toggle {
-            display: none;
-            flex-direction: column;
-            gap: 4px;
-            padding: 6px;
-            background: none;
-            border: none;
-            cursor: pointer;
-        }
-        .mobile-toggle span {
+            letter-spacing: 1.5px;
+            color: var(--color-cyan);
             display: block;
-            width: 22px;
-            height: 2px;
-            background: var(--fj-text);
-            border-radius: 2px;
-            transition: 0.3s;
+            margin-bottom: 2px;
         }
-        .mobile-toggle.active span:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
-        }
-        .mobile-toggle.active span:nth-child(2) {
-            opacity: 0;
-        }
-        .mobile-toggle.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(5px, -5px);
-        }
-
-        .mobile-menu {
-            position: fixed;
-            top: var(--nav-height);
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: var(--fj-surface);
-            backdrop-filter: blur(20px);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 24px;
-            transform: translateX(100%);
-            transition: transform 0.4s var(--ease-smooth);
-            z-index: 999;
-            padding: 40px 20px;
-        }
-        .mobile-menu.open {
-            transform: translateX(0);
-        }
-        .mobile-menu a {
-            font-size: 1.4rem;
-            font-weight: 600;
-            color: var(--fj-muted);
-            transition: color 0.2s;
-        }
-        .mobile-menu a:hover {
-            color: var(--fj-text);
-        }
-        .mobile-menu .mobile-cta {
-            margin-top: 16px;
-            padding: 12px 40px;
-            border-radius: var(--fj-radius-full);
-            background: linear-gradient(135deg, var(--fj-teal), var(--fj-teal-dark));
-            color: #fff;
-            font-weight: 700;
-            font-size: 0.9rem;
-        }
-
-        @media (max-width: 900px) {
-            .nav-links {
-                display: none;
-            }
-            .mobile-toggle {
-                display: flex;
-            }
-            .mobile-menu {
-                transform: translateX(100%);
-            }
-            .mobile-menu.open {
-                transform: translateX(0);
-            }
-            .nav-actions .nav-cta {
-                display: none;
-            }
-        }
-
-        /* ============================================================
-           DIRECTORY HERO / SEARCH
-           ============================================================ */
-        .dir-hero {
-            text-align: center;
-            padding: 16px 0 24px;
-            border-bottom: 1px solid var(--fj-border);
-        }
-        .dir-hero h1 {
+        .rl-porcelain-header .left h3 {
             font-family: var(--font-head);
-            font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-            font-weight: 900;
-            line-height: 1.1;
-            margin-bottom: 4px;
+            font-size: clamp(0.95rem, 1.6vw, 1.3rem);
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: var(--color-text);
         }
-        .dir-hero p {
-            font-size: 1rem;
-            color: var(--fj-muted);
-        }
-
-        /* ── Search & Filters ── */
-        .dir-controls {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            padding: 16px 0 8px;
-            border-bottom: 1px solid var(--fj-border);
-        }
-        .dir-controls .search-row {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-        .dir-controls .search-row .search-box {
-            flex: 1;
-            min-width: 200px;
-            display: flex;
+        .rl-porcelain-header .more-link {
+            font-size: 0.65rem;
+            font-weight: 600;
+            color: var(--color-cyan);
+            display: inline-flex;
             align-items: center;
-            background: var(--fj-surface);
-            border: 1px solid var(--fj-border);
-            border-radius: var(--fj-radius-full);
-            padding: 4px 4px 4px 18px;
-            transition: border-color 0.3s;
-        }
-        .dir-controls .search-row .search-box:focus-within {
-            border-color: var(--fj-teal);
-            box-shadow: 0 0 0 3px rgba(13,148,136,0.06);
-        }
-        .dir-controls .search-row .search-box input {
-            flex: 1;
-            padding: 10px 8px;
-            border: none;
-            outline: none;
-            background: transparent;
-            font-size: 0.9rem;
-            color: var(--fj-text);
-            min-width: 0;
-        }
-        .dir-controls .search-row .search-box input::placeholder {
-            color: var(--fj-dim);
-        }
-        .dir-controls .search-row .search-box button {
-            padding: 8px 20px;
-            border-radius: var(--fj-radius-full);
-            background: linear-gradient(135deg, var(--fj-teal), var(--fj-teal-dark));
-            color: #fff;
-            font-weight: 700;
-            font-size: 0.75rem;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s;
+            gap: 4px;
+            transition: gap 0.3s;
+            font-family: var(--font-mono);
+            letter-spacing: 0.5px;
             white-space: nowrap;
         }
-        .dir-controls .search-row .search-box button:hover {
-            transform: scale(1.02);
-            box-shadow: 0 4px 16px rgba(13,148,136,0.20);
+        .rl-porcelain-header .more-link:hover {
+            gap: 10px;
         }
 
-        .dir-controls .filter-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            align-items: center;
-        }
-        .dir-controls .filter-row .filter-group {
-            display: flex;
-            gap: 4px;
-            flex-wrap: wrap;
-            align-items: center;
-        }
-        .dir-controls .filter-row select,
-        .dir-controls .filter-row .pill {
-            padding: 6px 14px;
-            border-radius: var(--fj-radius-full);
-            border: 1px solid var(--fj-border);
-            background: var(--fj-surface);
-            font-size: 0.75rem;
-            font-weight: 500;
-            color: var(--fj-muted);
-            cursor: pointer;
-            transition: all 0.25s;
-            font-family: var(--font-body);
-            appearance: none;
-            -webkit-appearance: none;
-        }
-        .dir-controls .filter-row select {
-            padding-right: 32px;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2394A3B8' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 12px center;
-        }
-        .dir-controls .filter-row select:hover,
-        .dir-controls .filter-row .pill:hover {
-            border-color: var(--fj-teal);
-            color: var(--fj-text);
-        }
-        .dir-controls .filter-row .pill.active {
-            background: var(--fj-teal);
-            color: #fff;
-            border-color: var(--fj-teal);
-        }
-        .dir-controls .filter-row .pill.premium {
-            border-color: var(--fj-amber);
-            color: var(--fj-amber);
-        }
-        .dir-controls .filter-row .pill.premium:hover {
-            background: var(--fj-amber);
-            color: #0F172A;
-        }
-
-        .dir-controls .results-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.8rem;
-            color: var(--fj-muted);
-            padding-top: 8px;
-            border-top: 1px solid var(--fj-border);
-        }
-        .dir-controls .results-meta .count {
-            font-weight: 600;
-            color: var(--fj-text);
-        }
-        .dir-controls .results-meta .sort {
-            display: flex;
-            gap: 8px;
-            align-items: center;
-        }
-        .dir-controls .results-meta .sort select {
-            padding: 4px 28px 4px 12px;
-            border-radius: var(--fj-radius-full);
-            border: 1px solid var(--fj-border);
-            background: var(--fj-surface);
-            font-size: 0.7rem;
-            font-weight: 500;
-            color: var(--fj-muted);
-            appearance: none;
-            -webkit-appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath fill='%2394A3B8' d='M5 7L1 2h8z'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 10px center;
-            cursor: pointer;
-            font-family: var(--font-body);
-        }
-
-        /* ============================================================
-           RESULTS GRID
-           ============================================================ */
-        .dir-grid {
+        /* Row 1: Grid-4 (Top Services) */
+        .rl-porcelain-grid-4 {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            padding: 20px 0 32px;
+            gap: 16px;
+            grid-template-columns: repeat(4, 1fr);
         }
         @media (max-width: 1024px) {
-            .dir-grid {
+            .rl-porcelain-grid-4 {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
-        @media (max-width: 600px) {
-            .dir-grid {
+        @media (max-width: 540px) {
+            .rl-porcelain-grid-4 {
                 grid-template-columns: 1fr;
-                max-width: 480px;
-                margin: 0 auto;
             }
         }
 
-        .dir-card {
-            background: var(--fj-surface);
-            border: 1px solid var(--fj-border);
-            border-radius: var(--fj-radius-sm);
-            padding: 18px 16px 16px;
+        /* Row 2: Grid-3 (Beliebte Services – differentiated layout) */
+        .rl-porcelain-grid-3 {
+            display: grid;
+            gap: 16px;
+            grid-template-columns: repeat(3, 1fr);
+        }
+        @media (max-width: 900px) {
+            .rl-porcelain-grid-3 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 540px) {
+            .rl-porcelain-grid-3 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .rl-service-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(8px);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius);
+            padding: 16px 18px;
+            transition: all 0.35s var(--ease-spring);
             display: flex;
             flex-direction: column;
-            gap: 8px;
-            transition: all 0.3s var(--ease-smooth);
-            position: relative;
+            gap: 4px;
         }
-        .dir-card:hover {
+        .rl-service-card:hover {
             transform: translateY(-4px);
-            box-shadow: var(--fj-shadow-lg);
-            border-color: var(--fj-teal);
+            border-color: var(--color-gold);
+            box-shadow: var(--color-shadow-gold);
         }
-        .dir-card .top-row {
+        .rl-service-card .card-top {
             display: flex;
             align-items: center;
-            gap: 14px;
+            gap: 10px;
         }
-        .dir-card .avatar {
-            width: 52px;
-            height: 52px;
+        .rl-service-card .card-top .card-icon {
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
-            background: var(--fj-border);
+            background: var(--color-gold-dim);
+            color: var(--color-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
             flex-shrink: 0;
-            overflow: hidden;
+            border: 1px solid var(--color-border-strong);
+            transition: all 0.3s;
         }
-        .dir-card .avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        .rl-service-card:hover .card-top .card-icon {
+            background: var(--color-gold);
+            color: #000;
+            border-color: var(--color-gold);
         }
-        .dir-card .name {
+        .rl-service-card .card-top .card-info .card-name {
             font-weight: 700;
-            font-size: 1rem;
-            line-height: 1.2;
+            font-size: 0.8rem;
+            color: var(--color-text);
         }
-        .dir-card .title {
-            font-size: 0.7rem;
-            color: var(--fj-muted);
+        .rl-service-card .card-top .card-info .card-title {
+            font-size: 0.55rem;
+            color: var(--color-text-muted);
         }
-        .dir-card .rating {
+        .rl-service-card .card-rating {
             display: flex;
             align-items: center;
             gap: 4px;
-            font-size: 0.75rem;
-            color: var(--fj-amber);
+            font-size: 0.6rem;
+            color: var(--color-gold);
         }
-        .dir-card .rating span {
-            color: var(--fj-muted);
+        .rl-service-card .card-rating span {
+            color: var(--color-text-muted);
             font-weight: 400;
         }
-        .dir-card .location {
-            font-size: 0.7rem;
-            color: var(--fj-dim);
+        .rl-service-card .card-skills {
             display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-        .dir-card .skills {
-            display: flex;
-            gap: 4px;
+            gap: 3px;
             flex-wrap: wrap;
         }
-        .dir-card .skills .tag {
-            font-size: 0.5rem;
+        .rl-service-card .card-skills .tag {
+            font-size: 0.4rem;
             font-weight: 600;
-            background: rgba(13,148,136,0.06);
-            color: var(--fj-teal);
-            padding: 2px 10px;
-            border-radius: 30px;
-            border: 1px solid rgba(13,148,136,0.06);
+            background: var(--color-gold-dim);
+            color: var(--color-gold);
+            padding: 1px 8px;
+            border-radius: var(--radius-full);
+            border: 1px solid var(--color-border-strong);
         }
-        .dir-card .bottom-row {
+        .rl-service-card .card-bottom {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-top: 4px;
-            padding-top: 10px;
-            border-top: 1px solid var(--fj-border);
+            padding-top: 8px;
+            border-top: 1px solid var(--color-border);
         }
-        .dir-card .price {
+        .rl-service-card .card-bottom .price {
             font-weight: 700;
-            font-size: 0.85rem;
-            color: var(--fj-teal);
+            font-size: 0.75rem;
+            color: var(--color-gold);
         }
-        .dir-card .price span {
+        .rl-service-card .card-bottom .price span {
             font-weight: 400;
-            font-size: 0.65rem;
-            color: var(--fj-muted);
+            font-size: 0.5rem;
+            color: var(--color-text-muted);
         }
-        .dir-card .btn-profile {
-            font-size: 0.6rem;
+        .rl-service-card .card-bottom .btn-hire {
+            font-size: 0.45rem;
             font-weight: 700;
             font-family: var(--font-mono);
-            color: #fff;
-            background: linear-gradient(135deg, var(--fj-teal), var(--fj-teal-dark));
-            padding: 4px 16px;
-            border-radius: 30px;
-            transition: all 0.3s;
+            color: #000;
+            background: var(--color-gold);
+            padding: 2px 12px;
+            border-radius: var(--radius-full);
+            transition: all 0.3s var(--ease-spring);
             text-transform: uppercase;
             letter-spacing: 0.5px;
             text-decoration: none;
             border: none;
             cursor: pointer;
         }
-        .dir-card .btn-profile:hover {
-            transform: scale(1.04);
-            box-shadow: 0 4px 16px rgba(13,148,136,0.25);
+        .rl-service-card .card-bottom .btn-hire:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 16px rgba(255, 215, 0, 0.08);
         }
-        .dir-card .availability {
-            font-size: 0.6rem;
-            font-weight: 600;
-            color: var(--fj-green);
-            display: flex;
-            align-items: center;
-            gap: 4px;
+        .rl-service-card.is-premium {
+            border-color: var(--color-border-strong);
+            position: relative;
         }
-        .dir-card .availability.soon {
-            color: var(--fj-amber);
-        }
-        .dir-card.premium {
-            border: 2px solid var(--fj-amber);
-        }
-        .dir-card.premium::before {
+        .rl-service-card.is-premium::before {
             content: '⭐ Premium Pro';
             position: absolute;
-            top: -10px;
-            right: 12px;
+            top: -7px;
+            right: 10px;
             font-family: var(--font-mono);
-            font-size: 0.5rem;
+            font-size: 0.38rem;
             font-weight: 700;
-            color: #0F172A;
-            background: var(--fj-amber);
-            padding: 1px 12px;
-            border-radius: 30px;
-            letter-spacing: 0.5px;
             text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #000;
+            background: var(--color-gold);
+            padding: 0 10px;
+            border-radius: var(--radius-full);
+            line-height: 1.8;
+            box-shadow: 0 2px 12px rgba(255, 215, 0, 0.06);
         }
 
-        /* ============================================================
-           PAGINATION
-           ============================================================ */
-        .dir-pagination {
-            display: flex;
-            gap: 8px;
-            justify-content: center;
-            padding: 16px 0 24px;
-            border-top: 1px solid var(--fj-border);
-        }
-        .dir-pagination .page {
-            padding: 6px 14px;
-            border-radius: var(--fj-radius-sm);
-            border: 1px solid var(--fj-border);
-            background: var(--fj-surface);
-            font-size: 0.8rem;
-            font-weight: 500;
-            color: var(--fj-muted);
-            transition: all 0.25s;
-            cursor: pointer;
-            min-width: 36px;
-            text-align: center;
-        }
-        .dir-pagination .page:hover {
-            border-color: var(--fj-teal);
-            color: var(--fj-text);
-        }
-        .dir-pagination .page.active {
-            background: var(--fj-teal);
-            color: #fff;
-            border-color: var(--fj-teal);
-        }
-        .dir-pagination .page.arrow {
-            background: transparent;
-            border: none;
-            font-size: 1.1rem;
-        }
-
-        /* ============================================================
-           FOOTER
-           ============================================================ */
-        .site-footer {
-            background: var(--fj-surface);
-            border-top: 1px solid var(--fj-border);
-            padding: 40px 0 24px;
-        }
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 40px;
-            margin-bottom: 32px;
-        }
-        @media (max-width: 800px) {
-            .footer-grid {
-                grid-template-columns: 1fr 1fr;
+        /* ── Responsive ── */
+        @media (max-width: 768px) {
+            .rl-hero {
+                min-height: auto;
+                padding: 80px 0 30px;
+            }
+            .rl-hero .rl-hero-content h1 {
+                font-size: clamp(1.8rem, 6vw, 2.4rem);
+            }
+            .rl-hero .rl-hero-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .rl-hero .rl-hero-actions .btn {
+                justify-content: center;
+            }
+            .rl-stats {
+                gap: 16px 24px;
+            }
+            .rl-promise {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 8px;
             }
         }
         @media (max-width: 480px) {
-            .footer-grid {
-                grid-template-columns: 1fr;
+            .rl-hero .rl-hero-content h1 {
+                font-size: 1.6rem;
             }
-        }
-        .footer-brand h4 {
-            font-family: var(--font-head);
-            font-size: 1.2rem;
-            font-weight: 900;
-            margin-bottom: 8px;
-        }
-        .footer-brand h4 span {
-            color: var(--fj-teal);
-        }
-        .footer-brand p {
-            font-size: 0.85rem;
-            color: var(--fj-muted);
-            max-width: 280px;
-        }
-        .footer-col h5 {
-            font-size: 0.8rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: var(--fj-dim);
-            margin-bottom: 12px;
-        }
-        .footer-col a {
-            display: block;
-            font-size: 0.85rem;
-            color: var(--fj-muted);
-            padding: 4px 0;
-            transition: color 0.2s;
-        }
-        .footer-col a:hover {
-            color: var(--fj-teal);
-        }
-        .footer-bottom {
-            border-top: 1px solid var(--fj-border);
-            padding-top: 16px;
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 12px;
-            font-size: 0.7rem;
-            color: var(--fj-dim);
-        }
-        .footer-bottom a {
-            color: var(--fj-dim);
-            transition: color 0.2s;
-        }
-        .footer-bottom a:hover {
-            color: var(--fj-teal);
+            .rl-stats .stat-item .number {
+                font-size: 1rem;
+            }
+            .rl-stats .stat-item .label {
+                font-size: 0.5rem;
+            }
         }
 
-        /* ============================================================
-           RESPONSIVE
-           ============================================================ */
-        @media (max-width: 768px) {
-            .dir-controls .search-row .search-box {
-                width: 100%;
-                padding: 4px 4px 4px 14px;
-            }
-            .dir-controls .search-row .search-box input {
-                font-size: 0.85rem;
-                padding: 8px 6px;
-            }
-            .dir-controls .search-row .search-box button {
-                padding: 6px 14px;
-                font-size: 0.65rem;
-            }
-            .dir-controls .filter-row {
-                gap: 6px;
-            }
-            .dir-controls .filter-row select,
-            .dir-controls .filter-row .pill {
-                font-size: 0.65rem;
-                padding: 4px 10px;
-            }
-            .dir-controls .results-meta {
-                flex-direction: column;
-                gap: 6px;
-                align-items: flex-start;
-            }
-            .dir-card .top-row {
-                gap: 10px;
-            }
-            .dir-card .avatar {
-                width: 44px;
-                height: 44px;
-            }
-            .dir-card .name {
-                font-size: 0.9rem;
-            }
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-padding-sm {
+            padding: clamp(20px, 2.5vw, 35px) 0;
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -865,590 +644,302 @@
                 transition: none !important;
                 transform: none !important;
             }
+            .rl-hero .rl-hero-content .rl-hero-badge .dot {
+                animation: none;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- ============================================================
-       NAVIGATION
-       ============================================================ -->
-    <header class="site-nav" id="siteNav" role="banner">
-        <div class="nav-inner">
-            <a href="../index.html" class="nav-logo">
-                <div class="logo-icon"><i class="fas fa-tools"></i></div>
-                FIX<span>JORI</span>
-            </a>
-
-            <nav class="nav-links" id="navLinks">
-                <a href="../index.html">Start</a>
-                <a href="index.html" class="active">Handwerker</a>
-                <a href="../services/montage.html">Services</a>
-                <a href="../client/dashboard.html">Mein Konto</a>
-                <a href="../booking/step1.html" class="nav-cta">Projekt starten</a>
-            </nav>
-
-            <div class="nav-actions">
-                <button class="theme-toggle" id="themeToggle" aria-label="Dark/Light umschalten">
-                    <i class="fas fa-moon" id="themeIcon"></i>
-                </button>
-                <a href="../client/dashboard.html" class="nav-cta" style="background:transparent;border:1px solid var(--fj-border);color:var(--fj-text);">Login</a>
-                <button class="mobile-toggle" id="mobileToggle" aria-label="Menü">
-                    <span></span><span></span><span></span>
-                </button>
-            </div>
-        </div>
-    </header>
-
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
-        <a href="../index.html">Start</a>
-        <a href="index.html">Handwerker</a>
-        <a href="../services/montage.html">Services</a>
-        <a href="../client/dashboard.html">Mein Konto</a>
-        <a href="../booking/step1.html" class="mobile-cta">Projekt starten</a>
+    <!-- Nav Placeholder -->
+    <div id="nav-placeholder">
+        <div class="component-loading"><i class="fas fa-sync-alt fa-spin"></i> NAV SYSTEM INIT...</div>
     </div>
 
-    <!-- ============================================================
-       DIRECTORY HERO
-       ============================================================ -->
-    <section class="dir-hero">
-        <div class="container">
-            <span class="badge badge-teal"><i class="fas fa-users"></i> Verifizierte Experten</span>
-            <h1>Handwerker <span class="text-teal">finden</span></h1>
-            <p>Verifizierte Experten in Ihrer Region – vergleichen Sie Profile und Preise.</p>
-        </div>
-    </section>
+    <main>
 
-    <!-- ============================================================
-       SEARCH & FILTERS
-       ============================================================ -->
-    <div class="container">
-        <div class="dir-controls">
-
-            <!-- Search Row -->
-            <div class="search-row">
-                <div class="search-box">
-                    <input type="text" id="searchInput" placeholder="Suche nach Name, Skill oder Kategorie..." />
-                    <button id="searchBtn"><i class="fas fa-search"></i> Suchen</button>
+        <!-- ============================================================
+           HERO SECTION
+           ============================================================ -->
+        <section class="rl-hero" id="home">
+            <div class="container">
+                <div class="rl-hero-content">
+                    <div class="rl-hero-badge">
+                        <span class="dot"></span> MÜNCHEN &amp; AUGSBURG
+                    </div>
+                    <h1>
+                        MÖBEL KAUFEN IST SCHÖN.<br />
+                        <span class="gold">DIE MONTAGE MEINE VERANTWORTUNG.</span>
+                    </h1>
+                    <p class="sub">
+                        <strong>Ihre Zeit ist zu wertvoll für Kompromisse.</strong><br />
+                        Ich verwandle Ihre Möbel in maßgeschneiderte Architektur. Millimetergenau, staubfrei und mit <strong>Bosch Professional</strong>.
+                    </p>
+                    <div class="rl-hero-actions">
+                        <a href="anfrage/index.html" class="btn btn-primary"><i class="fas fa-bolt"></i> Projekt anfragen</a>
+                        <a href="services.html" class="btn btn-secondary"><i class="fas fa-tools"></i> Services entdecken</a>
+                    </div>
+                    <div class="rl-promise">
+                        <span class="promise-item"><i class="fas fa-clock"></i> <strong>Pünktlichkeitsgarantie</strong> 15 min zu spät = 10% Rabatt</span>
+                        <span class="promise-item"><i class="fas fa-shield-alt"></i> <strong>Preisgarantie</strong> Bestpreis in München/Augsburg</span>
+                        <span class="promise-item"><i class="fas fa-check-circle"></i> <strong>Qualitätsgarantie</strong> 1 Jahr Garantie</span>
+                    </div>
+                    <div class="rl-stats">
+                        <div class="stat-item"><span class="number">1.200<span class="plus">+</span></span><span class="label">Projekte</span></div>
+                        <div class="stat-item"><span class="number">5.0<span class="plus">★</span></span><span class="label">Bewertung</span></div>
+                        <div class="stat-item"><span class="number">110<span class="plus">+</span></span><span class="label">Kunden</span></div>
+                        <div class="stat-item"><span class="number">98<span class="plus">%</span></span><span class="label">Weiterempfehlung</span></div>
+                    </div>
                 </div>
             </div>
+        </section>
 
-            <!-- Filter Row -->
-            <div class="filter-row">
-                <div class="filter-group">
-                    <select id="categoryFilter">
-                        <option value="all">Alle Kategorien</option>
-                        <option value="montage">Montage & Möbel</option>
-                        <option value="elektro">Elektro & Smart</option>
-                        <option value="sanitaer">Sanitär & Wasser</option>
-                        <option value="garten">Garten & Outdoor</option>
-                        <option value="demontage">Demontage & Umzug</option>
-                        <option value="renovierung">Renovierung & Malerei</option>
-                        <option value="reinigung">Reinigung & Pflege</option>
-                    </select>
+        <!-- ============================================================
+           KING KONG AREA
+           ============================================================ -->
+        <section class="rl-kk-area" id="services">
+            <div class="container">
+                <div class="kk-header">
+                    <div class="kk-title">
+                        <i class="fas fa-th-large kk-icon"></i>
+                        <span>Services</span>
+                        <span class="kk-badge">6</span>
+                    </div>
+                    <a href="services.html" class="kk-view-all">Alle anzeigen <i class="fas fa-arrow-right"></i></a>
                 </div>
-                <div class="filter-group">
-                    <select id="ratingFilter">
-                        <option value="any">Bewertung ⭐</option>
-                        <option value="4.5">4.5+</option>
-                        <option value="4.0">4.0+</option>
-                        <option value="3.5">3.5+</option>
-                    </select>
-                </div>
-                <div class="filter-group">
-                    <select id="priceFilter">
-                        <option value="any">Preis</option>
-                        <option value="low">bis 500 €</option>
-                        <option value="mid">500–1.000 €</option>
-                        <option value="high">über 1.000 €</option>
-                    </select>
-                </div>
-                <div class="filter-group">
-                    <span class="pill active" data-filter="all">Alle</span>
-                    <span class="pill" data-filter="available">Sofort verfügbar</span>
-                    <span class="pill premium" data-filter="premium">⭐ Premium</span>
+                <div class="rl-kk-grid">
+                    <a href="services/moebel-kuechen.html" class="rl-kk-item">
+                        <div class="kk-icon-wrap"><i class="fas fa-couch"></i></div>
+                        <span class="kk-name">Möbel &amp; Küchen</span>
+                        <span class="kk-count">120+</span>
+                    </a>
+                    <a href="services/usm-haller.html" class="rl-kk-item is-premium">
+                        <div class="kk-premium-tag">⭐</div>
+                        <div class="kk-icon-wrap"><i class="fas fa-gem"></i></div>
+                        <span class="kk-name">USM Haller</span>
+                        <span class="kk-count">45+</span>
+                    </a>
+                    <a href="services/garten-outdoor.html" class="rl-kk-item">
+                        <div class="kk-icon-wrap"><i class="fas fa-tree"></i></div>
+                        <span class="kk-name">Garten &amp; Outdoor</span>
+                        <span class="kk-count">32+</span>
+                    </a>
+                    <a href="services/demontage-umzug.html" class="rl-kk-item">
+                        <div class="kk-icon-wrap"><i class="fas fa-tools"></i></div>
+                        <span class="kk-name">Demontage &amp; Umzug</span>
+                        <span class="kk-count">28+</span>
+                    </a>
+                    <a href="services/buero-objekt.html" class="rl-kk-item">
+                        <div class="kk-icon-wrap"><i class="fas fa-building"></i></div>
+                        <span class="kk-name">Büro &amp; Objekt</span>
+                        <span class="kk-count">56+</span>
+                    </a>
+                    <a href="services/premium-pro.html" class="rl-kk-item is-premium">
+                        <div class="kk-premium-tag">⭐</div>
+                        <div class="kk-icon-wrap"><i class="fas fa-crown"></i></div>
+                        <span class="kk-name">Premium Pro</span>
+                        <span class="kk-count">Exklusiv</span>
+                    </a>
                 </div>
             </div>
+        </section>
 
-            <!-- Results Meta -->
-            <div class="results-meta">
-                <span><span class="count" id="resultCount">12</span> Handwerker gefunden</span>
-                <div class="sort">
-                    <span>Sortieren:</span>
-                    <select id="sortSelect">
-                        <option value="relevance">Relevanz</option>
-                        <option value="rating">Beste Bewertung</option>
-                        <option value="price-low">Preis: aufsteigend</option>
-                        <option value="price-high">Preis: absteigend</option>
-                    </select>
+        <!-- ============================================================
+           PORCELAIN – ROW 1: Top Services (Grid 4)
+           ============================================================ -->
+        <section class="rl-porcelain-area">
+            <div class="container">
+                <div class="rl-porcelain-header">
+                    <div class="left">
+                        <span class="label">Top Services</span>
+                        <h3>Meine <span class="gold-text">Spezialitäten</span></h3>
+                    </div>
+                    <a href="services.html" class="more-link">Alle anzeigen →</a>
+                </div>
+
+                <div class="rl-porcelain-grid-4">
+                    <!-- Card 1 -->
+                    <div class="rl-service-card is-premium">
+                        <div class="card-top">
+                            <div class="card-icon"><i class="fas fa-gem"></i></div>
+                            <div class="card-info">
+                                <div class="card-name">USM Haller Spezialist</div>
+                                <div class="card-title">Design-Module</div>
+                            </div>
+                        </div>
+                        <div class="card-rating"><i class="fas fa-star"></i> 5.0 <span>(45+)</span></div>
+                        <div class="card-skills">
+                            <span class="tag">USM Haller</span>
+                            <span class="tag">Kratzfrei</span>
+                        </div>
+                        <div class="card-bottom">
+                            <span class="price">ab 1.200 €</span>
+                            <a href="anfrage/index.html" class="btn-hire">Anfragen</a>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="rl-service-card">
+                        <div class="card-top">
+                            <div class="card-icon"><i class="fas fa-utensils"></i></div>
+                            <div class="card-info">
+                                <div class="card-name">Küchenmontage</div>
+                                <div class="card-title">METOD &amp; Premium</div>
+                            </div>
+                        </div>
+                        <div class="card-rating"><i class="fas fa-star"></i> 5.0 <span>(32+)</span></div>
+                        <div class="card-skills">
+                            <span class="tag">Laser-justiert</span>
+                            <span class="tag">Schwerlast</span>
+                        </div>
+                        <div class="card-bottom">
+                            <span class="price">ab 850 €</span>
+                            <a href="anfrage/index.html" class="btn-hire">Anfragen</a>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="rl-service-card">
+                        <div class="card-top">
+                            <div class="card-icon"><i class="fas fa-home"></i></div>
+                            <div class="card-info">
+                                <div class="card-name">Garten &amp; Outdoor</div>
+                                <div class="card-title">Gartenhäuser</div>
+                            </div>
+                        </div>
+                        <div class="card-rating"><i class="fas fa-star"></i> 4.9 <span>(28+)</span></div>
+                        <div class="card-skills">
+                            <span class="tag">Blockbohlenbau</span>
+                            <span class="tag">BIOHORT</span>
+                        </div>
+                        <div class="card-bottom">
+                            <span class="price">ab 650 €</span>
+                            <a href="anfrage/index.html" class="btn-hire">Anfragen</a>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="rl-service-card is-premium">
+                        <div class="card-top">
+                            <div class="card-icon"><i class="fas fa-crown"></i></div>
+                            <div class="card-info">
+                                <div class="card-name">Premium Pro</div>
+                                <div class="card-title">Exklusive Lösungen</div>
+                            </div>
+                        </div>
+                        <div class="card-rating"><i class="fas fa-star"></i> 5.0 <span>(18+)</span></div>
+                        <div class="card-skills">
+                            <span class="tag">White-Glove</span>
+                            <span class="tag">Zero-Trace</span>
+                        </div>
+                        <div class="card-bottom">
+                            <span class="price">auf Anfrage</span>
+                            <a href="anfrage/index.html" class="btn-hire">Anfragen</a>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
+
+        <!-- ============================================================
+           PORCELAIN – ROW 2: Beliebte Services (Grid 3 – Differentiated)
+           ============================================================ -->
+        <section class="rl-porcelain-area" style="padding-top:0;">
+            <div class="container">
+                <div class="rl-porcelain-header">
+                    <div class="left">
+                        <span class="label">Empfohlen</span>
+                        <h3>Beliebte <span class="gold-text">Services</span></h3>
+                    </div>
+                    <a href="services.html" class="more-link">Mehr entdecken →</a>
+                </div>
+
+                <div class="rl-porcelain-grid-3">
+                    <!-- Card 5 -->
+                    <div class="rl-service-card">
+                        <div class="card-top">
+                            <div class="card-icon"><i class="fas fa-bed"></i></div>
+                            <div class="card-info">
+                                <div class="card-name">Boxspringbetten</div>
+                                <div class="card-title">Aufbau &amp; Montage</div>
+                            </div>
+                        </div>
+                        <div class="card-rating"><i class="fas fa-star"></i> 4.9 <span>(22+)</span></div>
+                        <div class="card-skills">
+                            <span class="tag">Boxspring</span>
+                            <span class="tag">Polster</span>
+                        </div>
+                        <div class="card-bottom">
+                            <span class="price">ab 380 €</span>
+                            <a href="anfrage/index.html" class="btn-hire">Anfragen</a>
+                        </div>
+                    </div>
+
+                    <!-- Card 6 -->
+                    <div class="rl-service-card">
+                        <div class="card-top">
+                            <div class="card-icon"><i class="fas fa-couch"></i></div>
+                            <div class="card-info">
+                                <div class="card-name">PAX Schrank System</div>
+                                <div class="card-title">Kleiderschränke</div>
+                            </div>
+                        </div>
+                        <div class="card-rating"><i class="fas fa-star"></i> 4.9 <span>(35+)</span></div>
+                        <div class="card-skills">
+                            <span class="tag">PAX</span>
+                            <span class="tag">Raumhoch</span>
+                        </div>
+                        <div class="card-bottom">
+                            <span class="price">ab 550 €</span>
+                            <a href="anfrage/index.html" class="btn-hire">Anfragen</a>
+                        </div>
+                    </div>
+
+                    <!-- Card 7 -->
+                    <div class="rl-service-card">
+                        <div class="card-top">
+                            <div class="card-icon"><i class="fas fa-truck"></i></div>
+                            <div class="card-info">
+                                <div class="card-name">Demontage &amp; Umzug</div>
+                                <div class="card-title">Rückbau &amp; Entsorgung</div>
+                            </div>
+                        </div>
+                        <div class="card-rating"><i class="fas fa-star"></i> 4.8 <span>(28+)</span></div>
+                        <div class="card-skills">
+                            <span class="tag">Rückbau</span>
+                            <span class="tag">Entsorgung</span>
+                        </div>
+                        <div class="card-bottom">
+                            <span class="price">ab 450 €</span>
+                            <a href="anfrage/index.html" class="btn-hire">Anfragen</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+           CTA + TRUST + CONTENT (simplified placeholders)
+           ============================================================ -->
+        <section class="section-padding-sm">
+            <div class="container">
+                <div style="text-align:center;padding:20px 0;">
+                    <p style="color:var(--color-text-muted);font-size:0.85rem;">
+                        ⭐ 5.0 ★ · 110+ zufriedene Kunden · 5 Mio. € versichert · 30 Tage Garantie
+                    </p>
+                    <a href="anfrage/index.html" class="btn btn-primary" style="margin-top:12px;">
+                        <i class="fas fa-bolt"></i> Jetzt Projekt anfragen
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer Placeholder -->
+    <div id="footer-placeholder">
+        <div class="component-loading"><i class="fas fa-sync-alt fa-spin"></i> FOOTER SYSTEM INIT...</div>
     </div>
 
-    <!-- ============================================================
-       RESULTS GRID
-       ============================================================ -->
-    <div class="container">
-        <div class="dir-grid" id="resultsGrid">
-
-            <!-- Card 1: Raphael Lezius – Premium -->
-            <div class="dir-card premium" data-category="montage" data-rating="5.0" data-price="1200" data-available="true">
-                <div class="top-row">
-                    <div class="avatar"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='52' height='52'%3E%3Crect fill='%23E2E8F0' width='52' height='52'/%3E%3Ctext x='12' y='30' fill='%2364748B' font-size='14'%3ERL%3C/text%3E%3C/svg%3E" alt="Raphael" /></div>
-                    <div>
-                        <div class="name">Raphael Lezius</div>
-                        <div class="title">USM Haller Spezialist</div>
-                    </div>
-                </div>
-                <div class="rating"><i class="fas fa-star"></i> 5.0 <span>(110+)</span></div>
-                <div class="location"><i class="fas fa-map-marker-alt" style="font-size:0.6rem;color:var(--fj-teal);"></i> Augsburg · München</div>
-                <div class="skills">
-                    <span class="tag">USM Haller</span>
-                    <span class="tag">Küchenmontage</span>
-                    <span class="tag">Akustik</span>
-                </div>
-                <div class="bottom-row">
-                    <span class="price">ab 1.200 € <span>/ Projekt</span></span>
-                    <a href="profile.html?id=raphael" class="btn-profile">Profil</a>
-                </div>
-                <div class="availability"><i class="fas fa-check-circle"></i> Sofort verfügbar</div>
-            </div>
-
-            <!-- Card 2: Jaffar Shariff -->
-            <div class="dir-card" data-category="elektro" data-rating="4.9" data-price="950" data-available="true">
-                <div class="top-row">
-                    <div class="avatar"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='52' height='52'%3E%3Crect fill='%23E2E8F0' width='52' height='52'/%3E%3Ctext x='12' y='30' fill='%2364748B' font-size='14'%3EJS%3C/text%3E%3C/svg%3E" alt="Jaffar" /></div>
-                    <div>
-                        <div class="name">Jaffar Shariff</div>
-                        <div class="title">Smart Home Experte</div>
-                    </div>
-                </div>
-                <div class="rating"><i class="fas fa-star"></i> 4.9 <span>(85+)</span></div>
-                <div class="location"><i class="fas fa-map-marker-alt" style="font-size:0.6rem;color:var(--fj-teal);"></i> München · Augsburg</div>
-                <div class="skills">
-                    <span class="tag">KNX</span>
-                    <span class="tag">Smart Home</span>
-                    <span class="tag">Beleuchtung</span>
-                </div>
-                <div class="bottom-row">
-                    <span class="price">ab 950 € <span>/ Projekt</span></span>
-                    <a href="profile.html?id=jaffar" class="btn-profile">Profil</a>
-                </div>
-                <div class="availability"><i class="fas fa-check-circle"></i> Sofort verfügbar</div>
-            </div>
-
-            <!-- Card 3: Michael Weber -->
-            <div class="dir-card" data-category="sanitaer" data-rating="4.8" data-price="650" data-available="true">
-                <div class="top-row">
-                    <div class="avatar"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='52' height='52'%3E%3Crect fill='%23E2E8F0' width='52' height='52'/%3E%3Ctext x='10' y='30' fill='%2364748B' font-size='14'%3EMW%3C/text%3E%3C/svg%3E" alt="Michael" /></div>
-                    <div>
-                        <div class="name">Michael Weber</div>
-                        <div class="title">Sanitär & Heizung</div>
-                    </div>
-                </div>
-                <div class="rating"><i class="fas fa-star"></i> 4.8 <span>(62+)</span></div>
-                <div class="location"><i class="fas fa-map-marker-alt" style="font-size:0.6rem;color:var(--fj-teal);"></i> Augsburg · Landsberg</div>
-                <div class="skills">
-                    <span class="tag">Sanitär</span>
-                    <span class="tag">Heizung</span>
-                    <span class="tag">Reparatur</span>
-                </div>
-                <div class="bottom-row">
-                    <span class="price">ab 650 € <span>/ Projekt</span></span>
-                    <a href="profile.html?id=michael" class="btn-profile">Profil</a>
-                </div>
-                <div class="availability"><i class="fas fa-check-circle"></i> Sofort verfügbar</div>
-            </div>
-
-            <!-- Card 4: Anna Schmidt -->
-            <div class="dir-card" data-category="renovierung" data-rating="4.9" data-price="480" data-available="true">
-                <div class="top-row">
-                    <div class="avatar"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='52' height='52'%3E%3Crect fill='%23E2E8F0' width='52' height='52'/%3E%3Ctext x='12' y='30' fill='%2364748B' font-size='14'%3EAS%3C/text%3E%3C/svg%3E" alt="Anna" /></div>
-                    <div>
-                        <div class="name">Anna Schmidt</div>
-                        <div class="title">Maler & Restauratorin</div>
-                    </div>
-                </div>
-                <div class="rating"><i class="fas fa-star"></i> 4.9 <span>(43+)</span></div>
-                <div class="location"><i class="fas fa-map-marker-alt" style="font-size:0.6rem;color:var(--fj-teal);"></i> Kaufering · Augsburg</div>
-                <div class="skills">
-                    <span class="tag">Malerei</span>
-                    <span class="tag">Tapete</span>
-                    <span class="tag">Restaurierung</span>
-                </div>
-                <div class="bottom-row">
-                    <span class="price">ab 480 € <span>/ Projekt</span></span>
-                    <a href="profile.html?id=anna" class="btn-profile">Profil</a>
-                </div>
-                <div class="availability availability--soon"><i class="fas fa-clock"></i> Ab nächster Woche</div>
-            </div>
-
-            <!-- Card 5: Thomas Bauer -->
-            <div class="dir-card" data-category="garten" data-rating="4.7" data-price="720" data-available="false">
-                <div class="top-row">
-                    <div class="avatar"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='52' height='52'%3E%3Crect fill='%23E2E8F0' width='52' height='52'/%3E%3Ctext x='10' y='30' fill='%2364748B' font-size='14'%3ETB%3C/text%3E%3C/svg%3E" alt="Thomas" /></div>
-                    <div>
-                        <div class="name">Thomas Bauer</div>
-                        <div class="title">Garten & Landschaftsbau</div>
-                    </div>
-                </div>
-                <div class="rating"><i class="fas fa-star"></i> 4.7 <span>(38+)</span></div>
-                <div class="location"><i class="fas fa-map-marker-alt" style="font-size:0.6rem;color:var(--fj-teal);"></i> Dachau · München</div>
-                <div class="skills">
-                    <span class="tag">Gartenhäuser</span>
-                    <span class="tag">Terrassen</span>
-                    <span class="tag">Pflaster</span>
-                </div>
-                <div class="bottom-row">
-                    <span class="price">ab 720 € <span>/ Projekt</span></span>
-                    <a href="profile.html?id=thomas" class="btn-profile">Profil</a>
-                </div>
-                <div class="availability availability--soon"><i class="fas fa-clock"></i> Ausgebucht bis 15.09.</div>
-            </div>
-
-            <!-- Card 6: Nina Hoffmann -->
-            <div class="dir-card" data-category="reinigung" data-rating="4.6" data-price="350" data-available="true">
-                <div class="top-row">
-                    <div class="avatar"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='52' height='52'%3E%3Crect fill='%23E2E8F0' width='52' height='52'/%3E%3Ctext x='12' y='30' fill='%2364748B' font-size='14'%3ENH%3C/text%3E%3C/svg%3E" alt="Nina" /></div>
-                    <div>
-                        <div class="name">Nina Hoffmann</div>
-                        <div class="title">Reinigung & Gebäudepflege</div>
-                    </div>
-                </div>
-                <div class="rating"><i class="fas fa-star"></i> 4.6 <span>(27+)</span></div>
-                <div class="location"><i class="fas fa-map-marker-alt" style="font-size:0.6rem;color:var(--fj-teal);"></i> München · Augsburg</div>
-                <div class="skills">
-                    <span class="tag">Büroreinigung</span>
-                    <span class="tag">Fenster</span>
-                    <span class="tag">Grundreinigung</span>
-                </div>
-                <div class="bottom-row">
-                    <span class="price">ab 350 € <span>/ Projekt</span></span>
-                    <a href="profile.html?id=nina" class="btn-profile">Profil</a>
-                </div>
-                <div class="availability"><i class="fas fa-check-circle"></i> Sofort verfügbar</div>
-            </div>
-
-            <!-- Card 7: Stefan König – Premium -->
-            <div class="dir-card premium" data-category="elektro" data-rating="5.0" data-price="1100" data-available="true">
-                <div class="top-row">
-                    <div class="avatar"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='52' height='52'%3E%3Crect fill='%23E2E8F0' width='52' height='52'/%3E%3Ctext x='10' y='30' fill='%2364748B' font-size='14'%3ESK%3C/text%3E%3C/svg%3E" alt="Stefan" /></div>
-                    <div>
-                        <div class="name">Stefan König</div>
-                        <div class="title">Elektromeister · Smart Home</div>
-                    </div>
-                </div>
-                <div class="rating"><i class="fas fa-star"></i> 5.0 <span>(56+)</span></div>
-                <div class="location"><i class="fas fa-map-marker-alt" style="font-size:0.6rem;color:var(--fj-teal);"></i> München · Starnberg</div>
-                <div class="skills">
-                    <span class="tag">Elektro</span>
-                    <span class="tag">Smart Home</span>
-                    <span class="tag">Sicherheit</span>
-                </div>
-                <div class="bottom-row">
-                    <span class="price">ab 1.100 € <span>/ Projekt</span></span>
-                    <a href="profile.html?id=stefan" class="btn-profile">Profil</a>
-                </div>
-                <div class="availability"><i class="fas fa-check-circle"></i> Sofort verfügbar</div>
-            </div>
-
-            <!-- Card 8: Julia Wagner -->
-            <div class="dir-card" data-category="montage" data-rating="4.8" data-price="890" data-available="true">
-                <div class="top-row">
-                    <div class="avatar"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='52' height='52'%3E%3Crect fill='%23E2E8F0' width='52' height='52'/%3E%3Ctext x='12' y='30' fill='%2364748B' font-size='14'%3EJW%3C/text%3E%3C/svg%3E" alt="Julia" /></div>
-                    <div>
-                        <div class="name">Julia Wagner</div>
-                        <div class="title">Möbelmontage & Innenausbau</div>
-                    </div>
-                </div>
-                <div class="rating"><i class="fas fa-star"></i> 4.8 <span>(34+)</span></div>
-                <div class="location"><i class="fas fa-map-marker-alt" style="font-size:0.6rem;color:var(--fj-teal);"></i> Augsburg · Ingolstadt</div>
-                <div class="skills">
-                    <span class="tag">IKEA</span>
-                    <span class="tag">PAX</span>
-                    <span class="tag">Innenausbau</span>
-                </div>
-                <div class="bottom-row">
-                    <span class="price">ab 890 € <span>/ Projekt</span></span>
-                    <a href="profile.html?id=julia" class="btn-profile">Profil</a>
-                </div>
-                <div class="availability"><i class="fas fa-check-circle"></i> Sofort verfügbar</div>
-            </div>
-
-            <!-- Card 9: Peter Schneider -->
-            <div class="dir-card" data-category="demontage" data-rating="4.7" data-price="520" data-available="false">
-                <div class="top-row">
-                    <div class="avatar"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='52' height='52'%3E%3Crect fill='%23E2E8F0' width='52' height='52'/%3E%3Ctext x='10' y='30' fill='%2364748B' font-size='14'%3EPS%3C/text%3E%3C/svg%3E" alt="Peter" /></div>
-                    <div>
-                        <div class="name">Peter Schneider</div>
-                        <div class="title">Demontage & Umzug</div>
-                    </div>
-                </div>
-                <div class="rating"><i class="fas fa-star"></i> 4.7 <span>(29+)</span></div>
-                <div class="location"><i class="fas fa-map-marker-alt" style="font-size:0.6rem;color:var(--fj-teal);"></i> München · Augsburg</div>
-                <div class="skills">
-                    <span class="tag">Demontage</span>
-                    <span class="tag">Umzug</span>
-                    <span class="tag">Entsorgung</span>
-                </div>
-                <div class="bottom-row">
-                    <span class="price">ab 520 € <span>/ Projekt</span></span>
-                    <a href="profile.html?id=peter" class="btn-profile">Profil</a>
-                </div>
-                <div class="availability availability--soon"><i class="fas fa-clock"></i> Ab 20.09. verfügbar</div>
-            </div>
-
-            <!-- Card 10: Claudia Fischer -->
-            <div class="dir-card" data-category="renovierung" data-rating="4.9" data-price="620" data-available="true">
-                <div class="top-row">
-                    <div class="avatar"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='52' height='52'%3E%3Crect fill='%23E2E8F0' width='52' height='52'/%3E%3Ctext x='10' y='30' fill='%2364748B' font-size='14'%3ECF%3C/text%3E%3C/svg%3E" alt="Claudia" /></div>
-                    <div>
-                        <div class="name">Claudia Fischer</div>
-                        <div class="title">Innenarchitektur & Renovierung</div>
-                    </div>
-                </div>
-                <div class="rating"><i class="fas fa-star"></i> 4.9 <span>(51+)</span></div>
-                <div class="location"><i class="fas fa-map-marker-alt" style="font-size:0.6rem;color:var(--fj-teal);"></i> Augsburg · München</div>
-                <div class="skills">
-                    <span class="tag">Renovierung</span>
-                    <span class="tag">Gestaltung</span>
-                    <span class="tag">Boden</span>
-                </div>
-                <div class="bottom-row">
-                    <span class="price">ab 620 € <span>/ Projekt</span></span>
-                    <a href="profile.html?id=claudia" class="btn-profile">Profil</a>
-                </div>
-                <div class="availability"><i class="fas fa-check-circle"></i> Sofort verfügbar</div>
-            </div>
-
-        </div>
-    </div>
-
-    <!-- ============================================================
-       PAGINATION
-       ============================================================ -->
-    <div class="container">
-        <div class="dir-pagination">
-            <span class="page arrow"><i class="fas fa-chevron-left"></i></span>
-            <span class="page active">1</span>
-            <span class="page">2</span>
-            <span class="page">3</span>
-            <span class="page">4</span>
-            <span class="page arrow"><i class="fas fa-chevron-right"></i></span>
-        </div>
-    </div>
-
-    <!-- ============================================================
-       FOOTER
-       ============================================================ -->
-    <footer class="site-footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <h4>FIX<span>JORI</span></h4>
-                    <p>Die Plattform für perfekte Montage und Premium-Handwerk. Verifizierte Experten, Festpreise, persönliche Betreuung.</p>
-                </div>
-                <div class="footer-col">
-                    <h5>Services</h5>
-                    <a href="../services/montage.html">Montage & Möbel</a>
-                    <a href="../services/elektro.html">Elektro & Smart</a>
-                    <a href="../services/sanitaer.html">Sanitär & Wasser</a>
-                    <a href="../services/garten.html">Garten & Outdoor</a>
-                </div>
-                <div class="footer-col">
-                    <h5>Plattform</h5>
-                    <a href="index.html">Handwerker finden</a>
-                    <a href="../client/dashboard.html">Client Portal</a>
-                    <a href="../handyman/dashboard.html">Handyman Portal</a>
-                    <a href="../booking/step1.html">Projekt starten</a>
-                </div>
-                <div class="footer-col">
-                    <h5>Rechtliches</h5>
-                    <a href="../impressum.html">Impressum</a>
-                    <a href="../datenschutz.html">Datenschutz</a>
-                    <a href="../agb.html">AGB</a>
-                    <a href="../garantie.html">Garantie</a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <span>© 2026 FIXJORI. Alle Rechte vorbehalten.</span>
-                <div style="display:flex;gap:16px;flex-wrap:wrap;">
-                    <a href="../impressum.html">Impressum</a>
-                    <a href="../datenschutz.html">Datenschutz</a>
-                    <a href="../agb.html">AGB</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- ============================================================
-       SCRIPTS
-       ============================================================ -->
-    <script>
-        (function() {
-            'use strict';
-
-            // ── THEME TOGGLE ──
-            const html = document.documentElement;
-            const themeToggle = document.getElementById('themeToggle');
-            const themeIcon = document.getElementById('themeIcon');
-
-            const storedTheme = localStorage.getItem('fixjori-theme');
-            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            let currentTheme = storedTheme || (systemPrefersDark ? 'dark' : 'light');
-
-            function applyTheme(theme) {
-                html.setAttribute('data-theme', theme);
-                localStorage.setItem('fixjori-theme', theme);
-                themeIcon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
-            }
-            applyTheme(currentTheme);
-
-            themeToggle.addEventListener('click', function() {
-                currentTheme = currentTheme === 'light' ? 'dark' : 'light';
-                applyTheme(currentTheme);
-            });
-
-            // ── NAV TOGGLE ──
-            const toggleBtn = document.getElementById('mobileToggle');
-            const mobileMenu = document.getElementById('mobileMenu');
-
-            toggleBtn.addEventListener('click', function() {
-                const isOpen = this.classList.toggle('active');
-                mobileMenu.classList.toggle('open');
-                this.setAttribute('aria-expanded', isOpen);
-                document.body.style.overflow = isOpen ? 'hidden' : '';
-            });
-
-            mobileMenu.querySelectorAll('a').forEach(function(link) {
-                link.addEventListener('click', function() {
-                    toggleBtn.classList.remove('active');
-                    mobileMenu.classList.remove('open');
-                    document.body.style.overflow = '';
-                });
-            });
-
-            // ── FILTER PILLS ──
-            const pills = document.querySelectorAll('.filter-row .pill');
-            pills.forEach(function(pill) {
-                pill.addEventListener('click', function() {
-                    pills.forEach(function(p) { p.classList.remove('active'); });
-                    this.classList.add('active');
-                    applyFilters();
-                });
-            });
-
-            // ── SEARCH & FILTER LOGIC ──
-            const searchInput = document.getElementById('searchInput');
-            const searchBtn = document.getElementById('searchBtn');
-            const categoryFilter = document.getElementById('categoryFilter');
-            const ratingFilter = document.getElementById('ratingFilter');
-            const priceFilter = document.getElementById('priceFilter');
-            const sortSelect = document.getElementById('sortSelect');
-            const resultCount = document.getElementById('resultCount');
-            const grid = document.getElementById('resultsGrid');
-
-            function getActiveFilter() {
-                const activePill = document.querySelector('.filter-row .pill.active');
-                return activePill ? activePill.dataset.filter : 'all';
-            }
-
-            function applyFilters() {
-                const searchTerm = searchInput.value.toLowerCase().trim();
-                const category = categoryFilter.value;
-                const rating = parseFloat(ratingFilter.value) || 0;
-                const price = priceFilter.value;
-                const filterType = getActiveFilter();
-
-                const cards = grid.querySelectorAll('.dir-card');
-                let visibleCount = 0;
-
-                cards.forEach(function(card) {
-                    const categoryMatch = category === 'all' || card.dataset.category === category;
-                    const ratingMatch = rating === 0 || parseFloat(card.dataset.rating) >= rating;
-                    const priceMatch = price === 'any' || checkPriceMatch(card.dataset.price, price);
-                    const filterMatch = filterType === 'all' ||
-                        (filterType === 'available' && card.dataset.available === 'true') ||
-                        (filterType === 'premium' && card.classList.contains('premium'));
-                    const searchMatch = searchTerm === '' ||
-                        card.textContent.toLowerCase().includes(searchTerm);
-
-                    const visible = categoryMatch && ratingMatch && priceMatch && filterMatch && searchMatch;
-                    card.style.display = visible ? '' : 'none';
-                    if (visible) visibleCount++;
-                });
-
-                resultCount.textContent = visibleCount;
-            }
-
-            function checkPriceMatch(priceStr, filter) {
-                const priceNum = parseInt(priceStr) || 0;
-                if (filter === 'low') return priceNum <= 500;
-                if (filter === 'mid') return priceNum > 500 && priceNum <= 1000;
-                if (filter === 'high') return priceNum > 1000;
-                return true;
-            }
-
-            // ── SORT LOGIC ──
-            function sortCards() {
-                const sort = sortSelect.value;
-                const cards = Array.from(grid.querySelectorAll('.dir-card'));
-
-                cards.sort(function(a, b) {
-                    if (sort === 'rating') {
-                        return parseFloat(b.dataset.rating) - parseFloat(a.dataset.rating);
-                    } else if (sort === 'price-low') {
-                        return parseInt(a.dataset.price) - parseInt(b.dataset.price);
-                    } else if (sort === 'price-high') {
-                        return parseInt(b.dataset.price) - parseInt(a.dataset.price);
-                    }
-                    return 0; // relevance – keep original order
-                });
-
-                cards.forEach(function(card) {
-                    grid.appendChild(card);
-                });
-            }
-
-            // ── EVENT LISTENERS ──
-            searchBtn.addEventListener('click', applyFilters);
-            searchInput.addEventListener('keydown', function(e) {
-                if (e.key === 'Enter') applyFilters();
-            });
-            categoryFilter.addEventListener('change', applyFilters);
-            ratingFilter.addEventListener('change', applyFilters);
-            priceFilter.addEventListener('change', applyFilters);
-            sortSelect.addEventListener('change', function() {
-                sortCards();
-                applyFilters();
-            });
-
-            // ── SCROLL NAV SHADOW ──
-            const nav = document.getElementById('siteNav');
-            window.addEventListener('scroll', function() {
-                nav.classList.toggle('scrolled', window.scrollY > 20);
-            }, { passive: true });
-
-            // ── PAGINATION (demo) ──
-            document.querySelectorAll('.dir-pagination .page:not(.arrow)').forEach(function(page) {
-                page.addEventListener('click', function() {
-                    document.querySelectorAll('.dir-pagination .page').forEach(function(p) {
-                        p.classList.remove('active');
-                    });
-                    this.classList.add('active');
-                    // In a real app, you'd fetch the next page here
-                    window.scrollTo({ top: document.querySelector('.dir-hero').offsetTop - 100, behavior: 'smooth' });
-                });
-            });
-
-            // Initial filter application
-            applyFilters();
-
-            console.log('✅ FIXJORI Directory loaded.');
-        })();
-    </script>
-
-</body>
-</html>
+   

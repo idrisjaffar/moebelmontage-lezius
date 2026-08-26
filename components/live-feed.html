@@ -1,0 +1,135 @@
+<!-- ============================================================
+   RAPHAEL LEZIUS | LIVE FEED (Subtle Integration)
+   Compact · Non-Intrusive · Theme-Aware
+   ============================================================ -->
+
+<style>
+    .rl-live-feed {
+        --feed-bg: var(--color-bg-surface);
+        --feed-border: var(--color-border);
+        --feed-text: var(--color-text-muted);
+        --feed-gold: var(--color-gold);
+        --radius: 12px;
+        --radius-full: 40px;
+        --font-mono: 'JetBrains Mono', monospace;
+        --font-body: 'Inter', sans-serif;
+
+        background: var(--feed-bg);
+        border: 1px solid var(--feed-border);
+        border-radius: var(--radius);
+        padding: 12px 18px;
+        transition: all 0.3s ease;
+        max-width: 100%;
+    }
+
+    .rl-live-feed .feed-header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 8px;
+        font-family: var(--font-mono);
+        font-size: 0.55rem;
+        font-weight: 600;
+        color: var(--feed-text);
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+    }
+    .rl-live-feed .feed-header .dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #22c55e;
+        display: inline-block;
+        animation: pulse-live-feed 2s ease-in-out infinite;
+    }
+    @keyframes pulse-live-feed {
+        0%,
+        100% {
+            opacity: 1;
+            transform: scale(1);
+        }
+        50% {
+            opacity: 0.3;
+            transform: scale(0.7);
+        }
+    }
+
+    .rl-live-feed .feed-items {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px 16px;
+        align-items: center;
+    }
+    .rl-live-feed .feed-item {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.75rem;
+        color: var(--feed-text);
+        padding: 2px 0;
+    }
+    .rl-live-feed .feed-item .highlight {
+        color: var(--feed-gold);
+        font-weight: 600;
+    }
+    .rl-live-feed .feed-item .sep {
+        color: var(--feed-border);
+        font-size: 0.5rem;
+    }
+    .rl-live-feed .feed-item .time {
+        font-family: var(--font-mono);
+        font-size: 0.55rem;
+        color: var(--feed-text);
+        opacity: 0.6;
+    }
+
+    @media (max-width: 600px) {
+        .rl-live-feed .feed-items {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 4px;
+        }
+        .rl-live-feed .feed-item .sep {
+            display: none;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .rl-live-feed .feed-header .dot {
+            animation: none;
+        }
+    }
+</style>
+
+<div class="rl-live-feed" role="status" aria-live="polite" aria-label="Aktuelle Projekte">
+    <div class="feed-header">
+        <span class="dot"></span>
+        <span>Aktuelle Projekte</span>
+    </div>
+    <div class="feed-items">
+        <span class="feed-item">
+            <span class="highlight">Küchenmontage</span>
+            <span>– Familie Schmidt</span>
+            <span class="sep">|</span>
+            <span class="time">vor 12 min</span>
+        </span>
+        <span class="feed-item">
+            <span class="highlight">USM Haller</span>
+            <span>– abgeschlossen</span>
+            <span class="sep">|</span>
+            <span class="time">vor 18 min</span>
+        </span>
+        <span class="feed-item">
+            <span class="highlight">Büro-Einrichtung</span>
+            <span>– neu</span>
+            <span class="sep">|</span>
+            <span class="time">vor 32 min</span>
+        </span>
+        <span class="feed-item">
+            <span class="highlight">Demontage &amp; Umzug</span>
+            <span>– gebucht</span>
+            <span class="sep">|</span>
+            <span class="time">vor 1 Std</span>
+        </span>
+    </div>
+</div>
