@@ -17,6 +17,111 @@
 
   <!-- CSS -->
   <link rel="stylesheet" href="assets/css/global.css">
+
+  <!-- Additional dropdown styles (enhanced nav) -->
+  <style>
+    /* Dropdown for desktop */
+    .nav-dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    .nav-dropdown > a {
+      cursor: default;
+    }
+    .nav-dropdown-content {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: var(--rl-card);
+      border: 1px solid var(--rl-border);
+      border-radius: var(--rl-radius);
+      padding: 8px 0;
+      min-width: 220px;
+      box-shadow: var(--rl-shadow);
+      z-index: 1001;
+      backdrop-filter: blur(12px);
+      background: var(--rl-glass);
+    }
+    .nav-dropdown:hover .nav-dropdown-content,
+    .nav-dropdown:focus-within .nav-dropdown-content {
+      display: block;
+    }
+    .nav-dropdown-content a {
+      display: block;
+      padding: 10px 20px;
+      color: var(--rl-muted);
+      font-weight: 500;
+      font-size: 0.92rem;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .nav-dropdown-content a:hover {
+      color: var(--rl-text);
+      background: rgba(212, 165, 116, 0.08);
+    }
+    .nav-dropdown-content a i {
+      margin-right: 8px;
+      color: var(--rl-primary);
+      width: 18px;
+      text-align: center;
+    }
+    /* Mobile menu enhancements */
+    .mobile-menu-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      padding: 24px;
+      width: 100%;
+    }
+    .mobile-menu-inner .mobile-link {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--rl-muted);
+      transition: color 0.25s;
+    }
+    .mobile-menu-inner .mobile-link:hover {
+      color: var(--rl-primary);
+    }
+    .mobile-menu-inner .mobile-cta {
+      margin-top: 12px;
+      background: var(--rl-gradient-cta);
+      color: #1C1917;
+      padding: 14px 28px;
+      border-radius: var(--rl-radius-full);
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.3s;
+    }
+    .mobile-menu-inner .mobile-cta:hover {
+      transform: scale(1.04);
+      box-shadow: 0 6px 20px rgba(212, 165, 116, 0.3);
+    }
+    .mobile-extra {
+      margin-top: 24px;
+      text-align: center;
+      color: var(--rl-dim);
+      font-size: 0.9rem;
+    }
+    .mobile-extra p {
+      margin-bottom: 8px;
+    }
+    /* Responsive adjustments */
+    @media (max-width: 900px) {
+      .rl-nav__links .nav-dropdown {
+        display: none;
+      }
+    }
+    @media (min-width: 901px) {
+      .rl-nav__mobile .mobile-link,
+      .rl-nav__mobile .mobile-cta {
+        display: none;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -55,11 +160,14 @@
     </div>
   </div>
 
-  <!-- ==================== NAVIGATION (loaded from component) ==================== -->
-  <div id="nav-placeholder">
-    <div style="height:72px; background:var(--rl-bg);"></div>
-  </div>
+  <!-- ============================================================ -->
+  <!-- NAVIGATION PLACEHOLDER – will be injected by component loader -->
+  <!-- ============================================================ -->
+  <div id="nav-placeholder"></div>
 
+  <!-- ============================================================ -->
+  <!-- MAIN CONTENT                                                -->
+  <!-- ============================================================ -->
   <main>
     <!-- ==================== HERO ==================== -->
     <section class="hero" id="home">
@@ -453,115 +561,352 @@
     </section>
   </main>
 
-  <!-- ==================== FOOTER (loaded from component) ==================== -->
+  <!-- ============================================================ -->
+  <!-- FOOTER PLACEHOLDER – will be injected by component loader    -->
+  <!-- ============================================================ -->
   <div id="footer-placeholder"></div>
 
-  <!-- ==================== SCRIPTS ==================== -->
+  <!-- ============================================================ -->
+  <!-- COMPONENT LOADER – with fallback embedded                    -->
+  <!-- ============================================================ -->
   <script>
-    // ── LOAD NAV & FOOTER ──
+    /* ============================================================
+       RAPHAEL LEZIUS – Component Loader v2.0
+       Loads nav & footer with localStorage cache + inline fallback
+       ============================================================ */
+
     (function() {
-      const navPlaceholder = document.getElementById('nav-placeholder');
-      if (navPlaceholder) {
-        fetch('/components/nav.html')
-          .then(res => res.text())
-          .then(html => {
-            navPlaceholder.innerHTML = html;
-            // Re-init theme toggles after load
-            document.querySelectorAll('[data-theme-toggle]').forEach(btn => {
-              btn.addEventListener('click', toggleTheme);
+      'use strict';
+
+      // ── Inline fallback HTML (copy of your nav and footer) ──
+      // This ensures the menu always works, even offline.
+      const NAV_FALLBACK = `
+    <nav class="rl-nav" id="mainNav">
+      <div class="rl-nav__inner">
+        <a href="/" class="rl-nav__brand" aria-label="Zur Startseite">
+          Raphael <span>Lezius</span>
+          <span class="rl-nav__tagline">Präzision mit Herz</span>
+        </a>
+
+        <ul class="rl-nav__links">
+          <li><a href="/" class="nav-link active" data-section="home">Willkommen</a></li>
+          <!-- Services Dropdown -->
+          <li class="nav-dropdown">
+            <a href="#" class="nav-link" data-section="services">Services <i class="fas fa-chevron-down" style="font-size:0.7rem; margin-left:4px;"></i></a>
+            <div class="nav-dropdown-content">
+              <a href="/services/moebel-kuechen.html"><i class="fas fa-couch"></i> Möbel & Küchen</a>
+              <a href="/services/usm-haller.html"><i class="fas fa-gem"></i> USM Haller</a>
+              <a href="/services/garten-outdoor.html"><i class="fas fa-tree"></i> Garten & Outdoor</a>
+              <a href="/services/demontage-umzug.html"><i class="fas fa-truck"></i> Demontage & Umzug</a>
+              <a href="/services/buero-objekt.html"><i class="fas fa-building"></i> Büro & Objekt</a>
+              <a href="/services/premium-pro.html"><i class="fas fa-crown"></i> Premium Pro</a>
+            </div>
+          </li>
+          <!-- Bundles Dropdown -->
+          <li class="nav-dropdown">
+            <a href="#" class="nav-link" data-section="bundles">Bundles <i class="fas fa-chevron-down" style="font-size:0.7rem; margin-left:4px;"></i></a>
+            <div class="nav-dropdown-content">
+              <a href="/bundles/kuechen-komplett.html"><i class="fas fa-utensils"></i> Küchen-Komplett</a>
+              <a href="/bundles/usm-all-in.html"><i class="fas fa-gem"></i> USM All-In</a>
+              <a href="/bundles/umzug-premium.html"><i class="fas fa-truck"></i> Umzug Premium</a>
+            </div>
+          </li>
+          <li><a href="/#about" class="nav-link" data-section="about">Über mich</a></li>
+          <li><a href="/reviews.html" class="nav-link">Ihre Stimmen</a></li>
+          <li><a href="/anfrage/" class="cta magnetic-btn"><i class="fas fa-comments"></i> Kostenloses Gespräch</a></li>
+        </ul>
+
+        <div class="rl-nav__actions">
+          <button class="theme-toggle" data-theme-toggle aria-label="Design umschalten">
+            <i class="fas fa-moon" data-theme-icon></i>
+          </button>
+          <button class="rl-nav__hamburger" id="navToggle" aria-label="Menü öffnen" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </nav>
+    <div class="rl-nav__mobile" id="mobileMenu" aria-hidden="true">
+      <div class="mobile-menu-inner">
+        <a href="/" class="mobile-link">Willkommen</a>
+        <a href="/#services" class="mobile-link">Services</a>
+        <a href="/#bundles" class="mobile-link">Bundles</a>
+        <a href="/#about" class="mobile-link">Über mich</a>
+        <a href="/reviews.html" class="mobile-link">Ihre Stimmen</a>
+        <a href="/services/moebel-kuechen.html" class="mobile-link">– Möbel & Küchen</a>
+        <a href="/services/usm-haller.html" class="mobile-link">– USM Haller</a>
+        <a href="/services/garten-outdoor.html" class="mobile-link">– Garten & Outdoor</a>
+        <a href="/services/demontage-umzug.html" class="mobile-link">– Demontage & Umzug</a>
+        <a href="/services/buero-objekt.html" class="mobile-link">– Büro & Objekt</a>
+        <a href="/services/premium-pro.html" class="mobile-link">– Premium Pro</a>
+        <a href="/bundles/kuechen-komplett.html" class="mobile-link">– Küchen-Komplett</a>
+        <a href="/bundles/usm-all-in.html" class="mobile-link">– USM All-In</a>
+        <a href="/bundles/umzug-premium.html" class="mobile-link">– Umzug Premium</a>
+        <a href="/anfrage/" class="mobile-cta magnetic-btn"><i class="fas fa-comments"></i> Kostenloses Gespräch starten</a>
+        <div class="mobile-extra">
+          <p>Schön, dass Sie hier sind.</p>
+          <button class="theme-toggle" data-theme-toggle style="width:52px; height:52px; font-size:1.2rem; margin-top:16px;">
+            <i class="fas fa-moon" data-theme-icon></i>
+          </button>
+        </div>
+      </div>
+    </div>
+      `;
+
+      const FOOTER_FALLBACK = `
+    <footer class="rl-footer">
+      <div class="container">
+        <div class="rl-footer-top">
+          <div class="rl-footer-brand">
+            <div class="logo">Raphael <span>Lezius</span></div>
+            <p>Ich freue mich, dass Sie hier sind.<br>Premium Montage mit echter Leidenschaft – millimetergenau, staubfrei und immer mit Herz.</p>
+            <div class="rl-footer-trust">
+              <span><i class="fas fa-shield-alt"></i> 5 Mio. € versichert</span>
+              <span><i class="fas fa-star"></i> 5.0 ★ von 110+ Menschen</span>
+              <span><i class="fas fa-clock"></i> Antwort innerhalb 24 h</span>
+              <span><i class="fas fa-heart"></i> 1 Jahr persönliche Garantie</span>
+            </div>
+          </div>
+          <div class="rl-footer-newsletter">
+            <h4><i class="fas fa-envelope-open-text" style="color:var(--rl-primary)"></i> Bleiben Sie in Verbindung</h4>
+            <p>Einmal im Monat sende ich Ihnen nützliche Tipps und exklusive Angebote – nur wenn Sie möchten.</p>
+            <form class="newsletter-form" id="newsletterForm">
+              <input type="email" placeholder="Ihre E-Mail-Adresse" required aria-label="E-Mail für Newsletter" />
+              <button type="submit" class="magnetic-btn">Gerne dabei sein</button>
+            </form>
+            <div class="newsletter-consent">
+              <input type="checkbox" id="consent" required />
+              <label for="consent">Ich stimme der <a href="/legal/datenschutz.html" style="color:var(--rl-primary); text-decoration:underline;">Datenschutzerklärung</a> zu und freue mich auf Ihre Nachrichten.</label>
+            </div>
+          </div>
+        </div>
+        <div class="rl-footer-grid">
+          <div class="rl-footer-col">
+            <h5>Services</h5>
+            <a href="/services/moebel-kuechen.html">Möbel & Küchen</a>
+            <a href="/services/usm-haller.html">USM Haller Spezialist</a>
+            <a href="/services/garten-outdoor.html">Garten & Outdoor</a>
+            <a href="/services/demontage-umzug.html">Demontage & Umzug</a>
+            <a href="/services/buero-objekt.html">Büro & Objekt</a>
+            <a href="/services/premium-pro.html">Premium Pro Service</a>
+          </div>
+          <div class="rl-footer-col">
+            <h5>Bundles</h5>
+            <a href="/bundles/kuechen-komplett.html">Küchen-Komplett</a>
+            <a href="/bundles/usm-all-in.html">USM All-In</a>
+            <a href="/bundles/umzug-premium.html">Umzug Premium</a>
+          </div>
+          <div class="rl-footer-col">
+            <h5>Über & Hilfe</h5>
+            <a href="/#about">Über mich</a>
+            <a href="/reviews.html">Kundenstimmen</a>
+            <a href="/faq.html">FAQ</a>
+            <a href="/contact.html">Kontakt</a>
+            <a href="/anfrage/">Kostenloses Gespräch</a>
+          </div>
+          <div class="rl-footer-col">
+            <h5>Rechtliches</h5>
+            <a href="/legal/impressum.html">Impressum</a>
+            <a href="/legal/datenschutz.html">Datenschutz</a>
+            <a href="/legal/agb.html">AGB</a>
+            <a href="/legal/widerruf.html">Widerruf</a>
+            <a href="/legal/cookie.html">Cookie-Richtlinie</a>
+          </div>
+        </div>
+        <div class="rl-footer-trustbar">
+          <div class="trustbar-item"><i class="fas fa-users"></i><div><div class="label">Vertrauen</div><div class="value">110+ glückliche Kunden</div></div></div>
+          <div class="trustbar-item"><i class="fas fa-star"></i><div><div class="label">Bewertung</div><div class="value">5.0 ★ Durchschnitt</div></div></div>
+          <div class="trustbar-item"><i class="fas fa-bolt"></i><div><div class="label">Reaktion</div><div class="value">meist innerhalb 24 h</div></div></div>
+          <div class="trustbar-item"><i class="fas fa-shield-alt"></i><div><div class="label">Sicherheit</div><div class="value">5 Mio. € versichert</div></div></div>
+          <div class="trustbar-item"><i class="fas fa-hand-holding-heart"></i><div><div class="label">Service</div><div class="value">White-Glove mit Herz</div></div></div>
+        </div>
+        <div class="rl-footer-bottom">
+          <div>© 2026 Raphael Lezius · Mit Sorgfalt gemacht in Augsburg</div>
+          <div>
+            <a href="/legal/impressum.html">Impressum</a>
+            <a href="/legal/datenschutz.html">Datenschutz</a>
+            <a href="/legal/agb.html">AGB</a>
+          </div>
+          <div class="rl-footer-social">
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div style="text-align:center; margin-top:28px; font-size:0.88rem; color:var(--rl-dim);">
+          <i class="fas fa-heart" style="color:var(--rl-primary); margin-right:6px;"></i>
+          Danke, dass Sie sich die Zeit genommen haben. Es bedeutet mir viel.
+        </div>
+      </div>
+    </footer>
+      `;
+
+      // ── Helper: load component with cache + fallback ──
+      async function loadComponent(selector, url, fallbackHtml) {
+        const container = document.querySelector(selector);
+        if (!container) return;
+
+        // Try cache first
+        const cached = localStorage.getItem(url);
+        if (cached) {
+          container.innerHTML = cached;
+          // Still try to update in background
+          fetch(url)
+            .then(res => res.text())
+            .then(html => {
+              if (html && html.trim().length > 0) {
+                container.innerHTML = html;
+                localStorage.setItem(url, html);
+              }
+            })
+            .catch(() => {});
+          return;
+        }
+
+        // No cache – try fetch
+        try {
+          const response = await fetch(url);
+          if (!response.ok) throw new Error('Network error');
+          const html = await response.text();
+          if (html && html.trim().length > 0) {
+            container.innerHTML = html;
+            localStorage.setItem(url, html);
+            return;
+          }
+        } catch (error) {
+          // fall through
+        }
+
+        // Fallback: use inline HTML
+        if (fallbackHtml) {
+          container.innerHTML = fallbackHtml;
+          try { localStorage.setItem(url, fallbackHtml); } catch (e) {}
+        } else {
+          container.innerHTML = `<p style="color:red; text-align:center; padding:20px;">Komponente konnte nicht geladen werden.</p>`;
+        }
+      }
+
+      // ── Initialize when DOM is ready ──
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+      } else {
+        init();
+      }
+
+      function init() {
+        // Load nav and footer
+        loadComponent('#nav-placeholder', '/components/nav.html', NAV_FALLBACK);
+        loadComponent('#footer-placeholder', '/components/footer.html', FOOTER_FALLBACK);
+
+        // ── Re-bind mobile menu after components load ──
+        setTimeout(() => {
+          const navToggle = document.getElementById('navToggle');
+          const mobileMenu = document.getElementById('mobileMenu');
+          if (navToggle && mobileMenu) {
+            navToggle.addEventListener('click', function() {
+              const isOpen = mobileMenu.classList.toggle('open');
+              navToggle.setAttribute('aria-expanded', isOpen);
+              mobileMenu.setAttribute('aria-hidden', !isOpen);
+              document.body.style.overflow = isOpen ? 'hidden' : '';
             });
-            initMobileMenu();
-          })
-          .catch(() => console.warn('Nav could not be loaded'));
-      }
+            mobileMenu.querySelectorAll('a').forEach(link => {
+              link.addEventListener('click', function() {
+                mobileMenu.classList.remove('open');
+                navToggle.setAttribute('aria-expanded', 'false');
+                mobileMenu.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = '';
+              });
+            });
+          }
 
-      const footerPlaceholder = document.getElementById('footer-placeholder');
-      if (footerPlaceholder) {
-        fetch('/components/footer.html')
-          .then(res => res.text())
-          .then(html => footerPlaceholder.innerHTML = html)
-          .catch(() => {
-            footerPlaceholder.innerHTML = `
-              <footer class="rl-footer">
-                <div class="container" style="text-align:center; padding:48px 0; color:var(--rl-muted);">
-                  <p style="font-size:1.3rem; font-weight:700;">Raphael <span style="color:var(--rl-primary);">Lezius</span></p>
-                  <p style="font-size:0.95rem; margin-top:6px;">Präzision mit Herz · München & Augsburg</p>
-                  <div style="margin-top:18px; display:flex; gap:18px; justify-content:center; flex-wrap:wrap;">
-                    <a href="/legal/impressum.html">Impressum</a>
-                    <a href="/legal/datenschutz.html">Datenschutz</a>
-                    <a href="/legal/agb.html">AGB</a>
-                  </div>
-                  <p style="font-size:0.82rem; margin-top:22px;">© 2026 Raphael Lezius – Danke, dass Sie hier sind.</p>
-                </div>
-              </footer>`;
+          // ── Theme toggle re-bind ──
+          document.querySelectorAll('[data-theme-toggle]').forEach(btn => {
+            btn.removeEventListener('click', toggleTheme);
+            btn.addEventListener('click', toggleTheme);
           });
+
+          // ── Newsletter form (footer) ──
+          const form = document.getElementById('newsletterForm');
+          if (form) {
+            form.removeEventListener('submit', handleNewsletter);
+            form.addEventListener('submit', handleNewsletter);
+          }
+
+          // ── Active section highlighting (from existing code) ──
+          updateActiveSection();
+        }, 50);
       }
-    })();
 
-    // ── THEME ──
-    const html = document.documentElement;
-    const STORAGE_KEY = 'rl-theme';
-
-    function getPreferredTheme() {
-      const stored = localStorage.getItem(STORAGE_KEY);
-      if (stored) return stored;
-      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    }
-
-    function setTheme(theme) {
-      html.setAttribute('data-theme', theme);
-      localStorage.setItem(STORAGE_KEY, theme);
-      document.querySelectorAll('[data-theme-icon]').forEach(icon => {
-        icon.className = theme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
-      });
-      const meta = document.getElementById('themeColorMeta');
-      if (meta) meta.content = theme === 'dark' ? '#0B0A09' : '#F8F5F0';
-    }
-
-    function toggleTheme() {
-      const current = html.getAttribute('data-theme') || 'dark';
-      setTheme(current === 'dark' ? 'light' : 'dark');
-    }
-
-    setTheme(getPreferredTheme());
-
-    // ── MOBILE MENU ──
-    function initMobileMenu() {
-      const navToggle = document.getElementById('navToggle');
-      const mobileMenu = document.getElementById('mobileMenu');
-      if (!navToggle || !mobileMenu) return;
-
-      navToggle.addEventListener('click', () => {
-        const isOpen = mobileMenu.classList.toggle('open');
-        navToggle.setAttribute('aria-expanded', isOpen);
-        mobileMenu.setAttribute('aria-hidden', !isOpen);
-        document.body.style.overflow = isOpen ? 'hidden' : '';
-      });
-
-      mobileMenu.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-          mobileMenu.classList.remove('open');
-          navToggle.setAttribute('aria-expanded', 'false');
-          mobileMenu.setAttribute('aria-hidden', 'true');
-          document.body.style.overflow = '';
+      // ── Theme toggle function ──
+      function toggleTheme() {
+        const html = document.documentElement;
+        const current = html.getAttribute('data-theme') || 'dark';
+        const next = current === 'dark' ? 'light' : 'dark';
+        html.setAttribute('data-theme', next);
+        localStorage.setItem('rl-theme', next);
+        document.querySelectorAll('[data-theme-icon]').forEach(icon => {
+          icon.className = next === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
         });
-      });
-    }
+        const meta = document.getElementById('themeColorMeta');
+        if (meta) meta.content = next === 'dark' ? '#0B0A09' : '#F8F5F0';
+      }
 
-    // ── ACTIVE SECTION ──
-    const sections = document.querySelectorAll('section[id]');
-    window.addEventListener('scroll', () => {
-      let current = '';
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop - 120;
-        if (window.scrollY >= sectionTop) current = section.getAttribute('id');
-      });
-      document.querySelectorAll('.nav-link[data-section]').forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('data-section') === current) link.classList.add('active');
-      });
-    }, { passive: true });
+      // ── Newsletter handler ──
+      function handleNewsletter(e) {
+        e.preventDefault();
+        const btn = this.querySelector('button');
+        const original = btn.innerHTML;
+        btn.innerHTML = '<i class="fas fa-check"></i> Willkommen an Bord!';
+        btn.style.background = 'var(--rl-gradient-hover)';
+        setTimeout(() => {
+          btn.innerHTML = original;
+          this.reset();
+        }, 2800);
+      }
 
+      // ── Active section highlight ──
+      function updateActiveSection() {
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link[data-section]');
+        let current = '';
+        const scrollPos = window.scrollY + 120;
+        sections.forEach(section => {
+          const top = section.offsetTop;
+          const height = section.offsetHeight;
+          if (scrollPos >= top && scrollPos < top + height) {
+            current = section.getAttribute('id');
+          }
+        });
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('data-section') === current) {
+            link.classList.add('active');
+          }
+        });
+      }
+
+      // ── Also fix theme on load (if saved) ──
+      const savedTheme = localStorage.getItem('rl-theme');
+      if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        document.querySelectorAll('[data-theme-icon]').forEach(icon => {
+          icon.className = savedTheme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
+        });
+      }
+
+      // ── Re-run active section on scroll ──
+      window.addEventListener('scroll', updateActiveSection, { passive: true });
+
+      // ── Existing hero search, counters, etc. remain from original page ──
+      // (The existing inline script already handles those; we keep them below)
+
+    })();
+  </script>
+
+  <!-- ============================================================ -->
+  <!-- EXISTING PAGE-SPECIFIC SCRIPTS (from your original)          -->
+  <!-- ============================================================ -->
+  <script>
     // ── HERO SEARCH ──
     document.getElementById('heroSearchBtn')?.addEventListener('click', () => {
       const query = document.getElementById('heroSearch')?.value.trim();
@@ -692,7 +1037,7 @@
       });
     });
 
-    console.log('✨ Raphael Lezius – Quiet Ember 2.0 loaded');
+    console.log('✨ Raphael Lezius – Quiet Ember 2.0 mit voller Navigation');
   </script>
 </body>
 </html>
