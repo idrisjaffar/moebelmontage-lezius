@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kontakt · Raphael Lezius – Premium Montage München & Augsburg</title>
+  <meta name="theme-color" content="#0B0A09" id="themeColorMeta">
+  <meta name="description" content="Kontaktieren Sie Raphael Lezius für Premium Montagen in München & Augsburg. Telefon, WhatsApp, E-Mail oder Kontaktformular – ich freue mich auf Ihre Anfrage.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="assets/css/global.css">
+
+  <!-- Page-specific styles (Meituan-style dense) -->
+  <style>
+    /* ── Contact Hero ── */
+    .contact-hero {
+      padding: calc(var(--rl-nav-height) + 60px) 0 50px;
+      background:
+        radial-gradient(ellipse 60% 50% at 10% 30%, rgba(212, 165, 116, 0.07), transparent 55%),
+        radial-gradient(ellipse 50% 40% at 90% 70%, rgba(124, 154, 146, 0.03), transparent 50%),
+        var(--rl-bg);
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+    .contact-hero .hero-glow {
+      position: absolute;
+      width: 450px;
+      height: 450px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(212, 165, 116, 0.05) 0%, transparent 70%);
+      top: -180px;
+      right: -80px;
+      pointer-events: none;
+      animation: soft-pulse 10s ease-in-out infinite;
+    }
+    @keyframes soft-pulse {
+      0%, 100% { transform: scale(1); opacity: 0.6; }
+      50% { transform: scale(1.15); opacity: 1; }
+    }
+    .contact-hero .breadcrumb {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: var(--rl-dim);
+      font-family: var(--font-mono);
+      margin-bottom: 16px;
+    }
+    .contact-hero .breadcrumb a {
+      color: var(--rl-primary);
+      transition: color 0.3s;
+    }
+    .contact-hero .breadcrumb a:hover {
+      color: var(--rl-primary-hover);
+    }
+    .contact-hero .breadcrumb .sep {
+      opacity: 0.3;
+    }
+    .contact-hero h1 {
+      font-family: var(--font-head);
+      font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+      font-weight: 800;
+      letter-spacing: -1.2px;
+      line-height: 1.12;
+      margin-bottom: 10px;
+    }
+    .contact-hero h1 .gold {
+      color: var(--rl-primary);
+    }
+    .contact-hero .subhead {
+      font-size: 1.05rem;
+      color: var(--rl-muted);
+      max-width: 520px;
+      margin: 0 auto 28px;
+      line-height: 1.6;
+    }
+    .contact-hero .btn-group {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ── Contact Grid (Meituan-style dense) ── */
+    .contact-grid-section {
+      padding: 40px 0 70px;
+    }
+    .contact-main-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 30px;
+    }
+
+    /* ── Form Side ── */
+    .contact-form-card {
+      background: var(--rl-card);
+      border: 1px solid var(--rl-border);
+      border-radius: var(--rl-radius);
+      padding: 32px 30px;
+    }
+    .contact-form-card h2 {
+      font-family: var(--font-head);
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .contact-form-card .form-subtitle {
+      font-size: 0.92rem;
+      color: var(--rl-muted);
+      margin-bottom: 24px;
+    }
+    .contact-form-card .form-group {
+      margin-bottom: 18px;
+    }
+    .contact-form-card .form-group label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--rl-muted);
+      margin-bottom: 5px;
+      font-family: var(--font-mono);
+      letter-spacing: 0.3px;
+    }
+    .contact-form-card .form-group label .required {
+      color: var(--rl-primary);
+      margin-left: 2px;
+    }
+    .contact-form-card .form-group input,
+    .contact-form-card .form-group select,
+    .contact-form-card .form-group textarea {
+      width: 100%;
+      padding: 12px 16px;
+      background: var(--rl-bg);
+      border: 1px solid var(--rl-border);
+      border-radius: 10px;
+      color: var(--rl-text);
+      font-size: 0.95rem;
+      font-family: var(--font-body);
+      transition: border-color 0.3s, box-shadow 0.3s;
+      outline: none;
+    }
+    .contact-form-card .form-group input:focus,
+    .contact-form-card .form-group select:focus,
+    .contact-form-card .form-group textarea:focus {
+      border-color: var(--rl-primary);
+      box-shadow: 0 0 0 3px rgba(212, 165, 116, 0.1);
+    }
+    .contact-form-card .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+    .contact-form-card .form-group select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23A39E93' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      cursor: pointer;
+    }
+    .contact-form-card .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .contact-form-card .form-consent {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin: 20px 0 16px;
+    }
+    .contact-form-card .form-consent input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      margin-top: 3px;
+      accent-color: var(--rl-primary);
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+    .contact-form-card .form-consent label {
+      font-size: 0.82rem;
+      color: var(--rl-muted);
+      line-height: 1.5;
+      cursor: pointer;
+    }
+    .contact-form-card .form-consent label a {
+      color: var(--rl-primary);
+      text-decoration: underline;
+    }
+    .contact-form-card .btn-submit {
+      width: 100%;
+      padding: 15px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      border-radius: 12px;
+      background: var(--rl-gradient-cta);
+      color: #1C1917;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s var(--ease);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .contact-form-card .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(212, 165, 116, 0.3);
+    }
+
+    /* ── Info Side ── */
+    .contact-info-side {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .info-card {
+      background: var(--rl-card);
+      border: 1px solid var(--rl-border);
+      border-radius: var(--rl-radius);
+      padding: 24px 22px;
+    }
+    .info-card .card-title {
+      font-family: var(--font-head);
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .info-card .card-title i {
+      color: var(--rl-primary);
+      font-size: 1.1rem;
+    }
+    .info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--rl-border);
+    }
+    .info-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    .info-item .icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(212, 165, 116, 0.08);
+      display: grid;
+      place-items: center;
+      color: var(--rl-primary);
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+    .info-item .content .label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--rl-dim);
+      font-family: var(--font-mono);
+      display: block;
+    }
+    .info-item .content .value {
+      font-size: 0.95rem;
+      color: var(--rl-text);
+      font-weight: 500;
+      display: block;
+      margin-top: 1px;
+    }
+    .info-item .content .value a {
+      color: var(--rl-text);
+      transition: color 0.3s;
+    }
+    .info-item .content .value a:hover {
+      color: var(--rl-primary);
+    }
+    .info-item .content .sub {
+      font-size: 0.78rem;
+      color: var(--rl-muted);
+      display: block;
+    }
+
+    /* ── Business Hours (dense) ── */
+    .hours-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px 16px;
+    }
+    .hours-grid .hour-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.88rem;
+      padding: 5px 0;
+      color: var(--rl-muted);
+      border-bottom: 1px solid var(--rl-border);
+    }
+    .hours-grid .hour-row .day {
+      font-weight: 500;
+      color: var(--rl-text);
+    }
+    .hours-grid .hour-row .time {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+    }
+    .hours-grid .hour-row.today {
+      color: var(--rl-primary);
+    }
+    .hours-grid .hour-row.today .day,
+    .hours-grid .hour-row.today .time {
+      color: var(--rl-primary);
+      font-weight: 700;
+    }
+
+    /* ── Emergency / Quick Contact ── */
+    .emergency-card {
+      background: rgba(212, 165, 116, 0.04);
+      border: 1px solid rgba(212, 165, 116, 0.12);
+    }
+    .emergency-card .card-title i {
+      color: #e74c3c;
+    }
+    .emergency-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .emergency-item {
+      background: var(--rl-bg);
+      border-radius: 10px;
+      padding: 14px 16px;
+      text-align: center;
+      transition: all 0.3s;
+      border: 1px solid transparent;
+    }
+    .emergency-item:hover {
+      border-color: rgba(212, 165, 116, 0.2);
+    }
+    .emergency-item .icon {
+      font-size: 1.4rem;
+      color: var(--rl-primary);
+      display: block;
+      margin-bottom: 4px;
+    }
+    .emergency-item .label {
+      font-size: 0.7rem;
+      color: var(--rl-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      font-family: var(--font-mono);
+      display: block;
+    }
+    .emergency-item .value {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--rl-text);
+      display: block;
+      margin-top: 2px;
+    }
+
+    /* ── Map ── */
+    .map-section {
+      padding: 10px 0 70px;
+    }
+    .map-wrapper {
+      border-radius: var(--rl-radius);
+      overflow: hidden;
+      border: 1px solid var(--rl-border);
+      background: var(--rl-card);
+      aspect-ratio: 16/6;
+      min-height: 240px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--rl-muted);
+      font-size: 0.95rem;
+      position: relative;
+    }
+    .map-wrapper iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    .map-wrapper .map-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+    .map-wrapper .map-placeholder i {
+      font-size: 2.8rem;
+      color: var(--rl-primary);
+      opacity: 0.4;
+    }
+
+    /* ── Mini FAQ (Meituan-style) ── */
+    .faq-mini-section {
+      padding: 30px 0 60px;
+      border-top: 1px solid var(--rl-border);
+    }
+    .faq-mini-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 20px;
+      margin-top: 24px;
+    }
+    .faq-mini-item {
+      background: var(--rl-card);
+      border: 1px solid var(--rl-border);
+      border-radius: var(--rl-radius);
+      padding: 20px 22px;
+      transition: all 0.3s;
+    }
+    .faq-mini-item:hover {
+      border-color: rgba(212, 165, 116, 0.2);
+      transform: translateY(-2px);
+    }
+    .faq-mini-item .q {
+      font-weight: 700;
+      font-size: 0.92rem;
+      color: var(--rl-text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .faq-mini-item .q i {
+      color: var(--rl-primary);
+      font-size: 0.8rem;
+    }
+    .faq-mini-item .a {
+      font-size: 0.88rem;
+      color: var(--rl-muted);
+      margin-top: 8px;
+      line-height: 1.5;
+    }
+    .faq-mini-item .a a {
+      color: var(--rl-primary);
+      text-decoration: underline;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 992px) {
+      .contact-main-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      .contact-form-card {
+        order: 2;
+      }
+      .contact-info-side {
+        order: 1;
+      }
+      .faq-mini-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    @media (max-width: 600px) {
+      .contact-hero {
+        padding: calc(var(--rl-nav-height) + 40px) 0 30px;
+      }
+      .contact-form-card {
+        padding: 20px 16px;
+      }
+      .contact-form-card .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+      .hours-grid {
+        grid-template-columns: 1fr;
+      }
+      .emergency-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .faq-mini-grid {
+        grid-template-columns: 1fr;
+      }
+      .map-wrapper {
+        aspect-ratio: 16/10;
+        min-height: 180px;
+      }
+      .info-card {
+        padding: 18px 16px;
+      }
+      .contact-form-card .btn-submit {
+        font-size: 0.95rem;
+        padding: 13px;
+      }
+    }
+    @media (max-width: 400px) {
+      .emergency-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ── Reveal ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.7s var(--ease);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Custom Cursor -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- Scroll Progress -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- WhatsApp Float -->
+  <a href="https://wa.me/491608194018" target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="WhatsApp schreiben">
+    <span class="pulse-ring"></span>
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- Sticky CTA -->
+  <div class="sticky-cta" id="stickyCta">
+    <a href="/anfrage/" class="btn btn-primary magnetic-btn">
+      <i class="fas fa-comments"></i> Kostenloses Gespräch
+    </a>
+  </div>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" id="backToTop" aria-label="Nach oben">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <!-- Floating social proof -->
+  <div class="floating-badge" id="floatingBadge">
+    <div class="stars">
+      <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+    </div>
+    <div class="text">
+      <span class="highlight">110+</span> Menschen haben mir ihr Zuhause anvertraut
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- NAVIGATION PLACEHOLDER                                        -->
+  <!-- ============================================================ -->
+  <div id="nav-placeholder"></div>
+
+  <!-- ============================================================ -->
+  <!-- MAIN CONTENT                                                 -->
+  <!-- ============================================================ -->
+  <main>
+
+    <!-- ==================== HERO ==================== -->
+    <section class="contact-hero">
+      <div class="hero-glow"></div>
+      <div class="container">
+        <div class="breadcrumb reveal">
+          <a href="/">Start</a>
+          <span class="sep">/</span>
+          <span style="color:var(--rl-text);">Kontakt</span>
+        </div>
+
+        <h1 class="reveal">
+          Lassen Sie uns <span class="gold">sprechen</span>
+        </h1>
+
+        <p class="subhead reveal">
+          Sie haben ein Projekt, eine Frage oder möchten einfach nur einen unverbindlichen Austausch?<br>
+          Ich freue mich auf Ihre Nachricht – und antworte meist innerhalb weniger Stunden.
+        </p>
+
+        <div class="btn-group reveal">
+          <a href="#contact-form" class="btn btn-primary magnetic-btn">
+            <i class="fas fa-arrow-down"></i> Nachricht schreiben
+          </a>
+          <a href="tel:+491608194018" class="btn btn-secondary magnetic-btn">
+            <i class="fas fa-phone"></i> +49 160 8194018
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CONTACT GRID ==================== -->
+    <section class="contact-grid-section" id="contact-form">
+      <div class="container">
+        <div class="contact-main-grid">
+
+          <!-- ── FORM SIDE ── -->
+          <div class="contact-form-card reveal">
+            <h2>Ihre Nachricht an mich</h2>
+            <p class="form-subtitle">Alle Felder mit <span style="color:var(--rl-primary);">*</span> sind erforderlich. Ich antworte Ihnen garantiert.</p>
+
+            <form id="contactForm" onsubmit="handleContactForm(event)">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="firstName">Vorname <span class="required">*</span></label>
+                  <input type="text" id="firstName" name="firstName" placeholder="z.B. Anna" required>
+                </div>
+                <div class="form-group">
+                  <label for="lastName">Nachname <span class="required">*</span></label>
+                  <input type="text" id="lastName" name="lastName" placeholder="z.B. Schmidt" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="email">E-Mail-Adresse <span class="required">*</span></label>
+                <input type="email" id="email" name="email" placeholder="ihre@email.de" required>
+              </div>
+
+              <div class="form-group">
+                <label for="phone">Telefonnummer</label>
+                <input type="tel" id="phone" name="phone" placeholder="+49 160 1234567">
+              </div>
+
+              <div class="form-group">
+                <label for="service">Welcher Service interessiert Sie?</label>
+                <select id="service" name="service">
+                  <option value="">– Bitte wählen –</option>
+                  <option value="moebel-kuechen">Möbel &amp; Küchen</option>
+                  <option value="usm-haller">USM Haller</option>
+                  <option value="garten-outdoor">Garten &amp; Outdoor</option>
+                  <option value="demontage-umzug">Demontage &amp; Umzug</option>
+                  <option value="buero-objekt">Büro &amp; Objekt</option>
+                  <option value="premium-pro">Premium Pro</option>
+                  <option value="other">Sonstiges / Individuell</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="message">Ihre Nachricht <span class="required">*</span></label>
+                <textarea id="message" name="message" placeholder="Beschreiben Sie kurz Ihr Projekt, Ihre Wünsche oder Ihre Fragen …" required></textarea>
+              </div>
+
+              <div class="form-consent">
+                <input type="checkbox" id="consent" required>
+                <label for="consent">
+                  Ich habe die <a href="/legal/datenschutz.html">Datenschutzerklärung</a> gelesen und stimme zu, dass meine Daten zur Kontaktaufnahme verarbeitet werden.
+                </label>
+              </div>
+
+              <button type="submit" class="btn-submit magnetic-btn">
+                <i class="fas fa-paper-plane"></i> Nachricht senden
+              </button>
+            </form>
+          </div>
+
+          <!-- ── INFO SIDE ── -->
+          <div class="contact-info-side">
+
+            <!-- Quick Contact -->
+            <div class="info-card reveal">
+              <div class="card-title"><i class="fas fa-address-card"></i> Direkt kontaktieren</div>
+
+              <div class="info-item">
+                <div class="icon"><i class="fas fa-phone"></i></div>
+                <div class="content">
+                  <span class="label">Telefon</span>
+                  <span class="value"><a href="tel:+491608194018">+49 160 8194018</a></span>
+                  <span class="sub">Mo–Fr, 8:00–18:00 Uhr</span>
+                </div>
+              </div>
+
+              <div class="info-item">
+                <div class="icon"><i class="fab fa-whatsapp"></i></div>
+                <div class="content">
+                  <span class="label">WhatsApp</span>
+                  <span class="value"><a href="https://wa.me/491608194018" target="_blank" rel="noopener">+49 160 8194018</a></span>
+                  <span class="sub">Auch für schnelle Fragen – gerne!</span>
+                </div>
+              </div>
+
+              <div class="info-item">
+                <div class="icon"><i class="fas fa-envelope"></i></div>
+                <div class="content">
+                  <span class="label">E-Mail</span>
+                  <span class="value"><a href="mailto:info@raphaellezius.de">info@raphaellezius.de</a></span>
+                  <span class="sub">Antwort innerhalb 24 h</span>
+                </div>
+              </div>
+
+              <div class="info-item">
+                <div class="icon"><i class="fas fa-map-pin"></i></div>
+                <div class="content">
+                  <span class="label">Einsatzgebiet</span>
+                  <span class="value">München &amp; Augsburg</span>
+                  <span class="sub">sowie Umgebung auf Anfrage</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Business Hours -->
+            <div class="info-card reveal">
+              <div class="card-title"><i class="fas fa-clock"></i> Öffnungszeiten</div>
+              <div class="hours-grid">
+                <div class="hour-row"><span class="day">Montag</span><span class="time">8:00 – 18:00</span></div>
+                <div class="hour-row"><span class="day">Dienstag</span><span class="time">8:00 – 18:00</span></div>
+                <div class="hour-row"><span class="day">Mittwoch</span><span class="time">8:00 – 18:00</span></div>
+                <div class="hour-row"><span class="day">Donnerstag</span><span class="time">8:00 – 18:00</span></div>
+                <div class="hour-row"><span class="day">Freitag</span><span class="time">8:00 – 18:00</span></div>
+                <div class="hour-row today"><span class="day">Heute</span><span class="time">8:00 – 18:00</span></div>
+                <div class="hour-row"><span class="day">Samstag</span><span class="time">Nach Vereinbarung</span></div>
+                <div class="hour-row"><span class="day">Sonntag</span><span class="time">Geschlossen</span></div>
+              </div>
+            </div>
+
+            <!-- Emergency / Quick Actions -->
+            <div class="info-card emergency-card reveal">
+              <div class="card-title"><i class="fas fa-bolt"></i> Schnelle Hilfe</div>
+              <div class="emergency-grid">
+                <a href="tel:+491608194018" class="emergency-item" style="text-decoration:none;">
+                  <span class="icon"><i class="fas fa-phone-alt"></i></span>
+                  <span class="label">Anrufen</span>
+                  <span class="value">+49 160 8194018</span>
+                </a>
+                <a href="https://wa.me/491608194018" target="_blank" rel="noopener" class="emergency-item" style="text-decoration:none;">
+                  <span class="icon"><i class="fab fa-whatsapp"></i></span>
+                  <span class="label">WhatsApp</span>
+                  <span class="value">Jetzt schreiben</span>
+                </a>
+                <a href="mailto:info@raphaellezius.de" class="emergency-item" style="text-decoration:none;">
+                  <span class="icon"><i class="fas fa-envelope"></i></span>
+                  <span class="label">E-Mail</span>
+                  <span class="value">info@raphaellezius.de</span>
+                </a>
+                <a href="/anfrage/" class="emergency-item" style="text-decoration:none;">
+                  <span class="icon"><i class="fas fa-comments"></i></span>
+                  <span class="label">Anfrage</span>
+                  <span class="value">Kostenlos & unverbindlich</span>
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== MAP ==================== -->
+    <section class="map-section">
+      <div class="container">
+        <div class="map-wrapper reveal">
+          <!-- Replace src with your actual Google Maps embed URL -->
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2663.0!2d10.898!3d48.370!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479e75e5e5e5e5e5%3A0x1234567890abcdef!2sAugsburg!5e0!3m2!1sde!2sde!4v1700000000000" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== MINI FAQ (Meituan-style) ==================== -->
+    <section class="faq-mini-section">
+      <div class="container">
+        <div class="section-header reveal" style="margin-bottom:8px;">
+          <span class="pre">Häufig gestellte Fragen</span>
+          <h2>Das fragen mich <span class="gold">meine Kunden</span></h2>
+          <p>Kurze Antworten auf die wichtigsten Fragen – direkt vorab.</p>
+        </div>
+
+        <div class="faq-mini-grid">
+          <div class="faq-mini-item reveal">
+            <div class="q"><i class="fas fa-question-circle"></i> Wie schnell kann ich einen Termin bekommen?</div>
+            <div class="a">In der Regel innerhalb von 1–3 Werktagen. Bei akuten Anliegen (z.B. Umzug) auch kurzfristig möglich – einfach anrufen!</div>
+          </div>
+          <div class="faq-mini-item reveal">
+            <div class="q"><i class="fas fa-question-circle"></i> Was kostet eine Montage?</div>
+            <div class="a">Das hängt von Umfang und Komplexität ab. Ein USM Haller Schrank beginnt bei 189 €, eine Küchenmontage bei 349 €. <a href="/services.html">Hier</a> finden Sie alle Preise.</div>
+          </div>
+          <div class="faq-mini-item reveal">
+            <div class="q"><i class="fas fa-question-circle"></i> Kommen Sie auch zu mir nach Hause?</div>
+            <div class="a">Ja! Ich bin in München und Augsburg unterwegs – und bei größeren Projekten auch im weiteren Umkreis. Sprechen Sie mich einfach an.</div>
+          </div>
+          <div class="faq-mini-item reveal">
+            <div class="q"><i class="fas fa-question-circle"></i> Sind Sie versichert?</div>
+            <div class="a">Ja, ich bin mit 5 Mio. € Haftpflicht versichert. Ihr Zuhause und Ihre Möbel sind bei mir in besten Händen.</div>
+          </div>
+          <div class="faq-mini-item reveal">
+            <div class="q"><i class="fas fa-question-circle"></i> Was, wenn ich nicht zufrieden bin?</div>
+            <div class="a">Dann rufe ich an und mache es besser. Alles, was ich mache, steht unter meiner persönlichen 1‑Jahres‑Garantie. Ihr Vertrauen ist mir wichtiger als alles andere.</div>
+          </div>
+          <div class="faq-mini-item reveal">
+            <div class="q"><i class="fas fa-question-circle"></i> Kann ich auch nur beraten werden?</div>
+            <div class="a">Selbstverständlich! Das unverbindliche Gespräch ist kostenlos. <a href="/anfrage/">Hier</a> können Sie direkt einen Termin vereinbaren.</div>
+          </div>
+        </div>
+
+        <div style="text-align:center; margin-top:40px;" class="reveal">
+          <a href="/faq.html" class="btn btn-secondary magnetic-btn">
+            <i class="fas fa-arrow-right"></i> Zur vollständigen FAQ
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================ -->
+  <!-- FOOTER PLACEHOLDER                                            -->
+  <!-- ============================================================ -->
+  <div id="footer-placeholder"></div>
+
+  <!-- ============================================================ -->
+  <!-- COMPONENT LOADER – with fallback embedded                    -->
+  <!-- ============================================================ -->
+  <script>
+    /* ============================================================
+       RAPHAEL LEZIUS – Component Loader v2.0
+       Loads nav & footer with localStorage cache + inline fallback
+       ============================================================ */
+
+    (function() {
+      'use strict';
+
+      const NAV_FALLBACK = `
+    <nav class="rl-nav" id="mainNav">
+      <div class="rl-nav__inner">
+        <a href="/" class="rl-nav__brand" aria-label="Zur Startseite">
+          Raphael <span>Lezius</span>
+          <span class="rl-nav__tagline">Präzision mit Herz</span>
+        </a>
+
+        <ul class="rl-nav__links">
+          <li><a href="/" class="nav-link">Willkommen</a></li>
+          <li class="nav-dropdown">
+            <a href="#" class="nav-link">Services <i class="fas fa-chevron-down" style="font-size:0.7rem; margin-left:4px;"></i></a>
+            <div class="nav-dropdown-content">
+              <a href="/services.html" style="font-weight:700; border-bottom:1px solid var(--rl-border); margin-bottom:6px; padding-bottom:10px;">
+                <i class="fas fa-th-list"></i> Alle Services im Überblick
+              </a>
+              <a href="/services/moebel-kuechen.html"><i class="fas fa-couch"></i> Möbel & Küchen</a>
+              <a href="/services/usm-haller.html"><i class="fas fa-gem"></i> USM Haller</a>
+              <a href="/services/garten-outdoor.html"><i class="fas fa-tree"></i> Garten & Outdoor</a>
+              <a href="/services/demontage-umzug.html"><i class="fas fa-truck"></i> Demontage & Umzug</a>
+              <a href="/services/buero-objekt.html"><i class="fas fa-building"></i> Büro & Objekt</a>
+              <a href="/services/premium-pro.html"><i class="fas fa-crown"></i> Premium Pro</a>
+            </div>
+          </li>
+          <li class="nav-dropdown">
+            <a href="#" class="nav-link">Bundles <i class="fas fa-chevron-down" style="font-size:0.7rem; margin-left:4px;"></i></a>
+            <div class="nav-dropdown-content">
+              <a href="/bundles/kuechen-komplett.html"><i class="fas fa-utensils"></i> Küchen-Komplett</a>
+              <a href="/bundles/usm-all-in.html"><i class="fas fa-gem"></i> USM All-In</a>
+              <a href="/bundles/umzug-premium.html"><i class="fas fa-truck"></i> Umzug Premium</a>
+            </div>
+          </li>
+          <li><a href="/about.html" class="nav-link">Über mich</a></li>
+          <li><a href="/reviews.html" class="nav-link">Ihre Stimmen</a></li>
+          <li><a href="/contact.html" class="nav-link active">Kontakt</a></li>
+          <li><a href="/anfrage/" class="cta magnetic-btn"><i class="fas fa-comments"></i> Kostenloses Gespräch</a></li>
+        </ul>
+
+        <div class="rl-nav__actions">
+          <button class="theme-toggle" data-theme-toggle aria-label="Design umschalten">
+            <i class="fas fa-moon" data-theme-icon></i>
+          </button>
+          <button class="rl-nav__hamburger" id="navToggle" aria-label="Menü öffnen" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </nav>
+    <div class="rl-nav__mobile" id="mobileMenu" aria-hidden="true">
+      <div class="mobile-menu-inner">
+        <a href="/" class="mobile-link">Willkommen</a>
+        <a href="/services.html" class="mobile-link" style="font-weight:700; border-top:1px solid var(--rl-border); padding-top:12px; margin-top:4px;"><i class="fas fa-th-list"></i> Alle Services</a>
+        <a href="/#services" class="mobile-link">Services</a>
+        <a href="/#bundles" class="mobile-link">Bundles</a>
+        <a href="/about.html" class="mobile-link">Über mich</a>
+        <a href="/reviews.html" class="mobile-link">Ihre Stimmen</a>
+        <a href="/contact.html" class="mobile-link" style="color:var(--rl-primary);">Kontakt</a>
+        <a href="/services/moebel-kuechen.html" class="mobile-link">– Möbel & Küchen</a>
+        <a href="/services/usm-haller.html" class="mobile-link">– USM Haller</a>
+        <a href="/services/garten-outdoor.html" class="mobile-link">– Garten & Outdoor</a>
+        <a href="/services/demontage-umzug.html" class="mobile-link">– Demontage & Umzug</a>
+        <a href="/services/buero-objekt.html" class="mobile-link">– Büro & Objekt</a>
+        <a href="/services/premium-pro.html" class="mobile-link">– Premium Pro</a>
+        <a href="/bundles/kuechen-komplett.html" class="mobile-link">– Küchen-Komplett</a>
+        <a href="/bundles/usm-all-in.html" class="mobile-link">– USM All-In</a>
+        <a href="/bundles/umzug-premium.html" class="mobile-link">– Umzug Premium</a>
+        <a href="/anfrage/" class="mobile-cta magnetic-btn"><i class="fas fa-comments"></i> Kostenloses Gespräch starten</a>
+        <div class="mobile-extra">
+          <p>Schön, dass Sie hier sind.</p>
+          <button class="theme-toggle" data-theme-toggle style="width:52px; height:52px; font-size:1.2rem; margin-top:16px;">
+            <i class="fas fa-moon" data-theme-icon></i>
+          </button>
+        </div>
+      </div>
+    </div>
+      `;
+
+      const FOOTER_FALLBACK = `
+    <footer class="rl-footer">
+      <div class="container">
+        <div class="rl-footer-top">
+          <div class="rl-footer-brand">
+            <div class="logo">Raphael <span>Lezius</span></div>
+            <p>Ich freue mich, dass Sie hier sind.<br>Premium Montage mit echter Leidenschaft – millimetergenau, staubfrei und immer mit Herz.</p>
+            <div class="rl-footer-trust">
+              <span><i class="fas fa-shield-alt"></i> 5 Mio. € versichert</span>
+              <span><i class="fas fa-star"></i> 5.0 ★ von 110+ Menschen</span>
+              <span><i class="fas fa-clock"></i> Antwort innerhalb 24 h</span>
+              <span><i class="fas fa-heart"></i> 1 Jahr persönliche Garantie</span>
+            </div>
+          </div>
+          <div class="rl-footer-newsletter">
+            <h4><i class="fas fa-envelope-open-text" style="color:var(--rl-primary)"></i> Bleiben Sie in Verbindung</h4>
+            <p>Einmal im Monat sende ich Ihnen nützliche Tipps und exklusive Angebote – nur wenn Sie möchten.</p>
+            <form class="newsletter-form" id="newsletterForm">
+              <input type="email" placeholder="Ihre E-Mail-Adresse" required aria-label="E-Mail für Newsletter" />
+              <button type="submit" class="magnetic-btn">Gerne dabei sein</button>
+            </form>
+            <div class="newsletter-consent">
+              <input type="checkbox" id="consent" required />
+              <label for="consent">Ich stimme der <a href="/legal/datenschutz.html" style="color:var(--rl-primary); text-decoration:underline;">Datenschutzerklärung</a> zu und freue mich auf Ihre Nachrichten.</label>
+            </div>
+          </div>
+        </div>
+        <div class="rl-footer-grid">
+          <div class="rl-footer-col">
+            <h5>Services</h5>
+            <a href="/services/moebel-kuechen.html">Möbel & Küchen</a>
+            <a href="/services/usm-haller.html">USM Haller Spezialist</a>
+            <a href="/services/garten-outdoor.html">Garten & Outdoor</a>
+            <a href="/services/demontage-umzug.html">Demontage & Umzug</a>
+            <a href="/services/buero-objekt.html">Büro & Objekt</a>
+            <a href="/services/premium-pro.html">Premium Pro Service</a>
+          </div>
+          <div class="rl-footer-col">
+            <h5>Bundles</h5>
+            <a href="/bundles/kuechen-komplett.html">Küchen-Komplett</a>
+            <a href="/bundles/usm-all-in.html">USM All-In</a>
+            <a href="/bundles/umzug-premium.html">Umzug Premium</a>
+          </div>
+          <div class="rl-footer-col">
+            <h5>Über & Hilfe</h5>
+            <a href="/about.html">Über mich</a>
+            <a href="/reviews.html">Kundenstimmen</a>
+            <a href="/faq.html">FAQ</a>
+            <a href="/contact.html">Kontakt</a>
+            <a href="/anfrage/">Kostenloses Gespräch</a>
+          </div>
+          <div class="rl-footer-col">
+            <h5>Rechtliches</h5>
+            <a href="/legal/impressum.html">Impressum</a>
+            <a href="/legal/datenschutz.html">Datenschutz</a>
+            <a href="/legal/agb.html">AGB</a>
+            <a href="/legal/widerruf.html">Widerruf</a>
+            <a href="/legal/cookie.html">Cookie-Richtlinie</a>
+          </div>
+        </div>
+        <div class="rl-footer-trustbar">
+          <div class="trustbar-item"><i class="fas fa-users"></i><div><div class="label">Vertrauen</div><div class="value">110+ glückliche Kunden</div></div></div>
+          <div class="trustbar-item"><i class="fas fa-star"></i><div><div class="label">Bewertung</div><div class="value">5.0 ★ Durchschnitt</div></div></div>
+          <div class="trustbar-item"><i class="fas fa-bolt"></i><div><div class="label">Reaktion</div><div class="value">meist innerhalb 24 h</div></div></div>
+          <div class="trustbar-item"><i class="fas fa-shield-alt"></i><div><div class="label">Sicherheit</div><div class="value">5 Mio. € versichert</div></div></div>
+          <div class="trustbar-item"><i class="fas fa-hand-holding-heart"></i><div><div class="label">Service</div><div class="value">White-Glove mit Herz</div></div></div>
+        </div>
+        <div class="rl-footer-bottom">
+          <div>© 2026 Raphael Lezius · Mit Sorgfalt gemacht in Augsburg</div>
+          <div>
+            <a href="/legal/impressum.html">Impressum</a>
+            <a href="/legal/datenschutz.html">Datenschutz</a>
+            <a href="/legal/agb.html">AGB</a>
+          </div>
+          <div class="rl-footer-social">
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div style="text-align:center; margin-top:28px; font-size:0.88rem; color:var(--rl-dim);">
+          <i class="fas fa-heart" style="color:var(--rl-primary); margin-right:6px;"></i>
+          Danke, dass Sie sich die Zeit genommen haben. Es bedeutet mir viel.
+        </div>
+      </div>
+    </footer>
+      `;
+
+      async function loadComponent(selector, url, fallbackHtml) {
+        const container = document.querySelector(selector);
+        if (!container) return;
+
+        const cached = localStorage.getItem(url);
+        if (cached) {
+          container.innerHTML = cached;
+          fetch(url)
+            .then(res => res.text())
+            .then(html => {
+              if (html && html.trim().length > 0) {
+                container.innerHTML = html;
+                localStorage.setItem(url, html);
+              }
+            })
+            .catch(() => {});
+          return;
+        }
+
+        try {
+          const response = await fetch(url);
+          if (!response.ok) throw new Error('Network error');
+          const html = await response.text();
+          if (html && html.trim().length > 0) {
+            container.innerHTML = html;
+            localStorage.setItem(url, html);
+            return;
+          }
+        } catch (error) {
+          // fall through
+        }
+
+        if (fallbackHtml) {
+          container.innerHTML = fallbackHtml;
+          try { localStorage.setItem(url, fallbackHtml); } catch (e) {}
+        } else {
+          container.innerHTML = `<p style="color:red; text-align:center; padding:20px;">Komponente konnte nicht geladen werden.</p>`;
+        }
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+      } else {
+        init();
+      }
+
+      function init() {
+        loadComponent('#nav-placeholder', '/components/nav.html', NAV_FALLBACK);
+        loadComponent('#footer-placeholder', '/components/footer.html', FOOTER_FALLBACK);
+
+        setTimeout(() => {
+          const navToggle = document.getElementById('navToggle');
+          const mobileMenu = document.getElementById('mobileMenu');
+          if (navToggle && mobileMenu) {
+            navToggle.addEventListener('click', function() {
+              const isOpen = mobileMenu.classList.toggle('open');
+              navToggle.setAttribute('aria-expanded', isOpen);
+              mobileMenu.setAttribute('aria-hidden', !isOpen);
+              document.body.style.overflow = isOpen ? 'hidden' : '';
+            });
+            mobileMenu.querySelectorAll('a').forEach(link => {
+              link.addEventListener('click', function() {
+                mobileMenu.classList.remove('open');
+                navToggle.setAttribute('aria-expanded', 'false');
+                mobileMenu.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = '';
+              });
+            });
+          }
+
+          document.querySelectorAll('[data-theme-toggle]').forEach(btn => {
+            btn.removeEventListener('click', toggleTheme);
+            btn.addEventListener('click', toggleTheme);
+          });
+
+          const form = document.getElementById('newsletterForm');
+          if (form) {
+            form.removeEventListener('submit', handleNewsletter);
+            form.addEventListener('submit', handleNewsletter);
+          }
+        }, 50);
+      }
+
+      function toggleTheme() {
+        const html = document.documentElement;
+        const current = html.getAttribute('data-theme') || 'dark';
+        const next = current === 'dark' ? 'light' : 'dark';
+        html.setAttribute('data-theme', next);
+        localStorage.setItem('rl-theme', next);
+        document.querySelectorAll('[data-theme-icon]').forEach(icon => {
+          icon.className = next === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
+        });
+        const meta = document.getElementById('themeColorMeta');
+        if (meta) meta.content = next === 'dark' ? '#0B0A09' : '#F8F5F0';
+      }
+
+      function handleNewsletter(e) {
+        e.preventDefault();
+        const btn = this.querySelector('button');
+        const original = btn.innerHTML;
+        btn.innerHTML = '<i class="fas fa-check"></i> Willkommen an Bord!';
+        btn.style.background = 'var(--rl-gradient-hover)';
+        setTimeout(() => {
+          btn.innerHTML = original;
+          this.reset();
+        }, 2800);
+      }
+
+      const savedTheme = localStorage.getItem('rl-theme');
+      if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        document.querySelectorAll('[data-theme-icon]').forEach(icon => {
+          icon.className = savedTheme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
+        });
+      }
+    })();
+  </script>
+
+  <!-- ============================================================ -->
+  <!-- PAGE-SPECIFIC SCRIPTS                                        -->
+  <!-- ============================================================ -->
+  <script>
+    // ── SCROLL PROGRESS + STICKY + BACK TO TOP ──
+    const progress = document.getElementById('scrollProgress');
+    const sticky = document.getElementById('stickyCta');
+    const backTop = document.getElementById('backToTop');
+
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const percent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      if (progress) progress.style.width = percent + '%';
+
+      if (scrollTop > 400) {
+        sticky?.classList.add('visible');
+        backTop?.classList.add('visible');
+      } else {
+        sticky?.classList.remove('visible');
+        backTop?.classList.remove('visible');
+      }
+    }, { passive: true });
+
+    backTop?.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // ── CUSTOM CURSOR ──
+    const dot = document.getElementById('cursorDot');
+    const ring = document.getElementById('cursorRing');
+    let mouseX = 0,
+      mouseY = 0,
+      ringX = 0,
+      ringY = 0;
+
+    if (dot && ring && window.matchMedia('(min-width: 769px)').matches) {
+      document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        dot.style.left = mouseX + 'px';
+        dot.style.top = mouseY + 'px';
+
+        document.querySelectorAll('.magnetic-btn').forEach(btn => {
+          const rect = btn.getBoundingClientRect();
+          const cx = rect.left + rect.width / 2;
+          const cy = rect.top + rect.height / 2;
+          const dx = e.clientX - cx;
+          const dy = e.clientY - cy;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 120) {
+            const strength = (120 - dist) / 120 * 4;
+            btn.style.transform = `translate(${dx * strength / 6}px, ${dy * strength / 6}px)`;
+          } else {
+            btn.style.transform = 'translate(0, 0)';
+          }
+        });
+      });
+
+      function animateRing() {
+        ringX += (mouseX - ringX) * 0.18;
+        ringY += (mouseY - ringY) * 0.18;
+        ring.style.left = ringX + 'px';
+        ring.style.top = ringY + 'px';
+        requestAnimationFrame(animateRing);
+      }
+      animateRing();
+
+      document.addEventListener('mouseover', (e) => {
+        if (e.target.closest('a, button, .btn, .magnetic-btn, .info-card, .faq-mini-item')) {
+          dot.classList.add('hovering');
+          ring.classList.add('hovering');
+        }
+      });
+      document.addEventListener('mouseout', (e) => {
+        if (e.target.closest('a, button, .btn, .magnetic-btn, .info-card, .faq-mini-item')) {
+          dot.classList.remove('hovering');
+          ring.classList.remove('hovering');
+        }
+      });
+    }
+
+    // ── REVEAL ON SCROLL ──
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // ── SMOOTH SCROLL ──
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        const target = document.querySelector(targetId);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // ── CONTACT FORM HANDLER ──
+    function handleContactForm(event) {
+      event.preventDefault();
+      const form = event.target;
+      const name = form.querySelector('#firstName').value + ' ' + form.querySelector('#lastName').value;
+      const email = form.querySelector('#email').value;
+
+      // Simulate sending
+      const btn = form.querySelector('.btn-submit');
+      const originalText = btn.innerHTML;
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Wird gesendet …';
+      btn.disabled = true;
+      btn.style.opacity = '0.7';
+
+      setTimeout(() => {
+        btn.innerHTML = '<i class="fas fa-check-circle"></i> Nachricht gesendet!';
+        btn.style.background = '#22c55e';
+        btn.style.color = '#fff';
+        btn.disabled = false;
+        btn.style.opacity = '1';
+
+        // Show a friendly success message
+        const successMsg = document.createElement('div');
+        successMsg.style.cssText = `
+              margin-top: 16px;
+              padding: 16px 20px;
+              background: rgba(34, 197, 94, 0.1);
+              border: 1px solid rgba(34, 197, 94, 0.3);
+              border-radius: 10px;
+              color: #22c55e;
+              font-weight: 500;
+              text-align: center;
+            `;
+        successMsg.innerHTML = `
+              <i class="fas fa-heart" style="color:var(--rl-primary);"></i>
+              Vielen Dank, ${name}! Ihre Nachricht wurde gesendet.<br>
+              Ich melde mich bei Ihnen innerhalb von 24 Stunden – versprochen.
+            `;
+        form.appendChild(successMsg);
+
+        // Reset after 5 seconds
+        setTimeout(() => {
+          btn.innerHTML = originalText;
+          btn.style.background = '';
+          btn.style.color = '';
+          form.reset();
+          // Remove success message
+          if (successMsg.parentNode) successMsg.remove();
+        }, 5000);
+      }, 1500);
+    }
+
+    console.log('✨ Raphael Lezius – Contact page loaded (Meituan-style dense)');
+  </script>
+</body>
+</html>

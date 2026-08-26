@@ -25,7 +25,7 @@
       position: relative;
       display: inline-block;
     }
-    .nav-dropdown > a {
+    .nav-dropdown>a {
       cursor: default;
     }
     .nav-dropdown-content {
@@ -121,6 +121,37 @@
         display: none;
       }
     }
+    /* Bottom legal bar */
+    .legal-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px 24px;
+      padding: 20px 0 10px;
+      border-top: 1px solid var(--rl-border);
+      margin-top: 30px;
+      font-size: 0.8rem;
+    }
+    .legal-bar a {
+      color: var(--rl-dim);
+      transition: color 0.3s;
+      text-decoration: none;
+    }
+    .legal-bar a:hover {
+      color: var(--rl-primary);
+    }
+    .legal-bar .sep {
+      color: var(--rl-border);
+    }
+    @media (max-width: 600px) {
+      .legal-bar {
+        gap: 8px 16px;
+        font-size: 0.7rem;
+      }
+      .legal-bar .sep {
+        display: none;
+      }
+    }
   </style>
 </head>
 <body>
@@ -192,11 +223,23 @@
             Bei mir bekommen Sie millimetergenaue Präzision, absolute Sauberkeit und die Sicherheit, dass alles mit Liebe und Garantie erledigt wird.
           </p>
 
+          <!-- ✅ HERO ACTIONS – ALL 5 BUTTONS (added FAQ) -->
           <div class="hero-actions reveal">
             <a href="/anfrage/" class="btn btn-primary magnetic-btn">
-              <i class="fas fa-comments"></i> Unverbindliches Gespräch starten
+              <i class="fas fa-comments"></i> Unverbindliches Gespräch
             </a>
-            <a href="#services" class="btn btn-secondary magnetic-btn">Services entdecken</a>
+            <a href="/services.html" class="btn btn-secondary magnetic-btn">
+              <i class="fas fa-th-list"></i> Alle Services
+            </a>
+            <a href="/about.html" class="btn btn-secondary magnetic-btn">
+              <i class="fas fa-user"></i> Über mich
+            </a>
+            <a href="/contact.html" class="btn btn-secondary magnetic-btn" style="border-color:var(--rl-primary); color:var(--rl-primary);">
+              <i class="fas fa-envelope"></i> Kontakt
+            </a>
+            <a href="/faq.html" class="btn btn-secondary magnetic-btn" style="border-color:var(--rl-primary); color:var(--rl-primary);">
+              <i class="fas fa-question-circle"></i> FAQ
+            </a>
           </div>
 
           <div class="hero-search reveal">
@@ -268,7 +311,7 @@
       </div>
     </div>
 
-    <!-- ==================== SERVICES ==================== -->
+    <!-- ==================== SERVICES (KK Grid) ==================== -->
     <section class="kk-section" id="services">
       <div class="container">
         <div class="section-header reveal">
@@ -309,6 +352,23 @@
             <p>White-Glove Service – für alle, die das Allerbeste möchten</p>
           </a>
         </div>
+
+        <!-- ✅ CTA ROW – 4 BUTTONS (added FAQ) -->
+        <div style="display:flex; flex-wrap:wrap; gap:14px; justify-content:center; margin-top:48px;" class="reveal">
+          <a href="/services.html" class="btn btn-primary magnetic-btn">
+            <i class="fas fa-arrow-right"></i> Zur vollständigen Services-Übersicht
+          </a>
+          <a href="/bundles/" class="btn btn-secondary magnetic-btn">
+            <i class="fas fa-gift"></i> Smarte Bundles entdecken
+          </a>
+          <a href="/contact.html" class="btn btn-secondary magnetic-btn" style="border-color:var(--rl-primary); color:var(--rl-primary);">
+            <i class="fas fa-envelope"></i> Kontakt
+          </a>
+          <a href="/faq.html" class="btn btn-secondary magnetic-btn" style="border-color:var(--rl-primary); color:var(--rl-primary);">
+            <i class="fas fa-question-circle"></i> Häufige Fragen
+          </a>
+        </div>
+
       </div>
     </section>
 
@@ -376,6 +436,13 @@
             </div>
           </article>
         </div>
+
+        <!-- ✅ EXTRA CTA – "Alle Services" -->
+        <div style="text-align:center; margin-top:40px;" class="reveal">
+          <a href="/services.html" class="btn btn-secondary magnetic-btn">
+            <i class="fas fa-th-list"></i> Alle 6 Services im Überblick
+          </a>
+        </div>
       </div>
     </section>
 
@@ -400,7 +467,7 @@
               <li>Endreinigung</li>
             </ul>
             <div class="bundle-price">ab 590 €</div>
-            <a href="/anfrage/" class="btn btn-primary magnetic-btn" style="width:100%;">Dieses Paket anfragen</a>
+            <a href="/bundles/kuechen-komplett.html" class="btn btn-primary magnetic-btn" style="width:100%;">Zum Bundle</a>
           </div>
 
           <div class="bundle-card featured reveal">
@@ -414,7 +481,7 @@
               <li>Nachjustierung vor Ort</li>
             </ul>
             <div class="bundle-price">Individuell</div>
-            <a href="/anfrage/" class="btn btn-primary magnetic-btn" style="width:100%;">Persönliches Angebot</a>
+            <a href="/bundles/usm-all-in.html" class="btn btn-primary magnetic-btn" style="width:100%;">Zum Bundle</a>
           </div>
 
           <div class="bundle-card reveal">
@@ -428,8 +495,15 @@
               <li>Endkontrolle mit Ihnen</li>
             </ul>
             <div class="bundle-price">ab 420 €</div>
-            <a href="/anfrage/" class="btn btn-primary magnetic-btn" style="width:100%;">Dieses Paket anfragen</a>
+            <a href="/bundles/umzug-premium.html" class="btn btn-primary magnetic-btn" style="width:100%;">Zum Bundle</a>
           </div>
+        </div>
+
+        <!-- ✅ CTA – Alle Bundles -->
+        <div style="text-align:center; margin-top:40px;" class="reveal">
+          <a href="/bundles/" class="btn btn-secondary magnetic-btn">
+            <i class="fas fa-gift"></i> Alle Bundles im Überblick
+          </a>
         </div>
       </div>
     </section>
@@ -471,6 +545,12 @@
                 <div class="label">Jahre</div>
               </div>
             </div>
+            <!-- ✅ CTA – Zur About-Seite -->
+            <div style="margin-top:16px;">
+              <a href="/about.html" class="btn btn-secondary btn-sm magnetic-btn" style="width:100%; justify-content:center;">
+                <i class="fas fa-arrow-right"></i> Meine ganze Geschichte
+              </a>
+            </div>
           </div>
 
           <div class="profile-bio reveal">
@@ -498,13 +578,27 @@
               </div>
             </div>
 
-            <div style="margin-top:28px; padding:24px; background:var(--rl-card); border:1px solid var(--rl-border); border-radius:var(--rl-radius); border-left:4px solid var(--rl-primary);">
-              <p style="font-size:0.98rem; color:var(--rl-muted); margin:0 0 16px 0;">
-                <strong style="color:var(--rl-text);">Kostenloser Projekt-Check</strong><br>
-                Lassen Sie uns in Ruhe über Maße, Besonderheiten und Wünsche sprechen – völlig unverbindlich.
-              </p>
-              <a href="/anfrage/" class="btn btn-primary magnetic-btn" style="width:100%; justify-content:center;">
-                <i class="fas fa-calendar-check"></i> Unverbindliches Gespräch vereinbaren
+            <!-- ✅ CTA ROW – 2 BUTTONS -->
+            <div style="margin-top:28px; display:flex; flex-wrap:wrap; gap:14px;">
+              <a href="/anfrage/" class="btn btn-primary magnetic-btn" style="flex:1; justify-content:center; min-width:180px;">
+                <i class="fas fa-calendar-check"></i> Unverbindliches Gespräch
+              </a>
+              <a href="/contact.html" class="btn btn-secondary magnetic-btn" style="flex:1; justify-content:center; min-width:160px; border-color:var(--rl-primary); color:var(--rl-primary);">
+                <i class="fas fa-envelope"></i> Kontakt
+              </a>
+            </div>
+
+            <!-- ✅ Extra: Zur About-Seite -->
+            <div style="margin-top:12px;">
+              <a href="/about.html" class="btn btn-secondary btn-sm magnetic-btn" style="width:100%; justify-content:center;">
+                <i class="fas fa-user"></i> Mehr über mich erfahren
+              </a>
+            </div>
+
+            <!-- ✅ NEW: FAQ link in profile section -->
+            <div style="margin-top:12px;">
+              <a href="/faq.html" class="btn btn-secondary btn-sm magnetic-btn" style="width:100%; justify-content:center; border-color:var(--rl-primary); color:var(--rl-primary);">
+                <i class="fas fa-question-circle"></i> Antworten auf häufige Fragen
               </a>
             </div>
           </div>
@@ -523,9 +617,7 @@
 
         <div class="reviews-grid">
           <div class="review-card reveal">
-            <div class="review-stars">
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-            </div>
+            <div class="review-stars">★★★★★</div>
             <p class="review-text">„Absolut professionell und pünktlich. Die USM Montage war millimetergenau. Ich fühle mich sehr gut aufgehoben.“</p>
             <div class="review-author">
               <strong>Thomas M.</strong>
@@ -533,9 +625,7 @@
             </div>
           </div>
           <div class="review-card reveal">
-            <div class="review-stars">
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-            </div>
+            <div class="review-stars">★★★★★</div>
             <p class="review-text">„Sehr saubere Arbeit und freundliche Kommunikation. Die Küche sieht aus wie aus dem Katalog – nur noch schöner.“</p>
             <div class="review-author">
               <strong>Sandra K.</strong>
@@ -543,9 +633,7 @@
             </div>
           </div>
           <div class="review-card reveal">
-            <div class="review-stars">
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-            </div>
+            <div class="review-stars">★★★★★</div>
             <p class="review-text">„Endlich jemand, der sich wirklich Zeit nimmt und Wert auf Details legt. Man merkt die Leidenschaft.“</p>
             <div class="review-author">
               <strong>Michael R.</strong>
@@ -554,8 +642,21 @@
           </div>
         </div>
 
-        <div style="text-align:center; margin-top:48px;" class="reveal">
-          <a href="/reviews.html" class="btn btn-secondary magnetic-btn">Alle Stimmen lesen</a>
+        <!-- ✅ CTA ROW – 2 BUTTONS -->
+        <div style="display:flex; flex-wrap:wrap; gap:14px; justify-content:center; margin-top:48px;" class="reveal">
+          <a href="/reviews.html" class="btn btn-primary magnetic-btn">
+            <i class="fas fa-star"></i> Alle Stimmen lesen
+          </a>
+          <a href="/contact.html" class="btn btn-secondary magnetic-btn" style="border-color:var(--rl-primary); color:var(--rl-primary);">
+            <i class="fas fa-envelope"></i> Ihre eigene Erfahrung teilen
+          </a>
+        </div>
+
+        <!-- ✅ NEW: FAQ CTA in reviews section -->
+        <div style="text-align:center; margin-top:16px;" class="reveal">
+          <a href="/faq.html" class="btn btn-secondary magnetic-btn">
+            <i class="fas fa-question-circle"></i> Haben Sie noch Fragen? Besuchen Sie die FAQ
+          </a>
         </div>
       </div>
     </section>
@@ -578,8 +679,7 @@
     (function() {
       'use strict';
 
-      // ── Inline fallback HTML (copy of your nav and footer) ──
-      // This ensures the menu always works, even offline.
+      // ── Inline fallback HTML ──
       const NAV_FALLBACK = `
     <nav class="rl-nav" id="mainNav">
       <div class="rl-nav__inner">
@@ -590,10 +690,14 @@
 
         <ul class="rl-nav__links">
           <li><a href="/" class="nav-link active" data-section="home">Willkommen</a></li>
+
           <!-- Services Dropdown -->
           <li class="nav-dropdown">
             <a href="#" class="nav-link" data-section="services">Services <i class="fas fa-chevron-down" style="font-size:0.7rem; margin-left:4px;"></i></a>
             <div class="nav-dropdown-content">
+              <a href="/services.html" style="font-weight:700; border-bottom:1px solid var(--rl-border); margin-bottom:6px; padding-bottom:10px;">
+                <i class="fas fa-th-list"></i> Alle Services im Überblick
+              </a>
               <a href="/services/moebel-kuechen.html"><i class="fas fa-couch"></i> Möbel & Küchen</a>
               <a href="/services/usm-haller.html"><i class="fas fa-gem"></i> USM Haller</a>
               <a href="/services/garten-outdoor.html"><i class="fas fa-tree"></i> Garten & Outdoor</a>
@@ -602,17 +706,25 @@
               <a href="/services/premium-pro.html"><i class="fas fa-crown"></i> Premium Pro</a>
             </div>
           </li>
+
           <!-- Bundles Dropdown -->
           <li class="nav-dropdown">
             <a href="#" class="nav-link" data-section="bundles">Bundles <i class="fas fa-chevron-down" style="font-size:0.7rem; margin-left:4px;"></i></a>
             <div class="nav-dropdown-content">
+              <a href="/bundles/" style="font-weight:700; border-bottom:1px solid var(--rl-border); margin-bottom:6px; padding-bottom:10px;">
+                <i class="fas fa-gift"></i> Alle Bundles
+              </a>
               <a href="/bundles/kuechen-komplett.html"><i class="fas fa-utensils"></i> Küchen-Komplett</a>
               <a href="/bundles/usm-all-in.html"><i class="fas fa-gem"></i> USM All-In</a>
               <a href="/bundles/umzug-premium.html"><i class="fas fa-truck"></i> Umzug Premium</a>
             </div>
           </li>
-          <li><a href="/#about" class="nav-link" data-section="about">Über mich</a></li>
+
+          <li><a href="/about.html" class="nav-link" data-section="about">Über mich</a></li>
           <li><a href="/reviews.html" class="nav-link">Ihre Stimmen</a></li>
+          <!-- ✅ NEW: FAQ link in desktop navigation -->
+          <li><a href="/faq.html" class="nav-link">FAQ</a></li>
+          <li><a href="/contact.html" class="nav-link" style="color:var(--rl-primary);">Kontakt</a></li>
           <li><a href="/anfrage/" class="cta magnetic-btn"><i class="fas fa-comments"></i> Kostenloses Gespräch</a></li>
         </ul>
 
@@ -629,19 +741,22 @@
     <div class="rl-nav__mobile" id="mobileMenu" aria-hidden="true">
       <div class="mobile-menu-inner">
         <a href="/" class="mobile-link">Willkommen</a>
-        <a href="/#services" class="mobile-link">Services</a>
-        <a href="/#bundles" class="mobile-link">Bundles</a>
-        <a href="/#about" class="mobile-link">Über mich</a>
-        <a href="/reviews.html" class="mobile-link">Ihre Stimmen</a>
+        <a href="/services.html" class="mobile-link" style="font-weight:700; border-top:1px solid var(--rl-border); padding-top:12px; margin-top:4px;"><i class="fas fa-th-list"></i> Alle Services</a>
         <a href="/services/moebel-kuechen.html" class="mobile-link">– Möbel & Küchen</a>
         <a href="/services/usm-haller.html" class="mobile-link">– USM Haller</a>
         <a href="/services/garten-outdoor.html" class="mobile-link">– Garten & Outdoor</a>
         <a href="/services/demontage-umzug.html" class="mobile-link">– Demontage & Umzug</a>
         <a href="/services/buero-objekt.html" class="mobile-link">– Büro & Objekt</a>
         <a href="/services/premium-pro.html" class="mobile-link">– Premium Pro</a>
+        <a href="/bundles/" class="mobile-link" style="font-weight:700; border-top:1px solid var(--rl-border); padding-top:12px; margin-top:4px;"><i class="fas fa-gift"></i> Alle Bundles</a>
         <a href="/bundles/kuechen-komplett.html" class="mobile-link">– Küchen-Komplett</a>
         <a href="/bundles/usm-all-in.html" class="mobile-link">– USM All-In</a>
         <a href="/bundles/umzug-premium.html" class="mobile-link">– Umzug Premium</a>
+        <a href="/about.html" class="mobile-link">Über mich</a>
+        <a href="/reviews.html" class="mobile-link">Ihre Stimmen</a>
+        <!-- ✅ NEW: FAQ link in mobile menu -->
+        <a href="/faq.html" class="mobile-link" style="color:var(--rl-primary);">FAQ</a>
+        <a href="/contact.html" class="mobile-link">Kontakt</a>
         <a href="/anfrage/" class="mobile-cta magnetic-btn"><i class="fas fa-comments"></i> Kostenloses Gespräch starten</a>
         <div class="mobile-extra">
           <p>Schön, dass Sie hier sind.</p>
@@ -683,6 +798,7 @@
         <div class="rl-footer-grid">
           <div class="rl-footer-col">
             <h5>Services</h5>
+            <a href="/services.html">Alle Services</a>
             <a href="/services/moebel-kuechen.html">Möbel & Küchen</a>
             <a href="/services/usm-haller.html">USM Haller Spezialist</a>
             <a href="/services/garten-outdoor.html">Garten & Outdoor</a>
@@ -692,13 +808,14 @@
           </div>
           <div class="rl-footer-col">
             <h5>Bundles</h5>
+            <a href="/bundles/">Alle Bundles</a>
             <a href="/bundles/kuechen-komplett.html">Küchen-Komplett</a>
             <a href="/bundles/usm-all-in.html">USM All-In</a>
             <a href="/bundles/umzug-premium.html">Umzug Premium</a>
           </div>
           <div class="rl-footer-col">
             <h5>Über & Hilfe</h5>
-            <a href="/#about">Über mich</a>
+            <a href="/about.html">Über mich</a>
             <a href="/reviews.html">Kundenstimmen</a>
             <a href="/faq.html">FAQ</a>
             <a href="/contact.html">Kontakt</a>
@@ -737,6 +854,20 @@
           <i class="fas fa-heart" style="color:var(--rl-primary); margin-right:6px;"></i>
           Danke, dass Sie sich die Zeit genommen haben. Es bedeutet mir viel.
         </div>
+        <!-- ✅ Legal Bar – all legal pages + FAQ -->
+        <div class="legal-bar">
+          <a href="/legal/impressum.html">Impressum</a>
+          <span class="sep">|</span>
+          <a href="/legal/datenschutz.html">Datenschutz</a>
+          <span class="sep">|</span>
+          <a href="/legal/agb.html">AGB</a>
+          <span class="sep">|</span>
+          <a href="/legal/widerruf.html">Widerruf</a>
+          <span class="sep">|</span>
+          <a href="/legal/cookie.html">Cookie-Richtlinie</a>
+          <span class="sep">|</span>
+          <a href="/faq.html">FAQ</a>
+        </div>
       </div>
     </footer>
       `;
@@ -746,11 +877,9 @@
         const container = document.querySelector(selector);
         if (!container) return;
 
-        // Try cache first
         const cached = localStorage.getItem(url);
         if (cached) {
           container.innerHTML = cached;
-          // Still try to update in background
           fetch(url)
             .then(res => res.text())
             .then(html => {
@@ -763,7 +892,6 @@
           return;
         }
 
-        // No cache – try fetch
         try {
           const response = await fetch(url);
           if (!response.ok) throw new Error('Network error');
@@ -777,7 +905,6 @@
           // fall through
         }
 
-        // Fallback: use inline HTML
         if (fallbackHtml) {
           container.innerHTML = fallbackHtml;
           try { localStorage.setItem(url, fallbackHtml); } catch (e) {}
@@ -786,7 +913,6 @@
         }
       }
 
-      // ── Initialize when DOM is ready ──
       if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', init);
       } else {
@@ -794,11 +920,9 @@
       }
 
       function init() {
-        // Load nav and footer
         loadComponent('#nav-placeholder', '/components/nav.html', NAV_FALLBACK);
         loadComponent('#footer-placeholder', '/components/footer.html', FOOTER_FALLBACK);
 
-        // ── Re-bind mobile menu after components load ──
         setTimeout(() => {
           const navToggle = document.getElementById('navToggle');
           const mobileMenu = document.getElementById('mobileMenu');
@@ -819,25 +943,21 @@
             });
           }
 
-          // ── Theme toggle re-bind ──
           document.querySelectorAll('[data-theme-toggle]').forEach(btn => {
             btn.removeEventListener('click', toggleTheme);
             btn.addEventListener('click', toggleTheme);
           });
 
-          // ── Newsletter form (footer) ──
           const form = document.getElementById('newsletterForm');
           if (form) {
             form.removeEventListener('submit', handleNewsletter);
             form.addEventListener('submit', handleNewsletter);
           }
 
-          // ── Active section highlighting (from existing code) ──
           updateActiveSection();
         }, 50);
       }
 
-      // ── Theme toggle function ──
       function toggleTheme() {
         const html = document.documentElement;
         const current = html.getAttribute('data-theme') || 'dark';
@@ -851,7 +971,6 @@
         if (meta) meta.content = next === 'dark' ? '#0B0A09' : '#F8F5F0';
       }
 
-      // ── Newsletter handler ──
       function handleNewsletter(e) {
         e.preventDefault();
         const btn = this.querySelector('button');
@@ -864,7 +983,6 @@
         }, 2800);
       }
 
-      // ── Active section highlight ──
       function updateActiveSection() {
         const sections = document.querySelectorAll('section[id]');
         const navLinks = document.querySelectorAll('.nav-link[data-section]');
@@ -885,7 +1003,6 @@
         });
       }
 
-      // ── Also fix theme on load (if saved) ──
       const savedTheme = localStorage.getItem('rl-theme');
       if (savedTheme) {
         document.documentElement.setAttribute('data-theme', savedTheme);
@@ -894,17 +1011,13 @@
         });
       }
 
-      // ── Re-run active section on scroll ──
       window.addEventListener('scroll', updateActiveSection, { passive: true });
-
-      // ── Existing hero search, counters, etc. remain from original page ──
-      // (The existing inline script already handles those; we keep them below)
 
     })();
   </script>
 
   <!-- ============================================================ -->
-  <!-- EXISTING PAGE-SPECIFIC SCRIPTS (from your original)          -->
+  <!-- PAGE-SPECIFIC SCRIPTS                                        -->
   <!-- ============================================================ -->
   <script>
     // ── HERO SEARCH ──
@@ -944,7 +1057,10 @@
     // ── CUSTOM CURSOR ──
     const dot = document.getElementById('cursorDot');
     const ring = document.getElementById('cursorRing');
-    let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+    let mouseX = 0,
+      mouseY = 0,
+      ringX = 0,
+      ringY = 0;
 
     if (dot && ring && window.matchMedia('(min-width: 769px)').matches) {
       document.addEventListener('mousemove', (e) => {
@@ -953,7 +1069,6 @@
         dot.style.left = mouseX + 'px';
         dot.style.top = mouseY + 'px';
 
-        // Magnetic buttons
         document.querySelectorAll('.magnetic-btn').forEach(btn => {
           const rect = btn.getBoundingClientRect();
           const cx = rect.left + rect.width / 2;
@@ -980,13 +1095,13 @@
       animateRing();
 
       document.addEventListener('mouseover', (e) => {
-        if (e.target.closest('a, button, .btn, .magnetic-btn, .kk-item, .service-card')) {
+        if (e.target.closest('a, button, .btn, .magnetic-btn, .kk-item, .service-card, .bundle-card')) {
           dot.classList.add('hovering');
           ring.classList.add('hovering');
         }
       });
       document.addEventListener('mouseout', (e) => {
-        if (e.target.closest('a, button, .btn, .magnetic-btn, .kk-item, .service-card')) {
+        if (e.target.closest('a, button, .btn, .magnetic-btn, .kk-item, .service-card, .bundle-card')) {
           dot.classList.remove('hovering');
           ring.classList.remove('hovering');
         }
@@ -998,6 +1113,7 @@
       const target = parseInt(el.getAttribute('data-target'));
       const duration = 1800;
       const start = performance.now();
+
       function update(now) {
         const progress = Math.min((now - start) / duration, 1);
         const ease = 1 - Math.pow(1 - progress, 3);
@@ -1037,7 +1153,7 @@
       });
     });
 
-    console.log('✨ Raphael Lezius – Quiet Ember 2.0 mit voller Navigation');
+    console.log('✨ Raphael Lezius – Complete Homepage with all buttons & links (Meituan-style)');
   </script>
 </body>
 </html>

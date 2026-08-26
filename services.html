@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services · Raphael Lezius – Premium Montage mit Herz & Präzision</title>
+  <meta name="theme-color" content="#0B0A09" id="themeColorMeta">
+  <meta name="description" content="Übersicht aller Montage-Services von Raphael Lezius: Möbel & Küchen, USM Haller, Garten & Outdoor, Demontage & Umzug, Büro & Objekt, Premium Pro.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="assets/css/global.css">
+
+  <!-- Page-specific styles -->
+  <style>
+    /* ── Services Hero ── */
+    .services-hero {
+      padding: calc(var(--rl-nav-height) + 70px) 0 70px;
+      background:
+        radial-gradient(ellipse 60% 50% at 20% 30%, rgba(212, 165, 116, 0.07), transparent 55%),
+        radial-gradient(ellipse 50% 40% at 80% 70%, rgba(124, 154, 146, 0.04), transparent 50%),
+        var(--rl-bg);
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+    .services-hero .hero-glow {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(212, 165, 116, 0.06) 0%, transparent 70%);
+      top: -200px;
+      right: -100px;
+      pointer-events: none;
+      animation: soft-pulse 10s ease-in-out infinite;
+    }
+    @keyframes soft-pulse {
+      0%, 100% { transform: scale(1); opacity: 0.6; }
+      50% { transform: scale(1.15); opacity: 1; }
+    }
+    .services-hero h1 {
+      font-family: var(--font-head);
+      font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+      font-weight: 800;
+      letter-spacing: -1.2px;
+      line-height: 1.12;
+      margin-bottom: 16px;
+    }
+    .services-hero h1 .gold {
+      color: var(--rl-primary);
+    }
+    .services-hero .lead {
+      font-size: 1.1rem;
+      color: var(--rl-muted);
+      max-width: 580px;
+      margin: 0 auto 32px;
+      line-height: 1.7;
+    }
+    .services-hero .breadcrumb {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: var(--rl-dim);
+      font-family: var(--font-mono);
+    }
+    .services-hero .breadcrumb a {
+      color: var(--rl-primary);
+      transition: color 0.3s;
+    }
+    .services-hero .breadcrumb a:hover {
+      color: var(--rl-primary-hover);
+    }
+    .services-hero .breadcrumb .sep {
+      opacity: 0.3;
+    }
+
+    /* ── All Services Grid (detailed) ── */
+    .all-services-section {
+      padding: 60px 0 100px;
+    }
+    .all-services-section .section-intro {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+    .all-services-section .section-intro h2 {
+      font-family: var(--font-head);
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 800;
+      letter-spacing: -0.8px;
+      margin-bottom: 12px;
+    }
+    .all-services-section .section-intro p {
+      color: var(--rl-muted);
+      max-width: 520px;
+      margin: 0 auto;
+      font-size: 1.05rem;
+    }
+    .all-services-section .section-intro .gold {
+      color: var(--rl-primary);
+    }
+
+    .services-detailed-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+
+    .service-detailed-card {
+      background: var(--rl-card);
+      border: 1px solid var(--rl-border);
+      border-radius: var(--rl-radius);
+      padding: 32px 28px;
+      transition: all 0.4s var(--ease);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .service-detailed-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--rl-gradient-primary);
+      opacity: 0;
+      transition: opacity 0.4s var(--ease);
+    }
+    .service-detailed-card:hover::before {
+      opacity: 1;
+    }
+    .service-detailed-card:hover {
+      border-color: rgba(212, 165, 116, 0.25);
+      transform: translateY(-4px);
+      box-shadow: var(--rl-shadow);
+    }
+    .service-detailed-card .card-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 16px;
+      background: rgba(212, 165, 116, 0.1);
+      display: grid;
+      place-items: center;
+      font-size: 1.6rem;
+      color: var(--rl-primary);
+      margin-bottom: 18px;
+      transition: all 0.3s;
+      flex-shrink: 0;
+    }
+    .service-detailed-card:hover .card-icon {
+      background: var(--rl-primary);
+      color: #1C1917;
+      transform: scale(1.06) rotate(-4deg);
+    }
+    .service-detailed-card .card-tag {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      background: rgba(212, 165, 116, 0.12);
+      color: var(--rl-primary);
+      padding: 3px 12px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+      font-family: var(--font-mono);
+      align-self: flex-start;
+    }
+    .service-detailed-card h3 {
+      font-family: var(--font-head);
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--rl-text);
+    }
+    .service-detailed-card .desc {
+      font-size: 0.95rem;
+      color: var(--rl-muted);
+      line-height: 1.6;
+      margin-bottom: 18px;
+      flex-grow: 1;
+    }
+    .service-detailed-card .features {
+      list-style: none;
+      margin-bottom: 22px;
+    }
+    .service-detailed-card .features li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.88rem;
+      color: var(--rl-muted);
+      margin-bottom: 7px;
+    }
+    .service-detailed-card .features li i {
+      color: var(--rl-primary);
+      font-size: 0.8rem;
+      width: 18px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+    .service-detailed-card .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 18px;
+      border-top: 1px solid var(--rl-border);
+      margin-top: auto;
+    }
+    .service-detailed-card .price {
+      font-family: var(--font-head);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--rl-text);
+    }
+    .service-detailed-card .price .note {
+      font-size: 0.75rem;
+      font-weight: 400;
+      color: var(--rl-dim);
+      font-family: var(--font-body);
+    }
+    .service-detailed-card .btn-sm {
+      padding: 8px 20px;
+      font-size: 0.82rem;
+    }
+
+    .service-detailed-card.featured {
+      border-color: rgba(212, 165, 116, 0.3);
+      background: var(--rl-gradient-subtle);
+    }
+    .service-detailed-card.featured .card-tag {
+      background: rgba(212, 165, 116, 0.2);
+    }
+
+    /* ── CTA Section ── */
+    .services-cta {
+      padding: 70px 0;
+      background: var(--rl-surface);
+      border-top: 1px solid var(--rl-border);
+      text-align: center;
+    }
+    .services-cta h2 {
+      font-family: var(--font-head);
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 800;
+      letter-spacing: -0.8px;
+      margin-bottom: 12px;
+    }
+    .services-cta p {
+      color: var(--rl-muted);
+      max-width: 480px;
+      margin: 0 auto 28px;
+      font-size: 1.05rem;
+    }
+    .services-cta .btn-group {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .services-detailed-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .services-hero {
+        padding: calc(var(--rl-nav-height) + 40px) 0 50px;
+      }
+      .services-hero .hero-glow {
+        width: 300px;
+        height: 300px;
+        top: -120px;
+        right: -80px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .service-detailed-card .card-footer {
+        flex-direction: column;
+        gap: 12px;
+        align-items: stretch;
+      }
+      .service-detailed-card .card-footer .btn {
+        width: 100%;
+        justify-content: center;
+      }
+      .services-cta .btn-group {
+        flex-direction: column;
+        align-items: center;
+      }
+      .services-cta .btn-group .btn {
+        width: 100%;
+        max-width: 320px;
+        justify-content: center;
+      }
+    }
+
+    /* ── Reveal ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.7s var(--ease);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Custom Cursor -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- Scroll Progress -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- WhatsApp Float -->
+  <a href="https://wa.me/491608194018" target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="WhatsApp schreiben">
+    <span class="pulse-ring"></span>
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- Sticky CTA -->
+  <div class="sticky-cta" id="stickyCta">
+    <a href="/anfrage/" class="btn btn-primary magnetic-btn">
+      <i class="fas fa-comments"></i> Kostenloses Gespräch
+    </a>
+  </div>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" id="backToTop" aria-label="Nach oben">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <!-- Floating social proof -->
+  <div class="floating-badge" id="floatingBadge">
+    <div class="stars">
+      <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+    </div>
+    <div class="text">
+      <span class="highlight">110+</span> Menschen haben mir ihr Zuhause anvertraut
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- NAVIGATION PLACEHOLDER                                        -->
+  <!-- ============================================================ -->
+  <div id="nav-placeholder"></div>
+
+  <!-- ============================================================ -->
+  <!-- MAIN CONTENT                                                 -->
+  <!-- ============================================================ -->
+  <main>
+
+    <!-- ==================== SERVICES HERO ==================== -->
+    <section class="services-hero">
+      <div class="hero-glow"></div>
+      <div class="container">
+        <div class="services-hero-content">
+          <div class="breadcrumb reveal">
+            <a href="/">Start</a>
+            <span class="sep">/</span>
+            <span style="color:var(--rl-text);">Services</span>
+          </div>
+
+          <h1 class="reveal">
+            Was ich für Sie <span class="gold">perfekt</span> mache
+          </h1>
+
+          <p class="lead reveal">
+            Ich biete Ihnen sechs klar definierte Servicebereiche – von der präzisen Möbelmontage
+            bis zum exklusiven Premium-Service. Jedes Projekt ist für mich eine Herzensangelegenheit.
+          </p>
+
+          <div class="hero-actions reveal">
+            <a href="#services-list" class="btn btn-primary magnetic-btn">
+              <i class="fas fa-arrow-down"></i> Alle Services entdecken
+            </a>
+            <a href="/anfrage/" class="btn btn-secondary magnetic-btn">
+              <i class="fas fa-comments"></i> Unverbindliches Gespräch
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ALL SERVICES (DETAILED GRID) ==================== -->
+    <section class="all-services-section" id="services-list">
+      <div class="container">
+        <div class="section-intro reveal">
+          <span class="pre" style="display:block; font-size:0.78rem; font-weight:600; letter-spacing:1.6px; text-transform:uppercase; color:var(--rl-primary); margin-bottom:12px; font-family:var(--font-mono);">
+            ✦ Ihre Möglichkeiten
+          </span>
+          <h2>Sechs Wege, wie ich Ihnen <span class="gold">helfen</span> kann</h2>
+          <p>Wählen Sie den Service, der am besten zu Ihrem Projekt passt – oder kombinieren Sie mehrere.</p>
+        </div>
+
+        <div class="services-detailed-grid">
+
+          <!-- 1. Möbel & Küchen -->
+          <div class="service-detailed-card reveal">
+            <span class="card-tag">🏠 Klassiker</span>
+            <div class="card-icon"><i class="fas fa-couch"></i></div>
+            <h3>Möbel &amp; Küchen</h3>
+            <p class="desc">Präzise Montage, die sich anfühlt, als wäre alles schon immer da gewesen. Von Schränken über Regale bis zur kompletten Küche – ich bringe Ihr Zuhause zum Strahlen.</p>
+            <ul class="features">
+              <li><i class="fas fa-check"></i> Hoch- &amp; Unterschränke</li>
+              <li><i class="fas fa-check"></i> Arbeitsplatten &amp; Geräteanschluss</li>
+              <li><i class="fas fa-check"></i> Staubfreie Arbeitsweise</li>
+              <li><i class="fas fa-check"></i> Feineinstellung &amp; Reinigung</li>
+            </ul>
+            <div class="card-footer">
+              <div class="price">ab 349 € <span class="note">zzgl. Aufwand</span></div>
+              <a href="/services/moebel-kuechen.html" class="btn btn-primary btn-sm magnetic-btn">Mehr erfahren</a>
+            </div>
+          </div>
+
+          <!-- 2. USM Haller -->
+          <div class="service-detailed-card featured reveal">
+            <span class="card-tag">⭐ Spezialist</span>
+            <div class="card-icon"><i class="fas fa-gem"></i></div>
+            <h3>USM Haller</h3>
+            <p class="desc">Ich bin Spezialist für das Schweizer System und kenne jedes Detail. Ihre USM Möbel werden millimetergenau justiert – so, dass sie aussehen und sich anfühlen wie aus dem Katalog.</p>
+            <ul class="features">
+              <li><i class="fas fa-check"></i> Original-Werkzeug</li>
+              <li><i class="fas fa-check"></i> Millimetergenaue Ausrichtung</li>
+              <li><i class="fas fa-check"></i> Staubfreie Montage</li>
+              <li><i class="fas fa-check"></i> 1 Jahr persönliche Garantie</li>
+            </ul>
+            <div class="card-footer">
+              <div class="price">ab 189 € <span class="note">zzgl. Aufwand</span></div>
+              <a href="/services/usm-haller.html" class="btn btn-primary btn-sm magnetic-btn">Mehr erfahren</a>
+            </div>
+          </div>
+
+          <!-- 3. Garten & Outdoor -->
+          <div class="service-detailed-card reveal">
+            <span class="card-tag">🌿 Outdoor</span>
+            <div class="card-icon"><i class="fas fa-tree"></i></div>
+            <h3>Garten &amp; Outdoor</h3>
+            <p class="desc">Damit Ihr Außenbereich genauso schön wird wie Ihr Zuhause. Ich montiere wetterfeste Möbel, Gartenhäuser, Terrassenüberdachungen und mehr – langlebig und stabil.</p>
+            <ul class="features">
+              <li><i class="fas fa-check"></i> Wetterfest montiert</li>
+              <li><i class="fas fa-check"></i> Gartenhäuser &amp; Pavillons</li>
+              <li><i class="fas fa-check"></i> Terrassenmöbel &amp; Sitzgruppen</li>
+              <li><i class="fas fa-check"></i> Langlebig &amp; stabil</li>
+            </ul>
+            <div class="card-footer">
+              <div class="price">ab 249 € <span class="note">zzgl. Aufwand</span></div>
+              <a href="/services/garten-outdoor.html" class="btn btn-primary btn-sm magnetic-btn">Mehr erfahren</a>
+            </div>
+          </div>
+
+          <!-- 4. Demontage & Umzug -->
+          <div class="service-detailed-card reveal">
+            <span class="card-tag">🚚 Umzug</span>
+            <div class="card-icon"><i class="fas fa-truck"></i></div>
+            <h3>Demontage &amp; Umzug</h3>
+            <p class="desc">Schonende Demontage und fachgerechter Aufbau am neuen Ort. Ich sorge dafür, dass Ihre Möbel den Umzug unbeschadet überstehen und sofort wieder nutzbar sind.</p>
+            <ul class="features">
+              <li><i class="fas fa-check"></i> Fachgerechte Demontage</li>
+              <li><i class="fas fa-check"></i> Schutzverpackung &amp; Polsterung</li>
+              <li><i class="fas fa-check"></i> Aufbau am neuen Ort</li>
+              <li><i class="fas fa-check"></i> Endkontrolle mit Ihnen</li>
+            </ul>
+            <div class="card-footer">
+              <div class="price">ab 420 € <span class="note">zzgl. Aufwand</span></div>
+              <a href="/services/demontage-umzug.html" class="btn btn-primary btn-sm magnetic-btn">Mehr erfahren</a>
+            </div>
+          </div>
+
+          <!-- 5. Büro & Objekt -->
+          <div class="service-detailed-card reveal">
+            <span class="card-tag">🏢 Gewerbe</span>
+            <div class="card-icon"><i class="fas fa-building"></i></div>
+            <h3>Büro &amp; Objekt</h3>
+            <p class="desc">Professionelle Montage für Arbeitsplätze und gewerbliche Räume. Ich arbeite termingerecht und mit minimalem Betriebsausfall – damit Ihr Geschäft weiterläuft.</p>
+            <ul class="features">
+              <li><i class="fas fa-check"></i> Büromöbel &amp; Schreibtische</li>
+              <li><i class="fas fa-check"></i> Konferenz- &amp; Besprechungsräume</li>
+              <li><i class="fas fa-check"></i> Termingerechte Ausführung</li>
+              <li><i class="fas fa-check"></i> Minimaler Betriebsausfall</li>
+            </ul>
+            <div class="card-footer">
+              <div class="price">Individuell <span class="note">nach Aufwand</span></div>
+              <a href="/services/buero-objekt.html" class="btn btn-primary btn-sm magnetic-btn">Mehr erfahren</a>
+            </div>
+          </div>
+
+          <!-- 6. Premium Pro -->
+          <div class="service-detailed-card featured reveal">
+            <span class="card-tag">👑 Exklusiv</span>
+            <div class="card-icon"><i class="fas fa-crown"></i></div>
+            <h3>Premium Pro</h3>
+            <p class="desc">White-Glove Service – für alle, die das Allerbeste möchten. Persönliche Projektleitung, Express-Termine, erweiterte Garantie und maximale Sorgfalt.</p>
+            <ul class="features">
+              <li><i class="fas fa-check"></i> Persönliche Projektleitung</li>
+              <li><i class="fas fa-check"></i> Express-Termine möglich</li>
+              <li><i class="fas fa-check"></i> Erweiterte Garantie</li>
+              <li><i class="fas fa-check"></i> Rundum-Sorglos-Paket</li>
+            </ul>
+            <div class="card-footer">
+              <div class="price">Individuell <span class="note">nach Vereinbarung</span></div>
+              <a href="/services/premium-pro.html" class="btn btn-primary btn-sm magnetic-btn">Mehr erfahren</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CTA SECTION ==================== -->
+    <section class="services-cta">
+      <div class="container">
+        <div class="reveal">
+          <span class="pre" style="display:block; font-size:0.78rem; font-weight:600; letter-spacing:1.6px; text-transform:uppercase; color:var(--rl-primary); margin-bottom:12px; font-family:var(--font-mono);">
+            ✦ Bereit für Ihr Projekt?
+          </span>
+          <h2>Lassen Sie uns <span class="gold">sprechen</span></h2>
+          <p>Sie haben Fragen, ein konkretes Projekt oder möchten einfach nur einen unverbindlichen Austausch? Ich freue mich auf Sie.</p>
+          <div class="btn-group">
+            <a href="/anfrage/" class="btn btn-primary magnetic-btn">
+              <i class="fas fa-comments"></i> Unverbindliches Gespräch starten
+            </a>
+            <a href="/bundles/" class="btn btn-secondary magnetic-btn">
+              <i class="fas fa-gift"></i> Smarte Bundles entdecken
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================ -->
+  <!-- FOOTER PLACEHOLDER                                            -->
+  <!-- ============================================================ -->
+  <div id="footer-placeholder"></div>
+
+  <!-- ============================================================ -->
+  <!-- COMPONENT LOADER – with fallback embedded                    -->
+  <!-- ============================================================ -->
+  <script>
+    /* ============================================================
+       RAPHAEL LEZIUS – Component Loader v2.0
+       Loads nav & footer with localStorage cache + inline fallback
+       ============================================================ */
+
+    (function() {
+      'use strict';
+
+      // ── Inline fallback HTML ──
+      const NAV_FALLBACK = `
+    <nav class="rl-nav" id="mainNav">
+      <div class="rl-nav__inner">
+        <a href="/" class="rl-nav__brand" aria-label="Zur Startseite">
+          Raphael <span>Lezius</span>
+          <span class="rl-nav__tagline">Präzision mit Herz</span>
+        </a>
+
+        <ul class="rl-nav__links">
+          <li><a href="/" class="nav-link">Willkommen</a></li>
+          <li class="nav-dropdown">
+            <a href="#" class="nav-link active" data-section="services">Services <i class="fas fa-chevron-down" style="font-size:0.7rem; margin-left:4px;"></i></a>
+            <div class="nav-dropdown-content">
+              <a href="/services/moebel-kuechen.html"><i class="fas fa-couch"></i> Möbel & Küchen</a>
+              <a href="/services/usm-haller.html"><i class="fas fa-gem"></i> USM Haller</a>
+              <a href="/services/garten-outdoor.html"><i class="fas fa-tree"></i> Garten & Outdoor</a>
+              <a href="/services/demontage-umzug.html"><i class="fas fa-truck"></i> Demontage & Umzug</a>
+              <a href="/services/buero-objekt.html"><i class="fas fa-building"></i> Büro & Objekt</a>
+              <a href="/services/premium-pro.html"><i class="fas fa-crown"></i> Premium Pro</a>
+            </div>
+          </li>
+          <li class="nav-dropdown">
+            <a href="#" class="nav-link" data-section="bundles">Bundles <i class="fas fa-chevron-down" style="font-size:0.7rem; margin-left:4px;"></i></a>
+            <div class="nav-dropdown-content">
+              <a href="/bundles/kuechen-komplett.html"><i class="fas fa-utensils"></i> Küchen-Komplett</a>
+              <a href="/bundles/usm-all-in.html"><i class="fas fa-gem"></i> USM All-In</a>
+              <a href="/bundles/umzug-premium.html"><i class="fas fa-truck"></i> Umzug Premium</a>
+            </div>
+          </li>
+          <li><a href="/#about" class="nav-link">Über mich</a></li>
+          <li><a href="/reviews.html" class="nav-link">Ihre Stimmen</a></li>
+          <li><a href="/anfrage/" class="cta magnetic-btn"><i class="fas fa-comments"></i> Kostenloses Gespräch</a></li>
+        </ul>
+
+        <div class="rl-nav__actions">
+          <button class="theme-toggle" data-theme-toggle aria-label="Design umschalten">
+            <i class="fas fa-moon" data-theme-icon></i>
+          </button>
+          <button class="rl-nav__hamburger" id="navToggle" aria-label="Menü öffnen" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </nav>
+    <div class="rl-nav__mobile" id="mobileMenu" aria-hidden="true">
+      <div class="mobile-menu-inner">
+        <a href="/" class="mobile-link">Willkommen</a>
+        <a href="/#services" class="mobile-link">Services</a>
+        <a href="/#bundles" class="mobile-link">Bundles</a>
+        <a href="/#about" class="mobile-link">Über mich</a>
+        <a href="/reviews.html" class="mobile-link">Ihre Stimmen</a>
+        <a href="/services/moebel-kuechen.html" class="mobile-link">– Möbel & Küchen</a>
+        <a href="/services/usm-haller.html" class="mobile-link">– USM Haller</a>
+        <a href="/services/garten-outdoor.html" class="mobile-link">– Garten & Outdoor</a>
+        <a href="/services/demontage-umzug.html" class="mobile-link">– Demontage & Umzug</a>
+        <a href="/services/buero-objekt.html" class="mobile-link">– Büro & Objekt</a>
+        <a href="/services/premium-pro.html" class="mobile-link">– Premium Pro</a>
+        <a href="/bundles/kuechen-komplett.html" class="mobile-link">– Küchen-Komplett</a>
+        <a href="/bundles/usm-all-in.html" class="mobile-link">– USM All-In</a>
+        <a href="/bundles/umzug-premium.html" class="mobile-link">– Umzug Premium</a>
+        <a href="/anfrage/" class="mobile-cta magnetic-btn"><i class="fas fa-comments"></i> Kostenloses Gespräch starten</a>
+        <div class="mobile-extra">
+          <p>Schön, dass Sie hier sind.</p>
+          <button class="theme-toggle" data-theme-toggle style="width:52px; height:52px; font-size:1.2rem; margin-top:16px;">
+            <i class="fas fa-moon" data-theme-icon></i>
+          </button>
+        </div>
+      </div>
+    </div>
+      `;
+
+      const FOOTER_FALLBACK = `
+    <footer class="rl-footer">
+      <div class="container">
+        <div class="rl-footer-top">
+          <div class="rl-footer-brand">
+            <div class="logo">Raphael <span>Lezius</span></div>
+            <p>Ich freue mich, dass Sie hier sind.<br>Premium Montage mit echter Leidenschaft – millimetergenau, staubfrei und immer mit Herz.</p>
+            <div class="rl-footer-trust">
+              <span><i class="fas fa-shield-alt"></i> 5 Mio. € versichert</span>
+              <span><i class="fas fa-star"></i> 5.0 ★ von 110+ Menschen</span>
+              <span><i class="fas fa-clock"></i> Antwort innerhalb 24 h</span>
+              <span><i class="fas fa-heart"></i> 1 Jahr persönliche Garantie</span>
+            </div>
+          </div>
+          <div class="rl-footer-newsletter">
+            <h4><i class="fas fa-envelope-open-text" style="color:var(--rl-primary)"></i> Bleiben Sie in Verbindung</h4>
+            <p>Einmal im Monat sende ich Ihnen nützliche Tipps und exklusive Angebote – nur wenn Sie möchten.</p>
+            <form class="newsletter-form" id="newsletterForm">
+              <input type="email" placeholder="Ihre E-Mail-Adresse" required aria-label="E-Mail für Newsletter" />
+              <button type="submit" class="magnetic-btn">Gerne dabei sein</button>
+            </form>
+            <div class="newsletter-consent">
+              <input type="checkbox" id="consent" required />
+              <label for="consent">Ich stimme der <a href="/legal/datenschutz.html" style="color:var(--rl-primary); text-decoration:underline;">Datenschutzerklärung</a> zu und freue mich auf Ihre Nachrichten.</label>
+            </div>
+          </div>
+        </div>
+        <div class="rl-footer-grid">
+          <div class="rl-footer-col">
+            <h5>Services</h5>
+            <a href="/services/moebel-kuechen.html">Möbel & Küchen</a>
+            <a href="/services/usm-haller.html">USM Haller Spezialist</a>
+            <a href="/services/garten-outdoor.html">Garten & Outdoor</a>
+            <a href="/services/demontage-umzug.html">Demontage & Umzug</a>
+            <a href="/services/buero-objekt.html">Büro & Objekt</a>
+            <a href="/services/premium-pro.html">Premium Pro Service</a>
+          </div>
+          <div class="rl-footer-col">
+            <h5>Bundles</h5>
+            <a href="/bundles/kuechen-komplett.html">Küchen-Komplett</a>
+            <a href="/bundles/usm-all-in.html">USM All-In</a>
+            <a href="/bundles/umzug-premium.html">Umzug Premium</a>
+          </div>
+          <div class="rl-footer-col">
+            <h5>Über & Hilfe</h5>
+            <a href="/#about">Über mich</a>
+            <a href="/reviews.html">Kundenstimmen</a>
+            <a href="/faq.html">FAQ</a>
+            <a href="/contact.html">Kontakt</a>
+            <a href="/anfrage/">Kostenloses Gespräch</a>
+          </div>
+          <div class="rl-footer-col">
+            <h5>Rechtliches</h5>
+            <a href="/legal/impressum.html">Impressum</a>
+            <a href="/legal/datenschutz.html">Datenschutz</a>
+            <a href="/legal/agb.html">AGB</a>
+            <a href="/legal/widerruf.html">Widerruf</a>
+            <a href="/legal/cookie.html">Cookie-Richtlinie</a>
+          </div>
+        </div>
+        <div class="rl-footer-trustbar">
+          <div class="trustbar-item"><i class="fas fa-users"></i><div><div class="label">Vertrauen</div><div class="value">110+ glückliche Kunden</div></div></div>
+          <div class="trustbar-item"><i class="fas fa-star"></i><div><div class="label">Bewertung</div><div class="value">5.0 ★ Durchschnitt</div></div></div>
+          <div class="trustbar-item"><i class="fas fa-bolt"></i><div><div class="label">Reaktion</div><div class="value">meist innerhalb 24 h</div></div></div>
+          <div class="trustbar-item"><i class="fas fa-shield-alt"></i><div><div class="label">Sicherheit</div><div class="value">5 Mio. € versichert</div></div></div>
+          <div class="trustbar-item"><i class="fas fa-hand-holding-heart"></i><div><div class="label">Service</div><div class="value">White-Glove mit Herz</div></div></div>
+        </div>
+        <div class="rl-footer-bottom">
+          <div>© 2026 Raphael Lezius · Mit Sorgfalt gemacht in Augsburg</div>
+          <div>
+            <a href="/legal/impressum.html">Impressum</a>
+            <a href="/legal/datenschutz.html">Datenschutz</a>
+            <a href="/legal/agb.html">AGB</a>
+          </div>
+          <div class="rl-footer-social">
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div style="text-align:center; margin-top:28px; font-size:0.88rem; color:var(--rl-dim);">
+          <i class="fas fa-heart" style="color:var(--rl-primary); margin-right:6px;"></i>
+          Danke, dass Sie sich die Zeit genommen haben. Es bedeutet mir viel.
+        </div>
+      </div>
+    </footer>
+      `;
+
+      // ── Helper: load component with cache + fallback ──
+      async function loadComponent(selector, url, fallbackHtml) {
+        const container = document.querySelector(selector);
+        if (!container) return;
+
+        const cached = localStorage.getItem(url);
+        if (cached) {
+          container.innerHTML = cached;
+          fetch(url)
+            .then(res => res.text())
+            .then(html => {
+              if (html && html.trim().length > 0) {
+                container.innerHTML = html;
+                localStorage.setItem(url, html);
+              }
+            })
+            .catch(() => {});
+          return;
+        }
+
+        try {
+          const response = await fetch(url);
+          if (!response.ok) throw new Error('Network error');
+          const html = await response.text();
+          if (html && html.trim().length > 0) {
+            container.innerHTML = html;
+            localStorage.setItem(url, html);
+            return;
+          }
+        } catch (error) {
+          // fall through
+        }
+
+        if (fallbackHtml) {
+          container.innerHTML = fallbackHtml;
+          try { localStorage.setItem(url, fallbackHtml); } catch (e) {}
+        } else {
+          container.innerHTML = `<p style="color:red; text-align:center; padding:20px;">Komponente konnte nicht geladen werden.</p>`;
+        }
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+      } else {
+        init();
+      }
+
+      function init() {
+        loadComponent('#nav-placeholder', '/components/nav.html', NAV_FALLBACK);
+        loadComponent('#footer-placeholder', '/components/footer.html', FOOTER_FALLBACK);
+
+        setTimeout(() => {
+          const navToggle = document.getElementById('navToggle');
+          const mobileMenu = document.getElementById('mobileMenu');
+          if (navToggle && mobileMenu) {
+            navToggle.addEventListener('click', function() {
+              const isOpen = mobileMenu.classList.toggle('open');
+              navToggle.setAttribute('aria-expanded', isOpen);
+              mobileMenu.setAttribute('aria-hidden', !isOpen);
+              document.body.style.overflow = isOpen ? 'hidden' : '';
+            });
+            mobileMenu.querySelectorAll('a').forEach(link => {
+              link.addEventListener('click', function() {
+                mobileMenu.classList.remove('open');
+                navToggle.setAttribute('aria-expanded', 'false');
+                mobileMenu.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = '';
+              });
+            });
+          }
+
+          document.querySelectorAll('[data-theme-toggle]').forEach(btn => {
+            btn.removeEventListener('click', toggleTheme);
+            btn.addEventListener('click', toggleTheme);
+          });
+
+          const form = document.getElementById('newsletterForm');
+          if (form) {
+            form.removeEventListener('submit', handleNewsletter);
+            form.addEventListener('submit', handleNewsletter);
+          }
+        }, 50);
+      }
+
+      function toggleTheme() {
+        const html = document.documentElement;
+        const current = html.getAttribute('data-theme') || 'dark';
+        const next = current === 'dark' ? 'light' : 'dark';
+        html.setAttribute('data-theme', next);
+        localStorage.setItem('rl-theme', next);
+        document.querySelectorAll('[data-theme-icon]').forEach(icon => {
+          icon.className = next === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
+        });
+        const meta = document.getElementById('themeColorMeta');
+        if (meta) meta.content = next === 'dark' ? '#0B0A09' : '#F8F5F0';
+      }
+
+      function handleNewsletter(e) {
+        e.preventDefault();
+        const btn = this.querySelector('button');
+        const original = btn.innerHTML;
+        btn.innerHTML = '<i class="fas fa-check"></i> Willkommen an Bord!';
+        btn.style.background = 'var(--rl-gradient-hover)';
+        setTimeout(() => {
+          btn.innerHTML = original;
+          this.reset();
+        }, 2800);
+      }
+
+      const savedTheme = localStorage.getItem('rl-theme');
+      if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        document.querySelectorAll('[data-theme-icon]').forEach(icon => {
+          icon.className = savedTheme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
+        });
+      }
+
+      // ── Active section highlighting ──
+      function updateActiveSection() {
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link[data-section]');
+        let current = '';
+        const scrollPos = window.scrollY + 120;
+        sections.forEach(section => {
+          const top = section.offsetTop;
+          const height = section.offsetHeight;
+          if (scrollPos >= top && scrollPos < top + height) {
+            current = section.getAttribute('id');
+          }
+        });
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('data-section') === current) {
+            link.classList.add('active');
+          }
+        });
+      }
+      window.addEventListener('scroll', updateActiveSection, { passive: true });
+    })();
+  </script>
+
+  <!-- ============================================================ -->
+  <!-- PAGE-SPECIFIC SCRIPTS                                        -->
+  <!-- ============================================================ -->
+  <script>
+    // ── SCROLL PROGRESS + STICKY + BACK TO TOP ──
+    const progress = document.getElementById('scrollProgress');
+    const sticky = document.getElementById('stickyCta');
+    const backTop = document.getElementById('backToTop');
+
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const percent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      if (progress) progress.style.width = percent + '%';
+
+      if (scrollTop > 400) {
+        sticky?.classList.add('visible');
+        backTop?.classList.add('visible');
+      } else {
+        sticky?.classList.remove('visible');
+        backTop?.classList.remove('visible');
+      }
+    }, { passive: true });
+
+    backTop?.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // ── CUSTOM CURSOR ──
+    const dot = document.getElementById('cursorDot');
+    const ring = document.getElementById('cursorRing');
+    let mouseX = 0,
+      mouseY = 0,
+      ringX = 0,
+      ringY = 0;
+
+    if (dot && ring && window.matchMedia('(min-width: 769px)').matches) {
+      document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        dot.style.left = mouseX + 'px';
+        dot.style.top = mouseY + 'px';
+
+        document.querySelectorAll('.magnetic-btn').forEach(btn => {
+          const rect = btn.getBoundingClientRect();
+          const cx = rect.left + rect.width / 2;
+          const cy = rect.top + rect.height / 2;
+          const dx = e.clientX - cx;
+          const dy = e.clientY - cy;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 120) {
+            const strength = (120 - dist) / 120 * 4;
+            btn.style.transform = `translate(${dx * strength / 6}px, ${dy * strength / 6}px)`;
+          } else {
+            btn.style.transform = 'translate(0, 0)';
+          }
+        });
+      });
+
+      function animateRing() {
+        ringX += (mouseX - ringX) * 0.18;
+        ringY += (mouseY - ringY) * 0.18;
+        ring.style.left = ringX + 'px';
+        ring.style.top = ringY + 'px';
+        requestAnimationFrame(animateRing);
+      }
+      animateRing();
+
+      document.addEventListener('mouseover', (e) => {
+        if (e.target.closest('a, button, .btn, .magnetic-btn, .service-detailed-card')) {
+          dot.classList.add('hovering');
+          ring.classList.add('hovering');
+        }
+      });
+      document.addEventListener('mouseout', (e) => {
+        if (e.target.closest('a, button, .btn, .magnetic-btn, .service-detailed-card')) {
+          dot.classList.remove('hovering');
+          ring.classList.remove('hovering');
+        }
+      });
+    }
+
+    // ── REVEAL ON SCROLL ──
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // ── SMOOTH SCROLL ──
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        const target = document.querySelector(targetId);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    console.log('✨ Raphael Lezius – Services Overview loaded');
+  </script>
+</body>
+</html>
