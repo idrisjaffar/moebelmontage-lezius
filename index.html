@@ -12,16 +12,20 @@
     <meta property="og:url" content="https://raphael-lezius.de" />
     <meta name="robots" content="index, follow" />
 
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
 
+
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
+
     <!-- Global CSS (shared variables, typography, buttons, layout) -->
     <link rel="stylesheet" href="assets/css/global.css" />
+
 
     <!-- Dynamic Base Tag (MUST be on every page) -->
     <script>
@@ -39,6 +43,7 @@
             window.__base = base;
         })();
     </script>
+
 
     <!-- Homepage‑specific styles (kept, as they are page-unique) -->
     <style>
@@ -95,6 +100,7 @@
             }
         }
 
+
         .benefits-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -144,6 +150,7 @@
                 grid-template-columns: 1fr;
             }
         }
+
 
         .faq-preview {
             max-width: 700px;
@@ -201,6 +208,7 @@
             padding: 0 24px 20px;
         }
 
+
         .cta-banner {
             background: var(--rl-gradient-cta);
             border-radius: var(--rl-radius);
@@ -237,6 +245,7 @@
             }
         }
 
+
         .hero-actions .btn-secondary {
             border-color: var(--rl-primary);
             color: var(--rl-primary);
@@ -246,10 +255,12 @@
             color: #fff;
         }
 
+
         /* ensure nav placeholder doesn't add extra space */
         #nav-placeholder {
             display: block;
         }
+
 
         /* extra responsiveness tweaks */
         .hero-actions {
@@ -281,15 +292,18 @@
 </head>
 <body>
 
+
     <!-- ===== GLOBAL FLOATING ELEMENTS (same on every page) ===== -->
     <div class="cursor-dot" id="cursorDot"></div>
     <div class="cursor-ring" id="cursorRing"></div>
     <div class="scroll-progress" id="scrollProgress"></div>
 
+
     <a href="https://wa.me/491608194018" target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="WhatsApp schreiben">
         <span class="pulse-ring"></span>
         <i class="fab fa-whatsapp"></i>
     </a>
+
 
     <div class="sticky-cta" id="stickyCta">
         <a href="anfrage/" class="btn btn-primary magnetic-btn">
@@ -299,9 +313,11 @@
         </a>
     </div>
 
+
     <button class="back-to-top" id="backToTop" aria-label="Nach oben">
         <i class="fas fa-chevron-up"></i>
     </button>
+
 
     <div class="floating-badge" id="floatingBadge">
         <div class="stars">
@@ -314,8 +330,10 @@
         </div>
     </div>
 
+
     <!-- ===== NAV PLACEHOLDER (shared) ===== -->
     <div id="nav-placeholder"></div>
+
 
     <!-- ===== MAIN CONTENT (HOMEPAGE UNIQUE) ===== -->
     <main>
@@ -371,6 +389,7 @@
             </div>
         </section>
 
+
         <!-- MARQUEE -->
         <div class="marquee" aria-hidden="true">
             <div class="marquee-track">
@@ -388,6 +407,7 @@
                 <span><i class="fas fa-bed"></i> BOXSPRINGBETTEN</span>
             </div>
         </div>
+
 
         <!-- SERVICES GRID -->
         <section class="kk-section" id="services">
@@ -412,6 +432,7 @@
                 </div>
             </div>
         </section>
+
 
         <!-- PROCESS -->
         <section class="section-padding" style="background:var(--rl-surface); border-top:1px solid var(--rl-border); border-bottom:1px solid var(--rl-border);">
@@ -450,6 +471,7 @@
                 </div>
             </div>
         </section>
+
 
         <!-- BENEFITS -->
         <section class="section-padding">
@@ -493,6 +515,7 @@
             </div>
         </section>
 
+
         <!-- PROJECTS -->
         <section class="section-padding" style="background:var(--rl-surface); border-top:1px solid var(--rl-border); border-bottom:1px solid var(--rl-border);">
             <div class="container">
@@ -519,6 +542,7 @@
             </div>
         </section>
 
+
         <!-- LIVE FEED -->
         <section class="section-padding">
             <div class="container">
@@ -540,6 +564,7 @@
                 </div>
             </div>
         </section>
+
 
         <!-- BUNDLES -->
         <section class="bundles-section">
@@ -600,6 +625,7 @@
             </div>
         </section>
 
+
         <!-- TESTIMONIALS -->
         <section class="reviews-section">
             <div class="container">
@@ -620,6 +646,7 @@
                 </div>
             </div>
         </section>
+
 
         <!-- FAQ -->
         <section class="section-padding" style="background:var(--rl-surface); border-top:1px solid var(--rl-border); border-bottom:1px solid var(--rl-border);">
@@ -665,6 +692,7 @@
             </div>
         </section>
 
+
         <!-- CTA BANNER -->
         <section class="container">
             <div class="cta-banner reveal">
@@ -675,6 +703,7 @@
                 <a href="anfrage/" class="btn btn-primary magnetic-btn"><i class="fas fa-calendar-check"></i> <span data-lang="de">Jetzt Gespräch vereinbaren</span><span data-lang="en" style="display:none;">Book a consultation now</span></a>
             </div>
         </section>
+
 
         <!-- Hidden sitemap for SEO -->
         <div class="sitemap-hidden" aria-hidden="true">
@@ -714,11 +743,15 @@
         </div>
     </main>
 
+
     <!-- ===== FOOTER PLACEHOLDER (shared) ===== -->
     <div id="footer-placeholder"></div>
+
 
     <!-- ===== UNIFIED MAIN SCRIPT (handles everything: loading, UI, interactions) ===== -->
     <script src="assets/js/main.js"></script>
 
+
 </body>
 </html>
+ 

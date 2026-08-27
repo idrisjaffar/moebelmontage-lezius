@@ -1,406 +1,542 @@
 /**
- * ==============================================================================
- * RAPHAEL LEZIUS – PREMIUM ARCHITECTURE v9.1
- * 2026 Masterpiece JS – Built for GitHub Pages, Local Testing & Deep Nesting
- * ==============================================================================
+ * assets/js/main.js
+ * Raphael Lezius – Unified Loader & Interactions v3.2
+ * Robust theme handling, component loading, and UI binding.
  */
-
 (function () {
-    'use strict';
+  'use strict';
 
-    // ============================================================
-    // 1. CORE SYSTEM & CONFIGURATION
-    // ============================================================
-    const App = {
-        config: {
-            navPath: 'components/nav.html',
-            footerPath: 'components/footer.html',
-            themeKey: 'rl-theme',
-            magneticDistance: 100,
-            counterDuration: 2000,
-        },
-        state: {
-            rootPath: '', 
-            isMobile: window.matchMedia('(max-width: 900px)').matches,
-            isTouch: 'ontouchstart' in window || navigator.maxTouchPoints > 0 || window.matchMedia('(pointer: coarse)').matches,
-            theme: 'dark'
-        }
-    };
+  // ── Configuration ──
+  const CONFIG = {
+    navPath: 'components/nav.html',
+    footerPath: 'components/footer.html',
+    cacheKeyPrefix: 'rl-',
+    themeStorageKey: 'rl-theme',
+    navHeight: 72,
+    scrollThreshold: 400,
+    revealThreshold: 0.12,
+    magneticDistance: 120,
+    counterDuration: 1800,
+  };
 
-    // ============================================================
-    // 2. FALLBACK HTML (Safety Net for Local Testing / file:///)
-    // ============================================================
-    const NAV_FALLBACK = `
-        <nav class="rl-nav" id="mainNav" role="navigation" aria-label="Hauptnavigation">
-          <div class="rl-nav__inner">
-            <a href="index.html" class="rl-nav__brand" aria-label="Startseite">Raphael <span>Lezius</span></a>
-            <ul class="rl-nav__links">
-              <li class="nav-dropdown">
-                <a href="#" class="nav-link">Services <i class="fas fa-chevron-down"></i></a>
-                <div class="nav-dropdown-content">
-                  <a href="services.html"><i class="fas fa-th-list"></i> Übersicht</a>
-                  <a href="services/moebel-kuechen.html"><i class="fas fa-couch"></i> Möbel & Küchen</a>
-                  <a href="services/usm-haller.html"><i class="fas fa-gem"></i> USM Haller</a>
-                  <a href="services/garten-outdoor.html"><i class="fas fa-tree"></i> Garten & Outdoor</a>
-                  <a href="services/demontage-umzug.html"><i class="fas fa-truck"></i> Demontage & Umzug</a>
-                  <a href="services/buero-objekt.html"><i class="fas fa-building"></i> Büro & Objekt</a>
-                  <a href="services/premium-pro.html"><i class="fas fa-crown"></i> Premium Pro</a>
-                </div>
-              </li>
-              <li class="nav-dropdown">
-                <a href="#" class="nav-link">Bundles <i class="fas fa-chevron-down"></i></a>
-                <div class="nav-dropdown-content">
-                  <a href="bundles/index.html"><i class="fas fa-gift"></i> Übersicht</a>
-                  <a href="bundles/kuechen-komplett.html"><i class="fas fa-utensils"></i> Küchen-Komplett</a>
-                  <a href="bundles/usm-all-in.html"><i class="fas fa-gem"></i> USM All-In</a>
-                  <a href="bundles/umzug-premium.html"><i class="fas fa-truck"></i> Umzug Premium</a>
-                </div>
-              </li>
-              <li><a href="about.html" class="nav-link">Über mich</a></li>
-              <li><a href="contact.html" class="nav-link">Kontakt</a></li>
-            </ul>
-            <div class="rl-nav__actions">
-              <a href="anfrage/index.html" class="nav-cta magnetic-btn"><i class="fas fa-comment-dots"></i><span>Kostenlos</span></a>
-              <button class="theme-toggle" data-theme-toggle aria-label="Design umschalten"><i class="fas fa-moon" data-theme-icon></i></button>
-              <button class="rl-nav__hamburger" id="navToggle" aria-expanded="false" aria-label="Menü öffnen"><span></span><span></span><span></span></button>
-            </div>
-          </div>
-        </nav>
-        <div class="rl-nav__mobile" id="mobileMenu">
-          <div class="mobile-menu-inner">
-            <a href="index.html" class="mobile-link">Start</a>
-            <a href="services.html" class="mobile-link">Services</a>
-            <a href="bundles/index.html" class="mobile-link">Bundles</a>
-            <a href="about.html" class="mobile-link">Über mich</a>
-            <a href="contact.html" class="mobile-link">Kontakt</a>
-            <a href="faq.html" class="mobile-link">FAQ</a>
-          </div>
+  // ── Fallbacks (minimal – only used if fetch fails) ──
+  const NAV_FALLBACK = `
+    <nav class="rl-nav" id="mainNav" role="navigation" aria-label="Hauptnavigation">
+      <div class="rl-nav__inner">
+        <a href="index.html" class="rl-nav__brand">Raphael <span>Lezius</span></a>
+        <ul class="rl-nav__links">
+          <li><a href="services.html" class="nav-link">Services</a></li>
+          <li><a href="bundles/" class="nav-link">Bundles</a></li>
+          <li><a href="about.html" class="nav-link">Über mich</a></li>
+          <li><a href="contact.html" class="nav-link">Kontakt</a></li>
+        </ul>
+        <div class="rl-nav__actions">
+          <a href="anfrage/" class="nav-cta magnetic-btn"><i class="fas fa-comment-dots"></i> <span>Kostenlos</span></a>
+          <button class="theme-toggle" data-theme-toggle aria-label="Design umschalten"><i class="fas fa-moon" data-theme-icon></i></button>
+          <button class="rl-nav__hamburger" id="navToggle" aria-label="Menü öffnen"><span></span><span></span><span></span></button>
         </div>
-    `;
+      </div>
+    </nav>
+    <div class="rl-nav__mobile" id="mobileMenu" aria-hidden="true">
+      <div class="mobile-menu-inner">
+        <button class="mobile-close" id="mobileClose" aria-label="Menü schließen"><i class="fas fa-times"></i></button>
+        <a href="index.html" class="mobile-link">Start</a>
+        <a href="services.html" class="mobile-link">Services</a>
+        <a href="bundles/" class="mobile-link">Bundles</a>
+        <a href="about.html" class="mobile-link">Über mich</a>
+        <a href="contact.html" class="mobile-link">Kontakt</a>
+        <a href="faq.html" class="mobile-link">FAQ</a>
+        <a href="anfrage/" class="mobile-cta magnetic-btn"><i class="fas fa-comment-dots"></i> Kostenloses Gespräch</a>
+        <div class="mobile-extra">
+          <button class="theme-toggle" data-theme-toggle><i class="fas fa-moon" data-theme-icon></i></button>
+        </div>
+      </div>
+    </div>
+    <div class="nav-backdrop" id="navBackdrop"></div>
+  `;
 
-    const FOOTER_FALLBACK = `
-        <footer style="border-top:1px solid var(--rl-border);padding:40px 0;background:var(--rl-bg);">
-            <div class="container">
-                <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:20px;">
-                    <div>
-                        <div style="font-family:var(--font-head);font-weight:800;font-size:1.2rem;color:var(--rl-text);">
-                            Raphael <span style="color:var(--rl-primary);">Lezius</span>
-                        </div>
-                        <p style="color:var(--rl-muted);font-size:0.85rem;margin-top:4px;">Premium Montage mit Leidenschaft.</p>
-                    </div>
-                    <div style="display:flex;gap:24px;flex-wrap:wrap;">
-                        <a href="legal/impressum.html" style="color:var(--rl-muted);font-family:var(--font-mono);font-size:0.6rem;letter-spacing:1px;transition:color 0.3s;">Impressum</a>
-                        <a href="legal/datenschutz.html" style="color:var(--rl-muted);font-family:var(--font-mono);font-size:0.6rem;letter-spacing:1px;transition:color 0.3s;">Datenschutz</a>
-                        <a href="legal/agb.html" style="color:var(--rl-muted);font-family:var(--font-mono);font-size:0.6rem;letter-spacing:1px;transition:color 0.3s;">AGB</a>
-                    </div>
-                    <div style="color:var(--rl-dim);font-size:0.7rem;">&copy; 2026 Raphael Lezius</div>
-                </div>
-            </div>
-        </footer>
-    `;
+  const FOOTER_FALLBACK = `
+    <footer class="rl-footer" role="contentinfo">
+      <div class="container">
+        <p style="text-align:center;padding:40px 0;color:var(--rl-muted);">© 2026 Raphael Lezius</p>
+      </div>
+    </footer>
+  `;
 
-    // ============================================================
-    // 3. BULLETPROOF PATH RESOLVER
-    // ============================================================
-    function calculateRootPath() {
-        const script = document.currentScript || document.querySelector('script[src*="main.js"]');
-        if (script) {
-            const src = script.getAttribute('src');
-            App.state.rootPath = src.split('assets/js/main.js')[0];
-        }
+  // ── Helpers ──
+  function getBase() {
+    const baseEl = document.querySelector('base');
+    if (baseEl && baseEl.href) {
+      // Return the href value (usually './' or '../' etc.)
+      return baseEl.getAttribute('href') || './';
+    }
+    // Fallback: compute from path
+    const parts = location.pathname.split('/').filter(Boolean);
+    if (parts.length && parts[parts.length - 1].includes('.')) parts.pop();
+    return parts.length === 0 ? './' : '../'.repeat(parts.length);
+  }
+
+  function isMobile() { return window.innerWidth <= 900; }
+  function isTouchDevice() { return 'ontouchstart' in window || navigator.maxTouchPoints > 0; }
+
+  function debounce(fn, ms = 200) {
+    let timer;
+    return function (...args) {
+      clearTimeout(timer);
+      timer = setTimeout(() => fn.apply(this, args), ms);
+    };
+  }
+
+  // ── Theme Management ──
+  function getStoredTheme() {
+    const stored = localStorage.getItem(CONFIG.themeStorageKey);
+    if (stored) return stored;
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+
+  function applyTheme(theme) {
+    const html = document.documentElement;
+    html.setAttribute('data-theme', theme);
+    localStorage.setItem(CONFIG.themeStorageKey, theme);
+    // Update all theme icons
+    document.querySelectorAll('[data-theme-icon]').forEach(icon => {
+      icon.className = theme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
+    });
+    // Update theme‑color meta
+    const meta = document.getElementById('themeColorMeta');
+    if (meta) meta.content = theme === 'dark' ? '#0B0A09' : '#F9F7F2';
+  }
+
+  // ── Component Loader ──
+  async function loadComponent(selector, path, fallback) {
+    const el = document.querySelector(selector);
+    if (!el) return;
+
+    const url = getBase() + path;
+    const cacheKey = CONFIG.cacheKeyPrefix + path;
+    let loadedFromCache = false;
+
+    // 1. Try cache
+    const cached = localStorage.getItem(cacheKey);
+    if (cached) {
+      el.innerHTML = cached;
+      loadedFromCache = true;
+      // Immediately apply theme to the newly inserted content
+      applyTheme(getStoredTheme());
+      // Refresh in background
+      fetch(url)
+        .then(r => r.text())
+        .then(html => {
+          if (html && html.trim() && html !== cached) {
+            el.innerHTML = html;
+            localStorage.setItem(cacheKey, html);
+            applyTheme(getStoredTheme());
+          }
+        })
+        .catch(() => {});
+      return;
     }
 
-    function resolveComponentLinks(container) {
-        container.querySelectorAll('a[href], img[src], video[src], source[src]').forEach(el => {
-            const attr = el.hasAttribute('href') ? 'href' : 'src';
-            const link = el.getAttribute(attr);
-            
-            // Skip anchors, absolute URLs, mailto/tel, and already resolved paths
-            if (!link || link.startsWith('#') || link.startsWith('http') || link.startsWith('mailto:') || link.startsWith('tel:') || link.startsWith('/')) {
-                return;
-            }
-            
-            el.setAttribute(attr, App.state.rootPath + link);
-        });
+    // 2. Live fetch
+    try {
+      const res = await fetch(url, { cache: 'no-cache' });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const html = await res.text();
+      if (html.trim()) {
+        el.innerHTML = html;
+        localStorage.setItem(cacheKey, html);
+        applyTheme(getStoredTheme()); // Apply theme immediately
+        return;
+      }
+    } catch (e) {
+      console.warn(`Could not load ${path} – using fallback`, e);
     }
 
-    // ============================================================
-    // 4. COMPONENT LOADER (Nav & Footer)
-    // ============================================================
-    async function loadComponent(selector, filepath, fallbackHTML) {
-        const container = document.querySelector(selector);
-        if (!container) return;
+    // 3. Fallback
+    if (fallback) {
+      el.innerHTML = fallback;
+      try { localStorage.setItem(cacheKey, fallback); } catch (_) {}
+      applyTheme(getStoredTheme());
+    } else {
+      el.innerHTML = `<p style="color:red;text-align:center;padding:20px;">${path} not available</p>`;
+    }
+  }
 
-        const url = App.state.rootPath + filepath;
-        const cacheKey = `rl-cache-${filepath}`;
+  // ── UI Binding ──
+  function bindUI() {
+    // ── THEME TOGGLE (delegated) ──
+    document.addEventListener('click', function (e) {
+      const btn = e.target.closest('[data-theme-toggle]');
+      if (btn) {
+        const current = document.documentElement.getAttribute('data-theme') || 'dark';
+        const next = current === 'dark' ? 'light' : 'dark';
+        applyTheme(next);
+        console.log('Theme toggled to:', next);
+      }
+    });
 
-        // 1. Try Cache First
-        const cachedHTML = localStorage.getItem(cacheKey);
-        if (cachedHTML) {
-            container.innerHTML = cachedHTML;
-            resolveComponentLinks(container);
-        }
+    // ── MOBILE MENU ──
+    const toggle = document.getElementById('navToggle');
+    const menu = document.getElementById('mobileMenu');
+    const backdrop = document.getElementById('navBackdrop');
+    const closeBtn = document.getElementById('mobileClose');
 
-        // 2. Fetch Fresh Data
-        try {
-            const response = await fetch(url, { cache: 'no-cache' });
-            if (!response.ok) throw new Error(`Failed to load ${filepath}`);
-            const html = await response.text();
-            
-            if (html.trim() !== cachedHTML) {
-                container.innerHTML = html;
-                localStorage.setItem(cacheKey, html);
-                resolveComponentLinks(container);
-            }
-        } catch (error) {
-            console.warn(`[System] Fetch failed for ${filepath}. Using Fallback.`);
-            // If fetch fails (like on file:///) and we have no cache, use the fallback string
-            if (!cachedHTML && fallbackHTML) {
-                container.innerHTML = fallbackHTML;
-                resolveComponentLinks(container);
-            }
-        }
+    function openMenu() {
+      menu?.classList.add('open');
+      backdrop?.classList.add('active');
+      if (toggle) toggle.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeMenu() {
+      menu?.classList.remove('open');
+      backdrop?.classList.remove('active');
+      if (toggle) toggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
     }
 
-    // ============================================================
-    // 5. THEME ENGINE
-    // ============================================================
-    function initTheme() {
-        const html = document.documentElement;
-        const themeMeta = document.getElementById('themeColorMeta');
-
-        function setTheme(theme) {
-            App.state.theme = theme;
-            html.setAttribute('data-theme', theme);
-            localStorage.setItem(App.config.themeKey, theme);
-            
-            document.querySelectorAll('[data-theme-icon]').forEach(icon => {
-                icon.className = theme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
-            });
-            
-            if (themeMeta) themeMeta.content = theme === 'dark' ? '#0B0A09' : '#F9F7F2';
-        }
-
-        const storedTheme = localStorage.getItem(App.config.themeKey);
-        const systemPrefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
-        setTheme(storedTheme || (systemPrefersLight ? 'light' : 'dark'));
-
-        document.addEventListener('click', (e) => {
-            if (e.target.closest('[data-theme-toggle]')) {
-                setTheme(App.state.theme === 'dark' ? 'light' : 'dark');
-            }
-        });
+    if (toggle && menu) {
+      // Remove any existing listeners to avoid duplicates (in case bindUI is called multiple times)
+      toggle.removeEventListener('click', toggle._listener);
+      toggle._listener = () => menu.classList.contains('open') ? closeMenu() : openMenu();
+      toggle.addEventListener('click', toggle._listener);
+      backdrop?.addEventListener('click', closeMenu);
+      closeBtn?.addEventListener('click', closeMenu);
+      menu.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
     }
 
-    // ============================================================
-    // 6. NAVIGATION & SCROLL SYSTEMS
-    // ============================================================
-    function initNavigation() {
-        const nav = document.querySelector('.rl-nav');
-        const progress = document.getElementById('scrollProgress');
-        const stickyCta = document.getElementById('stickyCta');
-        const backTop = document.getElementById('backToTop');
-        
-        let lastScrollY = window.scrollY;
-
-        function handleScroll() {
-            const currentScroll = window.scrollY;
-            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-            
-            if (progress) progress.style.width = docHeight > 0 ? `${(currentScroll / docHeight) * 100}%` : '0%';
-
-            if (nav) {
-                if (currentScroll > 80) {
-                    nav.classList.add('scrolled');
-                    if (currentScroll > lastScrollY && currentScroll > 300) {
-                        nav.style.transform = 'translateY(-100%)';
-                    } else {
-                        nav.style.transform = 'translateY(0)';
-                    }
-                } else {
-                    nav.classList.remove('scrolled');
-                    nav.style.transform = 'translateY(0)';
-                }
-            }
-
-            const showFloats = currentScroll > 400;
-            if (stickyCta) stickyCta.classList.toggle('visible', showFloats);
-            if (backTop) backTop.classList.toggle('visible', showFloats);
-
-            lastScrollY = currentScroll;
-        }
-
-        window.addEventListener('scroll', handleScroll, { passive: true });
-        handleScroll();
-
-        backTop?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-        document.addEventListener('click', (e) => {
-            const toggle = e.target.closest('.rl-nav__hamburger');
-            const menu = document.getElementById('mobileMenu');
-            
-            if (toggle && menu) {
-                const isOpen = menu.classList.toggle('open');
-                toggle.setAttribute('aria-expanded', isOpen);
-                document.body.style.overflow = isOpen ? 'hidden' : '';
-            }
-
-            if (e.target.closest('.mobile-link') && menu) {
-                menu.classList.remove('open');
-                document.body.style.overflow = '';
-                document.querySelector('.rl-nav__hamburger')?.setAttribute('aria-expanded', 'false');
-            }
-        });
+    // ── SCROLL PROGRESS ──
+    const progress = document.getElementById('scrollProgress');
+    if (progress) {
+      const updateProgress = debounce(() => {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const percent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        progress.style.width = percent + '%';
+      }, 10);
+      window.addEventListener('scroll', updateProgress, { passive: true });
+      updateProgress();
     }
 
-    // ============================================================
-    // 7. HIGH-PERFORMANCE INTERACTIONS (Cursor & Magnetics)
-    // ============================================================
-    function initInteractions() {
-        if (App.state.isTouch) {
-            document.querySelectorAll('.cursor-dot, .cursor-ring').forEach(el => el.style.display = 'none');
-            return;
-        }
+    // ── STICKY CTA & BACK TO TOP ──
+    const stickyCta = document.getElementById('stickyCta');
+    const backTop = document.getElementById('backToTop');
 
-        const dot = document.getElementById('cursorDot');
-        const ring = document.getElementById('cursorRing');
+    function toggleStickyElements() {
+      const show = window.scrollY > CONFIG.scrollThreshold;
+      if (stickyCta) stickyCta.classList.toggle('visible', show);
+      if (backTop) backTop.classList.toggle('visible', show);
+    }
+    window.addEventListener('scroll', toggleStickyElements, { passive: true });
+    toggleStickyElements();
+
+    backTop?.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // ── CUSTOM CURSOR ──
+    if (!isTouchDevice() && window.matchMedia('(pointer: fine)').matches) {
+      const dot = document.getElementById('cursorDot');
+      const ring = document.getElementById('cursorRing');
+      if (dot && ring) {
         let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
-
         document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX; mouseY = e.clientY;
-            if (dot) dot.style.transform = `translate3d(calc(${mouseX}px - 50%), calc(${mouseY}px - 50%), 0)`;
-
-            document.querySelectorAll('.magnetic-btn').forEach(btn => {
-                const rect = btn.getBoundingClientRect();
-                const cx = rect.left + rect.width / 2, cy = rect.top + rect.height / 2;
-                const dx = mouseX - cx, dy = mouseY - cy, dist = Math.sqrt(dx * dx + dy * dy);
-
-                if (dist < App.config.magneticDistance) {
-                    const pull = (App.config.magneticDistance - dist) / App.config.magneticDistance;
-                    btn.style.transform = `translate3d(${dx * pull * 0.3}px, ${dy * pull * 0.3}px, 0) scale(1.02)`;
-                } else {
-                    btn.style.transform = `translate3d(0, 0, 0) scale(1)`;
-                }
-            });
+          mouseX = e.clientX;
+          mouseY = e.clientY;
+          dot.style.left = mouseX + 'px';
+          dot.style.top = mouseY + 'px';
         });
-
-        function renderCursor() {
-            if (ring) {
-                ringX += (mouseX - ringX) * 0.15; ringY += (mouseY - ringY) * 0.15;
-                ring.style.transform = `translate3d(calc(${ringX}px - 50%), calc(${ringY}px - 50%), 0)`;
-            }
-            requestAnimationFrame(renderCursor);
+        function animateRing() {
+          ringX += (mouseX - ringX) * 0.18;
+          ringY += (mouseY - ringY) * 0.18;
+          ring.style.left = ringX + 'px';
+          ring.style.top = ringY + 'px';
+          requestAnimationFrame(animateRing);
         }
-        requestAnimationFrame(renderCursor);
+        animateRing();
 
         document.addEventListener('mouseover', (e) => {
-            if (e.target.closest('a, button, .magnetic-btn, .video-card, .avatar-frame')) {
-                dot?.classList.add('hovering'); ring?.classList.add('hovering');
-            }
+          const target = e.target.closest('a, button, .btn, .magnetic-btn, .kk-item, .service-card, .bundle-card, .review-card, .faq-item');
+          if (target) {
+            dot.classList.add('hovering');
+            ring.classList.add('hovering');
+          }
         });
         document.addEventListener('mouseout', (e) => {
-            if (e.target.closest('a, button, .magnetic-btn, .video-card, .avatar-frame')) {
-                dot?.classList.remove('hovering'); ring?.classList.remove('hovering');
-            }
+          const target = e.target.closest('a, button, .btn, .magnetic-btn, .kk-item, .service-card, .bundle-card, .review-card, .faq-item');
+          if (target) {
+            dot.classList.remove('hovering');
+            ring.classList.remove('hovering');
+          }
         });
+      }
     }
 
-    // ============================================================
-    // 8. OBSERVERS (Reveals & Counters)
-    // ============================================================
-    function initObservers() {
-        function animateCounter(el) {
-            const target = parseInt(el.getAttribute('data-count'), 10);
-            if (isNaN(target)) return;
-            const start = performance.now();
-            function update(time) {
-                const progress = Math.min((time - start) / App.config.counterDuration, 1);
-                const easeOutExpo = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
-                el.textContent = Math.floor(easeOutExpo * target).toLocaleString('de-DE') + (target >= 100 ? '+' : '');
-                if (progress < 1) requestAnimationFrame(update);
+    // ── MAGNETIC BUTTONS ──
+    if (!isTouchDevice() && window.matchMedia('(pointer: fine)').matches) {
+      document.addEventListener('mousemove', (e) => {
+        document.querySelectorAll('.magnetic-btn').forEach((btn) => {
+          const rect = btn.getBoundingClientRect();
+          const cx = rect.left + rect.width / 2;
+          const cy = rect.top + rect.height / 2;
+          const dx = e.clientX - cx;
+          const dy = e.clientY - cy;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < CONFIG.magneticDistance) {
+            const strength = (CONFIG.magneticDistance - dist) / CONFIG.magneticDistance * 4;
+            btn.style.transform = `translate(${dx * strength / 6}px, ${dy * strength / 6}px)`;
+          } else {
+            btn.style.transform = 'translate(0, 0)';
+          }
+        });
+      });
+    }
+
+    // ── LIVE COUNTERS ──
+    function animateCounter(el) {
+      const target = parseInt(el.getAttribute('data-target'), 10);
+      if (isNaN(target) || target <= 0) return;
+      const duration = CONFIG.counterDuration;
+      const startTime = performance.now();
+      function updateCounter(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = Math.floor(eased * target);
+        el.textContent = current.toLocaleString('de-DE') + (target >= 100 ? '+' : '');
+        if (progress < 1) requestAnimationFrame(updateCounter);
+        else el.textContent = target.toLocaleString('de-DE') + (target >= 100 ? '+' : '');
+      }
+      requestAnimationFrame(updateCounter);
+    }
+
+    // ── REVEAL ON SCROLL ──
+    const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          entry.target.querySelectorAll('.live-counter').forEach((counter) => {
+            if (!counter.classList.contains('counted')) {
+              counter.classList.add('counted');
+              animateCounter(counter);
             }
-            requestAnimationFrame(update);
+          });
         }
+      });
+    }, {
+      threshold: CONFIG.revealThreshold,
+      rootMargin: '0px 0px -40px 0px'
+    });
+    revealElements.forEach(el => revealObserver.observe(el));
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    entry.target.querySelectorAll('.number[data-count]').forEach(counter => {
-                        if (!counter.classList.contains('counted')) {
-                            counter.classList.add('counted');
-                            animateCounter(counter);
-                        }
-                    });
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+    // Counters already visible on load
+    setTimeout(() => {
+      document.querySelectorAll('.reveal.visible .live-counter, .live-counter.visible').forEach((counter) => {
+        if (!counter.classList.contains('counted')) {
+          counter.classList.add('counted');
+          animateCounter(counter);
+        }
+      });
+    }, 300);
 
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    // ── SMOOTH SCROLL FOR ANCHOR LINKS ──
+    document.querySelectorAll('a[href^="#"]').forEach((link) => {
+      link.addEventListener('click', (e) => {
+        const targetId = link.getAttribute('href');
+        if (targetId === '#') return;
+        const target = document.querySelector(targetId);
+        if (target) {
+          e.preventDefault();
+          const top = target.getBoundingClientRect().top + window.scrollY - CONFIG.navHeight - 16;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      });
+    });
+
+    // ── HERO SEARCH ──
+    const searchInput = document.getElementById('heroSearch');
+    const searchBtn = document.getElementById('heroSearchBtn');
+
+    function performSearch() {
+      const query = searchInput ? searchInput.value.trim() : '';
+      if (query) {
+        window.location.href = (getBase() || './') + 'services.html?q=' + encodeURIComponent(query);
+      } else if (searchInput) {
+        searchInput.focus();
+      }
+    }
+    searchBtn?.addEventListener('click', performSearch);
+    searchInput?.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') performSearch();
+    });
+
+    // ── FAQ ACCORDION ──
+    document.querySelectorAll('.faq-item').forEach((item) => {
+      const question = item.querySelector('.faq-question, .question');
+      if (question) {
+        // Remove old listener to avoid duplicates
+        question.removeEventListener('click', question._handler);
+        question._handler = () => {
+          const isOpen = item.classList.contains('open');
+          document.querySelectorAll('.faq-item').forEach((other) => {
+            if (other !== item) other.classList.remove('open');
+          });
+          if (!isOpen) item.classList.add('open');
+          else item.classList.remove('open');
+        };
+        question.addEventListener('click', question._handler);
+      }
+    });
+
+    // ── NEWSLETTER FORM ──
+    const newsletterForm = document.getElementById('newsletterForm');
+    if (newsletterForm) {
+      // Remove old listener
+      newsletterForm.removeEventListener('submit', newsletterForm._submitHandler);
+      newsletterForm._submitHandler = (e) => {
+        e.preventDefault();
+        const btn = newsletterForm.querySelector('button[type="submit"]');
+        const orig = btn.innerHTML;
+        btn.innerHTML = '<i class="fas fa-check"></i> Willkommen!';
+        btn.style.background = 'var(--rl-gradient-cta-hover, #E4B98A)';
+        setTimeout(() => {
+          btn.innerHTML = orig;
+          btn.style.background = '';
+          newsletterForm.reset();
+        }, 2500);
+      };
+      newsletterForm.addEventListener('submit', newsletterForm._submitHandler);
     }
 
-    // ============================================================
-    // 9. PAGE SPECIFIC FEATURES (Lightbox, Flip, FAQ)
-    // ============================================================
-    function initPageFeatures() {
-        const lightbox = document.getElementById('videoLightbox');
-        const player = document.getElementById('lightboxPlayer');
-        
-        document.addEventListener('click', (e) => {
-            const trigger = e.target.closest('.js-lightbox-trigger');
-            if (trigger && lightbox && player) {
-                player.src = trigger.getAttribute('data-video');
-                lightbox.classList.add('active');
-                player.play().catch(() => {});
+    // ── FILTER BUTTONS ──
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const serviceCards = document.querySelectorAll('.service-detailed-card, .service-card, .kk-item');
+    const noResults = document.getElementById('noResults');
+
+    if (filterBtns.length) {
+      filterBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          filterBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const filter = btn.getAttribute('data-filter') || 'all';
+          let visible = 0;
+          serviceCards.forEach((card) => {
+            const category = card.getAttribute('data-category') || '';
+            if (filter === 'all' || category === filter) {
+              card.style.display = '';
+              visible++;
+            } else {
+              card.style.display = 'none';
             }
-            if (e.target.closest('.close-lightbox') || e.target === lightbox) {
-                if (lightbox && player) {
-                    lightbox.classList.remove('active');
-                    player.pause(); player.removeAttribute('src');
-                }
-            }
+          });
+          if (noResults) {
+            noResults.style.display = visible === 0 ? 'block' : 'none';
+          }
         });
+      });
+    }
 
-        const flipCard = document.getElementById('flipCard');
-        if (flipCard) flipCard.addEventListener('click', () => flipCard.classList.toggle('flipped'));
+    // ── LIVE VISITOR COUNTER ──
+    const visitorEl = document.getElementById('visitorCount');
+    if (visitorEl) {
+      let count = Math.floor(Math.random() * 10) + 8;
+      function updateVisitor() {
+        const delta = Math.floor(Math.random() * 3) - 1;
+        count = Math.max(2, count + delta);
+        visitorEl.textContent = count;
+        visitorEl.style.transition = 'transform 0.15s ease';
+        visitorEl.style.transform = 'scale(1.3)';
+        setTimeout(() => { visitorEl.style.transform = 'scale(1)'; }, 150);
+      }
+      setInterval(updateVisitor, Math.floor(Math.random() * 6000) + 4000);
+      visitorEl.textContent = count;
+    }
 
-        document.addEventListener('click', (e) => {
-            const question = e.target.closest('.faq-question');
-            if (question) {
-                const item = question.closest('.faq-item');
-                const isOpen = item.classList.contains('open');
-                document.querySelectorAll('.faq-item').forEach(faq => faq.classList.remove('open'));
-                if (!isOpen) item.classList.add('open');
-            }
+    // ── LANGUAGE SWITCHER ──
+    function initLanguageSwitcher() {
+      const langBtns = document.querySelectorAll('.rl-footer__lang .lang-btn, .lang-switch .lang-btn');
+      if (!langBtns.length) return;
+
+      function updateLanguage(lang) {
+        langBtns.forEach(btn => {
+          btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
         });
+        document.querySelectorAll('[data-lang]:not(.lang-btn)').forEach(el => {
+          const show = (el.getAttribute('data-lang') === lang);
+          el.style.display = show ? '' : 'none';
+        });
+      }
+
+      langBtns.forEach(btn => {
+        btn.removeEventListener('click', btn._langHandler);
+        btn._langHandler = function () {
+          updateLanguage(this.getAttribute('data-lang'));
+        };
+        btn.addEventListener('click', btn._langHandler);
+      });
+
+      // Initialize
+      const activeLangBtn = document.querySelector('.rl-footer__lang .lang-btn.active, .lang-switch .lang-btn.active');
+      const initialLang = activeLangBtn ? activeLangBtn.getAttribute('data-lang') : 'de';
+      updateLanguage(initialLang);
     }
 
-    // ============================================================
-    // 10. SYSTEM BOOTSTRAP
-    // ============================================================
-    async function boot() {
-        calculateRootPath();
-        initTheme();
-        
-        // Pass the Fallback strings so it renders even on local file:// tests!
-        await Promise.all([
-            loadComponent('#nav-placeholder', App.config.navPath, NAV_FALLBACK),
-            loadComponent('#footer-placeholder', App.config.footerPath, FOOTER_FALLBACK)
-        ]);
+    initLanguageSwitcher();
 
-        initNavigation();
-        initInteractions();
-        initObservers();
-        initPageFeatures();
-
-        document.dispatchEvent(new CustomEvent('SystemReady'));
+    // ── HIDE CURSOR ON TOUCH ──
+    if (isTouchDevice() || isMobile()) {
+      document.querySelectorAll('.cursor-dot, .cursor-ring').forEach(el => el.style.display = 'none');
     }
 
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', boot);
-    } else {
-        boot();
+    // ── ACTIVE SECTION HIGHLIGHTING ──
+    function updateActiveSection() {
+      const sections = document.querySelectorAll('section[id]');
+      const navLinks = document.querySelectorAll('.nav-link[data-section]');
+      let current = '';
+      const scrollPos = window.scrollY + 120;
+      sections.forEach(section => {
+        const top = section.offsetTop;
+        const height = section.offsetHeight;
+        if (scrollPos >= top && scrollPos < top + height) {
+          current = section.id;
+        }
+      });
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('data-section') === current) {
+          link.classList.add('active');
+        }
+      });
     }
+    window.addEventListener('scroll', updateActiveSection, { passive: true });
+    document.addEventListener('componentsLoaded', function () {
+      setTimeout(updateActiveSection, 100);
+    });
+
+    console.log('✅ UI binding complete');
+  }
+
+  // ── Initialisation ──
+  async function init() {
+    // Load components
+    await Promise.all([
+      loadComponent('#nav-placeholder', CONFIG.navPath, NAV_FALLBACK),
+      loadComponent('#footer-placeholder', CONFIG.footerPath, FOOTER_FALLBACK)
+    ]);
+
+    // Wait a moment for DOM to settle, then bind all UI
+    setTimeout(() => {
+      bindUI();
+      // Dispatch event for external scripts
+      document.dispatchEvent(new CustomEvent('componentsLoaded'));
+    }, 80);
+  }
+
+  // Start when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
 
 })();

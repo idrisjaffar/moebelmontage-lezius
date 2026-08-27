@@ -1,10 +1,10 @@
-<!-- components/footer.html – Magnificent 2026 Footer (self-contained) -->
+<!-- components/footer.html – Magnificent 2026 Footer (fully variable-based) -->
 <style>
   /* ============================================================
-     FOOTER – Self-contained styles (no external dependency)
+     FOOTER – Self-contained styles (uses CSS variables)
      ============================================================ */
 
-  /* ----- Fallback Variables (will be overridden by global if present) ----- */
+  /* ----- Fallback Variables (overridden by global) ----- */
   :root {
     --rl-primary: #D4A574;
     --rl-secondary: #2E9A8C;
@@ -36,7 +36,7 @@
     --rl-shadow-glow-amber: 0 8px 32px rgba(245, 185, 66, 0.25);
   }
 
-  /* Light mode overrides */
+  /* ----- Light Mode Overrides (uses same variables) ----- */
   [data-theme="light"] {
     --rl-surface: #F5F2EC;
     --rl-card: rgba(0, 0, 0, 0.04);
@@ -92,7 +92,7 @@
     100% { background-position: 300% 0%; }
   }
 
-  /* Subtle glow overlay */
+  /* Subtle glow overlay (uses transparent gradients, not dark) */
   .rl-footer::after {
     content: '';
     position: absolute;
@@ -698,9 +698,15 @@
      REDUCED MOTION
      ============================================================ */
   @media (prefers-reduced-motion: reduce) {
-    .rl-footer::before,
-    .rl-footer__badge,
-    .live-dot,
+    .rl-footer::before {
+      animation: none !important;
+    }
+    .rl-footer__badge {
+      animation: none !important;
+    }
+    .live-dot {
+      animation: none !important;
+    }
     .rl-footer__sentiment i {
       animation: none !important;
     }
@@ -947,7 +953,7 @@
       visitorEl.textContent = count;
       // Update every 30 seconds for demo
       setInterval(function() {
-        var delta = Math.floor(Math.random() * 5) - 2; // -2 to +2
+        var delta = Math.floor(Math.random() * 5) - 2;
         var newCount = Math.max(1, parseInt(visitorEl.textContent) + delta);
         visitorEl.textContent = newCount;
       }, 30000);
@@ -965,19 +971,15 @@
     var langBtns = document.querySelectorAll('.rl-footer__lang .lang-btn');
     if (langBtns.length) {
       function updateLanguage(lang) {
-        // 1. Update the active class on the buttons
         langBtns.forEach(function(btn) {
           btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
         });
-
-        // 2. Toggle content visibility, excluding the toggle buttons themselves (.lang-btn)
         document.querySelectorAll('[data-lang]:not(.lang-btn)').forEach(function(el) {
           var show = (el.getAttribute('data-lang') === lang);
           el.style.display = show ? '' : 'none';
         });
       }
 
-      // Add click listeners to buttons
       langBtns.forEach(function(btn) {
         btn.addEventListener('click', function() {
           updateLanguage(this.getAttribute('data-lang'));
@@ -997,17 +999,12 @@
       form.addEventListener('submit', function(e) {
         e.preventDefault();
         var email = document.getElementById('newsletterEmail');
-        
         if (email && email.value.trim()) {
           var btn = form.querySelector('button[type="submit"]');
           var orig = btn.innerHTML;
-          
-          // Check internal footer language state rather than document tag
           var currentLangBtn = document.querySelector('.rl-footer__lang .lang-btn.active');
           var currentLang = currentLangBtn ? currentLangBtn.getAttribute('data-lang') : 'de';
-          
           btn.innerHTML = '<i class="fas fa-check"></i> ' + (currentLang === 'de' ? 'Willkommen!' : 'Welcome!');
-          
           setTimeout(function() {
             btn.innerHTML = orig;
             form.reset();

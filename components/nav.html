@@ -1,10 +1,10 @@
-<!-- components/nav.html – Premium 2026 Responsive Navigation (self-contained) -->
+<!-- components/nav.html – Premium 2026 Responsive Navigation (fully variable-based) -->
 <style>
   /* ============================================================
-     NAV – Self-contained styles (no external dependency)
+     NAV – Self-contained styles (uses CSS variables)
      ============================================================ */
 
-  /* ----- Root Variables (fallback – will be overridden by global if present) ----- */
+  /* ----- Root Variables (fallback – overridden by global if present) ----- */
   :root {
     --rl-primary: #D4A574;
     --rl-primary-hover: #E4B98A;
@@ -303,7 +303,7 @@
     height: 38px;
     border-radius: 50%;
     border: 1px solid var(--rl-border);
-    background: var(--rl-card, rgba(255,255,255,0.04));
+    background: var(--rl-card);
     display: grid;
     place-items: center;
     color: var(--rl-muted);
@@ -343,17 +343,20 @@
     background: var(--rl-primary);
   }
 
-  /* ----- BACKDROP OVERLAY ----- */
+  /* ----- BACKDROP OVERLAY (FIXED: uses CSS variable) ----- */
   .nav-backdrop {
     position: fixed;
     inset: 0;
     z-index: 998;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.4s ease, visibility 0.4s ease;
+  }
+  [data-theme="light"] .nav-backdrop {
+    background: rgba(0, 0, 0, 0.25);
   }
   .nav-backdrop.active {
     opacity: 1;
@@ -391,7 +394,7 @@
     width: 100%;
   }
 
-  /* Mobile Close Button */
+  /* Mobile Close Button (FIXED: uses CSS variables) */
   .mobile-close {
     position: absolute;
     top: 16px;
@@ -399,8 +402,8 @@
     width: 44px;
     height: 44px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: var(--rl-card);
+    border: 1px solid var(--rl-border);
     color: var(--rl-text);
     font-size: 1.2rem;
     display: flex;
@@ -411,15 +414,16 @@
     z-index: 10;
   }
   .mobile-close:hover {
-    background: rgba(255, 255, 255, 0.12);
+    background: rgba(212, 165, 116, 0.08);
     transform: rotate(90deg);
   }
   [data-theme="light"] .mobile-close {
-    background: rgba(0, 0, 0, 0.04);
-    border-color: rgba(0, 0, 0, 0.06);
+    background: var(--rl-card);
+    border-color: var(--rl-border);
+    color: var(--rl-text);
   }
   [data-theme="light"] .mobile-close:hover {
-    background: rgba(0, 0, 0, 0.08);
+    background: rgba(0, 0, 0, 0.06);
   }
 
   /* Mobile Links */
