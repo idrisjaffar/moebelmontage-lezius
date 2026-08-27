@@ -2,7 +2,7 @@
 <html lang="de" data-theme="dark">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Raphael Lezius – Ihr Montage-Experte aus Augsburg</title>
     <meta name="description" content="Professionelle Möbelmontage in Augsburg & München. Präzision, Transparenz & 1 Jahr Garantie. Jetzt unverbindlich anfragen." />
     <meta name="theme-color" content="#0B0A09" id="themeColorMeta" />
@@ -66,10 +66,49 @@
             window.__base = base;
         })();
     </script>
+
+    <!-- Additional inline styles for page-specific layout (kept from original) -->
+    <style>
+        /* ensure stats use live-counter styling */
+        .stat-item .number.live-counter {
+            font-size: inherit;
+            font-weight: 700;
+        }
+        /* ensure video cards work */
+        .video-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+        @media (max-width: 600px) {
+            .video-showcase {
+                grid-template-columns: 1fr;
+            }
+            .hero-glass-panel {
+                padding: 24px 16px;
+            }
+            .stats-bar {
+                flex-wrap: wrap;
+                gap: 12px;
+            }
+            .btns {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .cta-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .cta-trust {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+    </style>
 </head>
 <body>
 
-    <!-- ===== FLOATING ELEMENTS ===== -->
+    <!-- ===== FLOATING ELEMENTS (main.js handles them) ===== -->
     <div class="cursor-dot" id="cursorDot"></div>
     <div class="cursor-ring" id="cursorRing"></div>
     <div class="scroll-progress" id="scrollProgress"></div>
@@ -89,15 +128,13 @@
         <i class="fas fa-chevron-up"></i>
     </button>
 
-    <!-- ===== NAV PLACEHOLDER (injected like homepage) ===== -->
-    <div id="nav-placeholder">
-        <div class="component-loading"><i class="fas fa-sync-alt fa-spin"></i> NAV SYSTEM...</div>
-    </div>
+    <!-- ===== NAV PLACEHOLDER ===== -->
+    <div id="nav-placeholder"></div>
 
     <main>
 
         <!-- ============================================================
-        HERO – Video Background + Glass Panel (matching homepage style)
+        HERO – Video Background + Glass Panel
         ============================================================ -->
         <section class="about-hero" id="top">
             <div class="video-bg-container">
@@ -109,14 +146,13 @@
 
             <div class="container">
                 <div class="hero-glass-panel reveal">
-                    <!-- Trust Badge – matching homepage hero-badge -->
+                    <!-- Trust Badge -->
                     <div class="trust-badge">
                         <span class="dot"></span>
                         <span data-lang="de">5.0 ★ · 110+ Kunden · Augsburg &amp; München</span>
                         <span data-lang="en" style="display:none;">5.0 ★ · 110+ Clients · Augsburg &amp; Munich</span>
                     </div>
 
-                    <!-- Heading – gold gradient like homepage -->
                     <h1>
                         <span data-lang="de">Ihre Möbel –</span>
                         <span data-lang="en" style="display:none;">Your furniture –</span><br />
@@ -124,19 +160,16 @@
                         <span class="gold" data-lang="en" style="display:none;">my responsibility.</span>
                     </h1>
 
-                    <!-- Subtitle -->
                     <p class="subtitle">
                         <span data-lang="de">Präzise Montage. Feste Preise. 1 Jahr Garantie.</span>
                         <span data-lang="en" style="display:none;">Precise assembly. Fixed prices. 1‑year guarantee.</span>
                     </p>
 
-                    <!-- Value Proposition -->
                     <p class="value-prop">
                         <span data-lang="de">Ich mache das, worauf Sie sich verlassen können: <strong>millimetergenaue Montage</strong>, staubfreie Arbeitsweise und volle Transparenz – von der ersten Anfrage bis zur letzten Schraube.</span>
                         <span data-lang="en" style="display:none;">I do what you can rely on: <strong>millimetre‑precise assembly</strong>, dust‑free work, and full transparency – from the first inquiry to the last screw.</span>
                     </p>
 
-                    <!-- CTAs -->
                     <div class="btns">
                         <a href="#process" class="btn btn-primary magnetic-btn">
                             <i class="fas fa-arrow-right"></i>
@@ -150,15 +183,15 @@
                         </a>
                     </div>
 
-                    <!-- Stats Bar – matching homepage stats -->
+                    <!-- Stats Bar – using live-counter class for main.js to handle -->
                     <div class="stats-bar">
                         <div class="stat-item">
-                            <div class="number" data-count="1200">0</div>
+                            <div class="number live-counter" data-target="1200">0</div>
                             <span class="label" data-lang="de">Projekte</span>
                             <span class="label" data-lang="en" style="display:none;">Projects</span>
                         </div>
                         <div class="stat-item">
-                            <div class="number" data-count="110">0</div>
+                            <div class="number live-counter" data-target="110">0</div>
                             <span class="label" data-lang="de">Kunden</span>
                             <span class="label" data-lang="en" style="display:none;">Clients</span>
                         </div>
@@ -168,7 +201,7 @@
                             <span class="label" data-lang="en" style="display:none;">Rating</span>
                         </div>
                         <div class="stat-item">
-                            <div class="number" data-count="98">0</div>
+                            <div class="number live-counter" data-target="98">0</div>
                             <span class="label" data-lang="de">Weiterempfehlung</span>
                             <span class="label" data-lang="en" style="display:none;">Referral Rate</span>
                         </div>
@@ -555,7 +588,7 @@
                         <a href="contact.html" class="cta-form">
                             <i class="fas fa-envelope"></i>
                             <span data-lang="de">Kontaktformular</span>
-                            <span data-lang="en" style="display:none">Contact form</span>
+                            <span data-lang="en" style="display:none;">Contact form</span>
                         </a>
                     </div>
                     <div class="cta-trust">
@@ -570,310 +603,20 @@
 
     </main>
 
-    <!-- ===== FOOTER PLACEHOLDER (injected like homepage) ===== -->
-    <div id="footer-placeholder">
-        <div class="component-loading"><i class="fas fa-sync-alt fa-spin"></i> FOOTER SYSTEM...</div>
-    </div>
+    <!-- ===== FOOTER PLACEHOLDER ===== -->
+    <div id="footer-placeholder"></div>
+
+    <!-- ============================================================ -->
+    <!-- UNIFIED MAIN SCRIPT (handles everything: loading, UI, interactions) -->
+    <!-- ============================================================ -->
+    <script src="assets/js/main.js"></script>
 
     <!-- ============================================================
-    COMPONENT LOADER – Identical to homepage
+    PAGE-SPECIFIC SCRIPTS (only unique to about page)
     ============================================================ -->
     <script>
         (function() {
             'use strict';
-
-            // ── Fallback Nav ──
-            const NAV_FALLBACK = `
-        <nav class="rl-nav" id="mainNav" role="navigation">
-          <div class="rl-nav__inner">
-            <a href="index.html" class="rl-nav__brand" aria-label="Startseite">Raphael <span>Lezius</span></a>
-            <ul class="rl-nav__links">
-              <li class="nav-dropdown">
-                <a href="#" class="nav-link" data-section="services">Services <i class="fas fa-chevron-down"></i></a>
-                <div class="nav-dropdown-content">
-                  <a href="services.html"><i class="fas fa-th-list"></i> Übersicht</a>
-                  <a href="services/moebel-kuechen.html"><i class="fas fa-couch"></i> Möbel & Küchen</a>
-                  <a href="services/usm-haller.html"><i class="fas fa-gem"></i> USM Haller</a>
-                  <a href="services/garten-outdoor.html"><i class="fas fa-tree"></i> Garten & Outdoor</a>
-                  <a href="services/demontage-umzug.html"><i class="fas fa-truck"></i> Demontage & Umzug</a>
-                  <a href="services/buero-objekt.html"><i class="fas fa-building"></i> Büro & Objekt</a>
-                  <a href="services/premium-pro.html"><i class="fas fa-crown"></i> Premium Pro</a>
-                </div>
-              </li>
-              <li class="nav-dropdown">
-                <a href="#" class="nav-link" data-section="bundles">Bundles <i class="fas fa-chevron-down"></i></a>
-                <div class="nav-dropdown-content">
-                  <a href="bundles/"><i class="fas fa-gift"></i> Übersicht</a>
-                  <a href="bundles/kuechen-komplett.html"><i class="fas fa-utensils"></i> Küchen-Komplett</a>
-                  <a href="bundles/usm-all-in.html"><i class="fas fa-gem"></i> USM All-In</a>
-                  <a href="bundles/umzug-premium.html"><i class="fas fa-truck"></i> Umzug Premium</a>
-                </div>
-              </li>
-              <li><a href="about.html" class="nav-link active" data-section="about">Über mich</a></li>
-              <li><a href="contact.html" class="nav-link">Kontakt</a></li>
-            </ul>
-            <div class="rl-nav__actions">
-              <a href="anfrage/" class="nav-cta magnetic-btn"><i class="fas fa-comment-dots"></i><span>Kostenlos</span></a>
-              <button class="theme-toggle" data-theme-toggle><i class="fas fa-moon" data-theme-icon></i></button>
-              <button class="rl-nav__hamburger" id="navToggle"><span></span><span></span><span></span></button>
-            </div>
-          </div>
-        </nav>
-        <div class="rl-nav__mobile" id="mobileMenu">
-          <div class="mobile-menu-inner">
-            <a href="index.html" class="mobile-link">Start</a>
-            <a href="services.html" class="mobile-link"><i class="fas fa-th-list"></i> Services</a>
-            <a href="services/moebel-kuechen.html" class="mobile-link">– Möbel & Küchen</a>
-            <a href="services/usm-haller.html" class="mobile-link">– USM Haller</a>
-            <a href="services/garten-outdoor.html" class="mobile-link">– Garten & Outdoor</a>
-            <a href="services/demontage-umzug.html" class="mobile-link">– Demontage & Umzug</a>
-            <a href="services/buero-objekt.html" class="mobile-link">– Büro & Objekt</a>
-            <a href="services/premium-pro.html" class="mobile-link">– Premium Pro</a>
-            <a href="bundles/" class="mobile-link"><i class="fas fa-gift"></i> Bundles</a>
-            <a href="bundles/kuechen-komplett.html" class="mobile-link">– Küchen-Komplett</a>
-            <a href="bundles/usm-all-in.html" class="mobile-link">– USM All-In</a>
-            <a href="bundles/umzug-premium.html" class="mobile-link">– Umzug Premium</a>
-            <a href="about.html" class="mobile-link">Über mich</a>
-            <a href="contact.html" class="mobile-link">Kontakt</a>
-            <a href="faq.html" class="mobile-link">FAQ</a>
-            <a href="anfrage/" class="mobile-cta"><i class="fas fa-comment-dots"></i> Kostenloses Gespräch</a>
-            <div class="mobile-extra"><button class="theme-toggle" data-theme-toggle><i class="fas fa-moon" data-theme-icon></i></button></div>
-          </div>
-        </div>
-        `;
-
-            const FOOTER_FALLBACK = `
-        <footer class="rl-footer">
-          <div class="container">
-            <div class="rl-footer__top">
-              <div class="rl-footer__brand">
-                <div class="rl-footer__logo">Raphael <span>Lezius</span></div>
-                <p>Premium Montage mit Leidenschaft – millimetergenau, staubfrei und mit Herz.</p>
-                <div class="rl-footer__trust">
-                  <span><i class="fas fa-shield-alt"></i> 5 Mio. € versichert</span>
-                  <span><i class="fas fa-star"></i> 5.0 ★</span>
-                  <span><i class="fas fa-clock"></i> Antwort &lt; 24 h</span>
-                  <span><i class="fas fa-heart"></i> 1 Jahr Garantie</span>
-                </div>
-              </div>
-              <div class="rl-footer__newsletter">
-                <h4>Newsletter</h4>
-                <form class="rl-footer__form" id="newsletterForm">
-                  <input type="email" placeholder="Ihre E-Mail" required />
-                  <button type="submit">Anmelden</button>
-                </form>
-              </div>
-            </div>
-            <div class="rl-footer__grid">
-              <div class="rl-footer__col"><h5>Services</h5><a href="services.html">Alle</a><a href="services/moebel-kuechen.html">Möbel & Küchen</a><a href="services/usm-haller.html">USM Haller</a></div>
-              <div class="rl-footer__col"><h5>Bundles</h5><a href="bundles/">Alle</a><a href="bundles/kuechen-komplett.html">Küchen-Komplett</a><a href="bundles/usm-all-in.html">USM All-In</a></div>
-              <div class="rl-footer__col"><h5>Über</h5><a href="about.html">Über mich</a><a href="reviews.html">Stimmen</a><a href="faq.html">FAQ</a></div>
-              <div class="rl-footer__col"><h5>Rechtliches</h5><a href="legal/impressum.html">Impressum</a><a href="legal/datenschutz.html">Datenschutz</a><a href="legal/agb.html">AGB</a></div>
-            </div>
-            <div class="rl-footer__bottom">
-              <div>© 2026 Raphael Lezius</div>
-              <div><a href="legal/impressum.html">Impressum</a> <a href="legal/datenschutz.html">Datenschutz</a> <a href="legal/agb.html">AGB</a></div>
-            </div>
-          </div>
-        </footer>
-        `;
-
-            async function loadComponent(selector, path, fallback) {
-                const container = document.querySelector(selector);
-                if (!container) return;
-                const cached = localStorage.getItem(path);
-                if (cached) {
-                    container.innerHTML = cached;
-                    fetch(path).then(r => r.text()).then(html => { if (html) { container.innerHTML = html;
-                            localStorage.setItem(path, html); } }).catch(() => {});
-                    return;
-                }
-                try {
-                    const res = await fetch(path);
-                    if (!res.ok) throw new Error();
-                    const html = await res.text();
-                    if (html) { container.innerHTML = html;
-                        localStorage.setItem(path, html); return; }
-                } catch (e) {}
-                container.innerHTML = fallback;
-                try { localStorage.setItem(path, fallback); } catch (e) {}
-            }
-
-            function init() {
-                loadComponent('#nav-placeholder', 'components/nav.html', NAV_FALLBACK);
-                loadComponent('#footer-placeholder', 'components/footer.html', FOOTER_FALLBACK);
-
-                setTimeout(() => {
-                    const toggle = document.getElementById('navToggle');
-                    const menu = document.getElementById('mobileMenu');
-                    if (toggle && menu) {
-                        toggle.addEventListener('click', function() {
-                            const open = menu.classList.toggle('open');
-                            toggle.setAttribute('aria-expanded', open);
-                            menu.setAttribute('aria-hidden', !open);
-                            document.body.style.overflow = open ? 'hidden' : '';
-                        });
-                        menu.querySelectorAll('a').forEach(l => l.addEventListener('click', function() {
-                            menu.classList.remove('open');
-                            toggle.setAttribute('aria-expanded', 'false');
-                            menu.setAttribute('aria-hidden', 'true');
-                            document.body.style.overflow = '';
-                        }));
-                    }
-
-                    document.querySelectorAll('[data-theme-toggle]').forEach(btn => {
-                        btn.removeEventListener('click', toggleTheme);
-                        btn.addEventListener('click', toggleTheme);
-                    });
-
-                    const form = document.getElementById('newsletterForm');
-                    if (form) {
-                        form.removeEventListener('submit', handleNewsletter);
-                        form.addEventListener('submit', handleNewsletter);
-                    }
-
-                    updateActiveSection();
-                }, 50);
-            }
-
-            function toggleTheme() {
-                const html = document.documentElement;
-                const current = html.getAttribute('data-theme') || 'dark';
-                const next = current === 'dark' ? 'light' : 'dark';
-                html.setAttribute('data-theme', next);
-                localStorage.setItem('rl-theme', next);
-                document.querySelectorAll('[data-theme-icon]').forEach(i => {
-                    i.className = next === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
-                });
-                const meta = document.getElementById('themeColorMeta');
-                if (meta) meta.content = next === 'dark' ? '#0B0A09' : '#F9F7F2';
-            }
-
-            function handleNewsletter(e) {
-                e.preventDefault();
-                const btn = this.querySelector('button');
-                const orig = btn.innerHTML;
-                btn.innerHTML = '<i class="fas fa-check"></i> Willkommen!';
-                btn.style.background = 'var(--rl-gradient-hover)';
-                setTimeout(() => { btn.innerHTML = orig;
-                    this.reset(); }, 2800);
-            }
-
-            function updateActiveSection() {
-                const sections = document.querySelectorAll('section[id]');
-                const links = document.querySelectorAll('.nav-link[data-section]');
-                let current = '';
-                const scrollPos = window.scrollY + 120;
-                sections.forEach(s => {
-                    const top = s.offsetTop,
-                        h = s.offsetHeight;
-                    if (scrollPos >= top && scrollPos < top + h) current = s.id;
-                });
-                links.forEach(l => {
-                    l.classList.toggle('active', l.getAttribute('data-section') === current);
-                });
-            }
-
-            const savedTheme = localStorage.getItem('rl-theme');
-            if (savedTheme) {
-                document.documentElement.setAttribute('data-theme', savedTheme);
-                document.querySelectorAll('[data-theme-icon]').forEach(i => {
-                    i.className = savedTheme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
-                });
-            }
-
-            if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
-            else init();
-
-            window.addEventListener('scroll', updateActiveSection, { passive: true });
-
-            // Nav auto-hide
-            const nav = document.querySelector('.rl-nav');
-            let lastScroll = 0;
-            window.addEventListener('scroll', function() {
-                const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-                if (nav) nav.classList.toggle('scrolled', currentScroll > 20);
-                if (currentScroll > 80) {
-                    if (currentScroll > lastScroll) nav?.classList.add('hidden');
-                    else nav?.classList.remove('hidden');
-                } else {
-                    nav?.classList.remove('hidden');
-                }
-                lastScroll = currentScroll;
-            }, { passive: true });
-
-        })();
-    </script>
-
-    <!-- ============================================================
-    PAGE SCRIPTS
-    ============================================================ -->
-    <script>
-        (function() {
-            'use strict';
-
-            // ===== SCROLL PROGRESS =====
-            const progress = document.getElementById('scrollProgress');
-            const sticky = document.getElementById('stickyCta');
-            const backTop = document.getElementById('backToTop');
-
-            window.addEventListener('scroll', function() {
-                const st = window.scrollY,
-                    dh = document.documentElement.scrollHeight - window.innerHeight;
-                if (progress) progress.style.width = (dh > 0 ? (st / dh) * 100 : 0) + '%';
-                if (st > 400) { sticky?.classList.add('visible');
-                    backTop?.classList.add('visible'); } else { sticky?.classList.remove('visible');
-                    backTop?.classList.remove('visible'); }
-            }, { passive: true });
-
-            backTop?.addEventListener('click', function() { window.scrollTo({ top: 0, behavior: 'smooth' }); });
-
-            // ===== CUSTOM CURSOR =====
-            const dot = document.getElementById('cursorDot');
-            const ring = document.getElementById('cursorRing');
-            let mx = 0,
-                my = 0,
-                rx = 0,
-                ry = 0;
-
-            if (dot && ring && window.matchMedia('(min-width:769px)').matches) {
-                document.addEventListener('mousemove', function(e) {
-                    mx = e.clientX;
-                    my = e.clientY;
-                    dot.style.left = mx + 'px';
-                    dot.style.top = my + 'px';
-                    document.querySelectorAll('.magnetic-btn').forEach(function(b) {
-                        const r = b.getBoundingClientRect(),
-                            cx = r.left + r.width / 2,
-                            cy = r.top + r.height / 2,
-                            dx = e.clientX - cx,
-                            dy = e.clientY - cy,
-                            dist = Math.sqrt(dx * dx + dy * dy);
-                        b.style.transform = dist < 120 ? 'translate(' + (dx / 6) + 'px,' + (dy / 6) + 'px)' :
-                            'translate(0,0)';
-                    });
-                });
-
-                function animRing() { rx += (mx - rx) * 0.18;
-                    ry += (my - ry) * 0.18;
-                    ring.style.left = rx + 'px';
-                    ring.style.top = ry + 'px';
-                    requestAnimationFrame(animRing); }
-                animRing();
-
-                document.addEventListener('mouseover', function(e) {
-                    if (e.target.closest('a, button, .btn, .video-card, .testimonial-card, .value-card, .process-step, .audience-card, .magnetic-btn')) {
-                        dot.classList.add('hovering');
-                        ring.classList.add('hovering');
-                    }
-                });
-                document.addEventListener('mouseout', function(e) {
-                    if (e.target.closest('a, button, .btn, .video-card, .testimonial-card, .value-card, .process-step, .audience-card, .magnetic-btn')) {
-                        dot.classList.remove('hovering');
-                        ring.classList.remove('hovering');
-                    }
-                });
-            }
 
             // ===== 3D FLIP CARD =====
             const flipCard = document.getElementById('flipCard');
@@ -924,53 +667,33 @@
                     video.currentTime = 0; });
             });
 
-            // ===== STATS COUNTER =====
-            let statsAnimated = false;
-
-            function animateStats() {
-                if (statsAnimated) return;
-                statsAnimated = true;
-                document.querySelectorAll('.stat-item .number[data-count]').forEach(function(el) {
-                    const target = parseInt(el.dataset.count, 10);
-                    const duration = 1800;
-                    const startTime = performance.now();
-
-                    function step(now) {
-                        const progress = Math.min((now - startTime) / duration, 1);
-                        const ease = 1 - Math.pow(1 - progress, 3);
-                        const value = Math.floor(ease * target);
-                        el.textContent = value + (target >= 100 ? '+' : '');
-                        if (progress < 1) requestAnimationFrame(step);
+            // ===== ACTIVE SECTION HIGHLIGHTING (for nav links with data-section) =====
+            function updateActiveSection() {
+                const sections = document.querySelectorAll('section[id]');
+                const navLinks = document.querySelectorAll('.nav-link[data-section]');
+                let current = '';
+                const scrollPos = window.scrollY + 120;
+                sections.forEach(function(section) {
+                    const top = section.offsetTop;
+                    const height = section.offsetHeight;
+                    if (scrollPos >= top && scrollPos < top + height) {
+                        current = section.id;
                     }
-                    requestAnimationFrame(step);
+                });
+                navLinks.forEach(function(link) {
+                    link.classList.remove('active');
+                    if (link.getAttribute('data-section') === current) {
+                        link.classList.add('active');
+                    }
                 });
             }
-
-            // ===== REVEAL ON SCROLL =====
-            const reveals = document.querySelectorAll('.reveal');
-            const revealObserver = new IntersectionObserver(function(entries) {
-                entries.forEach(function(entry) {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        if (entry.target.closest('.about-hero')) animateStats();
-                    }
-                });
-            }, { threshold: 0.15 });
-
-            reveals.forEach(function(reveal) { revealObserver.observe(reveal); });
-
-            // ===== SMOOTH SCROLL =====
-            document.querySelectorAll('a[href^="#"]').forEach(function(link) {
-                link.addEventListener('click', function(e) {
-                    const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
-                    const target = document.querySelector(targetId);
-                    if (target) { e.preventDefault();
-                        target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
-                });
+            window.addEventListener('scroll', updateActiveSection, { passive: true });
+            // Run once after nav is loaded (main.js will trigger componentsLoaded)
+            document.addEventListener('componentsLoaded', function() {
+                setTimeout(updateActiveSection, 100);
             });
 
-            console.log('✨ Raphael Lezius – About Page v10.0 (Matched Homepage Style)');
+            console.log('✨ About page – unique features ready');
         })();
     </script>
 

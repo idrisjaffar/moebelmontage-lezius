@@ -2,7 +2,7 @@
 <html lang="de" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Raphael Lezius – Ihr Montage-Experte aus Augsburg</title>
   <meta name="description" content="Professionelle Möbelmontage in Augsburg & München. Präzision, Transparenz & 1 Jahr Garantie. Jetzt unverbindlich anfragen." />
   <meta name="theme-color" content="#0B0A09" id="themeColorMeta" />
@@ -66,6 +66,45 @@
       window.__base = base;
     })();
   </script>
+
+  <!-- Additional responsive tweaks for this page -->
+  <style>
+    /* ensure stats counters work with live-counter class */
+    .stat-item .number.live-counter {
+      font-size: inherit;
+      font-weight: 700;
+    }
+    /* video cards responsiveness */
+    .video-showcase {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    @media (max-width: 600px) {
+      .video-showcase {
+        grid-template-columns: 1fr;
+      }
+      .hero-glass-panel {
+        padding: 24px 16px;
+      }
+      .stats-bar {
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+      .btns {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .cta-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .cta-trust {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -144,15 +183,15 @@
             </a>
           </div>
 
-          <!-- Stats Bar -->
+          <!-- Stats Bar – now using live-counter class for consistency with main.js -->
           <div class="stats-bar">
             <div class="stat-item">
-              <div class="number" data-count="1200">0</div>
+              <div class="number live-counter" data-target="1200">0</div>
               <span class="label" data-lang="de">Projekte</span>
               <span class="label" data-lang="en" style="display:none;">Projects</span>
             </div>
             <div class="stat-item">
-              <div class="number" data-count="110">0</div>
+              <div class="number live-counter" data-target="110">0</div>
               <span class="label" data-lang="de">Kunden</span>
               <span class="label" data-lang="en" style="display:none;">Clients</span>
             </div>
@@ -162,7 +201,7 @@
               <span class="label" data-lang="en" style="display:none;">Rating</span>
             </div>
             <div class="stat-item">
-              <div class="number" data-count="98">0</div>
+              <div class="number live-counter" data-target="98">0</div>
               <span class="label" data-lang="de">Weiterempfehlung</span>
               <span class="label" data-lang="en" style="display:none;">Referral Rate</span>
             </div>
@@ -567,11 +606,11 @@
   <!-- ===== FOOTER PLACEHOLDER ===== -->
   <div id="footer-placeholder"></div>
 
-  <!-- ===== EXTERNAL LOADER (handles nav, footer, and global UI) ===== -->
-  <script src="assets/js/loader.js"></script>
+  <!-- ===== UNIFIED MAIN SCRIPT (handles everything: loading, UI, interactions) ===== -->
+  <script src="assets/js/main.js"></script>
 
   <!-- ============================================================
-  PAGE‑SPECIFIC SCRIPTS (only for about page features)
+  PAGE‑SPECIFIC SCRIPTS (only for about page unique features)
   ============================================================ -->
   <script>
     (function() {
@@ -626,54 +665,7 @@
           video.currentTime = 0; });
       });
 
-      // ===== STATS COUNTER =====
-      let statsAnimated = false;
-
-      function animateStats() {
-        if (statsAnimated) return;
-        statsAnimated = true;
-        document.querySelectorAll('.stat-item .number[data-count]').forEach(function(el) {
-          const target = parseInt(el.dataset.count, 10);
-          const duration = 1800;
-          const startTime = performance.now();
-
-          function step(now) {
-            const progress = Math.min((now - startTime) / duration, 1);
-            const ease = 1 - Math.pow(1 - progress, 3);
-            const value = Math.floor(ease * target);
-            el.textContent = value + (target >= 100 ? '+' : '');
-            if (progress < 1) requestAnimationFrame(step);
-          }
-          requestAnimationFrame(step);
-        });
-      }
-
-      // ===== REVEAL ON SCROLL =====
-      const reveals = document.querySelectorAll('.reveal');
-      const revealObserver = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            // Trigger stats only if we are in the hero section
-            if (entry.target.closest('.about-hero')) animateStats();
-          }
-        });
-      }, { threshold: 0.15 });
-
-      reveals.forEach(function(reveal) { revealObserver.observe(reveal); });
-
-      // ===== SMOOTH SCROLL (anchor links) =====
-      document.querySelectorAll('a[href^="#"]').forEach(function(link) {
-        link.addEventListener('click', function(e) {
-          const targetId = this.getAttribute('href');
-          if (targetId === '#') return;
-          const target = document.querySelector(targetId);
-          if (target) { e.preventDefault();
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
-        });
-      });
-
-      console.log('✨ Raphael Lezius – About Page (loader + page‑specific scripts)');
+      console.log('✨ Raphael Lezius – About Page (unique features only)');
     })();
   </script>
 

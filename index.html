@@ -40,7 +40,7 @@
         })();
     </script>
 
-    <!-- Homepage‑specific styles -->
+    <!-- Homepage‑specific styles (kept, as they are page-unique) -->
     <style>
         .process-grid {
             display: grid;
@@ -249,6 +249,33 @@
         /* ensure nav placeholder doesn't add extra space */
         #nav-placeholder {
             display: block;
+        }
+
+        /* extra responsiveness tweaks */
+        .hero-actions {
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .hero-actions .btn {
+            flex: 0 1 auto;
+            min-width: 140px;
+        }
+        .quick-actions {
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .quick-action {
+            flex: 0 1 auto;
+            min-width: 80px;
+        }
+        @media (max-width: 600px) {
+            .hero-actions .btn {
+                min-width: 100%;
+            }
+            .quick-action {
+                min-width: 60px;
+                font-size: 0.8rem;
+            }
         }
     </style>
 </head>
@@ -690,98 +717,8 @@
     <!-- ===== FOOTER PLACEHOLDER (shared) ===== -->
     <div id="footer-placeholder"></div>
 
-    <!-- ===== CENTRAL LOADER ===== -->
-    <script src="assets/js/loader.js"></script>
-
-    <!-- ===== HOMEPAGE‑SPECIFIC SCRIPTS ===== -->
-    <script>
-        (function() {
-            'use strict';
-
-            // Hero search
-            var searchBtn = document.getElementById('heroSearchBtn');
-            var searchInput = document.getElementById('heroSearch');
-
-            if (searchBtn && searchInput) {
-                searchBtn.addEventListener('click', function() {
-                    var q = searchInput.value.trim();
-                    if (q) {
-                        window.location.href = 'services.html?q=' + encodeURIComponent(q);
-                    } else {
-                        searchInput.focus();
-                    }
-                });
-                searchInput.addEventListener('keypress', function(e) {
-                    if (e.key === 'Enter') searchBtn.click();
-                });
-            }
-
-            // Live counters
-            function animateCounter(el) {
-                var target = parseInt(el.getAttribute('data-target'), 10);
-                var duration = 1800;
-                var start = performance.now();
-
-                function update(now) {
-                    var p = Math.min((now - start) / duration, 1);
-                    var ease = 1 - Math.pow(1 - p, 3);
-                    var val = Math.floor(ease * target);
-                    el.textContent = val.toLocaleString('de-DE') + (target >= 100 ? '+' : '');
-                    if (p < 1) requestAnimationFrame(update);
-                }
-                requestAnimationFrame(update);
-            }
-
-            var revealObserver = new IntersectionObserver(function(entries) {
-                entries.forEach(function(entry) {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        var counters = entry.target.querySelectorAll('.live-counter');
-                        counters.forEach(function(c) {
-                            if (!c.classList.contains('counted')) {
-                                c.classList.add('counted');
-                                animateCounter(c);
-                            }
-                        });
-                    }
-                });
-            }, { threshold: 0.15 });
-
-            document.querySelectorAll('.reveal').forEach(function(el) {
-                revealObserver.observe(el);
-            });
-
-            // FAQ accordion
-            document.querySelectorAll('.faq-question').forEach(function(btn) {
-                btn.addEventListener('click', function() {
-                    var item = this.closest('.faq-item');
-                    var isOpen = item.classList.contains('open');
-
-                    document.querySelectorAll('.faq-item').forEach(function(i) {
-                        if (i !== item) i.classList.remove('open');
-                    });
-
-                    item.classList.toggle('open');
-                    this.setAttribute('aria-expanded', !isOpen);
-                });
-            });
-
-            // Smooth scroll for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(function(l) {
-                l.addEventListener('click', function(e) {
-                    var id = this.getAttribute('href');
-                    if (id === '#') return;
-                    var target = document.querySelector(id);
-                    if (target) {
-                        e.preventDefault();
-                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }
-                });
-            });
-
-            console.log('✨ Homepage loaded (shared nav/footer via loader.js)');
-        })();
-    </script>
+    <!-- ===== UNIFIED MAIN SCRIPT (handles everything: loading, UI, interactions) ===== -->
+    <script src="assets/js/main.js"></script>
 
 </body>
 </html>
