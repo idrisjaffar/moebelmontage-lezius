@@ -1,1159 +1,1175 @@
 <!DOCTYPE html>
 <html lang="de" data-theme="dark">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Raphael Lezius – Premium Montage mit Herz & Präzision</title>
-  <meta name="theme-color" content="#0B0A09" id="themeColorMeta">
-  <meta name="description" content="Sie verdienen eine Montage, die sich wie ein Geschenk anfühlt. Millimetergenaue Präzision, staubfrei und mit voller Garantie in München & Augsburg.">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Raphael Lezius – Premium Montage mit Herz & Präzision</title>
+    <meta name="theme-color" content="#0B0A09" id="themeColorMeta" />
+    <meta name="description" content="Sie verdienen eine Montage, die sich wie ein Geschenk anfühlt. Millimetergenaue Präzision, staubfrei und mit voller Garantie in München & Augsburg." />
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
 
-  <!-- Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="assets/css/global.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/global.css" />
 
-  <!-- Additional dropdown styles (enhanced nav) -->
-  <style>
-    /* Dropdown for desktop */
-    .nav-dropdown {
-      position: relative;
-      display: inline-block;
-    }
-    .nav-dropdown>a {
-      cursor: default;
-    }
-    .nav-dropdown-content {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background: var(--rl-card);
-      border: 1px solid var(--rl-border);
-      border-radius: var(--rl-radius);
-      padding: 8px 0;
-      min-width: 220px;
-      box-shadow: var(--rl-shadow);
-      z-index: 1001;
-      backdrop-filter: blur(12px);
-      background: var(--rl-glass);
-    }
-    .nav-dropdown:hover .nav-dropdown-content,
-    .nav-dropdown:focus-within .nav-dropdown-content {
-      display: block;
-    }
-    .nav-dropdown-content a {
-      display: block;
-      padding: 10px 20px;
-      color: var(--rl-muted);
-      font-weight: 500;
-      font-size: 0.92rem;
-      transition: all 0.2s;
-      white-space: nowrap;
-    }
-    .nav-dropdown-content a:hover {
-      color: var(--rl-text);
-      background: rgba(212, 165, 116, 0.08);
-    }
-    .nav-dropdown-content a i {
-      margin-right: 8px;
-      color: var(--rl-primary);
-      width: 18px;
-      text-align: center;
-    }
-    /* Mobile menu enhancements */
-    .mobile-menu-inner {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 16px;
-      padding: 24px;
-      width: 100%;
-    }
-    .mobile-menu-inner .mobile-link {
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: var(--rl-muted);
-      transition: color 0.25s;
-    }
-    .mobile-menu-inner .mobile-link:hover {
-      color: var(--rl-primary);
-    }
-    .mobile-menu-inner .mobile-cta {
-      margin-top: 12px;
-      background: var(--rl-gradient-cta);
-      color: #1C1917;
-      padding: 14px 28px;
-      border-radius: var(--rl-radius-full);
-      font-weight: 700;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      transition: all 0.3s;
-    }
-    .mobile-menu-inner .mobile-cta:hover {
-      transform: scale(1.04);
-      box-shadow: 0 6px 20px rgba(212, 165, 116, 0.3);
-    }
-    .mobile-extra {
-      margin-top: 24px;
-      text-align: center;
-      color: var(--rl-dim);
-      font-size: 0.9rem;
-    }
-    .mobile-extra p {
-      margin-bottom: 8px;
-    }
-    /* Responsive adjustments */
-    @media (max-width: 900px) {
-      .rl-nav__links .nav-dropdown {
-        display: none;
-      }
-    }
-    @media (min-width: 901px) {
-      .rl-nav__mobile .mobile-link,
-      .rl-nav__mobile .mobile-cta {
-        display: none;
-      }
-    }
-    /* Bottom legal bar */
-    .legal-bar {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 12px 24px;
-      padding: 20px 0 10px;
-      border-top: 1px solid var(--rl-border);
-      margin-top: 30px;
-      font-size: 0.8rem;
-    }
-    .legal-bar a {
-      color: var(--rl-dim);
-      transition: color 0.3s;
-      text-decoration: none;
-    }
-    .legal-bar a:hover {
-      color: var(--rl-primary);
-    }
-    .legal-bar .sep {
-      color: var(--rl-border);
-    }
-    @media (max-width: 600px) {
-      .legal-bar {
-        gap: 8px 16px;
-        font-size: 0.7rem;
-      }
-      .legal-bar .sep {
-        display: none;
-      }
-    }
-  </style>
+    <style>
+        /* ===== DROPDOWN & NAV ENHANCEMENTS ===== */
+        .nav-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .nav-dropdown>a {
+            cursor: default;
+        }
+        .nav-dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--rl-card);
+            border: 1px solid var(--rl-border);
+            border-radius: var(--rl-radius);
+            padding: 8px 0;
+            min-width: 220px;
+            box-shadow: var(--rl-shadow);
+            z-index: 1001;
+            backdrop-filter: blur(12px);
+            background: var(--rl-glass);
+        }
+        .nav-dropdown:hover .nav-dropdown-content,
+        .nav-dropdown:focus-within .nav-dropdown-content {
+            display: block;
+        }
+        .nav-dropdown-content a {
+            display: block;
+            padding: 10px 20px;
+            color: var(--rl-muted);
+            font-weight: 500;
+            font-size: 0.92rem;
+            transition: all 0.2s;
+            white-space: nowrap;
+            text-decoration: none;
+        }
+        .nav-dropdown-content a:hover {
+            color: var(--rl-text);
+            background: rgba(212, 165, 116, 0.08);
+        }
+        .nav-dropdown-content a i {
+            margin-right: 8px;
+            color: var(--rl-primary);
+            width: 18px;
+            text-align: center;
+        }
+
+        /* Mobile menu */
+        .mobile-menu-inner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            padding: 24px;
+            width: 100%;
+        }
+        .mobile-menu-inner .mobile-link {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--rl-muted);
+            transition: color 0.25s;
+            text-decoration: none;
+        }
+        .mobile-menu-inner .mobile-link:hover {
+            color: var(--rl-primary);
+        }
+        .mobile-menu-inner .mobile-cta {
+            margin-top: 12px;
+            background: var(--rl-gradient-cta);
+            color: #1C1917;
+            padding: 14px 28px;
+            border-radius: var(--rl-radius-full);
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        .mobile-menu-inner .mobile-cta:hover {
+            transform: scale(1.04);
+            box-shadow: 0 6px 20px rgba(212, 165, 116, 0.3);
+        }
+        .mobile-extra {
+            margin-top: 24px;
+            text-align: center;
+            color: var(--rl-dim);
+            font-size: 0.9rem;
+        }
+        .mobile-extra p {
+            margin-bottom: 8px;
+        }
+
+        @media (max-width: 900px) {
+            .rl-nav__links .nav-dropdown {
+                display: none;
+            }
+        }
+        @media (min-width: 901px) {
+            .rl-nav__mobile .mobile-link,
+            .rl-nav__mobile .mobile-cta {
+                display: none;
+            }
+        }
+
+        /* Legal bar */
+        .legal-bar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px 24px;
+            padding: 20px 0 10px;
+            border-top: 1px solid var(--rl-border);
+            margin-top: 30px;
+            font-size: 0.8rem;
+        }
+        .legal-bar a {
+            color: var(--rl-dim);
+            transition: color 0.3s;
+            text-decoration: none;
+        }
+        .legal-bar a:hover {
+            color: var(--rl-primary);
+        }
+        .legal-bar .sep {
+            color: var(--rl-border);
+        }
+        @media (max-width: 600px) {
+            .legal-bar {
+                gap: 8px 16px;
+                font-size: 0.7rem;
+            }
+            .legal-bar .sep {
+                display: none;
+            }
+        }
+
+        /* ===== EXTRA PAGE LINKS (hidden but accessible) ===== */
+        .page-links-grid {
+            display: none;
+        }
+        /* Hidden sitemap for SEO/accessibility */
+        .sitemap-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+    </style>
 </head>
 <body>
 
-  <!-- Custom Cursor -->
-  <div class="cursor-dot" id="cursorDot"></div>
-  <div class="cursor-ring" id="cursorRing"></div>
+    <!-- ===== CUSTOM CURSOR ===== -->
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
 
-  <!-- Scroll Progress -->
-  <div class="scroll-progress" id="scrollProgress"></div>
+    <!-- ===== SCROLL PROGRESS ===== -->
+    <div class="scroll-progress" id="scrollProgress"></div>
 
-  <!-- WhatsApp Float -->
-  <a href="https://wa.me/491608194018" target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="WhatsApp schreiben">
-    <span class="pulse-ring"></span>
-    <i class="fab fa-whatsapp"></i>
-  </a>
-
-  <!-- Sticky CTA -->
-  <div class="sticky-cta" id="stickyCta">
-    <a href="/anfrage/" class="btn btn-primary magnetic-btn">
-      <i class="fas fa-comments"></i> Kostenloses Gespräch
+    <!-- ===== WHATSAPP FLOAT ===== -->
+    <a href="https://wa.me/491608194018" target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="WhatsApp schreiben">
+        <span class="pulse-ring"></span>
+        <i class="fab fa-whatsapp"></i>
     </a>
-  </div>
 
-  <!-- Back to Top -->
-  <button class="back-to-top" id="backToTop" aria-label="Nach oben">
-    <i class="fas fa-chevron-up"></i>
-  </button>
-
-  <!-- Floating social proof -->
-  <div class="floating-badge" id="floatingBadge">
-    <div class="stars">
-      <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-    </div>
-    <div class="text">
-      <span class="highlight">110+</span> Menschen haben mir ihr Zuhause anvertraut
-    </div>
-  </div>
-
-  <!-- ============================================================ -->
-  <!-- NAVIGATION PLACEHOLDER – will be injected by component loader -->
-  <!-- ============================================================ -->
-  <div id="nav-placeholder"></div>
-
-  <!-- ============================================================ -->
-  <!-- MAIN CONTENT                                                -->
-  <!-- ============================================================ -->
-  <main>
-    <!-- ==================== HERO ==================== -->
-    <section class="hero" id="home">
-      <video class="hero-video-bg" autoplay muted loop playsinline>
-        <source src="assets/video/hero-bg.mp4" type="video/mp4">
-      </video>
-
-      <div class="container">
-        <div class="hero-content">
-          <div class="hero-badge reveal">
-            <i class="fas fa-map-marker-alt"></i>
-            München &amp; Augsburg · Mit 5.0 ★ bewertet
-          </div>
-
-          <h1 class="reveal">
-            Ihre Möbel verdienen<br>
-            <span class="gold">mehr als nur eine Montage.</span>
-          </h1>
-
-          <p class="hero-lead reveal">
-            Ich freue mich, dass Sie hier sind.<br>
-            Bei mir bekommen Sie millimetergenaue Präzision, absolute Sauberkeit und die Sicherheit, dass alles mit Liebe und Garantie erledigt wird.
-          </p>
-
-          <!-- ✅ HERO ACTIONS – ALL 5 BUTTONS (added FAQ) -->
-          <div class="hero-actions reveal">
-            <a href="/anfrage/" class="btn btn-primary magnetic-btn">
-              <i class="fas fa-comments"></i> Unverbindliches Gespräch
-            </a>
-            <a href="/services.html" class="btn btn-secondary magnetic-btn">
-              <i class="fas fa-th-list"></i> Alle Services
-            </a>
-            <a href="/about.html" class="btn btn-secondary magnetic-btn">
-              <i class="fas fa-user"></i> Über mich
-            </a>
-            <a href="/contact.html" class="btn btn-secondary magnetic-btn" style="border-color:var(--rl-primary); color:var(--rl-primary);">
-              <i class="fas fa-envelope"></i> Kontakt
-            </a>
-            <a href="/faq.html" class="btn btn-secondary magnetic-btn" style="border-color:var(--rl-primary); color:var(--rl-primary);">
-              <i class="fas fa-question-circle"></i> FAQ
-            </a>
-          </div>
-
-          <div class="hero-search reveal">
-            <input type="text" id="heroSearch" placeholder="Was darf ich für Sie montieren? z.B. USM Haller oder Küche…" aria-label="Service suchen">
-            <button type="button" id="heroSearchBtn">Finden</button>
-          </div>
-
-          <div class="hero-stats reveal">
-            <div class="stat">
-              <div class="number live-counter" data-target="1200">0</div>
-              <div class="label">erfolgreiche Projekte</div>
-            </div>
-            <div class="stat">
-              <div class="number">5.0 ★</div>
-              <div class="label">Durchschnittsbewertung</div>
-            </div>
-            <div class="stat">
-              <div class="number live-counter" data-target="110">0</div>
-              <div class="label">glückliche Kunden</div>
-            </div>
-            <div class="stat">
-              <div class="number">98%</div>
-              <div class="label">würden mich weiterempfehlen</div>
-            </div>
-          </div>
-
-          <div class="promise reveal">
-            <div class="promise-item">
-              <i class="fas fa-clock"></i>
-              <div>
-                <strong>Pünktlichkeitsversprechen</strong>
-                <span>Komme ich 15 Min zu spät, erhalten Sie 10 % Rabatt</span>
-              </div>
-            </div>
-            <div class="promise-item">
-              <i class="fas fa-shield-heart"></i>
-              <div>
-                <strong>Preisgarantie</strong>
-                <span>Sie bekommen den besten Preis in der Region – versprochen</span>
-              </div>
-            </div>
-            <div class="promise-item">
-              <i class="fas fa-hand-holding-heart"></i>
-              <div>
-                <strong>1 Jahr Qualitätsgarantie</strong>
-                <span>Alles, was ich mache, steht unter meiner persönlichen Garantie</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== MARQUEE ==================== -->
-    <div class="marquee" aria-hidden="true">
-      <div class="marquee-track">
-        <span><i class="fas fa-cube"></i> IKEA PAX EXPERTE</span>
-        <span><i class="fas fa-home"></i> OUTDOOR &amp; GARTENHÄUSER</span>
-        <span><i class="fas fa-utensils"></i> KÜCHEN-MONTAGE</span>
-        <span><i class="fas fa-gem"></i> USM HALLER DESIGN</span>
-        <span><i class="fas fa-tools"></i> SYSTEM-DEMONTAGE</span>
-        <span><i class="fas fa-bed"></i> BOXSPRINGBETTEN</span>
-        <span><i class="fas fa-cube"></i> IKEA PAX EXPERTE</span>
-        <span><i class="fas fa-home"></i> OUTDOOR &amp; GARTENHÄUSER</span>
-        <span><i class="fas fa-utensils"></i> KÜCHEN-MONTAGE</span>
-        <span><i class="fas fa-gem"></i> USM HALLER DESIGN</span>
-        <span><i class="fas fa-tools"></i> SYSTEM-DEMONTAGE</span>
-        <span><i class="fas fa-bed"></i> BOXSPRINGBETTEN</span>
-      </div>
-    </div>
-
-    <!-- ==================== SERVICES (KK Grid) ==================== -->
-    <section class="kk-section" id="services">
-      <div class="container">
-        <div class="section-header reveal">
-          <span class="pre">Ihre Möglichkeiten</span>
-          <h2>Was darf ich für Sie <span class="gold">perfekt</span> machen?</h2>
-          <p>Wählen Sie einfach die Kategorie, die am besten zu Ihrem Projekt passt. Alles Weitere besprechen wir in Ruhe.</p>
-        </div>
-
-        <div class="kk-grid">
-          <a href="/services/moebel-kuechen.html" class="kk-item reveal">
-            <div class="kk-icon"><i class="fas fa-couch"></i></div>
-            <h3>Möbel & Küchen</h3>
-            <p>Präzise Montage, die sich anfühlt, als wäre alles schon immer da gewesen</p>
-          </a>
-          <a href="/services/usm-haller.html" class="kk-item reveal">
-            <div class="kk-icon"><i class="fas fa-gem"></i></div>
-            <h3>USM Haller</h3>
-            <p>Spezialist für das Schweizer System – ich kenne jedes Detail</p>
-          </a>
-          <a href="/services/garten-outdoor.html" class="kk-item reveal">
-            <div class="kk-icon"><i class="fas fa-tree"></i></div>
-            <h3>Garten & Outdoor</h3>
-            <p>Damit Ihr Außenbereich genauso schön wird wie Ihr Zuhause</p>
-          </a>
-          <a href="/services/demontage-umzug.html" class="kk-item reveal">
-            <div class="kk-icon"><i class="fas fa-truck"></i></div>
-            <h3>Demontage & Umzug</h3>
-            <p>Schonende Demontage und fachgerechter Aufbau am neuen Ort</p>
-          </a>
-          <a href="/services/buero-objekt.html" class="kk-item reveal">
-            <div class="kk-icon"><i class="fas fa-building"></i></div>
-            <h3>Büro & Objekt</h3>
-            <p>Professionelle Montage für Arbeitsplätze und gewerbliche Räume</p>
-          </a>
-          <a href="/services/premium-pro.html" class="kk-item featured reveal">
-            <div class="kk-icon"><i class="fas fa-crown"></i></div>
-            <h3>Premium Pro</h3>
-            <p>White-Glove Service – für alle, die das Allerbeste möchten</p>
-          </a>
-        </div>
-
-        <!-- ✅ CTA ROW – 4 BUTTONS (added FAQ) -->
-        <div style="display:flex; flex-wrap:wrap; gap:14px; justify-content:center; margin-top:48px;" class="reveal">
-          <a href="/services.html" class="btn btn-primary magnetic-btn">
-            <i class="fas fa-arrow-right"></i> Zur vollständigen Services-Übersicht
-          </a>
-          <a href="/bundles/" class="btn btn-secondary magnetic-btn">
-            <i class="fas fa-gift"></i> Smarte Bundles entdecken
-          </a>
-          <a href="/contact.html" class="btn btn-secondary magnetic-btn" style="border-color:var(--rl-primary); color:var(--rl-primary);">
-            <i class="fas fa-envelope"></i> Kontakt
-          </a>
-          <a href="/faq.html" class="btn btn-secondary magnetic-btn" style="border-color:var(--rl-primary); color:var(--rl-primary);">
-            <i class="fas fa-question-circle"></i> Häufige Fragen
-          </a>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ==================== SELECTED SERVICES ==================== -->
-    <section class="service-cards-section">
-      <div class="container">
-        <div class="section-header reveal">
-          <span class="pre">Beliebte Leistungen</span>
-          <h2>Drei Wege, wie ich Ihnen gerne helfe</h2>
-          <p>Klare Preise, ehrliche Leistungen und keine versteckten Überraschungen.</p>
-        </div>
-
-        <div class="service-cards-grid">
-          <article class="service-card reveal">
-            <div class="service-card-header">
-              <span class="service-tag">Sehr beliebt</span>
-              <div class="service-rating"><i class="fas fa-star"></i> 5.0</div>
-            </div>
-            <h3>USM Haller Montage</h3>
-            <p class="service-desc">Ich montiere Ihr komplettes USM System so, dass es aussieht und sich anfühlt wie aus dem Katalog – nur besser.</p>
-            <ul class="service-features">
-              <li><i class="fas fa-check"></i> Aufbau & millimetergenaue Ausrichtung</li>
-              <li><i class="fas fa-check"></i> Staubfreie Arbeitsweise</li>
-              <li><i class="fas fa-check"></i> 1 Jahr persönliche Garantie</li>
-            </ul>
-            <div class="service-footer">
-              <div class="service-price">ab 189 €</div>
-              <a href="/services/usm-haller.html" class="btn btn-primary btn-sm magnetic-btn">Mehr erfahren</a>
-            </div>
-          </article>
-
-          <article class="service-card reveal">
-            <div class="service-card-header">
-              <span class="service-tag">Küche</span>
-              <div class="service-rating"><i class="fas fa-star"></i> 5.0</div>
-            </div>
-            <h3>Küchenmontage</h3>
-            <p class="service-desc">Von den Schränken bis zum Geräteanschluss – ich sorge dafür, dass Ihre neue Küche sofort Freude macht.</p>
-            <ul class="service-features">
-              <li><i class="fas fa-check"></i> Hoch- & Unterschränke</li>
-              <li><i class="fas fa-check"></i> Arbeitsplatten & Geräte</li>
-              <li><i class="fas fa-check"></i> Feineinstellung & Reinigung</li>
-            </ul>
-            <div class="service-footer">
-              <div class="service-price">ab 349 €</div>
-              <a href="/services/moebel-kuechen.html" class="btn btn-primary btn-sm magnetic-btn">Mehr erfahren</a>
-            </div>
-          </article>
-
-          <article class="service-card reveal">
-            <div class="service-card-header">
-              <span class="service-tag">Premium</span>
-              <div class="service-rating"><i class="fas fa-star"></i> 5.0</div>
-            </div>
-            <h3>Premium Pro Service</h3>
-            <p class="service-desc">Für alle, die maximale Sorgfalt, persönliche Betreuung und absolute Ruhe möchten.</p>
-            <ul class="service-features">
-              <li><i class="fas fa-check"></i> Persönliche Projektleitung</li>
-              <li><i class="fas fa-check"></i> Express-Termine möglich</li>
-              <li><i class="fas fa-check"></i> Erweiterte Garantie</li>
-            </ul>
-            <div class="service-footer">
-              <div class="service-price">Individuell</div>
-              <a href="/services/premium-pro.html" class="btn btn-primary btn-sm magnetic-btn">Gespräch vereinbaren</a>
-            </div>
-          </article>
-        </div>
-
-        <!-- ✅ EXTRA CTA – "Alle Services" -->
-        <div style="text-align:center; margin-top:40px;" class="reveal">
-          <a href="/services.html" class="btn btn-secondary magnetic-btn">
-            <i class="fas fa-th-list"></i> Alle 6 Services im Überblick
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== BUNDLES ==================== -->
-    <section class="bundles-section">
-      <div class="container">
-        <div class="section-header reveal">
-          <span class="pre">Smarte Kombinationen</span>
-          <h2>Pakete, die Ihnen Zeit und Nerven sparen</h2>
-          <p>Alles aus einer Hand – damit Sie sich um nichts kümmern müssen.</p>
-        </div>
-
-        <div class="bundles-grid">
-          <div class="bundle-card reveal">
-            <div class="bundle-badge">Beliebt</div>
-            <h3>Küchen-Komplett</h3>
-            <p class="bundle-desc">Alte Küche raus, neue Küche rein – alles in einem durchdachten Ablauf.</p>
-            <ul class="bundle-list">
-              <li>Demontage der alten Küche</li>
-              <li>Aufbau der neuen Küche</li>
-              <li>Geräteanschluss</li>
-              <li>Endreinigung</li>
-            </ul>
-            <div class="bundle-price">ab 590 €</div>
-            <a href="/bundles/kuechen-komplett.html" class="btn btn-primary magnetic-btn" style="width:100%;">Zum Bundle</a>
-          </div>
-
-          <div class="bundle-card featured reveal">
-            <div class="bundle-badge">Premium</div>
-            <h3>USM All-In</h3>
-            <p class="bundle-desc">Von der ersten Idee bis zur finalen Justierung – ich begleite Sie komplett.</p>
-            <ul class="bundle-list">
-              <li>Beratung & Planung</li>
-              <li>Lieferkoordination</li>
-              <li>Professionelle Montage</li>
-              <li>Nachjustierung vor Ort</li>
-            </ul>
-            <div class="bundle-price">Individuell</div>
-            <a href="/bundles/usm-all-in.html" class="btn btn-primary magnetic-btn" style="width:100%;">Zum Bundle</a>
-          </div>
-
-          <div class="bundle-card reveal">
-            <div class="bundle-badge">Umzug</div>
-            <h3>Umzug Premium</h3>
-            <p class="bundle-desc">Demontage, Schutz und Aufbau – damit Ihr Umzug so entspannt wie möglich wird.</p>
-            <ul class="bundle-list">
-              <li>Fachgerechte Demontage</li>
-              <li>Schutzverpackung</li>
-              <li>Aufbau am neuen Ort</li>
-              <li>Endkontrolle mit Ihnen</li>
-            </ul>
-            <div class="bundle-price">ab 420 €</div>
-            <a href="/bundles/umzug-premium.html" class="btn btn-primary magnetic-btn" style="width:100%;">Zum Bundle</a>
-          </div>
-        </div>
-
-        <!-- ✅ CTA – Alle Bundles -->
-        <div style="text-align:center; margin-top:40px;" class="reveal">
-          <a href="/bundles/" class="btn btn-secondary magnetic-btn">
-            <i class="fas fa-gift"></i> Alle Bundles im Überblick
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== ABOUT ==================== -->
-    <section class="profile-section" id="about">
-      <div class="container">
-        <div class="section-header reveal">
-          <span class="pre">Über mich</span>
-          <h2>Handwerk mit <span class="gold">echter Leidenschaft</span></h2>
-          <p>Jedes Projekt ist für mich eine persönliche Angelegenheit – deshalb gibt es keine Kompromisse.</p>
-        </div>
-
-        <div class="profile-grid">
-          <div class="profile-card reveal">
-            <div class="profile-avatar">
-              <img src="assets/images/avatar/raphael-portrait.webp" alt="Raphael Lezius"
-                   onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'160\' height=\'160\'%3E%3Crect fill=\'%231A1815\' width=\'160\' height=\'160\'/%3E%3Ctext x=\'40\' y=\'90\' fill=\'%23D4A574\' font-size=\'48\'%3ERL%3C/text%3E%3C/svg%3E'">
-              <span class="status-dot"></span>
-            </div>
-            <h3>Raphael Lezius</h3>
-            <p class="subtitle">Premium Montage &amp; Interior Tech</p>
-            <div class="badges">
-              <span>🇩🇪 DE / 🇬🇧 EN</span>
-              <span>🏆 5.0 ★</span>
-              <span>🔧 Bosch Professional</span>
-            </div>
-            <div class="profile-stats">
-              <div class="stat">
-                <div class="num live-counter" data-target="1200">0</div>
-                <div class="label">Projekte</div>
-              </div>
-              <div class="stat">
-                <div class="num live-counter" data-target="110">0</div>
-                <div class="label">Kunden</div>
-              </div>
-              <div class="stat">
-                <div class="num">8+</div>
-                <div class="label">Jahre</div>
-              </div>
-            </div>
-            <!-- ✅ CTA – Zur About-Seite -->
-            <div style="margin-top:16px;">
-              <a href="/about.html" class="btn btn-secondary btn-sm magnetic-btn" style="width:100%; justify-content:center;">
-                <i class="fas fa-arrow-right"></i> Meine ganze Geschichte
-              </a>
-            </div>
-          </div>
-
-          <div class="profile-bio reveal">
-            <h2>Wahres Handwerk kennt keine <span class="gold">Kompromisse</span></h2>
-            <p class="lead">
-              <strong>Ihre Möbel verdienen mehr als nur eine schnelle Montage.</strong><br>
-              Ich bin Raphael – und ich stehe dafür, dass alles millimetergenau, staubfrei und mit echter Sorgfalt erledigt wird.
-            </p>
-
-            <div class="values">
-              <div class="value-item">
-                <i class="fas fa-drafting-compass"></i>
-                <h4>Detailverliebt</h4>
-                <p>Jedes Scharnier wird so justiert, dass es sich anfühlt wie neu.</p>
-              </div>
-              <div class="value-item">
-                <i class="fas fa-handshake"></i>
-                <h4>Transparent</h4>
-                <p>Feste Preise. Keine Überraschungen. Versprochen.</p>
-              </div>
-              <div class="value-item">
-                <i class="fas fa-shield-alt"></i>
-                <h4>Versichert</h4>
-                <p>5 Mio. € Haftpflicht – Ihr Zuhause ist bei mir in besten Händen.</p>
-              </div>
-            </div>
-
-            <!-- ✅ CTA ROW – 2 BUTTONS -->
-            <div style="margin-top:28px; display:flex; flex-wrap:wrap; gap:14px;">
-              <a href="/anfrage/" class="btn btn-primary magnetic-btn" style="flex:1; justify-content:center; min-width:180px;">
-                <i class="fas fa-calendar-check"></i> Unverbindliches Gespräch
-              </a>
-              <a href="/contact.html" class="btn btn-secondary magnetic-btn" style="flex:1; justify-content:center; min-width:160px; border-color:var(--rl-primary); color:var(--rl-primary);">
-                <i class="fas fa-envelope"></i> Kontakt
-              </a>
-            </div>
-
-            <!-- ✅ Extra: Zur About-Seite -->
-            <div style="margin-top:12px;">
-              <a href="/about.html" class="btn btn-secondary btn-sm magnetic-btn" style="width:100%; justify-content:center;">
-                <i class="fas fa-user"></i> Mehr über mich erfahren
-              </a>
-            </div>
-
-            <!-- ✅ NEW: FAQ link in profile section -->
-            <div style="margin-top:12px;">
-              <a href="/faq.html" class="btn btn-secondary btn-sm magnetic-btn" style="width:100%; justify-content:center; border-color:var(--rl-primary); color:var(--rl-primary);">
-                <i class="fas fa-question-circle"></i> Antworten auf häufige Fragen
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== REVIEWS ==================== -->
-    <section class="reviews-section">
-      <div class="container">
-        <div class="section-header reveal">
-          <span class="pre">Ihre Stimmen</span>
-          <h2>Was Menschen sagen, die mir ihr Zuhause anvertraut haben</h2>
-          <p>Echte Worte von echten Menschen. Das bedeutet mir mehr als jede Auszeichnung.</p>
-        </div>
-
-        <div class="reviews-grid">
-          <div class="review-card reveal">
-            <div class="review-stars">★★★★★</div>
-            <p class="review-text">„Absolut professionell und pünktlich. Die USM Montage war millimetergenau. Ich fühle mich sehr gut aufgehoben.“</p>
-            <div class="review-author">
-              <strong>Thomas M.</strong>
-              <span>München</span>
-            </div>
-          </div>
-          <div class="review-card reveal">
-            <div class="review-stars">★★★★★</div>
-            <p class="review-text">„Sehr saubere Arbeit und freundliche Kommunikation. Die Küche sieht aus wie aus dem Katalog – nur noch schöner.“</p>
-            <div class="review-author">
-              <strong>Sandra K.</strong>
-              <span>Augsburg</span>
-            </div>
-          </div>
-          <div class="review-card reveal">
-            <div class="review-stars">★★★★★</div>
-            <p class="review-text">„Endlich jemand, der sich wirklich Zeit nimmt und Wert auf Details legt. Man merkt die Leidenschaft.“</p>
-            <div class="review-author">
-              <strong>Michael R.</strong>
-              <span>München</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- ✅ CTA ROW – 2 BUTTONS -->
-        <div style="display:flex; flex-wrap:wrap; gap:14px; justify-content:center; margin-top:48px;" class="reveal">
-          <a href="/reviews.html" class="btn btn-primary magnetic-btn">
-            <i class="fas fa-star"></i> Alle Stimmen lesen
-          </a>
-          <a href="/contact.html" class="btn btn-secondary magnetic-btn" style="border-color:var(--rl-primary); color:var(--rl-primary);">
-            <i class="fas fa-envelope"></i> Ihre eigene Erfahrung teilen
-          </a>
-        </div>
-
-        <!-- ✅ NEW: FAQ CTA in reviews section -->
-        <div style="text-align:center; margin-top:16px;" class="reveal">
-          <a href="/faq.html" class="btn btn-secondary magnetic-btn">
-            <i class="fas fa-question-circle"></i> Haben Sie noch Fragen? Besuchen Sie die FAQ
-          </a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- ============================================================ -->
-  <!-- FOOTER PLACEHOLDER – will be injected by component loader    -->
-  <!-- ============================================================ -->
-  <div id="footer-placeholder"></div>
-
-  <!-- ============================================================ -->
-  <!-- COMPONENT LOADER – with fallback embedded                    -->
-  <!-- ============================================================ -->
-  <script>
-    /* ============================================================
-       RAPHAEL LEZIUS – Component Loader v2.0
-       Loads nav & footer with localStorage cache + inline fallback
-       ============================================================ */
-
-    (function() {
-      'use strict';
-
-      // ── Inline fallback HTML ──
-      const NAV_FALLBACK = `
-    <nav class="rl-nav" id="mainNav">
-      <div class="rl-nav__inner">
-        <a href="/" class="rl-nav__brand" aria-label="Zur Startseite">
-          Raphael <span>Lezius</span>
-          <span class="rl-nav__tagline">Präzision mit Herz</span>
+    <!-- ===== STICKY CTA ===== -->
+    <div class="sticky-cta" id="stickyCta">
+        <a href="anfrage/" class="btn btn-primary magnetic-btn">
+            <i class="fas fa-comments"></i> Kostenloses Gespräch
         </a>
-
-        <ul class="rl-nav__links">
-          <li><a href="/" class="nav-link active" data-section="home">Willkommen</a></li>
-
-          <!-- Services Dropdown -->
-          <li class="nav-dropdown">
-            <a href="#" class="nav-link" data-section="services">Services <i class="fas fa-chevron-down" style="font-size:0.7rem; margin-left:4px;"></i></a>
-            <div class="nav-dropdown-content">
-              <a href="/services.html" style="font-weight:700; border-bottom:1px solid var(--rl-border); margin-bottom:6px; padding-bottom:10px;">
-                <i class="fas fa-th-list"></i> Alle Services im Überblick
-              </a>
-              <a href="/services/moebel-kuechen.html"><i class="fas fa-couch"></i> Möbel & Küchen</a>
-              <a href="/services/usm-haller.html"><i class="fas fa-gem"></i> USM Haller</a>
-              <a href="/services/garten-outdoor.html"><i class="fas fa-tree"></i> Garten & Outdoor</a>
-              <a href="/services/demontage-umzug.html"><i class="fas fa-truck"></i> Demontage & Umzug</a>
-              <a href="/services/buero-objekt.html"><i class="fas fa-building"></i> Büro & Objekt</a>
-              <a href="/services/premium-pro.html"><i class="fas fa-crown"></i> Premium Pro</a>
-            </div>
-          </li>
-
-          <!-- Bundles Dropdown -->
-          <li class="nav-dropdown">
-            <a href="#" class="nav-link" data-section="bundles">Bundles <i class="fas fa-chevron-down" style="font-size:0.7rem; margin-left:4px;"></i></a>
-            <div class="nav-dropdown-content">
-              <a href="/bundles/" style="font-weight:700; border-bottom:1px solid var(--rl-border); margin-bottom:6px; padding-bottom:10px;">
-                <i class="fas fa-gift"></i> Alle Bundles
-              </a>
-              <a href="/bundles/kuechen-komplett.html"><i class="fas fa-utensils"></i> Küchen-Komplett</a>
-              <a href="/bundles/usm-all-in.html"><i class="fas fa-gem"></i> USM All-In</a>
-              <a href="/bundles/umzug-premium.html"><i class="fas fa-truck"></i> Umzug Premium</a>
-            </div>
-          </li>
-
-          <li><a href="/about.html" class="nav-link" data-section="about">Über mich</a></li>
-          <li><a href="/reviews.html" class="nav-link">Ihre Stimmen</a></li>
-          <!-- ✅ NEW: FAQ link in desktop navigation -->
-          <li><a href="/faq.html" class="nav-link">FAQ</a></li>
-          <li><a href="/contact.html" class="nav-link" style="color:var(--rl-primary);">Kontakt</a></li>
-          <li><a href="/anfrage/" class="cta magnetic-btn"><i class="fas fa-comments"></i> Kostenloses Gespräch</a></li>
-        </ul>
-
-        <div class="rl-nav__actions">
-          <button class="theme-toggle" data-theme-toggle aria-label="Design umschalten">
-            <i class="fas fa-moon" data-theme-icon></i>
-          </button>
-          <button class="rl-nav__hamburger" id="navToggle" aria-label="Menü öffnen" aria-expanded="false">
-            <span></span><span></span><span></span>
-          </button>
-        </div>
-      </div>
-    </nav>
-    <div class="rl-nav__mobile" id="mobileMenu" aria-hidden="true">
-      <div class="mobile-menu-inner">
-        <a href="/" class="mobile-link">Willkommen</a>
-        <a href="/services.html" class="mobile-link" style="font-weight:700; border-top:1px solid var(--rl-border); padding-top:12px; margin-top:4px;"><i class="fas fa-th-list"></i> Alle Services</a>
-        <a href="/services/moebel-kuechen.html" class="mobile-link">– Möbel & Küchen</a>
-        <a href="/services/usm-haller.html" class="mobile-link">– USM Haller</a>
-        <a href="/services/garten-outdoor.html" class="mobile-link">– Garten & Outdoor</a>
-        <a href="/services/demontage-umzug.html" class="mobile-link">– Demontage & Umzug</a>
-        <a href="/services/buero-objekt.html" class="mobile-link">– Büro & Objekt</a>
-        <a href="/services/premium-pro.html" class="mobile-link">– Premium Pro</a>
-        <a href="/bundles/" class="mobile-link" style="font-weight:700; border-top:1px solid var(--rl-border); padding-top:12px; margin-top:4px;"><i class="fas fa-gift"></i> Alle Bundles</a>
-        <a href="/bundles/kuechen-komplett.html" class="mobile-link">– Küchen-Komplett</a>
-        <a href="/bundles/usm-all-in.html" class="mobile-link">– USM All-In</a>
-        <a href="/bundles/umzug-premium.html" class="mobile-link">– Umzug Premium</a>
-        <a href="/about.html" class="mobile-link">Über mich</a>
-        <a href="/reviews.html" class="mobile-link">Ihre Stimmen</a>
-        <!-- ✅ NEW: FAQ link in mobile menu -->
-        <a href="/faq.html" class="mobile-link" style="color:var(--rl-primary);">FAQ</a>
-        <a href="/contact.html" class="mobile-link">Kontakt</a>
-        <a href="/anfrage/" class="mobile-cta magnetic-btn"><i class="fas fa-comments"></i> Kostenloses Gespräch starten</a>
-        <div class="mobile-extra">
-          <p>Schön, dass Sie hier sind.</p>
-          <button class="theme-toggle" data-theme-toggle style="width:52px; height:52px; font-size:1.2rem; margin-top:16px;">
-            <i class="fas fa-moon" data-theme-icon></i>
-          </button>
-        </div>
-      </div>
     </div>
-      `;
 
-      const FOOTER_FALLBACK = `
+    <!-- ===== BACK TO TOP ===== -->
+    <button class="back-to-top" id="backToTop" aria-label="Nach oben">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- ===== FLOATING BADGE ===== -->
+    <div class="floating-badge" id="floatingBadge">
+        <div class="stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        </div>
+        <div class="text">
+            <span class="highlight">110+</span> Menschen haben mir ihr Zuhause anvertraut
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- NAVIGATION – embedded fallback (relative paths)              -->
+    <!-- ============================================================ -->
+    <nav class="rl-nav" id="mainNav">
+        <div class="rl-nav__inner">
+            <a href="index.html" class="rl-nav__brand" aria-label="Zur Startseite">
+                Raphael <span>Lezius</span>
+                <span class="rl-nav__tagline">Präzision mit Herz</span>
+            </a>
+
+            <ul class="rl-nav__links">
+                <li><a href="index.html" class="nav-link active" data-section="home">Willkommen</a></li>
+
+                <!-- Services Dropdown -->
+                <li class="nav-dropdown">
+                    <a href="#" class="nav-link" data-section="services">Services <i class="fas fa-chevron-down" style="font-size:0.7rem; margin-left:4px;"></i></a>
+                    <div class="nav-dropdown-content">
+                        <a href="services/" style="font-weight:700; border-bottom:1px solid var(--rl-border); margin-bottom:6px; padding-bottom:10px;">
+                            <i class="fas fa-th-list"></i> Alle Services im Überblick
+                        </a>
+                        <a href="services/moebel-kuechen.html"><i class="fas fa-couch"></i> Möbel & Küchen</a>
+                        <a href="services/usm-haller.html"><i class="fas fa-gem"></i> USM Haller</a>
+                        <a href="services/garten-outdoor.html"><i class="fas fa-tree"></i> Garten & Outdoor</a>
+                        <a href="services/demontage-umzug.html"><i class="fas fa-truck"></i> Demontage & Umzug</a>
+                        <a href="services/buero-objekt.html"><i class="fas fa-building"></i> Büro & Objekt</a>
+                        <a href="services/premium-pro.html"><i class="fas fa-crown"></i> Premium Pro</a>
+                    </div>
+                </li>
+
+                <!-- Bundles Dropdown -->
+                <li class="nav-dropdown">
+                    <a href="#" class="nav-link" data-section="bundles">Bundles <i class="fas fa-chevron-down" style="font-size:0.7rem; margin-left:4px;"></i></a>
+                    <div class="nav-dropdown-content">
+                        <a href="bundles/" style="font-weight:700; border-bottom:1px solid var(--rl-border); margin-bottom:6px; padding-bottom:10px;">
+                            <i class="fas fa-gift"></i> Alle Bundles
+                        </a>
+                        <a href="bundles/kuechen-komplett.html"><i class="fas fa-utensils"></i> Küchen-Komplett</a>
+                        <a href="bundles/usm-all-in.html"><i class="fas fa-gem"></i> USM All-In</a>
+                        <a href="bundles/umzug-premium.html"><i class="fas fa-truck"></i> Umzug Premium</a>
+                    </div>
+                </li>
+
+                <li><a href="about.html" class="nav-link" data-section="about">Über mich</a></li>
+                <li><a href="reviews.html" class="nav-link">Ihre Stimmen</a></li>
+                <li><a href="faq.html" class="nav-link">FAQ</a></li>
+                <li><a href="contact.html" class="nav-link" style="color:var(--rl-primary);">Kontakt</a></li>
+                <li><a href="anfrage/" class="cta magnetic-btn"><i class="fas fa-comments"></i> Kostenloses Gespräch</a></li>
+            </ul>
+
+            <div class="rl-nav__actions">
+                <button class="theme-toggle" data-theme-toggle aria-label="Design umschalten">
+                    <i class="fas fa-moon" data-theme-icon></i>
+                </button>
+                <button class="rl-nav__hamburger" id="navToggle" aria-label="Menü öffnen" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== MOBILE MENU ===== -->
+    <div class="rl-nav__mobile" id="mobileMenu" aria-hidden="true">
+        <div class="mobile-menu-inner">
+            <a href="index.html" class="mobile-link">Willkommen</a>
+
+            <a href="services/" class="mobile-link" style="font-weight:700; border-top:1px solid var(--rl-border); padding-top:12px; margin-top:4px;"><i class="fas fa-th-list"></i> Alle Services</a>
+            <a href="services/moebel-kuechen.html" class="mobile-link">– Möbel & Küchen</a>
+            <a href="services/usm-haller.html" class="mobile-link">– USM Haller</a>
+            <a href="services/garten-outdoor.html" class="mobile-link">– Garten & Outdoor</a>
+            <a href="services/demontage-umzug.html" class="mobile-link">– Demontage & Umzug</a>
+            <a href="services/buero-objekt.html" class="mobile-link">– Büro & Objekt</a>
+            <a href="services/premium-pro.html" class="mobile-link">– Premium Pro</a>
+
+            <a href="bundles/" class="mobile-link" style="font-weight:700; border-top:1px solid var(--rl-border); padding-top:12px; margin-top:4px;"><i class="fas fa-gift"></i> Alle Bundles</a>
+            <a href="bundles/kuechen-komplett.html" class="mobile-link">– Küchen-Komplett</a>
+            <a href="bundles/usm-all-in.html" class="mobile-link">– USM All-In</a>
+            <a href="bundles/umzug-premium.html" class="mobile-link">– Umzug Premium</a>
+
+            <a href="about.html" class="mobile-link">Über mich</a>
+            <a href="reviews.html" class="mobile-link">Ihre Stimmen</a>
+            <a href="faq.html" class="mobile-link" style="color:var(--rl-primary);">FAQ</a>
+            <a href="contact.html" class="mobile-link">Kontakt</a>
+
+            <!-- Client & Admin (hidden in main nav but accessible) -->
+            <a href="client/" class="mobile-link" style="font-size:0.9rem; color:var(--rl-dim);"><i class="fas fa-user-circle"></i> Kundenportal</a>
+            <a href="admin/" class="mobile-link" style="font-size:0.9rem; color:var(--rl-dim);"><i class="fas fa-lock"></i> Admin</a>
+
+            <a href="anfrage/" class="mobile-cta magnetic-btn"><i class="fas fa-comments"></i> Kostenloses Gespräch starten</a>
+
+            <div class="mobile-extra">
+                <p>Schön, dass Sie hier sind.</p>
+                <button class="theme-toggle" data-theme-toggle style="width:52px; height:52px; font-size:1.2rem; margin-top:16px;">
+                    <i class="fas fa-moon" data-theme-icon></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- MAIN CONTENT                                                 -->
+    <!-- ============================================================ -->
+    <main>
+
+        <!-- ==================== HERO ==================== -->
+        <section class="hero" id="home">
+            <video class="hero-video-bg" autoplay muted loop playsinline>
+                <source src="assets/video/hero-bg.mp4" type="video/mp4">
+            </video>
+
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-badge reveal">
+                        <i class="fas fa-map-marker-alt"></i>
+                        München &amp; Augsburg · Mit 5.0 ★ bewertet
+                    </div>
+
+                    <h1 class="reveal">
+                        Ihre Möbel verdienen<br>
+                        <span class="gold">mehr als nur eine Montage.</span>
+                    </h1>
+
+                    <p class="hero-lead reveal">
+                        Ich freue mich, dass Sie hier sind.<br>
+                        Bei mir bekommen Sie millimetergenaue Präzision, absolute Sauberkeit und die Sicherheit, dass alles mit Liebe und Garantie erledigt wird.
+                    </p>
+
+                    <!-- HERO ACTIONS – all primary CTAs -->
+                    <div class="hero-actions reveal">
+                        <a href="anfrage/" class="btn btn-primary magnetic-btn">
+                            <i class="fas fa-comments"></i> Unverbindliches Gespräch
+                        </a>
+                        <a href="services/" class="btn btn-secondary magnetic-btn">
+                            <i class="fas fa-th-list"></i> Alle Services
+                        </a>
+                        <a href="about.html" class="btn btn-secondary magnetic-btn">
+                            <i class="fas fa-user"></i> Über mich
+                        </a>
+                        <a href="contact.html" class="btn btn-secondary magnetic-btn" style="border-color:var(--rl-primary); color:var(--rl-primary);">
+                            <i class="fas fa-envelope"></i> Kontakt
+                        </a>
+                        <a href="faq.html" class="btn btn-secondary magnetic-btn" style="border-color:var(--rl-primary); color:var(--rl-primary);">
+                            <i class="fas fa-question-circle"></i> FAQ
+                        </a>
+                    </div>
+
+                    <div class="hero-search reveal">
+                        <input type="text" id="heroSearch" placeholder="Was darf ich für Sie montieren? z.B. USM Haller oder Küche…" aria-label="Service suchen">
+                        <button type="button" id="heroSearchBtn">Finden</button>
+                    </div>
+
+                    <div class="hero-stats reveal">
+                        <div class="stat">
+                            <div class="number live-counter" data-target="1200">0</div>
+                            <div class="label">erfolgreiche Projekte</div>
+                        </div>
+                        <div class="stat">
+                            <div class="number">5.0 ★</div>
+                            <div class="label">Durchschnittsbewertung</div>
+                        </div>
+                        <div class="stat">
+                            <div class="number live-counter" data-target="110">0</div>
+                            <div class="label">glückliche Kunden</div>
+                        </div>
+                        <div class="stat">
+                            <div class="number">98%</div>
+                            <div class="label">würden mich weiterempfehlen</div>
+                        </div>
+                    </div>
+
+                    <div class="promise reveal">
+                        <div class="promise-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <strong>Pünktlichkeitsversprechen</strong>
+                                <span>Komme ich 15 Min zu spät, erhalten Sie 10 % Rabatt</span>
+                            </div>
+                        </div>
+                        <div class="promise-item">
+                            <i class="fas fa-shield-heart"></i>
+                            <div>
+                                <strong>Preisgarantie</strong>
+                                <span>Sie bekommen den besten Preis in der Region – versprochen</span>
+                            </div>
+                        </div>
+                        <div class="promise-item">
+                            <i class="fas fa-hand-holding-heart"></i>
+                            <div>
+                                <strong>1 Jahr Qualitätsgarantie</strong>
+                                <span>Alles, was ich mache, steht unter meiner persönlichen Garantie</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== MARQUEE ==================== -->
+        <div class="marquee" aria-hidden="true">
+            <div class="marquee-track">
+                <span><i class="fas fa-cube"></i> IKEA PAX EXPERTE</span>
+                <span><i class="fas fa-home"></i> OUTDOOR &amp; GARTENHÄUSER</span>
+                <span><i class="fas fa-utensils"></i> KÜCHEN-MONTAGE</span>
+                <span><i class="fas fa-gem"></i> USM HALLER DESIGN</span>
+                <span><i class="fas fa-tools"></i> SYSTEM-DEMONTAGE</span>
+                <span><i class="fas fa-bed"></i> BOXSPRINGBETTEN</span>
+                <span><i class="fas fa-cube"></i> IKEA PAX EXPERTE</span>
+                <span><i class="fas fa-home"></i> OUTDOOR &amp; GARTENHÄUSER</span>
+                <span><i class="fas fa-utensils"></i> KÜCHEN-MONTAGE</span>
+                <span><i class="fas fa-gem"></i> USM HALLER DESIGN</span>
+                <span><i class="fas fa-tools"></i> SYSTEM-DEMONTAGE</span>
+                <span><i class="fas fa-bed"></i> BOXSPRINGBETTEN</span>
+            </div>
+        </div>
+
+        <!-- ==================== SERVICES (King Kong Grid) ==================== -->
+        <section class="kk-section" id="services">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="pre">Ihre Möglichkeiten</span>
+                    <h2>Was darf ich für Sie <span class="gold">perfekt</span> machen?</h2>
+                    <p>Wählen Sie einfach die Kategorie, die am besten zu Ihrem Projekt passt. Alles Weitere besprechen wir in Ruhe.</p>
+                </div>
+
+                <div class="kk-grid">
+                    <a href="services/moebel-kuechen.html" class="kk-item reveal">
+                        <div class="kk-icon"><i class="fas fa-couch"></i></div>
+                        <h3>Möbel & Küchen</h3>
+                        <p>Präzise Montage, die sich anfühlt, als wäre alles schon immer da gewesen</p>
+                    </a>
+                    <a href="services/usm-haller.html" class="kk-item reveal">
+                        <div class="kk-icon"><i class="fas fa-gem"></i></div>
+                        <h3>USM Haller</h3>
+                        <p>Spezialist für das Schweizer System – ich kenne jedes Detail</p>
+                    </a>
+                    <a href="services/garten-outdoor.html" class="kk-item reveal">
+                        <div class="kk-icon"><i class="fas fa-tree"></i></div>
+                        <h3>Garten & Outdoor</h3>
+                        <p>Damit Ihr Außenbereich genauso schön wird wie Ihr Zuhause</p>
+                    </a>
+                    <a href="services/demontage-umzug.html" class="kk-item reveal">
+                        <div class="kk-icon"><i class="fas fa-truck"></i></div>
+                        <h3>Demontage & Umzug</h3>
+                        <p>Schonende Demontage und fachgerechter Aufbau am neuen Ort</p>
+                    </a>
+                    <a href="services/buero-objekt.html" class="kk-item reveal">
+                        <div class="kk-icon"><i class="fas fa-building"></i></div>
+                        <h3>Büro & Objekt</h3>
+                        <p>Professionelle Montage für Arbeitsplätze und gewerbliche Räume</p>
+                    </a>
+                    <a href="services/premium-pro.html" class="kk-item featured reveal">
+                        <div class="kk-icon"><i class="fas fa-crown"></i></div>
+                        <h3>Premium Pro</h3>
+                        <p>White-Glove Service – für alle, die das Allerbeste möchten</p>
+                    </a>
+                </div>
+
+                <!-- CTA ROW -->
+                <div style="display:flex; flex-wrap:wrap; gap:14px; justify-content:center; margin-top:48px;" class="reveal">
+                    <a href="services/" class="btn btn-primary magnetic-btn">
+                        <i class="fas fa-arrow-right"></i> Zur vollständigen Services-Übersicht
+                    </a>
+                    <a href="bundles/" class="btn btn-secondary magnetic-btn">
+                        <i class="fas fa-gift"></i> Smarte Bundles entdecken
+                    </a>
+                    <a href="contact.html" class="btn btn-secondary magnetic-btn" style="border-color:var(--rl-primary); color:var(--rl-primary);">
+                        <i class="fas fa-envelope"></i> Kontakt
+                    </a>
+                    <a href="faq.html" class="btn btn-secondary magnetic-btn" style="border-color:var(--rl-primary); color:var(--rl-primary);">
+                        <i class="fas fa-question-circle"></i> Häufige Fragen
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SELECTED SERVICES ==================== -->
+        <section class="service-cards-section">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="pre">Beliebte Leistungen</span>
+                    <h2>Drei Wege, wie ich Ihnen gerne helfe</h2>
+                    <p>Klare Preise, ehrliche Leistungen und keine versteckten Überraschungen.</p>
+                </div>
+
+                <div class="service-cards-grid">
+                    <article class="service-card reveal">
+                        <div class="service-card-header">
+                            <span class="service-tag">Sehr beliebt</span>
+                            <div class="service-rating"><i class="fas fa-star"></i> 5.0</div>
+                        </div>
+                        <h3>USM Haller Montage</h3>
+                        <p class="service-desc">Ich montiere Ihr komplettes USM System so, dass es aussieht und sich anfühlt wie aus dem Katalog – nur besser.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Aufbau & millimetergenaue Ausrichtung</li>
+                            <li><i class="fas fa-check"></i> Staubfreie Arbeitsweise</li>
+                            <li><i class="fas fa-check"></i> 1 Jahr persönliche Garantie</li>
+                        </ul>
+                        <div class="service-footer">
+                            <div class="service-price">ab 189 €</div>
+                            <a href="services/usm-haller.html" class="btn btn-primary btn-sm magnetic-btn">Mehr erfahren</a>
+                        </div>
+                    </article>
+
+                    <article class="service-card reveal">
+                        <div class="service-card-header">
+                            <span class="service-tag">Küche</span>
+                            <div class="service-rating"><i class="fas fa-star"></i> 5.0</div>
+                        </div>
+                        <h3>Küchenmontage</h3>
+                        <p class="service-desc">Von den Schränken bis zum Geräteanschluss – ich sorge dafür, dass Ihre neue Küche sofort Freude macht.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Hoch- & Unterschränke</li>
+                            <li><i class="fas fa-check"></i> Arbeitsplatten & Geräte</li>
+                            <li><i class="fas fa-check"></i> Feineinstellung & Reinigung</li>
+                        </ul>
+                        <div class="service-footer">
+                            <div class="service-price">ab 349 €</div>
+                            <a href="services/moebel-kuechen.html" class="btn btn-primary btn-sm magnetic-btn">Mehr erfahren</a>
+                        </div>
+                    </article>
+
+                    <article class="service-card reveal">
+                        <div class="service-card-header">
+                            <span class="service-tag">Premium</span>
+                            <div class="service-rating"><i class="fas fa-star"></i> 5.0</div>
+                        </div>
+                        <h3>Premium Pro Service</h3>
+                        <p class="service-desc">Für alle, die maximale Sorgfalt, persönliche Betreuung und absolute Ruhe möchten.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Persönliche Projektleitung</li>
+                            <li><i class="fas fa-check"></i> Express-Termine möglich</li>
+                            <li><i class="fas fa-check"></i> Erweiterte Garantie</li>
+                        </ul>
+                        <div class="service-footer">
+                            <div class="service-price">Individuell</div>
+                            <a href="services/premium-pro.html" class="btn btn-primary btn-sm magnetic-btn">Gespräch vereinbaren</a>
+                        </div>
+                    </article>
+                </div>
+
+                <div style="text-align:center; margin-top:40px;" class="reveal">
+                    <a href="services/" class="btn btn-secondary magnetic-btn">
+                        <i class="fas fa-th-list"></i> Alle 6 Services im Überblick
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== BUNDLES ==================== -->
+        <section class="bundles-section">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="pre">Smarte Kombinationen</span>
+                    <h2>Pakete, die Ihnen Zeit und Nerven sparen</h2>
+                    <p>Alles aus einer Hand – damit Sie sich um nichts kümmern müssen.</p>
+                </div>
+
+                <div class="bundles-grid">
+                    <div class="bundle-card reveal">
+                        <div class="bundle-badge">Beliebt</div>
+                        <h3>Küchen-Komplett</h3>
+                        <p class="bundle-desc">Alte Küche raus, neue Küche rein – alles in einem durchdachten Ablauf.</p>
+                        <ul class="bundle-list">
+                            <li>Demontage der alten Küche</li>
+                            <li>Aufbau der neuen Küche</li>
+                            <li>Geräteanschluss</li>
+                            <li>Endreinigung</li>
+                        </ul>
+                        <div class="bundle-price">ab 590 €</div>
+                        <a href="bundles/kuechen-komplett.html" class="btn btn-primary magnetic-btn" style="width:100%;">Zum Bundle</a>
+                    </div>
+
+                    <div class="bundle-card featured reveal">
+                        <div class="bundle-badge">Premium</div>
+                        <h3>USM All-In</h3>
+                        <p class="bundle-desc">Von der ersten Idee bis zur finalen Justierung – ich begleite Sie komplett.</p>
+                        <ul class="bundle-list">
+                            <li>Beratung & Planung</li>
+                            <li>Lieferkoordination</li>
+                            <li>Professionelle Montage</li>
+                            <li>Nachjustierung vor Ort</li>
+                        </ul>
+                        <div class="bundle-price">Individuell</div>
+                        <a href="bundles/usm-all-in.html" class="btn btn-primary magnetic-btn" style="width:100%;">Zum Bundle</a>
+                    </div>
+
+                    <div class="bundle-card reveal">
+                        <div class="bundle-badge">Umzug</div>
+                        <h3>Umzug Premium</h3>
+                        <p class="bundle-desc">Demontage, Schutz und Aufbau – damit Ihr Umzug so entspannt wie möglich wird.</p>
+                        <ul class="bundle-list">
+                            <li>Fachgerechte Demontage</li>
+                            <li>Schutzverpackung</li>
+                            <li>Aufbau am neuen Ort</li>
+                            <li>Endkontrolle mit Ihnen</li>
+                        </ul>
+                        <div class="bundle-price">ab 420 €</div>
+                        <a href="bundles/umzug-premium.html" class="btn btn-primary magnetic-btn" style="width:100%;">Zum Bundle</a>
+                    </div>
+                </div>
+
+                <div style="text-align:center; margin-top:40px;" class="reveal">
+                    <a href="bundles/" class="btn btn-secondary magnetic-btn">
+                        <i class="fas fa-gift"></i> Alle Bundles im Überblick
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== ABOUT ==================== -->
+        <section class="profile-section" id="about">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="pre">Über mich</span>
+                    <h2>Handwerk mit <span class="gold">echter Leidenschaft</span></h2>
+                    <p>Jedes Projekt ist für mich eine persönliche Angelegenheit – deshalb gibt es keine Kompromisse.</p>
+                </div>
+
+                <div class="profile-grid">
+                    <div class="profile-card reveal">
+                        <div class="profile-avatar">
+                            <img src="assets/images/avatar/raphael-portrait.webp" alt="Raphael Lezius"
+                            onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'160\' height=\'160\'%3E%3Crect fill=\'%231A1815\' width=\'160\' height=\'160\'/%3E%3Ctext x=\'40\' y=\'90\' fill=\'%23D4A574\' font-size=\'48\'%3ERL%3C/text%3E%3C/svg%3E'">
+                            <span class="status-dot"></span>
+                        </div>
+                        <h3>Raphael Lezius</h3>
+                        <p class="subtitle">Premium Montage &amp; Interior Tech</p>
+                        <div class="badges">
+                            <span>🇩🇪 DE / 🇬🇧 EN</span>
+                            <span>🏆 5.0 ★</span>
+                            <span>🔧 Bosch Professional</span>
+                        </div>
+                        <div class="profile-stats">
+                            <div class="stat">
+                                <div class="num live-counter" data-target="1200">0</div>
+                                <div class="label">Projekte</div>
+                            </div>
+                            <div class="stat">
+                                <div class="num live-counter" data-target="110">0</div>
+                                <div class="label">Kunden</div>
+                            </div>
+                            <div class="stat">
+                                <div class="num">8+</div>
+                                <div class="label">Jahre</div>
+                            </div>
+                        </div>
+                        <div style="margin-top:16px;">
+                            <a href="about.html" class="btn btn-secondary btn-sm magnetic-btn" style="width:100%; justify-content:center;">
+                                <i class="fas fa-arrow-right"></i> Meine ganze Geschichte
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="profile-bio reveal">
+                        <h2>Wahres Handwerk kennt keine <span class="gold">Kompromisse</span></h2>
+                        <p class="lead">
+                            <strong>Ihre Möbel verdienen mehr als nur eine schnelle Montage.</strong><br>
+                            Ich bin Raphael – und ich stehe dafür, dass alles millimetergenau, staubfrei und mit echter Sorgfalt erledigt wird.
+                        </p>
+
+                        <div class="values">
+                            <div class="value-item">
+                                <i class="fas fa-drafting-compass"></i>
+                                <h4>Detailverliebt</h4>
+                                <p>Jedes Scharnier wird so justiert, dass es sich anfühlt wie neu.</p>
+                            </div>
+                            <div class="value-item">
+                                <i class="fas fa-handshake"></i>
+                                <h4>Transparent</h4>
+                                <p>Feste Preise. Keine Überraschungen. Versprochen.</p>
+                            </div>
+                            <div class="value-item">
+                                <i class="fas fa-shield-alt"></i>
+                                <h4>Versichert</h4>
+                                <p>5 Mio. € Haftpflicht – Ihr Zuhause ist bei mir in besten Händen.</p>
+                            </div>
+                        </div>
+
+                        <div style="margin-top:28px; display:flex; flex-wrap:wrap; gap:14px;">
+                            <a href="anfrage/" class="btn btn-primary magnetic-btn" style="flex:1; justify-content:center; min-width:180px;">
+                                <i class="fas fa-calendar-check"></i> Unverbindliches Gespräch
+                            </a>
+                            <a href="contact.html" class="btn btn-secondary magnetic-btn" style="flex:1; justify-content:center; min-width:160px; border-color:var(--rl-primary); color:var(--rl-primary);">
+                                <i class="fas fa-envelope"></i> Kontakt
+                            </a>
+                        </div>
+
+                        <div style="margin-top:12px;">
+                            <a href="about.html" class="btn btn-secondary btn-sm magnetic-btn" style="width:100%; justify-content:center;">
+                                <i class="fas fa-user"></i> Mehr über mich erfahren
+                            </a>
+                        </div>
+
+                        <div style="margin-top:12px;">
+                            <a href="faq.html" class="btn btn-secondary btn-sm magnetic-btn" style="width:100%; justify-content:center; border-color:var(--rl-primary); color:var(--rl-primary);">
+                                <i class="fas fa-question-circle"></i> Antworten auf häufige Fragen
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== REVIEWS ==================== -->
+        <section class="reviews-section">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="pre">Ihre Stimmen</span>
+                    <h2>Was Menschen sagen, die mir ihr Zuhause anvertraut haben</h2>
+                    <p>Echte Worte von echten Menschen. Das bedeutet mir mehr als jede Auszeichnung.</p>
+                </div>
+
+                <div class="reviews-grid">
+                    <div class="review-card reveal">
+                        <div class="review-stars">★★★★★</div>
+                        <p class="review-text">„Absolut professionell und pünktlich. Die USM Montage war millimetergenau. Ich fühle mich sehr gut aufgehoben.“</p>
+                        <div class="review-author">
+                            <strong>Thomas M.</strong>
+                            <span>München</span>
+                        </div>
+                    </div>
+                    <div class="review-card reveal">
+                        <div class="review-stars">★★★★★</div>
+                        <p class="review-text">„Sehr saubere Arbeit und freundliche Kommunikation. Die Küche sieht aus wie aus dem Katalog – nur noch schöner.“</p>
+                        <div class="review-author">
+                            <strong>Sandra K.</strong>
+                            <span>Augsburg</span>
+                        </div>
+                    </div>
+                    <div class="review-card reveal">
+                        <div class="review-stars">★★★★★</div>
+                        <p class="review-text">„Endlich jemand, der sich wirklich Zeit nimmt und Wert auf Details legt. Man merkt die Leidenschaft.“</p>
+                        <div class="review-author">
+                            <strong>Michael R.</strong>
+                            <span>München</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="display:flex; flex-wrap:wrap; gap:14px; justify-content:center; margin-top:48px;" class="reveal">
+                    <a href="reviews.html" class="btn btn-primary magnetic-btn">
+                        <i class="fas fa-star"></i> Alle Stimmen lesen
+                    </a>
+                    <a href="contact.html" class="btn btn-secondary magnetic-btn" style="border-color:var(--rl-primary); color:var(--rl-primary);">
+                        <i class="fas fa-envelope"></i> Ihre eigene Erfahrung teilen
+                    </a>
+                </div>
+
+                <div style="text-align:center; margin-top:16px;" class="reveal">
+                    <a href="faq.html" class="btn btn-secondary magnetic-btn">
+                        <i class="fas fa-question-circle"></i> Haben Sie noch Fragen? Besuchen Sie die FAQ
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== HIDDEN SITEMAP (for SEO & accessibility) ==================== -->
+        <div class="sitemap-hidden" aria-hidden="true">
+            <h2>Alle Seiten im Überblick</h2>
+            <ul>
+                <li><a href="index.html">Startseite</a></li>
+                <li><a href="services/">Services Übersicht</a>
+                    <ul>
+                        <li><a href="services/moebel-kuechen.html">Möbel & Küchen</a></li>
+                        <li><a href="services/usm-haller.html">USM Haller</a></li>
+                        <li><a href="services/garten-outdoor.html">Garten & Outdoor</a></li>
+                        <li><a href="services/demontage-umzug.html">Demontage & Umzug</a></li>
+                        <li><a href="services/buero-objekt.html">Büro & Objekt</a></li>
+                        <li><a href="services/premium-pro.html">Premium Pro</a></li>
+                    </ul>
+                </li>
+                <li><a href="bundles/">Bundles Übersicht</a>
+                    <ul>
+                        <li><a href="bundles/kuechen-komplett.html">Küchen-Komplett</a></li>
+                        <li><a href="bundles/usm-all-in.html">USM All-In</a></li>
+                        <li><a href="bundles/umzug-premium.html">Umzug Premium</a></li>
+                    </ul>
+                </li>
+                <li><a href="about.html">Über mich</a></li>
+                <li><a href="reviews.html">Kundenstimmen</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="contact.html">Kontakt</a></li>
+                <li><a href="anfrage/">Anfrage starten</a></li>
+                <li><a href="client/">Kundenportal</a></li>
+                <li><a href="admin/">Admin</a></li>
+                <li><a href="legal/impressum.html">Impressum</a></li>
+                <li><a href="legal/datenschutz.html">Datenschutz</a></li>
+                <li><a href="legal/agb.html">AGB</a></li>
+                <li><a href="legal/widerruf.html">Widerruf</a></li>
+                <li><a href="legal/cookie.html">Cookie-Richtlinie</a></li>
+            </ul>
+        </div>
+
+    </main>
+
+    <!-- ============================================================ -->
+    <!-- FOOTER – embedded fallback (relative paths)                  -->
+    <!-- ============================================================ -->
     <footer class="rl-footer">
-      <div class="container">
-        <div class="rl-footer-top">
-          <div class="rl-footer-brand">
-            <div class="logo">Raphael <span>Lezius</span></div>
-            <p>Ich freue mich, dass Sie hier sind.<br>Premium Montage mit echter Leidenschaft – millimetergenau, staubfrei und immer mit Herz.</p>
-            <div class="rl-footer-trust">
-              <span><i class="fas fa-shield-alt"></i> 5 Mio. € versichert</span>
-              <span><i class="fas fa-star"></i> 5.0 ★ von 110+ Menschen</span>
-              <span><i class="fas fa-clock"></i> Antwort innerhalb 24 h</span>
-              <span><i class="fas fa-heart"></i> 1 Jahr persönliche Garantie</span>
+        <div class="container">
+            <div class="rl-footer-top">
+                <div class="rl-footer-brand">
+                    <div class="logo">Raphael <span>Lezius</span></div>
+                    <p>Ich freue mich, dass Sie hier sind.<br>Premium Montage mit echter Leidenschaft – millimetergenau, staubfrei und immer mit Herz.</p>
+                    <div class="rl-footer-trust">
+                        <span><i class="fas fa-shield-alt"></i> 5 Mio. € versichert</span>
+                        <span><i class="fas fa-star"></i> 5.0 ★ von 110+ Menschen</span>
+                        <span><i class="fas fa-clock"></i> Antwort innerhalb 24 h</span>
+                        <span><i class="fas fa-heart"></i> 1 Jahr persönliche Garantie</span>
+                    </div>
+                </div>
+                <div class="rl-footer-newsletter">
+                    <h4><i class="fas fa-envelope-open-text" style="color:var(--rl-primary)"></i> Bleiben Sie in Verbindung</h4>
+                    <p>Einmal im Monat sende ich Ihnen nützliche Tipps und exklusive Angebote – nur wenn Sie möchten.</p>
+                    <form class="newsletter-form" id="newsletterForm">
+                        <input type="email" placeholder="Ihre E-Mail-Adresse" required aria-label="E-Mail für Newsletter" />
+                        <button type="submit" class="magnetic-btn">Gerne dabei sein</button>
+                    </form>
+                    <div class="newsletter-consent">
+                        <input type="checkbox" id="consent" required />
+                        <label for="consent">Ich stimme der <a href="legal/datenschutz.html" style="color:var(--rl-primary); text-decoration:underline;">Datenschutzerklärung</a> zu und freue mich auf Ihre Nachrichten.</label>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="rl-footer-newsletter">
-            <h4><i class="fas fa-envelope-open-text" style="color:var(--rl-primary)"></i> Bleiben Sie in Verbindung</h4>
-            <p>Einmal im Monat sende ich Ihnen nützliche Tipps und exklusive Angebote – nur wenn Sie möchten.</p>
-            <form class="newsletter-form" id="newsletterForm">
-              <input type="email" placeholder="Ihre E-Mail-Adresse" required aria-label="E-Mail für Newsletter" />
-              <button type="submit" class="magnetic-btn">Gerne dabei sein</button>
-            </form>
-            <div class="newsletter-consent">
-              <input type="checkbox" id="consent" required />
-              <label for="consent">Ich stimme der <a href="/legal/datenschutz.html" style="color:var(--rl-primary); text-decoration:underline;">Datenschutzerklärung</a> zu und freue mich auf Ihre Nachrichten.</label>
+
+            <div class="rl-footer-grid">
+                <div class="rl-footer-col">
+                    <h5>Services</h5>
+                    <a href="services/">Alle Services</a>
+                    <a href="services/moebel-kuechen.html">Möbel & Küchen</a>
+                    <a href="services/usm-haller.html">USM Haller Spezialist</a>
+                    <a href="services/garten-outdoor.html">Garten & Outdoor</a>
+                    <a href="services/demontage-umzug.html">Demontage & Umzug</a>
+                    <a href="services/buero-objekt.html">Büro & Objekt</a>
+                    <a href="services/premium-pro.html">Premium Pro Service</a>
+                </div>
+                <div class="rl-footer-col">
+                    <h5>Bundles</h5>
+                    <a href="bundles/">Alle Bundles</a>
+                    <a href="bundles/kuechen-komplett.html">Küchen-Komplett</a>
+                    <a href="bundles/usm-all-in.html">USM All-In</a>
+                    <a href="bundles/umzug-premium.html">Umzug Premium</a>
+                </div>
+                <div class="rl-footer-col">
+                    <h5>Über & Hilfe</h5>
+                    <a href="about.html">Über mich</a>
+                    <a href="reviews.html">Kundenstimmen</a>
+                    <a href="faq.html">FAQ</a>
+                    <a href="contact.html">Kontakt</a>
+                    <a href="anfrage/">Kostenloses Gespräch</a>
+                </div>
+                <div class="rl-footer-col">
+                    <h5>Rechtliches</h5>
+                    <a href="legal/impressum.html">Impressum</a>
+                    <a href="legal/datenschutz.html">Datenschutz</a>
+                    <a href="legal/agb.html">AGB</a>
+                    <a href="legal/widerruf.html">Widerruf</a>
+                    <a href="legal/cookie.html">Cookie-Richtlinie</a>
+                </div>
             </div>
-          </div>
+
+            <div class="rl-footer-trustbar">
+                <div class="trustbar-item"><i class="fas fa-users"></i><div><div class="label">Vertrauen</div><div class="value">110+ glückliche Kunden</div></div></div>
+                <div class="trustbar-item"><i class="fas fa-star"></i><div><div class="label">Bewertung</div><div class="value">5.0 ★ Durchschnitt</div></div></div>
+                <div class="trustbar-item"><i class="fas fa-bolt"></i><div><div class="label">Reaktion</div><div class="value">meist innerhalb 24 h</div></div></div>
+                <div class="trustbar-item"><i class="fas fa-shield-alt"></i><div><div class="label">Sicherheit</div><div class="value">5 Mio. € versichert</div></div></div>
+                <div class="trustbar-item"><i class="fas fa-hand-holding-heart"></i><div><div class="label">Service</div><div class="value">White-Glove mit Herz</div></div></div>
+            </div>
+
+            <div class="rl-footer-bottom">
+                <div>© 2026 Raphael Lezius · Mit Sorgfalt gemacht in Augsburg</div>
+                <div>
+                    <a href="legal/impressum.html">Impressum</a>
+                    <a href="legal/datenschutz.html">Datenschutz</a>
+                    <a href="legal/agb.html">AGB</a>
+                </div>
+                <div class="rl-footer-social">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div style="text-align:center; margin-top:28px; font-size:0.88rem; color:var(--rl-dim);">
+                <i class="fas fa-heart" style="color:var(--rl-primary); margin-right:6px;"></i>
+                Danke, dass Sie sich die Zeit genommen haben. Es bedeutet mir viel.
+            </div>
+
+            <!-- Legal Bar -->
+            <div class="legal-bar">
+                <a href="legal/impressum.html">Impressum</a>
+                <span class="sep">|</span>
+                <a href="legal/datenschutz.html">Datenschutz</a>
+                <span class="sep">|</span>
+                <a href="legal/agb.html">AGB</a>
+                <span class="sep">|</span>
+                <a href="legal/widerruf.html">Widerruf</a>
+                <span class="sep">|</span>
+                <a href="legal/cookie.html">Cookie-Richtlinie</a>
+                <span class="sep">|</span>
+                <a href="faq.html">FAQ</a>
+                <span class="sep">|</span>
+                <a href="client/">Kundenportal</a>
+                <span class="sep">|</span>
+                <a href="admin/">Admin</a>
+            </div>
         </div>
-        <div class="rl-footer-grid">
-          <div class="rl-footer-col">
-            <h5>Services</h5>
-            <a href="/services.html">Alle Services</a>
-            <a href="/services/moebel-kuechen.html">Möbel & Küchen</a>
-            <a href="/services/usm-haller.html">USM Haller Spezialist</a>
-            <a href="/services/garten-outdoor.html">Garten & Outdoor</a>
-            <a href="/services/demontage-umzug.html">Demontage & Umzug</a>
-            <a href="/services/buero-objekt.html">Büro & Objekt</a>
-            <a href="/services/premium-pro.html">Premium Pro Service</a>
-          </div>
-          <div class="rl-footer-col">
-            <h5>Bundles</h5>
-            <a href="/bundles/">Alle Bundles</a>
-            <a href="/bundles/kuechen-komplett.html">Küchen-Komplett</a>
-            <a href="/bundles/usm-all-in.html">USM All-In</a>
-            <a href="/bundles/umzug-premium.html">Umzug Premium</a>
-          </div>
-          <div class="rl-footer-col">
-            <h5>Über & Hilfe</h5>
-            <a href="/about.html">Über mich</a>
-            <a href="/reviews.html">Kundenstimmen</a>
-            <a href="/faq.html">FAQ</a>
-            <a href="/contact.html">Kontakt</a>
-            <a href="/anfrage/">Kostenloses Gespräch</a>
-          </div>
-          <div class="rl-footer-col">
-            <h5>Rechtliches</h5>
-            <a href="/legal/impressum.html">Impressum</a>
-            <a href="/legal/datenschutz.html">Datenschutz</a>
-            <a href="/legal/agb.html">AGB</a>
-            <a href="/legal/widerruf.html">Widerruf</a>
-            <a href="/legal/cookie.html">Cookie-Richtlinie</a>
-          </div>
-        </div>
-        <div class="rl-footer-trustbar">
-          <div class="trustbar-item"><i class="fas fa-users"></i><div><div class="label">Vertrauen</div><div class="value">110+ glückliche Kunden</div></div></div>
-          <div class="trustbar-item"><i class="fas fa-star"></i><div><div class="label">Bewertung</div><div class="value">5.0 ★ Durchschnitt</div></div></div>
-          <div class="trustbar-item"><i class="fas fa-bolt"></i><div><div class="label">Reaktion</div><div class="value">meist innerhalb 24 h</div></div></div>
-          <div class="trustbar-item"><i class="fas fa-shield-alt"></i><div><div class="label">Sicherheit</div><div class="value">5 Mio. € versichert</div></div></div>
-          <div class="trustbar-item"><i class="fas fa-hand-holding-heart"></i><div><div class="label">Service</div><div class="value">White-Glove mit Herz</div></div></div>
-        </div>
-        <div class="rl-footer-bottom">
-          <div>© 2026 Raphael Lezius · Mit Sorgfalt gemacht in Augsburg</div>
-          <div>
-            <a href="/legal/impressum.html">Impressum</a>
-            <a href="/legal/datenschutz.html">Datenschutz</a>
-            <a href="/legal/agb.html">AGB</a>
-          </div>
-          <div class="rl-footer-social">
-            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-          </div>
-        </div>
-        <div style="text-align:center; margin-top:28px; font-size:0.88rem; color:var(--rl-dim);">
-          <i class="fas fa-heart" style="color:var(--rl-primary); margin-right:6px;"></i>
-          Danke, dass Sie sich die Zeit genommen haben. Es bedeutet mir viel.
-        </div>
-        <!-- ✅ Legal Bar – all legal pages + FAQ -->
-        <div class="legal-bar">
-          <a href="/legal/impressum.html">Impressum</a>
-          <span class="sep">|</span>
-          <a href="/legal/datenschutz.html">Datenschutz</a>
-          <span class="sep">|</span>
-          <a href="/legal/agb.html">AGB</a>
-          <span class="sep">|</span>
-          <a href="/legal/widerruf.html">Widerruf</a>
-          <span class="sep">|</span>
-          <a href="/legal/cookie.html">Cookie-Richtlinie</a>
-          <span class="sep">|</span>
-          <a href="/faq.html">FAQ</a>
-        </div>
-      </div>
     </footer>
-      `;
 
-      // ── Helper: load component with cache + fallback ──
-      async function loadComponent(selector, url, fallbackHtml) {
-        const container = document.querySelector(selector);
-        if (!container) return;
+    <!-- ============================================================ -->
+    <!-- SCRIPTS                                                      -->
+    <!-- ============================================================ -->
 
-        const cached = localStorage.getItem(url);
-        if (cached) {
-          container.innerHTML = cached;
-          fetch(url)
-            .then(res => res.text())
-            .then(html => {
-              if (html && html.trim().length > 0) {
-                container.innerHTML = html;
-                localStorage.setItem(url, html);
-              }
-            })
-            .catch(() => {});
-          return;
-        }
+    <script>
+        /* ============================================================
+           RAPHAEL LEZIUS – Core Scripts
+           All paths use relative URLs for GitHub Pages compatibility
+           ============================================================ */
 
-        try {
-          const response = await fetch(url);
-          if (!response.ok) throw new Error('Network error');
-          const html = await response.text();
-          if (html && html.trim().length > 0) {
-            container.innerHTML = html;
-            localStorage.setItem(url, html);
-            return;
-          }
-        } catch (error) {
-          // fall through
-        }
+        (function() {
+            'use strict';
 
-        if (fallbackHtml) {
-          container.innerHTML = fallbackHtml;
-          try { localStorage.setItem(url, fallbackHtml); } catch (e) {}
-        } else {
-          container.innerHTML = `<p style="color:red; text-align:center; padding:20px;">Komponente konnte nicht geladen werden.</p>`;
-        }
-      }
-
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', init);
-      } else {
-        init();
-      }
-
-      function init() {
-        loadComponent('#nav-placeholder', '/components/nav.html', NAV_FALLBACK);
-        loadComponent('#footer-placeholder', '/components/footer.html', FOOTER_FALLBACK);
-
-        setTimeout(() => {
-          const navToggle = document.getElementById('navToggle');
-          const mobileMenu = document.getElementById('mobileMenu');
-          if (navToggle && mobileMenu) {
-            navToggle.addEventListener('click', function() {
-              const isOpen = mobileMenu.classList.toggle('open');
-              navToggle.setAttribute('aria-expanded', isOpen);
-              mobileMenu.setAttribute('aria-hidden', !isOpen);
-              document.body.style.overflow = isOpen ? 'hidden' : '';
-            });
-            mobileMenu.querySelectorAll('a').forEach(link => {
-              link.addEventListener('click', function() {
-                mobileMenu.classList.remove('open');
-                navToggle.setAttribute('aria-expanded', 'false');
-                mobileMenu.setAttribute('aria-hidden', 'true');
-                document.body.style.overflow = '';
-              });
-            });
-          }
-
-          document.querySelectorAll('[data-theme-toggle]').forEach(btn => {
-            btn.removeEventListener('click', toggleTheme);
-            btn.addEventListener('click', toggleTheme);
-          });
-
-          const form = document.getElementById('newsletterForm');
-          if (form) {
-            form.removeEventListener('submit', handleNewsletter);
-            form.addEventListener('submit', handleNewsletter);
-          }
-
-          updateActiveSection();
-        }, 50);
-      }
-
-      function toggleTheme() {
-        const html = document.documentElement;
-        const current = html.getAttribute('data-theme') || 'dark';
-        const next = current === 'dark' ? 'light' : 'dark';
-        html.setAttribute('data-theme', next);
-        localStorage.setItem('rl-theme', next);
-        document.querySelectorAll('[data-theme-icon]').forEach(icon => {
-          icon.className = next === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
-        });
-        const meta = document.getElementById('themeColorMeta');
-        if (meta) meta.content = next === 'dark' ? '#0B0A09' : '#F8F5F0';
-      }
-
-      function handleNewsletter(e) {
-        e.preventDefault();
-        const btn = this.querySelector('button');
-        const original = btn.innerHTML;
-        btn.innerHTML = '<i class="fas fa-check"></i> Willkommen an Bord!';
-        btn.style.background = 'var(--rl-gradient-hover)';
-        setTimeout(() => {
-          btn.innerHTML = original;
-          this.reset();
-        }, 2800);
-      }
-
-      function updateActiveSection() {
-        const sections = document.querySelectorAll('section[id]');
-        const navLinks = document.querySelectorAll('.nav-link[data-section]');
-        let current = '';
-        const scrollPos = window.scrollY + 120;
-        sections.forEach(section => {
-          const top = section.offsetTop;
-          const height = section.offsetHeight;
-          if (scrollPos >= top && scrollPos < top + height) {
-            current = section.getAttribute('id');
-          }
-        });
-        navLinks.forEach(link => {
-          link.classList.remove('active');
-          if (link.getAttribute('data-section') === current) {
-            link.classList.add('active');
-          }
-        });
-      }
-
-      const savedTheme = localStorage.getItem('rl-theme');
-      if (savedTheme) {
-        document.documentElement.setAttribute('data-theme', savedTheme);
-        document.querySelectorAll('[data-theme-icon]').forEach(icon => {
-          icon.className = savedTheme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
-        });
-      }
-
-      window.addEventListener('scroll', updateActiveSection, { passive: true });
-
-    })();
-  </script>
-
-  <!-- ============================================================ -->
-  <!-- PAGE-SPECIFIC SCRIPTS                                        -->
-  <!-- ============================================================ -->
-  <script>
-    // ── HERO SEARCH ──
-    document.getElementById('heroSearchBtn')?.addEventListener('click', () => {
-      const query = document.getElementById('heroSearch')?.value.trim();
-      if (query) window.location.href = `/services.html?q=${encodeURIComponent(query)}`;
-      else document.getElementById('heroSearch')?.focus();
-    });
-    document.getElementById('heroSearch')?.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') document.getElementById('heroSearchBtn')?.click();
-    });
-
-    // ── SCROLL PROGRESS + STICKY + BACK TO TOP ──
-    const progress = document.getElementById('scrollProgress');
-    const sticky = document.getElementById('stickyCta');
-    const backTop = document.getElementById('backToTop');
-
-    window.addEventListener('scroll', () => {
-      const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const percent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-      if (progress) progress.style.width = percent + '%';
-
-      if (scrollTop > 400) {
-        sticky?.classList.add('visible');
-        backTop?.classList.add('visible');
-      } else {
-        sticky?.classList.remove('visible');
-        backTop?.classList.remove('visible');
-      }
-    }, { passive: true });
-
-    backTop?.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    // ── CUSTOM CURSOR ──
-    const dot = document.getElementById('cursorDot');
-    const ring = document.getElementById('cursorRing');
-    let mouseX = 0,
-      mouseY = 0,
-      ringX = 0,
-      ringY = 0;
-
-    if (dot && ring && window.matchMedia('(min-width: 769px)').matches) {
-      document.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-        dot.style.left = mouseX + 'px';
-        dot.style.top = mouseY + 'px';
-
-        document.querySelectorAll('.magnetic-btn').forEach(btn => {
-          const rect = btn.getBoundingClientRect();
-          const cx = rect.left + rect.width / 2;
-          const cy = rect.top + rect.height / 2;
-          const dx = e.clientX - cx;
-          const dy = e.clientY - cy;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 120) {
-            const strength = (120 - dist) / 120 * 4;
-            btn.style.transform = `translate(${dx * strength / 6}px, ${dy * strength / 6}px)`;
-          } else {
-            btn.style.transform = 'translate(0, 0)';
-          }
-        });
-      });
-
-      function animateRing() {
-        ringX += (mouseX - ringX) * 0.18;
-        ringY += (mouseY - ringY) * 0.18;
-        ring.style.left = ringX + 'px';
-        ring.style.top = ringY + 'px';
-        requestAnimationFrame(animateRing);
-      }
-      animateRing();
-
-      document.addEventListener('mouseover', (e) => {
-        if (e.target.closest('a, button, .btn, .magnetic-btn, .kk-item, .service-card, .bundle-card')) {
-          dot.classList.add('hovering');
-          ring.classList.add('hovering');
-        }
-      });
-      document.addEventListener('mouseout', (e) => {
-        if (e.target.closest('a, button, .btn, .magnetic-btn, .kk-item, .service-card, .bundle-card')) {
-          dot.classList.remove('hovering');
-          ring.classList.remove('hovering');
-        }
-      });
-    }
-
-    // ── LIVE COUNTERS ──
-    function animateCounter(el) {
-      const target = parseInt(el.getAttribute('data-target'));
-      const duration = 1800;
-      const start = performance.now();
-
-      function update(now) {
-        const progress = Math.min((now - start) / duration, 1);
-        const ease = 1 - Math.pow(1 - progress, 3);
-        el.textContent = Math.floor(ease * target).toLocaleString('de-DE') + (target >= 100 ? '+' : '');
-        if (progress < 1) requestAnimationFrame(update);
-      }
-      requestAnimationFrame(update);
-    }
-
-    // ── REVEAL ON SCROLL ──
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          entry.target.querySelectorAll('.live-counter').forEach(counter => {
-            if (!counter.classList.contains('counted')) {
-              counter.classList.add('counted');
-              animateCounter(counter);
+            // ── THEME ──
+            const savedTheme = localStorage.getItem('rl-theme');
+            if (savedTheme) {
+                document.documentElement.setAttribute('data-theme', savedTheme);
+                document.querySelectorAll('[data-theme-icon]').forEach(icon => {
+                    icon.className = savedTheme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
+                });
+                const meta = document.getElementById('themeColorMeta');
+                if (meta) meta.content = savedTheme === 'dark' ? '#0B0A09' : '#F8F5F0';
             }
-          });
-        }
-      });
-    }, { threshold: 0.15 });
 
-    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+            function toggleTheme() {
+                const html = document.documentElement;
+                const current = html.getAttribute('data-theme') || 'dark';
+                const next = current === 'dark' ? 'light' : 'dark';
+                html.setAttribute('data-theme', next);
+                localStorage.setItem('rl-theme', next);
+                document.querySelectorAll('[data-theme-icon]').forEach(icon => {
+                    icon.className = next === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
+                });
+                const meta = document.getElementById('themeColorMeta');
+                if (meta) meta.content = next === 'dark' ? '#0B0A09' : '#F8F5F0';
+            }
 
-    // ── SMOOTH SCROLL ──
-    document.querySelectorAll('a[href^="#"]').forEach(link => {
-      link.addEventListener('click', function(e) {
-        const targetId = this.getAttribute('href');
-        if (targetId === '#') return;
-        const target = document.querySelector(targetId);
-        if (target) {
-          e.preventDefault();
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      });
-    });
+            document.querySelectorAll('[data-theme-toggle]').forEach(btn => {
+                btn.addEventListener('click', toggleTheme);
+            });
 
-    console.log('✨ Raphael Lezius – Complete Homepage with all buttons & links (Meituan-style)');
-  </script>
+            // ── MOBILE MENU ──
+            const navToggle = document.getElementById('navToggle');
+            const mobileMenu = document.getElementById('mobileMenu');
+            if (navToggle && mobileMenu) {
+                navToggle.addEventListener('click', function() {
+                    const isOpen = mobileMenu.classList.toggle('open');
+                    navToggle.setAttribute('aria-expanded', isOpen);
+                    mobileMenu.setAttribute('aria-hidden', !isOpen);
+                    document.body.style.overflow = isOpen ? 'hidden' : '';
+                });
+                mobileMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', function() {
+                        mobileMenu.classList.remove('open');
+                        navToggle.setAttribute('aria-expanded', 'false');
+                        mobileMenu.setAttribute('aria-hidden', 'true');
+                        document.body.style.overflow = '';
+                    });
+                });
+            }
+
+            // ── NEWSLETTER ──
+            const form = document.getElementById('newsletterForm');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const btn = this.querySelector('button');
+                    const original = btn.innerHTML;
+                    btn.innerHTML = '<i class="fas fa-check"></i> Willkommen an Bord!';
+                    btn.style.background = 'var(--rl-gradient-hover)';
+                    setTimeout(() => {
+                        btn.innerHTML = original;
+                        this.reset();
+                    }, 2800);
+                });
+            }
+
+            // ── HERO SEARCH ──
+            const searchBtn = document.getElementById('heroSearchBtn');
+            const searchInput = document.getElementById('heroSearch');
+            if (searchBtn && searchInput) {
+                searchBtn.addEventListener('click', function() {
+                    const query = searchInput.value.trim();
+                    if (query) {
+                        window.location.href = 'services/?q=' + encodeURIComponent(query);
+                    } else {
+                        searchInput.focus();
+                    }
+                });
+                searchInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') searchBtn.click();
+                });
+            }
+
+            // ── SCROLL PROGRESS ──
+            const progress = document.getElementById('scrollProgress');
+            const sticky = document.getElementById('stickyCta');
+            const backTop = document.getElementById('backToTop');
+
+            window.addEventListener('scroll', function() {
+                const scrollTop = window.scrollY;
+                const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const percent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+                if (progress) progress.style.width = percent + '%';
+
+                if (scrollTop > 400) {
+                    if (sticky) sticky.classList.add('visible');
+                    if (backTop) backTop.classList.add('visible');
+                } else {
+                    if (sticky) sticky.classList.remove('visible');
+                    if (backTop) backTop.classList.remove('visible');
+                }
+            }, { passive: true });
+
+            if (backTop) {
+                backTop.addEventListener('click', function() {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+
+            // ── CUSTOM CURSOR ──
+            const dot = document.getElementById('cursorDot');
+            const ring = document.getElementById('cursorRing');
+            let mouseX = 0,
+                mouseY = 0,
+                ringX = 0,
+                ringY = 0;
+
+            if (dot && ring && window.matchMedia('(min-width: 769px)').matches) {
+                document.addEventListener('mousemove', function(e) {
+                    mouseX = e.clientX;
+                    mouseY = e.clientY;
+                    dot.style.left = mouseX + 'px';
+                    dot.style.top = mouseY + 'px';
+
+                    document.querySelectorAll('.magnetic-btn').forEach(function(btn) {
+                        const rect = btn.getBoundingClientRect();
+                        const cx = rect.left + rect.width / 2;
+                        const cy = rect.top + rect.height / 2;
+                        const dx = e.clientX - cx;
+                        const dy = e.clientY - cy;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+                        if (dist < 120) {
+                            const strength = (120 - dist) / 120 * 4;
+                            btn.style.transform = 'translate(' + (dx * strength / 6) + 'px, ' + (dy *
+                                strength / 6) + 'px)';
+                        } else {
+                            btn.style.transform = 'translate(0, 0)';
+                        }
+                    });
+                });
+
+                function animateRing() {
+                    ringX += (mouseX - ringX) * 0.18;
+                    ringY += (mouseY - ringY) * 0.18;
+                    ring.style.left = ringX + 'px';
+                    ring.style.top = ringY + 'px';
+                    requestAnimationFrame(animateRing);
+                }
+                animateRing();
+
+                document.addEventListener('mouseover', function(e) {
+                    if (e.target.closest('a, button, .btn, .magnetic-btn, .kk-item, .service-card, .bundle-card')) {
+                        dot.classList.add('hovering');
+                        ring.classList.add('hovering');
+                    }
+                });
+                document.addEventListener('mouseout', function(e) {
+                    if (e.target.closest('a, button, .btn, .magnetic-btn, .kk-item, .service-card, .bundle-card')) {
+                        dot.classList.remove('hovering');
+                        ring.classList.remove('hovering');
+                    }
+                });
+            }
+
+            // ── LIVE COUNTERS ──
+            function animateCounter(el) {
+                const target = parseInt(el.getAttribute('data-target'), 10);
+                const duration = 1800;
+                const start = performance.now();
+
+                function update(now) {
+                    const progress = Math.min((now - start) / duration, 1);
+                    const ease = 1 - Math.pow(1 - progress, 3);
+                    el.textContent = Math.floor(ease * target).toLocaleString('de-DE') + (target >= 100 ? '+' : '');
+                    if (progress < 1) requestAnimationFrame(update);
+                }
+                requestAnimationFrame(update);
+            }
+
+            // ── REVEAL ON SCROLL ──
+            const revealObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        entry.target.querySelectorAll('.live-counter').forEach(function(counter) {
+                            if (!counter.classList.contains('counted')) {
+                                counter.classList.add('counted');
+                                animateCounter(counter);
+                            }
+                        });
+                    }
+                });
+            }, { threshold: 0.15 });
+
+            document.querySelectorAll('.reveal').forEach(function(el) {
+                revealObserver.observe(el);
+            });
+
+            // ── SMOOTH SCROLL ──
+            document.querySelectorAll('a[href^="#"]').forEach(function(link) {
+                link.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    const target = document.querySelector(targetId);
+                    if (target) {
+                        e.preventDefault();
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+
+            // ── ACTIVE SECTION (simple) ──
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-link[data-section]');
+
+            function updateActiveSection() {
+                let current = '';
+                const scrollPos = window.scrollY + 120;
+                sections.forEach(function(section) {
+                    const top = section.offsetTop;
+                    const height = section.offsetHeight;
+                    if (scrollPos >= top && scrollPos < top + height) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                navLinks.forEach(function(link) {
+                    link.classList.remove('active');
+                    if (link.getAttribute('data-section') === current) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', updateActiveSection, { passive: true });
+            updateActiveSection();
+
+            console.log('✨ Raphael Lezius – Homepage v3.0 (relative paths, GitHub Pages ready)');
+
+        })();
+    </script>
+
 </body>
 </html>
