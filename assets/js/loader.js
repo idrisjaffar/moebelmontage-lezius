@@ -452,7 +452,7 @@
 
   window.addEventListener('scroll', updateActiveSection, { passive: true });
 
-  // ── Nav auto-hide ──
+  // ── Nav auto‑hide ──
   const nav = document.querySelector('.rl-nav');
   let lastScroll = 0;
   window.addEventListener('scroll', function() {

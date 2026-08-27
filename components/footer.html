@@ -1,4 +1,4 @@
-<!-- components/footer.html – Magnificent 2026 Footer -->
+<!-- components/footer.html – Magnificent 2026 Footer v2.0 -->
 <footer class="rl-footer" role="contentinfo">
   <div class="container">
 
@@ -10,7 +10,16 @@
         <div class="rl-footer__logo">
           Raphael <span>Lezius</span>
           <span class="rl-footer__badge">
-            <span class="live-dot"></span> Live
+            <span class="live-dot"></span>
+            <span data-lang="de">Live</span>
+            <span data-lang="en" style="display:none;">Live</span>
+          </span>
+          <!-- Live Visitors Counter -->
+          <span class="rl-footer__visitors">
+            <i class="fas fa-user"></i>
+            <span id="visitorCount">12</span>
+            <span data-lang="de">aktiv</span>
+            <span data-lang="en" style="display:none;">active</span>
           </span>
         </div>
         <p class="rl-footer__description">
@@ -96,6 +105,13 @@
           <li><a href="reviews.html"><span data-lang="de">Kundenstimmen</span><span data-lang="en" style="display:none;">Reviews</span></a></li>
           <li><a href="anfrage/"><span data-lang="de">Kostenloses Gespräch</span><span data-lang="en" style="display:none;">Free Consultation</span></a></li>
         </ul>
+        <!-- Language Switcher (small) -->
+        <div class="rl-footer__lang">
+          <span data-lang="de">Sprache:</span>
+          <span data-lang="en" style="display:none;">Language:</span>
+          <button class="lang-btn active" data-lang="de">DE</button>
+          <button class="lang-btn" data-lang="en">EN</button>
+        </div>
         <div class="rl-footer__social">
           <a href="#" aria-label="Instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
           <a href="#" aria-label="LinkedIn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
@@ -133,7 +149,7 @@
 
     </div>
 
-    <!-- ===== TRUST BAR (animated) ===== -->
+    <!-- ===== TRUST BAR ===== -->
     <div class="rl-footer__trustbar">
       <div class="trust-item">
         <i class="fas fa-users"></i>
@@ -179,7 +195,7 @@
       </div>
     </div>
 
-    <!-- ===== BOTTOM: Legal + Copyright + Back to Top ===== -->
+    <!-- ===== BOTTOM ===== -->
     <div class="rl-footer__bottom">
       <div class="rl-footer__copyright">
         <p>© 2026 Raphael Lezius · <span data-lang="de">Mit Sorgfalt gemacht in Augsburg</span><span data-lang="en" style="display:none;">Crafted with care in Augsburg</span></p>
@@ -192,7 +208,7 @@
         </div>
       </div>
 
-      <!-- Back to Top Button -->
+      <!-- Back to Top -->
       <button class="rl-footer__backtop" id="footerBackTop" aria-label="Nach oben">
         <i class="fas fa-chevron-up"></i>
         <span data-lang="de">Nach oben</span>
@@ -200,7 +216,7 @@
       </button>
     </div>
 
-    <!-- ===== FINAL SENTIMENT LINE ===== -->
+    <!-- ===== FINAL SENTIMENT ===== -->
     <div class="rl-footer__sentiment">
       <i class="fas fa-heart"></i>
       <span data-lang="de">Danke, dass Sie sich die Zeit genommen haben. Es bedeutet mir viel.</span>

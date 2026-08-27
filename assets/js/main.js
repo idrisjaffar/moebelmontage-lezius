@@ -386,3 +386,31 @@
   }); // end DOMContentLoaded
 
 })();
+
+
+// ===== LIVE VISITOR COUNTER (simulated) =====
+(function() {
+  const counter = document.getElementById('visitorCount');
+  if (!counter) return;
+
+  // Random base between 8-18
+  let count = Math.floor(Math.random() * 10) + 8;
+
+  // Update every 4-7 seconds
+  function updateCounter() {
+    // Randomly fluctuate +/- 2
+    const delta = Math.floor(Math.random() * 3) - 1; // -1, 0, or 1
+    count = Math.max(3, count + delta);
+    counter.textContent = count;
+    
+    // Animate the change
+    counter.style.transition = 'transform 0.15s ease';
+    counter.style.transform = 'scale(1.3)';
+    setTimeout(() => {
+      counter.style.transform = 'scale(1)';
+    }, 150);
+  }
+
+  // Update randomly every 4-10 seconds
+  setInterval(updateCounter, Math.floor(Math.random() * 6000) + 4000);
+})();
