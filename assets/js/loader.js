@@ -1,1228 +1,472 @@
-/**
- * ============================================================
- * FIXJORI | COMPONENT LOADER V1.0
- * Meituan-Style · Dense · Information-Rich · Production-Ready
- * ============================================================
- *
- * This module provides a robust component loading system for
- * the FIXJORI platform. It handles:
- * - Dynamic HTML component loading
- * - Caching with localStorage
- * - Dependency management
- * - Error handling with fallbacks
- * - Component re-initialization
- * - Progress tracking
- * - SSR compatibility
- * - and more...
- *
- * ============================================================
- * USAGE:
- * ============================================================
- *
- * // Load a single component
- * FJLoader.load('nav', 'components/nav.html', '#nav-placeholder');
- *
- * // Load multiple components
- * FJLoader.loadAll([
- *     { id: 'nav', path: 'components/nav.html', target: '#nav-placeholder' },
- *     { id: 'footer', path: 'components/footer.html', target: '#footer-placeholder' },
- * ]);
- *
- * // Load with options
- * FJLoader.load('search', 'components/search.html', '#search-placeholder', {
- *     cache: true,
- *     timeout: 5000,
- *     onSuccess: function() { console.log('Loaded!'); },
- *     onError: function(err) { console.error(err); }
- * });
- *
- * ============================================================
- */
+/* ============================================================
+   RAPHAEL LEZIUS – Component Loader v3.0 (External)
+   Loads nav & footer with localStorage cache + inline fallback
+   All paths are relative – works on GitHub Pages
+   ============================================================ */
 
-(function(global) {
-    'use strict';
+(function() {
+  'use strict';
 
-    // ──────────────────────────────────────────────────────────────
-    // 1. CONFIGURATION
-    // ──────────────────────────────────────────────────────────────
+  // ── Inline fallback HTML (root‑relative links) ──
+  const NAV_FALLBACK = `
+<nav class="rl-nav" id="mainNav" role="navigation" aria-label="Hauptnavigation">
+  <div class="rl-nav__inner">
+    <a href="index.html" class="rl-nav__brand" aria-label="Startseite">Raphael <span>Lezius</span></a>
+    <ul class="rl-nav__links" role="menubar">
+      <li class="nav-dropdown" role="none">
+        <a href="#" class="nav-link" data-section="services" role="menuitem" aria-haspopup="true" aria-expanded="false">
+          Services <i class="fas fa-chevron-down"></i>
+        </a>
+        <div class="nav-dropdown-content" role="menu" aria-label="Services Untermenü">
+          <a href="services.html" role="menuitem"><i class="fas fa-th-list"></i> Übersicht</a>
+          <a href="services/moebel-kuechen.html" role="menuitem"><i class="fas fa-couch"></i> Möbel & Küchen</a>
+          <a href="services/usm-haller.html" role="menuitem"><i class="fas fa-gem"></i> USM Haller</a>
+          <a href="services/garten-outdoor.html" role="menuitem"><i class="fas fa-tree"></i> Garten & Outdoor</a>
+          <a href="services/demontage-umzug.html" role="menuitem"><i class="fas fa-truck"></i> Demontage & Umzug</a>
+          <a href="services/buero-objekt.html" role="menuitem"><i class="fas fa-building"></i> Büro & Objekt</a>
+          <a href="services/premium-pro.html" role="menuitem"><i class="fas fa-crown"></i> Premium Pro</a>
+        </div>
+      </li>
+      <li class="nav-dropdown" role="none">
+        <a href="#" class="nav-link" data-section="bundles" role="menuitem" aria-haspopup="true" aria-expanded="false">
+          Bundles <i class="fas fa-chevron-down"></i>
+        </a>
+        <div class="nav-dropdown-content" role="menu" aria-label="Bundles Untermenü">
+          <a href="bundles/" role="menuitem"><i class="fas fa-gift"></i> Übersicht</a>
+          <a href="bundles/kuechen-komplett.html" role="menuitem"><i class="fas fa-utensils"></i> Küchen-Komplett</a>
+          <a href="bundles/usm-all-in.html" role="menuitem"><i class="fas fa-gem"></i> USM All-In</a>
+          <a href="bundles/umzug-premium.html" role="menuitem"><i class="fas fa-truck"></i> Umzug Premium</a>
+        </div>
+      </li>
+      <li><a href="about.html" class="nav-link" data-section="about" role="menuitem">Über mich</a></li>
+      <li><a href="contact.html" class="nav-link" role="menuitem">Kontakt</a></li>
+    </ul>
+    <div class="rl-nav__actions">
+      <a href="anfrage/" class="nav-cta magnetic-btn"><i class="fas fa-comment-dots"></i><span>Kostenlos</span></a>
+      <button class="theme-toggle" data-theme-toggle aria-label="Design umschalten"><i class="fas fa-moon" data-theme-icon></i></button>
+      <button class="rl-nav__hamburger" id="navToggle" aria-controls="mobileMenu" aria-expanded="false" aria-label="Menü öffnen"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="rl-nav__mobile" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Mobile Navigation" aria-hidden="true">
+  <div class="mobile-menu-inner">
+    <button class="mobile-close" id="mobileClose" aria-label="Menü schließen"><i class="fas fa-times"></i></button>
+    <a href="index.html" class="mobile-link">Start</a>
+    <a href="services.html" class="mobile-link" style="font-weight:600; margin-top:8px;"><i class="fas fa-th-list"></i> Services</a>
+    <a href="services/moebel-kuechen.html" class="mobile-link">– Möbel & Küchen</a>
+    <a href="services/usm-haller.html" class="mobile-link">– USM Haller</a>
+    <a href="services/garten-outdoor.html" class="mobile-link">– Garten & Outdoor</a>
+    <a href="services/demontage-umzug.html" class="mobile-link">– Demontage & Umzug</a>
+    <a href="services/buero-objekt.html" class="mobile-link">– Büro & Objekt</a>
+    <a href="services/premium-pro.html" class="mobile-link">– Premium Pro</a>
+    <a href="bundles/" class="mobile-link" style="font-weight:600; border-top:1px solid var(--rl-border); padding-top:12px; margin-top:4px;"><i class="fas fa-gift"></i> Bundles</a>
+    <a href="bundles/kuechen-komplett.html" class="mobile-link">– Küchen-Komplett</a>
+    <a href="bundles/usm-all-in.html" class="mobile-link">– USM All-In</a>
+    <a href="bundles/umzug-premium.html" class="mobile-link">– Umzug Premium</a>
+    <a href="about.html" class="mobile-link">Über mich</a>
+    <a href="contact.html" class="mobile-link">Kontakt</a>
+    <a href="faq.html" class="mobile-link" style="color:var(--rl-muted); font-size:0.9rem;">FAQ</a>
+    <a href="anfrage/" class="mobile-cta magnetic-btn"><i class="fas fa-comment-dots"></i> Kostenloses Gespräch</a>
+    <div class="mobile-extra"><button class="theme-toggle" data-theme-toggle style="width:44px;height:44px;font-size:1.1rem;"><i class="fas fa-moon" data-theme-icon></i></button></div>
+  </div>
+</div>
+<div class="nav-backdrop" id="navBackdrop" aria-hidden="true"></div>
+  `;
 
-    const CONFIG = {
-        /** Default cache TTL in milliseconds (5 minutes) */
-        cacheTTL: 5 * 60 * 1000,
+  const FOOTER_FALLBACK = `
+<footer class="rl-footer" role="contentinfo">
+  <div class="container">
+    <div class="rl-footer__top">
+      <div class="rl-footer__brand">
+        <div class="rl-footer__logo">Raphael <span>Lezius</span><span class="rl-footer__badge"><span class="live-dot"></span> Live</span></div>
+        <p class="rl-footer__description" data-lang="de">Premium Montage mit echter Leidenschaft – millimetergenau, staubfrei und immer mit Herz.</p>
+        <p class="rl-footer__description" data-lang="en" style="display:none;">Premium assembly with real passion – precise, dust‑free, and always with heart.</p>
+        <div class="rl-footer__trust">
+          <span><i class="fas fa-shield-alt"></i> 5 Mio. € versichert</span>
+          <span><i class="fas fa-star"></i> 5.0 ★ (110+)</span>
+          <span><i class="fas fa-clock"></i> Antwort &lt; 24 h</span>
+          <span><i class="fas fa-heart"></i> 1 Jahr Garantie</span>
+        </div>
+      </div>
+      <div class="rl-footer__newsletter">
+        <h4><i class="fas fa-envelope-open-text"></i> <span data-lang="de">Bleiben Sie verbunden</span><span data-lang="en" style="display:none;">Stay connected</span></h4>
+        <p data-lang="de">Monatliche Tipps, exklusive Angebote und Einblicke – nur wenn Sie möchten.</p>
+        <p data-lang="en" style="display:none;">Monthly tips, exclusive offers, and insights – only if you want.</p>
+        <form class="rl-footer__form" id="newsletterForm">
+          <div class="form-group">
+            <input type="email" id="newsletterEmail" placeholder=" " required aria-label="E-Mail-Adresse">
+            <label for="newsletterEmail" data-lang="de">Ihre E-Mail-Adresse</label>
+            <label for="newsletterEmail" data-lang="en" style="display:none;">Your email address</label>
+          </div>
+          <button type="submit" class="magnetic-btn"><i class="fas fa-paper-plane"></i> <span data-lang="de">Anmelden</span><span data-lang="en" style="display:none;">Subscribe</span></button>
+        </form>
+        <div class="rl-footer__consent">
+          <input type="checkbox" id="consent" required />
+          <label for="consent"><span data-lang="de">Ich stimme der <a href="legal/datenschutz.html">Datenschutzerklärung</a> zu.</span><span data-lang="en" style="display:none;">I agree to the <a href="legal/datenschutz.html">privacy policy</a>.</span></label>
+        </div>
+      </div>
+    </div>
+    <div class="rl-footer__grid">
+      <div class="rl-footer__col">
+        <h5 data-lang="de">Services</h5><h5 data-lang="en" style="display:none;">Services</h5>
+        <ul>
+          <li><a href="services.html"><span data-lang="de">Alle Services</span><span data-lang="en" style="display:none;">All Services</span></a></li>
+          <li><a href="services/moebel-kuechen.html"><span data-lang="de">Möbel &amp; Küchen</span><span data-lang="en" style="display:none;">Furniture &amp; Kitchens</span></a></li>
+          <li><a href="services/usm-haller.html">USM Haller</a></li>
+          <li><a href="services/garten-outdoor.html"><span data-lang="de">Garten &amp; Outdoor</span><span data-lang="en" style="display:none;">Garden &amp; Outdoor</span></a></li>
+          <li><a href="services/demontage-umzug.html"><span data-lang="de">Demontage &amp; Umzug</span><span data-lang="en" style="display:none;">Disassembly &amp; Moving</span></a></li>
+          <li><a href="services/premium-pro.html">Premium Pro</a></li>
+        </ul>
+      </div>
+      <div class="rl-footer__col">
+        <h5 data-lang="de">Bundles</h5><h5 data-lang="en" style="display:none;">Bundles</h5>
+        <ul>
+          <li><a href="bundles/"><span data-lang="de">Alle Bundles</span><span data-lang="en" style="display:none;">All Bundles</span></a></li>
+          <li><a href="bundles/kuechen-komplett.html"><span data-lang="de">Küchen-Komplett</span><span data-lang="en" style="display:none;">Kitchen Complete</span></a></li>
+          <li><a href="bundles/usm-all-in.html">USM All‑In</a></li>
+          <li><a href="bundles/umzug-premium.html"><span data-lang="de">Umzug Premium</span><span data-lang="en" style="display:none;">Moving Premium</span></a></li>
+        </ul>
+        <h5 style="margin-top:18px;" data-lang="de">Hilfe</h5><h5 style="margin-top:18px;" data-lang="en" style="display:none;">Help</h5>
+        <ul>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="contact.html"><span data-lang="de">Kontakt</span><span data-lang="en" style="display:none;">Contact</span></a></li>
+        </ul>
+      </div>
+      <div class="rl-footer__col">
+        <h5 data-lang="de">Über</h5><h5 data-lang="en" style="display:none;">About</h5>
+        <ul>
+          <li><a href="about.html"><span data-lang="de">Über mich</span><span data-lang="en" style="display:none;">About me</span></a></li>
+          <li><a href="reviews.html"><span data-lang="de">Kundenstimmen</span><span data-lang="en" style="display:none;">Reviews</span></a></li>
+          <li><a href="anfrage/"><span data-lang="de">Kostenloses Gespräch</span><span data-lang="en" style="display:none;">Free Consultation</span></a></li>
+        </ul>
+        <div class="rl-footer__social">
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+        </div>
+      </div>
+      <div class="rl-footer__col">
+        <h5 data-lang="de">Kontakt</h5><h5 data-lang="en" style="display:none;">Contact</h5>
+        <ul class="rl-footer__contact">
+          <li><i class="fas fa-phone-alt"></i> <a href="tel:+491608194018">+49 160 8194018</a></li>
+          <li><i class="fab fa-whatsapp"></i> <a href="https://wa.me/491608194018" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><i class="fas fa-envelope"></i> <a href="mailto:info@raphael-lezius.de">info@raphael-lezius.de</a></li>
+        </ul>
+        <h5 style="margin-top:18px;" data-lang="de">Rechtliches</h5><h5 style="margin-top:18px;" data-lang="en" style="display:none;">Legal</h5>
+        <ul>
+          <li><a href="legal/impressum.html">Impressum</a></li>
+          <li><a href="legal/datenschutz.html"><span data-lang="de">Datenschutz</span><span data-lang="en" style="display:none;">Privacy</span></a></li>
+          <li><a href="legal/agb.html">AGB</a></li>
+          <li><a href="legal/widerruf.html"><span data-lang="de">Widerruf</span><span data-lang="en" style="display:none;">Cancellation</span></a></li>
+          <li><a href="legal/cookie.html"><span data-lang="de">Cookie‑Richtlinie</span><span data-lang="en" style="display:none;">Cookie Policy</span></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="rl-footer__trustbar">
+      <div class="trust-item"><i class="fas fa-users"></i><div><span class="label"><span data-lang="de">Vertrauen</span><span data-lang="en" style="display:none;">Trust</span></span><span class="value">110+ <span data-lang="de">Kunden</span><span data-lang="en" style="display:none;">clients</span></span></div></div>
+      <div class="trust-item"><i class="fas fa-star"></i><div><span class="label"><span data-lang="de">Bewertung</span><span data-lang="en" style="display:none;">Rating</span></span><span class="value">5.0 ★</span></div></div>
+      <div class="trust-item"><i class="fas fa-bolt"></i><div><span class="label"><span data-lang="de">Reaktionszeit</span><span data-lang="en" style="display:none;">Response time</span></span><span class="value">&lt; 24 h</span></div></div>
+      <div class="trust-item"><i class="fas fa-shield-alt"></i><div><span class="label"><span data-lang="de">Versicherung</span><span data-lang="en" style="display:none;">Insurance</span></span><span class="value">5 Mio. €</span></div></div>
+      <div class="trust-item"><i class="fas fa-hand-holding-heart"></i><div><span class="label"><span data-lang="de">Service</span><span data-lang="en" style="display:none;">Service</span></span><span class="value"><span data-lang="de">White‑Glove</span><span data-lang="en" style="display:none;">White‑Glove</span></span></div></div>
+      <div class="trust-item"><i class="fas fa-award"></i><div><span class="label"><span data-lang="de">Erfahrung</span><span data-lang="en" style="display:none;">Experience</span></span><span class="value">8+ <span data-lang="de">Jahre</span><span data-lang="en" style="display:none;">years</span></span></div></div>
+    </div>
+    <div class="rl-footer__bottom">
+      <div class="rl-footer__copyright">
+        <p>© 2026 Raphael Lezius · <span data-lang="de">Mit Sorgfalt gemacht in Augsburg</span><span data-lang="en" style="display:none;">Crafted with care in Augsburg</span></p>
+        <div class="rl-footer__legal">
+          <a href="legal/impressum.html">Impressum</a> <span class="sep">·</span>
+          <a href="legal/datenschutz.html"><span data-lang="de">Datenschutz</span><span data-lang="en" style="display:none;">Privacy</span></a> <span class="sep">·</span>
+          <a href="legal/agb.html">AGB</a>
+        </div>
+      </div>
+      <button class="rl-footer__backtop" id="footerBackTop" aria-label="Nach oben"><i class="fas fa-chevron-up"></i> <span data-lang="de">Nach oben</span><span data-lang="en" style="display:none;">Top</span></button>
+    </div>
+    <div class="rl-footer__sentiment">
+      <i class="fas fa-heart"></i> <span data-lang="de">Danke, dass Sie sich die Zeit genommen haben. Es bedeutet mir viel.</span><span data-lang="en" style="display:none;">Thank you for taking the time. It means a lot to me.</span>
+    </div>
+  </div>
+</footer>
+  `;
 
-        /** Component path prefix */
-        basePath: 'components/',
+  // ── Helper: load component ──
+  async function loadComponent(selector, path, fallback) {
+    const container = document.querySelector(selector);
+    if (!container) return;
 
-        /** Default timeout for fetch requests (10 seconds) */
-        timeout: 10000,
-
-        /** Enable localStorage caching */
-        enableCache: true,
-
-        /** Enable debug logging */
-        debug: false,
-
-        /** Retry attempts for failed loads */
-        retries: 2,
-
-        /** Retry delay in milliseconds */
-        retryDelay: 500,
-
-        /** Component script re-initialization delay */
-        initDelay: 50,
-    };
-
-    // ──────────────────────────────────────────────────────────────
-    // 2. STATE
-    // ──────────────────────────────────────────────────────────────
-
-    /** Registered component cache */
-    const componentCache = new Map();
-
-    /** Currently loading components */
-    const loadingPromises = new Map();
-
-    /** Loaded components registry */
-    const loadedComponents = new Set();
-
-    /** Component event listeners */
-    const eventListeners = new Map();
-
-    // ──────────────────────────────────────────────────────────────
-    // 3. UTILITY FUNCTIONS
-    // ──────────────────────────────────────────────────────────────
-
-    /**
-     * Log debug messages
-     */
-    function debugLog(...args) {
-        if (CONFIG.debug) {
-            console.log('[FJLoader]', ...args);
-        }
+    const cached = localStorage.getItem(path);
+    if (cached) {
+      container.innerHTML = cached;
+      fetch(path)
+        .then(r => r.text())
+        .then(html => {
+          if (html && html.trim().length > 0) {
+            container.innerHTML = html;
+            localStorage.setItem(path, html);
+          }
+        })
+        .catch(() => {});
+      return;
     }
 
-    /**
-     * Generate a cache key from a path
-     */
-    function getCacheKey(path) {
-        return 'fj_loader_' + btoa(encodeURIComponent(path)).replace(/[^a-zA-Z0-9]/g, '');
+    try {
+      const res = await fetch(path);
+      if (!res.ok) throw new Error('Network error');
+      const html = await res.text();
+      if (html && html.trim().length > 0) {
+        container.innerHTML = html;
+        localStorage.setItem(path, html);
+        return;
+      }
+    } catch (error) {
+      // fall through
     }
 
-    /**
-     * Get a component from localStorage cache
-     */
-    function getFromCache(path) {
-        if (!CONFIG.enableCache) return null;
-
-        try {
-            const key = getCacheKey(path);
-            const cached = localStorage.getItem(key);
-            if (!cached) return null;
-
-            const data = JSON.parse(cached);
-            const now = Date.now();
-
-            // Check TTL
-            if (data.timestamp && (now - data.timestamp) > CONFIG.cacheTTL) {
-                localStorage.removeItem(key);
-                return null;
-            }
-
-            return data.html;
-        } catch (e) {
-            return null;
-        }
+    // Fallback
+    if (fallback) {
+      container.innerHTML = fallback;
+      try { localStorage.setItem(path, fallback); } catch (e) {}
+    } else {
+      container.innerHTML = `<p style="color:red; text-align:center; padding:20px;">⚠️ Komponente konnte nicht geladen werden.</p>`;
     }
+  }
 
-    /**
-     * Store a component in localStorage cache
-     */
-    function storeInCache(path, html) {
-        if (!CONFIG.enableCache) return;
+  // ── Initialize ──
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
 
-        try {
-            const key = getCacheKey(path);
-            localStorage.setItem(key, JSON.stringify({
-                html: html,
-                timestamp: Date.now(),
-                path: path,
-            }));
-        } catch (e) {
-            // Ignore cache errors (storage full, etc.)
-        }
-    }
+  function init() {
+    // Load with RELATIVE paths (no leading slash)
+    loadComponent('#nav-placeholder', 'components/nav.html', NAV_FALLBACK);
+    loadComponent('#footer-placeholder', 'components/footer.html', FOOTER_FALLBACK);
 
-    /**
-     * Invalidate cache for a specific component
-     */
-    function invalidateCache(path) {
-        if (!CONFIG.enableCache) return;
+    setTimeout(() => {
+      // ── Mobile Menu ──
+      const navToggle = document.getElementById('navToggle');
+      const mobileMenu = document.getElementById('mobileMenu');
+      const navBackdrop = document.getElementById('navBackdrop');
+      const mobileClose = document.getElementById('mobileClose');
+      const body = document.body;
 
-        try {
-            const key = getCacheKey(path);
-            localStorage.removeItem(key);
-            debugLog('Cache invalidated for:', path);
-        } catch (e) { /* ignore */ }
-    }
+      function openMenu() {
+        mobileMenu?.classList.add('open');
+        navBackdrop?.classList.add('active');
+        navToggle?.setAttribute('aria-expanded', 'true');
+        mobileMenu?.setAttribute('aria-hidden', 'false');
+        body.style.overflow = 'hidden';
+      }
 
-    /**
-     * Clear all component caches
-     */
-    function clearAllCache() {
-        if (!CONFIG.enableCache) return;
+      function closeMenu() {
+        mobileMenu?.classList.remove('open');
+        navBackdrop?.classList.remove('active');
+        navToggle?.setAttribute('aria-expanded', 'false');
+        mobileMenu?.setAttribute('aria-hidden', 'true');
+        body.style.overflow = '';
+        navToggle?.focus();
+      }
 
-        try {
-            const keys = Object.keys(localStorage);
-            keys.forEach(function(key) {
-                if (key.startsWith('fj_loader_')) {
-                    localStorage.removeItem(key);
-                }
-            });
-            debugLog('All cache cleared');
-        } catch (e) { /* ignore */ }
-    }
-
-    /**
-     * Create a DOM element from HTML string
-     */
-    function htmlToElement(html) {
-        const template = document.createElement('template');
-        template.innerHTML = html.trim();
-        return template.content.firstElementChild;
-    }
-
-    /**
-     * Extract scripts from HTML
-     */
-    function extractScripts(html) {
-        const scriptRegex = /<script\b[^>]*>([\s\S]*?)<\/script>/gi;
-        const scripts = [];
-        let match;
-
-        // Remove script tags from HTML and collect them
-        let cleanHtml = html;
-        while ((match = scriptRegex.exec(html)) !== null) {
-            const scriptContent = match[1].trim();
-            if (scriptContent) {
-                scripts.push(scriptContent);
-            }
-            cleanHtml = cleanHtml.replace(match[0], '');
-        }
-
-        return { html: cleanHtml, scripts: scripts };
-    }
-
-    /**
-     * Execute scripts in sequence
-     */
-    function executeScripts(scripts, context) {
-        return new Promise(function(resolve) {
-            if (scripts.length === 0) {
-                resolve();
-                return;
-            }
-
-            // Create a container for script execution
-            const container = context || document;
-
-            scripts.forEach(function(scriptContent) {
-                try {
-                    // Use Function constructor for better isolation
-                    const func = new Function(scriptContent);
-                    func.call(container);
-                } catch (e) {
-                    console.error('[FJLoader] Script execution error:', e);
-                }
-            });
-
-            resolve();
+      if (navToggle && mobileMenu) {
+        navToggle.addEventListener('click', function() {
+          mobileMenu.classList.contains('open') ? closeMenu() : openMenu();
         });
-    }
+      }
 
-    /**
-     * Deep merge objects
-     */
-    function deepMerge(target, source) {
-        const result = { ...target };
-        for (const key in source) {
-            if (source.hasOwnProperty(key)) {
-                if (source[key] && typeof source[key] === 'object' && !Array.isArray(source[key])) {
-                    result[key] = deepMerge(target[key] || {}, source[key]);
-                } else {
-                    result[key] = source[key];
-                }
-            }
-        }
-        return result;
-    }
+      if (navBackdrop) navBackdrop.addEventListener('click', closeMenu);
+      if (mobileClose) mobileClose.addEventListener('click', closeMenu);
 
-    /**
-     * Debounce function
-     */
-    function debounce(fn, delay) {
-        let timeout;
-        return function(...args) {
-            clearTimeout(timeout);
-            timeout = setTimeout(function() {
-                fn.apply(this, args);
-            }, delay);
-        };
-    }
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && mobileMenu?.classList.contains('open')) closeMenu();
+      });
 
-    // ──────────────────────────────────────────────────────────────
-    // 4. CORE LOADER FUNCTIONS
-    // ──────────────────────────────────────────────────────────────
-
-    /**
-     * Load a single component
-     *
-     * @param {string} id - Unique component identifier
-     * @param {string} path - Path to the component HTML file
-     * @param {string|Element} target - Target selector or element
-     * @param {Object} options - Configuration options
-     * @returns {Promise<Object>} - Load result
-     */
-    function loadComponent(id, path, target, options) {
-        const opts = deepMerge({
-            cache: CONFIG.enableCache,
-            timeout: CONFIG.timeout,
-            retries: CONFIG.retries,
-            retryDelay: CONFIG.retryDelay,
-            onSuccess: null,
-            onError: null,
-            onProgress: null,
-            injectScripts: true,
-            clearTarget: true,
-            preserveChildren: false,
-        }, options || {});
-
-        // Check if component is already loading
-        if (loadingPromises.has(id)) {
-            debugLog('Component already loading:', id);
-            return loadingPromises.get(id);
-        }
-
-        // Check if component is already loaded
-        if (loadedComponents.has(id) && !opts.force) {
-            debugLog('Component already loaded:', id);
-            return Promise.resolve({
-                id: id,
-                status: 'cached',
-                element: document.querySelector(target),
-            });
-        }
-
-        // Resolve target element
-        let targetEl = target;
-        if (typeof target === 'string') {
-            targetEl = document.querySelector(target);
-        }
-
-        if (!targetEl) {
-            const error = new Error('Target element not found: ' + target);
-            debugLog(error.message);
-            if (opts.onError) opts.onError(error);
-            return Promise.reject(error);
-        }
-
-        // Create the promise
-        const promise = new Promise(function(resolve, reject) {
-            // Track progress
-            let progress = 0;
-
-            function updateProgress(value) {
-                progress = value;
-                if (opts.onProgress) opts.onProgress(value, id);
-            }
-
-            updateProgress(10);
-
-            // Check cache first
-            let cachedHtml = null;
-            if (opts.cache) {
-                cachedHtml = getFromCache(path);
-            }
-
-            if (cachedHtml) {
-                updateProgress(50);
-                debugLog('Loading from cache:', path);
-                renderComponent(id, path, cachedHtml, targetEl, opts, resolve, reject);
-                return;
-            }
-
-            // Fetch from network with retries
-            let attempt = 0;
-
-            function fetchWithRetry() {
-                attempt++;
-                debugLog('Fetching component (attempt ' + attempt + '):', path);
-
-                const controller = new AbortController();
-                const timeoutId = setTimeout(function() {
-                    controller.abort();
-                }, opts.timeout);
-
-                fetch(path, {
-                    signal: controller.signal,
-                    headers: {
-                        'Accept': 'text/html',
-                    },
-                })
-                    .then(function(response) {
-                        clearTimeout(timeoutId);
-
-                        if (!response.ok) {
-                            throw new Error('HTTP ' + response.status + ': ' + response.statusText);
-                        }
-
-                        return response.text();
-                    })
-                    .then(function(html) {
-                        updateProgress(70);
-
-                        // Store in cache
-                        if (opts.cache) {
-                            storeInCache(path, html);
-                        }
-
-                        renderComponent(id, path, html, targetEl, opts, resolve, reject);
-                    })
-                    .catch(function(error) {
-                        clearTimeout(timeoutId);
-
-                        if (attempt < opts.retries) {
-                            debugLog('Retrying in ' + opts.retryDelay + 'ms...');
-                            setTimeout(fetchWithRetry, opts.retryDelay);
-                            return;
-                        }
-
-                        // Final error
-                        const err = new Error('Failed to load component: ' + path + ' - ' + error.message);
-                        console.error('[FJLoader]', err.message);
-
-                        if (opts.onError) opts.onError(err);
-                        reject(err);
-                    });
-            }
-
-            fetchWithRetry();
+      if (mobileMenu) {
+        mobileMenu.querySelectorAll('a').forEach(function(link) {
+          link.addEventListener('click', closeMenu);
         });
+      }
 
-        // Store the promise
-        loadingPromises.set(id, promise);
+      // ── Theme Toggle ──
+      document.querySelectorAll('[data-theme-toggle]').forEach(function(btn) {
+        btn.removeEventListener('click', toggleTheme);
+        btn.addEventListener('click', toggleTheme);
+      });
 
-        // Clean up after completion
-        promise.finally(function() {
-            loadingPromises.delete(id);
-        });
+      // ── Newsletter ──
+      const form = document.getElementById('newsletterForm');
+      if (form) {
+        form.removeEventListener('submit', handleNewsletter);
+        form.addEventListener('submit', handleNewsletter);
+      }
 
-        return promise;
-    }
+      // ── Language Switcher ──
+      document.querySelectorAll('.lang-switcher button').forEach(function(btn) {
+        btn.removeEventListener('click', handleLang);
+        btn.addEventListener('click', handleLang);
+      });
 
-    /**
-     * Render a component into the target element
-     */
-    function renderComponent(id, path, html, targetEl, opts, resolve, reject) {
-        try {
-            // Extract scripts
-            const { html: cleanHtml, scripts } = extractScripts(html);
+      // ── Footer Back to Top ──
+      const footerBack = document.getElementById('footerBackTop');
+      if (footerBack) {
+        footerBack.removeEventListener('click', footerBackTop);
+        footerBack.addEventListener('click', footerBackTop);
+      }
 
-            // Clear or preserve target
-            if (opts.clearTarget && !opts.preserveChildren) {
-                targetEl.innerHTML = '';
+      updateActiveSection();
+
+      // ── Dropdowns ──
+      initDropdowns();
+
+    }, 50);
+  }
+
+  function toggleTheme() {
+    const html = document.documentElement;
+    const current = html.getAttribute('data-theme') || 'dark';
+    const next = current === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('rl-theme', next);
+    document.querySelectorAll('[data-theme-icon]').forEach(function(i) {
+      i.className = next === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
+    });
+    const meta = document.getElementById('themeColorMeta');
+    if (meta) meta.content = next === 'dark' ? '#0B0A09' : '#F9F7F2';
+  }
+
+  function handleNewsletter(e) {
+    e.preventDefault();
+    const btn = this.querySelector('button');
+    const orig = btn.innerHTML;
+    btn.innerHTML = '<i class="fas fa-check"></i> Willkommen!';
+    btn.style.background = 'var(--rl-gradient-hover)';
+    setTimeout(function() {
+      btn.innerHTML = orig;
+      btn.style.background = '';
+      this.reset();
+    }, 2800);
+  }
+
+  function handleLang(e) {
+    const btn = e.currentTarget;
+    const lang = btn.getAttribute('data-lang');
+    if (!lang) return;
+    document.documentElement.setAttribute('data-lang', lang);
+    localStorage.setItem('rl-lang', lang);
+    document.querySelectorAll('.lang-switcher button').forEach(function(b) {
+      b.classList.toggle('active', b.getAttribute('data-lang') === lang);
+    });
+  }
+
+  function footerBackTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function updateActiveSection() {
+    const sections = document.querySelectorAll('section[id]');
+    const links = document.querySelectorAll('.nav-link[data-section]');
+    let current = '';
+    const scrollPos = window.scrollY + 120;
+    sections.forEach(function(s) {
+      const top = s.offsetTop,
+        h = s.offsetHeight;
+      if (scrollPos >= top && scrollPos < top + h) current = s.id;
+    });
+    links.forEach(function(l) {
+      l.classList.toggle('active', l.getAttribute('data-section') === current);
+    });
+  }
+
+  // ── Dropdown handling ──
+  function initDropdowns() {
+    const dropdownTriggers = document.querySelectorAll('.nav-dropdown > a');
+
+    dropdownTriggers.forEach(function(trigger) {
+      const parent = trigger.closest('.nav-dropdown');
+      const content = parent.querySelector('.nav-dropdown-content');
+
+      // Mobile: click to toggle
+      trigger.addEventListener('click', function(e) {
+        if (window.innerWidth <= 900) {
+          e.preventDefault();
+          e.stopPropagation();
+
+          const isOpen = content.classList.contains('open');
+
+          // Close all others
+          document.querySelectorAll('.nav-dropdown-content.open').forEach(function(c) {
+            if (c !== content) {
+              c.classList.remove('open');
+              c.closest('.nav-dropdown').querySelector('a').setAttribute('aria-expanded', 'false');
+              c.closest('.nav-dropdown').querySelector('a').classList.remove('open');
             }
+          });
 
-            // Append the HTML
-            const tempContainer = document.createElement('div');
-            tempContainer.innerHTML = cleanHtml;
-
-            // Append children
-            if (opts.preserveChildren) {
-                // Append new content without replacing existing
-                while (tempContainer.firstChild) {
-                    targetEl.appendChild(tempContainer.firstChild);
-                }
-            } else {
-                // Replace content
-                targetEl.innerHTML = '';
-                while (tempContainer.firstChild) {
-                    targetEl.appendChild(tempContainer.firstChild);
-                }
-            }
-
-            // Execute scripts
-            if (opts.injectScripts && scripts.length > 0) {
-                const context = targetEl.ownerDocument || document;
-                // Use setTimeout to allow DOM to update
-                setTimeout(function() {
-                    executeScripts(scripts, context)
-                        .then(function() {
-                            finishLoad(id, path, targetEl, opts, resolve);
-                        })
-                        .catch(function(err) {
-                            console.warn('[FJLoader] Script execution error:', err);
-                            finishLoad(id, path, targetEl, opts, resolve);
-                        });
-                }, CONFIG.initDelay);
-            } else {
-                finishLoad(id, path, targetEl, opts, resolve);
-            }
-        } catch (error) {
-            console.error('[FJLoader] Render error:', error);
-            if (opts.onError) opts.onError(error);
-            reject(error);
+          if (isOpen) {
+            content.classList.remove('open');
+            trigger.classList.remove('open');
+            trigger.setAttribute('aria-expanded', 'false');
+          } else {
+            content.classList.add('open');
+            trigger.classList.add('open');
+            trigger.setAttribute('aria-expanded', 'true');
+          }
         }
+      });
+
+      // Close on outside click
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('.nav-dropdown')) {
+          content.classList.remove('open');
+          trigger.classList.remove('open');
+          trigger.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      // Close on Escape
+      trigger.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          content.classList.remove('open');
+          trigger.classList.remove('open');
+          trigger.setAttribute('aria-expanded', 'false');
+          trigger.focus();
+        }
+      });
+    });
+  }
+
+  // ── Restore theme and language ──
+  const savedTheme = localStorage.getItem('rl-theme');
+  if (savedTheme) {
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.querySelectorAll('[data-theme-icon]').forEach(function(i) {
+      i.className = savedTheme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
+    });
+  }
+
+  const savedLang = localStorage.getItem('rl-lang') || 'de';
+  document.documentElement.setAttribute('data-lang', savedLang);
+  document.querySelectorAll('.lang-switcher button').forEach(function(b) {
+    b.classList.toggle('active', b.getAttribute('data-lang') === savedLang);
+  });
+
+  window.addEventListener('scroll', updateActiveSection, { passive: true });
+
+  // ── Nav auto-hide ──
+  const nav = document.querySelector('.rl-nav');
+  let lastScroll = 0;
+  window.addEventListener('scroll', function() {
+    const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+    if (nav) nav.classList.toggle('scrolled', currentScroll > 20);
+    if (currentScroll > 80) {
+      if (currentScroll > lastScroll) nav?.classList.add('hidden');
+      else nav?.classList.remove('hidden');
+    } else {
+      nav?.classList.remove('hidden');
     }
+    lastScroll = currentScroll;
+  }, { passive: true });
 
-    /**
-     * Finish the load process
-     */
-    function finishLoad(id, path, targetEl, opts, resolve) {
-        // Mark as loaded
-        loadedComponents.add(id);
+  console.log('✨ Raphael Lezius – Component Loader v3.0 (External, relative paths)');
 
-        // Dispatch event
-        const event = new CustomEvent('fj-component-loaded', {
-            detail: {
-                id: id,
-                path: path,
-                element: targetEl,
-            },
-        });
-        document.dispatchEvent(event);
-
-        debugLog('Component loaded:', id);
-
-        if (opts.onSuccess) opts.onSuccess(targetEl, id);
-
-        resolve({
-            id: id,
-            status: 'loaded',
-            element: targetEl,
-        });
-    }
-
-    // ──────────────────────────────────────────────────────────────
-    // 5. BULK LOADING
-    // ──────────────────────────────────────────────────────────────
-
-    /**
-     * Load multiple components
-     *
-     * @param {Array} components - Array of component configs
-     * @param {Object} options - Global options
-     * @returns {Promise<Array>} - Array of load results
-     */
-    function loadAll(components, options) {
-        if (!Array.isArray(components) || components.length === 0) {
-            return Promise.resolve([]);
-        }
-
-        const opts = options || {};
-
-        // Track overall progress
-        const total = components.length;
-        let loaded = 0;
-        const results = [];
-
-        return new Promise(function(resolve, reject) {
-            const promises = components.map(function(config, index) {
-                const id = config.id || 'component-' + index;
-                const path = config.path || config.src;
-                const target = config.target || config.selector;
-                const componentOpts = config.options || {};
-
-                // Merge options
-                const mergedOpts = deepMerge(opts, componentOpts);
-
-                // Add progress tracking
-                if (opts.onProgress) {
-                    const originalProgress = mergedOpts.onProgress;
-                    mergedOpts.onProgress = function(progress, compId) {
-                        if (originalProgress) originalProgress(progress, compId);
-                        // Update overall progress
-                        const overallProgress = ((loaded + (progress / 100)) / total) * 100;
-                        if (opts.onOverallProgress) {
-                            opts.onOverallProgress(overallProgress);
-                        }
-                    };
-                }
-
-                return loadComponent(id, path, target, mergedOpts)
-                    .then(function(result) {
-                        loaded++;
-                        if (opts.onOverallProgress) {
-                            opts.onOverallProgress((loaded / total) * 100);
-                        }
-                        results.push(result);
-                        return result;
-                    })
-                    .catch(function(error) {
-                        loaded++;
-                        if (opts.onError) opts.onError(error, config);
-                        // Continue loading other components
-                        results.push({ id: id, status: 'error', error: error });
-                        return null;
-                    });
-            });
-
-            Promise.all(promises)
-                .then(function() {
-                    resolve(results);
-                })
-                .catch(function(error) {
-                    reject(error);
-                });
-        });
-    }
-
-    /**
-     * Load components based on data attributes
-     */
-    function loadFromAttributes(options) {
-        const elements = document.querySelectorAll('[data-fj-component]');
-        const components = [];
-
-        elements.forEach(function(el) {
-            const id = el.dataset.fjComponent || 'component-' + Date.now();
-            const path = el.dataset.fjSrc || el.dataset.fjPath;
-            const target = el.dataset.fjTarget || el;
-            const cache = el.dataset.fjCache !== 'false';
-            const timeout = parseInt(el.dataset.fjTimeout) || CONFIG.timeout;
-
-            if (!path) {
-                console.warn('[FJLoader] Missing path for component:', id);
-                return;
-            }
-
-            components.push({
-                id: id,
-                path: path,
-                target: target,
-                options: {
-                    cache: cache,
-                    timeout: timeout,
-                },
-            });
-        });
-
-        if (components.length === 0) return Promise.resolve([]);
-
-        return loadAll(components, options);
-    }
-
-    // ──────────────────────────────────────────────────────────────
-    // 6. COMPONENT REGISTRATION
-    // ──────────────────────────────────────────────────────────────
-
-    /**
-     * Register a component for later use
-     */
-    function registerComponent(id, config) {
-        if (componentCache.has(id)) {
-            debugLog('Component already registered:', id);
-            return false;
-        }
-
-        componentCache.set(id, {
-            id: id,
-            path: config.path || config.src,
-            target: config.target || config.selector,
-            options: config.options || {},
-            dependencies: config.dependencies || [],
-            loaded: false,
-        });
-
-        debugLog('Component registered:', id);
-        return true;
-    }
-
-    /**
-     * Register multiple components
-     */
-    function registerComponents(components) {
-        const results = [];
-        for (const id in components) {
-            if (components.hasOwnProperty(id)) {
-                const registered = registerComponent(id, components[id]);
-                results.push({ id: id, success: registered });
-            }
-        }
-        return results;
-    }
-
-    /**
-     * Load registered components (including dependencies)
-     */
-    function loadRegistered(ids) {
-        const components = [];
-
-        function collectDependencies(id, visited) {
-            if (visited.has(id)) return;
-            visited.add(id);
-
-            const config = componentCache.get(id);
-            if (!config) {
-                debugLog('Component not found:', id);
-                return;
-            }
-
-            // Load dependencies first
-            config.dependencies.forEach(function(depId) {
-                collectDependencies(depId, visited);
-            });
-
-            components.push({
-                id: id,
-                path: config.path,
-                target: config.target,
-                options: config.options,
-            });
-        }
-
-        const visited = new Set();
-        if (ids) {
-            ids.forEach(function(id) {
-                collectDependencies(id, visited);
-            });
-        } else {
-            // Load all registered components
-            componentCache.forEach(function(config, id) {
-                collectDependencies(id, visited);
-            });
-        }
-
-        if (components.length === 0) {
-            return Promise.resolve([]);
-        }
-
-        return loadAll(components);
-    }
-
-    // ──────────────────────────────────────────────────────────────
-    // 7. UTILITY FUNCTIONS
-    // ──────────────────────────────────────────────────────────────
-
-    /**
-     * Check if a component is loaded
-     */
-    function isLoaded(id) {
-        return loadedComponents.has(id);
-    }
-
-    /**
-     * Get a loaded component's element
-     */
-    function getComponentElement(id) {
-        const config = componentCache.get(id);
-        if (!config) return null;
-
-        const target = config.target;
-        if (typeof target === 'string') {
-            return document.querySelector(target);
-        }
-        return target || null;
-    }
-
-    /**
-     * Reload a component
-     */
-    function reloadComponent(id, force) {
-        const config = componentCache.get(id);
-        if (!config) {
-            debugLog('Component not registered:', id);
-            return Promise.reject(new Error('Component not registered: ' + id));
-        }
-
-        // Clear cache if forced
-        if (force) {
-            invalidateCache(config.path);
-        }
-
-        // Remove from loaded set to force reload
-        loadedComponents.delete(id);
-
-        // Also clear any pending promises
-        if (loadingPromises.has(id)) {
-            loadingPromises.delete(id);
-        }
-
-        return loadComponent(id, config.path, config.target, config.options);
-    }
-
-    /**
-     * Refresh all loaded components
-     */
-    function refreshAll() {
-        const ids = Array.from(loadedComponents);
-        const promises = ids.map(function(id) {
-            return reloadComponent(id, true);
-        });
-        return Promise.all(promises);
-    }
-
-    /**
-     * Get loader status
-     */
-    function getStatus() {
-        return {
-            loaded: Array.from(loadedComponents),
-            loading: Array.from(loadingPromises.keys()),
-            registered: Array.from(componentCache.keys()),
-            cacheEnabled: CONFIG.enableCache,
-            debug: CONFIG.debug,
-        };
-    }
-
-    // ──────────────────────────────────────────────────────────────
-    // 8. EVENT SYSTEM
-    // ──────────────────────────────────────────────────────────────
-
-    /**
-     * Add event listener for component events
-     */
-    function on(event, callback) {
-        if (!eventListeners.has(event)) {
-            eventListeners.set(event, []);
-        }
-        eventListeners.get(event).push(callback);
-        return function() {
-            const listeners = eventListeners.get(event);
-            if (listeners) {
-                const index = listeners.indexOf(callback);
-                if (index !== -1) {
-                    listeners.splice(index, 1);
-                }
-            }
-        };
-    }
-
-    /**
-     * Trigger an event
-     */
-    function trigger(event, data) {
-        const listeners = eventListeners.get(event);
-        if (listeners) {
-            listeners.forEach(function(callback) {
-                try {
-                    callback(data);
-                } catch (e) {
-                    console.error('[FJLoader] Event handler error:', e);
-                }
-            });
-        }
-    }
-
-    // ──────────────────────────────────────────────────────────────
-    // 9. AUTO-INITIALIZATION
-    // ──────────────────────────────────────────────────────────────
-
-    /**
-     * Initialize the loader
-     */
-    function init(options) {
-        if (options) {
-            if (options.debug !== undefined) CONFIG.debug = options.debug;
-            if (options.cache !== undefined) CONFIG.enableCache = options.cache;
-            if (options.cacheTTL) CONFIG.cacheTTL = options.cacheTTL;
-            if (options.timeout) CONFIG.timeout = options.timeout;
-            if (options.retries !== undefined) CONFIG.retries = options.retries;
-            if (options.basePath) CONFIG.basePath = options.basePath;
-        }
-
-        debugLog('Loader initialized with config:', CONFIG);
-
-        // Auto-load from data attributes if enabled
-        if (options && options.autoLoad !== false) {
-            // Use requestIdleCallback or setTimeout
-            const schedule = window.requestIdleCallback || window.setTimeout;
-            schedule(function() {
-                loadFromAttributes()
-                    .then(function() {
-                        debugLog('Auto-load completed');
-                    })
-                    .catch(function(err) {
-                        console.warn('[FJLoader] Auto-load error:', err);
-                    });
-            }, 100);
-        }
-
-        // Dispatch init event
-        document.dispatchEvent(new CustomEvent('fj-loader-ready', {
-            detail: { config: CONFIG }
-        }));
-
-        return this;
-    }
-
-    // ──────────────────────────────────────────────────────────────
-    // 10. PUBLIC API
-    // ──────────────────────────────────────────────────────────────
-
-    const FJLoader = {
-        // Core loading
-        load: loadComponent,
-        loadAll: loadAll,
-        loadFromAttributes: loadFromAttributes,
-
-        // Registration
-        register: registerComponent,
-        registerAll: registerComponents,
-        loadRegistered: loadRegistered,
-
-        // Utility
-        isLoaded: isLoaded,
-        getElement: getComponentElement,
-        reload: reloadComponent,
-        refreshAll: refreshAll,
-        getStatus: getStatus,
-
-        // Cache management
-        invalidateCache: invalidateCache,
-        clearCache: clearAllCache,
-
-        // Events
-        on: on,
-        trigger: trigger,
-
-        // Initialization
-        init: init,
-
-        // Configuration
-        config: function(key, value) {
-            if (value !== undefined && typeof value !== 'undefined') {
-                if (key === 'debug') CONFIG.debug = value;
-                else if (key === 'cache') CONFIG.enableCache = value;
-                else if (key === 'cacheTTL') CONFIG.cacheTTL = value;
-                else if (key === 'timeout') CONFIG.timeout = value;
-                else if (key === 'retries') CONFIG.retries = value;
-                else if (key === 'basePath') CONFIG.basePath = value;
-            }
-            return CONFIG[key];
-        },
-
-        // Version
-        version: '1.0.0',
-
-        // Debug flag for external use
-        debug: CONFIG.debug,
-    };
-
-    // ──────────────────────────────────────────────────────────────
-    // 11. EXPOSE TO GLOBAL
-    // ──────────────────────────────────────────────────────────────
-
-    // Expose to global scope
-    global.FJLoader = FJLoader;
-
-    // Also support AMD/CommonJS
-    if (typeof module !== 'undefined' && module.exports) {
-        module.exports = FJLoader;
-    }
-
-    // ──────────────────────────────────────────────────────────────
-    // 12. AUTO-INIT (if DOM is ready)
-    // ──────────────────────────────────────────────────────────────
-
-    // Auto-initialize on DOM ready
-    function autoInit() {
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', function() {
-                // Check if auto-init is enabled via meta tag
-                const meta = document.querySelector('meta[name="fj-loader-auto"]');
-                const enabled = meta ? meta.getAttribute('content') !== 'false' : true;
-
-                if (enabled) {
-                    FJLoader.init({ autoLoad: true });
-                }
-            });
-        } else {
-            // DOM already ready
-            const meta = document.querySelector('meta[name="fj-loader-auto"]');
-            const enabled = meta ? meta.getAttribute('content') !== 'false' : true;
-
-            if (enabled) {
-                FJLoader.init({ autoLoad: true });
-            }
-        }
-    }
-
-    autoInit();
-
-    // ──────────────────────────────────────────────────────────────
-    // 13. MEITUAN-STYLE PROGRESS INDICATOR
-    // ──────────────────────────────────────────────────────────────
-
-    /**
-     * Create a progress indicator for component loading
-     * (Meituan-style dense progress bar)
-     */
-    FJLoader.createProgressIndicator = function(options) {
-        const opts = deepMerge({
-            container: document.body,
-            position: 'top', // 'top' | 'bottom' | 'fixed'
-            height: '3px',
-            color: 'var(--fj-teal)',
-            backgroundColor: 'var(--fj-border)',
-            showPercentage: false,
-            showLabel: false,
-            label: 'Loading...',
-            zIndex: 99999,
-        }, options || {});
-
-        // Create container
-        const wrapper = document.createElement('div');
-        wrapper.className = 'fj-loader-progress fj-loader-progress--' + opts.position;
-        Object.assign(wrapper.style, {
-            position: opts.position === 'fixed' ? 'fixed' : 'relative',
-            top: opts.position === 'top' || opts.position === 'fixed' ? '0' : 'auto',
-            bottom: opts.position === 'bottom' ? '0' : 'auto',
-            left: '0',
-            right: '0',
-            height: opts.height,
-            background: opts.backgroundColor,
-            overflow: 'hidden',
-            zIndex: opts.zIndex,
-            transition: 'opacity 0.3s ease',
-            opacity: '0',
-        });
-
-        // Create progress bar
-        const bar = document.createElement('div');
-        Object.assign(bar.style, {
-            height: '100%',
-            width: '0%',
-            background: opts.color,
-            transition: 'width 0.4s var(--fj-ease-smooth)',
-            borderRadius: '2px',
-        });
-        wrapper.appendChild(bar);
-
-        // Create label if needed
-        let labelEl = null;
-        if (opts.showLabel || opts.showPercentage) {
-            labelEl = document.createElement('span');
-            Object.assign(labelEl.style, {
-                position: 'absolute',
-                top: '50%',
-                right: '8px',
-                transform: 'translateY(-50%)',
-                fontFamily: 'var(--fj-font-family-mono)',
-                fontSize: 'var(--fj-font-size-xs)',
-                color: 'var(--fj-dim)',
-                fontWeight: 'bold',
-                letterSpacing: '0.5px',
-                opacity: '0.7',
-            });
-            labelEl.textContent = opts.showLabel ? opts.label : '';
-            wrapper.appendChild(labelEl);
-        }
-
-        // Add to container
-        opts.container.appendChild(wrapper);
-
-        // State
-        let currentProgress = 0;
-        let isComplete = false;
-
-        // Public API
-        const indicator = {
-            /**
-             * Update progress
-             */
-            update: function(progress) {
-                if (isComplete) return;
-
-                currentProgress = Math.min(Math.max(progress, 0), 100);
-                bar.style.width = currentProgress + '%';
-
-                if (labelEl) {
-                    if (opts.showPercentage) {
-                        labelEl.textContent = Math.round(currentProgress) + '%';
-                    }
-                }
-
-                // Show if progress > 0
-                if (currentProgress > 0 && wrapper.style.opacity !== '1') {
-                    wrapper.style.opacity = '1';
-                }
-
-                // Hide when complete
-                if (currentProgress >= 100) {
-                    indicator.complete();
-                }
-
-                return indicator;
-            },
-
-            /**
-             * Mark as complete and hide
-             */
-            complete: function() {
-                isComplete = true;
-                bar.style.width = '100%';
-
-                if (labelEl && opts.showPercentage) {
-                    labelEl.textContent = '✓ 100%';
-                }
-
-                // Fade out after a moment
-                setTimeout(function() {
-                    wrapper.style.opacity = '0';
-                    setTimeout(function() {
-                        bar.style.width = '0%';
-                        if (labelEl && opts.showPercentage) {
-                            labelEl.textContent = '';
-                        }
-                    }, 300);
-                }, 500);
-
-                return indicator;
-            },
-
-            /**
-             * Show a loading label
-             */
-            setLabel: function(text) {
-                if (labelEl && opts.showLabel) {
-                    labelEl.textContent = text;
-                }
-                return indicator;
-            },
-
-            /**
-             * Destroy the indicator
-             */
-            destroy: function() {
-                if (wrapper.parentNode) {
-                    wrapper.parentNode.removeChild(wrapper);
-                }
-            },
-        };
-
-        return indicator;
-    };
-
-    // ──────────────────────────────────────────────────────────────
-    // 14. COMPONENT LOADER WITH PROGRESS (Meituan-style)
-    // ──────────────────────────────────────────────────────────────
-
-    /**
-     * Load components with a progress indicator
-     * (Meituan-style dense progress tracking)
-     */
-    FJLoader.loadWithProgress = function(components, progressOptions, loadOptions) {
-        const indicator = FJLoader.createProgressIndicator(progressOptions);
-
-        let lastProgress = 0;
-
-        const options = deepMerge({
-            onOverallProgress: function(progress) {
-                // Smooth the progress
-                const smoothed = Math.min(progress, lastProgress + 2);
-                lastProgress = smoothed;
-                indicator.update(smoothed);
-            },
-            onError: function(error) {
-                indicator.setLabel('❌ Fehler: ' + error.message);
-                setTimeout(function() {
-                    indicator.destroy();
-                }, 3000);
-            },
-        }, loadOptions || {});
-
-        return FJLoader.loadAll(components, options)
-            .then(function(results) {
-                setTimeout(function() {
-                    indicator.complete();
-                    setTimeout(function() {
-                        indicator.destroy();
-                    }, 800);
-                }, 300);
-                return results;
-            })
-            .catch(function(error) {
-                indicator.setLabel('❌ Fehler: ' + error.message);
-                setTimeout(function() {
-                    indicator.destroy();
-                }, 3000);
-                throw error;
-            });
-    };
-
-    // ──────────────────────────────────────────────────────────────
-    // 15. MEITUAN-STYLE DENSE LOADING
-    // ──────────────────────────────────────────────────────────────
-
-    /**
-     * Dense loading with skeleton placeholders (Meituan-style)
-     */
-    FJLoader.denseLoad = function(id, path, target, options) {
-        const opts = deepMerge({
-            skeleton: true,
-            skeletonClass: 'fj-skeleton',
-            skeletonTemplate: null,
-            showLoadingText: true,
-            loadingText: 'Lade Komponente...',
-        }, options || {});
-
-        const targetEl = typeof target === 'string' ? document.querySelector(target) : target;
-
-        if (!targetEl) {
-            return FJLoader.load(id, path, target, opts);
-        }
-
-        // Show skeleton if enabled
-        if (opts.skeleton) {
-            let skeletonHtml = opts.skeletonTemplate;
-            if (!skeletonHtml) {
-                // Generate default skeleton
-                skeletonHtml = `
-                    <div class="fj-skeleton-card">
-                        <div class="fj-skeleton fj-skeleton-avatar" style="margin-bottom:12px;"></div>
-                        <div class="fj-skeleton fj-skeleton-text" style="width:60%;"></div>
-                        <div class="fj-skeleton fj-skeleton-text" style="width:80%;"></div>
-                        <div class="fj-skeleton fj-skeleton-text" style="width:40%;"></div>
-                        <div style="display:flex;gap:8px;margin-top:12px;">
-                            <div class="fj-skeleton fj-skeleton-text" style="width:30%;height:30px;"></div>
-                            <div class="fj-skeleton fj-skeleton-text" style="width:20%;height:30px;"></div>
-                        </div>
-                    </div>
-                `;
-            }
-
-            // Preserve existing content and show skeleton
-            targetEl.innerHTML = skeletonHtml;
-        } else if (opts.showLoadingText) {
-            targetEl.innerHTML = `
-                <div style="text-align:center;padding:20px;color:var(--fj-muted);">
-                    <i class="fas fa-spinner fa-spin" style="font-size:1.2rem;display:block;margin-bottom:8px;"></i>
-                    <span style="font-size:0.85rem;">${opts.loadingText}</span>
-                </div>
-            `;
-        }
-
-        return FJLoader.load(id, path, target, opts);
-    };
-
-    // ──────────────────────────────────────────────────────────────
-    // 16. CONSOLE LOG (Meituan-style boot message)
-    // ──────────────────────────────────────────────────────────────
-
-    console.log('%c🔧 FIXJORI Component Loader v' + FJLoader.version,
-        'font-size:16px;font-weight:bold;color:#0D9488;');
-
-    console.log('%c📦 Meituan-Style · Dense · Information-Rich',
-        'font-size:12px;color:#94A3B8;');
-
-    console.log('%c⚡ ' + (CONFIG.enableCache ? 'Cache enabled' : 'Cache disabled') +
-        ' | ' + (CONFIG.debug ? 'Debug mode' : 'Production mode'),
-        'font-size:11px;color:#64748B;');
-
-    debugLog('Loader ready. Use FJLoader.load() to load components.');
-
-    // ──────────────────────────────────────────────────────────────
-    // END OF LOADER
-    // ──────────────────────────────────────────────────────────────
-
-})(typeof window !== 'undefined' ? window : this);
+})();

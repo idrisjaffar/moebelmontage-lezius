@@ -1,1129 +1,1104 @@
 <!DOCTYPE html>
 <html lang="de" data-theme="dark">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Über mich · Raphael Lezius – Handwerk mit Leidenschaft & Präzision</title>
-  <meta name="theme-color" content="#0B0A09" id="themeColorMeta">
-  <meta name="description" content="Raphael Lezius – Premium Montage in München & Augsburg. 8+ Jahre Erfahrung, 1200+ Projekte, 5.0 ★ Bewertung. Handwerk mit Herz und millimetergenauer Präzision.">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Raphael Lezius – Ihr Montage-Experte aus Augsburg</title>
+    <meta name="description" content="Professionelle Möbelmontage in Augsburg & München. Präzision, Transparenz & 1 Jahr Garantie. Jetzt unverbindlich anfragen." />
+    <meta name="theme-color" content="#0B0A09" id="themeColorMeta" />
+    <meta property="og:title" content="Raphael Lezius – Ihr Montage-Experte" />
+    <meta property="og:description" content="Präzise, staubfrei, garantiert. Ihre Möbel – meine Verantwortung." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://raphael-lezius.de/about.html" />
+    <meta name="robots" content="index, follow" />
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- JSON-LD Schema: LocalBusiness -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "name": "Raphael Lezius – Premium Montage",
+            "image": "https://raphael-lezius.com/assets/images/raphael-lezius-logo-front.webp",
+            "telephone": "+491608194018",
+            "email": "r.lezius@gmail.com",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Augsburg",
+                "addressCountry": "DE"
+            },
+            "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "5.0",
+                "reviewCount": "110"
+            },
+            "priceRange": "€€",
+            "openingHours": "Mo-Fr 08:00-20:00, Sa 09:00-16:00"
+        }
+    </script>
 
-  <!-- Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet" />
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="assets/css/global.css">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
-  <!-- Page-specific styles -->
-  <style>
-    /* ── About Hero ── */
-    .about-hero {
-      padding: calc(var(--rl-nav-height) + 70px) 0 60px;
-      background:
-        radial-gradient(ellipse 60% 50% at 10% 30%, rgba(212, 165, 116, 0.08), transparent 55%),
-        radial-gradient(ellipse 50% 40% at 90% 70%, rgba(124, 154, 146, 0.04), transparent 50%),
-        var(--rl-bg);
-      position: relative;
-      overflow: hidden;
-      text-align: center;
-    }
-    .about-hero .hero-glow {
-      position: absolute;
-      width: 500px;
-      height: 500px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(212, 165, 116, 0.06) 0%, transparent 70%);
-      top: -200px;
-      right: -100px;
-      pointer-events: none;
-      animation: soft-pulse 10s ease-in-out infinite;
-    }
-    @keyframes soft-pulse {
-      0%, 100% { transform: scale(1); opacity: 0.6; }
-      50% { transform: scale(1.15); opacity: 1; }
-    }
-    .about-hero .breadcrumb {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      font-size: 0.85rem;
-      color: var(--rl-dim);
-      font-family: var(--font-mono);
-      margin-bottom: 20px;
-    }
-    .about-hero .breadcrumb a {
-      color: var(--rl-primary);
-      transition: color 0.3s;
-    }
-    .about-hero .breadcrumb a:hover {
-      color: var(--rl-primary-hover);
-    }
-    .about-hero .breadcrumb .sep {
-      opacity: 0.3;
-    }
-    .about-hero h1 {
-      font-family: var(--font-head);
-      font-size: clamp(2.2rem, 4.5vw, 3.2rem);
-      font-weight: 800;
-      letter-spacing: -1.2px;
-      line-height: 1.12;
-      margin-bottom: 16px;
-    }
-    .about-hero h1 .gold {
-      color: var(--rl-primary);
-    }
-    .about-hero .lead {
-      font-size: 1.1rem;
-      color: var(--rl-muted);
-      max-width: 580px;
-      margin: 0 auto 32px;
-      line-height: 1.7;
-    }
-    .about-hero .btn-group {
-      display: flex;
-      gap: 16px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
+    <!-- ===== CSS ===== -->
+    <link rel="stylesheet" href="assets/css/global.css" />
+    <link rel="stylesheet" href="assets/css/nav.css" />
+    <link rel="stylesheet" href="assets/css/about.css" />
 
-    /* ── Bio Section ── */
-    .bio-section {
-      padding: 60px 0 80px;
-    }
-    .bio-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.2fr;
-      gap: 50px;
-      align-items: center;
-    }
-    .bio-image {
-      border-radius: var(--rl-radius);
-      overflow: hidden;
-      border: 1px solid var(--rl-border);
-      background: var(--rl-card);
-      aspect-ratio: 4/3;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .bio-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .bio-image .placeholder-icon {
-      font-size: 5rem;
-      color: var(--rl-primary);
-      opacity: 0.3;
-    }
-    .bio-text h2 {
-      font-family: var(--font-head);
-      font-size: clamp(1.8rem, 2.8vw, 2.4rem);
-      font-weight: 800;
-      letter-spacing: -0.8px;
-      margin-bottom: 16px;
-    }
-    .bio-text h2 .gold {
-      color: var(--rl-primary);
-    }
-    .bio-text .story {
-      font-size: 1.02rem;
-      color: var(--rl-muted);
-      line-height: 1.8;
-      margin-bottom: 20px;
-    }
-    .bio-text .story strong {
-      color: var(--rl-text);
-    }
-    .bio-text .highlight-quote {
-      padding: 20px 24px;
-      background: var(--rl-card);
-      border-left: 4px solid var(--rl-primary);
-      border-radius: var(--rl-radius);
-      font-style: italic;
-      font-size: 1.02rem;
-      color: var(--rl-text);
-      margin: 20px 0;
-    }
-
-    /* ── Stats Section (dense) ── */
-    .stats-section {
-      padding: 70px 0;
-      background: var(--rl-surface);
-      border-top: 1px solid var(--rl-border);
-      border-bottom: 1px solid var(--rl-border);
-    }
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
-      text-align: center;
-    }
-    .stat-item {
-      padding: 24px 16px;
-      background: var(--rl-card);
-      border: 1px solid var(--rl-border);
-      border-radius: var(--rl-radius);
-      transition: all 0.3s var(--ease);
-    }
-    .stat-item:hover {
-      border-color: rgba(212, 165, 116, 0.25);
-      transform: translateY(-4px);
-    }
-    .stat-item .number {
-      font-family: var(--font-head);
-      font-size: 2.4rem;
-      font-weight: 800;
-      color: var(--rl-primary);
-      display: block;
-      line-height: 1.1;
-    }
-    .stat-item .label {
-      font-size: 0.85rem;
-      color: var(--rl-muted);
-      margin-top: 6px;
-      display: block;
-    }
-    .stat-item .sub {
-      font-size: 0.75rem;
-      color: var(--rl-dim);
-      font-family: var(--font-mono);
-      margin-top: 4px;
-      display: block;
-    }
-
-    /* ── Values / Philosophy ── */
-    .values-section {
-      padding: 80px 0;
-    }
-    .values-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-      margin-top: 40px;
-    }
-    .value-card {
-      background: var(--rl-card);
-      border: 1px solid var(--rl-border);
-      border-radius: var(--rl-radius);
-      padding: 28px 20px;
-      text-align: center;
-      transition: all 0.35s var(--ease);
-    }
-    .value-card:hover {
-      border-color: rgba(212, 165, 116, 0.3);
-      transform: translateY(-5px);
-      box-shadow: var(--rl-shadow);
-    }
-    .value-card .icon {
-      width: 56px;
-      height: 56px;
-      border-radius: 16px;
-      background: rgba(212, 165, 116, 0.1);
-      display: grid;
-      place-items: center;
-      font-size: 1.5rem;
-      color: var(--rl-primary);
-      margin: 0 auto 16px;
-      transition: all 0.3s;
-    }
-    .value-card:hover .icon {
-      background: var(--rl-primary);
-      color: #1C1917;
-      transform: scale(1.06) rotate(-4deg);
-    }
-    .value-card h4 {
-      font-family: var(--font-head);
-      font-size: 1.1rem;
-      font-weight: 700;
-      margin-bottom: 6px;
-    }
-    .value-card p {
-      font-size: 0.9rem;
-      color: var(--rl-muted);
-      line-height: 1.5;
-    }
-
-    /* ── Equipment / Partners ── */
-    .equipment-section {
-      padding: 60px 0 80px;
-      background: var(--rl-surface);
-      border-top: 1px solid var(--rl-border);
-    }
-    .equipment-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-      margin-top: 30px;
-    }
-    .equipment-item {
-      background: var(--rl-card);
-      border: 1px solid var(--rl-border);
-      border-radius: var(--rl-radius);
-      padding: 24px 16px;
-      text-align: center;
-      transition: all 0.3s;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-    }
-    .equipment-item:hover {
-      border-color: rgba(212, 165, 116, 0.25);
-      transform: translateY(-3px);
-    }
-    .equipment-item i {
-      font-size: 2.2rem;
-      color: var(--rl-primary);
-    }
-    .equipment-item .name {
-      font-weight: 700;
-      font-size: 0.95rem;
-      color: var(--rl-text);
-    }
-    .equipment-item .desc {
-      font-size: 0.75rem;
-      color: var(--rl-dim);
-    }
-
-    /* ── Timeline ── */
-    .timeline-section {
-      padding: 80px 0;
-    }
-    .timeline {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 16px;
-      margin-top: 40px;
-      position: relative;
-    }
-    .timeline::before {
-      content: '';
-      position: absolute;
-      top: 30px;
-      left: 10%;
-      right: 10%;
-      height: 2px;
-      background: var(--rl-border);
-      z-index: 0;
-    }
-    .timeline-item {
-      text-align: center;
-      position: relative;
-      z-index: 1;
-    }
-    .timeline-item .dot {
-      width: 16px;
-      height: 16px;
-      border-radius: 50%;
-      background: var(--rl-primary);
-      margin: 0 auto 12px;
-      border: 3px solid var(--rl-bg);
-      box-shadow: 0 0 0 2px var(--rl-primary);
-    }
-    .timeline-item .year {
-      font-family: var(--font-head);
-      font-weight: 800;
-      font-size: 1.2rem;
-      color: var(--rl-text);
-      display: block;
-    }
-    .timeline-item .event {
-      font-size: 0.8rem;
-      color: var(--rl-muted);
-      line-height: 1.4;
-      max-width: 140px;
-      margin: 4px auto 0;
-    }
-
-    /* ── Trust / CTA ── */
-    .about-cta {
-      padding: 70px 0;
-      background: var(--rl-surface);
-      border-top: 1px solid var(--rl-border);
-      text-align: center;
-    }
-    .about-cta h2 {
-      font-family: var(--font-head);
-      font-size: clamp(1.8rem, 3vw, 2.4rem);
-      font-weight: 800;
-      letter-spacing: -0.8px;
-      margin-bottom: 12px;
-    }
-    .about-cta h2 .gold {
-      color: var(--rl-primary);
-    }
-    .about-cta p {
-      color: var(--rl-muted);
-      max-width: 480px;
-      margin: 0 auto 28px;
-      font-size: 1.05rem;
-    }
-
-    /* ── Responsive ── */
-    @media (max-width: 992px) {
-      .bio-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
-      }
-      .bio-image {
-        aspect-ratio: 16/9;
-        max-height: 350px;
-      }
-      .stats-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      .values-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      .equipment-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      .timeline {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 24px;
-      }
-      .timeline::before {
-        display: none;
-      }
-    }
-    @media (max-width: 600px) {
-      .about-hero {
-        padding: calc(var(--rl-nav-height) + 40px) 0 40px;
-      }
-      .stats-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 12px;
-      }
-      .values-grid {
-        grid-template-columns: 1fr;
-      }
-      .equipment-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-      .timeline {
-        grid-template-columns: 1fr 1fr;
-        gap: 16px;
-      }
-      .timeline-item .event {
-        max-width: 100%;
-      }
-      .bio-text .highlight-quote {
-        padding: 16px;
-        font-size: 0.95rem;
-      }
-    }
-
-    /* ── Reveal ── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.7s var(--ease);
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  </style>
+    <!-- Dynamic Base Tag -->
+    <script>
+        (function() {
+            function getBasePath() {
+                const parts = window.location.pathname.split('/').filter(p => p.length > 0);
+                if (parts.length > 0 && parts[parts.length - 1].includes('.')) parts.pop();
+                const depth = parts.length;
+                return depth === 0 ? './' : '../'.repeat(depth);
+            }
+            const base = getBasePath();
+            const baseEl = document.createElement('base');
+            baseEl.href = base;
+            document.head.insertBefore(baseEl, document.head.firstChild);
+            window.__base = base;
+        })();
+    </script>
 </head>
 <body>
 
-  <!-- Custom Cursor -->
-  <div class="cursor-dot" id="cursorDot"></div>
-  <div class="cursor-ring" id="cursorRing"></div>
+    <!-- ===== FLOATING ELEMENTS ===== -->
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+    <div class="scroll-progress" id="scrollProgress"></div>
 
-  <!-- Scroll Progress -->
-  <div class="scroll-progress" id="scrollProgress"></div>
-
-  <!-- WhatsApp Float -->
-  <a href="https://wa.me/491608194018" target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="WhatsApp schreiben">
-    <span class="pulse-ring"></span>
-    <i class="fab fa-whatsapp"></i>
-  </a>
-
-  <!-- Sticky CTA -->
-  <div class="sticky-cta" id="stickyCta">
-    <a href="/anfrage/" class="btn btn-primary magnetic-btn">
-      <i class="fas fa-comments"></i> Kostenloses Gespräch
+    <a href="https://wa.me/491608194018" target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="WhatsApp">
+        <span class="pulse-ring"></span>
+        <i class="fab fa-whatsapp"></i>
     </a>
-  </div>
 
-  <!-- Back to Top -->
-  <button class="back-to-top" id="backToTop" aria-label="Nach oben">
-    <i class="fas fa-chevron-up"></i>
-  </button>
-
-  <!-- Floating social proof -->
-  <div class="floating-badge" id="floatingBadge">
-    <div class="stars">
-      <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-    </div>
-    <div class="text">
-      <span class="highlight">110+</span> Menschen haben mir ihr Zuhause anvertraut
-    </div>
-  </div>
-
-  <!-- ============================================================ -->
-  <!-- NAVIGATION PLACEHOLDER                                        -->
-  <!-- ============================================================ -->
-  <div id="nav-placeholder"></div>
-
-  <!-- ============================================================ -->
-  <!-- MAIN CONTENT                                                 -->
-  <!-- ============================================================ -->
-  <main>
-
-    <!-- ==================== ABOUT HERO ==================== -->
-    <section class="about-hero">
-      <div class="hero-glow"></div>
-      <div class="container">
-        <div class="breadcrumb reveal">
-          <a href="/">Start</a>
-          <span class="sep">/</span>
-          <span style="color:var(--rl-text);">Über mich</span>
-        </div>
-
-        <h1 class="reveal">
-          Handwerk, das man <span class="gold">spürt</span>
-        </h1>
-
-        <p class="lead reveal">
-          Ihre Möbel verdienen mehr als nur eine schnelle Montage.<br>
-          Ich bin Raphael – und das ist meine Geschichte.
-        </p>
-
-        <div class="btn-group reveal">
-          <a href="#bio" class="btn btn-primary magnetic-btn">
-            <i class="fas fa-arrow-down"></i> Meine Geschichte
-          </a>
-          <a href="/anfrage/" class="btn btn-secondary magnetic-btn">
-            <i class="fas fa-comments"></i> Unverbindlich kennenlernen
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== BIO SECTION ==================== -->
-    <section class="bio-section" id="bio">
-      <div class="container">
-        <div class="bio-grid">
-          <div class="bio-image reveal">
-            <!-- Using a nice placeholder avatar; replace with actual photo later -->
-            <img src="https://ui-avatars.com/api/?name=Raphael+Lezius&background=D4A574&color=1C1917&size=400&bold=true" alt="Raphael Lezius Portrait" loading="lazy">
-          </div>
-          <div class="bio-text reveal">
-            <h2>Mein Weg zur <span class="gold">Präzision</span></h2>
-            <p class="story">
-              <strong>Früher hat mich schon als Kind fasziniert, wie aus einzelnen Teilen etwas Ganzes entsteht.</strong><br><br>
-              Heute ist diese Faszination mein Beruf. Mit über <strong>8 Jahren Erfahrung</strong>, unzähligen Projekten und einem unermüdlichen Blick fürs Detail stehe ich für Montagen, die sich anfühlen, als wären sie schon immer da gewesen.<br><br>
-              Geboren und aufgewachsen in Augsburg, habe ich früh gelernt, was es bedeutet, mit den Händen zu arbeiten und Verantwortung für jedes einzelne Bauteil zu übernehmen. Nach meiner Ausbildung im Handwerk habe ich mich auf Premium-Montagen spezialisiert – mit einem klaren Fokus auf <strong>USM Haller, Küchen und maßgeschneiderte Möbellösungen</strong>.
-            </p>
-
-            <div class="highlight-quote">
-              „Ich freue mich jedes Mal, wenn ich merke, dass sich jemand wirklich wohlfühlt in dem, was ich gebaut habe. Das ist der Moment, der alles andere vergessen lässt.“
-            </div>
-
-            <div style="display:flex; gap:16px; flex-wrap:wrap; margin-top:8px;">
-              <span style="display:inline-flex; align-items:center; gap:6px; background:var(--rl-card); padding:6px 14px; border-radius:30px; border:1px solid var(--rl-border); font-size:0.8rem; color:var(--rl-muted);">
-                <i class="fas fa-map-pin" style="color:var(--rl-primary);"></i> München & Augsburg
-              </span>
-              <span style="display:inline-flex; align-items:center; gap:6px; background:var(--rl-card); padding:6px 14px; border-radius:30px; border:1px solid var(--rl-border); font-size:0.8rem; color:var(--rl-muted);">
-                <i class="fas fa-star" style="color:var(--rl-primary);"></i> 5.0 ★ Durchschnitt
-              </span>
-              <span style="display:inline-flex; align-items:center; gap:6px; background:var(--rl-card); padding:6px 14px; border-radius:30px; border:1px solid var(--rl-border); font-size:0.8rem; color:var(--rl-muted);">
-                <i class="fas fa-shield-alt" style="color:var(--rl-primary);"></i> 5 Mio. € versichert
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== STATS (Dense Meituan-style) ==================== -->
-    <section class="stats-section">
-      <div class="container">
-        <div class="stats-grid">
-          <div class="stat-item reveal">
-            <span class="number live-counter" data-target="8">0</span>
-            <span class="label">Jahre Erfahrung</span>
-            <span class="sub">seit 2016</span>
-          </div>
-          <div class="stat-item reveal">
-            <span class="number live-counter" data-target="1200">0</span>
-            <span class="label">erfolgreiche Projekte</span>
-            <span class="sub">davon 40 % USM Haller</span>
-          </div>
-          <div class="stat-item reveal">
-            <span class="number live-counter" data-target="110">0</span>
-            <span class="label">glückliche Kunden</span>
-            <span class="sub">98 % Weiterempfehlung</span>
-          </div>
-          <div class="stat-item reveal">
-            <span class="number">5.0 ★</span>
-            <span class="label">Durchschnittsbewertung</span>
-            <span class="sub">basierend auf 110+ Bewertungen</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== VALUES / PHILOSOPHY ==================== -->
-    <section class="values-section">
-      <div class="container">
-        <div class="section-header reveal">
-          <span class="pre">Meine Prinzipien</span>
-          <h2>Wofür ich <span class="gold">stehe</span></h2>
-          <p>Vier Werte, die meine Arbeit leiten – jeden Tag aufs Neue.</p>
-        </div>
-
-        <div class="values-grid">
-          <div class="value-card reveal">
-            <div class="icon"><i class="fas fa-ruler-combined"></i></div>
-            <h4>Millimetergenaue Präzision</h4>
-            <p>Jedes Bauteil wird so justiert, dass es perfekt sitzt – bis auf den letzten Millimeter.</p>
-          </div>
-          <div class="value-card reveal">
-            <div class="icon"><i class="fas fa-heart"></i></div>
-            <h4>Empathie & Respekt</h4>
-            <p>Ihr Zuhause ist Ihr Rückzugsort. Ich arbeite staubfrei, leise und immer mit größtem Respekt für Ihre Räume.</p>
-          </div>
-          <div class="value-card reveal">
-            <div class="icon"><i class="fas fa-handshake"></i></div>
-            <h4>Transparente Kommunikation</h4>
-            <p>Feste Preise, klare Absprachen, keine versteckten Überraschungen – darauf können Sie sich verlassen.</p>
-          </div>
-          <div class="value-card reveal">
-            <div class="icon"><i class="fas fa-shield-alt"></i></div>
-            <h4>Garantierte Qualität</h4>
-            <p>Alles, was ich mache, steht unter meiner persönlichen 1‑Jahres‑Garantie. Ihr Vertrauen ist mein höchstes Gut.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== EQUIPMENT / PARTNERS ==================== -->
-    <section class="equipment-section">
-      <div class="container">
-        <div class="section-header reveal">
-          <span class="pre">Werkzeug & Partner</span>
-          <h2>Womit ich <span class="gold">arbeite</span></h2>
-          <p>Nur das Beste für Ihre Möbel – denn Qualität beginnt bei den Werkzeugen.</p>
-        </div>
-
-        <div class="equipment-grid">
-          <div class="equipment-item reveal">
-            <i class="fas fa-bolt"></i>
-            <span class="name">Bosch Professional</span>
-            <span class="desc">Präzisionswerkzeuge für jede Montage</span>
-          </div>
-          <div class="equipment-item reveal">
-            <i class="fas fa-gem"></i>
-            <span class="name">USM Haller Original-Tools</span>
-            <span class="desc">Spezialwerkzeug für perfekte Justierung</span>
-          </div>
-          <div class="equipment-item reveal">
-            <i class="fas fa-cube"></i>
-            <span class="name">IKEA Spezialist</span>
-            <span class="desc">Inkl. PAX, BESTÅ, METOD & mehr</span>
-          </div>
-          <div class="equipment-item reveal">
-            <i class="fas fa-tools"></i>
-            <span class="name">Festool & Mafell</span>
-            <span class="desc">Sauberer Schnitt, staubfreie Arbeitsweise</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== TIMELINE ==================== -->
-    <section class="timeline-section">
-      <div class="container">
-        <div class="section-header reveal">
-          <span class="pre">Meine Meilensteine</span>
-          <h2>Ein Blick auf den <span class="gold">Weg</span></h2>
-          <p>Wie aus der Leidenschaft fürs Handwerk ein Premium-Service wurde.</p>
-        </div>
-
-        <div class="timeline">
-          <div class="timeline-item reveal">
-            <div class="dot"></div>
-            <span class="year">2016</span>
-            <span class="event">Gründung und erste eigene Projekte in Augsburg</span>
-          </div>
-          <div class="timeline-item reveal">
-            <div class="dot"></div>
-            <span class="year">2018</span>
-            <span class="event">Spezialisierung auf USM Haller – das System verstehen und meistern</span>
-          </div>
-          <div class="timeline-item reveal">
-            <div class="dot"></div>
-            <span class="year">2020</span>
-            <span class="event">Erweiterung nach München – neues Team, neue Herausforderungen</span>
-          </div>
-          <div class="timeline-item reveal">
-            <div class="dot"></div>
-            <span class="year">2024</span>
-            <span class="event">Der 100. glückliche Kunde – ein Moment der Demut und Freude</span>
-          </div>
-          <div class="timeline-item reveal">
-            <div class="dot"></div>
-            <span class="year">2026</span>
-            <span class="event">Launch von Premium Pro – der White-Glove-Service für anspruchsvolle Projekte</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== CTA SECTION ==================== -->
-    <section class="about-cta">
-      <div class="container">
-        <div class="reveal">
-          <span class="pre" style="display:block; font-size:0.78rem; font-weight:600; letter-spacing:1.6px; text-transform:uppercase; color:var(--rl-primary); margin-bottom:12px; font-family:var(--font-mono);">
-            ✦ Jetzt kennenlernen
-          </span>
-          <h2>Lassen Sie uns über Ihr <span class="gold">Projekt</span> sprechen</h2>
-          <p>Ob USM Haller, Küche, Umzug oder Premium Pro – ich freue mich auf Ihre Anfrage.</p>
-          <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
-            <a href="/anfrage/" class="btn btn-primary magnetic-btn">
-              <i class="fas fa-comments"></i> Unverbindliches Gespräch starten
-            </a>
-            <a href="/services.html" class="btn btn-secondary magnetic-btn">
-              <i class="fas fa-th-list"></i> Alle Services entdecken
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- ============================================================ -->
-  <!-- FOOTER PLACEHOLDER                                            -->
-  <!-- ============================================================ -->
-  <div id="footer-placeholder"></div>
-
-  <!-- ============================================================ -->
-  <!-- COMPONENT LOADER – with fallback embedded                    -->
-  <!-- ============================================================ -->
-  <script>
-    /* ============================================================
-       RAPHAEL LEZIUS – Component Loader v2.0
-       Loads nav & footer with localStorage cache + inline fallback
-       ============================================================ */
-
-    (function() {
-      'use strict';
-
-      const NAV_FALLBACK = `
-    <nav class="rl-nav" id="mainNav">
-      <div class="rl-nav__inner">
-        <a href="/" class="rl-nav__brand" aria-label="Zur Startseite">
-          Raphael <span>Lezius</span>
-          <span class="rl-nav__tagline">Präzision mit Herz</span>
+    <div class="sticky-cta" id="stickyCta">
+        <a href="#cta" class="btn btn-primary magnetic-btn">
+            <i class="fas fa-calendar-check"></i> <span data-lang="de">Jetzt Anfragen</span><span data-lang="en" style="display:none;">Inquire Now</span>
         </a>
-
-        <ul class="rl-nav__links">
-          <li><a href="/" class="nav-link">Willkommen</a></li>
-          <li class="nav-dropdown">
-            <a href="#" class="nav-link">Services <i class="fas fa-chevron-down" style="font-size:0.7rem; margin-left:4px;"></i></a>
-            <div class="nav-dropdown-content">
-              <a href="/services.html" style="font-weight:700; border-bottom:1px solid var(--rl-border); margin-bottom:6px; padding-bottom:10px;">
-                <i class="fas fa-th-list"></i> Alle Services im Überblick
-              </a>
-              <a href="/services/moebel-kuechen.html"><i class="fas fa-couch"></i> Möbel & Küchen</a>
-              <a href="/services/usm-haller.html"><i class="fas fa-gem"></i> USM Haller</a>
-              <a href="/services/garten-outdoor.html"><i class="fas fa-tree"></i> Garten & Outdoor</a>
-              <a href="/services/demontage-umzug.html"><i class="fas fa-truck"></i> Demontage & Umzug</a>
-              <a href="/services/buero-objekt.html"><i class="fas fa-building"></i> Büro & Objekt</a>
-              <a href="/services/premium-pro.html"><i class="fas fa-crown"></i> Premium Pro</a>
-            </div>
-          </li>
-          <li class="nav-dropdown">
-            <a href="#" class="nav-link">Bundles <i class="fas fa-chevron-down" style="font-size:0.7rem; margin-left:4px;"></i></a>
-            <div class="nav-dropdown-content">
-              <a href="/bundles/kuechen-komplett.html"><i class="fas fa-utensils"></i> Küchen-Komplett</a>
-              <a href="/bundles/usm-all-in.html"><i class="fas fa-gem"></i> USM All-In</a>
-              <a href="/bundles/umzug-premium.html"><i class="fas fa-truck"></i> Umzug Premium</a>
-            </div>
-          </li>
-          <li><a href="/about.html" class="nav-link active">Über mich</a></li>
-          <li><a href="/reviews.html" class="nav-link">Ihre Stimmen</a></li>
-          <li><a href="/anfrage/" class="cta magnetic-btn"><i class="fas fa-comments"></i> Kostenloses Gespräch</a></li>
-        </ul>
-
-        <div class="rl-nav__actions">
-          <button class="theme-toggle" data-theme-toggle aria-label="Design umschalten">
-            <i class="fas fa-moon" data-theme-icon></i>
-          </button>
-          <button class="rl-nav__hamburger" id="navToggle" aria-label="Menü öffnen" aria-expanded="false">
-            <span></span><span></span><span></span>
-          </button>
-        </div>
-      </div>
-    </nav>
-    <div class="rl-nav__mobile" id="mobileMenu" aria-hidden="true">
-      <div class="mobile-menu-inner">
-        <a href="/" class="mobile-link">Willkommen</a>
-        <a href="/services.html" class="mobile-link" style="font-weight:700; border-top:1px solid var(--rl-border); padding-top:12px; margin-top:4px;"><i class="fas fa-th-list"></i> Alle Services</a>
-        <a href="/#services" class="mobile-link">Services</a>
-        <a href="/#bundles" class="mobile-link">Bundles</a>
-        <a href="/about.html" class="mobile-link" style="color:var(--rl-primary);">Über mich</a>
-        <a href="/reviews.html" class="mobile-link">Ihre Stimmen</a>
-        <a href="/services/moebel-kuechen.html" class="mobile-link">– Möbel & Küchen</a>
-        <a href="/services/usm-haller.html" class="mobile-link">– USM Haller</a>
-        <a href="/services/garten-outdoor.html" class="mobile-link">– Garten & Outdoor</a>
-        <a href="/services/demontage-umzug.html" class="mobile-link">– Demontage & Umzug</a>
-        <a href="/services/buero-objekt.html" class="mobile-link">– Büro & Objekt</a>
-        <a href="/services/premium-pro.html" class="mobile-link">– Premium Pro</a>
-        <a href="/bundles/kuechen-komplett.html" class="mobile-link">– Küchen-Komplett</a>
-        <a href="/bundles/usm-all-in.html" class="mobile-link">– USM All-In</a>
-        <a href="/bundles/umzug-premium.html" class="mobile-link">– Umzug Premium</a>
-        <a href="/anfrage/" class="mobile-cta magnetic-btn"><i class="fas fa-comments"></i> Kostenloses Gespräch starten</a>
-        <div class="mobile-extra">
-          <p>Schön, dass Sie hier sind.</p>
-          <button class="theme-toggle" data-theme-toggle style="width:52px; height:52px; font-size:1.2rem; margin-top:16px;">
-            <i class="fas fa-moon" data-theme-icon></i>
-          </button>
-        </div>
-      </div>
     </div>
-      `;
 
-      const FOOTER_FALLBACK = `
-    <footer class="rl-footer">
-      <div class="container">
-        <div class="rl-footer-top">
-          <div class="rl-footer-brand">
-            <div class="logo">Raphael <span>Lezius</span></div>
-            <p>Ich freue mich, dass Sie hier sind.<br>Premium Montage mit echter Leidenschaft – millimetergenau, staubfrei und immer mit Herz.</p>
-            <div class="rl-footer-trust">
-              <span><i class="fas fa-shield-alt"></i> 5 Mio. € versichert</span>
-              <span><i class="fas fa-star"></i> 5.0 ★ von 110+ Menschen</span>
-              <span><i class="fas fa-clock"></i> Antwort innerhalb 24 h</span>
-              <span><i class="fas fa-heart"></i> 1 Jahr persönliche Garantie</span>
+    <button class="back-to-top" id="backToTop" aria-label="Nach oben">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- ===== NAV PLACEHOLDER ===== -->
+    <div id="nav-placeholder">
+        <div class="component-loading"><i class="fas fa-sync-alt fa-spin"></i> NAV SYSTEM...</div>
+    </div>
+
+    <main>
+
+        <!-- ============================================================
+        HERO – BRIGHT VIDEO + GLASS PANEL OVERLAY
+        ============================================================ -->
+        <section class="about-hero" id="top">
+            <div class="video-bg-container">
+                <video class="hero-video" autoplay muted loop playsinline poster="assets/images/Bedroom_grey_main.webp">
+                    <source src="assets/video/project-landscape.mp4" type="video/mp4" />
+                </video>
+                <div class="aurora-glow glow-gold"></div>
+                <div class="aurora-glow glow-cyan"></div>
+                <div class="video-edge-shadow"></div>
+                <div class="video-bottom-fade"></div>
+            </div>
+
+            <div class="container">
+                <div class="hero-glass-panel reveal">
+                    <div class="trust-badge">
+                        <span class="dot"></span>
+                        <span>5.0 ★ · Exklusive Montage · Augsburg &amp; München</span>
+                    </div>
+
+                    <h1>
+                        Höchste Handwerkskunst.<br />
+                        <span class="gold">Ihre Vision in Perfektion.</span>
+                    </h1>
+
+                    <p class="subtitle">
+                        Millimetergenau. Kompromisslos sauber. Garantiert.
+                    </p>
+
+                    <p class="value-prop">
+                        Premium-Möbel erfordern Premium-Behandlung. Ich verwandle komplexe Systeme wie USM Haller und maßgefertigte Küchen in makellose Lebensräume – mit <strong>absoluter Transparenz</strong> und schwäbischer Präzision.
+                    </p>
+
+                    <div class="btns">
+                        <a href="#process" class="btn btn-primary magnetic-btn">
+                            <i class="fas fa-layer-group"></i>
+                            Meine Philosophie
+                        </a>
+                        <a href="#cta" class="btn btn-secondary magnetic-btn">
+                            <i class="fas fa-calendar-check"></i>
+                            Projekt besprechen
+                        </a>
+                    </div>
+
+                    <div class="stats-bar">
+                        <div class="stat-item">
+                            <div class="number" data-count="1200">0</div>
+                            <span class="label">Projekte</span>
+                        </div>
+                        <div class="stat-item">
+                            <div class="number" data-count="110">0</div>
+                            <span class="label">Kunden</span>
+                        </div>
+                        <div class="stat-item">
+                            <div class="number">5.0 ★</div>
+                            <span class="label">Bewertung</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+        3D FLIPPING LOGO CARD
+        ============================================================ -->
+        <section class="flip-section" id="flip">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="pre" data-lang="de">Mein Versprechen</span>
+                    <span class="pre" data-lang="en" style="display:none;">My Promise</span>
+                    <h2>
+                        <span data-lang="de">Handwerk bedeutet <span class="gold">Verantwortung</span></span>
+                        <span data-lang="en" style="display:none;">Craftsmanship means <span class="gold">responsibility</span></span>
+                    </h2>
+                </div>
+
+                <div class="flip-grid reveal">
+                    <div class="flip-wrapper">
+                        <div class="avatar-frame" id="flipCard">
+                            <div class="flipper">
+                                <div class="flip-face front">
+                                    <img src="assets/images/raphael-lezius-logo-front.webp" alt="Raphael Lezius Logo Front"
+                                    onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'fallback-text\'><span>RL</span></div>'">
+                                </div>
+                                <div class="flip-face back">
+                                    <img src="assets/images/raphael-lezius-logo-back.webp" alt="Raphael Lezius Logo Back"
+                                    onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'fallback-text\'><span>PRÄZISION</span></div>'">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flip-text">
+                        <p class="lead">
+                            <span data-lang="de">Ich stehe mit meinem Namen für jede einzelne Schraube, die ich setze. <strong>Präzision, Sauberkeit und Zuverlässigkeit</strong> sind keine leeren Versprechen – sie sind die Grundlage meiner Arbeit.</span>
+                            <span data-lang="en" style="display:none;">I stand with my name for every single screw I set. <strong>Precision, cleanliness, and reliability</strong> are not empty promises – they are the foundation of my work.</span>
+                        </p>
+                        <p class="lead">
+                            <span data-lang="de">Mein Ziel ist es, dass Sie sich nach der Montage <strong>wohl und sicher</strong> in Ihrem Zuhause fühlen. Deshalb gibt es bei mir keine Kompromisse.</span>
+                            <span data-lang="en" style="display:none;">My goal is for you to feel <strong>comfortable and safe</strong> in your home after the assembly. That's why I don't compromise.</span>
+                        </p>
+                        <div class="signature-line">Raphael Lezius</div>
+                        <div class="flip-hint">
+                            <i class="fas fa-hand-pointer"></i>
+                            <span data-lang="de">Klicken Sie auf das Logo – es dreht sich</span>
+                            <span data-lang="en" style="display:none;">Click the logo – it flips</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+        TRUST SIGNALS – Who I work for
+        ============================================================ -->
+        <section class="section-padding" id="trust">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="pre" data-lang="de">Vertrauen durch Erfahrung</span>
+                    <span class="pre" data-lang="en" style="display:none;">Trust through experience</span>
+                    <h2>
+                        <span data-lang="de">Für wen ich <span class="gold">arbeite</span></span>
+                        <span data-lang="en" style="display:none;">Who I <span class="gold">work for</span></span>
+                    </h2>
+                    <p data-lang="de">Ich helfe Menschen, die Wert auf Qualität legen – und keine Überraschungen mögen.</p>
+                    <p data-lang="en" style="display:none;">I help people who value quality – and don't like surprises.</p>
+                </div>
+
+                <div class="audience-grid reveal">
+                    <div class="audience-card">
+                        <div class="audience-icon"><i class="fas fa-home"></i></div>
+                        <h3 data-lang="de">Privatkunden</h3>
+                        <h3 data-lang="en" style="display:none;">Private Clients</h3>
+                        <p data-lang="de">Küchen, PAX-Schränke, USM Haller – alles, was Ihr Zuhause schöner macht.</p>
+                        <p data-lang="en" style="display:none;">Kitchens, PAX wardrobes, USM Haller – everything that makes your home more beautiful.</p>
+                    </div>
+                    <div class="audience-card">
+                        <div class="audience-icon"><i class="fas fa-building"></i></div>
+                        <h3 data-lang="de">Gewerbekunden</h3>
+                        <h3 data-lang="en" style="display:none;">Commercial Clients</h3>
+                        <p data-lang="de">Büroausstattung, Objektmöbel, Systemlösungen – diskret und termintreu.</p>
+                        <p data-lang="en" style="display:none;">Office furniture, project furniture, system solutions – discreet and on time.</p>
+                    </div>
+                    <div class="audience-card">
+                        <div class="audience-icon"><i class="fas fa-truck"></i></div>
+                        <h3 data-lang="de">Umzugskunden</h3>
+                        <h3 data-lang="en" style="display:none;">Moving Clients</h3>
+                        <p data-lang="de">Demontage, Transportvorbereitung, Wiederaufbau – alles aus einer Hand.</p>
+                        <p data-lang="en" style="display:none;">Disassembly, transport preparation, reassembly – everything from one source.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+        THE 3 TRUST PILLARS
+        ============================================================ -->
+        <section class="section-padding" id="values">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="pre" data-lang="de">Meine Versprechen</span>
+                    <span class="pre" data-lang="en" style="display:none;">My promises</span>
+                    <h2>
+                        <span data-lang="de">Darum vertrauen <span class="gold">Kunden</span> mir</span>
+                        <span data-lang="en" style="display:none;">Why <span class="gold">clients</span> trust me</span>
+                    </h2>
+                    <p data-lang="de">Drei Prinzipien, die jede Montage zu einem Erlebnis machen – nicht zu einem Ärgernis.</p>
+                    <p data-lang="en" style="display:none;">Three principles that make every assembly an experience – not a hassle.</p>
+                </div>
+
+                <div class="values-grid reveal">
+                    <!-- Pillar 1: Precision -->
+                    <div class="value-card">
+                        <span class="value-icon"><i class="fas fa-ruler-combined"></i></span>
+                        <h3 data-lang="de">Millimetergenaue Präzision</h3>
+                        <h3 data-lang="en" style="display:none;">Millimetre Precision</h3>
+                        <p data-lang="de">Keine Schätzungen. Kein „passt schon“. Ich arbeite mit <strong>360°‑Lasern</strong> und <strong>Bosch Professional</strong> – jedes Bauteil sitzt perfekt. Spaltmasse unter 1 mm sind bei mir Standard.</p>
+                        <p data-lang="en" style="display:none;">No estimates. No "good enough". I work with <strong>360° lasers</strong> and <strong>Bosch Professional</strong> – every component fits perfectly. Gaps under 1 mm are standard.</p>
+                        <div class="value-tag" data-lang="de">Laser‑Nivellierung</div>
+                        <div class="value-tag" data-lang="en" style="display:none;">Laser Levelling</div>
+                    </div>
+
+                    <!-- Pillar 2: Transparency -->
+                    <div class="value-card">
+                        <span class="value-icon"><i class="fas fa-file-invoice-dollar"></i></span>
+                        <h3 data-lang="de">Feste Preise – keine Überraschungen</h3>
+                        <h3 data-lang="en" style="display:none;">Fixed Prices – No Surprises</h3>
+                        <p data-lang="de">Was wir besprechen, ist, was Sie zahlen. <strong>Keine versteckten Kosten</strong>, kein „das ist jetzt aber mehr Aufwand“. Ich kalkuliere sorgfältig – und stehe zu meinem Wort.</p>
+                        <p data-lang="en" style="display:none;">What we discuss is what you pay. <strong>No hidden costs</strong>, no "this is more effort than we thought". I calculate carefully – and stand by my word.</p>
+                        <div class="value-tag" data-lang="de">100% Transparenz</div>
+                        <div class="value-tag" data-lang="en" style="display:none;">100% Transparency</div>
+                    </div>
+
+                    <!-- Pillar 3: Safety -->
+                    <div class="value-card">
+                        <span class="value-icon"><i class="fas fa-shield-alt"></i></span>
+                        <h3 data-lang="de">Versichert &amp; Garantiert</h3>
+                        <h3 data-lang="en" style="display:none;">Insured &amp; Guaranteed</h3>
+                        <p data-lang="de">Ihr Zuhause ist sicher. Mit <strong>5 Mio. € Haftpflicht</strong>, <strong>HEPA‑Staubabsaugung</strong> und <strong>1 Jahr persönlicher Garantie</strong>. Falls etwas nicht stimmt – ich komme kostenlos nach.</p>
+                        <p data-lang="en" style="display:none;">Your home is safe. With <strong>€5 million liability insurance</strong>, <strong>HEPA dust extraction</strong>, and a <strong>1‑year personal guarantee</strong>. If something's not right – I'll come back free of charge.</p>
+                        <div class="value-tag" data-lang="de">5 Mio. € versichert</div>
+                        <div class="value-tag" data-lang="en" style="display:none;">€5M Insured</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+        PROCESS – How I Work
+        ============================================================ -->
+        <section class="section-padding" id="process">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="pre" data-lang="de">Ihr Weg zur perfekten Montage</span>
+                    <span class="pre" data-lang="en" style="display:none;">Your path to the perfect assembly</span>
+                    <h2>
+                        <span data-lang="de">So arbeiten <span class="gold">wir</span> – Schritt für Schritt</span>
+                        <span data-lang="en" style="display:none;">How <span class="gold">we</span> work – step by step</span>
+                    </h2>
+                    <p data-lang="de">Transparent, verbindlich, ergebnisorientiert – so vermeiden wir Missverständnisse.</p>
+                    <p data-lang="en" style="display:none;">Transparent, binding, results‑oriented – that's how we avoid misunderstandings.</p>
+                </div>
+
+                <div class="process-grid reveal">
+                    <!-- Step 1 -->
+                    <div class="process-step">
+                        <div class="step-number">01</div>
+                        <span class="step-icon"><i class="fas fa-comment-dots"></i></span>
+                        <h4 data-lang="de">Kostenlose Analyse</h4>
+                        <h4 data-lang="en" style="display:none;">Free Analysis</h4>
+                        <p data-lang="de">Wir besprechen Ihr Projekt – per Telefon, Video oder vor Ort. Ich höre zu, frage nach und erstelle Ihnen ein <strong>verbindliches, festes Angebot</strong>.</p>
+                        <p data-lang="en" style="display:none;">We discuss your project – by phone, video, or on site. I listen, ask questions, and give you a <strong>binding, fixed quote</strong>.</p>
+                        <span class="connector"><i class="fas fa-chevron-right"></i></span>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="process-step">
+                        <div class="step-number">02</div>
+                        <span class="step-icon"><i class="fas fa-tools"></i></span>
+                        <h4 data-lang="de">Professionelle Umsetzung</h4>
+                        <h4 data-lang="en" style="display:none;">Professional Execution</h4>
+                        <p data-lang="de">Ich montiere Ihre Möbel mit <strong>Präzision und Sorgfalt</strong>. Staubfrei, kratzfrei und mit hochwertigem Werkzeug. Sie können sich entspannen – ich übernehme die Verantwortung.</p>
+                        <p data-lang="en" style="display:none;">I assemble your furniture with <strong>precision and care</strong>. Dust‑free, scratch‑free, and with high‑quality tools. You can relax – I take responsibility.</p>
+                        <span class="connector"><i class="fas fa-chevron-right"></i></span>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="process-step">
+                        <div class="step-number">03</div>
+                        <span class="step-icon"><i class="fas fa-check-circle"></i></span>
+                        <h4 data-lang="de">Abnahme &amp; Garantie</h4>
+                        <h4 data-lang="en" style="display:none;">Handover &amp; Guarantee</h4>
+                        <p data-lang="de">Gemeinsame Kontrolle – wenn Sie zufrieden sind, bin ich es auch. Und danach: <strong>1 Jahr persönliche Garantie</strong>. Bei Fragen bin ich erreichbar.</p>
+                        <p data-lang="en" style="display:none;">Joint inspection – if you're happy, I'm happy. And afterwards: a <strong>1‑year personal guarantee</strong>. I'm always available for questions.</p>
+                    </div>
+                </div>
+
+                <!-- Trust Badges under Process -->
+                <div class="process-trust reveal">
+                    <span><i class="fas fa-clock"></i> <span data-lang="de">Pünktlich – oder 10 % Rabatt</span><span data-lang="en" style="display:none;">On time – or 10% off</span></span>
+                    <span><i class="fas fa-euro-sign"></i> <span data-lang="de">Fester Preis – garantiert</span><span data-lang="en" style="display:none;">Fixed price – guaranteed</span></span>
+                    <span><i class="fas fa-star"></i> <span data-lang="de">5.0 ★ – 110+ Bewertungen</span><span data-lang="en" style="display:none;">5.0 ★ – 110+ reviews</span></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+        VIDEO SHOWCASE – Proof of Work
+        ============================================================ -->
+        <section class="section-padding" id="video">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="pre" data-lang="de">So sieht Qualität aus</span>
+                    <span class="pre" data-lang="en" style="display:none;">This is what quality looks like</span>
+                    <h2>
+                        <span data-lang="de">Sehen Sie, wie ich <span class="gold">arbeite</span></span>
+                        <span data-lang="en" style="display:none;">See how I <span class="gold">work</span></span>
+                    </h2>
+                    <p data-lang="de">Keine inszenierten Bilder – echte Einblicke in meine tägliche Arbeit.</p>
+                    <p data-lang="en" style="display:none;">No staged photos – real insights into my daily work.</p>
+                </div>
+
+                <div class="video-showcase reveal">
+                    <!-- Video 1 -->
+                    <div class="video-card js-lightbox-trigger" data-video="assets/video/project-portrait-timelapse.mp4">
+                        <video muted loop playsinline preload="metadata" poster="assets/images/video-poster-1.jpg">
+                            <source src="assets/video/project-portrait-timelapse.mp4" type="video/mp4" />
+                        </video>
+                        <div class="video-overlay">
+                            <div class="video-tag"><span class="dot-gold"></span> TIMELAPSE</div>
+                            <div class="video-info">
+                                <h4 data-lang="de">USM Haller – 2 Stunden in 60 Sekunden</h4>
+                                <h4 data-lang="en" style="display:none;">USM Haller – 2 hours in 60 seconds</h4>
+                                <p data-lang="de">Präzision im Zeitraffer</p>
+                                <p data-lang="en" style="display:none;">Precision in timelapse</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Video 2 -->
+                    <div class="video-card js-lightbox-trigger" data-video="assets/video/raphael-assembly-action.mp4">
+                        <video muted loop playsinline preload="metadata" poster="assets/images/video-poster-2.jpg">
+                            <source src="assets/video/raphael-assembly-action.mp4" type="video/mp4" />
+                        </video>
+                        <div class="video-overlay">
+                            <div class="video-tag"><span class="dot-gold"></span> DETAIL SCAN</div>
+                            <div class="video-info">
+                                <h4 data-lang="de">Präzisionsarbeit mit Bosch Professional</h4>
+                                <h4 data-lang="en" style="display:none;">Precision work with Bosch Professional</h4>
+                                <p data-lang="de">Jede Schraube sitzt perfekt</p>
+                                <p data-lang="en" style="display:none;">Every screw fits perfectly</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-hint reveal">
+                    <i class="fas fa-play-circle"></i>
+                    <span data-lang="de">Klicken Sie auf ein Video – es wird im Vollbild abgespielt.</span>
+                    <span data-lang="en" style="display:none;">Click a video – it will play full‑screen.</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Video Lightbox -->
+        <div class="video-lightbox" id="videoLightbox">
+            <button class="close-lightbox" id="closeLightbox" type="button"><i class="fas fa-times"></i> <span data-lang="de">Schließen</span><span data-lang="en" style="display:none;">Close</span></button>
+            <div class="lightbox-frame">
+                <video id="lightboxPlayer" controls playsinline></video>
+            </div>
+        </div>
+
+        <!-- ============================================================
+        TESTIMONIALS – Social Proof
+        ============================================================ -->
+        <section class="section-padding" id="reviews">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="pre" data-lang="de">Echte Stimmen</span>
+                    <span class="pre" data-lang="en" style="display:none;">Real voices</span>
+                    <h2>
+                        <span data-lang="de">Was meine <span class="gold">Kunden</span> sagen</span>
+                        <span data-lang="en" style="display:none;">What my <span class="gold">clients</span> say</span>
+                    </h2>
+                    <p data-lang="de">110+ Bewertungen – alle mit 5.0 ★. Das ist mein schönstes Feedback.</p>
+                    <p data-lang="en" style="display:none;">110+ reviews – all 5.0 ★. That's my best feedback.</p>
+                </div>
+
+                <div class="testimonials-grid reveal">
+                    <!-- Review 1 -->
+                    <div class="testimonial-card">
+                        <div class="stars">★★★★★</div>
+                        <blockquote data-lang="de">„Absolut professionell und pünktlich. Die USM Montage war millimetergenau. Ich fühle mich sehr gut aufgehoben.“</blockquote>
+                        <blockquote data-lang="en" style="display:none;">"Absolutely professional and punctual. The USM assembly was millimetre‑precise. I feel very well taken care of."</blockquote>
+                        <div class="client">
+                            <div>
+                                <span class="client-name">Thomas M.</span>
+                                <span class="client-location">München</span>
+                            </div>
+                            <span class="client-platform">MyHammer</span>
+                        </div>
+                    </div>
+
+                    <!-- Review 2 -->
+                    <div class="testimonial-card">
+                        <div class="stars">★★★★★</div>
+                        <blockquote data-lang="de">„Sehr saubere Arbeit und freundliche Kommunikation. Die Küche sieht aus wie aus dem Katalog – nur noch schöner.“</blockquote>
+                        <blockquote data-lang="en" style="display:none;">"Very clean work and friendly communication. The kitchen looks like it's from a catalogue – even more beautiful."</blockquote>
+                        <div class="client">
+                            <div>
+                                <span class="client-name">Sandra K.</span>
+                                <span class="client-location">Augsburg</span>
+                            </div>
+                            <span class="client-platform">MyHammer</span>
+                        </div>
+                    </div>
+
+                    <!-- Review 3 -->
+                    <div class="testimonial-card">
+                        <div class="stars">★★★★★</div>
+                        <blockquote data-lang="de">„Endlich jemand, der sich wirklich Zeit nimmt und Wert auf Details legt. Man merkt die Leidenschaft.“</blockquote>
+                        <blockquote data-lang="en" style="display:none;">"Finally someone who really takes time and pays attention to details. You can feel the passion."</blockquote>
+                        <div class="client">
+                            <div>
+                                <span class="client-name">Michael R.</span>
+                                <span class="client-location">München</span>
+                            </div>
+                            <span class="client-platform">CHECK24</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Platform Badges -->
+                <div class="platform-badges reveal">
+                    <a href="#" class="platform-badge">
+                        <i class="fas fa-star"></i> 5.0 ★ · MyHammer
+                    </a>
+                    <a href="#" class="platform-badge">
+                        <i class="fas fa-star"></i> 5.0 ★ · CHECK24
+                    </a>
+                    <a href="#" class="platform-badge">
+                        <i class="fas fa-star"></i> 5.0 ★ · Google
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+        CTA BANNER – Final Conversion
+        ============================================================ -->
+        <section class="section-padding" id="cta">
+            <div class="container">
+                <div class="cta-banner reveal">
+                    <div class="cta-badge">
+                        <i class="fas fa-bolt"></i>
+                        <span data-lang="de">Jetzt unverbindlich anfragen</span>
+                        <span data-lang="en" style="display:none;">Inquire now – no obligation</span>
+                    </div>
+                    <h2>
+                        <span data-lang="de">Bereit für Ihre <span class="gold-text">perfekte Montage</span>?</span>
+                        <span data-lang="en" style="display:none;">Ready for your <span class="gold-text">perfect assembly</span>?</span>
+                    </h2>
+                    <p>
+                        <span data-lang="de">Ob Küche, USM Haller, Gartenhaus oder Einzelmöbel – ich freue mich auf Ihr Projekt.<br /><strong>Rufen Sie an, schreiben Sie mir oder nutzen Sie das Formular.</strong></span>
+                        <span data-lang="en" style="display:none;">Whether kitchen, USM Haller, garden house, or single piece – I look forward to your project.<br /><strong>Call me, message me, or use the form.</strong></span>
+                    </p>
+                    <div class="cta-actions">
+                        <a href="tel:+491608194018" class="cta-phone">
+                            <i class="fas fa-phone"></i>
+                            <span data-lang="de">0160 8194018</span>
+                            <span data-lang="en" style="display:none;">0160 8194018</span>
+                        </a>
+                        <a href="https://wa.me/491608194018" target="_blank" rel="noopener" class="cta-whatsapp">
+                            <i class="fab fa-whatsapp"></i>
+                            <span data-lang="de">WhatsApp</span>
+                            <span data-lang="en" style="display:none;">WhatsApp</span>
+                        </a>
+                        <a href="contact.html" class="cta-form">
+                            <i class="fas fa-envelope"></i>
+                            <span data-lang="de">Kontaktformular</span>
+                            <span data-lang="en" style="display:none">Contact form</span>
+                        </a>
+                    </div>
+                    <div class="cta-trust">
+                        <span><i class="fas fa-shield-alt"></i> <span data-lang="de">5 Mio. € versichert</span><span data-lang="en" style="display:none;">€5M insured</span></span>
+                        <span><i class="fas fa-check-circle"></i> <span data-lang="de">1 Jahr Garantie</span><span data-lang="en" style="display:none;">1‑year guarantee</span></span>
+                        <span><i class="fas fa-clock"></i> <span data-lang="de">24h Antwort</span><span data-lang="en" style="display:none;">24h response</span></span>
+                        <span><i class="fas fa-star"></i> <span data-lang="de">5.0 ★ (110+)</span><span data-lang="en" style="display:none;">5.0 ★ (110+)</span></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ===== FOOTER PLACEHOLDER ===== -->
+    <div id="footer-placeholder">
+        <div class="component-loading"><i class="fas fa-sync-alt fa-spin"></i> FOOTER SYSTEM...</div>
+    </div>
+
+    <!-- ============================================================
+    COMPONENT LOADER – Enhanced Accessible Nav + Mobile Menu
+    ============================================================ -->
+    <script>
+        (function() {
+            'use strict';
+
+            // ── Enhanced Fallback Nav ──
+            const NAV_FALLBACK = `
+        <nav class="rl-nav" id="mainNav" role="navigation" aria-label="Hauptnavigation">
+          <div class="rl-nav__inner">
+            <a href="index.html" class="rl-nav__brand" aria-label="Startseite">Raphael <span>Lezius</span></a>
+            <ul class="rl-nav__links" role="menubar">
+              <li class="nav-dropdown" role="none">
+                <a href="#" class="nav-link" data-section="services" role="menuitem" aria-haspopup="true" aria-expanded="false">
+                  Services <i class="fas fa-chevron-down"></i>
+                </a>
+                <div class="nav-dropdown-content" role="menu" aria-label="Services Untermenü">
+                  <a href="services.html" role="menuitem"><i class="fas fa-th-list"></i> Übersicht</a>
+                  <a href="services/moebel-kuechen.html" role="menuitem"><i class="fas fa-couch"></i> Möbel & Küchen</a>
+                  <a href="services/usm-haller.html" role="menuitem"><i class="fas fa-gem"></i> USM Haller</a>
+                  <a href="services/garten-outdoor.html" role="menuitem"><i class="fas fa-tree"></i> Garten & Outdoor</a>
+                  <a href="services/demontage-umzug.html" role="menuitem"><i class="fas fa-truck"></i> Demontage & Umzug</a>
+                  <a href="services/buero-objekt.html" role="menuitem"><i class="fas fa-building"></i> Büro & Objekt</a>
+                  <a href="services/premium-pro.html" role="menuitem"><i class="fas fa-crown"></i> Premium Pro</a>
+                </div>
+              </li>
+              <li class="nav-dropdown" role="none">
+                <a href="#" class="nav-link" data-section="bundles" role="menuitem" aria-haspopup="true" aria-expanded="false">
+                  Bundles <i class="fas fa-chevron-down"></i>
+                </a>
+                <div class="nav-dropdown-content" role="menu" aria-label="Bundles Untermenü">
+                  <a href="bundles/" role="menuitem"><i class="fas fa-gift"></i> Übersicht</a>
+                  <a href="bundles/kuechen-komplett.html" role="menuitem"><i class="fas fa-utensils"></i> Küchen-Komplett</a>
+                  <a href="bundles/usm-all-in.html" role="menuitem"><i class="fas fa-gem"></i> USM All-In</a>
+                  <a href="bundles/umzug-premium.html" role="menuitem"><i class="fas fa-truck"></i> Umzug Premium</a>
+                </div>
+              </li>
+              <li><a href="about.html" class="nav-link active" data-section="about" role="menuitem" aria-current="page">Über mich</a></li>
+              <li><a href="contact.html" class="nav-link" role="menuitem">Kontakt</a></li>
+            </ul>
+            <div class="rl-nav__actions">
+              <a href="anfrage/" class="nav-cta magnetic-btn"><i class="fas fa-comment-dots"></i><span>Kostenlos</span></a>
+              <button class="theme-toggle" data-theme-toggle aria-label="Design umschalten"><i class="fas fa-moon" data-theme-icon></i></button>
+              <button class="rl-nav__hamburger" id="navToggle" aria-controls="mobileMenu" aria-expanded="false" aria-label="Menü öffnen"><span></span><span></span><span></span></button>
             </div>
           </div>
-          <div class="rl-footer-newsletter">
-            <h4><i class="fas fa-envelope-open-text" style="color:var(--rl-primary)"></i> Bleiben Sie in Verbindung</h4>
-            <p>Einmal im Monat sende ich Ihnen nützliche Tipps und exklusive Angebote – nur wenn Sie möchten.</p>
-            <form class="newsletter-form" id="newsletterForm">
-              <input type="email" placeholder="Ihre E-Mail-Adresse" required aria-label="E-Mail für Newsletter" />
-              <button type="submit" class="magnetic-btn">Gerne dabei sein</button>
-            </form>
-            <div class="newsletter-consent">
-              <input type="checkbox" id="consent" required />
-              <label for="consent">Ich stimme der <a href="/legal/datenschutz.html" style="color:var(--rl-primary); text-decoration:underline;">Datenschutzerklärung</a> zu und freue mich auf Ihre Nachrichten.</label>
+        </nav>
+        <div class="rl-nav__mobile" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Mobile Navigation" aria-hidden="true">
+          <div class="mobile-menu-inner">
+            <button class="mobile-close" id="mobileClose" aria-label="Menü schließen"><i class="fas fa-times"></i></button>
+            <a href="index.html" class="mobile-link">Start</a>
+            <a href="services.html" class="mobile-link" style="font-weight:600; margin-top:8px;"><i class="fas fa-th-list"></i> Services</a>
+            <a href="services/moebel-kuechen.html" class="mobile-link">– Möbel & Küchen</a>
+            <a href="services/usm-haller.html" class="mobile-link">– USM Haller</a>
+            <a href="services/garten-outdoor.html" class="mobile-link">– Garten & Outdoor</a>
+            <a href="services/demontage-umzug.html" class="mobile-link">– Demontage & Umzug</a>
+            <a href="services/buero-objekt.html" class="mobile-link">– Büro & Objekt</a>
+            <a href="services/premium-pro.html" class="mobile-link">– Premium Pro</a>
+            <a href="bundles/" class="mobile-link" style="font-weight:600; border-top:1px solid var(--rl-border); padding-top:12px; margin-top:4px;"><i class="fas fa-gift"></i> Bundles</a>
+            <a href="bundles/kuechen-komplett.html" class="mobile-link">– Küchen-Komplett</a>
+            <a href="bundles/usm-all-in.html" class="mobile-link">– USM All-In</a>
+            <a href="bundles/umzug-premium.html" class="mobile-link">– Umzug Premium</a>
+            <a href="about.html" class="mobile-link">Über mich</a>
+            <a href="contact.html" class="mobile-link">Kontakt</a>
+            <a href="faq.html" class="mobile-link" style="color:var(--rl-muted); font-size:0.9rem;">FAQ</a>
+            <a href="anfrage/" class="mobile-cta magnetic-btn"><i class="fas fa-comment-dots"></i> Kostenloses Gespräch</a>
+            <div class="mobile-extra"><button class="theme-toggle" data-theme-toggle style="width:44px;height:44px;font-size:1.1rem;"><i class="fas fa-moon" data-theme-icon></i></button></div>
+          </div>
+        </div>
+        <div class="nav-backdrop" id="navBackdrop" aria-hidden="true"></div>
+        `;
+
+            const FOOTER_FALLBACK = `
+        <footer class="rl-footer" role="contentinfo">
+          <div class="container">
+            <div class="rl-footer__top">
+              <div class="rl-footer__brand">
+                <div class="rl-footer__logo">Raphael <span>Lezius</span><span class="rl-footer__badge"><span class="live-dot"></span> Live</span></div>
+                <p class="rl-footer__description" data-lang="de">Premium Montage mit echter Leidenschaft – millimetergenau, staubfrei und immer mit Herz.</p>
+                <p class="rl-footer__description" data-lang="en" style="display:none;">Premium assembly with real passion – precise, dust‑free, and always with heart.</p>
+                <div class="rl-footer__trust">
+                  <span><i class="fas fa-shield-alt"></i> 5 Mio. € versichert</span>
+                  <span><i class="fas fa-star"></i> 5.0 ★ (110+)</span>
+                  <span><i class="fas fa-clock"></i> Antwort &lt; 24 h</span>
+                  <span><i class="fas fa-heart"></i> 1 Jahr Garantie</span>
+                </div>
+              </div>
+              <div class="rl-footer__newsletter">
+                <h4><i class="fas fa-envelope-open-text"></i> <span data-lang="de">Bleiben Sie verbunden</span><span data-lang="en" style="display:none;">Stay connected</span></h4>
+                <p data-lang="de">Monatliche Tipps, exklusive Angebote und Einblicke – nur wenn Sie möchten.</p>
+                <p data-lang="en" style="display:none;">Monthly tips, exclusive offers, and insights – only if you want.</p>
+                <form class="rl-footer__form" id="newsletterForm">
+                  <div class="form-group">
+                    <input type="email" id="newsletterEmail" placeholder=" " required aria-label="E-Mail-Adresse">
+                    <label for="newsletterEmail" data-lang="de">Ihre E-Mail-Adresse</label>
+                    <label for="newsletterEmail" data-lang="en" style="display:none;">Your email address</label>
+                  </div>
+                  <button type="submit" class="magnetic-btn"><i class="fas fa-paper-plane"></i> <span data-lang="de">Anmelden</span><span data-lang="en" style="display:none;">Subscribe</span></button>
+                </form>
+                <div class="rl-footer__consent">
+                  <input type="checkbox" id="consent" required />
+                  <label for="consent"><span data-lang="de">Ich stimme der <a href="legal/datenschutz.html">Datenschutzerklärung</a> zu.</span><span data-lang="en" style="display:none;">I agree to the <a href="legal/datenschutz.html">privacy policy</a>.</span></label>
+                </div>
+              </div>
+            </div>
+            <div class="rl-footer__grid">
+              <div class="rl-footer__col">
+                <h5 data-lang="de">Services</h5><h5 data-lang="en" style="display:none;">Services</h5>
+                <ul>
+                  <li><a href="services.html"><span data-lang="de">Alle Services</span><span data-lang="en" style="display:none;">All Services</span></a></li>
+                  <li><a href="services/moebel-kuechen.html"><span data-lang="de">Möbel &amp; Küchen</span><span data-lang="en" style="display:none;">Furniture &amp; Kitchens</span></a></li>
+                  <li><a href="services/usm-haller.html">USM Haller</a></li>
+                  <li><a href="services/garten-outdoor.html"><span data-lang="de">Garten &amp; Outdoor</span><span data-lang="en" style="display:none;">Garden &amp; Outdoor</span></a></li>
+                  <li><a href="services/demontage-umzug.html"><span data-lang="de">Demontage &amp; Umzug</span><span data-lang="en" style="display:none;">Disassembly &amp; Moving</span></a></li>
+                  <li><a href="services/premium-pro.html">Premium Pro</a></li>
+                </ul>
+              </div>
+              <div class="rl-footer__col">
+                <h5 data-lang="de">Bundles</h5><h5 data-lang="en" style="display:none;">Bundles</h5>
+                <ul>
+                  <li><a href="bundles/"><span data-lang="de">Alle Bundles</span><span data-lang="en" style="display:none;">All Bundles</span></a></li>
+                  <li><a href="bundles/kuechen-komplett.html"><span data-lang="de">Küchen-Komplett</span><span data-lang="en" style="display:none;">Kitchen Complete</span></a></li>
+                  <li><a href="bundles/usm-all-in.html">USM All‑In</a></li>
+                  <li><a href="bundles/umzug-premium.html"><span data-lang="de">Umzug Premium</span><span data-lang="en" style="display:none;">Moving Premium</span></a></li>
+                </ul>
+                <h5 style="margin-top:18px;" data-lang="de">Hilfe</h5><h5 style="margin-top:18px;" data-lang="en" style="display:none;">Help</h5>
+                <ul>
+                  <li><a href="faq.html">FAQ</a></li>
+                  <li><a href="contact.html"><span data-lang="de">Kontakt</span><span data-lang="en" style="display:none;">Contact</span></a></li>
+                </ul>
+              </div>
+              <div class="rl-footer__col">
+                <h5 data-lang="de">Über</h5><h5 data-lang="en" style="display:none;">About</h5>
+                <ul>
+                  <li><a href="about.html"><span data-lang="de">Über mich</span><span data-lang="en" style="display:none;">About me</span></a></li>
+                  <li><a href="reviews.html"><span data-lang="de">Kundenstimmen</span><span data-lang="en" style="display:none;">Reviews</span></a></li>
+                  <li><a href="anfrage/"><span data-lang="de">Kostenloses Gespräch</span><span data-lang="en" style="display:none;">Free Consultation</span></a></li>
+                </ul>
+                <div class="rl-footer__social">
+                  <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                  <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                  <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                  <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                </div>
+              </div>
+              <div class="rl-footer__col">
+                <h5 data-lang="de">Kontakt</h5><h5 data-lang="en" style="display:none;">Contact</h5>
+                <ul class="rl-footer__contact">
+                  <li><i class="fas fa-phone-alt"></i> <a href="tel:+491608194018">+49 160 8194018</a></li>
+                  <li><i class="fab fa-whatsapp"></i> <a href="https://wa.me/491608194018" target="_blank" rel="noopener">WhatsApp</a></li>
+                  <li><i class="fas fa-envelope"></i> <a href="mailto:info@raphael-lezius.de">info@raphael-lezius.de</a></li>
+                </ul>
+                <h5 style="margin-top:18px;" data-lang="de">Rechtliches</h5><h5 style="margin-top:18px;" data-lang="en" style="display:none;">Legal</h5>
+                <ul>
+                  <li><a href="legal/impressum.html">Impressum</a></li>
+                  <li><a href="legal/datenschutz.html"><span data-lang="de">Datenschutz</span><span data-lang="en" style="display:none;">Privacy</span></a></li>
+                  <li><a href="legal/agb.html">AGB</a></li>
+                  <li><a href="legal/widerruf.html"><span data-lang="de">Widerruf</span><span data-lang="en" style="display:none;">Cancellation</span></a></li>
+                  <li><a href="legal/cookie.html"><span data-lang="de">Cookie‑Richtlinie</span><span data-lang="en" style="display:none;">Cookie Policy</span></a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="rl-footer__trustbar">
+              <div class="trust-item"><i class="fas fa-users"></i><div><span class="label"><span data-lang="de">Vertrauen</span><span data-lang="en" style="display:none;">Trust</span></span><span class="value">110+ <span data-lang="de">Kunden</span><span data-lang="en" style="display:none;">clients</span></span></div></div>
+              <div class="trust-item"><i class="fas fa-star"></i><div><span class="label"><span data-lang="de">Bewertung</span><span data-lang="en" style="display:none;">Rating</span></span><span class="value">5.0 ★</span></div></div>
+              <div class="trust-item"><i class="fas fa-bolt"></i><div><span class="label"><span data-lang="de">Reaktionszeit</span><span data-lang="en" style="display:none;">Response time</span></span><span class="value">&lt; 24 h</span></div></div>
+              <div class="trust-item"><i class="fas fa-shield-alt"></i><div><span class="label"><span data-lang="de">Versicherung</span><span data-lang="en" style="display:none;">Insurance</span></span><span class="value">5 Mio. €</span></div></div>
+              <div class="trust-item"><i class="fas fa-hand-holding-heart"></i><div><span class="label"><span data-lang="de">Service</span><span data-lang="en" style="display:none;">Service</span></span><span class="value"><span data-lang="de">White‑Glove</span><span data-lang="en" style="display:none;">White‑Glove</span></span></div></div>
+              <div class="trust-item"><i class="fas fa-award"></i><div><span class="label"><span data-lang="de">Erfahrung</span><span data-lang="en" style="display:none;">Experience</span></span><span class="value">8+ <span data-lang="de">Jahre</span><span data-lang="en" style="display:none;">years</span></span></div></div>
+            </div>
+            <div class="rl-footer__bottom">
+              <div class="rl-footer__copyright">
+                <p>© 2026 Raphael Lezius · <span data-lang="de">Mit Sorgfalt gemacht in Augsburg</span><span data-lang="en" style="display:none;">Crafted with care in Augsburg</span></p>
+                <div class="rl-footer__legal">
+                  <a href="legal/impressum.html">Impressum</a> <span class="sep">·</span>
+                  <a href="legal/datenschutz.html"><span data-lang="de">Datenschutz</span><span data-lang="en" style="display:none;">Privacy</span></a> <span class="sep">·</span>
+                  <a href="legal/agb.html">AGB</a>
+                </div>
+              </div>
+              <button class="rl-footer__backtop" id="footerBackTop" aria-label="Nach oben"><i class="fas fa-chevron-up"></i> <span data-lang="de">Nach oben</span><span data-lang="en" style="display:none;">Top</span></button>
+            </div>
+            <div class="rl-footer__sentiment">
+              <i class="fas fa-heart"></i> <span data-lang="de">Danke, dass Sie sich die Zeit genommen haben. Es bedeutet mir viel.</span><span data-lang="en" style="display:none;">Thank you for taking the time. It means a lot to me.</span>
             </div>
           </div>
-        </div>
-        <div class="rl-footer-grid">
-          <div class="rl-footer-col">
-            <h5>Services</h5>
-            <a href="/services/moebel-kuechen.html">Möbel & Küchen</a>
-            <a href="/services/usm-haller.html">USM Haller Spezialist</a>
-            <a href="/services/garten-outdoor.html">Garten & Outdoor</a>
-            <a href="/services/demontage-umzug.html">Demontage & Umzug</a>
-            <a href="/services/buero-objekt.html">Büro & Objekt</a>
-            <a href="/services/premium-pro.html">Premium Pro Service</a>
-          </div>
-          <div class="rl-footer-col">
-            <h5>Bundles</h5>
-            <a href="/bundles/kuechen-komplett.html">Küchen-Komplett</a>
-            <a href="/bundles/usm-all-in.html">USM All-In</a>
-            <a href="/bundles/umzug-premium.html">Umzug Premium</a>
-          </div>
-          <div class="rl-footer-col">
-            <h5>Über & Hilfe</h5>
-            <a href="/about.html">Über mich</a>
-            <a href="/reviews.html">Kundenstimmen</a>
-            <a href="/faq.html">FAQ</a>
-            <a href="/contact.html">Kontakt</a>
-            <a href="/anfrage/">Kostenloses Gespräch</a>
-          </div>
-          <div class="rl-footer-col">
-            <h5>Rechtliches</h5>
-            <a href="/legal/impressum.html">Impressum</a>
-            <a href="/legal/datenschutz.html">Datenschutz</a>
-            <a href="/legal/agb.html">AGB</a>
-            <a href="/legal/widerruf.html">Widerruf</a>
-            <a href="/legal/cookie.html">Cookie-Richtlinie</a>
-          </div>
-        </div>
-        <div class="rl-footer-trustbar">
-          <div class="trustbar-item"><i class="fas fa-users"></i><div><div class="label">Vertrauen</div><div class="value">110+ glückliche Kunden</div></div></div>
-          <div class="trustbar-item"><i class="fas fa-star"></i><div><div class="label">Bewertung</div><div class="value">5.0 ★ Durchschnitt</div></div></div>
-          <div class="trustbar-item"><i class="fas fa-bolt"></i><div><div class="label">Reaktion</div><div class="value">meist innerhalb 24 h</div></div></div>
-          <div class="trustbar-item"><i class="fas fa-shield-alt"></i><div><div class="label">Sicherheit</div><div class="value">5 Mio. € versichert</div></div></div>
-          <div class="trustbar-item"><i class="fas fa-hand-holding-heart"></i><div><div class="label">Service</div><div class="value">White-Glove mit Herz</div></div></div>
-        </div>
-        <div class="rl-footer-bottom">
-          <div>© 2026 Raphael Lezius · Mit Sorgfalt gemacht in Augsburg</div>
-          <div>
-            <a href="/legal/impressum.html">Impressum</a>
-            <a href="/legal/datenschutz.html">Datenschutz</a>
-            <a href="/legal/agb.html">AGB</a>
-          </div>
-          <div class="rl-footer-social">
-            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-          </div>
-        </div>
-        <div style="text-align:center; margin-top:28px; font-size:0.88rem; color:var(--rl-dim);">
-          <i class="fas fa-heart" style="color:var(--rl-primary); margin-right:6px;"></i>
-          Danke, dass Sie sich die Zeit genommen haben. Es bedeutet mir viel.
-        </div>
-      </div>
-    </footer>
-      `;
+        </footer>
+        `;
 
-      async function loadComponent(selector, url, fallbackHtml) {
-        const container = document.querySelector(selector);
-        if (!container) return;
-
-        const cached = localStorage.getItem(url);
-        if (cached) {
-          container.innerHTML = cached;
-          fetch(url)
-            .then(res => res.text())
-            .then(html => {
-              if (html && html.trim().length > 0) {
-                container.innerHTML = html;
-                localStorage.setItem(url, html);
-              }
-            })
-            .catch(() => {});
-          return;
-        }
-
-        try {
-          const response = await fetch(url);
-          if (!response.ok) throw new Error('Network error');
-          const html = await response.text();
-          if (html && html.trim().length > 0) {
-            container.innerHTML = html;
-            localStorage.setItem(url, html);
-            return;
-          }
-        } catch (error) {
-          // fall through
-        }
-
-        if (fallbackHtml) {
-          container.innerHTML = fallbackHtml;
-          try { localStorage.setItem(url, fallbackHtml); } catch (e) {}
-        } else {
-          container.innerHTML = `<p style="color:red; text-align:center; padding:20px;">Komponente konnte nicht geladen werden.</p>`;
-        }
-      }
-
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', init);
-      } else {
-        init();
-      }
-
-      function init() {
-        loadComponent('#nav-placeholder', '/components/nav.html', NAV_FALLBACK);
-        loadComponent('#footer-placeholder', '/components/footer.html', FOOTER_FALLBACK);
-
-        setTimeout(() => {
-          const navToggle = document.getElementById('navToggle');
-          const mobileMenu = document.getElementById('mobileMenu');
-          if (navToggle && mobileMenu) {
-            navToggle.addEventListener('click', function() {
-              const isOpen = mobileMenu.classList.toggle('open');
-              navToggle.setAttribute('aria-expanded', isOpen);
-              mobileMenu.setAttribute('aria-hidden', !isOpen);
-              document.body.style.overflow = isOpen ? 'hidden' : '';
-            });
-            mobileMenu.querySelectorAll('a').forEach(link => {
-              link.addEventListener('click', function() {
-                mobileMenu.classList.remove('open');
-                navToggle.setAttribute('aria-expanded', 'false');
-                mobileMenu.setAttribute('aria-hidden', 'true');
-                document.body.style.overflow = '';
-              });
-            });
-          }
-
-          document.querySelectorAll('[data-theme-toggle]').forEach(btn => {
-            btn.removeEventListener('click', toggleTheme);
-            btn.addEventListener('click', toggleTheme);
-          });
-
-          const form = document.getElementById('newsletterForm');
-          if (form) {
-            form.removeEventListener('submit', handleNewsletter);
-            form.addEventListener('submit', handleNewsletter);
-          }
-        }, 50);
-      }
-
-      function toggleTheme() {
-        const html = document.documentElement;
-        const current = html.getAttribute('data-theme') || 'dark';
-        const next = current === 'dark' ? 'light' : 'dark';
-        html.setAttribute('data-theme', next);
-        localStorage.setItem('rl-theme', next);
-        document.querySelectorAll('[data-theme-icon]').forEach(icon => {
-          icon.className = next === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
-        });
-        const meta = document.getElementById('themeColorMeta');
-        if (meta) meta.content = next === 'dark' ? '#0B0A09' : '#F8F5F0';
-      }
-
-      function handleNewsletter(e) {
-        e.preventDefault();
-        const btn = this.querySelector('button');
-        const original = btn.innerHTML;
-        btn.innerHTML = '<i class="fas fa-check"></i> Willkommen an Bord!';
-        btn.style.background = 'var(--rl-gradient-hover)';
-        setTimeout(() => {
-          btn.innerHTML = original;
-          this.reset();
-        }, 2800);
-      }
-
-      const savedTheme = localStorage.getItem('rl-theme');
-      if (savedTheme) {
-        document.documentElement.setAttribute('data-theme', savedTheme);
-        document.querySelectorAll('[data-theme-icon]').forEach(icon => {
-          icon.className = savedTheme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
-        });
-      }
-    })();
-  </script>
-
-  <!-- ============================================================ -->
-  <!-- PAGE-SPECIFIC SCRIPTS                                        -->
-  <!-- ============================================================ -->
-  <script>
-    // ── SCROLL PROGRESS + STICKY + BACK TO TOP ──
-    const progress = document.getElementById('scrollProgress');
-    const sticky = document.getElementById('stickyCta');
-    const backTop = document.getElementById('backToTop');
-
-    window.addEventListener('scroll', () => {
-      const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const percent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-      if (progress) progress.style.width = percent + '%';
-
-      if (scrollTop > 400) {
-        sticky?.classList.add('visible');
-        backTop?.classList.add('visible');
-      } else {
-        sticky?.classList.remove('visible');
-        backTop?.classList.remove('visible');
-      }
-    }, { passive: true });
-
-    backTop?.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    // ── CUSTOM CURSOR ──
-    const dot = document.getElementById('cursorDot');
-    const ring = document.getElementById('cursorRing');
-    let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
-
-    if (dot && ring && window.matchMedia('(min-width: 769px)').matches) {
-      document.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-        dot.style.left = mouseX + 'px';
-        dot.style.top = mouseY + 'px';
-
-        document.querySelectorAll('.magnetic-btn').forEach(btn => {
-          const rect = btn.getBoundingClientRect();
-          const cx = rect.left + rect.width / 2;
-          const cy = rect.top + rect.height / 2;
-          const dx = e.clientX - cx;
-          const dy = e.clientY - cy;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 120) {
-            const strength = (120 - dist) / 120 * 4;
-            btn.style.transform = `translate(${dx * strength / 6}px, ${dy * strength / 6}px)`;
-          } else {
-            btn.style.transform = 'translate(0, 0)';
-          }
-        });
-      });
-
-      function animateRing() {
-        ringX += (mouseX - ringX) * 0.18;
-        ringY += (mouseY - ringY) * 0.18;
-        ring.style.left = ringX + 'px';
-        ring.style.top = ringY + 'px';
-        requestAnimationFrame(animateRing);
-      }
-      animateRing();
-
-      document.addEventListener('mouseover', (e) => {
-        if (e.target.closest('a, button, .btn, .magnetic-btn, .value-card, .stat-item')) {
-          dot.classList.add('hovering');
-          ring.classList.add('hovering');
-        }
-      });
-      document.addEventListener('mouseout', (e) => {
-        if (e.target.closest('a, button, .btn, .magnetic-btn, .value-card, .stat-item')) {
-          dot.classList.remove('hovering');
-          ring.classList.remove('hovering');
-        }
-      });
-    }
-
-    // ── LIVE COUNTERS ──
-    function animateCounter(el) {
-      const target = parseInt(el.getAttribute('data-target'));
-      const duration = 1800;
-      const start = performance.now();
-      function update(now) {
-        const progress = Math.min((now - start) / duration, 1);
-        const ease = 1 - Math.pow(1 - progress, 3);
-        el.textContent = Math.floor(ease * target).toLocaleString('de-DE') + (target >= 100 ? '+' : '');
-        if (progress < 1) requestAnimationFrame(update);
-      }
-      requestAnimationFrame(update);
-    }
-
-    // ── REVEAL ON SCROLL ──
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          entry.target.querySelectorAll('.live-counter').forEach(counter => {
-            if (!counter.classList.contains('counted')) {
-              counter.classList.add('counted');
-              animateCounter(counter);
+            async function loadComponent(selector, path, fallback) {
+                const container = document.querySelector(selector);
+                if (!container) return;
+                const cached = localStorage.getItem(path);
+                if (cached) {
+                    container.innerHTML = cached;
+                    fetch(path).then(r => r.text()).then(html => { if (html) { container.innerHTML = html;
+                            localStorage.setItem(path, html); } }).catch(() => {});
+                    return;
+                }
+                try {
+                    const res = await fetch(path);
+                    if (!res.ok) throw new Error();
+                    const html = await res.text();
+                    if (html) { container.innerHTML = html;
+                        localStorage.setItem(path, html); return; }
+                } catch (e) {}
+                container.innerHTML = fallback;
+                try { localStorage.setItem(path, fallback); } catch (e) {}
             }
-          });
-        }
-      });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
-    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+            function init() {
+                loadComponent('#nav-placeholder', 'components/nav.html', NAV_FALLBACK);
+                loadComponent('#footer-placeholder', 'components/footer.html', FOOTER_FALLBACK);
 
-    // ── SMOOTH SCROLL ──
-    document.querySelectorAll('a[href^="#"]').forEach(link => {
-      link.addEventListener('click', function(e) {
-        const targetId = this.getAttribute('href');
-        if (targetId === '#') return;
-        const target = document.querySelector(targetId);
-        if (target) {
-          e.preventDefault();
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      });
-    });
+                setTimeout(() => {
+                    // ── Mobile Menu ──
+                    const navToggle = document.getElementById('navToggle');
+                    const mobileMenu = document.getElementById('mobileMenu');
+                    const navBackdrop = document.getElementById('navBackdrop');
+                    const mobileClose = document.getElementById('mobileClose');
+                    const body = document.body;
 
-    console.log('✨ Raphael Lezius – About page loaded with Meituan-style density');
-  </script>
+                    function openMenu() {
+                        mobileMenu?.classList.add('open');
+                        navBackdrop?.classList.add('active');
+                        navToggle?.setAttribute('aria-expanded', 'true');
+                        mobileMenu?.setAttribute('aria-hidden', 'false');
+                        body.style.overflow = 'hidden';
+                    }
+
+                    function closeMenu() {
+                        mobileMenu?.classList.remove('open');
+                        navBackdrop?.classList.remove('active');
+                        navToggle?.setAttribute('aria-expanded', 'false');
+                        mobileMenu?.setAttribute('aria-hidden', 'true');
+                        body.style.overflow = '';
+                        navToggle?.focus();
+                    }
+
+                    if (navToggle && mobileMenu) {
+                        navToggle.addEventListener('click', function() {
+                            mobileMenu.classList.contains('open') ? closeMenu() : openMenu();
+                        });
+                    }
+
+                    if (navBackdrop) navBackdrop.addEventListener('click', closeMenu);
+                    if (mobileClose) mobileClose.addEventListener('click', closeMenu);
+
+                    document.addEventListener('keydown', function(e) {
+                        if (e.key === 'Escape' && mobileMenu?.classList.contains('open')) closeMenu();
+                    });
+
+                    if (mobileMenu) {
+                        mobileMenu.querySelectorAll('a').forEach(function(link) {
+                            link.addEventListener('click', closeMenu);
+                        });
+                    }
+
+                    // ── Theme Toggle ──
+                    document.querySelectorAll('[data-theme-toggle]').forEach(btn => {
+                        btn.removeEventListener('click', toggleTheme);
+                        btn.addEventListener('click', toggleTheme);
+                    });
+
+                    // ── Newsletter ──
+                    const form = document.getElementById('newsletterForm');
+                    if (form) {
+                        form.removeEventListener('submit', handleNewsletter);
+                        form.addEventListener('submit', handleNewsletter);
+                    }
+
+                    // ── Language Switcher ──
+                    document.querySelectorAll('.lang-switcher button').forEach(btn => {
+                        btn.removeEventListener('click', handleLang);
+                        btn.addEventListener('click', handleLang);
+                    });
+
+                    // ── Footer Back to Top ──
+                    const footerBack = document.getElementById('footerBackTop');
+                    if (footerBack) {
+                        footerBack.removeEventListener('click', footerBackTop);
+                        footerBack.addEventListener('click', footerBackTop);
+                    }
+
+                    updateActiveSection();
+                }, 50);
+            }
+
+            function toggleTheme() {
+                const html = document.documentElement;
+                const current = html.getAttribute('data-theme') || 'dark';
+                const next = current === 'dark' ? 'light' : 'dark';
+                html.setAttribute('data-theme', next);
+                localStorage.setItem('rl-theme', next);
+                document.querySelectorAll('[data-theme-icon]').forEach(i => {
+                    i.className = next === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
+                });
+                const meta = document.getElementById('themeColorMeta');
+                if (meta) meta.content = next === 'dark' ? '#0B0A09' : '#F9F7F2';
+            }
+
+            function handleNewsletter(e) {
+                e.preventDefault();
+                const btn = this.querySelector('button');
+                const orig = btn.innerHTML;
+                btn.innerHTML = '<i class="fas fa-check"></i> Willkommen!';
+                btn.style.background = 'var(--rl-gradient-hover)';
+                setTimeout(() => { btn.innerHTML = orig;
+                    this.reset(); }, 2800);
+            }
+
+            function handleLang(e) {
+                const btn = e.currentTarget;
+                const lang = btn.getAttribute('data-lang');
+                if (!lang) return;
+                document.documentElement.setAttribute('data-lang', lang);
+                localStorage.setItem('rl-lang', lang);
+                document.querySelectorAll('.lang-switcher button').forEach(b => b.classList.toggle('active', b.getAttribute(
+                    'data-lang') === lang));
+            }
+
+            function footerBackTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+
+            function updateActiveSection() {
+                const sections = document.querySelectorAll('section[id]');
+                const links = document.querySelectorAll('.nav-link[data-section]');
+                let current = '';
+                const scrollPos = window.scrollY + 120;
+                sections.forEach(s => {
+                    const top = s.offsetTop,
+                        h = s.offsetHeight;
+                    if (scrollPos >= top && scrollPos < top + h) current = s.id;
+                });
+                links.forEach(l => {
+                    l.classList.toggle('active', l.getAttribute('data-section') === current);
+                });
+            }
+
+            // ── Restore theme and language ──
+            const savedTheme = localStorage.getItem('rl-theme');
+            if (savedTheme) {
+                document.documentElement.setAttribute('data-theme', savedTheme);
+                document.querySelectorAll('[data-theme-icon]').forEach(i => {
+                    i.className = savedTheme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
+                });
+            }
+            const savedLang = localStorage.getItem('rl-lang') || 'de';
+            document.documentElement.setAttribute('data-lang', savedLang);
+            document.querySelectorAll('.lang-switcher button').forEach(b => {
+                b.classList.toggle('active', b.getAttribute('data-lang') === savedLang);
+            });
+
+            if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+            else init();
+
+            window.addEventListener('scroll', updateActiveSection, { passive: true });
+
+            // ── Nav auto‑hide ──
+            const nav = document.querySelector('.rl-nav');
+            let lastScroll = 0;
+            window.addEventListener('scroll', function() {
+                const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+                if (nav) nav.classList.toggle('scrolled', currentScroll > 20);
+                if (currentScroll > 80) {
+                    if (currentScroll > lastScroll) nav?.classList.add('hidden');
+                    else nav?.classList.remove('hidden');
+                } else {
+                    nav?.classList.remove('hidden');
+                }
+                lastScroll = currentScroll;
+            }, { passive: true });
+
+        })();
+    </script>
+
+    <!-- ============================================================
+    PAGE SCRIPTS
+    ============================================================ -->
+    <script>
+        (function() {
+            'use strict';
+
+            // ===== SCROLL PROGRESS =====
+            const progress = document.getElementById('scrollProgress');
+            const sticky = document.getElementById('stickyCta');
+            const backTop = document.getElementById('backToTop');
+
+            window.addEventListener('scroll', function() {
+                const st = window.scrollY,
+                    dh = document.documentElement.scrollHeight - window.innerHeight;
+                if (progress) progress.style.width = (dh > 0 ? (st / dh) * 100 : 0) + '%';
+                if (st > 400) { sticky?.classList.add('visible');
+                    backTop?.classList.add('visible'); } else { sticky?.classList.remove('visible');
+                    backTop?.classList.remove('visible'); }
+            }, { passive: true });
+
+            backTop?.addEventListener('click', function() { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+            // ===== CUSTOM CURSOR =====
+            const dot = document.getElementById('cursorDot');
+            const ring = document.getElementById('cursorRing');
+            let mx = 0,
+                my = 0,
+                rx = 0,
+                ry = 0;
+
+            if (dot && ring && window.matchMedia('(min-width:769px)').matches) {
+                document.addEventListener('mousemove', function(e) {
+                    mx = e.clientX;
+                    my = e.clientY;
+                    dot.style.left = mx + 'px';
+                    dot.style.top = my + 'px';
+                    document.querySelectorAll('.magnetic-btn').forEach(function(b) {
+                        const r = b.getBoundingClientRect(),
+                            cx = r.left + r.width / 2,
+                            cy = r.top + r.height / 2,
+                            dx = e.clientX - cx,
+                            dy = e.clientY - cy,
+                            dist = Math.sqrt(dx * dx + dy * dy);
+                        b.style.transform = dist < 120 ? 'translate(' + (dx / 6) + 'px,' + (dy / 6) + 'px)' :
+                            'translate(0,0)';
+                    });
+                });
+
+                function animRing() { rx += (mx - rx) * 0.18;
+                    ry += (my - ry) * 0.18;
+                    ring.style.left = rx + 'px';
+                    ring.style.top = ry + 'px';
+                    requestAnimationFrame(animRing); }
+                animRing();
+
+                document.addEventListener('mouseover', function(e) {
+                    if (e.target.closest('a, button, .btn, .video-card, .testimonial-card, .value-card, .process-step, .audience-card, .magnetic-btn')) {
+                        dot.classList.add('hovering');
+                        ring.classList.add('hovering');
+                    }
+                });
+                document.addEventListener('mouseout', function(e) {
+                    if (e.target.closest('a, button, .btn, .video-card, .testimonial-card, .value-card, .process-step, .audience-card, .magnetic-btn')) {
+                        dot.classList.remove('hovering');
+                        ring.classList.remove('hovering');
+                    }
+                });
+            }
+
+            // ===== 3D FLIP CARD =====
+            const flipCard = document.getElementById('flipCard');
+            if (flipCard) {
+                flipCard.addEventListener('click', function() {
+                    this.classList.toggle('flipped');
+                });
+            }
+
+            // ===== VIDEO LIGHTBOX =====
+            const lightbox = document.getElementById('videoLightbox');
+            const player = document.getElementById('lightboxPlayer');
+            const closeLb = document.getElementById('closeLightbox');
+
+            document.querySelectorAll('.js-lightbox-trigger').forEach(function(card) {
+                card.addEventListener('click', function() {
+                    const src = card.dataset.video;
+                    if (!src || !player) return;
+                    player.src = src;
+                    player.load();
+                    lightbox.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                    player.play().catch(function() {});
+                });
+            });
+
+            function closeLightboxFn() {
+                if (!lightbox) return;
+                lightbox.classList.remove('active');
+                document.body.style.overflow = '';
+                if (player) { player.pause();
+                    player.removeAttribute('src'); }
+            }
+            if (closeLb) closeLb.addEventListener('click', closeLightboxFn);
+            if (lightbox) {
+                lightbox.addEventListener('click', function(e) { if (e.target === lightbox) closeLightboxFn(); });
+            }
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && lightbox && lightbox.classList.contains('active')) closeLightboxFn();
+            });
+
+            // ===== VIDEO HOVER PLAY =====
+            document.querySelectorAll('.video-card video').forEach(function(video) {
+                const card = video.closest('.video-card');
+                if (!card) return;
+                card.addEventListener('mouseenter', function() { video.play().catch(function() {}); });
+                card.addEventListener('mouseleave', function() { video.pause();
+                    video.currentTime = 0; });
+            });
+
+            // ===== STATS COUNTER =====
+            let statsAnimated = false;
+
+            function animateStats() {
+                if (statsAnimated) return;
+                statsAnimated = true;
+                document.querySelectorAll('.stat-item .number[data-count]').forEach(function(el) {
+                    const target = parseInt(el.dataset.count, 10);
+                    const duration = 1800;
+                    const startTime = performance.now();
+
+                    function step(now) {
+                        const progress = Math.min((now - startTime) / duration, 1);
+                        const ease = 1 - Math.pow(1 - progress, 3);
+                        const value = Math.floor(ease * target);
+                        el.textContent = value + (target >= 100 ? '+' : '');
+                        if (progress < 1) requestAnimationFrame(step);
+                    }
+                    requestAnimationFrame(step);
+                });
+            }
+
+            // ===== REVEAL ON SCROLL =====
+            const reveals = document.querySelectorAll('.reveal');
+            const revealObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        if (entry.target.closest('.about-hero')) animateStats();
+                    }
+                });
+            }, { threshold: 0.15 });
+
+            reveals.forEach(function(reveal) { revealObserver.observe(reveal); });
+
+            // ===== SMOOTH SCROLL =====
+            document.querySelectorAll('a[href^="#"]').forEach(function(link) {
+                link.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    const target = document.querySelector(targetId);
+                    if (target) { e.preventDefault();
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+                });
+            });
+
+            console.log('✨ Raphael Lezius – About Page v11.0 (Modular Nav + Enhanced Mobile)');
+        })();
+    </script>
+
 </body>
 </html>
