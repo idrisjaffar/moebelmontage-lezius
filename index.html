@@ -20,11 +20,11 @@
   <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-  <!-- ===== CSS (relative paths) ===== -->
+  <!-- Global CSS -->
   <link rel="stylesheet" href="assets/css/global.css">
   <link rel="stylesheet" href="assets/css/nav.css">
 
-  <!-- ========== DYNAMIC BASE TAG ========== -->
+  <!-- Dynamic Base Tag (MUST be on every page) -->
   <script>
     (function() {
       function getBasePath() {
@@ -41,9 +41,8 @@
     })();
   </script>
 
-  <!-- Additional styles for page‑specific sections (not navigation) -->
+  <!-- Homepage‑specific styles (keep these) -->
   <style>
-    /* ===== PROCESS STEPS (homepage) ===== */
     .process-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -57,7 +56,6 @@
       padding: 32px 24px;
       text-align: center;
       transition: all 0.3s ease;
-      position: relative;
     }
     .process-step:hover {
       transform: translateY(-6px);
@@ -94,7 +92,6 @@
     }
     @media (max-width: 900px) { .process-grid { grid-template-columns: 1fr; } }
 
-    /* ===== BENEFITS (Why choose me) ===== */
     .benefits-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -137,7 +134,6 @@
     @media (max-width: 900px) { .benefits-grid { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 600px) { .benefits-grid { grid-template-columns: 1fr; } }
 
-    /* ===== FAQ PREVIEW (accordion) ===== */
     .faq-preview {
       max-width: 700px;
       margin: 0 auto;
@@ -163,7 +159,6 @@
       cursor: pointer;
       font-weight: 600;
       font-size: 1rem;
-      transition: background 0.2s;
       background: transparent;
       border: none;
       width: 100%;
@@ -195,7 +190,6 @@
       padding: 0 24px 20px;
     }
 
-    /* ===== CTA BANNER ===== */
     .cta-banner {
       background: var(--rl-gradient-cta);
       border-radius: var(--rl-radius);
@@ -233,7 +227,7 @@
 </head>
 <body>
 
-  <!-- ===== FLOATING ELEMENTS ===== -->
+  <!-- ===== GLOBAL FLOATING ELEMENTS (same on every page) ===== -->
   <div class="cursor-dot" id="cursorDot"></div>
   <div class="cursor-ring" id="cursorRing"></div>
   <div class="scroll-progress" id="scrollProgress"></div>
@@ -262,12 +256,12 @@
     </div>
   </div>
 
-  <!-- ===== NAV PLACEHOLDER ===== -->
+  <!-- ===== NAV PLACEHOLDER (shared) ===== -->
   <div id="nav-placeholder"></div>
 
-  <!-- ===== MAIN CONTENT ===== -->
+  <!-- ===== MAIN CONTENT (HOMEPAGE UNIQUE) ===== -->
   <main>
-    <!-- ==================== HERO ==================== -->
+    <!-- HERO -->
     <section class="hero" id="home">
       <video class="hero-video-bg" autoplay muted loop playsinline>
         <source src="assets/video/hero-bg.mp4" type="video/mp4">
@@ -294,7 +288,6 @@
             <a href="contact.html" class="btn btn-secondary magnetic-btn" style="border-color:var(--rl-primary); color:var(--rl-primary);"><i class="fas fa-envelope"></i> <span data-lang="de">Kontakt</span><span data-lang="en" style="display:none;">Contact</span></a>
             <a href="faq.html" class="btn btn-secondary magnetic-btn" style="border-color:var(--rl-primary); color:var(--rl-primary);"><i class="fas fa-question-circle"></i> FAQ</a>
           </div>
-          <!-- Quick actions, search, stats, promise -->
           <div class="quick-actions reveal">
             <a href="services/usm-haller.html" class="quick-action"><i class="fas fa-gem"></i><span>USM Haller</span></a>
             <a href="services/moebel-kuechen.html" class="quick-action"><i class="fas fa-utensils"></i><span data-lang="de">Küchen</span><span data-lang="en" style="display:none;">Kitchens</span></a>
@@ -320,7 +313,7 @@
       </div>
     </section>
 
-    <!-- ==================== MARQUEE ==================== -->
+    <!-- MARQUEE -->
     <div class="marquee" aria-hidden="true">
       <div class="marquee-track">
         <span><i class="fas fa-cube"></i> IKEA PAX EXPERTE</span>
@@ -338,7 +331,7 @@
       </div>
     </div>
 
-    <!-- ==================== KING KONG GRID ==================== -->
+    <!-- SERVICES GRID -->
     <section class="kk-section" id="services">
       <div class="container">
         <div class="section-header reveal">
@@ -362,7 +355,7 @@
       </div>
     </section>
 
-    <!-- ==================== HOW IT WORKS ==================== -->
+    <!-- PROCESS -->
     <section class="section-padding" style="background:var(--rl-surface); border-top:1px solid var(--rl-border); border-bottom:1px solid var(--rl-border);">
       <div class="container">
         <div class="section-header reveal">
@@ -400,7 +393,7 @@
       </div>
     </section>
 
-    <!-- ==================== WHY CHOOSE ME ==================== -->
+    <!-- BENEFITS -->
     <section class="section-padding">
       <div class="container">
         <div class="section-header reveal">
@@ -442,7 +435,7 @@
       </div>
     </section>
 
-    <!-- ==================== FEATURED PROJECTS ==================== -->
+    <!-- PROJECTS -->
     <section class="section-padding" style="background:var(--rl-surface); border-top:1px solid var(--rl-border); border-bottom:1px solid var(--rl-border);">
       <div class="container">
         <div class="section-header reveal">
@@ -468,7 +461,7 @@
       </div>
     </section>
 
-    <!-- ==================== LIVE FEED ==================== -->
+    <!-- LIVE FEED -->
     <section class="section-padding">
       <div class="container">
         <div class="section-header reveal">
@@ -490,7 +483,7 @@
       </div>
     </section>
 
-    <!-- ==================== BUNDLES ==================== -->
+    <!-- BUNDLES -->
     <section class="bundles-section">
       <div class="container">
         <div class="section-header reveal">
@@ -549,7 +542,7 @@
       </div>
     </section>
 
-    <!-- ==================== TESTIMONIALS ==================== -->
+    <!-- TESTIMONIALS -->
     <section class="reviews-section">
       <div class="container">
         <div class="section-header reveal">
@@ -570,7 +563,7 @@
       </div>
     </section>
 
-    <!-- ==================== FAQ PREVIEW ==================== -->
+    <!-- FAQ -->
     <section class="section-padding" style="background:var(--rl-surface); border-top:1px solid var(--rl-border); border-bottom:1px solid var(--rl-border);">
       <div class="container">
         <div class="section-header reveal">
@@ -614,7 +607,7 @@
       </div>
     </section>
 
-    <!-- ==================== CTA BANNER ==================== -->
+    <!-- CTA BANNER -->
     <section class="container">
       <div class="cta-banner reveal">
         <h2 data-lang="de">Bereit für Ihre perfekte Montage?</h2>
@@ -663,19 +656,15 @@
     </div>
   </main>
 
-  <!-- ===== FOOTER PLACEHOLDER ===== -->
+  <!-- ===== FOOTER PLACEHOLDER (shared) ===== -->
   <div id="footer-placeholder"></div>
 
-  <!-- ============================================================ -->
-  <!-- EXTERNAL LOADER – handles nav, footer, and global UI once   -->
-  <!-- ============================================================ -->
+  <!-- ===== EXTERNAL LOADER ===== -->
   <script src="assets/js/loader.js"></script>
 
-  <!-- ============================================================ -->
-  <!-- PAGE‑SPECIFIC SCRIPTS (only for homepage features)           -->
-  <!-- ============================================================ -->
+  <!-- ===== HOMEPAGE‑SPECIFIC SCRIPTS ===== -->
   <script>
-    // ===== HERO SEARCH =====
+    // Hero search
     document.getElementById('heroSearchBtn')?.addEventListener('click', function() {
       const q = document.getElementById('heroSearch')?.value.trim();
       if (q) window.location.href = 'services.html?q=' + encodeURIComponent(q);
@@ -685,7 +674,7 @@
       if (e.key === 'Enter') document.getElementById('heroSearchBtn')?.click();
     });
 
-    // ===== LIVE COUNTERS (homepage stats) =====
+    // Live counters
     function animateCounter(el) {
       const target = parseInt(el.getAttribute('data-target'));
       const duration = 1800,
@@ -715,7 +704,7 @@
     }, { threshold: 0.15 });
     document.querySelectorAll('.reveal').forEach(function(el) { revealObserver.observe(el); });
 
-    // ===== FAQ ACCORDION =====
+    // FAQ accordion
     document.querySelectorAll('.faq-question').forEach(function(btn) {
       btn.addEventListener('click', function() {
         const item = this.closest('.faq-item');
@@ -728,7 +717,7 @@
       });
     });
 
-    // ===== SMOOTH SCROLL (anchor links) =====
+    // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(function(l) {
       l.addEventListener('click', function(e) {
         const id = this.getAttribute('href');
@@ -739,7 +728,8 @@
       });
     });
 
-    console.log('✨ Raphael Lezius – Homepage (loader + page‑specific scripts)');
+    console.log('✨ Homepage loaded (shared nav/footer via loader.js)');
   </script>
+
 </body>
 </html>
