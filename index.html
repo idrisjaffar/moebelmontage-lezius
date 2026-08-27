@@ -12,11 +12,17 @@
     <meta property="og:url" content="https://raphael-lezius.de" />
     <meta name="robots" content="index, follow" />
 
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+
+    <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
+    <!-- ============================================================
+         ALL STYLES EMBEDDED (self‑contained)
+         ============================================================ -->
     <style>
         /* ============================================================
            RAPHAEL LEZIUS – GLOBAL CSS (embedded)
@@ -3011,7 +3017,7 @@
         <!-- HERO -->
         <section class="hero" id="home">
             <video class="hero-video-bg" autoplay muted loop playsinline>
-                <source src="assets/video/hero-bg.mp4" type="video/mp4">
+                <source src="/assets/video/hero-bg.mp4" type="video/mp4">
             </video>
             <div class="container">
                 <div class="hero-content">
@@ -3193,15 +3199,15 @@
                 </div>
                 <div class="project-grid reveal">
                     <div class="project-card">
-                        <img src="assets/images/projects/project-1.jpg" alt="Projekt 1" onerror="this.style.display='none'" />
+                        <img src="/assets/images/projects/project-1.jpg" alt="Projekt 1" onerror="this.style.display='none'" />
                         <div class="info"><h4>USM Haller Bibliothek</h4><p data-lang="de">München · Maßgeschneiderte Regallösung</p><p data-lang="en" style="display:none;">Munich · Custom shelving solution</p></div>
                     </div>
                     <div class="project-card">
-                        <img src="assets/images/projects/project-2.jpg" alt="Projekt 2" onerror="this.style.display='none'" />
+                        <img src="/assets/images/projects/project-2.jpg" alt="Projekt 2" onerror="this.style.display='none'" />
                         <div class="info"><h4 data-lang="de">Küchenrenovierung</h4><h4 data-lang="en" style="display:none;">Kitchen renovation</h4><p data-lang="de">Augsburg · Alte Küche raus, neue rein</p><p data-lang="en" style="display:none;">Augsburg · Old kitchen out, new in</p></div>
                     </div>
                     <div class="project-card">
-                        <img src="assets/images/projects/project-3.jpg" alt="Projekt 3" onerror="this.style.display='none'" />
+                        <img src="/assets/images/projects/project-3.jpg" alt="Projekt 3" onerror="this.style.display='none'" />
                         <div class="info"><h4 data-lang="de">Outdoor Terrasse</h4><h4 data-lang="en" style="display:none;">Outdoor terrace</h4><p data-lang="de">München · Komplettmontage mit Gartenmöbeln</p><p data-lang="en" style="display:none;">Munich · Full assembly with garden furniture</p></div>
                     </div>
                 </div>
@@ -3854,7 +3860,7 @@
                 function performSearch() {
                     var query = searchInput ? searchInput.value.trim() : '';
                     if (query) {
-                        window.location.href = './services.html?q=' + encodeURIComponent(query);
+                        window.location.href = 'services.html?q=' + encodeURIComponent(query);
                     } else if (searchInput) {
                         searchInput.focus();
                     }
