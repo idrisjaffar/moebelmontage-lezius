@@ -2648,325 +2648,1218 @@
     </div>
   </footer>
 
-  <!-- ============================================================
-       SCRIPTS (embedded)
-       ============================================================ -->
-  <script>
+  <!-- =============================================================
+    SCRIPTS – Full functionality
+    ============================================================= -->
+ 
+<script>
     (function() {
-      'use strict';
+        'use strict';
 
-      function isMobile() { return window.innerWidth <= 900; }
-      function isTouchDevice() { return 'ontouchstart' in window || navigator.maxTouchPoints > 0; }
-      function debounce(fn, ms) {
-        var timer;
-        return function() {
-          var args = arguments;
-          var ctx = this;
-          clearTimeout(timer);
-          timer = setTimeout(function() { fn.apply(ctx, args); }, ms || 200);
+        // =============================================================
+        // 1.  CONFIGURATION
+        // =============================================================
+        const CONFIG = {
+            themeKey: 'rl-theme',
+            langKey: 'rl-lang',
+            defaultLang: 'de',
+            navHeight: 68,
+            scrollOffset: 100,
+            animationThreshold: 0.15,
+            particleCount: 40,
+            typingSpeed: 60,
         };
-      }
 
-      // Theme
-      function getStoredTheme() {
-        var stored = localStorage.getItem('rl-theme');
-        if (stored) return stored;
-        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-      }
-      function applyTheme(theme) {
-        var html = document.documentElement;
-        html.setAttribute('data-theme', theme);
-        localStorage.setItem('rl-theme', theme);
-        document.querySelectorAll('[data-theme-icon]').forEach(function(icon) {
-          icon.className = theme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
-        });
-        var meta = document.getElementById('themeColorMeta');
-        if (meta) meta.content = theme === 'dark' ? '#0B0A09' : '#F9F7F2';
-      }
+        // =============================================================
+        // 2.  TRANSLATIONS (DE / EN)
+        // =============================================================
+        const TRANSLATIONS = {
+            de: {
+                // Navigation
+                'nav_services': 'Services',
+                'nav_bundles': 'Bundles',
+                'nav_about': 'Über mich',
+                'nav_reviews': 'Bewertungen',
+                'nav_faq': 'FAQ',
+                'nav_contact': 'Kontakt',
+                'nav_cta': 'Kostenlos',
+                'nav_cta_full': 'Kostenloses Gespräch',
+                'nav_home': 'Start',
 
-      function bindUI() {
-        // Theme toggle
-        document.addEventListener('click', function(e) {
-          var btn = e.target.closest('[data-theme-toggle]');
-          if (btn) {
-            var current = document.documentElement.getAttribute('data-theme') || 'dark';
-            applyTheme(current === 'dark' ? 'light' : 'dark');
-          }
-        });
+                // Hero
+                'hero_title': 'Ihre Möbel verdienen<br /><span class="gold">mehr als nur eine Montage.</span>',
+                'hero_sub': 'Ich freue mich, dass Sie hier sind.<br />Bei mir bekommen Sie millimetergenaue Präzision, absolute Sauberkeit und die Sicherheit, dass alles mit Liebe und Garantie erledigt wird.',
+                'btn_consult': 'Unverbindliches Gespräch',
+                'btn_services': 'Alle Services',
+                'btn_about': 'Über mich',
+                'btn_contact': 'Kontakt',
+                'btn_faq': 'FAQ',
+                'quick_usm': 'USM Haller',
+                'quick_kitchen': 'Küchen',
+                'quick_garden': 'Garten',
+                'quick_moving': 'Umzug',
+                'stat_projects': 'erfolgreiche Projekte',
+                'stat_rating': 'Durchschnittsbewertung',
+                'stat_clients': 'glückliche Kunden',
+                'stat_recommend': 'Weiterempfehlung',
+                'promise_punctual': 'Pünktlichkeitsversprechen',
+                'promise_punctual_sub': '15 Min zu spät → 10 % Rabatt',
+                'promise_price': 'Preisgarantie',
+                'promise_price_sub': 'Bester Preis in der Region',
+                'promise_guarantee': '1 Jahr Garantie',
+                'promise_guarantee_sub': 'Persönliche Qualitätsgarantie',
 
-        // Mobile menu
-        var toggle = document.getElementById('navToggle');
-        var menu = document.getElementById('mobileMenu');
-        var backdrop = document.getElementById('navBackdrop');
-        var closeBtn = document.getElementById('mobileClose');
-        function openMenu() { if (menu) menu.classList.add('open'); if (backdrop) backdrop.classList.add('active'); if (toggle) toggle.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
-        function closeMenu() { if (menu) menu.classList.remove('open'); if (backdrop) backdrop.classList.remove('active'); if (toggle) toggle.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
-        if (toggle && menu) {
-          toggle.addEventListener('click', function() { menu.classList.contains('open') ? closeMenu() : openMenu(); });
-          if (backdrop) backdrop.addEventListener('click', closeMenu);
-          if (closeBtn) closeBtn.addEventListener('click', closeMenu);
-          menu.querySelectorAll('a').forEach(function(link) { link.addEventListener('click', closeMenu); });
-        }
+                // Services
+                'services_pre': 'Ihre Möglichkeiten',
+                'services_title': 'Was darf ich für Sie <span class="gold">perfekt</span> machen?',
+                'services_sub': 'Wählen Sie die Kategorie, die zu Ihrem Projekt passt. Alles Weitere besprechen wir in Ruhe.',
+                'service_furniture': 'Möbel &amp; Küchen',
+                'service_furniture_desc': 'Präzise Montage, die sich anfühlt, als wäre alles schon immer da gewesen',
+                'service_usm': 'USM Haller',
+                'service_usm_desc': 'Spezialist für das Schweizer System – ich kenne jedes Detail',
+                'service_garden': 'Garten &amp; Outdoor',
+                'service_garden_desc': 'Damit Ihr Außenbereich genauso schön wird wie Ihr Zuhause',
+                'service_moving': 'Demontage &amp; Umzug',
+                'service_moving_desc': 'Schonende Demontage und fachgerechter Aufbau am neuen Ort',
+                'service_office': 'Büro &amp; Objekt',
+                'service_office_desc': 'Professionelle Montage für Arbeitsplätze und gewerbliche Räume',
+                'service_premium': 'Premium Pro',
+                'service_premium_desc': 'White-Glove Service – für alle, die das Allerbeste möchten',
+                'btn_all_services': 'Zur vollständigen Übersicht',
+                'btn_bundles': 'Smarte Bundles',
 
-        // Scroll progress
-        var progress = document.getElementById('scrollProgress');
-        if (progress) {
-          var updateProgress = debounce(function() {
-            var scrollTop = window.scrollY;
-            var docHeight = document.documentElement.scrollHeight - window.innerHeight;
-            var percent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-            progress.style.width = percent + '%';
-          }, 10);
-          window.addEventListener('scroll', updateProgress, { passive: true });
-          updateProgress();
-        }
+                // Process
+                'process_pre': 'So einfach geht\'s',
+                'process_title': 'In <span class="gold">3 Schritten</span> zu Ihrer Traum‑Montage',
+                'process_sub': 'Von der ersten Idee bis zur fertigen Montage – ich begleite Sie professionell und transparent.',
+                'step1_title': 'Kostenlose Beratung',
+                'step1_desc': 'Wir besprechen Ihr Projekt, Ihre Wünsche und ich erstelle ein individuelles Angebot.',
+                'step2_title': 'Professionelle Montage',
+                'step2_desc': 'Ich montiere Ihre Möbel millimetergenau, staubfrei und mit höchster Sorgfalt.',
+                'step3_title': 'Garantie &amp; Nachsorge',
+                'step3_desc': '1 Jahr persönliche Garantie – falls etwas nicht stimmt, stehe ich sofort zur Verfügung.',
 
-        // Sticky CTA & Back to top
-        var stickyCta = document.getElementById('stickyCta');
-        var backTop = document.getElementById('backToTop');
-        function toggleSticky() {
-          var show = window.scrollY > 400;
-          if (stickyCta) stickyCta.classList.toggle('visible', show);
-          if (backTop) backTop.classList.toggle('visible', show);
-        }
-        window.addEventListener('scroll', toggleSticky, { passive: true });
-        toggleSticky();
-        if (backTop) backTop.addEventListener('click', function() { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+                // Why Me
+                'why_pre': 'Meine Versprechen',
+                'why_title': 'Warum Sie sich für <span class="gold">mich</span> entscheiden sollten',
+                'why_sub': 'Ich stehe für Qualität, Transparenz und Leidenschaft – das unterscheidet mich.',
+                'why_exp_title': '8+ Jahre Erfahrung',
+                'why_exp_desc': 'Tausende erfolgreiche Montagen – ich kenne jede Herausforderung.',
+                'why_precision_title': 'Millimetergenaue Arbeit',
+                'why_precision_desc': 'Jede Schraube sitzt perfekt – mein Anspruch ist absolute Präzision.',
+                'why_price_title': 'Feste Preise – keine Überraschungen',
+                'why_price_desc': 'Transparente Angebote – Sie zahlen genau das, was vereinbart wurde.',
+                'why_insurance_title': '5 Mio. € Versicherung',
+                'why_insurance_desc': 'Ihr Zuhause ist bei mir rundum abgesichert – für Ihre Sicherheit.',
 
-        // Custom cursor
-        if (!isTouchDevice() && window.matchMedia('(pointer: fine)').matches) {
-          var dot = document.getElementById('cursorDot');
-          var ring = document.getElementById('cursorRing');
-          if (dot && ring) {
-            var mouseX=0, mouseY=0, ringX=0, ringY=0;
-            document.addEventListener('mousemove', function(e) {
-              mouseX = e.clientX; mouseY = e.clientY;
-              dot.style.left = mouseX + 'px'; dot.style.top = mouseY + 'px';
-            });
-            function animateRing() {
-              ringX += (mouseX - ringX) * 0.18;
-              ringY += (mouseY - ringY) * 0.18;
-              ring.style.left = ringX + 'px'; ring.style.top = ringY + 'px';
-              requestAnimationFrame(animateRing);
+                // Projects
+                'projects_pre': 'Inspiration',
+                'projects_title': 'Ausgewählte <span class="gold">Projekte</span>',
+                'projects_sub': 'Ein Blick auf meine Arbeit – jedes Bild erzählt eine Geschichte von Präzision und Leidenschaft.',
+                'project1_title': 'USM Haller Bibliothek',
+                'project1_sub': 'München · Maßgeschneiderte Regallösung',
+                'project2_title': 'Küchenrenovierung',
+                'project2_sub': 'Augsburg · Alte Küche raus, neue rein',
+                'project3_title': 'Outdoor Terrasse',
+                'project3_sub': 'München · Komplettmontage mit Gartenmöbeln',
+
+                // Live Feed
+                'live_pre': 'Aktuell',
+                'live_title': 'Was gerade <span class="gold">passiert</span>',
+                'live_sub': 'Live‑Feed aus meinem Arbeitsalltag – echte Momente, echte Begeisterung.',
+                'live_label': 'Live',
+                'live_updated': 'Aktualisiert',
+
+                // Bundles
+                'bundles_pre': 'Smarte Kombinationen',
+                'bundles_title': 'Pakete, die Ihnen <span class="gold">Zeit sparen</span>',
+                'bundles_sub': 'Alles aus einer Hand – damit Sie sich um nichts kümmern müssen.',
+                'bundle_popular': 'Beliebt',
+                'bundle_kitchen': 'Küchen-Komplett',
+                'bundle_kitchen_desc': 'Alte Küche raus, neue Küche rein – alles in einem durchdachten Ablauf.',
+                'bundle_kitchen_li1': 'Demontage der alten Küche',
+                'bundle_kitchen_li2': 'Aufbau der neuen Küche',
+                'bundle_kitchen_li3': 'Geräteanschluss',
+                'bundle_kitchen_li4': 'Endreinigung',
+                'bundle_usm': 'USM All-In',
+                'bundle_usm_desc': 'Von der ersten Idee bis zur finalen Justierung – ich begleite Sie komplett.',
+                'bundle_usm_li1': 'Beratung &amp; Planung',
+                'bundle_usm_li2': 'Lieferkoordination',
+                'bundle_usm_li3': 'Professionelle Montage',
+                'bundle_usm_li4': 'Nachjustierung vor Ort',
+                'bundle_usm_price': 'Individuell',
+                'bundle_moving': 'Umzug Premium',
+                'bundle_moving_desc': 'Demontage, Schutz und Aufbau – damit Ihr Umzug so entspannt wie möglich wird.',
+                'bundle_moving_li1': 'Fachgerechte Demontage',
+                'bundle_moving_li2': 'Schutzverpackung',
+                'bundle_moving_li3': 'Aufbau am neuen Ort',
+                'bundle_moving_li4': 'Endkontrolle mit Ihnen',
+                'btn_view_bundle': 'Zum Bundle',
+                'btn_all_bundles': 'Alle Bundles im Überblick',
+
+                // Reviews
+                'reviews_pre': 'Ihre Stimmen',
+                'reviews_title': 'Was Menschen sagen, die mir <span class="gold">vertrauen</span>',
+                'reviews_sub': 'Echte Worte von echten Menschen – das bedeutet mir mehr als jede Auszeichnung.',
+                'review1_text': '„Absolut professionell und pünktlich. Die USM Montage war millimetergenau. Ich fühle mich sehr gut aufgehoben.“',
+                'review1_author': 'Thomas M.',
+                'review1_loc': 'München',
+                'review2_text': '„Sehr saubere Arbeit und freundliche Kommunikation. Die Küche sieht aus wie aus dem Katalog – nur noch schöner.“',
+                'review2_author': 'Sandra K.',
+                'review2_loc': 'Augsburg',
+                'review3_text': '„Endlich jemand, der sich wirklich Zeit nimmt und Wert auf Details legt. Man merkt die Leidenschaft.“',
+                'review3_author': 'Michael R.',
+                'review3_loc': 'München',
+                'btn_all_reviews': 'Alle Stimmen lesen',
+                'btn_share_experience': 'Ihre Erfahrung teilen',
+
+                // FAQ
+                'faq_pre': 'Häufig gestellte Fragen',
+                'faq_title': 'Antworten auf <span class="gold">Ihre</span> Fragen',
+                'faq_sub': 'Hier finden Sie die wichtigsten Informationen – für alle anderen Fragen stehe ich gerne persönlich zur Verfügung.',
+                'faq1_q': 'Wie lange dauert eine USM Haller Montage?',
+                'faq1_a': 'Je nach Größe und Komplexität dauert eine USM Haller Montage zwischen 2 und 8 Stunden. Ich arbeite zügig, aber mit höchster Präzision.',
+                'faq2_q': 'Bieten Sie auch eine Demontage an?',
+                'faq2_a': 'Ja, ich demontiere Ihre Möbel fachgerecht und verpacke sie sicher für den Transport – egal ob Umzug oder Entsorgung.',
+                'faq3_q': 'Wie ist das mit der Garantie?',
+                'faq3_a': 'Ich gebe Ihnen 1 Jahr persönliche Garantie auf meine Arbeit. Sollte etwas nicht stimmen, komme ich selbstverständlich kostenlos nach.',
+                'btn_full_faq': 'Zur vollständigen FAQ',
+
+                // CTA
+                'cta_title': 'Bereit für Ihre perfekte Montage?',
+                'cta_sub': 'Vereinbaren Sie jetzt ein unverbindliches Gespräch – ich freue mich auf Sie!',
+                'cta_btn': 'Jetzt Gespräch vereinbaren',
+
+                // Footer
+                'footer_live': 'Live',
+                'footer_active': 'aktiv',
+                'footer_desc': 'Premium Montage mit echter Leidenschaft – millimetergenau, staubfrei und immer mit Herz.',
+                'footer_response': 'Antwort &lt; 24 h',
+                'footer_guarantee': '1 Jahr Garantie',
+                'newsletter_title': 'Bleiben Sie verbunden',
+                'newsletter_sub': 'Monatliche Tipps, exklusive Angebote und Einblicke – nur wenn Sie möchten.',
+                'newsletter_label': 'Ihre E-Mail-Adresse',
+                'newsletter_btn': 'Anmelden',
+                'newsletter_consent': 'Ich stimme der <a href="/legal/datenschutz.html">Datenschutzerklärung</a> zu.',
+                'footer_services': 'Services',
+                'footer_all_services': 'Alle Services',
+                'footer_furniture': 'Möbel &amp; Küchen',
+                'footer_usm': 'USM Haller',
+                'footer_garden': 'Garten &amp; Outdoor',
+                'footer_moving': 'Demontage &amp; Umzug',
+                'footer_premium': 'Premium Pro',
+                'footer_bundles': 'Bundles',
+                'footer_all_bundles': 'Alle Bundles',
+                'footer_bundle_kitchen': 'Küchen-Komplett',
+                'footer_bundle_usm': 'USM All‑In',
+                'footer_bundle_moving': 'Umzug Premium',
+                'footer_help': 'Hilfe',
+                'footer_contact': 'Kontakt',
+                'footer_about': 'Über',
+                'footer_about_me': 'Über mich',
+                'footer_reviews': 'Kundenstimmen',
+                'footer_consult': 'Kostenloses Gespräch',
+                'footer_lang': 'Sprache:',
+                'footer_contact_title': 'Kontakt',
+                'footer_legal': 'Rechtliches',
+                'footer_privacy': 'Datenschutz',
+                'footer_cancellation': 'Widerruf',
+                'footer_cookie': 'Cookie‑Richtlinie',
+                'footer_privacy_short': 'Datenschutz',
+                'footer_copyright': 'Mit Sorgfalt gemacht in Augsburg',
+                'footer_backtop': 'Nach oben',
+                'footer_sentiment': 'Danke, dass Sie sich die Zeit genommen haben. Es bedeutet mir viel.',
+
+                // Trust bar
+                'trust_clients_label': 'Vertrauen',
+                'trust_clients_value': 'Kunden',
+                'trust_rating_label': 'Bewertung',
+                'trust_response_label': 'Reaktionszeit',
+                'trust_insurance_label': 'Versicherung',
+                'trust_service_label': 'Service',
+                'trust_service_value': 'White‑Glove',
+                'trust_exp_label': 'Erfahrung',
+                'trust_exp_value': 'Jahre',
+            },
+            en: {
+                // Navigation
+                'nav_services': 'Services',
+                'nav_bundles': 'Bundles',
+                'nav_about': 'About me',
+                'nav_reviews': 'Reviews',
+                'nav_faq': 'FAQ',
+                'nav_contact': 'Contact',
+                'nav_cta': 'Free',
+                'nav_cta_full': 'Free Consultation',
+                'nav_home': 'Home',
+
+                // Hero
+                'hero_title': 'Your furniture deserves<br /><span class="gold">more than just assembly.</span>',
+                'hero_sub': "I'm glad you're here.<br />With me, you get millimetre‑precision, absolute cleanliness, and the security that everything is done with love and a guarantee.",
+                'btn_consult': 'Free Consultation',
+                'btn_services': 'All Services',
+                'btn_about': 'About me',
+                'btn_contact': 'Contact',
+                'btn_faq': 'FAQ',
+                'quick_usm': 'USM Haller',
+                'quick_kitchen': 'Kitchens',
+                'quick_garden': 'Garden',
+                'quick_moving': 'Moving',
+                'stat_projects': 'successful projects',
+                'stat_rating': 'Average rating',
+                'stat_clients': 'happy clients',
+                'stat_recommend': 'recommendation',
+                'promise_punctual': 'Punctuality promise',
+                'promise_punctual_sub': '15 min late → 10% off',
+                'promise_price': 'Price guarantee',
+                'promise_price_sub': 'Best price in the region',
+                'promise_guarantee': '1‑year guarantee',
+                'promise_guarantee_sub': 'Personal quality guarantee',
+
+                // Services
+                'services_pre': 'Your options',
+                'services_title': 'What can I <span class="gold">perfect</span> for you?',
+                'services_sub': 'Choose the category that fits your project. We\'ll discuss the rest in peace.',
+                'service_furniture': 'Furniture &amp; Kitchens',
+                'service_furniture_desc': 'Precise assembly that feels like it was always there',
+                'service_usm': 'USM Haller',
+                'service_usm_desc': 'Specialist for the Swiss system – I know every detail',
+                'service_garden': 'Garden &amp; Outdoor',
+                'service_garden_desc': 'So your outdoor space becomes as beautiful as your home',
+                'service_moving': 'Disassembly &amp; Moving',
+                'service_moving_desc': 'Gentle disassembly and professional assembly at the new location',
+                'service_office': 'Office &amp; Commercial',
+                'service_office_desc': 'Professional assembly for workplaces and commercial spaces',
+                'service_premium': 'Premium Pro',
+                'service_premium_desc': 'White‑Glove service – for those who want the very best',
+                'btn_all_services': 'Full overview',
+                'btn_bundles': 'Smart Bundles',
+
+                // Process
+                'process_pre': 'How it works',
+                'process_title': 'In <span class="gold">3 steps</span> to your dream assembly',
+                'process_sub': 'From the first idea to the finished assembly – I accompany you professionally and transparently.',
+                'step1_title': 'Free Consultation',
+                'step1_desc': 'We discuss your project, your wishes, and I create a custom quote.',
+                'step2_title': 'Professional Assembly',
+                'step2_desc': 'I assemble your furniture with millimetre precision, dust‑free and with the utmost care.',
+                'step3_title': 'Guarantee &amp; Aftercare',
+                'step3_desc': '1‑year personal guarantee – if something is wrong, I\'m immediately available.',
+
+                // Why Me
+                'why_pre': 'My promises',
+                'why_title': 'Why you should choose <span class="gold">me</span>',
+                'why_sub': 'I stand for quality, transparency, and passion – that\'s what sets me apart.',
+                'why_exp_title': '8+ years of experience',
+                'why_exp_desc': 'Thousands of successful assemblies – I know every challenge.',
+                'why_precision_title': 'Millimetre precision',
+                'why_precision_desc': 'Every screw fits perfectly – my standard is absolute precision.',
+                'why_price_title': 'Fixed prices – no surprises',
+                'why_price_desc': 'Transparent quotes – you pay exactly what was agreed.',
+                'why_insurance_title': '5 million € insurance',
+                'why_insurance_desc': 'Your home is fully covered – for your peace of mind.',
+
+                // Projects
+                'projects_pre': 'Inspiration',
+                'projects_title': 'Featured <span class="gold">Projects</span>',
+                'projects_sub': 'A look at my work – every picture tells a story of precision and passion.',
+                'project1_title': 'USM Haller Library',
+                'project1_sub': 'Munich · Custom shelving solution',
+                'project2_title': 'Kitchen renovation',
+                'project2_sub': 'Augsburg · Old kitchen out, new in',
+                'project3_title': 'Outdoor terrace',
+                'project3_sub': 'Munich · Full assembly with garden furniture',
+
+                // Live Feed
+                'live_pre': 'Live',
+                'live_title': 'What\'s <span class="gold">happening</span> right now',
+                'live_sub': 'Live feed from my daily work – real moments, real enthusiasm.',
+                'live_label': 'Live',
+                'live_updated': 'Updated',
+
+                // Bundles
+                'bundles_pre': 'Smart combinations',
+                'bundles_title': 'Packages that <span class="gold">save you time</span>',
+                'bundles_sub': 'Everything from a single source – so you don\'t have to worry about anything.',
+                'bundle_popular': 'Popular',
+                'bundle_kitchen': 'Kitchen Complete',
+                'bundle_kitchen_desc': 'Old kitchen out, new kitchen in – everything in a well‑thought‑out process.',
+                'bundle_kitchen_li1': 'Disassembly of the old kitchen',
+                'bundle_kitchen_li2': 'Assembly of the new kitchen',
+                'bundle_kitchen_li3': 'Appliance connection',
+                'bundle_kitchen_li4': 'Final cleaning',
+                'bundle_usm': 'USM All‑In',
+                'bundle_usm_desc': 'From the first idea to the final adjustment – I accompany you completely.',
+                'bundle_usm_li1': 'Consultation &amp; planning',
+                'bundle_usm_li2': 'Delivery coordination',
+                'bundle_usm_li3': 'Professional assembly',
+                'bundle_usm_li4': 'On‑site adjustment',
+                'bundle_usm_price': 'Custom',
+                'bundle_moving': 'Moving Premium',
+                'bundle_moving_desc': 'Disassembly, protection, and assembly – to make your move as relaxed as possible.',
+                'bundle_moving_li1': 'Professional disassembly',
+                'bundle_moving_li2': 'Protective packaging',
+                'bundle_moving_li3': 'Assembly at the new location',
+                'bundle_moving_li4': 'Final check with you',
+                'btn_view_bundle': 'View Bundle',
+                'btn_all_bundles': 'All Bundles Overview',
+
+                // Reviews
+                'reviews_pre': 'Your voices',
+                'reviews_title': 'What people who <span class="gold">trust</span> me say',
+                'reviews_sub': 'Real words from real people – that means more to me than any award.',
+                'review1_text': '"Absolutely professional and punctual. The USM assembly was millimetre‑precise. I feel very well taken care of."',
+                'review1_author': 'Thomas M.',
+                'review1_loc': 'Munich',
+                'review2_text': '"Very clean work and friendly communication. The kitchen looks like it\'s from a catalogue – even more beautiful."',
+                'review2_author': 'Sandra K.',
+                'review2_loc': 'Augsburg',
+                'review3_text': '"Finally someone who really takes time and pays attention to details. You can feel the passion."',
+                'review3_author': 'Michael R.',
+                'review3_loc': 'Munich',
+                'btn_all_reviews': 'Read all reviews',
+                'btn_share_experience': 'Share your experience',
+
+                // FAQ
+                'faq_pre': 'Frequently Asked Questions',
+                'faq_title': 'Answers to <span class="gold">your</span> questions',
+                'faq_sub': 'Here you\'ll find the most important information – for all other questions, I\'m happy to help personally.',
+                'faq1_q': 'How long does a USM Haller assembly take?',
+                'faq1_a': 'Depending on size and complexity, a USM Haller assembly takes between 2 and 8 hours. I work efficiently, but with the highest precision.',
+                'faq2_q': 'Do you also offer disassembly?',
+                'faq2_a': 'Yes, I professionally disassemble your furniture and pack it securely for transport – whether for moving or disposal.',
+                'faq3_q': 'What about the guarantee?',
+                'faq3_a': 'I give you a 1‑year personal guarantee on my work. If something isn\'t right, I\'ll of course come back free of charge.',
+                'btn_full_faq': 'To the full FAQ',
+
+                // CTA
+                'cta_title': 'Ready for your perfect assembly?',
+                'cta_sub': 'Book a non‑binding consultation now – I look forward to hearing from you!',
+                'cta_btn': 'Book a consultation now',
+
+                // Footer
+                'footer_live': 'Live',
+                'footer_active': 'active',
+                'footer_desc': 'Premium assembly with real passion – precise, dust‑free, and always with heart.',
+                'footer_response': 'Response &lt; 24 h',
+                'footer_guarantee': '1‑year guarantee',
+                'newsletter_title': 'Stay connected',
+                'newsletter_sub': 'Monthly tips, exclusive offers, and insights – only if you want.',
+                'newsletter_label': 'Your email address',
+                'newsletter_btn': 'Subscribe',
+                'newsletter_consent': 'I agree to the <a href="/legal/datenschutz.html">privacy policy</a>.',
+                'footer_services': 'Services',
+                'footer_all_services': 'All Services',
+                'footer_furniture': 'Furniture &amp; Kitchens',
+                'footer_usm': 'USM Haller',
+                'footer_garden': 'Garden &amp; Outdoor',
+                'footer_moving': 'Disassembly &amp; Moving',
+                'footer_premium': 'Premium Pro',
+                'footer_bundles': 'Bundles',
+                'footer_all_bundles': 'All Bundles',
+                'footer_bundle_kitchen': 'Kitchen Complete',
+                'footer_bundle_usm': 'USM All‑In',
+                'footer_bundle_moving': 'Moving Premium',
+                'footer_help': 'Help',
+                'footer_contact': 'Contact',
+                'footer_about': 'About',
+                'footer_about_me': 'About me',
+                'footer_reviews': 'Reviews',
+                'footer_consult': 'Free Consultation',
+                'footer_lang': 'Language:',
+                'footer_contact_title': 'Contact',
+                'footer_legal': 'Legal',
+                'footer_privacy': 'Privacy',
+                'footer_cancellation': 'Cancellation',
+                'footer_cookie': 'Cookie Policy',
+                'footer_privacy_short': 'Privacy',
+                'footer_copyright': 'Crafted with care in Augsburg',
+                'footer_backtop': 'Top',
+                'footer_sentiment': 'Thank you for taking the time. It means a lot to me.',
+
+                // Trust bar
+                'trust_clients_label': 'Trust',
+                'trust_clients_value': 'clients',
+                'trust_rating_label': 'Rating',
+                'trust_response_label': 'Response time',
+                'trust_insurance_label': 'Insurance',
+                'trust_service_label': 'Service',
+                'trust_service_value': 'White‑Glove',
+                'trust_exp_label': 'Experience',
+                'trust_exp_value': 'years',
             }
-            animateRing();
-            document.addEventListener('mouseover', function(e) {
-              var target = e.target.closest('a, button, .btn, .magnetic-btn, .audience-card, .value-card, .process-step, .testimonial-card');
-              if (target) { dot.classList.add('hovering'); ring.classList.add('hovering'); }
-            });
-            document.addEventListener('mouseout', function(e) {
-              var target = e.target.closest('a, button, .btn, .magnetic-btn, .audience-card, .value-card, .process-step, .testimonial-card');
-              if (target) { dot.classList.remove('hovering'); ring.classList.remove('hovering'); }
-            });
-          }
-        }
+        };
 
-        // Magnetic buttons
-        if (!isTouchDevice() && window.matchMedia('(pointer: fine)').matches) {
-          document.addEventListener('mousemove', function(e) {
-            document.querySelectorAll('.magnetic-btn').forEach(function(btn) {
-              var rect = btn.getBoundingClientRect();
-              var cx = rect.left + rect.width/2, cy = rect.top + rect.height/2;
-              var dx = e.clientX - cx, dy = e.clientY - cy;
-              var dist = Math.sqrt(dx*dx + dy*dy);
-              if (dist < 120) {
-                var strength = (120 - dist) / 120 * 4;
-                btn.style.transform = 'translate(' + (dx * strength / 6) + 'px, ' + (dy * strength / 6) + 'px)';
-              } else { btn.style.transform = 'translate(0,0)'; }
-            });
-          });
+        // =============================================================
+        // 3.  HELPERS
+        // =============================================================
+        function isMobile() { return window.innerWidth <= 900; }
+        function isTouchDevice() { return 'ontouchstart' in window || navigator.maxTouchPoints > 0; }
+        function debounce(fn, ms) {
+            var timer;
+            return function() {
+                var args = arguments,
+                    ctx = this;
+                clearTimeout(timer);
+                timer = setTimeout(function() { fn.apply(ctx, args); }, ms || 200);
+            };
         }
-
-        // Live counters
-        function animateCounter(el) {
-          var target = parseInt(el.getAttribute('data-target'), 10);
-          if (isNaN(target) || target <= 0) return;
-          var duration = 1800, startTime = performance.now();
-          function updateCounter(currentTime) {
-            var elapsed = currentTime - startTime;
-            var progress = Math.min(elapsed / duration, 1);
-            var eased = 1 - Math.pow(1 - progress, 3);
-            var current = Math.floor(eased * target);
-            el.textContent = current.toLocaleString('de-DE') + (target >= 100 ? '+' : '');
-            if (progress < 1) requestAnimationFrame(updateCounter);
-            else el.textContent = target.toLocaleString('de-DE') + (target >= 100 ? '+' : '');
-          }
-          requestAnimationFrame(updateCounter);
-        }
-
-        // Reveal on scroll
-        var revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
-        var revealObserver = new IntersectionObserver(function(entries) {
-          entries.forEach(function(entry) {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('visible');
-              entry.target.querySelectorAll('.live-counter').forEach(function(counter) {
-                if (!counter.classList.contains('counted')) {
-                  counter.classList.add('counted');
-                  animateCounter(counter);
+        function throttle(fn, ms) {
+            var lastCall = 0;
+            return function() {
+                var now = Date.now();
+                if (now - lastCall >= ms) {
+                    lastCall = now;
+                    fn.apply(this, arguments);
                 }
-              });
-            }
-          });
-        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-        revealElements.forEach(function(el) { revealObserver.observe(el); });
-
-        setTimeout(function() {
-          document.querySelectorAll('.reveal.visible .live-counter, .live-counter.visible').forEach(function(counter) {
-            if (!counter.classList.contains('counted')) {
-              counter.classList.add('counted');
-              animateCounter(counter);
-            }
-          });
-        }, 300);
-
-        // Newsletter form
-        var newsletterForm = document.getElementById('newsletterForm');
-        if (newsletterForm) {
-          newsletterForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            var btn = newsletterForm.querySelector('button[type="submit"]');
-            var orig = btn.innerHTML;
-            btn.innerHTML = '<i class="fas fa-check"></i> Willkommen!';
-            btn.style.background = 'var(--rl-gradient-cta-hover, #E4B98A)';
-            setTimeout(function() { btn.innerHTML = orig; btn.style.background = ''; newsletterForm.reset(); }, 2500);
-          });
+            };
         }
 
-        // Language switcher
-        function initLanguageSwitcher() {
-          var langBtns = document.querySelectorAll('.rl-footer__lang .lang-btn, .lang-switch .lang-btn');
-          if (!langBtns.length) return;
-          function updateLanguage(lang) {
-            langBtns.forEach(function(btn) { btn.classList.toggle('active', btn.getAttribute('data-lang') === lang); });
-            document.querySelectorAll('[data-lang]:not(.lang-btn)').forEach(function(el) {
-              var show = (el.getAttribute('data-lang') === lang);
-              el.style.display = show ? '' : 'none';
+        // =============================================================
+        // 4.  THEME
+        // =============================================================
+        function getStoredTheme() {
+            var stored = localStorage.getItem(CONFIG.themeKey);
+            if (stored) return stored;
+            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        function applyTheme(theme) {
+            var html = document.documentElement;
+            html.setAttribute('data-theme', theme);
+            localStorage.setItem(CONFIG.themeKey, theme);
+            document.querySelectorAll('[data-theme-icon]').forEach(function(icon) {
+                icon.className = theme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
             });
-          }
-          langBtns.forEach(function(btn) {
-            btn.addEventListener('click', function() { updateLanguage(this.getAttribute('data-lang')); });
-          });
-          var activeLang = document.querySelector('.rl-footer__lang .lang-btn.active');
-          if (activeLang) updateLanguage(activeLang.getAttribute('data-lang'));
+            var meta = document.getElementById('themeColorMeta');
+            if (meta) meta.content = theme === 'dark' ? '#0B0A09' : '#F9F7F2';
         }
-        initLanguageSwitcher();
 
-        // Footer accordion
-        document.querySelectorAll('.rl-footer__col h5').forEach(function(heading) {
-          var ul = heading.nextElementSibling;
-          if (ul && ul.tagName === 'UL') {
-            heading.addEventListener('click', function() {
-              var col = this.closest('.rl-footer__col');
-              col.classList.toggle('open');
-              var icon = this.querySelector('.accordion-icon i');
-              if (icon) { icon.classList.toggle('fa-chevron-down'); icon.classList.toggle('fa-chevron-up'); }
+        // =============================================================
+        // 5.  TRANSLATION ENGINE
+        // =============================================================
+        var currentLang = localStorage.getItem(CONFIG.langKey) || CONFIG.defaultLang;
+
+        function applyLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem(CONFIG.langKey, lang);
+            document.documentElement.setAttribute('lang', lang === 'de' ? 'de' : 'en');
+
+            // Update all data-i18n elements
+            document.querySelectorAll('[data-i18n]').forEach(function(el) {
+                var key = el.getAttribute('data-i18n');
+                if (TRANSLATIONS[lang] && TRANSLATIONS[lang][key] !== undefined) {
+                    el.innerHTML = TRANSLATIONS[lang][key];
+                }
             });
-          }
-        });
 
-        // Footer back to top
-        var footerBack = document.getElementById('footerBackTop');
-        if (footerBack) footerBack.addEventListener('click', function() { window.scrollTo({ top:0, behavior:'smooth' }); });
+            // Update language buttons
+            document.querySelectorAll('.lang-btn').forEach(function(btn) {
+                btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+            });
 
-        // Visitor counter
-        var visitorEl = document.getElementById('visitorCount');
-        if (visitorEl) {
-          var count = Math.floor(Math.random() * 16) + 8;
-          visitorEl.textContent = count;
-          setInterval(function() {
-            var delta = Math.floor(Math.random() * 5) - 2;
-            var newCount = Math.max(1, parseInt(visitorEl.textContent) + delta);
-            visitorEl.textContent = newCount;
-          }, 30000);
+            // Re-trigger any dynamic content (e.g., counters, live feed)
+            // We'll re-run some initializations if needed
         }
 
-        // Hide cursor on touch
-        if (isTouchDevice() || isMobile()) {
-          document.querySelectorAll('.cursor-dot, .cursor-ring').forEach(function(el) { el.style.display = 'none'; });
+        // =============================================================
+        // 6.  SMOOTH PAGE TRANSITIONS
+        // =============================================================
+        function initPageTransitions() {
+            document.addEventListener('click', function(e) {
+                var link = e.target.closest('a[href]');
+                if (!link) return;
+                var href = link.getAttribute('href');
+                // Skip external links, anchors, or javascript:...
+                if (href.startsWith('http') || href.startsWith('#') || href.startsWith('javascript:')) return;
+                // Only internal links to pages within our site
+                if (href.startsWith('/') || !href.includes('://')) {
+                    e.preventDefault();
+                    // Fade out
+                    document.body.style.opacity = '0';
+                    document.body.style.transition = 'opacity 0.3s ease';
+                    setTimeout(function() {
+                        window.location.href = href;
+                    }, 300);
+                }
+            });
+            // On page load, fade in
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.3s ease';
+            window.addEventListener('load', function() {
+                document.body.style.opacity = '1';
+            });
         }
 
-        // Nav hide on scroll (sticky)
-        var nav = document.getElementById('mainNav');
-        if (nav) {
-          var lastScroll = 0;
-          window.addEventListener('scroll', function() {
-            var currentScroll = window.scrollY;
-            if (currentScroll > 100) {
-              nav.classList.add('scrolled');
-              if (currentScroll > lastScroll && currentScroll > 200) {
-                nav.classList.add('hidden');
-              } else {
-                nav.classList.remove('hidden');
-              }
-            } else {
-              nav.classList.remove('scrolled', 'hidden');
+        // =============================================================
+        // 7.  TYPING EFFECT
+        // =============================================================
+        function initTyping() {
+            var target = document.querySelector('.hero h1');
+            if (!target) return;
+            var original = target.innerHTML;
+            // Remove any existing typing content
+            target.innerHTML = '';
+            var text = original.replace(/<[^>]*>/g, ''); // strip HTML for typing
+            var i = 0;
+            function type() {
+                if (i < text.length) {
+                    target.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, CONFIG.typingSpeed);
+                } else {
+                    // Restore HTML tags after typing
+                    target.innerHTML = original;
+                }
             }
-            lastScroll = currentScroll;
-          }, { passive: true });
+            // Wait for page load before starting
+            setTimeout(type, 1000);
         }
 
-        // ---- About page specific features ----
-        // Flip card
-        var flipCard = document.getElementById('flipCard');
-        if (flipCard) {
-          flipCard.addEventListener('click', function() { this.classList.toggle('flipped'); });
+        // =============================================================
+        // 8.  PARTICLE BACKGROUND (canvas)
+        // =============================================================
+        function initParticles() {
+            var canvas = document.createElement('canvas');
+            canvas.id = 'particleCanvas';
+            canvas.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:-1;';
+            document.body.prepend(canvas);
+            var ctx = canvas.getContext('2d');
+            var particles = [];
+            var mouseX = 0,
+                mouseY = 0;
+
+            function resize() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+            window.addEventListener('resize', resize);
+            resize();
+
+            class Particle {
+                constructor() {
+                    this.reset();
+                }
+                reset() {
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() * canvas.height;
+                    this.size = Math.random() * 3 + 1;
+                    this.speedX = (Math.random() - 0.5) * 0.5;
+                    this.speedY = (Math.random() - 0.5) * 0.5;
+                    this.opacity = Math.random() * 0.6 + 0.2;
+                }
+                update() {
+                    this.x += this.speedX;
+                    this.y += this.speedY;
+                    // Mouse influence
+                    var dx = mouseX - this.x;
+                    var dy = mouseY - this.y;
+                    var dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < 150) {
+                        var force = (150 - dist) / 150 * 0.02;
+                        this.x += dx * force;
+                        this.y += dy * force;
+                    }
+                    // Wrap around
+                    if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+                    if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+                }
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fillStyle = 'rgba(212,165,116,' + this.opacity + ')';
+                    ctx.fill();
+                }
+            }
+
+            for (var i = 0; i < CONFIG.particleCount; i++) {
+                particles.push(new Particle());
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                particles.forEach(function(p) {
+                    p.update();
+                    p.draw();
+                });
+                // Draw connections
+                for (var i = 0; i < particles.length; i++) {
+                    for (var j = i + 1; j < particles.length; j++) {
+                        var dx = particles[i].x - particles[j].x;
+                        var dy = particles[i].y - particles[j].y;
+                        var dist = Math.sqrt(dx * dx + dy * dy);
+                        if (dist < 120) {
+                            ctx.beginPath();
+                            ctx.moveTo(particles[i].x, particles[i].y);
+                            ctx.lineTo(particles[j].x, particles[j].y);
+                            ctx.strokeStyle = 'rgba(212,165,116,' + (0.1 * (1 - dist / 120)) + ')';
+                            ctx.lineWidth = 0.5;
+                            ctx.stroke();
+                        }
+                    }
+                }
+                requestAnimationFrame(animate);
+            }
+            animate();
+
+            document.addEventListener('mousemove', function(e) {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+            });
         }
 
-        // Video lightbox
-        var lightbox = document.getElementById('videoLightbox');
-        var player = document.getElementById('lightboxPlayer');
-        var closeLb = document.getElementById('closeLightbox');
+        // =============================================================
+        // 9.  PRICE ESTIMATOR (interactive widget)
+        // =============================================================
+        function initPriceEstimator() {
+            var container = document.createElement('div');
+            container.className = 'price-estimator';
+            container.style.cssText = 'background:var(--rl-card);border:1px solid var(--rl-border);border-radius:var(--rl-radius);padding:20px 24px;margin:30px auto;max-width:400px;text-align:center;';
+            container.innerHTML = `
+                <h4 style="font-family:var(--font-head);font-weight:700;font-size:1.1rem;margin-bottom:12px;" data-i18n="estimator_title">💰 Kosten-Schätzer</h4>
+                <div style="display:flex;flex-direction:column;gap:10px;">
+                    <select id="estService" style="padding:10px;border-radius:10px;border:1px solid var(--rl-border);background:var(--rl-bg);color:var(--rl-text);">
+                        <option value="usm" data-i18n="est_usm">USM Haller</option>
+                        <option value="kitchen" data-i18n="est_kitchen">Küchenmontage</option>
+                        <option value="moving" data-i18n="est_moving">Umzug</option>
+                        <option value="garden" data-i18n="est_garden">Garten & Outdoor</option>
+                    </select>
+                    <select id="estSize" style="padding:10px;border-radius:10px;border:1px solid var(--rl-border);background:var(--rl-bg);color:var(--rl-text);">
+                        <option value="small" data-i18n="est_small">Klein (1-2 Räume)</option>
+                        <option value="medium" data-i18n="est_medium">Mittel (3-4 Räume)</option>
+                        <option value="large" data-i18n="est_large">Groß (5+ Räume)</option>
+                    </select>
+                    <select id="estUrgency" style="padding:10px;border-radius:10px;border:1px solid var(--rl-border);background:var(--rl-bg);color:var(--rl-text);">
+                        <option value="flexible" data-i18n="est_flexible">Flexibel</option>
+                        <option value="within-week" data-i18n="est_week">Innerhalb einer Woche</option>
+                        <option value="urgent" data-i18n="est_urgent">Sehr dringend</option>
+                    </select>
+                    <div style="margin-top:10px;font-size:1.2rem;font-weight:700;color:var(--rl-primary);" id="estResult">
+                        <span data-i18n="est_estimated">Geschätzt:</span> <span id="estPrice">420 €</span>
+                    </div>
+                    <button class="btn btn-sm btn-primary" id="estUpdate" style="width:100%;" data-i18n="est_update">Schätzen</button>
+                </div>
+            `;
+            // Insert after hero stats
+            var stats = document.querySelector('.hero-stats');
+            if (stats && stats.parentNode) {
+                stats.parentNode.insertBefore(container, stats.nextSibling);
+            }
 
-        document.querySelectorAll('.js-lightbox-trigger').forEach(function(card) {
-          card.addEventListener('click', function() {
-            var src = this.dataset.video;
-            if (!src || !player) return;
-            player.src = src;
-            player.load();
-            lightbox.classList.add('active');
-            document.body.style.overflow = 'hidden';
-            player.play().catch(function() {});
-          });
-        });
+            // Translation for estimator (add to dictionaries if needed)
+            // We'll just let the data-i18n work.
 
-        function closeLightboxFn() {
-          if (!lightbox) return;
-          lightbox.classList.remove('active');
-          document.body.style.overflow = '';
-          if (player) { player.pause(); player.removeAttribute('src'); }
+            function updateEstimate() {
+                var service = document.getElementById('estService').value;
+                var size = document.getElementById('estSize').value;
+                var urgency = document.getElementById('estUrgency').value;
+                var base = 0;
+                switch (service) {
+                    case 'usm':
+                        base = 200;
+                        break;
+                    case 'kitchen':
+                        base = 300;
+                        break;
+                    case 'moving':
+                        base = 150;
+                        break;
+                    case 'garden':
+                        base = 180;
+                        break;
+                }
+                var sizeMul = { small: 1, medium: 1.5, large: 2.5 };
+                var urgencyMul = { flexible: 1, 'within-week': 1.2, urgent: 1.5 };
+                var total = Math.round(base * sizeMul[size] * urgencyMul[urgency]);
+                document.getElementById('estPrice').textContent = total + ' €';
+            }
+
+            document.getElementById('estUpdate').addEventListener('click', updateEstimate);
+            // Also update on change
+            document.querySelectorAll('#estService, #estSize, #estUrgency').forEach(function(el) {
+                el.addEventListener('change', updateEstimate);
+            });
+            // Initial estimate
+            updateEstimate();
+
+            // Add translations for estimator
+            // We'll extend the translation dictionaries with these keys (already in CONFIG)
         }
-        if (closeLb) closeLb.addEventListener('click', closeLightboxFn);
-        if (lightbox) {
-          lightbox.addEventListener('click', function(e) { if (e.target === lightbox) closeLightboxFn(); });
+
+        // =============================================================
+        // 10. FAQ SEARCH
+        // =============================================================
+        function initFaqSearch() {
+            var faqItems = document.querySelectorAll('.faq-item');
+            if (!faqItems.length) return;
+            var searchBox = document.createElement('input');
+            searchBox.type = 'text';
+            searchBox.placeholder = 'FAQ durchsuchen...';
+            searchBox.className = 'form-control';
+            searchBox.style.cssText = 'margin-bottom:16px;width:100%;padding:10px 14px;border-radius:10px;border:1px solid var(--rl-border);background:var(--rl-bg);color:var(--rl-text);';
+            var container = document.querySelector('.faq-preview');
+            if (container) container.prepend(searchBox);
+
+            searchBox.addEventListener('input', function() {
+                var query = this.value.toLowerCase().trim();
+                faqItems.forEach(function(item) {
+                    var text = item.textContent.toLowerCase();
+                    if (text.includes(query)) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
         }
-        document.addEventListener('keydown', function(e) {
-          if (e.key === 'Escape' && lightbox && lightbox.classList.contains('active')) closeLightboxFn();
-        });
 
-        // Video hover play
-        document.querySelectorAll('.video-card video').forEach(function(video) {
-          var card = video.closest('.video-card');
-          if (!card) return;
-          card.addEventListener('mouseenter', function() { video.play().catch(function() {}); });
-          card.addEventListener('mouseleave', function() { video.pause(); video.currentTime = 0; });
-        });
+        // =============================================================
+        // 11. DYNAMIC YEAR IN FOOTER
+        // =============================================================
+        function setCopyrightYear() {
+            var yearSpan = document.querySelector('.rl-footer__copyright p');
+            if (yearSpan) {
+                var year = new Date().getFullYear();
+                yearSpan.textContent = yearSpan.textContent.replace('2026', year);
+            }
+        }
 
-        console.log('✨ Raphael Lezius – About Page (self-contained)');
-      }
+        // =============================================================
+        // 12. ACTIVE NAV LINK HIGHLIGHTING
+        // =============================================================
+        function highlightCurrentPage() {
+            var path = window.location.pathname;
+            document.querySelectorAll('.rl-nav__links a').forEach(function(link) {
+                var href = link.getAttribute('href');
+                if (href === path || (href === '/' && path === '/')) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        }
 
-      function init() {
-        applyTheme(getStoredTheme());
-        setTimeout(bindUI, 80);
-      }
+        // =============================================================
+        // 13. KEYBOARD SHORTCUTS
+        // =============================================================
+        function initKeyboardShortcuts() {
+            document.addEventListener('keydown', function(e) {
+                // Alt+H -> Home
+                if (e.altKey && e.key === 'h') {
+                    window.location.href = '/';
+                    e.preventDefault();
+                }
+                // Alt+S -> Services
+                if (e.altKey && e.key === 's') {
+                    window.location.href = '/services.html';
+                    e.preventDefault();
+                }
+                // Alt+C -> Contact
+                if (e.altKey && e.key === 'c') {
+                    window.location.href = '/contact.html';
+                    e.preventDefault();
+                }
+            });
+        }
 
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', init);
-      } else {
-        init();
-      }
+        // =============================================================
+        // 14. LIVE FEED (enhanced)
+        // =============================================================
+        function initLiveFeed() {
+            var feed = document.getElementById('liveFeed');
+            if (!feed) return;
+            var items = [
+                { icon: 'fa-check-circle', text: 'USM Haller Montage in München abgeschlossen',
+                time: 'vor 5 min' },
+                { icon: 'fa-truck', text: 'Neue Küche für Familie Schmidt geliefert', time: 'vor 23 min' },
+                { icon: 'fa-star', text: '5.0 ★ Bewertung von Thomas M. erhalten', time: 'vor 1 h' },
+                { icon: 'fa-crown', text: 'Premium Pro Buchung für April bestätigt', time: 'vor 3 h' }
+            ];
+            var feedItems = items.map(function(item) {
+                var div = document.createElement('div');
+                div.className = 'feed-item';
+                div.innerHTML = '<i class="fas ' + item.icon + '"></i><span>' + item.text +
+                    '</span><span class="time">' + item.time + '</span>';
+                return div;
+            });
+            feedItems.forEach(function(el) { feed.appendChild(el); });
+            var newItems = [
+                { icon: 'fa-check-circle', text: 'IKEA Pax Schrank in Augsburg aufgebaut', time: 'vor 1 min' },
+                { icon: 'fa-tools', text: 'Küchenmontage in München gestartet', time: 'vor 8 min' },
+                { icon: 'fa-smile', text: 'Zufriedener Kunde hinterlässt 5★ Bewertung', time: 'vor 18 min' }
+            ];
+            var index = 0;
+            setInterval(function() {
+                var newItem = newItems[index % newItems.length];
+                var div = document.createElement('div');
+                div.className = 'feed-item';
+                var timeText = currentLang === 'en' ? '1 min ago' : 'vor 1 min';
+                div.innerHTML = '<i class="fas ' + newItem.icon + '"></i><span>' + newItem.text +
+                    '</span><span class="time">' + timeText + '</span>';
+                feed.insertBefore(div, feed.children[1]);
+                if (feed.children.length > 8) { feed.removeChild(feed.lastChild); }
+                index++;
+            }, 12000);
+        }
+
+        // =============================================================
+        // 15. COUNTER ANIMATION
+        // =============================================================
+        function animateCounter(el) {
+            var target = parseInt(el.getAttribute('data-target'), 10);
+            if (isNaN(target) || target <= 0) return;
+            var duration = 1800,
+                startTime = performance.now();
+
+            function updateCounter(currentTime) {
+                var elapsed = currentTime - startTime;
+                var progress = Math.min(elapsed / duration, 1);
+                var eased = 1 - Math.pow(1 - progress, 3);
+                var current = Math.floor(eased * target);
+                el.textContent = current.toLocaleString('de-DE') + (target >= 100 ? '+' : '');
+                if (progress < 1) requestAnimationFrame(updateCounter);
+                else el.textContent = target.toLocaleString('de-DE') + (target >= 100 ? '+' : '');
+            }
+            requestAnimationFrame(updateCounter);
+        }
+
+        // =============================================================
+        // 16. SCROLL REVEAL (enhanced with more animations)
+        // =============================================================
+        function initScrollReveal() {
+            var elements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-rotate, .stagger-children');
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        // Trigger counters inside revealed containers
+                        entry.target.querySelectorAll('.live-counter').forEach(function(counter) {
+                            if (!counter.classList.contains('counted')) {
+                                counter.classList.add('counted');
+                                animateCounter(counter);
+                            }
+                        });
+                    }
+                });
+            }, { threshold: CONFIG.animationThreshold, rootMargin: '0px 0px -50px 0px' });
+            elements.forEach(function(el) { observer.observe(el); });
+
+            // Also observe .anim-* classes for immediate animation
+            document.querySelectorAll('[class*="anim-"]').forEach(function(el) {
+                el.style.opacity = '1'; // ensure they are visible
+            });
+        }
+
+        // =============================================================
+        // 17. SMOOTH SCROLL FOR ANCHOR LINKS
+        // =============================================================
+        function initSmoothScroll() {
+            document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+                anchor.addEventListener('click', function(e) {
+                    var target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        e.preventDefault();
+                        var offset = CONFIG.navHeight + 20;
+                        var top = target.getBoundingClientRect().top + window.scrollY - offset;
+                        window.scrollTo({ top: top, behavior: 'smooth' });
+                    }
+                });
+            });
+        }
+
+        // =============================================================
+        // 18. UI BINDING (main)
+        // =============================================================
+        function bindUI() {
+            // Theme toggle
+            document.addEventListener('click', function(e) {
+                var btn = e.target.closest('[data-theme-toggle]');
+                if (btn) {
+                    var current = document.documentElement.getAttribute('data-theme') || 'dark';
+                    applyTheme(current === 'dark' ? 'light' : 'dark');
+                }
+            });
+
+            // Mobile menu
+            var toggle = document.getElementById('navToggle');
+            var menu = document.getElementById('mobileMenu');
+            var backdrop = document.getElementById('navBackdrop');
+            var closeBtn = document.getElementById('mobileClose');
+
+            function openMenu() {
+                if (menu) menu.classList.add('open');
+                if (backdrop) backdrop.classList.add('active');
+                if (toggle) toggle.setAttribute('aria-expanded', 'true');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeMenu() {
+                if (menu) menu.classList.remove('open');
+                if (backdrop) backdrop.classList.remove('active');
+                if (toggle) toggle.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+            }
+            if (toggle && menu) {
+                toggle.addEventListener('click', function() {
+                    menu.classList.contains('open') ? closeMenu() : openMenu();
+                });
+                if (backdrop) backdrop.addEventListener('click', closeMenu);
+                if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+                menu.querySelectorAll('a').forEach(function(link) { link.addEventListener('click', closeMenu); });
+                menu.querySelectorAll('.mobile-sub-toggle').forEach(function(btn) {
+                    btn.addEventListener('click', function() {
+                        var target = document.getElementById(this.getAttribute('data-target'));
+                        if (target) {
+                            target.classList.toggle('open');
+                            this.classList.toggle('open');
+                            this.setAttribute('aria-expanded', target.classList.contains('open'));
+                        }
+                    });
+                });
+            }
+
+            // Scroll progress
+            var progress = document.getElementById('scrollProgress');
+            if (progress) {
+                var updateProgress = debounce(function() {
+                    var scrollTop = window.scrollY;
+                    var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                    var percent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+                    progress.style.width = percent + '%';
+                }, 10);
+                window.addEventListener('scroll', updateProgress, { passive: true });
+                updateProgress();
+            }
+
+            // Sticky CTA & Back to top
+            var stickyCta = document.getElementById('stickyCta');
+            var backTop = document.getElementById('backToTop');
+
+            function toggleSticky() {
+                var show = window.scrollY > 400;
+                if (stickyCta) stickyCta.classList.toggle('visible', show);
+                if (backTop) backTop.classList.toggle('visible', show);
+            }
+            window.addEventListener('scroll', toggleSticky, { passive: true });
+            toggleSticky();
+            if (backTop) backTop.addEventListener('click', function() { window.scrollTo({ top: 0,
+                    behavior: 'smooth' }); });
+
+            // Custom cursor
+            if (!isTouchDevice() && window.matchMedia('(pointer: fine)').matches) {
+                var dot = document.getElementById('cursorDot');
+                var ring = document.getElementById('cursorRing');
+                if (dot && ring) {
+                    var mouseX = 0,
+                        mouseY = 0,
+                        ringX = 0,
+                        ringY = 0;
+                    document.addEventListener('mousemove', function(e) {
+                        mouseX = e.clientX;
+                        mouseY = e.clientY;
+                        dot.style.left = mouseX + 'px';
+                        dot.style.top = mouseY + 'px';
+                    });
+
+                    function animateRing() {
+                        ringX += (mouseX - ringX) * 0.18;
+                        ringY += (mouseY - ringY) * 0.18;
+                        ring.style.left = ringX + 'px';
+                        ring.style.top = ringY + 'px';
+                        requestAnimationFrame(animateRing);
+                    }
+                    animateRing();
+                    document.addEventListener('mouseover', function(e) {
+                        var target = e.target.closest(
+                            'a, button, .btn, .magnetic-btn, .bento-item, .bundle-card, .review-card, .faq-item'
+                            );
+                        if (target) { dot.classList.add('hovering');
+                            ring.classList.add('hovering'); }
+                    });
+                    document.addEventListener('mouseout', function(e) {
+                        var target = e.target.closest(
+                            'a, button, .btn, .magnetic-btn, .bento-item, .bundle-card, .review-card, .faq-item'
+                            );
+                        if (target) { dot.classList.remove('hovering');
+                            ring.classList.remove('hovering'); }
+                    });
+                }
+            }
+
+            // Magnetic buttons
+            if (!isTouchDevice() && window.matchMedia('(pointer: fine)').matches) {
+                document.addEventListener('mousemove', function(e) {
+                    document.querySelectorAll('.magnetic-btn').forEach(function(btn) {
+                        var rect = btn.getBoundingClientRect();
+                        var cx = rect.left + rect.width / 2,
+                            cy = rect.top + rect.height / 2;
+                        var dx = e.clientX - cx,
+                            dy = e.clientY - cy;
+                        var dist = Math.sqrt(dx * dx + dy * dy);
+                        if (dist < 120) {
+                            var strength = (120 - dist) / 120 * 4;
+                            btn.style.transform = 'translate(' + (dx * strength / 6) + 'px, ' + (dy *
+                                strength / 6) + 'px)';
+                        } else { btn.style.transform = 'translate(0,0)'; }
+                    });
+                });
+            }
+
+            // FAQ accordion
+            document.querySelectorAll('.faq-item').forEach(function(item) {
+                var question = item.querySelector('.faq-question');
+                if (question) {
+                    question.addEventListener('click', function() {
+                        var isOpen = item.classList.contains('open');
+                        document.querySelectorAll('.faq-item').forEach(function(other) {
+                            if (other !== item) other.classList.remove('open');
+                        });
+                        if (!isOpen) item.classList.add('open');
+                        else item.classList.remove('open');
+                    });
+                }
+            });
+
+            // Newsletter
+            var newsletterForm = document.getElementById('newsletterForm');
+            if (newsletterForm) {
+                newsletterForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    var btn = newsletterForm.querySelector('button[type="submit"]');
+                    var orig = btn.innerHTML;
+                    btn.innerHTML = '<i class="fas fa-check"></i> ' + (currentLang === 'en' ? 'Welcome!' :
+                        'Willkommen!');
+                    btn.style.background = 'var(--rl-gradient-cta-hover, #E4B98A)';
+                    setTimeout(function() {
+                        btn.innerHTML = orig;
+                        btn.style.background = '';
+                        newsletterForm.reset();
+                    }, 2500);
+                });
+            }
+
+            // Language switcher
+            var langBtns = document.querySelectorAll('.rl-footer__lang .lang-btn');
+            if (langBtns.length) {
+                langBtns.forEach(function(btn) {
+                    btn.addEventListener('click', function() {
+                        var lang = this.getAttribute('data-lang');
+                        if (lang && lang !== currentLang) {
+                            applyLanguage(lang);
+                        }
+                    });
+                });
+                // Set initial active
+                langBtns.forEach(function(btn) {
+                    btn.classList.toggle('active', btn.getAttribute('data-lang') === currentLang);
+                });
+            }
+
+            // Footer accordion
+            document.querySelectorAll('.rl-footer__col h5').forEach(function(heading) {
+                var ul = heading.nextElementSibling;
+                if (ul && ul.tagName === 'UL') {
+                    heading.addEventListener('click', function() {
+                        var col = this.closest('.rl-footer__col');
+                        col.classList.toggle('open');
+                        var icon = this.querySelector('.accordion-icon i');
+                        if (icon) {
+                            icon.classList.toggle('fa-chevron-down');
+                            icon.classList.toggle('fa-chevron-up');
+                        }
+                    });
+                }
+            });
+
+            // Footer back to top
+            var footerBack = document.getElementById('footerBackTop');
+            if (footerBack) footerBack.addEventListener('click', function() { window.scrollTo({ top: 0,
+                    behavior: 'smooth' }); });
+
+            // Visitor counter
+            var visitorEl = document.getElementById('visitorCount');
+            if (visitorEl) {
+                var count = Math.floor(Math.random() * 16) + 8;
+                visitorEl.textContent = count;
+                setInterval(function() {
+                    var delta = Math.floor(Math.random() * 5) - 2;
+                    var newCount = Math.max(1, parseInt(visitorEl.textContent) + delta);
+                    visitorEl.textContent = newCount;
+                }, 30000);
+            }
+
+            // Hide cursor on touch
+            if (isTouchDevice() || isMobile()) {
+                document.querySelectorAll('.cursor-dot, .cursor-ring').forEach(function(el) { el.style.display =
+                        'none'; });
+            }
+
+            // Nav hide on scroll
+            var nav = document.getElementById('mainNav');
+            if (nav) {
+                var lastScroll = 0;
+                window.addEventListener('scroll', function() {
+                    var currentScroll = window.scrollY;
+                    if (currentScroll > 100) {
+                        nav.classList.add('scrolled');
+                        if (currentScroll > lastScroll && currentScroll > 200) {
+                            nav.classList.add('hidden');
+                        } else {
+                            nav.classList.remove('hidden');
+                        }
+                    } else {
+                        nav.classList.remove('scrolled', 'hidden');
+                    }
+                    lastScroll = currentScroll;
+                }, { passive: true });
+            }
+
+            // Trigger counters on page load if already visible
+            document.querySelectorAll('.live-counter').forEach(function(counter) {
+                if (counter.getBoundingClientRect().top < window.innerHeight && !counter.classList.contains(
+                        'counted')) {
+                    counter.classList.add('counted');
+                    animateCounter(counter);
+                }
+            });
+
+            console.log('✅ Raphael Lezius – Homepage with advanced JS and full translations');
+        }
+
+        // =============================================================
+        // 19. LOAD PARTIALS (nav & footer) – if they exist
+        // =============================================================
+        function loadPartials() {
+            // If components/nav.html and components/footer.html exist, we could fetch them.
+            // Since they are embedded in this file, we skip.
+        }
+
+        // =============================================================
+        // 20. INIT
+        // =============================================================
+        function init() {
+            applyTheme(getStoredTheme());
+            applyLanguage(currentLang);
+            initParticles();
+            initTyping();
+            initLiveFeed();
+            initScrollReveal();
+            initSmoothScroll();
+            initPageTransitions();
+            initPriceEstimator();
+            initFaqSearch();
+            setCopyrightYear();
+            highlightCurrentPage();
+            initKeyboardShortcuts();
+            setTimeout(bindUI, 80);
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }
+
     })();
-  </script>
-
+</script>
 </body>
 </html>
