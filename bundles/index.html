@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kundenstimmen · Raphael Lezius – 5.0 ★ Premium Montage</title>
+    <title>Bundles · Raphael Lezius – Smarte Montage-Pakete</title>
     <meta name="theme-color" content="#0B0A09" id="themeColorMeta">
-    <meta name="description" content="Echte Bewertungen von 110+ glücklichen Kunden. Raphael Lezius – Premium Montage mit 5.0 ★, 98 % Weiterempfehlung in München & Augsburg.">
+    <meta name="description" content="Entdecken Sie unsere smarten Bundles für Küchen, USM Haller, Umzüge und mehr. Alles aus einer Hand – sparen Sie Zeit und Geld.">
 
     <!-- Preconnect & Preload für Performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,7 +15,7 @@
 
     <style>
         /* ============================================================
-           RAPHAEL LEZIUS – REVIEWS PAGE (Ultimate Edition)
+           RAPHAEL LEZIUS – BUNDLES PAGE (Ultimate Edition)
            ============================================================ */
         :root {
             --rl-primary: #D4A574;
@@ -271,6 +271,15 @@
             }
             100% {
                 transform: translateX(-50%);
+            }
+        }
+        @keyframes pulse-glow {
+            0%,
+            100% {
+                box-shadow: 0 0 20px rgba(212, 165, 116, 0.15);
+            }
+            50% {
+                box-shadow: 0 0 40px rgba(212, 165, 116, 0.30), 0 0 60px rgba(46, 154, 140, 0.15);
             }
         }
 
@@ -1056,32 +1065,32 @@
         }
 
         /* ============================================================
-           REVIEWS PAGE UNIQUE STYLES
+           BUNDLES PAGE UNIQUE STYLES
            ============================================================ */
 
         /* ── Hero ── */
-        .reviews-hero {
+        .bundles-hero {
             padding: calc(var(--rl-nav-height) + 70px) 0 50px;
             background:
-                radial-gradient(ellipse 60% 50% at 10% 30%, rgba(212, 165, 116, 0.08), transparent 55%),
-                radial-gradient(ellipse 50% 40% at 90% 70%, rgba(124, 154, 146, 0.04), transparent 50%),
+                radial-gradient(ellipse 60% 50% at 80% 20%, rgba(212, 165, 116, 0.08), transparent 55%),
+                radial-gradient(ellipse 50% 40% at 10% 80%, rgba(46, 154, 140, 0.04), transparent 50%),
                 var(--rl-bg);
             position: relative;
             overflow: hidden;
             text-align: center;
         }
-        .reviews-hero .hero-glow {
+        .bundles-hero .hero-glow {
             position: absolute;
             width: 500px;
             height: 500px;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(212, 165, 116, 0.06) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(245, 185, 66, 0.05) 0%, transparent 70%);
             top: -200px;
-            right: -100px;
+            left: -100px;
             pointer-events: none;
-            animation: soft-pulse 10s ease-in-out infinite;
+            animation: soft-pulse 12s ease-in-out infinite;
         }
-        .reviews-hero .breadcrumb {
+        .bundles-hero .breadcrumb {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1091,17 +1100,17 @@
             font-family: var(--font-mono);
             margin-bottom: 20px;
         }
-        .reviews-hero .breadcrumb a {
+        .bundles-hero .breadcrumb a {
             color: var(--rl-primary);
             transition: color 0.3s;
         }
-        .reviews-hero .breadcrumb a:hover {
+        .bundles-hero .breadcrumb a:hover {
             color: var(--rl-primary-hover);
         }
-        .reviews-hero .breadcrumb .sep {
+        .bundles-hero .breadcrumb .sep {
             opacity: 0.3;
         }
-        .reviews-hero h1 {
+        .bundles-hero h1 {
             font-family: var(--font-head);
             font-size: clamp(2.2rem, 4.5vw, 3.2rem);
             font-weight: 800;
@@ -1109,129 +1118,64 @@
             line-height: 1.12;
             margin-bottom: 8px;
         }
-        .reviews-hero h1 .gold {
+        .bundles-hero h1 .gold {
             background: var(--rl-gradient-gold);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        .reviews-hero .subhead {
+        .bundles-hero .subhead {
             font-size: 1.05rem;
             color: var(--rl-muted);
-            max-width: 520px;
+            max-width: 540px;
             margin: 0 auto 28px;
             line-height: 1.6;
         }
 
-        /* ── Rating Overview ── */
-        .rating-overview {
-            padding: 40px 0 50px;
+        /* ── Quick Stats ── */
+        .bundle-stats {
+            padding: 30px 0 20px;
             border-bottom: 1px solid var(--rl-border);
-        }
-        .rating-grid {
             display: grid;
-            grid-template-columns: 1fr 1.2fr 1fr;
-            gap: 40px;
-            align-items: center;
-        }
-        .rating-big {
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
             text-align: center;
         }
-        .rating-big .score {
-            font-family: var(--font-head);
-            font-size: 3.8rem;
-            font-weight: 800;
-            color: var(--rl-primary);
-            line-height: 1;
-        }
-        .rating-big .stars-big {
-            font-size: 1.4rem;
-            color: var(--rl-primary);
-            letter-spacing: 4px;
-            margin: 6px 0 4px;
-        }
-        .rating-big .total {
-            font-size: 0.9rem;
-            color: var(--rl-muted);
-        }
-        .rating-big .total strong {
-            color: var(--rl-text);
-        }
-
-        .rating-bars {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-        .rating-bar-row {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 0.85rem;
-        }
-        .rating-bar-row .star-label {
-            min-width: 48px;
-            color: var(--rl-muted);
-            font-weight: 500;
-        }
-        .rating-bar-row .bar-track {
-            flex: 1;
-            height: 6px;
-            background: var(--rl-border);
-            border-radius: 4px;
-            overflow: hidden;
-        }
-        .rating-bar-row .bar-fill {
-            height: 100%;
-            background: var(--rl-gradient-primary);
-            border-radius: 4px;
-            transition: width 1.2s var(--ease);
-            width: 0%;
-        }
-        .rating-bar-row .bar-value {
-            min-width: 32px;
-            text-align: right;
-            color: var(--rl-text);
-            font-weight: 600;
-            font-size: 0.8rem;
-        }
-
-        .rating-stats-mini {
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-            padding: 16px 20px;
+        .bundle-stats .stat-item {
+            padding: 12px 8px;
             background: var(--rl-card);
             border: 1px solid var(--rl-border);
             border-radius: var(--rl-radius);
+            transition: all 0.3s ease;
         }
-        .rating-stats-mini .stat-line {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.92rem;
+        .bundle-stats .stat-item:hover {
+            border-color: var(--rl-primary);
+            transform: translateY(-3px);
+            box-shadow: var(--rl-shadow-glow);
+        }
+        .bundle-stats .stat-item .number {
+            font-family: var(--font-head);
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: var(--rl-gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .bundle-stats .stat-item .label {
+            font-size: 0.78rem;
             color: var(--rl-muted);
-            padding: 4px 0;
-            border-bottom: 1px solid var(--rl-border);
+            display: block;
+            margin-top: 2px;
         }
-        .rating-stats-mini .stat-line:last-child {
-            border-bottom: none;
-        }
-        .rating-stats-mini .stat-line .label {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .rating-stats-mini .stat-line .label i {
+        .bundle-stats .stat-item i {
             color: var(--rl-primary);
-            width: 18px;
-        }
-        .rating-stats-mini .stat-line .value {
-            font-weight: 700;
-            color: var(--rl-text);
+            font-size: 1.1rem;
+            margin-right: 6px;
         }
 
-        /* ── Search & Filters ── */
-        .reviews-toolbar {
+        /* ── Toolbar ── */
+        .bundles-toolbar {
             padding: 30px 0 10px;
             display: flex;
             gap: 16px;
@@ -1239,52 +1183,12 @@
             align-items: center;
             justify-content: space-between;
         }
-        .reviews-toolbar .search-wrap {
-            flex: 1;
-            min-width: 200px;
-            max-width: 380px;
-            position: relative;
-        }
-        .reviews-toolbar .search-wrap input {
-            width: 100%;
-            padding: 10px 16px 10px 40px;
-            border-radius: var(--rl-radius-full);
-            border: 1px solid var(--rl-border);
-            background: var(--rl-card);
-            color: var(--rl-text);
-            font-size: 0.9rem;
-            transition: border-color 0.3s, box-shadow 0.3s;
-            outline: none;
-            font-family: var(--font-body);
-        }
-        .reviews-toolbar .search-wrap input:focus {
-            border-color: var(--rl-primary);
-            box-shadow: var(--rl-shadow-glow);
-        }
-        .reviews-toolbar .search-wrap input::placeholder {
-            color: var(--rl-dim);
-        }
-        .reviews-toolbar .search-wrap i {
-            position: absolute;
-            left: 14px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--rl-dim);
-            font-size: 0.9rem;
-        }
-        .reviews-toolbar .search-results-hint {
-            font-size: 0.75rem;
-            color: var(--rl-dim);
-            margin-top: 4px;
-            padding-left: 16px;
-            min-height: 18px;
-        }
-        .reviews-toolbar .filter-group {
+        .bundles-toolbar .filter-group {
             display: flex;
             gap: 8px;
             flex-wrap: wrap;
         }
-        .reviews-toolbar .filter-btn {
+        .bundles-toolbar .filter-btn {
             padding: 6px 18px;
             border-radius: var(--rl-radius-full);
             border: 1px solid var(--rl-border);
@@ -1295,26 +1199,26 @@
             transition: all 0.3s;
             cursor: pointer;
         }
-        .reviews-toolbar .filter-btn:hover {
+        .bundles-toolbar .filter-btn:hover {
             border-color: var(--rl-primary);
             color: var(--rl-text);
         }
-        .reviews-toolbar .filter-btn.active {
+        .bundles-toolbar .filter-btn.active {
             background: var(--rl-primary);
             color: #1C1917;
             border-color: var(--rl-primary);
         }
-        .reviews-toolbar .sort-wrap {
+        .bundles-toolbar .sort-wrap {
             display: flex;
             align-items: center;
             gap: 8px;
         }
-        .reviews-toolbar .sort-wrap label {
+        .bundles-toolbar .sort-wrap label {
             font-size: 0.78rem;
             color: var(--rl-dim);
             font-family: var(--font-mono);
         }
-        .reviews-toolbar .sort-wrap select {
+        .bundles-toolbar .sort-wrap select {
             padding: 6px 12px;
             border-radius: var(--rl-radius-full);
             border: 1px solid var(--rl-border);
@@ -1326,165 +1230,291 @@
             cursor: pointer;
             font-family: var(--font-body);
         }
-        .reviews-toolbar .sort-wrap select:focus {
+        .bundles-toolbar .sort-wrap select:focus {
             border-color: var(--rl-primary);
         }
 
-        /* ── Reviews Grid ── */
-        .reviews-grid-section {
+        /* ── Bundle Cards Grid ── */
+        .bundles-grid-section {
             padding: 20px 0 80px;
         }
-        .reviews-grid {
+        .bundles-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+            gap: 24px;
             margin-top: 10px;
         }
-        .review-card-dense {
+        .bundle-card-full {
             background: var(--rl-card);
             border: 1px solid var(--rl-border);
             border-radius: var(--rl-radius);
-            padding: 20px 22px;
-            transition: all 0.3s var(--ease);
+            padding: 32px 28px;
+            position: relative;
+            transition: all 0.35s var(--ease);
             display: flex;
             flex-direction: column;
-            opacity: 1;
-            transform: none;
         }
-        .review-card-dense:hover {
+        .bundle-card-full:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--rl-shadow-glow);
             border-color: rgba(212, 165, 116, 0.25);
-            transform: translateY(-3px);
-            box-shadow: var(--rl-shadow-sm);
         }
-        .review-card-dense .top-row {
-            display: flex;
-            align-items: center;
-            gap: 12px;
+        .bundle-card-full.featured {
+            border-color: rgba(232, 141, 106, 0.35);
+            background: linear-gradient(160deg, rgba(212, 165, 116, 0.08), transparent 70%);
+        }
+        .bundle-card-full.featured:hover {
+            border-color: var(--rl-accent);
+            box-shadow: var(--rl-shadow-glow-accent);
+        }
+        .bundle-card-full .bundle-badge {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            background: rgba(245, 185, 66, 0.15);
+            color: var(--rl-amber);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-family: var(--font-mono);
+        }
+        .bundle-card-full .bundle-badge.popular {
+            background: rgba(46, 154, 140, 0.15);
+            color: var(--rl-secondary);
+        }
+        .bundle-card-full .bundle-icon {
+            font-size: 2.2rem;
+            background: var(--rl-gradient-multi);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 12px;
+            display: block;
         }
-        .review-card-dense .avatar {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: var(--rl-border);
-            flex-shrink: 0;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .bundle-card-full h3 {
+            font-family: var(--font-head);
+            font-size: 1.4rem;
             font-weight: 700;
-            color: var(--rl-primary);
-            border: 1px solid var(--rl-border);
-            font-size: 1.1rem;
+            margin-bottom: 8px;
         }
-        .review-card-dense .avatar img {
+        .bundle-card-full .bundle-desc {
+            font-size: 0.95rem;
+            color: var(--rl-muted);
+            margin-bottom: 18px;
+            flex-grow: 1;
+        }
+        .bundle-card-full .bundle-list {
+            margin-bottom: 22px;
+        }
+        .bundle-card-full .bundle-list li {
+            position: relative;
+            padding-left: 22px;
+            font-size: 0.9rem;
+            color: var(--rl-muted);
+            margin-bottom: 7px;
+        }
+        .bundle-card-full .bundle-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            background: var(--rl-gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+        .bundle-card-full .bundle-price {
+            font-family: var(--font-head);
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin-bottom: 18px;
+            background: var(--rl-gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .bundle-card-full .bundle-price .note {
+            font-size: 0.7rem;
+            font-weight: 400;
+            color: var(--rl-dim);
+            -webkit-text-fill-color: var(--rl-dim);
+            display: block;
+            font-family: var(--font-body);
+        }
+        .bundle-card-full .btn {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            margin-top: auto;
         }
-        .review-card-dense .user-info {
-            flex: 1;
+
+        /* ── Comparison Table ── */
+        .comparison-section {
+            padding: 60px 0 80px;
+            background: var(--rl-surface);
+            border-top: 1px solid var(--rl-border);
+            border-bottom: 1px solid var(--rl-border);
         }
-        .review-card-dense .user-info .name {
+        .comparison-table-wrap {
+            overflow-x: auto;
+            margin-top: 30px;
+        }
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+            min-width: 700px;
+        }
+        .comparison-table th,
+        .comparison-table td {
+            padding: 14px 18px;
+            text-align: center;
+            border-bottom: 1px solid var(--rl-border);
+            vertical-align: middle;
+        }
+        .comparison-table th {
+            font-family: var(--font-head);
             font-weight: 700;
             font-size: 0.95rem;
             color: var(--rl-text);
-            display: block;
+            background: var(--rl-card);
+            border-top: 1px solid var(--rl-border);
         }
-        .review-card-dense .user-info .meta {
-            font-size: 0.72rem;
-            color: var(--rl-dim);
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-        .review-card-dense .user-info .meta .tag {
-            background: rgba(212, 165, 116, 0.08);
-            padding: 1px 10px;
-            border-radius: 12px;
-            color: var(--rl-primary);
-            border: 1px solid rgba(212, 165, 116, 0.1);
-        }
-        .review-card-dense .stars {
-            color: var(--rl-primary);
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-            margin-bottom: 8px;
-        }
-        .review-card-dense .text {
-            font-size: 0.92rem;
+        .comparison-table th:first-child,
+        .comparison-table td:first-child {
+            text-align: left;
+            font-weight: 600;
             color: var(--rl-muted);
-            line-height: 1.6;
-            flex-grow: 1;
-            margin-bottom: 14px;
-            display: -webkit-box;
-            -webkit-line-clamp: 4;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            cursor: pointer;
-            transition: color 0.2s;
+            font-size: 0.85rem;
         }
-        .review-card-dense .text:hover {
+        .comparison-table td {
+            color: var(--rl-muted);
+        }
+        .comparison-table td .check {
+            color: var(--rl-secondary);
+            font-size: 1.1rem;
+        }
+        .comparison-table td .cross {
+            color: var(--rl-dim);
+            font-size: 1.1rem;
+        }
+        .comparison-table tr:hover td {
+            background: rgba(212, 165, 116, 0.03);
+        }
+        .comparison-table .highlight-col {
+            background: rgba(212, 165, 116, 0.05);
+            border-left: 1px solid var(--rl-border);
+            border-right: 1px solid var(--rl-border);
+        }
+        .comparison-table .highlight-col td {
             color: var(--rl-text);
         }
-        .review-card-dense .text.expanded {
-            -webkit-line-clamp: unset;
-            overflow: visible;
+        .comparison-table .bundle-name {
+            font-weight: 700;
+            color: var(--rl-text);
         }
-        .review-card-dense .bottom-row {
+        .comparison-table .price-tag {
+            font-weight: 700;
+            color: var(--rl-primary);
+        }
+
+        /* ── FAQ for Bundles ── */
+        .bundles-faq {
+            padding: 60px 0 80px;
+        }
+        .faq-grid {
+            max-width: 700px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .faq-item {
+            background: var(--rl-card);
+            border: 1px solid var(--rl-border);
+            border-radius: var(--rl-radius);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .faq-item:hover {
+            border-color: var(--rl-primary);
+        }
+        .faq-question {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 0.78rem;
-            color: var(--rl-dim);
-            border-top: 1px solid var(--rl-border);
-            padding-top: 14px;
-            margin-top: auto;
-        }
-        .review-card-dense .bottom-row .date {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .review-card-dense .bottom-row .helpful {
-            display: flex;
-            align-items: center;
-            gap: 6px;
+            padding: 18px 24px;
             cursor: pointer;
-            transition: color 0.3s;
-            user-select: none;
-        }
-        .review-card-dense .bottom-row .helpful i {
-            color: var(--rl-primary);
-            font-size: 0.85rem;
-            transition: transform 0.3s;
-        }
-        .review-card-dense .bottom-row .helpful:hover {
+            font-weight: 600;
+            font-size: 1rem;
+            background: transparent;
+            border: none;
+            width: 100%;
+            text-align: left;
             color: var(--rl-text);
+            font-family: var(--font-body);
         }
-        .review-card-dense .bottom-row .helpful.liked i {
-            animation: heartPulse 0.4s ease;
+        .faq-question:hover {
+            background: rgba(212, 165, 116, 0.04);
+        }
+        .faq-question i {
+            transition: transform 0.3s ease;
+            color: var(--rl-primary);
+        }
+        .faq-item.open .faq-question i {
+            transform: rotate(180deg);
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.3s ease;
+            padding: 0 24px;
+            color: var(--rl-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        .faq-item.open .faq-answer {
+            max-height: 200px;
+            padding: 0 24px 20px;
         }
 
-        /* ── No Results ── */
-        .no-results {
-            grid-column: 1 / -1;
+        /* ── CTA Banner ── */
+        .cta-banner {
+            background: var(--rl-gradient-cta);
+            border-radius: var(--rl-radius);
+            padding: 48px 32px;
             text-align: center;
-            padding: 60px 20px;
-            color: var(--rl-muted);
+            margin: 60px 0 20px;
+            box-shadow: var(--rl-shadow-glow);
+            animation: glow-pulse 4s ease-in-out infinite;
         }
-        .no-results i {
-            font-size: 2.5rem;
-            color: var(--rl-dim);
-            margin-bottom: 16px;
-            display: block;
-        }
-        .no-results h3 {
+        .cta-banner h2 {
             font-family: var(--font-head);
-            font-weight: 700;
-            font-size: 1.3rem;
-            margin-bottom: 8px;
-            color: var(--rl-text);
+            font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+            font-weight: 800;
+            color: #1C1917;
+            margin-bottom: 12px;
+        }
+        .cta-banner p {
+            color: rgba(28, 25, 23, 0.8);
+            font-size: 1.05rem;
+            max-width: 500px;
+            margin: 0 auto 24px;
+        }
+        .cta-banner .btn {
+            background: #1C1917;
+            color: #fff;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        }
+        .cta-banner .btn:hover {
+            background: #2A2825;
+            transform: scale(1.04);
+        }
+        @media(max-width:600px) {
+            .cta-banner {
+                padding: 32px 20px;
+            }
         }
 
         /* ── Live Feed (mini) ── */
@@ -1547,82 +1577,58 @@
             font-family: var(--font-mono);
         }
 
-        /* ── CTA Section ── */
-        .reviews-cta {
-            padding: 60px 0 80px;
-            background: var(--rl-surface);
-            border-top: 1px solid var(--rl-border);
-            text-align: center;
+        /* ── Responsive ── */
+        @media(max-width:992px) {
+            .bundles-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .bundle-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .bundles-toolbar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .bundles-toolbar .filter-group {
+                justify-content: center;
+            }
+            .bundles-toolbar .sort-wrap {
+                justify-content: center;
+            }
         }
-        .reviews-cta .pre {
-            display: block;
-            font-size: 0.78rem;
-            font-weight: 600;
-            letter-spacing: 1.6px;
-            text-transform: uppercase;
-            color: var(--rl-primary);
-            margin-bottom: 12px;
-            font-family: var(--font-mono);
+        @media(max-width:768px) {
+            .bundles-grid {
+                grid-template-columns: 1fr;
+                max-width: 460px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .bundle-stats {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+            .comparison-table th,
+            .comparison-table td {
+                padding: 10px 12px;
+                font-size: 0.8rem;
+            }
         }
-        .reviews-cta h2 {
-            font-family: var(--font-head);
-            font-size: clamp(1.8rem, 3vw, 2.4rem);
-            font-weight: 800;
-            letter-spacing: -0.8px;
-            margin-bottom: 12px;
-        }
-        .reviews-cta h2 .gold {
-            background: var(--rl-gradient-gold);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .reviews-cta p {
-            color: var(--rl-muted);
-            max-width: 480px;
-            margin: 0 auto 28px;
-            font-size: 1.05rem;
-        }
-
-        /* ── CTA Banner (glow pulse) ── */
-        .cta-banner {
-            background: var(--rl-gradient-cta);
-            border-radius: var(--rl-radius);
-            padding: 48px 32px;
-            text-align: center;
-            margin: 60px 0 20px;
-            box-shadow: var(--rl-shadow-glow);
-            animation: glow-pulse 4s ease-in-out infinite;
-        }
-        .cta-banner h2 {
-            font-family: var(--font-head);
-            font-size: clamp(1.6rem, 2.8vw, 2.2rem);
-            font-weight: 800;
-            color: #1C1917;
-            margin-bottom: 12px;
-        }
-        .cta-banner p {
-            color: rgba(28, 25, 23, 0.8);
-            font-size: 1.05rem;
-            max-width: 500px;
-            margin: 0 auto 24px;
-        }
-        .cta-banner .btn {
-            background: #1C1917;
-            color: #fff;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-        }
-        .cta-banner .btn:hover {
-            background: #2A2825;
-            transform: scale(1.04);
-        }
-        @media(max-width:600px) {
-            .cta-banner {
-                padding: 32px 20px;
+        @media(max-width:480px) {
+            .bundle-stats {
+                grid-template-columns: 1fr;
+            }
+            .bundle-card-full {
+                padding: 24px 18px;
+            }
+            .bundles-toolbar .filter-btn {
+                font-size: 0.75rem;
+                padding: 4px 12px;
             }
         }
 
-        /* ── Footer (same as homepage) ── */
+        /* ============================================================
+           FOOTER (same as homepage)
+           ============================================================ */
         .rl-footer {
             background: var(--rl-surface);
             border-top: 1px solid var(--rl-border);
@@ -2204,72 +2210,6 @@
             }
         }
 
-        /* ── Responsive Reviews Page ── */
-        @media(max-width:992px) {
-            .rating-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 24px;
-            }
-            .rating-stats-mini {
-                grid-column: 1 / -1;
-                display: grid;
-                grid-template-columns: 1fr 1fr 1fr;
-                gap: 12px;
-                padding: 16px;
-            }
-            .rating-stats-mini .stat-line {
-                border-bottom: none;
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-                gap: 4px;
-                padding: 4px 0;
-            }
-            .reviews-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .reviews-toolbar {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            .reviews-toolbar .search-wrap {
-                max-width: 100%;
-            }
-            .reviews-toolbar .filter-group {
-                justify-content: center;
-            }
-            .reviews-toolbar .sort-wrap {
-                justify-content: center;
-            }
-        }
-        @media(max-width:768px) {
-            .rating-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            .rating-stats-mini {
-                grid-template-columns: 1fr 1fr;
-            }
-            .reviews-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        @media(max-width:480px) {
-            .rating-stats-mini {
-                grid-template-columns: 1fr;
-            }
-            .review-card-dense .top-row {
-                flex-wrap: wrap;
-            }
-            .reviews-toolbar .filter-group {
-                gap: 6px;
-            }
-            .reviews-toolbar .filter-btn {
-                font-size: 0.75rem;
-                padding: 4px 12px;
-            }
-        }
-
         .sitemap-hidden {
             position: absolute;
             width: 1px;
@@ -2309,7 +2249,7 @@
             <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
         </div>
         <div class="text">
-            <span class="highlight">110+</span> Menschen haben mir ihr Zuhause anvertraut
+            <span class="highlight">110+</span> Menschen vertrauen mir
         </div>
     </div>
 
@@ -2337,7 +2277,7 @@
                     </div>
                 </li>
                 <li class="nav-dropdown" role="none">
-                    <a href="#" class="nav-link" data-section="bundles" role="menuitem" aria-haspopup="true" aria-expanded="false">
+                    <a href="#" class="nav-link active" data-section="bundles" role="menuitem" aria-haspopup="true" aria-expanded="false">
                         Bundles <i class="fas fa-chevron-down"></i>
                     </a>
                     <div class="nav-dropdown-content" role="menu" aria-label="Bundles Untermenü">
@@ -2404,423 +2344,373 @@
     <main>
 
         <!-- ==================== HERO ==================== -->
-        <section class="reviews-hero" id="top">
+        <section class="bundles-hero" id="top">
             <div class="hero-glow"></div>
             <div class="container">
                 <div class="breadcrumb reveal">
                     <a href="/">Start</a>
                     <span class="sep">/</span>
-                    <span style="color:var(--rl-text);">Kundenstimmen</span>
+                    <span style="color:var(--rl-text);">Bundles</span>
                 </div>
 
                 <h1 class="reveal">
-                    Was Menschen <span class="gold">über mich</span> sagen
+                    Smarte <span class="gold">Pakete</span> für Ihr Projekt
                 </h1>
 
                 <p class="subhead reveal">
-                    110+ echte Bewertungen – 5.0 ★ Durchschnitt. Keine gekauften Stimmen, nur ehrliche Worte von Menschen, die mir ihr Zuhause anvertraut haben.
+                    Alles aus einer Hand – maßgeschneiderte Kombinationen aus Montage, Demontage und Service.
+                    Sparen Sie Zeit, Geld und Nerven.
                 </p>
 
                 <div class="reveal">
-                    <a href="#reviews-grid-section" class="btn btn-primary magnetic-btn">
-                        <i class="fas fa-arrow-down"></i> Alle Bewertungen lesen
+                    <a href="#bundles-grid" class="btn btn-primary magnetic-btn">
+                        <i class="fas fa-arrow-down"></i> Alle Bundles entdecken
+                    </a>
+                    <a href="#comparison" class="btn btn-secondary magnetic-btn" style="margin-left:12px;">
+                        <i class="fas fa-table"></i> Vergleich
                     </a>
                 </div>
             </div>
         </section>
 
-        <!-- ==================== RATING OVERVIEW ==================== -->
-        <section class="rating-overview" id="rating">
+        <!-- ==================== STATS ==================== -->
+        <section class="bundle-stats">
             <div class="container">
-                <div class="rating-grid">
-
-                    <!-- Big Rating -->
-                    <div class="rating-big reveal">
-                        <div class="score">5.0</div>
-                        <div class="stars-big">★★★★★</div>
-                        <div class="total"><strong>110+</strong> Bewertungen</div>
-                    </div>
-
-                    <!-- Rating Bars -->
-                    <div class="rating-bars reveal" id="ratingBars">
-                        <div class="rating-bar-row">
-                            <span class="star-label">5 ★</span>
-                            <div class="bar-track"><div class="bar-fill" data-width="92"></div></div>
-                            <span class="bar-value">92 %</span>
-                        </div>
-                        <div class="rating-bar-row">
-                            <span class="star-label">4 ★</span>
-                            <div class="bar-track"><div class="bar-fill" data-width="6"></div></div>
-                            <span class="bar-value">6 %</span>
-                        </div>
-                        <div class="rating-bar-row">
-                            <span class="star-label">3 ★</span>
-                            <div class="bar-track"><div class="bar-fill" data-width="2"></div></div>
-                            <span class="bar-value">2 %</span>
-                        </div>
-                        <div class="rating-bar-row">
-                            <span class="star-label">2 ★</span>
-                            <div class="bar-track"><div class="bar-fill" data-width="0"></div></div>
-                            <span class="bar-value">0 %</span>
-                        </div>
-                        <div class="rating-bar-row">
-                            <span class="star-label">1 ★</span>
-                            <div class="bar-track"><div class="bar-fill" data-width="0"></div></div>
-                            <span class="bar-value">0 %</span>
-                        </div>
-                    </div>
-
-                    <!-- Mini Stats -->
-                    <div class="rating-stats-mini reveal">
-                        <div class="stat-line">
-                            <span class="label"><i class="fas fa-heart"></i> Weiterempfehlung</span>
-                            <span class="value">98 %</span>
-                        </div>
-                        <div class="stat-line">
-                            <span class="label"><i class="fas fa-clock"></i> Pünktlichkeit</span>
-                            <span class="value">5.0 ★</span>
-                        </div>
-                        <div class="stat-line">
-                            <span class="label"><i class="fas fa-broom"></i> Sauberkeit</span>
-                            <span class="value">5.0 ★</span>
-                        </div>
-                        <div class="stat-line">
-                            <span class="label"><i class="fas fa-smile"></i> Freundlichkeit</span>
-                            <span class="value">5.0 ★</span>
-                        </div>
-                        <div class="stat-line">
-                            <span class="label"><i class="fas fa-ruler-combined"></i> Präzision</span>
-                            <span class="value">5.0 ★</span>
-                        </div>
-                        <div class="stat-line">
-                            <span class="label"><i class="fas fa-handshake"></i> Kommunikation</span>
-                            <span class="value">4.9 ★</span>
-                        </div>
-                    </div>
-
+                <div class="stat-item reveal">
+                    <span class="number">3</span>
+                    <span class="label"><i class="fas fa-gift"></i> Fertige Bundles</span>
+                </div>
+                <div class="stat-item reveal">
+                    <span class="number">100 %</span>
+                    <span class="label"><i class="fas fa-shield-alt"></i> Preisgarantie</span>
+                </div>
+                <div class="stat-item reveal">
+                    <span class="number">1 Jahr</span>
+                    <span class="label"><i class="fas fa-calendar-check"></i> Garantie</span>
+                </div>
+                <div class="stat-item reveal">
+                    <span class="number">24 h</span>
+                    <span class="label"><i class="fas fa-bolt"></i> Reaktionszeit</span>
                 </div>
             </div>
         </section>
 
-        <!-- ==================== TOOLBAR: Search + Filters ==================== -->
-        <section class="reviews-toolbar">
+        <!-- ==================== TOOLBAR ==================== -->
+        <section class="bundles-toolbar">
             <div class="container">
-                <div class="search-wrap">
-                    <i class="fas fa-search"></i>
-                    <input type="text" id="reviewSearch" placeholder="Bewertungen durchsuchen…" aria-label="Bewertungen durchsuchen">
-                    <div class="search-results-hint" id="searchHint"></div>
-                </div>
                 <div class="filter-group">
                     <button class="filter-btn active" data-filter="all">Alle</button>
-                    <button class="filter-btn" data-filter="5">5 ★</button>
-                    <button class="filter-btn" data-filter="4">4 ★</button>
-                    <button class="filter-btn" data-filter="3">3 ★</button>
-                    <button class="filter-btn" data-filter="2">2 ★</button>
-                    <button class="filter-btn" data-filter="1">1 ★</button>
+                    <button class="filter-btn" data-filter="küche">Küchen</button>
+                    <button class="filter-btn" data-filter="usm">USM Haller</button>
+                    <button class="filter-btn" data-filter="umzug">Umzug</button>
+                    <button class="filter-btn" data-filter="premium">Premium</button>
                 </div>
                 <div class="sort-wrap">
-                    <label for="sortSelect"><i class="fas fa-arrow-up-wide-short"></i></label>
-                    <select id="sortSelect">
-                        <option value="newest">Neueste</option>
-                        <option value="oldest">Älteste</option>
-                        <option value="highest">Höchste Bewertung</option>
-                        <option value="lowest">Niedrigste Bewertung</option>
+                    <label for="sortBundles"><i class="fas fa-arrow-up-wide-short"></i></label>
+                    <select id="sortBundles">
+                        <option value="popular">Beliebtheit</option>
+                        <option value="price-low">Preis: niedrig → hoch</option>
+                        <option value="price-high">Preis: hoch → niedrig</option>
+                        <option value="name">Name A–Z</option>
                     </select>
                 </div>
             </div>
         </section>
 
-        <!-- ==================== REVIEWS GRID ==================== -->
-        <section class="reviews-grid-section" id="reviews-grid-section">
+        <!-- ==================== BUNDLES GRID ==================== -->
+        <section class="bundles-grid-section" id="bundles-grid">
             <div class="container">
-                <div class="reviews-grid" id="reviewsGrid">
+                <div class="bundles-grid" id="bundlesGrid">
 
-                    <!-- Review 1 -->
-                    <div class="review-card-dense reveal" data-stars="5" data-name="Thomas M." data-date="2026-05-15" data-text="Absolut professionell und pünktlich. Die USM Montage war millimetergenau. Ich fühle mich sehr gut aufgehoben. Raphael hat wirklich jedes Detail beachtet – von der Justierung der Scharniere bis zur Ausrichtung der Griffe. Perfekt!">
-                        <div class="top-row">
-                            <div class="avatar">TM</div>
-                            <div class="user-info">
-                                <span class="name">Thomas M.</span>
-                                <span class="meta">
-                                    <span>München</span>
-                                    <span class="tag">USM Haller</span>
-                                </span>
-                            </div>
+                    <!-- Bundle 1: Küchen-Komplett -->
+                    <div class="bundle-card-full reveal" data-category="küche" data-price="590" data-popular="1">
+                        <span class="bundle-badge popular">⭐ Beliebt</span>
+                        <span class="bundle-icon"><i class="fas fa-utensils"></i></span>
+                        <h3>Küchen-Komplett</h3>
+                        <p class="bundle-desc">Alte Küche raus, neue Küche rein – alles in einem durchdachten Ablauf. Inklusive Geräteanschluss.</p>
+                        <ul class="bundle-list">
+                            <li>Demontage der alten Küche</li>
+                            <li>Aufbau der neuen Küche</li>
+                            <li>Geräteanschluss (Strom, Wasser)</li>
+                            <li>Endreinigung &amp; Entsorgung</li>
+                        </ul>
+                        <div class="bundle-price">
+                            ab 590 €
+                            <span class="note">zzgl. Material, Preise netto</span>
                         </div>
-                        <div class="stars">★★★★★</div>
-                        <p class="text">Absolut professionell und pünktlich. Die USM Montage war millimetergenau. Ich fühle mich sehr gut aufgehoben. Raphael hat wirklich jedes Detail beachtet – von der Justierung der Scharniere bis zur Ausrichtung der Griffe. Perfekt!</p>
-                        <div class="bottom-row">
-                            <span class="date"><i class="far fa-calendar"></i> 15. Mai 2026</span>
-                            <span class="helpful" data-likes="12"><i class="far fa-thumbs-up"></i> <span class="count">12</span></span>
-                        </div>
+                        <a href="bundles/kuechen-komplett.html" class="btn btn-primary magnetic-btn">
+                            <i class="fas fa-arrow-right"></i> Zum Bundle
+                        </a>
                     </div>
 
-                    <!-- Review 2 -->
-                    <div class="review-card-dense reveal" data-stars="5" data-name="Sandra K." data-date="2026-05-02" data-text="Sehr saubere Arbeit und freundliche Kommunikation. Die Küche sieht aus wie aus dem Katalog – nur noch schöner. Er hat sich viel Zeit für die Feineinstellung genommen und sogar die Arbeitsplatte perfekt ausgerichtet. Empfehlung!">
-                        <div class="top-row">
-                            <div class="avatar">SK</div>
-                            <div class="user-info">
-                                <span class="name">Sandra K.</span>
-                                <span class="meta">
-                                    <span>Augsburg</span>
-                                    <span class="tag">Küchenmontage</span>
-                                </span>
-                            </div>
+                    <!-- Bundle 2: USM All-In -->
+                    <div class="bundle-card-full featured reveal" data-category="usm" data-price="0" data-popular="2">
+                        <span class="bundle-badge">⭐ Premium</span>
+                        <span class="bundle-icon"><i class="fas fa-gem"></i></span>
+                        <h3>USM All‑In</h3>
+                        <p class="bundle-desc">Von der ersten Idee bis zur finalen Justierung – ich begleite Sie komplett durch Ihren USM Haller Projekt.</p>
+                        <ul class="bundle-list">
+                            <li>Beratung &amp; Planung</li>
+                            <li>Lieferkoordination</li>
+                            <li>Professionelle Montage</li>
+                            <li>Nachjustierung vor Ort</li>
+                            <li>1 Jahr Wartung</li>
+                        </ul>
+                        <div class="bundle-price">
+                            Individuell
+                            <span class="note">Kostenfreie Beratung</span>
                         </div>
-                        <div class="stars">★★★★★</div>
-                        <p class="text">Sehr saubere Arbeit und freundliche Kommunikation. Die Küche sieht aus wie aus dem Katalog – nur noch schöner. Er hat sich viel Zeit für die Feineinstellung genommen und sogar die Arbeitsplatte perfekt ausgerichtet. Empfehlung!</p>
-                        <div class="bottom-row">
-                            <span class="date"><i class="far fa-calendar"></i> 2. Mai 2026</span>
-                            <span class="helpful" data-likes="8"><i class="far fa-thumbs-up"></i> <span class="count">8</span></span>
-                        </div>
+                        <a href="bundles/usm-all-in.html" class="btn btn-primary magnetic-btn">
+                            <i class="fas fa-arrow-right"></i> Zum Bundle
+                        </a>
                     </div>
 
-                    <!-- Review 3 -->
-                    <div class="review-card-dense reveal" data-stars="5" data-name="Michael R." data-date="2026-04-18" data-text="Endlich jemand, der sich wirklich Zeit nimmt und Wert auf Details legt. Man merkt die Leidenschaft. Der Premium Pro Service hat all meine Erwartungen übertroffen – persönliche Betreuung, flexible Termine und absolute Sorgfalt. Danke!">
-                        <div class="top-row">
-                            <div class="avatar">MR</div>
-                            <div class="user-info">
-                                <span class="name">Michael R.</span>
-                                <span class="meta">
-                                    <span>München</span>
-                                    <span class="tag">Premium Pro</span>
-                                </span>
-                            </div>
+                    <!-- Bundle 3: Umzug Premium -->
+                    <div class="bundle-card-full reveal" data-category="umzug" data-price="420" data-popular="0">
+                        <span class="bundle-badge">⭐ Umzug</span>
+                        <span class="bundle-icon"><i class="fas fa-truck"></i></span>
+                        <h3>Umzug Premium</h3>
+                        <p class="bundle-desc">Demontage, Schutzverpackung und Aufbau – damit Ihr Umzug so entspannt wie möglich wird.</p>
+                        <ul class="bundle-list">
+                            <li>Fachgerechte Demontage</li>
+                            <li>Schutzverpackung der Teile</li>
+                            <li>Aufbau am neuen Ort</li>
+                            <li>Endkontrolle mit Ihnen</li>
+                        </ul>
+                        <div class="bundle-price">
+                            ab 420 €
+                            <span class="note">zzgl. Anfahrt, Preise netto</span>
                         </div>
-                        <div class="stars">★★★★★</div>
-                        <p class="text">Endlich jemand, der sich wirklich Zeit nimmt und Wert auf Details legt. Man merkt die Leidenschaft. Der Premium Pro Service hat all meine Erwartungen übertroffen – persönliche Betreuung, flexible Termine und absolute Sorgfalt. Danke!</p>
-                        <div class="bottom-row">
-                            <span class="date"><i class="far fa-calendar"></i> 18. April 2026</span>
-                            <span class="helpful" data-likes="15"><i class="far fa-thumbs-up"></i> <span class="count">15</span></span>
-                        </div>
+                        <a href="bundles/umzug-premium.html" class="btn btn-primary magnetic-btn">
+                            <i class="fas fa-arrow-right"></i> Zum Bundle
+                        </a>
                     </div>
 
-                    <!-- Review 4 -->
-                    <div class="review-card-dense reveal" data-stars="5" data-name="Claudia L." data-date="2026-04-03" data-text="Der Umzug war stressfrei – Dank Raphaels sorgfältiger Demontage und dem fachgerechten Aufbau. Alles wurde perfekt eingepackt und transportiert. Am neuen Ort standen meine Möbel besser als vorher. Absolut empfehlenswert!">
-                        <div class="top-row">
-                            <div class="avatar">CL</div>
-                            <div class="user-info">
-                                <span class="name">Claudia L.</span>
-                                <span class="meta">
-                                    <span>Augsburg</span>
-                                    <span class="tag">Demontage &amp; Umzug</span>
-                                </span>
-                            </div>
+                    <!-- Bundle 4: Premium Pro (Bonus) -->
+                    <div class="bundle-card-full featured reveal" data-category="premium" data-price="0" data-popular="1">
+                        <span class="bundle-badge">⭐ White‑Glove</span>
+                        <span class="bundle-icon"><i class="fas fa-crown"></i></span>
+                        <h3>Premium Pro</h3>
+                        <p class="bundle-desc">Der exklusive Rundum-Service für anspruchsvolle Projekte. Persönliche Betreuung vom ersten Gespräch bis zur Übergabe.</p>
+                        <ul class="bundle-list">
+                            <li>Persönliche Projektbegleitung</li>
+                            <li>Flexible Terminplanung</li>
+                            <li>Höchste Präzision &amp; Sorgfalt</li>
+                            <li>2 Jahre Garantie</li>
+                            <li>Nachsorge vor Ort</li>
+                        </ul>
+                        <div class="bundle-price">
+                            Auf Anfrage
+                            <span class="note">Individuelles Angebot</span>
                         </div>
-                        <div class="stars">★★★★★</div>
-                        <p class="text">Der Umzug war stressfrei – Dank Raphaels sorgfältiger Demontage und dem fachgerechten Aufbau. Alles wurde perfekt eingepackt und transportiert. Am neuen Ort standen meine Möbel besser als vorher. Absolut empfehlenswert!</p>
-                        <div class="bottom-row">
-                            <span class="date"><i class="far fa-calendar"></i> 3. April 2026</span>
-                            <span class="helpful" data-likes="6"><i class="far fa-thumbs-up"></i> <span class="count">6</span></span>
-                        </div>
+                        <a href="/anfrage/" class="btn btn-primary magnetic-btn">
+                            <i class="fas fa-comment-dots"></i> Angebot anfragen
+                        </a>
                     </div>
 
-                    <!-- Review 5 -->
-                    <div class="review-card-dense reveal" data-stars="4" data-name="Frank H." data-date="2026-03-20" data-text="Meine neue Terrassenüberdachung wurde wetterfest und stabil montiert. Ein kleiner Terminverschiebung gab es, aber Raphael hat sich sofort entschuldigt und einen fairen Ausgleich angeboten. Die Arbeit ist einwandfrei – würde ich wieder buchen.">
-                        <div class="top-row">
-                            <div class="avatar">FH</div>
-                            <div class="user-info">
-                                <span class="name">Frank H.</span>
-                                <span class="meta">
-                                    <span>München</span>
-                                    <span class="tag">Garten &amp; Outdoor</span>
-                                </span>
-                            </div>
+                    <!-- Bundle 5: Garten & Outdoor Komplett -->
+                    <div class="bundle-card-full reveal" data-category="garten" data-price="350" data-popular="0">
+                        <span class="bundle-badge">🌿 Outdoor</span>
+                        <span class="bundle-icon"><i class="fas fa-tree"></i></span>
+                        <h3>Garten &amp; Outdoor</h3>
+                        <p class="bundle-desc">Alles für Ihren Außenbereich – von Terrassenüberdachungen bis zu Gartenhäusern, professionell montiert.</p>
+                        <ul class="bundle-list">
+                            <li>Montage von Gartenhäusern</li>
+                            <li>Terrassenüberdachungen</li>
+                            <li>Gartenmöbel-Aufbau</li>
+                            <li>Wetterfeste Abdichtung</li>
+                        </ul>
+                        <div class="bundle-price">
+                            ab 350 €
+                            <span class="note">zzgl. Material, Preise netto</span>
                         </div>
-                        <div class="stars">★★★★☆</div>
-                        <p class="text">Meine neue Terrassenüberdachung wurde wetterfest und stabil montiert. Ein kleiner Terminverschiebung gab es, aber Raphael hat sich sofort entschuldigt und einen fairen Ausgleich angeboten. Die Arbeit ist einwandfrei – würde ich wieder buchen.</p>
-                        <div class="bottom-row">
-                            <span class="date"><i class="far fa-calendar"></i> 20. März 2026</span>
-                            <span class="helpful" data-likes="4"><i class="far fa-thumbs-up"></i> <span class="count">4</span></span>
-                        </div>
+                        <a href="bundles/garten-outdoor.html" class="btn btn-primary magnetic-btn">
+                            <i class="fas fa-arrow-right"></i> Zum Bundle
+                        </a>
                     </div>
 
-                    <!-- Review 6 -->
-                    <div class="review-card-dense reveal" data-stars="5" data-name="Julia S." data-date="2026-03-12" data-text="Ich bin begeistert! Meine neue Einbauküche sieht aus wie ein Traum. Raphael hat die alten Schränke fachgerecht demontiert und die neuen perfekt eingepasst. Sogar die Spülmaschine wurde sauber angeschlossen. Vielen Dank!">
-                        <div class="top-row">
-                            <div class="avatar">JS</div>
-                            <div class="user-info">
-                                <span class="name">Julia S.</span>
-                                <span class="meta">
-                                    <span>Augsburg</span>
-                                    <span class="tag">Möbel &amp; Küchen</span>
-                                </span>
-                            </div>
+                    <!-- Bundle 6: Büro & Objekt -->
+                    <div class="bundle-card-full reveal" data-category="büro" data-price="490" data-popular="0">
+                        <span class="bundle-badge">🏢 Objekt</span>
+                        <span class="bundle-icon"><i class="fas fa-building"></i></span>
+                        <h3>Büro &amp; Objekt</h3>
+                        <p class="bundle-desc">Effiziente Montage von Büromöbeln – vom Einzelschreibtisch bis zur kompletten Büroeinrichtung.</p>
+                        <ul class="bundle-list">
+                            <li>Schreibtische &amp; Konferenztische</li>
+                            <li>Regalsysteme &amp; Schränke</li>
+                            <li>Kabelmanagement</li>
+                            <li>Minimaler Betriebsausfall</li>
+                        </ul>
+                        <div class="bundle-price">
+                            ab 490 €
+                            <span class="note">zzgl. Anfahrt, Preise netto</span>
                         </div>
-                        <div class="stars">★★★★★</div>
-                        <p class="text">Ich bin begeistert! Meine neue Einbauküche sieht aus wie ein Traum. Raphael hat die alten Schränke fachgerecht demontiert und die neuen perfekt eingepasst. Sogar die Spülmaschine wurde sauber angeschlossen. Vielen Dank!</p>
-                        <div class="bottom-row">
-                            <span class="date"><i class="far fa-calendar"></i> 12. März 2026</span>
-                            <span class="helpful" data-likes="10"><i class="far fa-thumbs-up"></i> <span class="count">10</span></span>
-                        </div>
-                    </div>
-
-                    <!-- Review 7 -->
-                    <div class="review-card-dense reveal" data-stars="5" data-name="Daniel W." data-date="2026-03-01" data-text="Raphael ist der USM Haller Spezialist in München. Er hat mein ganzes System neu aufgebaut und sogar noch ein paar Optimierungen vorgenommen, die mir nie aufgefallen wären. Man merkt sofort, dass er das System liebt und versteht.">
-                        <div class="top-row">
-                            <div class="avatar">DW</div>
-                            <div class="user-info">
-                                <span class="name">Daniel W.</span>
-                                <span class="meta">
-                                    <span>München</span>
-                                    <span class="tag">USM Haller</span>
-                                </span>
-                            </div>
-                        </div>
-                        <div class="stars">★★★★★</div>
-                        <p class="text">Raphael ist der USM Haller Spezialist in München. Er hat mein ganzes System neu aufgebaut und sogar noch ein paar Optimierungen vorgenommen, die mir nie aufgefallen wären. Man merkt sofort, dass er das System liebt und versteht.</p>
-                        <div class="bottom-row">
-                            <span class="date"><i class="far fa-calendar"></i> 1. März 2026</span>
-                            <span class="helpful" data-likes="9"><i class="far fa-thumbs-up"></i> <span class="count">9</span></span>
-                        </div>
-                    </div>
-
-                    <!-- Review 8 -->
-                    <div class="review-card-dense reveal" data-stars="5" data-name="Anna M." data-date="2026-02-18" data-text="Für unser neues Büro hat Raphael alle Möbel montiert – Schreibtische, Regale, Besprechungstische. Alles war termingerecht fertig und der Betriebsausfall war minimal. Die Qualität ist hervorragend, wir buchen ihn gerne wieder.">
-                        <div class="top-row">
-                            <div class="avatar">AM</div>
-                            <div class="user-info">
-                                <span class="name">Anna M.</span>
-                                <span class="meta">
-                                    <span>Augsburg</span>
-                                    <span class="tag">Büro &amp; Objekt</span>
-                                </span>
-                            </div>
-                        </div>
-                        <div class="stars">★★★★★</div>
-                        <p class="text">Für unser neues Büro hat Raphael alle Möbel montiert – Schreibtische, Regale, Besprechungstische. Alles war termingerecht fertig und der Betriebsausfall war minimal. Die Qualität ist hervorragend, wir buchen ihn gerne wieder.</p>
-                        <div class="bottom-row">
-                            <span class="date"><i class="far fa-calendar"></i> 18. Februar 2026</span>
-                            <span class="helpful" data-likes="7"><i class="far fa-thumbs-up"></i> <span class="count">7</span></span>
-                        </div>
-                    </div>
-
-                    <!-- Review 9 -->
-                    <div class="review-card-dense reveal" data-stars="3" data-name="Petra K." data-date="2026-02-05" data-text="Die Montage des Gartenhauses war solide, aber es gab kleine Verzögerungen bei der Lieferung der Schrauben. Raphael hat sich jedoch sehr bemüht und die Arbeit wurde letztlich gut abgeschlossen. Kommunikation war freundlich.">
-                        <div class="top-row">
-                            <div class="avatar">PK</div>
-                            <div class="user-info">
-                                <span class="name">Petra K.</span>
-                                <span class="meta">
-                                    <span>München</span>
-                                    <span class="tag">Garten &amp; Outdoor</span>
-                                </span>
-                            </div>
-                        </div>
-                        <div class="stars">★★★☆☆</div>
-                        <p class="text">Die Montage des Gartenhauses war solide, aber es gab kleine Verzögerungen bei der Lieferung der Schrauben. Raphael hat sich jedoch sehr bemüht und die Arbeit wurde letztlich gut abgeschlossen. Kommunikation war freundlich.</p>
-                        <div class="bottom-row">
-                            <span class="date"><i class="far fa-calendar"></i> 5. Februar 2026</span>
-                            <span class="helpful" data-likes="2"><i class="far fa-thumbs-up"></i> <span class="count">2</span></span>
-                        </div>
-                    </div>
-
-                    <!-- Hidden extra reviews for "load more" -->
-                    <div class="review-card-dense reveal" data-stars="5" data-name="Sebastian W." data-date="2026-01-22" data-text="Raphael hat meine komplette Wohnung eingerichtet – vom Kleiderschrank bis zur Küche. Alles perfekt ausgerichtet, keine Kratzer, keine Schäden. Absolut top!" style="display:none;">
-                        <div class="top-row">
-                            <div class="avatar">SW</div>
-                            <div class="user-info">
-                                <span class="name">Sebastian W.</span>
-                                <span class="meta">
-                                    <span>München</span>
-                                    <span class="tag">Komplettmontage</span>
-                                </span>
-                            </div>
-                        </div>
-                        <div class="stars">★★★★★</div>
-                        <p class="text">Raphael hat meine komplette Wohnung eingerichtet – vom Kleiderschrank bis zur Küche. Alles perfekt ausgerichtet, keine Kratzer, keine Schäden. Absolut top!</p>
-                        <div class="bottom-row">
-                            <span class="date"><i class="far fa-calendar"></i> 22. Januar 2026</span>
-                            <span class="helpful" data-likes="11"><i class="far fa-thumbs-up"></i> <span class="count">11</span></span>
-                        </div>
-                    </div>
-
-                    <div class="review-card-dense reveal" data-stars="5" data-name="Nina B." data-date="2026-01-10" data-text="Ich hatte eine sehr komplexe USM Haller Wand. Raphael hat alles perfekt geplant und umgesetzt. Er hat sogar eine kleine Fehlkonstruktion des Vormieters behoben. Absolute Empfehlung!" style="display:none;">
-                        <div class="top-row">
-                            <div class="avatar">NB</div>
-                            <div class="user-info">
-                                <span class="name">Nina B.</span>
-                                <span class="meta">
-                                    <span>Augsburg</span>
-                                    <span class="tag">USM Haller</span>
-                                </span>
-                            </div>
-                        </div>
-                        <div class="stars">★★★★★</div>
-                        <p class="text">Ich hatte eine sehr komplexe USM Haller Wand. Raphael hat alles perfekt geplant und umgesetzt. Er hat sogar eine kleine Fehlkonstruktion des Vormieters behoben. Absolute Empfehlung!</p>
-                        <div class="bottom-row">
-                            <span class="date"><i class="far fa-calendar"></i> 10. Januar 2026</span>
-                            <span class="helpful" data-likes="14"><i class="far fa-thumbs-up"></i> <span class="count">14</span></span>
-                        </div>
-                    </div>
-
-                    <div class="review-card-dense reveal" data-stars="5" data-name="Georg P." data-date="2025-12-05" data-text="Raphael hat unsere Büromöbel in Rekordzeit montiert – ohne Qualitätsverlust. Sehr professionell und zuverlässig. Wir arbeiten jetzt gerne in unserem neuen Büro." style="display:none;">
-                        <div class="top-row">
-                            <div class="avatar">GP</div>
-                            <div class="user-info">
-                                <span class="name">Georg P.</span>
-                                <span class="meta">
-                                    <span>München</span>
-                                    <span class="tag">Büro &amp; Objekt</span>
-                                </span>
-                            </div>
-                        </div>
-                        <div class="stars">★★★★★</div>
-                        <p class="text">Raphael hat unsere Büromöbel in Rekordzeit montiert – ohne Qualitätsverlust. Sehr professionell und zuverlässig. Wir arbeiten jetzt gerne in unserem neuen Büro.</p>
-                        <div class="bottom-row">
-                            <span class="date"><i class="far fa-calendar"></i> 5. Dezember 2025</span>
-                            <span class="helpful" data-likes="5"><i class="far fa-thumbs-up"></i> <span class="count">5</span></span>
-                        </div>
+                        <a href="bundles/buero-objekt.html" class="btn btn-primary magnetic-btn">
+                            <i class="fas fa-arrow-right"></i> Zum Bundle
+                        </a>
                     </div>
 
                 </div>
+            </div>
+        </section>
 
-                <!-- Load More -->
-                <div style="text-align:center; margin-top:48px;" class="reveal">
-                    <button class="btn btn-secondary magnetic-btn" id="loadMoreBtn" style="min-width:180px;">
-                        <i class="fas fa-plus-circle"></i> Weitere anzeigen
-                    </button>
+        <!-- ==================== COMPARISON TABLE ==================== -->
+        <section class="comparison-section" id="comparison">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="pre">Vergleich</span>
+                    <h2>Welches Bundle passt zu <span class="gold">Ihnen</span>?</h2>
+                    <p>Alle Leistungen auf einen Blick – finden Sie das perfekte Paket für Ihr Projekt.</p>
                 </div>
 
-                <!-- Live Feed Mini -->
-                <div class="live-feed-mini reveal" id="liveFeedMini">
-                    <div class="feed-header">
-                        <span><span class="dot"></span> Aktuelle Aktivität</span>
-                        <span style="font-size:0.65rem; color:var(--rl-dim);"><i class="fas fa-sync-alt" style="margin-right:4px;"></i> Live</span>
+                <div class="comparison-table-wrap reveal">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th style="min-width:140px;">Leistung</th>
+                                <th>Küchen-<br>Komplett</th>
+                                <th class="highlight-col">USM All‑In</th>
+                                <th>Umzug<br>Premium</th>
+                                <th>Premium<br>Pro</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Beratung &amp; Planung</td>
+                                <td><span class="check">✓</span></td>
+                                <td class="highlight-col"><span class="check">✓</span></td>
+                                <td><span class="check">✓</span></td>
+                                <td><span class="check">✓</span></td>
+                            </tr>
+                            <tr>
+                                <td>Demontage</td>
+                                <td><span class="check">✓</span></td>
+                                <td class="highlight-col"><span class="check">✓</span></td>
+                                <td><span class="check">✓</span></td>
+                                <td><span class="check">✓</span></td>
+                            </tr>
+                            <tr>
+                                <td>Professionelle Montage</td>
+                                <td><span class="check">✓</span></td>
+                                <td class="highlight-col"><span class="check">✓</span></td>
+                                <td><span class="check">✓</span></td>
+                                <td><span class="check">✓</span></td>
+                            </tr>
+                            <tr>
+                                <td>Geräteanschluss</td>
+                                <td><span class="check">✓</span></td>
+                                <td class="highlight-col"><span class="cross">✗</span></td>
+                                <td><span class="cross">✗</span></td>
+                                <td><span class="check">✓</span></td>
+                            </tr>
+                            <tr>
+                                <td>Lieferkoordination</td>
+                                <td><span class="cross">✗</span></td>
+                                <td class="highlight-col"><span class="check">✓</span></td>
+                                <td><span class="cross">✗</span></td>
+                                <td><span class="check">✓</span></td>
+                            </tr>
+                            <tr>
+                                <td>Schutzverpackung</td>
+                                <td><span class="cross">✗</span></td>
+                                <td class="highlight-col"><span class="check">✓</span></td>
+                                <td><span class="check">✓</span></td>
+                                <td><span class="check">✓</span></td>
+                            </tr>
+                            <tr>
+                                <td>Nachjustierung vor Ort</td>
+                                <td><span class="cross">✗</span></td>
+                                <td class="highlight-col"><span class="check">✓</span></td>
+                                <td><span class="cross">✗</span></td>
+                                <td><span class="check">✓</span></td>
+                            </tr>
+                            <tr>
+                                <td>Garantie</td>
+                                <td>1 Jahr</td>
+                                <td class="highlight-col">1 Jahr</td>
+                                <td>1 Jahr</td>
+                                <td><strong>2 Jahre</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Preis (ab)</td>
+                                <td class="price-tag">590 €</td>
+                                <td class="highlight-col price-tag">Individuell</td>
+                                <td class="price-tag">420 €</td>
+                                <td class="price-tag">Auf Anfrage</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><a href="bundles/kuechen-komplett.html" class="btn btn-sm btn-primary" style="min-height:38px; padding:8px 16px; font-size:0.75rem;">Zum Bundle</a></td>
+                                <td class="highlight-col"><a href="bundles/usm-all-in.html" class="btn btn-sm btn-primary" style="min-height:38px; padding:8px 16px; font-size:0.75rem;">Zum Bundle</a></td>
+                                <td><a href="bundles/umzug-premium.html" class="btn btn-sm btn-primary" style="min-height:38px; padding:8px 16px; font-size:0.75rem;">Zum Bundle</a></td>
+                                <td><a href="/anfrage/" class="btn btn-sm btn-primary" style="min-height:38px; padding:8px 16px; font-size:0.75rem;">Anfragen</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== FAQ ==================== -->
+        <section class="bundles-faq" id="faq">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="pre">Häufig gestellte Fragen</span>
+                    <h2>Alles rund um <span class="gold">unsere Bundles</span></h2>
+                    <p>Antworten auf die wichtigsten Fragen – für alle anderen stehe ich persönlich bereit.</p>
+                </div>
+                <div class="faq-grid reveal">
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>Was ist der Unterschied zwischen einem Bundle und einer Einzelmontage?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">Ein Bundle kombiniert mehrere Leistungen zu einem attraktiven Gesamtpreis. Sie sparen nicht nur Geld, sondern auch Zeit, weil alles aus einer Hand kommt – von der Demontage bis zur Endreinigung.</div>
                     </div>
-                    <div class="feed-mini-item"><i class="fas fa-star"></i><span>Neue 5★ Bewertung von Sebastian W.</span><span class="time">vor 6 min</span></div>
-                    <div class="feed-mini-item"><i class="fas fa-check-circle"></i><span>USM Haller Montage in München abgeschlossen</span><span class="time">vor 23 min</span></div>
-                    <div class="feed-mini-item"><i class="fas fa-truck"></i><span>Küchenmontage in Augsburg gestartet</span><span class="time">vor 1 h</span></div>
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>Kann ich mein Bundle individuell anpassen?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">Ja, absolut! Jedes Bundle ist als Basis gedacht. Wir können Leistungen hinzufügen oder weglassen, um ein maßgeschneidertes Paket für Ihr Projekt zu schnüren. Sprechen Sie mich einfach an.</div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>Wie verbindlich ist die Preisangabe?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">Die Preise sind Richtwerte. Der endgültige Preis hängt von der Komplexität, der Anfahrt und etwaigen Sonderwünschen ab. Ich erstelle Ihnen gerne ein transparentes, verbindliches Angebot.</div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>Wie schnell kann ich mit der Montage beginnen?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">In der Regel kann ich innerhalb von 3–7 Werktagen einen Termin anbieten. Bei dringenden Projekten sprechen wir gerne über eine Express-Option.</div>
+                    </div>
                 </div>
-
             </div>
         </section>
 
         <!-- ==================== CTA BANNER ==================== -->
         <section class="container">
             <div class="cta-banner reveal">
-                <h2>Möchten Sie auch <span style="background:var(--rl-gradient-gold);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Ihre Erfahrung</span> teilen?</h2>
-                <p>Ihre Bewertung hilft anderen Menschen, eine gute Entscheidung zu treffen – und mir, noch besser zu werden.</p>
-                <a href="/anfrage/" class="btn btn-primary magnetic-btn"><i class="fas fa-pen"></i> Bewertung schreiben</a>
+                <h2>Fragen zu den Bundles? <span style="background:var(--rl-gradient-gold);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Ich berate Sie gern!</span></h2>
+                <p>Unverbindlich, kostenlos und mit voller Transparenz – ich freue mich auf Ihr Projekt.</p>
+                <a href="/anfrage/" class="btn btn-primary magnetic-btn"><i class="fas fa-comment-dots"></i> Jetzt Gespräch vereinbaren</a>
             </div>
         </section>
 
-        <!-- ==================== CTA SECTION (bottom) ==================== -->
-        <section class="reviews-cta">
-            <div class="container">
-                <div class="reveal">
-                    <span class="pre">✦ Auch Ihre Stimme zählt</span>
-                    <h2>Vertrauen Sie <span class="gold">Ihrem</span> Bauchgefühl?</h2>
-                    <p>Ich freue mich auf jede ehrliche Rückmeldung – ob per E-Mail, Telefon oder direkt hier.</p>
-                    <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
-                        <a href="/anfrage/" class="btn btn-primary magnetic-btn">
-                            <i class="fas fa-comment-dots"></i> Jetzt Kontakt aufnehmen
-                        </a>
-                        <a href="/services.html" class="btn btn-secondary magnetic-btn">
-                            <i class="fas fa-th-list"></i> Alle Services entdecken
-                        </a>
-                    </div>
+        <!-- ==================== LIVE FEED (mini) ==================== -->
+        <section class="container" style="padding-bottom:40px;">
+            <div class="live-feed-mini reveal" id="liveFeedMini">
+                <div class="feed-header">
+                    <span><span class="dot"></span> Aktuelle Aktivität</span>
+                    <span style="font-size:0.65rem; color:var(--rl-dim);"><i class="fas fa-sync-alt" style="margin-right:4px;"></i> Live</span>
                 </div>
+                <div class="feed-mini-item"><i class="fas fa-gem"></i><span>USM All‑In Bundle für Neukunde in München</span><span class="time">vor 8 min</span></div>
+                <div class="feed-mini-item"><i class="fas fa-utensils"></i><span>Küchen-Komplett in Augsburg abgeschlossen</span><span class="time">vor 34 min</span></div>
+                <div class="feed-mini-item"><i class="fas fa-truck"></i><span>Umzug Premium für Familie Schmidt geplant</span><span class="time">vor 2 h</span></div>
             </div>
         </section>
 
@@ -3178,15 +3068,15 @@
                         animateRing();
                         document.addEventListener('mouseover', function(e) {
                             var target = e.target.closest(
-                                'a, button, .btn, .magnetic-btn, .bundle-card, .review-card-dense, .faq-item'
-                                );
+                                'a, button, .btn, .magnetic-btn, .bundle-card-full, .faq-item'
+                            );
                             if (target) { dot.classList.add('hovering');
                                 ring.classList.add('hovering'); }
                         });
                         document.addEventListener('mouseout', function(e) {
                             var target = e.target.closest(
-                                'a, button, .btn, .magnetic-btn, .bundle-card, .review-card-dense, .faq-item'
-                                );
+                                'a, button, .btn, .magnetic-btn, .bundle-card-full, .faq-item'
+                            );
                             if (target) { dot.classList.remove('hovering');
                                 ring.classList.remove('hovering'); }
                         });
@@ -3321,169 +3211,105 @@
                 }
 
                 /* ==========================================================
-                   REVIEWS PAGE SPECIFIC FEATURES
+                   BUNDLES PAGE SPECIFIC FEATURES
                    ========================================================== */
 
-                // ── Animate Rating Bars ──
-                function animateBars() {
-                    var fills = document.querySelectorAll('.bar-fill');
-                    fills.forEach(function(fill) {
-                        var width = fill.getAttribute('data-width');
-                        if (width !== null) {
-                            setTimeout(function() { fill.style.width = width + '%'; }, 300);
-                        }
-                    });
-                }
+                // ── Filter ──
+                var filterBtns = document.querySelectorAll('.filter-btn');
+                var bundleCards = document.querySelectorAll('.bundle-card-full');
 
-                // ── Review Search ──
-                var searchInput = document.getElementById('reviewSearch');
-                var searchHint = document.getElementById('searchHint');
-                var grid = document.getElementById('reviewsGrid');
-                var cards = grid ? grid.querySelectorAll('.review-card-dense') : [];
-
-                function filterReviews() {
-                    var query = searchInput ? searchInput.value.toLowerCase().trim() : '';
+                function filterBundles() {
                     var activeFilter = document.querySelector('.filter-btn.active');
                     var filter = activeFilter ? activeFilter.getAttribute('data-filter') : 'all';
                     var visibleCount = 0;
 
-                    cards.forEach(function(card) {
-                        var stars = card.getAttribute('data-stars') || '0';
-                        var name = (card.getAttribute('data-name') || '').toLowerCase();
-                        var text = (card.getAttribute('data-text') || '').toLowerCase();
-                        var matchText = !query || name.includes(query) || text.includes(query);
-                        var matchFilter = filter === 'all' || stars === filter;
-                        var visible = matchText && matchFilter;
-                        card.style.display = visible ? 'flex' : 'none';
-                        if (visible) visibleCount++;
+                    bundleCards.forEach(function(card) {
+                        var category = card.getAttribute('data-category') || '';
+                        var match = filter === 'all' || category === filter;
+                        card.style.display = match ? 'flex' : 'none';
+                        if (match) visibleCount++;
                     });
 
-                    // Show/hide "no results"
+                    // Show/hide "no results" hint if needed
+                    var grid = document.getElementById('bundlesGrid');
                     var noResults = grid.querySelector('.no-results');
                     if (visibleCount === 0) {
                         if (!noResults) {
                             noResults = document.createElement('div');
                             noResults.className = 'no-results';
+                            noResults.style.cssText =
+                                'grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--rl-muted);';
                             noResults.innerHTML =
-                                '<i class="fas fa-search"></i><h3>Keine Bewertungen gefunden</h3><p>Versuchen Sie es mit einem anderen Suchbegriff oder Filter.</p>';
+                                '<i class="fas fa-search" style="font-size:2.5rem;color:var(--rl-dim);display:block;margin-bottom:16px;"></i><h3 style="font-family:var(--font-head);font-weight:700;font-size:1.3rem;margin-bottom:8px;color:var(--rl-text);">Keine Bundles gefunden</h3><p>Versuchen Sie einen anderen Filter.</p>';
                             grid.appendChild(noResults);
                         }
                         noResults.style.display = 'block';
                     } else {
                         if (noResults) noResults.style.display = 'none';
                     }
-
-                    if (searchHint) {
-                        searchHint.textContent = query ? visibleCount + ' Bewertung(en) gefunden' : '';
-                    }
                 }
 
-                if (searchInput) {
-                    searchInput.addEventListener('input', debounce(filterReviews, 200));
-                }
-
-                // ── Filter Buttons ──
-                var filterBtns = document.querySelectorAll('.filter-btn');
                 filterBtns.forEach(function(btn) {
                     btn.addEventListener('click', function() {
                         filterBtns.forEach(function(b) { b.classList.remove('active'); });
                         this.classList.add('active');
-                        filterReviews();
+                        filterBundles();
                     });
                 });
 
                 // ── Sort ──
-                var sortSelect = document.getElementById('sortSelect');
+                var sortSelect = document.getElementById('sortBundles');
+                var grid = document.getElementById('bundlesGrid');
+
                 if (sortSelect) {
                     sortSelect.addEventListener('change', function() {
                         var order = this.value;
-                        var cardArray = Array.from(cards);
-                        cardArray.sort(function(a, b) {
-                            var dateA = a.getAttribute('data-date') || '2000-01-01';
-                            var dateB = b.getAttribute('data-date') || '2000-01-01';
-                            var starsA = parseInt(a.getAttribute('data-stars') || 0);
-                            var starsB = parseInt(b.getAttribute('data-stars') || 0);
-                            if (order === 'newest') return dateB.localeCompare(dateA);
-                            if (order === 'oldest') return dateA.localeCompare(dateB);
-                            if (order === 'highest') return starsB - starsA;
-                            if (order === 'lowest') return starsA - starsB;
+                        var cards = Array.from(grid.querySelectorAll('.bundle-card-full'));
+
+                        cards.sort(function(a, b) {
+                            var priceA = parseInt(a.getAttribute('data-price')) || 0;
+                            var priceB = parseInt(b.getAttribute('data-price')) || 0;
+                            var nameA = a.querySelector('h3') ? a.querySelector('h3').textContent : '';
+                            var nameB = b.querySelector('h3') ? b.querySelector('h3').textContent : '';
+                            var popularA = parseInt(a.getAttribute('data-popular')) || 0;
+                            var popularB = parseInt(b.getAttribute('data-popular')) || 0;
+
+                            if (order === 'popular') return popularB - popularA;
+                            if (order === 'price-low') return priceA - priceB;
+                            if (order === 'price-high') return priceB - priceA;
+                            if (order === 'name') return nameA.localeCompare(nameB);
                             return 0;
                         });
-                        cardArray.forEach(function(card) { grid.appendChild(card); });
-                        filterReviews();
+
+                        cards.forEach(function(card) { grid.appendChild(card); });
+                        filterBundles();
                     });
                 }
 
-                // ── Expand text on click ──
-                cards.forEach(function(card) {
-                    var textEl = card.querySelector('.text');
-                    if (textEl) {
-                        textEl.addEventListener('click', function() {
-                            this.classList.toggle('expanded');
+                // ── FAQ Accordion ──
+                document.querySelectorAll('.faq-item').forEach(function(item) {
+                    var question = item.querySelector('.faq-question');
+                    if (question) {
+                        question.addEventListener('click', function() {
+                            var isOpen = item.classList.contains('open');
+                            document.querySelectorAll('.faq-item').forEach(function(other) {
+                                if (other !== item) other.classList.remove('open');
+                            });
+                            if (!isOpen) item.classList.add('open');
+                            else item.classList.remove('open');
                         });
                     }
                 });
-
-                // ── Helpful Button ──
-                cards.forEach(function(card) {
-                    var helpful = card.querySelector('.helpful');
-                    if (helpful) {
-                        helpful.addEventListener('click', function(e) {
-                            e.stopPropagation();
-                            var countEl = this.querySelector('.count');
-                            var count = parseInt(countEl.textContent) || 0;
-                            if (this.classList.contains('liked')) {
-                                count--;
-                                this.classList.remove('liked');
-                            } else {
-                                count++;
-                                this.classList.add('liked');
-                            }
-                            countEl.textContent = count;
-                            // Change icon
-                            var icon = this.querySelector('i');
-                            if (icon) {
-                                icon.className = this.classList.contains('liked') ? 'fas fa-thumbs-up' :
-                                    'far fa-thumbs-up';
-                            }
-                        });
-                    }
-                });
-
-                // ── Load More ──
-                var loadBtn = document.getElementById('loadMoreBtn');
-                if (loadBtn) {
-                    loadBtn.addEventListener('click', function() {
-                        var hidden = grid.querySelectorAll('.review-card-dense[style*="display: none"]');
-                        var count = 0;
-                        hidden.forEach(function(card) {
-                            if (count < 3) {
-                                card.style.display = 'flex';
-                                card.style.animation = 'fadeUp 0.5s var(--ease) forwards';
-                                count++;
-                            }
-                        });
-                        // Re-apply search/filter to keep consistency
-                        filterReviews();
-                        if (count === 0) {
-                            this.textContent = '👍 Alle Bewertungen geladen';
-                            this.disabled = true;
-                            this.style.opacity = '0.6';
-                            this.style.cursor = 'default';
-                        }
-                    });
-                }
 
                 // ── Live Feed Simulator ──
                 var feedContainer = document.getElementById('liveFeedMini');
                 if (feedContainer) {
                     var feedItemsData = [
-                        { icon: 'fa-star', text: 'Neue 5★ Bewertung von Sebastian W.', time: 'vor 6 min' },
-                        { icon: 'fa-check-circle', text: 'USM Haller Montage in München abgeschlossen',
-                        time: 'vor 23 min' },
-                        { icon: 'fa-truck', text: 'Küchenmontage in Augsburg gestartet', time: 'vor 1 h' },
-                        { icon: 'fa-crown', text: 'Premium Pro Buchung für Mai bestätigt', time: 'vor 2 h' },
-                        { icon: 'fa-smile', text: 'Zufriedener Kunde hinterlässt 5★ Bewertung', time: 'vor 3 h' }
+                        { icon: 'fa-gem', text: 'USM All‑In Bundle für Neukunde in München', time: 'vor 8 min' },
+                        { icon: 'fa-utensils', text: 'Küchen-Komplett in Augsburg abgeschlossen', time: 'vor 34 min' },
+                        { icon: 'fa-truck', text: 'Umzug Premium für Familie Schmidt geplant', time: 'vor 2 h' },
+                        { icon: 'fa-crown', text: 'Premium Pro Anfrage für Mai eingegangen', time: 'vor 3 h' },
+                        { icon: 'fa-tree', text: 'Garten & Outdoor Bundle für neues Projekt', time: 'vor 5 h' }
                     ];
                     var feedIndex = 3;
 
@@ -3498,17 +3324,10 @@
                             feedContainer.removeChild(feedContainer.lastChild);
                         }
                         feedIndex++;
-                    }, 14000);
+                    }, 15000);
                 }
 
-                // ── Init ──
-                setTimeout(function() {
-                    animateBars();
-                    filterReviews();
-                    // Ensure initially visible cards are counted
-                }, 200);
-
-                console.log('✨ Raphael Lezius – Reviews Page (Ultimate Edition)');
+                console.log('✨ Raphael Lezius – Bundles Page (Ultimate Edition)');
             }
 
             /* ── Init ── */
