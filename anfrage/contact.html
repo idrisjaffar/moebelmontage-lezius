@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projektdetails · Raphael Lezius – Anfrage</title>
+    <title>Anfrage · Raphael Lezius – Premium Montage</title>
     <meta name="theme-color" content="#0B0A09" id="themeColorMeta">
-    <meta name="description" content="Schritt 3: Geben Sie die Details zu Ihrem Projekt an – damit ich ein maßgeschneidertes Angebot erstellen kann.">
+    <meta name="description" content="Starten Sie jetzt Ihre unverbindliche Anfrage für Premium Montagen in München & Augsburg. Schnell, einfach und kostenlos.">
 
-    <!-- Preconnect & Preload für Performance -->
+    <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
@@ -15,7 +15,7 @@
 
     <style>
         /* ============================================================
-           RAPHAEL LEZIUS – PROJEKTDETAILS PAGE (Step 3)
+           GLOBAL VARIABLES & RESET (same as homepage)
            ============================================================ */
         :root {
             --rl-primary: #D4A574;
@@ -28,9 +28,6 @@
             --rl-accent-hover: #F09B78;
             --rl-amber: #F5B942;
             --rl-amber-hover: #FFCF5C;
-            --rl-teal: #2A9D8F;
-            --rl-coral: #F4A261;
-            --rl-sage: #A8C4B8;
             --rl-bg: #0B0A09;
             --rl-surface: #141210;
             --rl-card: #1A1815;
@@ -40,12 +37,10 @@
             --rl-dim: #6B6560;
             --rl-glass: rgba(11, 10, 9, 0.88);
             --rl-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
-            --rl-shadow-sm: 0 8px 24px rgba(0, 0, 0, 0.35);
             --rl-shadow-glow: 0 8px 32px rgba(212, 165, 116, 0.25);
             --rl-shadow-glow-secondary: 0 8px 32px rgba(46, 154, 140, 0.25);
             --rl-shadow-glow-accent: 0 8px 32px rgba(232, 141, 106, 0.25);
             --rl-shadow-glow-amber: 0 8px 32px rgba(245, 185, 66, 0.25);
-            --rl-gradient-primary: linear-gradient(135deg, #D4A574, #B88A55);
             --rl-gradient-cta: linear-gradient(135deg, #E88D6A 0%, #D4A574 50%, #2E9A8C 100%);
             --rl-gradient-cta-hover: linear-gradient(135deg, #F09B78 0%, #E4B98A 50%, #3DB09F 100%);
             --rl-gradient-gold: linear-gradient(135deg, #F5B942, #D4A574);
@@ -60,23 +55,17 @@
             --ease: cubic-bezier(0.22, 1, 0.36, 1);
             --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
             --transition: 0.35s var(--ease);
-            --transition-spring: 0.5s var(--ease-spring);
         }
 
         [data-theme="light"] {
             --rl-primary: #A67C4A;
             --rl-primary-hover: #C08F5A;
-            --rl-primary-dark: #8A6538;
             --rl-secondary: #2A7A6E;
             --rl-secondary-hover: #3E9587;
-            --rl-secondary-dark: #1A5E54;
             --rl-accent: #D97A54;
             --rl-accent-hover: #E88D6A;
             --rl-amber: #D9A335;
             --rl-amber-hover: #F5B942;
-            --rl-teal: #2A7A6E;
-            --rl-coral: #D97A54;
-            --rl-sage: #8AAFA3;
             --rl-bg: #F9F7F2;
             --rl-surface: #FFFFFF;
             --rl-card: #FFFFFF;
@@ -86,12 +75,10 @@
             --rl-dim: #8A837A;
             --rl-glass: rgba(255, 255, 255, 0.92);
             --rl-shadow: 0 16px 40px rgba(28, 25, 23, 0.08);
-            --rl-shadow-sm: 0 6px 18px rgba(28, 25, 23, 0.05);
             --rl-shadow-glow: 0 8px 32px rgba(166, 124, 74, 0.20);
             --rl-shadow-glow-secondary: 0 8px 32px rgba(42, 122, 110, 0.20);
             --rl-shadow-glow-accent: 0 8px 32px rgba(217, 122, 84, 0.20);
             --rl-shadow-glow-amber: 0 8px 32px rgba(217, 163, 53, 0.20);
-            --rl-gradient-primary: linear-gradient(135deg, #A67C4A, #8A6538);
             --rl-gradient-cta: linear-gradient(135deg, #D97A54 0%, #A67C4A 50%, #2A7A6E 100%);
             --rl-gradient-cta-hover: linear-gradient(135deg, #E88D6A 0%, #C08F5A 50%, #3E9587 100%);
             --rl-gradient-gold: linear-gradient(135deg, #D9A335, #A67C4A);
@@ -99,7 +86,6 @@
             --rl-gradient-subtle: linear-gradient(160deg, rgba(166, 124, 74, 0.06), transparent 70%);
         }
 
-        /* ── Reset ── */
         *,
         *::before,
         *::after {
@@ -148,10 +134,6 @@
             background: var(--rl-gradient-multi);
             border-radius: 10px;
             border: 2px solid var(--rl-bg);
-            box-shadow: 0 0 16px rgba(212, 165, 116, 0.15);
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--rl-gradient-cta-hover);
         }
 
         /* ── Utilities ── */
@@ -165,19 +147,6 @@
             padding: clamp(70px, 9vw, 110px) 0;
         }
 
-        .gradient-text {
-            background: var(--rl-gradient-multi);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .gradient-text-gold {
-            background: var(--rl-gradient-gold);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
         /* ── Animations ── */
         @keyframes float {
             0%,
@@ -186,17 +155,6 @@
             }
             50% {
                 transform: translateY(-12px);
-            }
-        }
-        @keyframes breathe {
-            0%,
-            100% {
-                opacity: 0.6;
-                transform: scale(1);
-            }
-            50% {
-                opacity: 1;
-                transform: scale(1.03);
             }
         }
         @keyframes pulse-dot {
@@ -248,15 +206,6 @@
                 opacity: 1;
             }
         }
-        @keyframes glow-pulse {
-            0%,
-            100% {
-                box-shadow: 0 0 20px rgba(212, 165, 116, 0.15);
-            }
-            50% {
-                box-shadow: 0 0 40px rgba(212, 165, 116, 0.30), 0 0 60px rgba(46, 154, 140, 0.15);
-            }
-        }
         @keyframes slideUp {
             0% {
                 opacity: 0;
@@ -265,6 +214,20 @@
             100% {
                 opacity: 1;
                 transform: translateY(0);
+            }
+        }
+        @keyframes checkmark {
+            0% {
+                transform: scale(0) rotate(-45deg);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.1) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1) rotate(0deg);
+                opacity: 1;
             }
         }
 
@@ -446,7 +409,6 @@
             border: 1.5px solid rgba(46, 154, 140, 0.45);
             transition: width 0.35s, height 0.35s, border-color 0.35s, box-shadow 0.35s;
             z-index: 99998;
-            box-shadow: 0 0 20px rgba(46, 154, 140, 0.05);
         }
         .cursor-dot.hovering {
             width: 16px;
@@ -559,9 +521,7 @@
             *::before,
             *::after {
                 animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
                 transition-duration: 0.01ms !important;
-                scroll-behavior: auto !important;
             }
             .floating-badge {
                 animation: none !important;
@@ -573,7 +533,7 @@
         }
 
         /* ============================================================
-           NAV (with hide-on-scroll)
+           NAV (exactly as homepage)
            ============================================================ */
         .rl-nav {
             position: fixed;
@@ -1020,32 +980,29 @@
         }
 
         /* ============================================================
-           PROJEKTDETAILS PAGE (STEP 3) UNIQUE STYLES
+           ANFRAGE PAGE – UNIQUE STYLES (multi-step form)
            ============================================================ */
-
-        /* ── Hero ── */
-        .details-hero {
-            padding: calc(var(--rl-nav-height) + 50px) 0 30px;
-            background:
-                radial-gradient(ellipse 50% 40% at 30% 20%, rgba(212, 165, 116, 0.08), transparent 55%),
+        .anfrage-hero {
+            padding: calc(var(--rl-nav-height) + 60px) 0 30px;
+            background: radial-gradient(ellipse 50% 40% at 30% 20%, rgba(212, 165, 116, 0.08), transparent 55%),
                 radial-gradient(ellipse 40% 30% at 70% 80%, rgba(46, 154, 140, 0.04), transparent 50%),
                 var(--rl-bg);
             position: relative;
             overflow: hidden;
             text-align: center;
         }
-        .details-hero .hero-glow {
+        .anfrage-hero .hero-glow {
             position: absolute;
-            width: 450px;
-            height: 450px;
+            width: 500px;
+            height: 500px;
             border-radius: 50%;
             background: radial-gradient(circle, rgba(245, 185, 66, 0.04) 0%, transparent 70%);
             top: -150px;
-            right: -80px;
+            right: -100px;
             pointer-events: none;
             animation: soft-pulse 14s ease-in-out infinite;
         }
-        .details-hero .breadcrumb {
+        .anfrage-hero .breadcrumb {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1057,48 +1014,47 @@
             position: relative;
             z-index: 1;
         }
-        .details-hero .breadcrumb a {
+        .anfrage-hero .breadcrumb a {
             color: var(--rl-primary);
             transition: color 0.3s;
         }
-        .details-hero .breadcrumb a:hover {
+        .anfrage-hero .breadcrumb a:hover {
             color: var(--rl-primary-hover);
         }
-        .details-hero .breadcrumb .sep {
+        .anfrage-hero .breadcrumb .sep {
             opacity: 0.3;
         }
-        .details-hero h1 {
+        .anfrage-hero h1 {
             font-family: var(--font-head);
-            font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+            font-size: clamp(2rem, 4vw, 2.8rem);
             font-weight: 800;
             letter-spacing: -1.2px;
             line-height: 1.12;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
             position: relative;
             z-index: 1;
         }
-        .details-hero h1 .gold {
+        .anfrage-hero h1 .gold {
             background: var(--rl-gradient-gold);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        .details-hero .subhead {
-            font-size: 1rem;
+        .anfrage-hero .subhead {
+            font-size: 1.05rem;
             color: var(--rl-muted);
             max-width: 520px;
-            margin: 0 auto 0;
+            margin: 0 auto;
             line-height: 1.6;
             position: relative;
             z-index: 1;
         }
 
-        /* ── Form Container ── */
         .form-container {
             padding: 20px 0 80px;
         }
         .form-wrapper {
-            max-width: 640px;
+            max-width: 700px;
             margin: 0 auto;
             background: var(--rl-card);
             border: 1px solid var(--rl-border);
@@ -1154,16 +1110,16 @@
             color: var(--rl-muted);
             transition: all 0.4s var(--ease);
         }
-        .progress-steps .step-dot .circle.done {
-            border-color: var(--rl-secondary);
-            background: var(--rl-secondary);
-            color: #fff;
-        }
         .progress-steps .step-dot .circle.active {
             border-color: var(--rl-primary);
             background: var(--rl-gradient-gold);
             color: #1C1917;
             box-shadow: var(--rl-shadow-glow);
+        }
+        .progress-steps .step-dot .circle.done {
+            border-color: var(--rl-secondary);
+            background: var(--rl-secondary);
+            color: #fff;
         }
         .progress-steps .step-dot .label {
             font-size: 0.6rem;
@@ -1178,7 +1134,6 @@
             color: var(--rl-text);
         }
 
-        /* ── Progress Bar ── */
         .progress-line-wrap {
             width: 100%;
             height: 4px;
@@ -1191,13 +1146,17 @@
             height: 100%;
             background: var(--rl-gradient-gold);
             border-radius: 4px;
-            width: 66.66%;
+            width: 0%;
             transition: width 0.5s var(--ease);
         }
 
         /* ── Step Content ── */
         .step-content {
+            display: none;
             animation: slideUp 0.5s var(--ease) forwards;
+        }
+        .step-content.active {
+            display: block;
         }
         .step-content .step-title {
             font-family: var(--font-head);
@@ -1234,7 +1193,6 @@
             color: var(--rl-dim);
             margin-top: 4px;
         }
-
         .form-control {
             width: 100%;
             padding: 12px 16px;
@@ -1272,12 +1230,68 @@
             cursor: pointer;
         }
 
+        /* ── Service Grid ── */
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-top: 8px;
+        }
+        .service-option {
+            padding: 16px 14px;
+            border: 2px solid var(--rl-border);
+            border-radius: var(--rl-radius);
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s var(--ease);
+            background: var(--rl-bg);
+            user-select: none;
+        }
+        .service-option:hover {
+            border-color: var(--rl-primary);
+            transform: translateY(-2px);
+        }
+        .service-option.selected {
+            border-color: var(--rl-primary);
+            background: rgba(212, 165, 116, 0.08);
+            box-shadow: var(--rl-shadow-glow);
+        }
+        .service-option i {
+            font-size: 1.6rem;
+            background: var(--rl-gradient-multi);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+            margin-bottom: 6px;
+        }
+        .service-option .name {
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--rl-text);
+        }
+        .service-option .desc {
+            font-size: 0.7rem;
+            color: var(--rl-dim);
+            margin-top: 2px;
+            display: block;
+        }
+        .service-option .check-mark {
+            display: none;
+            margin-top: 6px;
+            color: var(--rl-secondary);
+            font-size: 0.8rem;
+        }
+        .service-option.selected .check-mark {
+            display: block;
+        }
+
         /* ── Navigation Buttons ── */
         .step-nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: 28px;
+            margin-top: 32px;
             padding-top: 24px;
             border-top: 1px solid var(--rl-border);
             gap: 12px;
@@ -1307,11 +1321,162 @@
             font-family: var(--font-mono);
         }
 
+        /* ── Confirmation Summary ── */
+        .summary-grid {
+            background: var(--rl-bg);
+            border-radius: var(--rl-radius);
+            padding: 20px 24px;
+            margin-bottom: 24px;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4px 16px;
+            font-size: 0.9rem;
+        }
+        .summary-grid .summary-label {
+            color: var(--rl-dim);
+            font-weight: 600;
+            padding: 6px 0;
+            border-bottom: 1px solid var(--rl-border);
+        }
+        .summary-grid .summary-value {
+            color: var(--rl-text);
+            padding: 6px 0;
+            border-bottom: 1px solid var(--rl-border);
+            word-break: break-word;
+        }
+        .summary-grid .summary-value.empty {
+            color: var(--rl-dim);
+            font-style: italic;
+        }
+        .summary-grid .full-width {
+            grid-column: 1 / -1;
+        }
+
+        .consent-group {
+            margin-bottom: 20px;
+        }
+        .consent-group label {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-weight: 400;
+            font-size: 0.9rem;
+            color: var(--rl-muted);
+            cursor: pointer;
+            line-height: 1.5;
+        }
+        .consent-group label a {
+            color: var(--rl-primary);
+            text-decoration: underline;
+            transition: color 0.3s;
+        }
+        .consent-group label a:hover {
+            color: var(--rl-primary-hover);
+        }
+        .consent-group input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            min-width: 20px;
+            margin-top: 2px;
+            accent-color: var(--rl-primary);
+            cursor: pointer;
+            border: 2px solid var(--rl-border);
+            border-radius: 4px;
+            appearance: none;
+            -webkit-appearance: none;
+            background: var(--rl-bg);
+            transition: all 0.3s;
+            position: relative;
+        }
+        .consent-group input[type="checkbox"]:checked {
+            background: var(--rl-primary);
+            border-color: var(--rl-primary);
+        }
+        .consent-group input[type="checkbox"]:checked::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #1C1917;
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+        .consent-group .error-hint {
+            margin-top: 6px;
+            padding-left: 32px;
+        }
+
+        /* ── Success Message ── */
+        .success-message {
+            text-align: center;
+            padding: 20px 0;
+        }
+        .success-message .icon {
+            font-size: 4rem;
+            background: var(--rl-gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+            margin-bottom: 16px;
+            animation: checkmark 0.8s var(--ease-spring) forwards;
+        }
+        .success-message h2 {
+            font-family: var(--font-head);
+            font-weight: 800;
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+        }
+        .success-message p {
+            color: var(--rl-muted);
+            max-width: 400px;
+            margin: 0 auto 24px;
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+        .success-message .next-steps {
+            background: var(--rl-bg);
+            border: 1px solid var(--rl-border);
+            border-radius: var(--rl-radius);
+            padding: 20px 24px;
+            text-align: left;
+            max-width: 400px;
+            margin: 0 auto 24px;
+        }
+        .success-message .next-steps li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 8px 0;
+            color: var(--rl-muted);
+            font-size: 0.9rem;
+            border-bottom: 1px solid var(--rl-border);
+        }
+        .success-message .next-steps li:last-child {
+            border-bottom: none;
+        }
+        .success-message .next-steps li i {
+            color: var(--rl-secondary);
+            font-size: 1rem;
+            width: 20px;
+            text-align: center;
+        }
+        .success-message .btn-group {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
         /* ── Responsive ── */
         @media(max-width:768px) {
             .form-wrapper {
                 padding: 28px 20px;
                 margin: 0 4px;
+            }
+            .service-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
             .progress-steps .step-dot .label {
                 display: none;
@@ -1340,21 +1505,57 @@
             .step-nav .btn-back {
                 text-align: center;
             }
-            .details-hero h1 {
+            .anfrage-hero h1 {
                 font-size: 1.6rem;
+            }
+            .summary-grid {
+                grid-template-columns: 1fr;
+                gap: 2px 0;
+                padding: 16px;
+            }
+            .summary-grid .summary-label {
+                border-bottom: none;
+                padding-bottom: 0;
+            }
+            .summary-grid .summary-value {
+                border-bottom: 1px solid var(--rl-border);
+                padding-bottom: 8px;
+                margin-bottom: 4px;
+            }
+            .summary-grid .summary-value:last-child {
+                border-bottom: none;
             }
         }
         @media(max-width:480px) {
+            .service-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 8px;
+            }
+            .service-option {
+                padding: 12px 10px;
+            }
+            .service-option i {
+                font-size: 1.2rem;
+            }
+            .service-option .name {
+                font-size: 0.75rem;
+            }
             .form-wrapper {
                 padding: 20px 14px;
             }
             .step-content .step-title {
                 font-size: 1.1rem;
             }
+            .success-message h2 {
+                font-size: 1.4rem;
+            }
+            .success-message .icon {
+                font-size: 3rem;
+            }
         }
 
         /* ============================================================
-           FOOTER (compact)
+           FOOTER (exactly as homepage, compact)
            ============================================================ */
         .rl-footer {
             background: var(--rl-surface);
@@ -1664,7 +1865,7 @@
     <div class="cursor-ring" id="cursorRing"></div>
     <div class="scroll-progress" id="scrollProgress"></div>
 
-    <a href="https://wa.me/491608194018" target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="WhatsApp schreiben">
+    <a href="https://wa.me/491608194018" target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="WhatsApp">
         <span class="pulse-ring"></span>
         <i class="fab fa-whatsapp"></i>
     </a>
@@ -1688,119 +1889,113 @@
         </div>
     </div>
 
-    <!-- ============================================================ -->
-    <!-- NAV (embedded)                                               -->
-    <!-- ============================================================ -->
-    <nav class="rl-nav" id="mainNav" role="navigation" aria-label="Hauptnavigation">
+    <!-- ============================================================
+    NAV (exactly as homepage)
+    ============================================================ -->
+    <nav class="rl-nav" id="mainNav" role="navigation">
         <div class="rl-nav__inner">
-            <a href="index.html" class="rl-nav__brand" aria-label="Zur Startseite">
-                Raphael <span>Lezius</span>
-            </a>
+            <a href="/" class="rl-nav__brand">Raphael <span>Lezius</span></a>
             <ul class="rl-nav__links" role="menubar">
                 <li class="nav-dropdown" role="none">
-                    <a href="#" class="nav-link" data-section="services" role="menuitem" aria-haspopup="true" aria-expanded="false">
-                        Services <i class="fas fa-chevron-down"></i>
-                    </a>
-                    <div class="nav-dropdown-content" role="menu" aria-label="Services Untermenü">
-                        <a href="services.html" role="menuitem"><i class="fas fa-th-list"></i> Übersicht</a>
-                        <a href="services/moebel-kuechen.html" role="menuitem"><i class="fas fa-couch"></i> Möbel &amp; Küchen</a>
-                        <a href="services/usm-haller.html" role="menuitem"><i class="fas fa-gem"></i> USM Haller</a>
-                        <a href="services/garten-outdoor.html" role="menuitem"><i class="fas fa-tree"></i> Garten &amp; Outdoor</a>
-                        <a href="services/demontage-umzug.html" role="menuitem"><i class="fas fa-truck"></i> Demontage &amp; Umzug</a>
-                        <a href="services/buero-objekt.html" role="menuitem"><i class="fas fa-building"></i> Büro &amp; Objekt</a>
-                        <a href="services/premium-pro.html" role="menuitem"><i class="fas fa-crown"></i> Premium Pro</a>
+                    <a href="#" class="nav-link" role="menuitem" aria-haspopup="true">Services <i class="fas fa-chevron-down"></i></a>
+                    <div class="nav-dropdown-content" role="menu">
+                        <a href="/services.html"><i class="fas fa-th-list"></i> Übersicht</a>
+                        <a href="/services/moebel-kuechen.html"><i class="fas fa-couch"></i> Möbel &amp; Küchen</a>
+                        <a href="/services/usm-haller.html"><i class="fas fa-gem"></i> USM Haller</a>
+                        <a href="/services/garten-outdoor.html"><i class="fas fa-tree"></i> Garten &amp; Outdoor</a>
+                        <a href="/services/demontage-umzug.html"><i class="fas fa-truck"></i> Demontage &amp; Umzug</a>
+                        <a href="/services/buero-objekt.html"><i class="fas fa-building"></i> Büro &amp; Objekt</a>
+                        <a href="/services/premium-pro.html"><i class="fas fa-crown"></i> Premium Pro</a>
                     </div>
                 </li>
                 <li class="nav-dropdown" role="none">
-                    <a href="#" class="nav-link" data-section="bundles" role="menuitem" aria-haspopup="true" aria-expanded="false">
-                        Bundles <i class="fas fa-chevron-down"></i>
-                    </a>
-                    <div class="nav-dropdown-content" role="menu" aria-label="Bundles Untermenü">
-                        <a href="bundles/" role="menuitem"><i class="fas fa-gift"></i> Übersicht</a>
-                        <a href="bundles/kuechen-komplett.html" role="menuitem"><i class="fas fa-utensils"></i> Küchen-Komplett</a>
-                        <a href="bundles/usm-all-in.html" role="menuitem"><i class="fas fa-gem"></i> USM All-In</a>
-                        <a href="bundles/umzug-premium.html" role="menuitem"><i class="fas fa-truck"></i> Umzug Premium</a>
+                    <a href="#" class="nav-link" role="menuitem" aria-haspopup="true">Bundles <i class="fas fa-chevron-down"></i></a>
+                    <div class="nav-dropdown-content" role="menu">
+                        <a href="/bundles/"><i class="fas fa-gift"></i> Übersicht</a>
+                        <a href="/bundles/kuechen-komplett.html"><i class="fas fa-utensils"></i> Küchen-Komplett</a>
+                        <a href="/bundles/usm-all-in.html"><i class="fas fa-gem"></i> USM All-In</a>
+                        <a href="/bundles/umzug-premium.html"><i class="fas fa-truck"></i> Umzug Premium</a>
                     </div>
                 </li>
-                <li><a href="about.html" class="nav-link" data-section="about" role="menuitem">Über mich</a></li>
-                <li><a href="contact.html" class="nav-link" role="menuitem">Kontakt</a></li>
+                <li><a href="/about.html" class="nav-link">Über mich</a></li>
+                <li><a href="/reviews.html" class="nav-link">Bewertungen</a></li>
+                <li><a href="/faq.html" class="nav-link">FAQ</a></li>
+                <li><a href="/contact.html" class="nav-link">Kontakt</a></li>
             </ul>
             <div class="rl-nav__actions">
-                <a href="/anfrage/" class="nav-cta magnetic-btn" style="background:var(--rl-gradient-gold);">
-                    <i class="fas fa-paper-plane"></i>
-                    <span>Anfrage</span>
-                </a>
-                <button class="theme-toggle" data-theme-toggle aria-label="Design umschalten">
-                    <i class="fas fa-moon" data-theme-icon></i>
-                </button>
-                <button class="rl-nav__hamburger" id="navToggle" aria-controls="mobileMenu" aria-expanded="false" aria-label="Menü öffnen">
-                    <span></span><span></span><span></span>
-                </button>
+                <a href="/anfrage/" class="nav-cta magnetic-btn"><i class="fas fa-comment-dots"></i> <span>Kostenlos</span></a>
+                <button class="theme-toggle" data-theme-toggle aria-label="Design umschalten"><i class="fas fa-moon" data-theme-icon></i></button>
+                <button class="rl-nav__hamburger" id="navToggle" aria-controls="mobileMenu" aria-expanded="false" aria-label="Menü"><span></span><span></span><span></span></button>
             </div>
         </div>
     </nav>
 
-    <div class="rl-nav__mobile" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Mobile Navigation" aria-hidden="true">
+    <!-- Mobile Menu (exactly as homepage) -->
+    <div class="rl-nav__mobile" id="mobileMenu" role="dialog" aria-modal="true">
         <div class="mobile-menu-inner">
-            <button class="mobile-close" id="mobileClose" aria-label="Menü schließen">
-                <i class="fas fa-times"></i>
-            </button>
-            <a href="index.html" class="mobile-link" style="font-weight:700;">Start</a>
-            <a href="services.html" class="mobile-link" style="font-weight:600; margin-top:8px;"><i class="fas fa-th-list"></i> Services</a>
-            <a href="services/moebel-kuechen.html" class="mobile-link">– Möbel &amp; Küchen</a>
-            <a href="services/usm-haller.html" class="mobile-link">– USM Haller</a>
-            <a href="services/garten-outdoor.html" class="mobile-link">– Garten &amp; Outdoor</a>
-            <a href="services/demontage-umzug.html" class="mobile-link">– Demontage &amp; Umzug</a>
-            <a href="services/buero-objekt.html" class="mobile-link">– Büro &amp; Objekt</a>
-            <a href="services/premium-pro.html" class="mobile-link">– Premium Pro</a>
-            <a href="bundles/" class="mobile-link" style="font-weight:600; border-top:1px solid var(--rl-border); padding-top:12px; margin-top:4px;"><i class="fas fa-gift"></i> Bundles</a>
-            <a href="bundles/kuechen-komplett.html" class="mobile-link">– Küchen-Komplett</a>
-            <a href="bundles/usm-all-in.html" class="mobile-link">– USM All-In</a>
-            <a href="bundles/umzug-premium.html" class="mobile-link">– Umzug Premium</a>
-            <a href="about.html" class="mobile-link">Über mich</a>
-            <a href="contact.html" class="mobile-link">Kontakt</a>
-            <a href="faq.html" class="mobile-link" style="color:var(--rl-muted); font-size:0.9rem;">FAQ</a>
-            <a href="/anfrage/" class="mobile-cta magnetic-btn" style="background:var(--rl-gradient-gold);">
-                <i class="fas fa-paper-plane"></i> Anfrage starten
-            </a>
-            <div class="mobile-extra">
-                <button class="theme-toggle" data-theme-toggle style="width:44px; height:44px; font-size:1.1rem;">
-                    <i class="fas fa-moon" data-theme-icon></i>
-                </button>
+            <button class="mobile-close" id="mobileClose" aria-label="Schließen"><i class="fas fa-times"></i></button>
+            <a href="/" class="mobile-link" style="font-weight:700;">Start</a>
+            <div style="width:100%;">
+                <div style="display:flex; justify-content:space-between; align-items:center; width:100%;">
+                    <span class="mobile-link" style="font-weight:600; width:auto;">Services</span>
+                    <button class="mobile-sub-toggle" data-target="subServices" aria-expanded="false"><i class="fas fa-chevron-down"></i></button>
+                </div>
+                <div class="mobile-sub-menu" id="subServices">
+                    <a href="/services.html">Übersicht</a>
+                    <a href="/services/moebel-kuechen.html">Möbel &amp; Küchen</a>
+                    <a href="/services/usm-haller.html">USM Haller</a>
+                    <a href="/services/garten-outdoor.html">Garten &amp; Outdoor</a>
+                    <a href="/services/demontage-umzug.html">Demontage &amp; Umzug</a>
+                    <a href="/services/buero-objekt.html">Büro &amp; Objekt</a>
+                    <a href="/services/premium-pro.html">Premium Pro</a>
+                </div>
             </div>
+            <div style="width:100%;">
+                <div style="display:flex; justify-content:space-between; align-items:center; width:100%;">
+                    <span class="mobile-link" style="font-weight:600; width:auto;">Bundles</span>
+                    <button class="mobile-sub-toggle" data-target="subBundles" aria-expanded="false"><i class="fas fa-chevron-down"></i></button>
+                </div>
+                <div class="mobile-sub-menu" id="subBundles">
+                    <a href="/bundles/">Übersicht</a>
+                    <a href="/bundles/kuechen-komplett.html">Küchen-Komplett</a>
+                    <a href="/bundles/usm-all-in.html">USM All-In</a>
+                    <a href="/bundles/umzug-premium.html">Umzug Premium</a>
+                </div>
+            </div>
+            <a href="/about.html" class="mobile-link">Über mich</a>
+            <a href="/reviews.html" class="mobile-link">Bewertungen</a>
+            <a href="/faq.html" class="mobile-link">FAQ</a>
+            <a href="/contact.html" class="mobile-link">Kontakt</a>
+            <a href="/anfrage/" class="mobile-cta magnetic-btn"><i class="fas fa-comment-dots"></i> Kostenloses Gespräch</a>
+            <div class="mobile-extra"><button class="theme-toggle" data-theme-toggle style="width:44px;height:44px;font-size:1.1rem;"><i class="fas fa-moon" data-theme-icon></i></button></div>
         </div>
     </div>
-
     <div class="nav-backdrop" id="navBackdrop" aria-hidden="true"></div>
 
     <!-- ============================================================ -->
-    <!-- MAIN CONTENT                                                 -->
+    <!-- MAIN CONTENT – Multi-Step Form                               -->
     <!-- ============================================================ -->
     <main>
 
-        <!-- ==================== HERO ==================== -->
-        <section class="details-hero" id="top">
+        <!-- HERO -->
+        <section class="anfrage-hero" id="top">
             <div class="hero-glow"></div>
             <div class="container">
                 <div class="breadcrumb reveal">
                     <a href="/">Start</a>
                     <span class="sep">/</span>
-                    <a href="index.html">Anfrage</a>
-                    <span class="sep">/</span>
-                    <span style="color:var(--rl-text);">Projektdetails</span>
+                    <span style="color:var(--rl-text);">Anfrage</span>
                 </div>
-
                 <h1 class="reveal">
-                    <span class="gold">Schritt 3:</span> Ihr Projekt
+                    <span class="gold">Unverbindlich</span> anfragen
                 </h1>
-
                 <p class="subhead reveal">
-                    Geben Sie die Details zu Ihrem Projekt an – damit ich ein maßgeschneidertes Angebot erstellen kann.
+                    In wenigen Schritten zu Ihrem persönlichen Angebot. Ich melde mich innerhalb von 24 Stunden bei Ihnen.
                 </p>
             </div>
         </section>
 
-        <!-- ==================== FORM ==================== -->
+        <!-- FORM -->
         <section class="form-container" id="form">
             <div class="container">
                 <div class="form-wrapper reveal">
@@ -1808,16 +2003,16 @@
                     <!-- Progress Steps -->
                     <div class="progress-steps" id="progressSteps">
                         <div class="step-dot" data-step="1">
-                            <div class="circle done" id="dot1">1</div>
-                            <span class="label" id="label1">Service</span>
+                            <div class="circle active" id="dot1">1</div>
+                            <span class="label active" id="label1">Service</span>
                         </div>
                         <div class="step-dot" data-step="2">
-                            <div class="circle done" id="dot2">2</div>
+                            <div class="circle" id="dot2">2</div>
                             <span class="label" id="label2">Kontakt</span>
                         </div>
                         <div class="step-dot" data-step="3">
-                            <div class="circle active" id="dot3">3</div>
-                            <span class="label active" id="label3">Details</span>
+                            <div class="circle" id="dot3">3</div>
+                            <span class="label" id="label3">Details</span>
                         </div>
                         <div class="step-dot" data-step="4">
                             <div class="circle" id="dot4">4</div>
@@ -1827,30 +2022,134 @@
 
                     <!-- Progress Line -->
                     <div class="progress-line-wrap">
-                        <div class="progress-line" id="progressLine" style="width:66.66%;"></div>
+                        <div class="progress-line" id="progressLine"></div>
                     </div>
 
-                    <!-- ===== STEP 3: PROJECT DETAILS ===== -->
+                    <!-- ===== STEP 1: SERVICE ===== -->
+                    <div class="step-content active" id="step1">
+                        <h3 class="step-title">Was darf ich für Sie machen? <span style="color:var(--rl-accent);">*</span></h3>
+                        <p class="step-desc">Wählen Sie die Kategorie, die am besten zu Ihrem Projekt passt. Bei Unsicherheit wählen Sie <span class="highlight">„Ich bin mir noch unsicher“</span> – ich berate Sie gerne.</p>
+
+                        <div class="form-group">
+                            <div class="service-grid" id="serviceGrid">
+                                <div class="service-option" data-value="moebel-kuechen">
+                                    <i class="fas fa-couch"></i>
+                                    <span class="name">Möbel &amp; Küchen</span>
+                                    <span class="desc">Montage &amp; Aufbau</span>
+                                    <span class="check-mark"><i class="fas fa-check-circle"></i></span>
+                                </div>
+                                <div class="service-option" data-value="usm-haller">
+                                    <i class="fas fa-gem"></i>
+                                    <span class="name">USM Haller</span>
+                                    <span class="desc">Spezialist</span>
+                                    <span class="check-mark"><i class="fas fa-check-circle"></i></span>
+                                </div>
+                                <div class="service-option" data-value="garten-outdoor">
+                                    <i class="fas fa-tree"></i>
+                                    <span class="name">Garten &amp; Outdoor</span>
+                                    <span class="desc">Terrassen &amp; Häuser</span>
+                                    <span class="check-mark"><i class="fas fa-check-circle"></i></span>
+                                </div>
+                                <div class="service-option" data-value="demontage-umzug">
+                                    <i class="fas fa-truck"></i>
+                                    <span class="name">Demontage &amp; Umzug</span>
+                                    <span class="desc">Komplettservice</span>
+                                    <span class="check-mark"><i class="fas fa-check-circle"></i></span>
+                                </div>
+                                <div class="service-option" data-value="buero-objekt">
+                                    <i class="fas fa-building"></i>
+                                    <span class="name">Büro &amp; Objekt</span>
+                                    <span class="desc">Gewerblich</span>
+                                    <span class="check-mark"><i class="fas fa-check-circle"></i></span>
+                                </div>
+                                <div class="service-option" data-value="premium-pro">
+                                    <i class="fas fa-crown"></i>
+                                    <span class="name">Premium Pro</span>
+                                    <span class="desc">White‑Glove</span>
+                                    <span class="check-mark"><i class="fas fa-check-circle"></i></span>
+                                </div>
+                                <div class="service-option" data-value="unsicher" style="grid-column: span 3; max-width: 300px; margin: 0 auto;">
+                                    <i class="fas fa-question-circle"></i>
+                                    <span class="name">Ich bin mir noch unsicher</span>
+                                    <span class="desc">Ich berate Sie gerne</span>
+                                    <span class="check-mark"><i class="fas fa-check-circle"></i></span>
+                                </div>
+                            </div>
+                            <div class="hint" id="serviceError" style="color:var(--rl-accent); display:none; margin-top:8px;">
+                                <i class="fas fa-exclamation-circle"></i> Bitte wählen Sie eine Option.
+                            </div>
+                        </div>
+
+                        <div class="step-nav">
+                            <span></span>
+                            <span class="step-indicator">Schritt 1 von 4</span>
+                            <button class="btn btn-primary" id="step1Next" disabled>
+                                Weiter <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- ===== STEP 2: CONTACT ===== -->
+                    <div class="step-content" id="step2">
+                        <h3 class="step-title">Wie kann ich Sie erreichen? <span style="color:var(--rl-accent);">*</span></h3>
+                        <p class="step-desc">Bitte geben Sie Ihre Kontaktdaten ein, damit ich mich schnellstmöglich bei Ihnen melden kann.</p>
+
+                        <div class="form-group">
+                            <label for="name">Vollständiger Name <span class="required">*</span></label>
+                            <input type="text" id="name" class="form-control" placeholder="z.B. Max Mustermann" required>
+                            <div class="hint error-hint" style="color:var(--rl-accent); display:none;">Bitte geben Sie Ihren Namen ein.</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">E-Mail-Adresse <span class="required">*</span></label>
+                            <input type="email" id="email" class="form-control" placeholder="max@mustermann.de" required>
+                            <div class="hint error-hint" style="color:var(--rl-accent); display:none;">Bitte geben Sie eine gültige E-Mail-Adresse ein.</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Telefonnummer <span class="required">*</span></label>
+                            <input type="tel" id="phone" class="form-control" placeholder="z.B. 0151 12345678" required>
+                            <div class="hint">Für Rückfragen und Terminabsprachen.</div>
+                            <div class="hint error-hint" style="color:var(--rl-accent); display:none;">Bitte geben Sie Ihre Telefonnummer ein.</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contact_method">Bevorzugte Kontaktmethode</label>
+                            <select id="contact_method" class="form-control">
+                                <option value="phone">Telefon</option>
+                                <option value="email">E-Mail</option>
+                                <option value="whatsapp">WhatsApp</option>
+                                <option value="any">Egal – Hauptsache schnell</option>
+                            </select>
+                        </div>
+
+                        <div class="step-nav">
+                            <button class="btn-back" id="step2Back"><i class="fas fa-arrow-left"></i> Zurück</button>
+                            <span class="step-indicator">Schritt 2 von 4</span>
+                            <button class="btn btn-primary" id="step2Next">Weiter <i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- ===== STEP 3: DETAILS ===== -->
                     <div class="step-content" id="step3">
-                        <h3 class="step-title">Details zu Ihrem Projekt <span style="color:var(--rl-accent);">*</span></h3>
+                        <h3 class="step-title">Details zu Ihrem Projekt</h3>
                         <p class="step-desc">Je mehr ich weiß, desto besser kann ich Ihr Angebot auf Ihre Bedürfnisse zuschneiden.</p>
 
                         <div class="form-group">
                             <label for="address">Adresse <span class="required">*</span></label>
-                            <input type="text" id="address" class="form-control" placeholder="Straße, Hausnummer, PLZ, Ort" required value="">
+                            <input type="text" id="address" class="form-control" placeholder="Straße, Hausnummer, PLZ, Ort" required>
                             <div class="hint">Wo soll die Montage stattfinden? (München &amp; Augsburg Region)</div>
                             <div class="hint error-hint" style="color:var(--rl-accent); display:none;">Bitte geben Sie Ihre Adresse ein.</div>
                         </div>
 
                         <div class="form-group">
                             <label for="preferred_date">Wunschtermin (ungefähr)</label>
-                            <input type="text" id="preferred_date" class="form-control" placeholder="z.B. nächste Woche, April 2026, flexibel" value="">
-                            <div class="hint">Nur als Orientierung – ich passe mich gerne an.</div>
+                            <input type="text" id="preferred_date" class="form-control" placeholder="z.B. nächste Woche, April 2026, flexibel">
                         </div>
 
                         <div class="form-group">
                             <label for="description">Beschreibung Ihres Projekts <span class="required">*</span></label>
-                            <textarea id="description" class="form-control" placeholder="Was soll montiert werden? Welche Möbel? Besondere Herausforderungen? Bitte so detailliert wie möglich."></textarea>
+                            <textarea id="description" class="form-control" placeholder="Was soll montiert werden? Welche Möbel? Besondere Herausforderungen?"></textarea>
                             <div class="hint">Je detaillierter, desto genauer kann ich Ihr Angebot erstellen.</div>
                             <div class="hint error-hint" style="color:var(--rl-accent); display:none;">Bitte beschreiben Sie Ihr Projekt kurz.</div>
                         </div>
@@ -1872,7 +2171,7 @@
                         <div class="form-group">
                             <label for="urgency">Wie schnell benötigen Sie die Montage?</label>
                             <select id="urgency" class="form-control">
-                                <option value="flexible" selected>Flexibel – ich habe Zeit</option>
+                                <option value="flexible">Flexibel – ich habe Zeit</option>
                                 <option value="within-week">Innerhalb einer Woche</option>
                                 <option value="within-month">Innerhalb eines Monats</option>
                                 <option value="urgent">Sehr dringend (bitte anrufen)</option>
@@ -1880,9 +2179,92 @@
                         </div>
 
                         <div class="step-nav">
-                            <a href="details.html" class="btn-back"><i class="fas fa-arrow-left"></i> Zurück</a>
+                            <button class="btn-back" id="step3Back"><i class="fas fa-arrow-left"></i> Zurück</button>
                             <span class="step-indicator">Schritt 3 von 4</span>
                             <button class="btn btn-primary" id="step3Next">Überprüfen <i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- ===== STEP 4: CONFIRMATION ===== -->
+                    <div class="step-content" id="step4">
+                        <h3 class="step-title">Alles auf einen Blick</h3>
+                        <p class="step-desc">Bitte überprüfen Sie Ihre Angaben. Stimmt alles, können Sie die Anfrage absenden.</p>
+
+                        <div class="summary-grid" id="summaryGrid">
+                            <span class="summary-label">Service</span>
+                            <span class="summary-value" id="confirmService">—</span>
+
+                            <span class="summary-label">Name</span>
+                            <span class="summary-value" id="confirmName">—</span>
+
+                            <span class="summary-label">E-Mail</span>
+                            <span class="summary-value" id="confirmEmail">—</span>
+
+                            <span class="summary-label">Telefon</span>
+                            <span class="summary-value" id="confirmPhone">—</span>
+
+                            <span class="summary-label">Kontakt</span>
+                            <span class="summary-value" id="confirmContact">—</span>
+
+                            <span class="summary-label">Adresse</span>
+                            <span class="summary-value" id="confirmAddress">—</span>
+
+                            <span class="summary-label">Wunschtermin</span>
+                            <span class="summary-value" id="confirmDate">—</span>
+
+                            <span class="summary-label">Budget</span>
+                            <span class="summary-value" id="confirmBudget">—</span>
+
+                            <span class="summary-label">Dringlichkeit</span>
+                            <span class="summary-value" id="confirmUrgency">—</span>
+
+                            <span class="summary-label full-width" style="border-bottom:none; padding-bottom:0;">Beschreibung</span>
+                            <span class="summary-value full-width" id="confirmDesc" style="border-bottom:none; padding-bottom:0; font-style:italic;">—</span>
+                        </div>
+
+                        <div class="consent-group">
+                            <label for="consent">
+                                <input type="checkbox" id="consent">
+                                <span>
+                                    <span class="required">*</span> Ich stimme zu, dass meine Daten zur Bearbeitung meiner Anfrage gespeichert werden.
+                                    Die <a href="/legal/datenschutz.html">Datenschutzerklärung</a> habe ich zur Kenntnis genommen.
+                                </span>
+                            </label>
+                            <div class="hint error-hint" id="consentError" style="color:var(--rl-accent); display:none;">
+                                <i class="fas fa-exclamation-circle"></i> Bitte stimmen Sie der Datenschutzerklärung zu.
+                            </div>
+                        </div>
+
+                        <div class="step-nav">
+                            <button class="btn-back" id="step4Back"><i class="fas fa-arrow-left"></i> Zurück</button>
+                            <span class="step-indicator">Schritt 4 von 4</span>
+                            <button class="btn btn-primary" id="step4Submit" disabled>
+                                <i class="fas fa-paper-plane"></i> Anfrage absenden
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- ===== SUCCESS ===== -->
+                    <div class="step-content" id="stepSuccess">
+                        <div class="success-message">
+                            <span class="icon"><i class="fas fa-check-circle"></i></span>
+                            <h2>Vielen Dank für Ihre Anfrage!</h2>
+                            <p>Ich habe Ihre Nachricht erhalten und melde mich innerhalb von <strong>24 Stunden</strong> bei Ihnen.</p>
+
+                            <ul class="next-steps">
+                                <li><i class="fas fa-envelope"></i> Sie erhalten eine Bestätigungs-E-Mail</li>
+                                <li><i class="fas fa-phone-alt"></i> Ich rufe Sie zum Wunschtermin an</li>
+                                <li><i class="fas fa-file-alt"></i> Ihr persönliches Angebot folgt</li>
+                            </ul>
+
+                            <div class="btn-group">
+                                <a href="/" class="btn btn-primary magnetic-btn">
+                                    <i class="fas fa-home"></i> Zur Startseite
+                                </a>
+                                <a href="/services.html" class="btn btn-secondary magnetic-btn">
+                                    <i class="fas fa-th-list"></i> Services entdecken
+                                </a>
+                            </div>
                         </div>
                     </div>
 
@@ -1890,7 +2272,7 @@
             </div>
         </section>
 
-        <!-- ==================== LIVE FEED (mini) ==================== -->
+        <!-- LIVE FEED (mini) -->
         <section class="container" style="padding-bottom:40px;">
             <div class="live-feed-mini" style="background:var(--rl-card); border:1px solid var(--rl-border); border-radius:var(--rl-radius); padding:16px 20px; display:flex; flex-direction:column; gap:8px; transition:border-color 0.3s, box-shadow 0.3s;">
                 <div class="feed-header" style="display:flex; justify-content:space-between; align-items:center; font-size:0.8rem; color:var(--rl-muted);">
@@ -1918,91 +2300,50 @@
     </main>
 
     <!-- ============================================================ -->
-    <!-- FOOTER (compact)                                             -->
+    <!-- FOOTER (exactly as homepage)                                 -->
     <!-- ============================================================ -->
     <footer class="rl-footer" role="contentinfo">
         <div class="container">
-
             <div class="rl-footer__top">
                 <div class="rl-footer__brand">
-                    <div class="rl-footer__logo">
-                        Raphael <span>Lezius</span>
-                        <span class="rl-footer__badge">
-                            <span class="live-dot"></span>
-                            <span data-lang="de">Live</span>
-                            <span data-lang="en" style="display:none;">Live</span>
-                        </span>
-                        <span class="rl-footer__visitors">
-                            <i class="fas fa-user"></i>
-                            <span id="visitorCount">12</span>
-                            <span data-lang="de">aktiv</span>
-                            <span data-lang="en" style="display:none;">active</span>
-                        </span>
-                    </div>
-                    <p class="rl-footer__description">
-                        <span data-lang="de">Premium Montage mit echter Leidenschaft – millimetergenau, staubfrei und immer mit Herz.</span>
-                        <span data-lang="en" style="display:none;">Premium assembly with real passion – precise, dust‑free, and always with heart.</span>
-                    </p>
-                    <div class="rl-footer__trust">
-                        <span><i class="fas fa-shield-alt"></i> 5 Mio. € versichert</span>
-                        <span><i class="fas fa-star"></i> 5.0 ★ (110+)</span>
-                        <span><i class="fas fa-clock"></i> <span data-lang="de">Antwort &lt; 24 h</span><span data-lang="en" style="display:none;">Response &lt; 24 h</span></span>
-                        <span><i class="fas fa-heart"></i> <span data-lang="de">1 Jahr Garantie</span><span data-lang="en" style="display:none;">1‑year guarantee</span></span>
-                    </div>
+                    <div class="rl-footer__logo">Raphael <span>Lezius</span> <span class="rl-footer__badge"><span class="live-dot"></span> Live</span> <span class="rl-footer__visitors"><i class="fas fa-user"></i> <span id="visitorCount">12</span> aktiv</span></div>
+                    <p class="rl-footer__description">Premium Montage mit echter Leidenschaft – millimetergenau, staubfrei und immer mit Herz.</p>
+                    <div class="rl-footer__trust"><span><i class="fas fa-shield-alt"></i> 5 Mio. € versichert</span><span><i class="fas fa-star"></i> 5.0 ★ (110+)</span><span><i class="fas fa-clock"></i> Antwort &lt; 24 h</span><span><i class="fas fa-heart"></i> 1 Jahr Garantie</span></div>
                 </div>
-
                 <div class="rl-footer__newsletter">
-                    <h4>
-                        <i class="fas fa-envelope-open-text"></i>
-                        <span data-lang="de">Bleiben Sie verbunden</span>
-                        <span data-lang="en" style="display:none;">Stay connected</span>
-                    </h4>
-                    <p data-lang="de">Monatliche Tipps, exklusive Angebote und Einblicke – nur wenn Sie möchten.</p>
-                    <p data-lang="en" style="display:none;">Monthly tips, exclusive offers, and insights – only if you want.</p>
+                    <h4><i class="fas fa-envelope-open-text"></i> Bleiben Sie verbunden</h4>
+                    <p>Monatliche Tipps, exklusive Angebote und Einblicke – nur wenn Sie möchten.</p>
                     <form class="rl-footer__form" id="newsletterForm">
-                        <div class="form-group">
-                            <input type="email" id="newsletterEmail" placeholder=" " required aria-label="E-Mail-Adresse">
-                            <label for="newsletterEmail" data-lang="de">Ihre E-Mail-Adresse</label>
-                            <label for="newsletterEmail" data-lang="en" style="display:none;">Your email address</label>
-                        </div>
-                        <button type="submit" class="magnetic-btn">
-                            <i class="fas fa-paper-plane"></i>
-                            <span data-lang="de">Anmelden</span>
-                            <span data-lang="en" style="display:none;">Subscribe</span>
-                        </button>
+                        <div class="form-group"><input type="email" id="newsletterEmail" placeholder=" " required aria-label="E-Mail"><label for="newsletterEmail">Ihre E-Mail-Adresse</label></div>
+                        <button type="submit" class="magnetic-btn"><i class="fas fa-paper-plane"></i> Anmelden</button>
                     </form>
+                    <div class="rl-footer__consent"><input type="checkbox" id="consentFooter" required /><label for="consentFooter">Ich stimme der <a href="/legal/datenschutz.html">Datenschutzerklärung</a> zu.</label></div>
                 </div>
             </div>
-
+            <div class="rl-footer__grid">
+                <div class="rl-footer__col"><h5>Services <span class="accordion-icon"><i class="fas fa-chevron-down"></i></span></h5><ul><li><a href="/services.html">Alle Services</a></li><li><a href="/services/moebel-kuechen.html">Möbel &amp; Küchen</a></li><li><a href="/services/usm-haller.html">USM Haller</a></li><li><a href="/services/garten-outdoor.html">Garten &amp; Outdoor</a></li><li><a href="/services/demontage-umzug.html">Demontage &amp; Umzug</a></li><li><a href="/services/premium-pro.html">Premium Pro</a></li></ul></div>
+                <div class="rl-footer__col"><h5>Bundles <span class="accordion-icon"><i class="fas fa-chevron-down"></i></span></h5><ul><li><a href="/bundles/">Alle Bundles</a></li><li><a href="/bundles/kuechen-komplett.html">Küchen-Komplett</a></li><li><a href="/bundles/usm-all-in.html">USM All‑In</a></li><li><a href="/bundles/umzug-premium.html">Umzug Premium</a></li></ul><h5 style="margin-top:18px;">Hilfe <span class="accordion-icon"><i class="fas fa-chevron-down"></i></span></h5><ul><li><a href="/faq.html">FAQ</a></li><li><a href="/contact.html">Kontakt</a></li></ul></div>
+                <div class="rl-footer__col"><h5>Über <span class="accordion-icon"><i class="fas fa-chevron-down"></i></span></h5><ul><li><a href="/about.html">Über mich</a></li><li><a href="/reviews.html">Kundenstimmen</a></li><li><a href="/anfrage/">Kostenloses Gespräch</a></li></ul><div class="rl-footer__lang"><span>Sprache:</span><button class="lang-btn active" data-lang="de">DE</button><button class="lang-btn" data-lang="en">EN</button></div><div class="rl-footer__social"><a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a><a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a><a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a><a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a></div></div>
+                <div class="rl-footer__col"><h5>Kontakt <span class="accordion-icon"><i class="fas fa-chevron-down"></i></span></h5><ul class="rl-footer__contact"><li><i class="fas fa-phone-alt"></i> <a href="tel:+491608194018">+49 160 8194018</a></li><li><i class="fab fa-whatsapp"></i> <a href="https://wa.me/491608194018" target="_blank" rel="noopener">WhatsApp</a></li><li><i class="fas fa-envelope"></i> <a href="mailto:info@raphael-lezius.de">info@raphael-lezius.de</a></li></ul><h5 style="margin-top:18px;">Rechtliches <span class="accordion-icon"><i class="fas fa-chevron-down"></i></span></h5><ul><li><a href="/legal/impressum.html">Impressum</a></li><li><a href="/legal/datenschutz.html">Datenschutz</a></li><li><a href="/legal/agb.html">AGB</a></li><li><a href="/legal/widerruf.html">Widerruf</a></li><li><a href="/legal/cookie.html">Cookie‑Richtlinie</a></li></ul></div>
+            </div>
+            <div class="rl-footer__trustbar">
+                <div class="trust-item"><i class="fas fa-users"></i><div><span class="label">Vertrauen</span><span class="value">110+ Kunden</span></div></div>
+                <div class="trust-item"><i class="fas fa-star"></i><div><span class="label">Bewertung</span><span class="value">5.0 ★</span></div></div>
+                <div class="trust-item"><i class="fas fa-bolt"></i><div><span class="label">Reaktionszeit</span><span class="value">&lt; 24 h</span></div></div>
+                <div class="trust-item"><i class="fas fa-shield-alt"></i><div><span class="label">Versicherung</span><span class="value">5 Mio. €</span></div></div>
+                <div class="trust-item"><i class="fas fa-hand-holding-heart"></i><div><span class="label">Service</span><span class="value">White‑Glove</span></div></div>
+                <div class="trust-item"><i class="fas fa-award"></i><div><span class="label">Erfahrung</span><span class="value">8+ Jahre</span></div></div>
+            </div>
             <div class="rl-footer__bottom">
-                <div class="rl-footer__copyright">
-                    <p>© 2026 Raphael Lezius · <span data-lang="de">Mit Sorgfalt gemacht in Augsburg</span><span data-lang="en" style="display:none;">Crafted with care in Augsburg</span></p>
-                    <div class="rl-footer__legal">
-                        <a href="legal/impressum.html">Impressum</a>
-                        <span class="sep">·</span>
-                        <a href="legal/datenschutz.html"><span data-lang="de">Datenschutz</span><span data-lang="en" style="display:none;">Privacy</span></a>
-                        <span class="sep">·</span>
-                        <a href="legal/agb.html">AGB</a>
-                    </div>
-                </div>
-                <button class="rl-footer__backtop" id="footerBackTop" aria-label="Nach oben">
-                    <i class="fas fa-chevron-up"></i>
-                    <span data-lang="de">Nach oben</span>
-                    <span data-lang="en" style="display:none;">Top</span>
-                </button>
+                <div class="rl-footer__copyright"><p>© 2026 Raphael Lezius · Mit Sorgfalt gemacht in Augsburg</p><div class="rl-footer__legal"><a href="/legal/impressum.html">Impressum</a><span class="sep">·</span><a href="/legal/datenschutz.html">Datenschutz</a><span class="sep">·</span><a href="/legal/agb.html">AGB</a></div></div>
+                <button class="rl-footer__backtop" id="footerBackTop"><i class="fas fa-chevron-up"></i> Nach oben</button>
             </div>
-
-            <div class="rl-footer__sentiment">
-                <i class="fas fa-heart"></i>
-                <span data-lang="de">Danke, dass Sie sich die Zeit genommen haben. Es bedeutet mir viel.</span>
-                <span data-lang="en" style="display:none;">Thank you for taking the time. It means a lot to me.</span>
-            </div>
-
+            <div class="rl-footer__sentiment"><i class="fas fa-heart"></i> Danke, dass Sie sich die Zeit genommen haben. Es bedeutet mir viel.</div>
         </div>
     </footer>
 
     <!-- ============================================================ -->
-    <!-- SCRIPTS                                                       -->
+    <!-- SCRIPTS – Multi-Step Logic                                   -->
     <!-- ============================================================ -->
     <script>
         (function() {
@@ -2041,129 +2382,362 @@
                 if (meta) meta.content = theme === 'dark' ? '#0B0A09' : '#F9F7F2';
             }
 
-            /* ── Form Data ── */
+            /* ── Form State ── */
             var formData = {
+                service: '',
+                name: '',
+                email: '',
+                phone: '',
+                contact_method: 'phone',
                 address: '',
                 preferred_date: '',
                 description: '',
                 budget: '',
-                urgency: 'flexible'
+                urgency: 'flexible',
+                consent: false
             };
 
-            /* ── DOM Elements ── */
-            var addressInput = document.getElementById('address');
-            var dateInput = document.getElementById('preferred_date');
-            var descInput = document.getElementById('description');
-            var budgetSelect = document.getElementById('budget');
-            var urgencySelect = document.getElementById('urgency');
-            var step3Next = document.getElementById('step3Next');
+            var currentStep = 1;
+            var totalSteps = 4;
+            var isSubmitting = false;
 
-            /* ── Load saved data from sessionStorage ── */
-            function loadSavedData() {
-                try {
-                    var data = JSON.parse(sessionStorage.getItem('anfrageData') || '{}');
-                    if (data.address) addressInput.value = data.address;
-                    if (data.preferred_date) dateInput.value = data.preferred_date;
-                    if (data.description) descInput.value = data.description;
-                    if (data.budget) budgetSelect.value = data.budget;
-                    if (data.urgency) urgencySelect.value = data.urgency;
-                } catch (e) {
-                    try {
-                        var fallback = JSON.parse(localStorage.getItem('anfrageData') || '{}');
-                        if (fallback.address) addressInput.value = fallback.address;
-                        if (fallback.preferred_date) dateInput.value = fallback.preferred_date;
-                        if (fallback.description) descInput.value = fallback.description;
-                        if (fallback.budget) budgetSelect.value = fallback.budget;
-                        if (fallback.urgency) urgencySelect.value = fallback.urgency;
-                    } catch (e2) { /* ignore */ }
+            /* ── DOM Elements ── */
+            var steps = {
+                1: document.getElementById('step1'),
+                2: document.getElementById('step2'),
+                3: document.getElementById('step3'),
+                4: document.getElementById('step4'),
+                success: document.getElementById('stepSuccess')
+            };
+
+            var dots = {
+                1: document.getElementById('dot1'),
+                2: document.getElementById('dot2'),
+                3: document.getElementById('dot3'),
+                4: document.getElementById('dot4')
+            };
+
+            var labels = {
+                1: document.getElementById('label1'),
+                2: document.getElementById('label2'),
+                3: document.getElementById('label3'),
+                4: document.getElementById('label4')
+            };
+
+            var progressLine = document.getElementById('progressLine');
+
+            /* ── Service Selection ── */
+            var serviceOptions = document.querySelectorAll('.service-option');
+            var serviceError = document.getElementById('serviceError');
+            var step1Next = document.getElementById('step1Next');
+
+            serviceOptions.forEach(function(opt) {
+                opt.addEventListener('click', function() {
+                    serviceOptions.forEach(function(o) { o.classList.remove('selected'); });
+                    this.classList.add('selected');
+                    formData.service = this.getAttribute('data-value');
+                    serviceError.style.display = 'none';
+                    step1Next.disabled = false;
+                    step1Next.style.opacity = '1';
+                });
+            });
+
+            /* ── Step Navigation ── */
+            function goToStep(step) {
+                // Hide all steps
+                Object.keys(steps).forEach(function(key) {
+                    if (steps[key]) steps[key].classList.remove('active');
+                });
+
+                // Show target step
+                if (steps[step]) steps[step].classList.add('active');
+
+                // Update dots
+                for (var i = 1; i <= totalSteps; i++) {
+                    var dot = dots[i];
+                    var label = labels[i];
+                    if (dot) {
+                        dot.classList.remove('active', 'done');
+                        if (i < step) dot.classList.add('done');
+                        else if (i === step) dot.classList.add('active');
+                    }
+                    if (label) {
+                        label.classList.remove('active');
+                        if (i === step) label.classList.add('active');
+                    }
                 }
+
+                // Update progress line
+                var percent = ((step - 1) / (totalSteps - 1)) * 100;
+                progressLine.style.width = percent + '%';
+
+                currentStep = step;
+
+                // Scroll to form top
+                document.querySelector('.form-wrapper').scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
 
             /* ── Validation ── */
-            function validateForm() {
+            function validateStep(step) {
                 var valid = true;
 
-                // Address
-                var addressErr = addressInput.parentElement.querySelector('.error-hint');
-                if (!addressInput.value.trim()) {
-                    addressInput.classList.add('error');
-                    if (addressErr) addressErr.style.display = 'block';
-                    valid = false;
-                } else {
-                    addressInput.classList.remove('error');
-                    if (addressErr) addressErr.style.display = 'none';
-                    formData.address = addressInput.value.trim();
+                if (step === 1) {
+                    if (!formData.service) {
+                        serviceError.style.display = 'block';
+                        valid = false;
+                    } else {
+                        serviceError.style.display = 'none';
+                    }
                 }
 
-                // Description
-                var descErr = descInput.parentElement.querySelector('.error-hint');
-                if (!descInput.value.trim()) {
-                    descInput.classList.add('error');
-                    if (descErr) descErr.style.display = 'block';
-                    valid = false;
-                } else {
-                    descInput.classList.remove('error');
-                    if (descErr) descErr.style.display = 'none';
-                    formData.description = descInput.value.trim();
+                if (step === 2) {
+                    var name = document.getElementById('name');
+                    var email = document.getElementById('email');
+                    var phone = document.getElementById('phone');
+                    var nameErr = name.parentElement.querySelector('.error-hint');
+                    var emailErr = email.parentElement.querySelector('.error-hint');
+                    var phoneErr = phone.parentElement.querySelector('.error-hint');
+
+                    if (!name.value.trim()) {
+                        name.classList.add('error');
+                        if (nameErr) nameErr.style.display = 'block';
+                        valid = false;
+                    } else {
+                        name.classList.remove('error');
+                        if (nameErr) nameErr.style.display = 'none';
+                        formData.name = name.value.trim();
+                    }
+
+                    var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!email.value.trim() || !emailPattern.test(email.value.trim())) {
+                        email.classList.add('error');
+                        if (emailErr) emailErr.style.display = 'block';
+                        valid = false;
+                    } else {
+                        email.classList.remove('error');
+                        if (emailErr) emailErr.style.display = 'none';
+                        formData.email = email.value.trim();
+                    }
+
+                    if (!phone.value.trim()) {
+                        phone.classList.add('error');
+                        if (phoneErr) phoneErr.style.display = 'block';
+                        valid = false;
+                    } else {
+                        phone.classList.remove('error');
+                        if (phoneErr) phoneErr.style.display = 'none';
+                        formData.phone = phone.value.trim();
+                    }
+
+                    formData.contact_method = document.getElementById('contact_method').value;
                 }
 
-                formData.preferred_date = dateInput.value.trim();
-                formData.budget = budgetSelect.value;
-                formData.urgency = urgencySelect.value;
+                if (step === 3) {
+                    var address = document.getElementById('address');
+                    var description = document.getElementById('description');
+                    var addressErr = address.parentElement.querySelector('.error-hint');
+                    var descErr = description.parentElement.querySelector('.error-hint');
+
+                    if (!address.value.trim()) {
+                        address.classList.add('error');
+                        if (addressErr) addressErr.style.display = 'block';
+                        valid = false;
+                    } else {
+                        address.classList.remove('error');
+                        if (addressErr) addressErr.style.display = 'none';
+                        formData.address = address.value.trim();
+                    }
+
+                    if (!description.value.trim()) {
+                        description.classList.add('error');
+                        if (descErr) descErr.style.display = 'block';
+                        valid = false;
+                    } else {
+                        description.classList.remove('error');
+                        if (descErr) descErr.style.display = 'none';
+                        formData.description = description.value.trim();
+                    }
+
+                    formData.preferred_date = document.getElementById('preferred_date').value.trim();
+                    formData.budget = document.getElementById('budget').value;
+                    formData.urgency = document.getElementById('urgency').value;
+                }
+
+                if (step === 4) {
+                    var consent = document.getElementById('consent');
+                    var consentErr = document.getElementById('consentError');
+                    if (!consent.checked) {
+                        consentErr.style.display = 'block';
+                        valid = false;
+                    } else {
+                        consentErr.style.display = 'none';
+                        formData.consent = true;
+                    }
+                }
 
                 return valid;
             }
 
-            /* ── Navigate to Step 4 ── */
-            function goToStep4() {
-                if (validateForm()) {
-                    // Store data in sessionStorage for the final step
-                    try {
-                        var existingData = JSON.parse(sessionStorage.getItem('anfrageData') || '{}');
-                        existingData.address = formData.address;
-                        existingData.preferred_date = formData.preferred_date;
-                        existingData.description = formData.description;
-                        existingData.budget = formData.budget;
-                        existingData.urgency = formData.urgency;
-                        sessionStorage.setItem('anfrageData', JSON.stringify(existingData));
-                    } catch (e) {
-                        try {
-                            var fallbackData = JSON.parse(localStorage.getItem('anfrageData') || '{}');
-                            fallbackData.address = formData.address;
-                            fallbackData.preferred_date = formData.preferred_date;
-                            fallbackData.description = formData.description;
-                            fallbackData.budget = formData.budget;
-                            fallbackData.urgency = formData.urgency;
-                            localStorage.setItem('anfrageData', JSON.stringify(fallbackData));
-                        } catch (e2) { /* ignore */ }
-                    }
+            /* ── Update Confirmation ── */
+            function updateConfirmation() {
+                var serviceMap = {
+                    'moebel-kuechen': 'Möbel & Küchen',
+                    'usm-haller': 'USM Haller',
+                    'garten-outdoor': 'Garten & Outdoor',
+                    'demontage-umzug': 'Demontage & Umzug',
+                    'buero-objekt': 'Büro & Objekt',
+                    'premium-pro': 'Premium Pro',
+                    'unsicher': 'Ich bin mir noch unsicher'
+                };
+                var contactMap = {
+                    'phone': 'Telefon',
+                    'email': 'E-Mail',
+                    'whatsapp': 'WhatsApp',
+                    'any': 'Egal – Hauptsache schnell'
+                };
+                var budgetMap = {
+                    'under-300': 'Unter 300 €',
+                    '300-600': '300 – 600 €',
+                    '600-1000': '600 – 1.000 €',
+                    '1000-1500': '1.000 – 1.500 €',
+                    'over-1500': 'Über 1.500 €',
+                    'unknown': 'Ich bin unsicher'
+                };
+                var urgencyMap = {
+                    'flexible': 'Flexibel – ich habe Zeit',
+                    'within-week': 'Innerhalb einer Woche',
+                    'within-month': 'Innerhalb eines Monats',
+                    'urgent': 'Sehr dringend'
+                };
 
-                    // Navigate to step 4 (confirmation)
-                    window.location.href = 'confirmation.html';
-                }
+                document.getElementById('confirmService').textContent = serviceMap[formData.service] || formData.service;
+                document.getElementById('confirmName').textContent = formData.name || '—';
+                document.getElementById('confirmEmail').textContent = formData.email || '—';
+                document.getElementById('confirmPhone').textContent = formData.phone || '—';
+                document.getElementById('confirmContact').textContent = contactMap[formData.contact_method] || formData
+                    .contact_method;
+                document.getElementById('confirmAddress').textContent = formData.address || '—';
+                document.getElementById('confirmDate').textContent = formData.preferred_date || '—';
+                document.getElementById('confirmBudget').textContent = budgetMap[formData.budget] || formData.budget || '—';
+                document.getElementById('confirmUrgency').textContent = urgencyMap[formData.urgency] || formData.urgency;
+                document.getElementById('confirmDesc').textContent = formData.description || '—';
             }
 
-            // Next button click
-            step3Next.addEventListener('click', goToStep4);
+            /* ── Submit ── */
+            function submitForm() {
+                if (isSubmitting) return;
+                isSubmitting = true;
 
-            // Enter key on text fields triggers next
-            document.querySelectorAll('#address, #preferred_date, #description').forEach(function(input) {
-                input.addEventListener('keypress', function(e) {
-                    if (e.key === 'Enter' && this.tagName !== 'TEXTAREA') {
-                        e.preventDefault();
-                        goToStep4();
+                var btn = document.getElementById('step4Submit');
+                var originalText = btn.innerHTML;
+                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Wird gesendet…';
+                btn.disabled = true;
+
+                // Simulate API call
+                setTimeout(function() {
+                    // Show success
+                    Object.keys(steps).forEach(function(key) {
+                        if (steps[key]) steps[key].classList.remove('active');
+                    });
+                    if (steps.success) steps.success.classList.add('active');
+
+                    // Update dots - all done
+                    for (var i = 1; i <= totalSteps; i++) {
+                        if (dots[i]) {
+                            dots[i].classList.remove('active');
+                            dots[i].classList.add('done');
+                        }
                     }
-                });
+                    progressLine.style.width = '100%';
+
+                    // Log data (in production: send to server)
+                    console.log('📋 Anfrage-Daten:', formData);
+
+                    // Reset button
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+                    isSubmitting = false;
+
+                    // Track conversion (optional)
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'conversion', { 'send_to': 'AW-CONVERSION_ID' });
+                    }
+                }, 1800);
+            }
+
+            /* ── Step Navigation Events ── */
+            // Step 1 → Step 2
+            step1Next.addEventListener('click', function() {
+                if (validateStep(1)) {
+                    goToStep(2);
+                }
             });
 
-            // Real-time validation feedback
-            document.querySelectorAll('#address, #description').forEach(function(input) {
+            // Step 2 → Step 3
+            document.getElementById('step2Next').addEventListener('click', function() {
+                if (validateStep(2)) {
+                    goToStep(3);
+                }
+            });
+
+            // Step 3 → Step 4
+            document.getElementById('step3Next').addEventListener('click', function() {
+                if (validateStep(3)) {
+                    updateConfirmation();
+                    goToStep(4);
+                    // Enable submit if consent is checked
+                    var consent = document.getElementById('consent');
+                    var submitBtn = document.getElementById('step4Submit');
+                    if (consent.checked) {
+                        submitBtn.disabled = false;
+                        submitBtn.style.opacity = '1';
+                    } else {
+                        submitBtn.disabled = true;
+                        submitBtn.style.opacity = '0.5';
+                    }
+                }
+            });
+
+            // Step 4 → Submit
+            document.getElementById('step4Submit').addEventListener('click', function() {
+                if (validateStep(4)) {
+                    submitForm();
+                }
+            });
+
+            // Consent toggle for step 4
+            document.getElementById('consent').addEventListener('change', function() {
+                var submitBtn = document.getElementById('step4Submit');
+                if (this.checked) {
+                    submitBtn.disabled = false;
+                    submitBtn.style.opacity = '1';
+                    document.getElementById('consentError').style.display = 'none';
+                } else {
+                    submitBtn.disabled = true;
+                    submitBtn.style.opacity = '0.5';
+                }
+            });
+
+            // Back buttons
+            document.getElementById('step2Back').addEventListener('click', function() { goToStep(1); });
+            document.getElementById('step3Back').addEventListener('click', function() { goToStep(2); });
+            document.getElementById('step4Back').addEventListener('click', function() { goToStep(3); });
+
+            /* ── Real-time validation on input ── */
+            document.querySelectorAll('.form-control').forEach(function(input) {
                 input.addEventListener('blur', function() {
+                    var parent = this.closest('.form-group');
+                    var err = parent ? parent.querySelector('.error-hint') : null;
                     if (this.value.trim()) {
                         this.classList.remove('error');
-                        var parent = this.closest('.form-group');
-                        var err = parent ? parent.querySelector('.error-hint') : null;
                         if (err) err.style.display = 'none';
+                        // Update formData
+                        if (this.id === 'name') formData.name = this.value.trim();
+                        if (this.id === 'email') formData.email = this.value.trim();
+                        if (this.id === 'phone') formData.phone = this.value.trim();
+                        if (this.id === 'address') formData.address = this.value.trim();
+                        if (this.id === 'description') formData.description = this.value.trim();
+                        if (this.id === 'preferred_date') formData.preferred_date = this.value.trim();
                     }
                 });
                 input.addEventListener('input', function() {
@@ -2176,11 +2750,22 @@
                 });
             });
 
-            // Budget and urgency changes update formData
-            budgetSelect.addEventListener('change', function() { formData.budget = this.value; });
-            urgencySelect.addEventListener('change', function() { formData.urgency = this.value; });
+            // Contact method change
+            document.getElementById('contact_method').addEventListener('change', function() {
+                formData.contact_method = this.value;
+            });
 
-            /* ── UI Binding ── */
+            // Budget change
+            document.getElementById('budget').addEventListener('change', function() {
+                formData.budget = this.value;
+            });
+
+            // Urgency change
+            document.getElementById('urgency').addEventListener('change', function() {
+                formData.urgency = this.value;
+            });
+
+            /* ── UI Binding (Theme, Nav, etc.) ── */
             function bindUI() {
 
                 // Theme toggle
@@ -2409,13 +2994,17 @@
                     }, { passive: true });
                 }
 
-                console.log('✨ Raphael Lezius – Projektdetails Page (Step 3)');
+                console.log('✨ Raphael Lezius – Anfrage Page (unified multi-step)');
             }
 
             /* ── Init ── */
             function init() {
                 applyTheme(getStoredTheme());
-                loadSavedData();
+                // Init progress
+                progressLine.style.width = '0%';
+                // Disable step 1 button initially
+                step1Next.disabled = true;
+                step1Next.style.opacity = '0.5';
                 setTimeout(bindUI, 80);
             }
 
