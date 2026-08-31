@@ -1,0 +1,2081 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="dark">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lezius Möbelmontage – Premium Montage München & Augsburg</title>
+    <meta name="theme-color" content="#0B0A09" id="themeColorMeta" />
+    <meta name="description" content="Professionelle Möbel- und Küchenmontage in München und Augsburg. Millimetergenaue Präzision, staubfreie Arbeitsweise, 1 Jahr Garantie. USM Haller, IKEA, Premium-Küchen und mehr." />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:title" content="Lezius Möbelmontage" />
+    <meta property="og:description" content="Millimetergenaue Präzision, staubfrei und mit voller Garantie in München & Augsburg." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://raphael-lezius.de" />
+    <meta property="og:locale" content="de_DE" />
+
+    <!-- JSON-LD LocalBusiness -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Lezius Möbelmontage",
+        "description": "Professionelle Möbel-, Küchen- und Systemmontage in München und Augsburg. Spezialist für USM Haller, Premium-Küchen und Designmöbel.",
+        "url": "https://raphael-lezius.de",
+        "telephone": "+49 160 8194018",
+        "email": "info@raphael-lezius.de",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Augsburg",
+            "addressRegion": "Bayern",
+            "addressCountry": "DE"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "48.3705",
+            "longitude": "10.8978"
+        },
+        "areaServed": [
+            { "@type": "City", "name": "München" },
+            { "@type": "City", "name": "Augsburg" },
+            { "@type": "AdministrativeArea", "name": "Oberbayern" }
+        ],
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "5.0",
+            "reviewCount": "110",
+            "bestRating": "5"
+        },
+        "priceRange": "€€",
+        "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+            "opens": "08:00",
+            "closes": "20:00"
+        },
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Montageleistungen",
+            "itemListElement": [
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "USM Haller Montage" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Küchenmontage" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Möbelmontage" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Demontage & Umzug" } }
+            ]
+        }
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <style>
+        /* =============================================================
+           1.  CSS VARIABLES & RESET
+           ============================================================= */
+        :root {
+            --rl-primary: #D4A574;
+            --rl-primary-hover: #E4B98A;
+            --rl-primary-dark: #B88A55;
+            --rl-secondary: #2E9A8C;
+            --rl-secondary-hover: #3DB09F;
+            --rl-secondary-dark: #1F7A6E;
+            --rl-accent: #E88D6A;
+            --rl-accent-hover: #F09B78;
+            --rl-amber: #F5B942;
+            --rl-amber-hover: #FFCF5C;
+            --rl-bg: #0B0A09;
+            --rl-surface: #141210;
+            --rl-card: #1A1815;
+            --rl-border: rgba(212, 165, 116, 0.14);
+            --rl-text: #F5F1EB;
+            --rl-muted: #A9A299;
+            --rl-dim: #6B6560;
+            --rl-glass: rgba(11, 10, 9, 0.88);
+            --rl-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+            --rl-shadow-sm: 0 8px 24px rgba(0, 0, 0, 0.35);
+            --rl-shadow-glow: 0 8px 32px rgba(212, 165, 116, 0.25);
+            --rl-shadow-glow-secondary: 0 8px 32px rgba(46, 154, 140, 0.25);
+            --rl-shadow-glow-accent: 0 8px 32px rgba(232, 141, 106, 0.25);
+            --rl-shadow-glow-amber: 0 8px 32px rgba(245, 185, 66, 0.25);
+            --rl-gradient-cta: linear-gradient(135deg, #E88D6A 0%, #D4A574 50%, #2E9A8C 100%);
+            --rl-gradient-cta-hover: linear-gradient(135deg, #F09B78 0%, #E4B98A 50%, #3DB09F 100%);
+            --rl-gradient-gold: linear-gradient(135deg, #F5B942, #D4A574);
+            --rl-gradient-multi: linear-gradient(135deg, #E88D6A, #D4A574, #2E9A8C, #F5B942);
+            --rl-gradient-subtle: linear-gradient(160deg, rgba(212, 165, 116, 0.08), transparent 70%);
+            --rl-nav-height: 68px;
+            --rl-radius: 16px;
+            --rl-radius-full: 999px;
+            --font-head: 'Space Grotesk', system-ui, sans-serif;
+            --font-body: 'Inter', system-ui, sans-serif;
+            --ease: cubic-bezier(0.22, 1, 0.36, 1);
+            --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+            --transition: 0.35s var(--ease);
+        }
+        [data-theme="light"] {
+            --rl-primary: #A67C4A;
+            --rl-primary-hover: #C08F5A;
+            --rl-primary-dark: #8A6538;
+            --rl-secondary: #2A7A6E;
+            --rl-secondary-hover: #3E9587;
+            --rl-secondary-dark: #1A5E54;
+            --rl-accent: #D97A54;
+            --rl-accent-hover: #E88D6A;
+            --rl-amber: #D9A335;
+            --rl-amber-hover: #F5B942;
+            --rl-bg: #F9F7F2;
+            --rl-surface: #FFFFFF;
+            --rl-card: #FFFFFF;
+            --rl-border: rgba(28, 25, 23, 0.08);
+            --rl-text: #1C1917;
+            --rl-muted: #5C564E;
+            --rl-dim: #8A837A;
+            --rl-glass: rgba(255, 255, 255, 0.92);
+            --rl-shadow: 0 16px 40px rgba(28, 25, 23, 0.08);
+            --rl-shadow-sm: 0 6px 18px rgba(28, 25, 23, 0.05);
+            --rl-shadow-glow: 0 8px 32px rgba(166, 124, 74, 0.20);
+            --rl-shadow-glow-secondary: 0 8px 32px rgba(42, 122, 110, 0.20);
+            --rl-shadow-glow-accent: 0 8px 32px rgba(217, 122, 84, 0.20);
+            --rl-shadow-glow-amber: 0 8px 32px rgba(217, 163, 53, 0.20);
+            --rl-gradient-cta: linear-gradient(135deg, #D97A54 0%, #A67C4A 50%, #2A7A6E 100%);
+            --rl-gradient-cta-hover: linear-gradient(135deg, #E88D6A 0%, #C08F5A 50%, #3E9587 100%);
+            --rl-gradient-gold: linear-gradient(135deg, #D9A335, #A67C4A);
+            --rl-gradient-multi: linear-gradient(135deg, #D97A54, #A67C4A, #2A7A6E, #D9A335);
+            --rl-gradient-subtle: linear-gradient(160deg, rgba(166, 124, 74, 0.06), transparent 70%);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; -webkit-tap-highlight-color: transparent; }
+        body {
+            background: var(--rl-bg);
+            color: var(--rl-text);
+            font-family: var(--font-body);
+            line-height: 1.65;
+            transition: background var(--transition), color var(--transition);
+            overflow-x: hidden;
+        }
+        a { color: inherit; text-decoration: none; }
+        button { font-family: inherit; border: none; background: none; cursor: pointer; color: inherit; }
+        ul { list-style: none; }
+
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: var(--rl-bg); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb { background: var(--rl-gradient-multi); border-radius: 10px; border: 2px solid var(--rl-bg); }
+
+        .container { max-width: 1180px; margin: 0 auto; padding: 0 clamp(18px, 4vw, 28px); }
+        .section { padding: clamp(70px, 9vw, 100px) 0; }
+        .section-alt {
+            background: var(--rl-surface);
+            border-top: 1px solid var(--rl-border);
+            border-bottom: 1px solid var(--rl-border);
+        }
+
+        /* =============================================================
+           2.  ANIMATIONS
+           ============================================================= */
+        @keyframes fadeInUp { 0% { opacity: 0; transform: translateY(40px); } 100% { opacity: 1; transform: translateY(0); } }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+        @keyframes pulse-dot { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.6); opacity: 0.4; } }
+        @keyframes pulseRing { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(1.5); opacity: 0; } }
+        @keyframes shimmer-text { 0% { background-position: -200% center; } 100% { background-position: 200% center; } }
+        @keyframes scrollMarquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        @keyframes glow-pulse { 0%, 100% { box-shadow: 0 0 20px rgba(212,165,116,0.15); } 50% { box-shadow: 0 0 40px rgba(212,165,116,0.3), 0 0 60px rgba(46,154,140,0.15); } }
+        @keyframes borderFlow { 0% { background-position: 0% 0%; } 100% { background-position: 300% 0%; } }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.7s var(--ease); }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        /* =============================================================
+           3.  BUTTONS
+           ============================================================= */
+        .btn {
+            display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+            padding: 14px 28px; border-radius: 12px; font-weight: 600; font-size: 0.95rem;
+            transition: all 0.3s var(--ease); border: none; cursor: pointer; position: relative; overflow: hidden; min-height: 52px;
+        }
+        .btn-primary { background: var(--rl-gradient-cta); color: #1C1917; box-shadow: var(--rl-shadow-glow); }
+        .btn-primary:hover { transform: translateY(-3px) scale(1.02); box-shadow: var(--rl-shadow-glow-accent), var(--rl-shadow-glow-secondary); }
+        .btn-secondary { background: var(--rl-card); border: 1px solid var(--rl-border); color: var(--rl-text); }
+        .btn-secondary:hover { border-color: var(--rl-primary); color: var(--rl-primary); box-shadow: var(--rl-shadow-glow); transform: translateY(-2px); }
+        .btn-sm { padding: 10px 20px; font-size: 0.85rem; min-height: 42px; }
+        .btn-full { width: 100%; }
+
+        /* =============================================================
+           4.  SECTION HEADER
+           ============================================================= */
+        .section-header { text-align: center; margin-bottom: 48px; }
+        .section-header .eyebrow,
+        .section-header .pre {
+            display: block; font-size: 0.78rem; font-weight: 600; letter-spacing: 1.6px;
+            text-transform: uppercase; color: var(--rl-secondary); margin-bottom: 12px;
+        }
+        .section-header h2 {
+            font-family: var(--font-head); font-size: clamp(1.9rem, 3.4vw, 2.6rem);
+            font-weight: 800; letter-spacing: -0.9px; margin-bottom: 14px;
+        }
+        .section-header p { color: var(--rl-muted); max-width: 520px; margin: 0 auto; font-size: 1.05rem; }
+        .section-header .gold,
+        .gold {
+            background: var(--rl-gradient-gold);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+
+        /* =============================================================
+           5.  NAVIGATION
+           ============================================================= */
+        .nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000; height: var(--rl-nav-height);
+            display: flex; align-items: center; background: var(--rl-glass); backdrop-filter: blur(18px);
+            border-bottom: 1px solid var(--rl-border);
+            transition: transform 0.4s var(--ease), background 0.35s, border-color 0.35s, box-shadow 0.3s;
+        }
+        .nav.hidden { transform: translateY(-100%); }
+        .nav.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.15); }
+        .nav-inner {
+            width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 clamp(16px, 3vw, 32px);
+            display: flex; align-items: center; justify-content: space-between; height: 100%;
+        }
+        .nav-brand {
+            display: flex; align-items: center; gap: 12px;
+            font-family: var(--font-head); font-weight: 800; font-size: 1.25rem;
+            letter-spacing: -0.03em; color: var(--rl-text); white-space: nowrap;
+        }
+        .logo-mark {
+            width: 36px; height: 36px; border-radius: 10px;
+            background: var(--rl-gradient-cta); color: #1C1917;
+            font-weight: 800; font-size: 1.05rem; display: grid; place-items: center;
+            box-shadow: var(--rl-shadow-glow);
+        }
+        .brand-text { display: flex; flex-direction: column; line-height: 1.15; }
+        .brand-name { font-size: 1.1rem; }
+        .brand-sub {
+            font-size: 0.65rem; font-weight: 600; letter-spacing: 0.8px;
+            text-transform: uppercase; color: var(--rl-primary);
+            -webkit-text-fill-color: var(--rl-primary);
+        }
+        .nav-links { display: flex; align-items: center; gap: 4px; }
+        .nav-links > li > a,
+        .nav-link {
+            padding: 8px 16px; font-size: 0.88rem; font-weight: 500; color: var(--rl-muted);
+            border-radius: 8px; transition: all 0.25s ease; white-space: nowrap;
+            display: flex; align-items: center; min-height: 44px;
+        }
+        .nav-links > li > a:hover,
+        .nav-link:hover { color: var(--rl-text); background: rgba(212,165,116,0.06); }
+        .nav-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+        .nav-phone-link {
+            display: none; align-items: center; gap: 6px; font-size: 0.85rem;
+            color: var(--rl-muted); padding: 6px 12px; border-radius: 8px;
+            transition: color 0.25s;
+        }
+        .nav-phone-link:hover { color: var(--rl-primary); }
+        @media (min-width: 1100px) { .nav-phone-link { display: inline-flex; } }
+        .nav-cta {
+            display: inline-flex; align-items: center; gap: 6px; padding: 8px 18px;
+            border-radius: var(--rl-radius-full); background: var(--rl-gradient-cta);
+            color: #1C1917; font-weight: 700; font-size: 0.82rem;
+            transition: all 0.3s ease; box-shadow: var(--rl-shadow-glow); min-height: 44px;
+        }
+        .nav-cta:hover { transform: scale(1.04); box-shadow: var(--rl-shadow-glow-accent), var(--rl-shadow-glow-secondary); }
+        .theme-btn {
+            width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--rl-border);
+            background: var(--rl-card); display: grid; place-items: center; color: var(--rl-muted);
+            transition: all 0.3s var(--ease); flex-shrink: 0;
+        }
+        .theme-btn:hover { border-color: var(--rl-amber); color: var(--rl-amber); transform: rotate(12deg); box-shadow: var(--rl-shadow-glow-amber); }
+        .hamburger {
+            display: none; flex-direction: column; gap: 5px; padding: 6px; cursor: pointer;
+            min-width: 44px; min-height: 44px; align-items: center; justify-content: center;
+        }
+        .hamburger span { width: 22px; height: 2px; background: var(--rl-text); border-radius: 4px; transition: 0.3s ease; }
+        .hamburger:hover span { background: var(--rl-primary); }
+
+        .nav-backdrop {
+            position: fixed; inset: 0; z-index: 998; background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(4px); opacity: 0; visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+        }
+        .nav-backdrop.active { opacity: 1; visibility: visible; }
+        .mobile-menu {
+            position: fixed; top: 0; right: 0; bottom: 0; width: 85%; max-width: 380px; z-index: 999;
+            background: var(--rl-glass); backdrop-filter: blur(24px); transform: translateX(100%);
+            transition: transform 0.4s var(--ease); overflow-y: auto; padding: 20px 0 40px;
+            box-shadow: -10px 0 40px rgba(0,0,0,0.3);
+            display: flex; flex-direction: column; align-items: center; gap: 4px; padding-top: 70px;
+        }
+        .mobile-menu.open { transform: translateX(0); }
+        .mobile-close {
+            position: absolute; top: 16px; right: 16px; width: 44px; height: 44px;
+            border-radius: 50%; background: var(--rl-card); border: 1px solid var(--rl-border);
+            color: var(--rl-text); font-size: 1.2rem; display: flex; align-items: center;
+            justify-content: center; cursor: pointer; transition: all 0.3s ease;
+        }
+        .mobile-close:hover { background: rgba(212,165,116,0.08); transform: rotate(90deg); }
+        .mobile-menu a {
+            font-size: 1.1rem; font-weight: 500; color: var(--rl-muted); transition: color 0.25s, transform 0.2s;
+            padding: 12px 0; width: 100%; text-align: center; min-height: 48px;
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+        }
+        .mobile-menu a:hover { color: var(--rl-primary); transform: translateX(4px); }
+        .mobile-menu .mobile-cta {
+            width: calc(100% - 48px); margin: 16px 24px 0; background: var(--rl-gradient-cta);
+            color: #1C1917; padding: 16px 28px; border-radius: var(--rl-radius-full);
+            font-weight: 700; font-size: 0.95rem; box-shadow: var(--rl-shadow-glow);
+        }
+        .mobile-menu .mobile-cta:hover { transform: scale(1.03); }
+
+        @media (max-width: 900px) {
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+            .nav-cta span { display: none; }
+            .nav-cta { padding: 8px 12px; min-width: 44px; }
+            .nav-brand { font-size: 1.05rem; }
+        }
+        @media (min-width: 901px) {
+            .mobile-menu, .nav-backdrop, .mobile-close { display: none !important; }
+            .hamburger { display: none; }
+        }
+        @media (max-width: 480px) {
+            .nav { height: 60px; }
+            .nav-brand { font-size: 0.95rem; }
+            .mobile-menu { width: 100%; max-width: 100%; }
+        }
+
+        /* =============================================================
+           6.  HERO
+           ============================================================= */
+        .hero {
+            padding: calc(var(--rl-nav-height) + 70px) 0 90px;
+            background:
+                radial-gradient(circle at 20% 30%, rgba(212,165,116,0.06), transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(46,154,140,0.06), transparent 50%),
+                var(--rl-bg);
+            position: relative; overflow: hidden;
+        }
+        .hero-content { position: relative; z-index: 1; max-width: 780px; margin: 0 auto; text-align: center; }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(46,154,140,0.12); color: var(--rl-secondary);
+            padding: 7px 18px; border-radius: var(--rl-radius-full);
+            font-size: 0.8rem; font-weight: 600; border: 1px solid rgba(46,154,140,0.25);
+            margin-bottom: 28px; letter-spacing: 1px;
+        }
+        .hero h1 {
+            font-family: var(--font-head); font-size: clamp(2.35rem, 5.2vw, 3.5rem);
+            font-weight: 800; line-height: 1.12; letter-spacing: -1.4px;
+            margin-bottom: 20px; color: var(--rl-text);
+        }
+        .hero h1 .gold {
+            background: var(--rl-gradient-multi);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+            animation: shimmer-text 4s ease-in-out infinite; background-size: 200% auto;
+        }
+        .hero-lead {
+            font-size: 1.12rem; color: var(--rl-muted); max-width: 540px;
+            margin: 0 auto 34px; line-height: 1.7;
+        }
+        .hero-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 36px; }
+        .hero-stats {
+            display: flex; justify-content: center; gap: 48px; flex-wrap: wrap;
+            margin-top: 12px; padding-top: 32px; border-top: 1px solid var(--rl-border);
+        }
+        .hero-stats .stat .number {
+            font-family: var(--font-head); font-size: 1.65rem; font-weight: 800;
+            background: var(--rl-gradient-multi);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .hero-stats .stat .label { font-size: 0.82rem; color: var(--rl-muted); margin-top: 2px; }
+        .promise-row {
+            display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-top: 40px;
+        }
+        .promise-row .promise {
+            display: flex; align-items: flex-start; gap: 12px;
+            background: var(--rl-card); border: 1px solid var(--rl-border);
+            padding: 16px 20px; border-radius: var(--rl-radius); text-align: left;
+            max-width: 260px; transition: all 0.3s var(--ease);
+        }
+        .promise-row .promise:hover {
+            border-color: var(--rl-secondary); transform: translateY(-3px);
+            box-shadow: var(--rl-shadow-glow-secondary);
+        }
+        .promise-row .promise i { color: var(--rl-secondary); font-size: 1.15rem; margin-top: 2px; }
+        .promise-row .promise strong { display: block; font-size: 0.9rem; color: var(--rl-text); margin-bottom: 2px; }
+        .promise-row .promise span { font-size: 0.8rem; color: var(--rl-muted); }
+
+        @media (max-width: 640px) {
+            .hero { padding: calc(var(--rl-nav-height) + 48px) 0 70px; }
+            .hero-stats { gap: 28px; }
+            .promise-row { flex-direction: column; align-items: stretch; }
+            .promise-row .promise { max-width: none; }
+            .hero-actions .btn { width: 100%; justify-content: center; }
+        }
+
+        /* =============================================================
+           7.  TRUST / MARQUEE BAR
+           ============================================================= */
+        .trust-bar {
+            background: var(--rl-surface); border-top: 1px solid var(--rl-border);
+            border-bottom: 1px solid var(--rl-border); overflow: hidden; padding: 16px 0;
+        }
+        .trust-track {
+            display: flex; gap: 50px; animation: scrollMarquee 32s linear infinite; width: max-content;
+        }
+        .trust-track span {
+            display: flex; align-items: center; gap: 12px;
+            font-size: 0.68rem; letter-spacing: 1.8px; text-transform: uppercase;
+            color: var(--rl-muted); white-space: nowrap;
+        }
+        .trust-track span i {
+            background: var(--rl-gradient-multi);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+
+        /* =============================================================
+           8.  ABOUT
+           ============================================================= */
+        .about-grid {
+            display: grid; grid-template-columns: 1fr 1.2fr; gap: 48px;
+            align-items: center; max-width: 1000px; margin: 0 auto;
+        }
+        .about-image {
+            position: relative; border-radius: var(--rl-radius); overflow: hidden;
+            background: var(--rl-card); border: 1px solid var(--rl-border);
+            aspect-ratio: 4/5; display: flex; align-items: center; justify-content: center;
+            min-height: 340px;
+        }
+        .about-image .placeholder {
+            text-align: center; padding: 32px; color: var(--rl-dim);
+        }
+        .about-image .placeholder i {
+            font-size: 3.2rem; margin-bottom: 14px; opacity: 0.35; display: block;
+        }
+        .about-image .badge-row {
+            position: absolute; bottom: 16px; left: 16px; right: 16px;
+            background: var(--rl-glass); backdrop-filter: blur(12px);
+            border: 1px solid var(--rl-border); border-radius: 12px;
+            padding: 12px 14px; display: flex; gap: 14px; justify-content: space-around;
+        }
+        .about-image .badge-row .num {
+            font-family: var(--font-head); font-weight: 800; font-size: 1.15rem; color: var(--rl-primary);
+        }
+        .about-image .badge-row .lbl { font-size: 0.68rem; color: var(--rl-muted); }
+        .about-content p {
+            font-size: 0.98rem; color: var(--rl-muted); line-height: 1.7; margin-bottom: 16px;
+        }
+        .about-content .lead { font-size: 1.08rem; }
+        .cred-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 24px;
+        }
+        .cred-grid .item {
+            display: flex; align-items: flex-start; gap: 8px; font-size: 0.88rem;
+        }
+        .cred-grid .item i { color: var(--rl-secondary); margin-top: 3px; }
+        .about-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+        @media (max-width: 800px) {
+            .about-grid { grid-template-columns: 1fr; gap: 28px; }
+            .about-image { min-height: 260px; }
+        }
+
+        /* =============================================================
+           9.  SERVICES
+           ============================================================= */
+        .services-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+        }
+        .service-card {
+            background: var(--rl-card); border: 1px solid var(--rl-border);
+            border-radius: var(--rl-radius); padding: 32px 24px;
+            transition: all 0.35s var(--ease); display: flex; flex-direction: column;
+        }
+        .service-card:hover {
+            transform: translateY(-4px); border-color: var(--rl-secondary);
+            box-shadow: var(--rl-shadow-glow-secondary);
+        }
+        .service-card.featured {
+            border-color: rgba(232,141,106,0.35); background: var(--rl-gradient-subtle);
+        }
+        .service-icon {
+            width: 56px; height: 56px; border-radius: 14px;
+            background: rgba(46,154,140,0.1); display: grid; place-items: center;
+            font-size: 1.4rem; margin-bottom: 18px;
+            background: var(--rl-gradient-multi);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .service-card h3 {
+            font-family: var(--font-head); font-size: 1.15rem; font-weight: 700;
+            margin-bottom: 10px; color: var(--rl-text);
+        }
+        .service-card p {
+            font-size: 0.9rem; color: var(--rl-muted); line-height: 1.55; flex: 1; margin-bottom: 16px;
+        }
+        .service-card .link {
+            font-size: 0.88rem; font-weight: 600; color: var(--rl-primary);
+            display: inline-flex; align-items: center; gap: 6px; transition: gap 0.25s;
+        }
+        .service-card .link:hover { gap: 10px; }
+        @media (max-width: 900px) { .services-grid { grid-template-columns: 1fr 1fr; } }
+        @media (max-width: 560px) { .services-grid { grid-template-columns: 1fr; } }
+
+        /* =============================================================
+           10. PROCESS
+           ============================================================= */
+        .process-list {
+            display: flex; flex-direction: column; gap: 30px; position: relative;
+            padding-left: 30px; max-width: 700px; margin: 0 auto;
+        }
+        .process-list::before {
+            content: ''; position: absolute; left: 8px; top: 0; bottom: 0;
+            width: 2px; background: var(--rl-border);
+        }
+        .process-step { position: relative; padding-left: 40px; }
+        .process-step .marker {
+            position: absolute; left: -30px; top: 4px; width: 20px; height: 20px;
+            border-radius: 50%; background: var(--rl-gradient-gold);
+            border: 2px solid var(--rl-bg); box-shadow: 0 0 0 4px var(--rl-border);
+            transition: all 0.3s;
+        }
+        .process-step:hover .marker {
+            transform: scale(1.15); box-shadow: 0 0 0 4px var(--rl-primary);
+        }
+        .process-step .num {
+            font-family: var(--font-head); font-size: 1.8rem; font-weight: 800;
+            background: var(--rl-gradient-gold);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+            opacity: 0.3; margin-bottom: 4px;
+        }
+        .process-step h3 {
+            font-family: var(--font-head); font-weight: 700; font-size: 1.2rem; margin-bottom: 6px;
+        }
+        .process-step p { color: var(--rl-muted); font-size: 0.95rem; line-height: 1.55; }
+
+        /* =============================================================
+           11. WHY
+           ============================================================= */
+        .why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+        .why-card {
+            background: var(--rl-card); border: 1px solid var(--rl-border);
+            border-radius: var(--rl-radius); padding: 24px 20px; text-align: center;
+            transition: all 0.3s ease; position: relative; overflow: hidden;
+        }
+        .why-card:hover {
+            transform: translateY(-6px); border-color: var(--rl-accent);
+            box-shadow: var(--rl-shadow-glow-accent);
+        }
+        .why-card i {
+            font-size: 2rem; background: var(--rl-gradient-multi);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+            margin-bottom: 12px; display: block;
+        }
+        .why-card h4 { font-family: var(--font-head); font-weight: 700; font-size: 1rem; margin-bottom: 6px; }
+        .why-card p { font-size: 0.85rem; color: var(--rl-muted); line-height: 1.4; }
+        @media (max-width: 900px) { .why-grid { grid-template-columns: 1fr 1fr; } }
+        @media (max-width: 600px) { .why-grid { grid-template-columns: 1fr; } }
+
+        /* =============================================================
+           12. ABSICHERUNG
+           ============================================================= */
+        .absicherung-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+        .absicherung-card {
+            background: var(--rl-card); border: 1px solid var(--rl-border);
+            border-radius: var(--rl-radius); padding: 28px 22px; text-align: center;
+            transition: all 0.3s;
+        }
+        .absicherung-card:hover {
+            border-color: var(--rl-secondary); transform: translateY(-3px);
+            box-shadow: var(--rl-shadow-glow-secondary);
+        }
+        .absicherung-card .icon-wrap {
+            width: 52px; height: 52px; border-radius: 14px; margin: 0 auto 14px;
+            background: rgba(46,154,140,0.08); display: grid; place-items: center;
+            font-size: 1.3rem; color: var(--rl-secondary);
+        }
+        .absicherung-card h4 {
+            font-family: var(--font-head); font-weight: 700; font-size: 1.05rem; margin-bottom: 8px;
+        }
+        .absicherung-card p { font-size: 0.88rem; color: var(--rl-muted); line-height: 1.55; }
+        @media (max-width: 700px) { .absicherung-grid { grid-template-columns: 1fr; } }
+
+        /* =============================================================
+           13. SCOPE
+           ============================================================= */
+        .scope-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+            max-width: 860px; margin: 0 auto;
+        }
+        .scope-card {
+            background: var(--rl-card); border: 1px solid var(--rl-border);
+            border-radius: var(--rl-radius); padding: 26px 22px;
+        }
+        .scope-card h3 {
+            font-family: var(--font-head); font-size: 1.08rem; font-weight: 700;
+            margin-bottom: 14px; display: flex; align-items: center; gap: 10px;
+        }
+        .scope-card h3 i { color: var(--rl-secondary); }
+        .scope-card ul li {
+            position: relative; padding-left: 22px; font-size: 0.9rem;
+            color: var(--rl-muted); margin-bottom: 8px; line-height: 1.45;
+        }
+        .scope-card.included ul li::before {
+            content: "✓"; position: absolute; left: 0; color: var(--rl-primary); font-weight: 700;
+        }
+        .scope-card.excluded ul li::before {
+            content: "–"; position: absolute; left: 0; color: var(--rl-dim);
+        }
+        @media (max-width: 640px) { .scope-grid { grid-template-columns: 1fr; } }
+
+        .payment-note {
+            max-width: 640px; margin: 28px auto 0; text-align: center;
+            font-size: 0.9rem; color: var(--rl-muted); line-height: 1.6;
+            padding: 16px 20px; background: var(--rl-card); border: 1px solid var(--rl-border);
+            border-radius: var(--rl-radius);
+        }
+
+        /* =============================================================
+           14. PRICE ORIENTATION
+           ============================================================= */
+        .price-orient {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+            max-width: 900px; margin: 0 auto;
+        }
+        .price-orient-card {
+            background: var(--rl-card); border: 1px solid var(--rl-border);
+            border-radius: var(--rl-radius); padding: 22px 18px; text-align: center;
+            transition: all 0.25s;
+        }
+        .price-orient-card:hover {
+            border-color: var(--rl-primary); transform: translateY(-3px); box-shadow: var(--rl-shadow-sm);
+        }
+        .price-orient-card .label { font-size: 0.8rem; color: var(--rl-muted); margin-bottom: 6px; }
+        .price-orient-card .price {
+            font-family: var(--font-head); font-size: 1.35rem; font-weight: 800; color: var(--rl-primary);
+        }
+        .price-orient-card .note { font-size: 0.75rem; color: var(--rl-dim); margin-top: 6px; }
+        @media (max-width: 700px) { .price-orient { grid-template-columns: 1fr; } }
+
+        /* =============================================================
+           15. BRANDS
+           ============================================================= */
+        .brands-strip {
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 28px; padding: 20px 0;
+        }
+        .brands-strip span {
+            font-size: 0.8rem; font-weight: 600; color: var(--rl-dim);
+            padding: 6px 14px; border: 1px solid var(--rl-border); border-radius: 8px;
+            background: var(--rl-card); transition: all 0.25s;
+        }
+        .brands-strip span:hover { border-color: var(--rl-primary); color: var(--rl-text); }
+
+        /* =============================================================
+           16. PROJECTS
+           ============================================================= */
+        .project-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .project-card {
+            background: var(--rl-card); border: 1px solid var(--rl-border);
+            border-radius: var(--rl-radius); overflow: hidden; transition: all 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-6px); border-color: var(--rl-secondary);
+            box-shadow: var(--rl-shadow-glow-secondary);
+        }
+        .project-img {
+            height: 160px; background: var(--rl-border); display: flex;
+            align-items: center; justify-content: center; font-size: 2.5rem;
+            background: var(--rl-gradient-multi);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+            opacity: 0.4;
+        }
+        .project-info { padding: 16px; }
+        .project-info h4 {
+            font-family: var(--font-head); font-weight: 700; font-size: 1rem; margin-bottom: 4px;
+        }
+        .project-info p { font-size: 0.85rem; color: var(--rl-muted); }
+        @media (max-width: 900px) { .project-grid { grid-template-columns: 1fr; } }
+
+        /* =============================================================
+           17. BUNDLES
+           ============================================================= */
+        .bundles-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .bundle-card {
+            background: var(--rl-card); border: 1px solid var(--rl-border);
+            border-radius: var(--rl-radius); padding: 32px 28px; position: relative;
+            transition: all 0.35s var(--ease); display: flex; flex-direction: column;
+        }
+        .bundle-card:hover { transform: translateY(-5px); box-shadow: var(--rl-shadow-glow); }
+        .bundle-card.featured {
+            border-color: rgba(232,141,106,0.35); background: var(--rl-gradient-subtle);
+        }
+        .bundle-badge {
+            position: absolute; top: 18px; right: 18px; font-size: 0.7rem; font-weight: 600;
+            text-transform: uppercase; letter-spacing: 0.5px;
+            background: rgba(245,185,66,0.15); color: var(--rl-amber);
+            padding: 4px 12px; border-radius: 20px;
+        }
+        .bundle-card h3 {
+            font-family: var(--font-head); font-size: 1.35rem; font-weight: 700; margin-bottom: 10px;
+        }
+        .bundle-desc { font-size: 0.95rem; color: var(--rl-muted); margin-bottom: 20px; }
+        .bundle-list { margin-bottom: 28px; flex: 1; }
+        .bundle-list li {
+            position: relative; padding-left: 22px; font-size: 0.92rem;
+            color: var(--rl-muted); margin-bottom: 9px;
+        }
+        .bundle-list li::before {
+            content: "✓"; position: absolute; left: 0;
+            background: var(--rl-gradient-gold);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+            font-weight: 700;
+        }
+        .bundle-price {
+            font-family: var(--font-head); font-size: 1.5rem; font-weight: 800; margin-bottom: 20px;
+            background: var(--rl-gradient-gold);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        @media (max-width: 900px) { .bundles-grid { grid-template-columns: 1fr; } }
+
+        /* =============================================================
+           18. REVIEWS
+           ============================================================= */
+        .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .review-card {
+            background: var(--rl-card); border: 1px solid var(--rl-border);
+            border-radius: var(--rl-radius); padding: 28px; transition: all 0.3s var(--ease);
+        }
+        .review-card:hover {
+            border-color: var(--rl-amber); transform: translateY(-4px);
+            box-shadow: var(--rl-shadow-glow-amber);
+        }
+        .review-stars { color: var(--rl-amber); font-size: 0.9rem; margin-bottom: 16px; letter-spacing: 2px; }
+        .review-text {
+            font-size: 1rem; color: var(--rl-muted); line-height: 1.65;
+            margin-bottom: 22px; font-style: italic;
+        }
+        .review-author strong { display: block; font-size: 0.95rem; color: var(--rl-text); }
+        .review-author span { font-size: 0.82rem; color: var(--rl-dim); }
+        @media (max-width: 900px) { .reviews-grid { grid-template-columns: 1fr; } }
+
+        /* =============================================================
+           19. FAQ
+           ============================================================= */
+        .faq-list { max-width: 700px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+        .faq-item {
+            background: var(--rl-card); border: 1px solid var(--rl-border);
+            border-radius: var(--rl-radius); overflow: hidden; transition: all 0.3s ease;
+        }
+        .faq-item:hover { border-color: var(--rl-primary); }
+        .faq-q {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 18px 24px; cursor: pointer; font-weight: 600; font-size: 1rem;
+            background: transparent; border: none; width: 100%; text-align: left;
+            color: var(--rl-text); font-family: var(--font-body);
+        }
+        .faq-q:hover { background: rgba(212,165,116,0.04); }
+        .faq-q i { transition: transform 0.3s ease; color: var(--rl-primary); }
+        .faq-item.open .faq-q i { transform: rotate(180deg); }
+        .faq-a {
+            max-height: 0; overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.3s ease;
+            padding: 0 24px; color: var(--rl-muted); font-size: 0.95rem; line-height: 1.6;
+        }
+        .faq-item.open .faq-a { max-height: 280px; padding: 0 24px 20px; }
+
+        /* =============================================================
+           20. CTA BANNER
+           ============================================================= */
+        .cta-banner {
+            background: var(--rl-gradient-cta); border-radius: var(--rl-radius);
+            padding: 48px 32px; text-align: center; margin: 20px 0;
+            box-shadow: var(--rl-shadow-glow); animation: glow-pulse 4s ease-in-out infinite;
+        }
+        .cta-banner h2 {
+            font-family: var(--font-head); font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+            font-weight: 800; color: #1C1917; margin-bottom: 12px;
+        }
+        .cta-banner p {
+            color: rgba(28,25,23,0.8); font-size: 1.05rem; max-width: 500px;
+            margin: 0 auto 24px;
+        }
+        .cta-banner .btn {
+            background: #1C1917; color: #fff; box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+        }
+        .cta-banner .btn:hover { background: #2A2825; transform: scale(1.04); }
+        @media (max-width: 600px) { .cta-banner { padding: 32px 20px; } }
+
+        /* =============================================================
+           21. FLOATING ELEMENTS
+           ============================================================= */
+        .floating-badge {
+            position: fixed; bottom: 100px; right: 20px; z-index: 99;
+            background: var(--rl-card); border: 1px solid var(--rl-border);
+            border-radius: var(--rl-radius); padding: 14px 18px; box-shadow: var(--rl-shadow);
+            max-width: 220px; text-align: center; backdrop-filter: blur(12px);
+            animation: float 3s ease-in-out infinite; transition: all 0.3s ease;
+        }
+        .floating-badge:hover {
+            transform: scale(1.05); border-color: var(--rl-amber);
+            box-shadow: var(--rl-shadow-glow-amber); animation-play-state: paused;
+        }
+        .floating-badge .stars { color: var(--rl-amber); font-size: 0.9rem; letter-spacing: 1px; }
+        .floating-badge .text { font-size: 0.8rem; color: var(--rl-muted); margin-top: 4px; }
+        .floating-badge .highlight {
+            background: var(--rl-gradient-gold);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+            font-weight: 700;
+        }
+        @media (max-width: 600px) { .floating-badge { display: none; } }
+
+        .whatsapp-float {
+            position: fixed; bottom: 28px; right: 28px; z-index: 9999;
+            width: 60px; height: 60px; border-radius: 50%; background: #25D366;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 8px 32px rgba(37,211,102,0.35);
+            transition: transform 0.3s var(--ease-spring), box-shadow 0.3s;
+            color: #fff; font-size: 2rem; text-decoration: none;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.08); box-shadow: 0 12px 40px rgba(37,211,102,0.5);
+        }
+        .whatsapp-float .pulse-ring {
+            position: absolute; inset: -6px; border-radius: 50%;
+            border: 2px solid rgba(37,211,102,0.3); animation: pulseRing 2.2s ease-out infinite;
+        }
+
+        .back-to-top {
+            position: fixed; bottom: 28px; left: 28px; z-index: 9998;
+            width: 44px; height: 44px; border-radius: 50%;
+            background: rgba(46,154,140,0.12); border: 1px solid rgba(46,154,140,0.25);
+            color: var(--rl-secondary); font-size: 1.2rem;
+            display: none; align-items: center; justify-content: center;
+            backdrop-filter: blur(8px); transition: 0.3s;
+        }
+        .back-to-top.visible { display: flex; }
+        .back-to-top:hover {
+            background: rgba(46,154,140,0.2); transform: translateY(-3px);
+            box-shadow: var(--rl-shadow-glow-secondary);
+        }
+
+        .scroll-progress {
+            position: fixed; top: 0; left: 0; height: 3px;
+            background: var(--rl-gradient-multi); z-index: 100000;
+            width: 0%; box-shadow: var(--rl-shadow-glow); transition: width 0.1s linear;
+        }
+
+        /* =============================================================
+           22. COOKIE & MOBILE BAR
+           ============================================================= */
+        .cookie-banner {
+            position: fixed; bottom: 0; left: 0; right: 0; z-index: 10050;
+            background: var(--rl-glass); backdrop-filter: blur(16px);
+            border-top: 1px solid var(--rl-border); box-shadow: 0 -8px 32px rgba(0,0,0,0.25);
+            padding: 18px 20px; transform: translateY(100%);
+            transition: transform 0.5s var(--ease);
+        }
+        .cookie-banner.show { transform: translateY(0); }
+        .cookie-inner {
+            max-width: 900px; margin: 0 auto;
+            display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+        }
+        .cookie-inner p {
+            flex: 1; min-width: 240px; font-size: 0.88rem; color: var(--rl-muted); line-height: 1.5;
+        }
+        .cookie-inner a { color: var(--rl-primary); text-decoration: underline; }
+        .cookie-actions { display: flex; gap: 10px; flex-shrink: 0; }
+
+        .mobile-call-bar {
+            display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 950;
+            background: var(--rl-glass); backdrop-filter: blur(16px);
+            border-top: 1px solid var(--rl-border); padding: 10px 12px;
+            grid-template-columns: 1fr 1fr 1fr; gap: 8px;
+        }
+        .mobile-call-bar a {
+            display: flex; align-items: center; justify-content: center; gap: 6px;
+            padding: 12px 8px; border-radius: 10px; font-size: 0.82rem; font-weight: 700; min-height: 46px;
+        }
+        .mobile-call-bar .call-btn { background: var(--rl-secondary); color: #fff; }
+        .mobile-call-bar .wa-btn { background: #25D366; color: #fff; }
+        .mobile-call-bar .inq-btn { background: var(--rl-gradient-cta); color: #1C1917; }
+        @media (max-width: 768px) {
+            .mobile-call-bar { display: grid; }
+            .whatsapp-float { bottom: 72px; }
+            .back-to-top { bottom: 72px; }
+            body { padding-bottom: 70px; }
+        }
+
+        /* =============================================================
+           23. FOOTER
+           ============================================================= */
+        .footer {
+            background: var(--rl-surface); border-top: 1px solid var(--rl-border);
+            padding: 64px 0 0; margin-top: 60px; position: relative; overflow: hidden;
+        }
+        .footer::before {
+            content: ''; position: absolute; top: 0; left: -50%; width: 200%; height: 2px;
+            background: linear-gradient(90deg, transparent, var(--rl-primary), var(--rl-secondary), var(--rl-accent), var(--rl-amber), var(--rl-primary), transparent);
+            background-size: 300% 100%; animation: borderFlow 8s linear infinite; opacity: 0.6;
+        }
+        .footer-top {
+            display: grid; grid-template-columns: 1.4fr 1fr; gap: 56px;
+            padding-bottom: 48px; border-bottom: 1px solid var(--rl-border); margin-bottom: 40px;
+        }
+        .footer-logo {
+            font-family: var(--font-head); font-weight: 800; font-size: 1.5rem;
+            letter-spacing: -0.03em; margin-bottom: 14px;
+            display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+        }
+        .footer-desc {
+            font-size: 0.98rem; color: var(--rl-muted); line-height: 1.7;
+            max-width: 420px; margin-bottom: 20px;
+        }
+        .footer-trust { display: flex; flex-wrap: wrap; gap: 10px; }
+        .footer-trust span {
+            display: inline-flex; align-items: center; gap: 7px; font-size: 0.78rem;
+            color: var(--rl-muted); background: var(--rl-card); border: 1px solid var(--rl-border);
+            padding: 6px 14px; border-radius: var(--rl-radius-full); transition: all 0.3s ease;
+        }
+        .footer-trust span:hover {
+            border-color: var(--rl-primary); color: var(--rl-text); transform: translateY(-2px);
+            box-shadow: var(--rl-shadow-glow);
+        }
+        .footer-trust i {
+            background: var(--rl-gradient-multi);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .footer-newsletter h4 {
+            font-family: var(--font-head); font-size: 1.15rem; font-weight: 700;
+            margin-bottom: 6px;
+        }
+        .footer-newsletter > p {
+            font-size: 0.92rem; color: var(--rl-muted); margin-bottom: 18px;
+        }
+        .footer-form { display: flex; flex-direction: column; gap: 12px; }
+        .footer-form input {
+            width: 100%; padding: 14px 16px; border: 1.5px solid var(--rl-border);
+            border-radius: 12px; background: var(--rl-card); color: var(--rl-text);
+            font-size: 0.95rem; transition: all 0.3s ease; outline: none; font-family: var(--font-body);
+        }
+        .footer-form input:focus { border-color: var(--rl-primary); box-shadow: var(--rl-shadow-glow); }
+        .footer-form button {
+            display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+            padding: 14px 28px; background: var(--rl-gradient-cta); color: #1C1917;
+            font-weight: 700; font-size: 0.95rem; border: none; border-radius: 12px;
+            cursor: pointer; transition: all 0.3s ease; box-shadow: var(--rl-shadow-glow);
+        }
+        .footer-form button:hover {
+            transform: scale(1.03); box-shadow: var(--rl-shadow-glow-accent), var(--rl-shadow-glow-secondary);
+        }
+        .footer-consent {
+            display: flex; gap: 10px; margin-top: 12px; font-size: 0.78rem;
+            color: var(--rl-muted); line-height: 1.4;
+        }
+        .footer-consent input { accent-color: var(--rl-primary); margin-top: 2px; flex-shrink: 0; }
+        .footer-consent a { color: var(--rl-primary); text-decoration: underline; }
+        .footer-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 36px; margin-bottom: 44px;
+        }
+        .footer-col h5 {
+            font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.8px; color: var(--rl-dim); margin-bottom: 16px;
+        }
+        .footer-col a {
+            display: block; font-size: 0.9rem; color: var(--rl-muted);
+            transition: all 0.25s ease; padding: 4px 0;
+        }
+        .footer-col a:hover { color: var(--rl-primary); transform: translateX(4px); }
+        .footer-contact li {
+            display: flex; align-items: center; gap: 10px; margin-bottom: 8px;
+        }
+        .footer-contact i { color: var(--rl-primary); font-size: 0.85rem; width: 18px; text-align: center; }
+        .footer-contact a { font-size: 0.9rem; color: var(--rl-muted); }
+        .footer-contact a:hover { color: var(--rl-primary); transform: none; }
+        .footer-social { display: flex; gap: 8px; margin-top: 16px; }
+        .footer-social a {
+            width: 42px; height: 42px; border-radius: 50%; border: 1px solid var(--rl-border);
+            display: grid; place-items: center; color: var(--rl-muted); font-size: 1rem;
+            transition: all 0.3s ease; background: var(--rl-card);
+        }
+        .footer-social a:hover {
+            border-color: var(--rl-amber); color: var(--rl-amber);
+            transform: translateY(-4px) scale(1.05); box-shadow: var(--rl-shadow-glow-amber);
+        }
+        .footer-trustbar {
+            display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px;
+            padding: 24px 0; border-top: 1px solid var(--rl-border);
+            border-bottom: 1px solid var(--rl-border); margin-bottom: 28px;
+        }
+        .trust-item {
+            display: flex; align-items: center; gap: 12px; padding: 12px 16px;
+            background: var(--rl-card); border: 1px solid var(--rl-border);
+            border-radius: 12px; transition: all 0.3s ease;
+        }
+        .trust-item:hover {
+            border-color: var(--rl-secondary); transform: translateY(-4px) scale(1.02);
+            box-shadow: var(--rl-shadow-glow-secondary);
+        }
+        .trust-item i {
+            font-size: 1.2rem; background: var(--rl-gradient-multi);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+            flex-shrink: 0;
+        }
+        .trust-item .label {
+            display: block; font-size: 0.65rem; color: var(--rl-dim);
+            text-transform: uppercase; letter-spacing: 0.4px;
+        }
+        .trust-item .value { display: block; font-size: 0.9rem; font-weight: 700; color: var(--rl-text); }
+        .footer-bottom {
+            display: flex; justify-content: space-between; align-items: center;
+            flex-wrap: wrap; gap: 16px; padding-bottom: 20px;
+        }
+        .footer-copy { font-size: 0.82rem; color: var(--rl-dim); }
+        .footer-legal { display: flex; gap: 8px; font-size: 0.78rem; margin-top: 4px; }
+        .footer-legal a { color: var(--rl-muted); transition: color 0.25s; }
+        .footer-legal a:hover { color: var(--rl-primary); }
+        .footer-legal .sep { color: var(--rl-border); }
+        .footer-note {
+            text-align: center; padding: 18px 0 24px; font-size: 0.88rem;
+            color: var(--rl-dim); border-top: 1px solid var(--rl-border); margin-top: 8px;
+        }
+
+        @media (max-width: 900px) {
+            .footer-top { grid-template-columns: 1fr; gap: 40px; }
+            .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+            .footer-trustbar { grid-template-columns: repeat(3, 1fr); }
+            .footer-bottom { flex-direction: column; text-align: center; }
+            .footer-legal { justify-content: center; }
+        }
+        @media (max-width: 600px) {
+            .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+            .footer-trustbar { grid-template-columns: 1fr 1fr; }
+            .footer-trust { justify-content: center; }
+            .footer-desc { margin: 0 auto 20px; text-align: center; }
+            .footer-col { text-align: center; }
+            .footer-contact li { justify-content: center; }
+            .footer-social { justify-content: center; }
+        }
+        @media (max-width: 400px) { .footer-trustbar { grid-template-columns: 1fr; } }
+
+        @media (prefers-reduced-motion: reduce) {
+            * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+            .reveal { opacity: 1 !important; transform: none !important; }
+        }
+        @media print {
+            .nav, .whatsapp-float, .back-to-top, .floating-badge, .scroll-progress,
+            .cookie-banner, .mobile-call-bar { display: none !important; }
+            body { background: #fff !important; color: #000 !important; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Starfield canvas (optional decorative) -->
+    <canvas id="starCanvas" style="position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:-1;" aria-hidden="true"></canvas>
+
+    <!-- Scroll progress -->
+    <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+    <!-- Floating trust badge -->
+    <div class="floating-badge" id="floatingBadge" aria-hidden="true">
+        <div class="stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <i class="fas fa-star"></i><i class="fas fa-star"></i>
+        </div>
+        <div class="text"><span class="highlight">110+</span> Menschen vertrauen mir</div>
+    </div>
+
+    <!-- WhatsApp float -->
+    <a href="https://wa.me/491608194018" target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="WhatsApp Kontakt">
+        <span class="pulse-ring" aria-hidden="true"></span>
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Back to top -->
+    <button class="back-to-top" id="backToTop" aria-label="Nach oben">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Cookie Consent -->
+    <div class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Cookie-Hinweis" aria-live="polite">
+        <div class="cookie-inner">
+            <p>Diese Website verwendet technisch notwendige Cookies und – nur mit Ihrer Zustimmung – optionale Cookies für Statistik. Details in der <a href="/legal/datenschutz.html">Datenschutzerklärung</a> und <a href="/legal/cookie.html">Cookie-Richtlinie</a>.</p>
+            <div class="cookie-actions">
+                <button type="button" class="btn btn-secondary btn-sm" id="cookieReject">Nur notwendige</button>
+                <button type="button" class="btn btn-primary btn-sm" id="cookieAccept">Alle akzeptieren</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sticky mobile call bar -->
+    <div class="mobile-call-bar" id="mobileCallBar" aria-label="Schnellkontakt">
+        <a href="tel:+491608194018" class="call-btn"><i class="fas fa-phone-alt"></i> Anrufen</a>
+        <a href="https://wa.me/491608194018" target="_blank" rel="noopener noreferrer" class="wa-btn"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        <a href="/anfrage/" class="inq-btn"><i class="fas fa-calendar-check"></i> Anfrage</a>
+    </div>
+
+    <!-- NAV -->
+    <nav class="nav" id="mainNav" role="navigation" aria-label="Hauptnavigation">
+        <div class="nav-inner">
+            <a href="/" class="nav-brand" aria-label="Lezius Möbelmontage – Startseite">
+                <span class="logo-mark">L</span>
+                <span class="brand-text">
+                    <span class="brand-name">Lezius</span>
+                    <span class="brand-sub">Möbelmontage</span>
+                </span>
+            </a>
+            <ul class="nav-links" role="menubar">
+                <li role="none"><a href="#services" class="nav-link" role="menuitem">Leistungen</a></li>
+                <li role="none"><a href="#process" class="nav-link" role="menuitem">Ablauf</a></li>
+                <li role="none"><a href="#projects" class="nav-link" role="menuitem">Projekte</a></li>
+                <li role="none"><a href="#about" class="nav-link" role="menuitem">Über mich</a></li>
+                <li role="none"><a href="#faq" class="nav-link" role="menuitem">FAQ</a></li>
+                <li role="none"><a href="/contact.html" class="nav-link" role="menuitem">Kontakt</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="tel:+491608194018" class="nav-phone-link" aria-label="Anrufen">
+                    <i class="fas fa-phone-alt"></i> +49 160 8194018
+                </a>
+                <a href="/anfrage/" class="nav-cta">
+                    <i class="fas fa-calendar-check"></i> <span>Anfrage</span>
+                </a>
+                <button class="theme-btn" id="themeToggle" aria-label="Design umschalten">
+                    <i class="fas fa-moon" id="themeIcon"></i>
+                </button>
+                <button class="hamburger" id="navToggle" aria-controls="mobileMenu" aria-expanded="false" aria-label="Menü öffnen">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Mobiles Menü">
+        <button class="mobile-close" id="mobileClose" aria-label="Schließen"><i class="fas fa-times"></i></button>
+        <a href="/">Start</a>
+        <a href="#about">Über mich</a>
+        <a href="#services">Leistungen</a>
+        <a href="#process">Ablauf</a>
+        <a href="#projects">Projekte</a>
+        <a href="#bundles">Pakete</a>
+        <a href="#reviews">Referenzen</a>
+        <a href="#faq">FAQ</a>
+        <a href="/about.html">Profil</a>
+        <a href="/contact.html">Kontakt</a>
+        <a href="/anfrage/" class="mobile-cta"><i class="fas fa-calendar-check"></i> Unverbindliche Anfrage</a>
+    </div>
+    <div class="nav-backdrop" id="navBackdrop" aria-hidden="true"></div>
+
+    <main>
+        <!-- HERO -->
+        <section class="hero" id="home">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-badge reveal">
+                        <i class="fas fa-map-marker-alt"></i> München &amp; Augsburg · 5,0 ★
+                    </div>
+                    <h1 class="reveal">
+                        Möbelmontage mit<br />
+                        <span class="gold">messbarer Präzision.</span>
+                    </h1>
+                    <p class="hero-lead reveal">
+                        Professionelle Montage von Designmöbeln, USM Haller, Küchen und Systemmöbeln.
+                        Staubfreie Arbeitsweise, dokumentierte Übergabe und 12 Monate persönliche Garantie.
+                    </p>
+                    <div class="hero-actions reveal">
+                        <a href="/anfrage/" class="btn btn-primary">
+                            <i class="fas fa-comments"></i> Unverbindliche Anfrage
+                        </a>
+                        <a href="#services" class="btn btn-secondary">
+                            <i class="fas fa-th-list"></i> Leistungen
+                        </a>
+                    </div>
+                    <div class="hero-stats reveal">
+                        <div class="stat">
+                            <div class="number">1.200+</div>
+                            <div class="label">Montagen</div>
+                        </div>
+                        <div class="stat">
+                            <div class="number">5,0 ★</div>
+                            <div class="label">Bewertung</div>
+                        </div>
+                        <div class="stat">
+                            <div class="number">110+</div>
+                            <div class="label">Kunden</div>
+                        </div>
+                        <div class="stat">
+                            <div class="number">12 Mon.</div>
+                            <div class="label">Garantie</div>
+                        </div>
+                    </div>
+                    <div class="promise-row reveal">
+                        <div class="promise">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <strong>Pünktlichkeitszusage</strong>
+                                <span>15 Min. Verzug → 10 % Rabatt</span>
+                            </div>
+                        </div>
+                        <div class="promise">
+                            <i class="fas fa-shield-alt"></i>
+                            <div>
+                                <strong>Haftpflicht 5 Mio. €</strong>
+                                <span>Vollständig versichert</span>
+                            </div>
+                        </div>
+                        <div class="promise">
+                            <i class="fas fa-hand-holding-heart"></i>
+                            <div>
+                                <strong>12 Monate Garantie</strong>
+                                <span>Persönliche Nacharbeit</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trust Bar -->
+        <div class="trust-bar" aria-hidden="true">
+            <div class="trust-track">
+                <span><i class="fas fa-gem"></i> USM Haller Spezialist</span>
+                <span><i class="fas fa-utensils"></i> Küchenmontage</span>
+                <span><i class="fas fa-cube"></i> IKEA PAX &amp; Systemmöbel</span>
+                <span><i class="fas fa-home"></i> Outdoor &amp; Gartenhäuser</span>
+                <span><i class="fas fa-tools"></i> Demontage &amp; Umzug</span>
+                <span><i class="fas fa-building"></i> Büro &amp; Objekt</span>
+                <span><i class="fas fa-gem"></i> USM Haller Spezialist</span>
+                <span><i class="fas fa-utensils"></i> Küchenmontage</span>
+                <span><i class="fas fa-cube"></i> IKEA PAX &amp; Systemmöbel</span>
+                <span><i class="fas fa-home"></i> Outdoor &amp; Gartenhäuser</span>
+                <span><i class="fas fa-tools"></i> Demontage &amp; Umzug</span>
+                <span><i class="fas fa-building"></i> Büro &amp; Objekt</span>
+            </div>
+        </div>
+
+        <!-- ABOUT ME -->
+        <section class="section" id="about">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="eyebrow">Über mich</span>
+                    <h2>Präzision ist kein Zufall – <span class="gold">sie ist Methode.</span></h2>
+                    <p>Wer an Ihrem Zuhause arbeitet, sollte greifbar und nachvollziehbar sein.</p>
+                </div>
+                <div class="about-grid reveal">
+                    <div class="about-image">
+                        <div class="placeholder">
+                            <i class="fas fa-user-tie"></i>
+                            <p>Portrait Raphael Lezius<br /><span style="font-size:0.8rem;">(Bildplatzhalter)</span></p>
+                        </div>
+                        <div class="badge-row">
+                            <div style="text-align:center;">
+                                <div class="num">8+</div>
+                                <div class="lbl">Jahre</div>
+                            </div>
+                            <div style="text-align:center;">
+                                <div class="num">1.200+</div>
+                                <div class="lbl">Projekte</div>
+                            </div>
+                            <div style="text-align:center;">
+                                <div class="num">5,0</div>
+                                <div class="lbl">Sterne</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-content">
+                        <p class="lead">
+                            Ich bin Raphael Lezius – Gründer von Lezius Möbelmontage. Seit über acht Jahren montiere ich System- und Designmöbel in München, Augsburg und der Region – mit dem Anspruch, dass jedes Ergebnis so wirkt, als wäre es schon immer dort gestanden.
+                        </p>
+                        <p>
+                            Mein Fokus liegt auf hochwertigen Systemen wie <strong style="color:var(--rl-text);">USM Haller</strong>, auf kompletten Küchenzeilen und auf Möbeln, bei denen Passgenauigkeit und Materialschutz entscheidend sind. Ich arbeite mit dem richtigen Spezialwerkzeug für alle Generationen und mit demselben Standard: klare Abstimmung, saubere Ausführung, dokumentierte Übergabe.
+                        </p>
+                        <p>
+                            Was mich antreibt: dass Auftraggeber nach der Montage nicht nacharbeiten müssen. Dass Türen und Schubladen laufen, dass Ebenen gerade sitzen und dass der Arbeitsbereich so verlassen wird, wie er vorgefunden wurde – oder besser.
+                        </p>
+                        <div class="cred-grid">
+                            <div class="item"><i class="fas fa-check-circle"></i> USM Haller &amp; Systemmöbel</div>
+                            <div class="item"><i class="fas fa-check-circle"></i> Spezialwerkzeug aller Generationen</div>
+                            <div class="item"><i class="fas fa-check-circle"></i> Staubarme Arbeitsweise</div>
+                            <div class="item"><i class="fas fa-check-circle"></i> Feste Preise ohne Nachforderungen</div>
+                        </div>
+                        <div class="about-actions">
+                            <a href="/about.html" class="btn btn-secondary btn-sm">
+                                <i class="fas fa-user"></i> Mehr über mich
+                            </a>
+                            <a href="/anfrage/" class="btn btn-primary btn-sm">
+                                <i class="fas fa-comments"></i> Gespräch vereinbaren
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVICES -->
+        <section class="section section-alt" id="services">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="eyebrow">Leistungen</span>
+                    <h2>Was ich für Sie <span class="gold">montiere</span></h2>
+                    <p>Klare Leistungen mit definiertem Umfang. Jedes Projekt beginnt mit einer transparenten Abstimmung.</p>
+                </div>
+                <div class="services-grid">
+                    <article class="service-card reveal">
+                        <div class="service-icon"><i class="fas fa-couch"></i></div>
+                        <h3>Möbel &amp; Küchen</h3>
+                        <p>Präzise Montage von System- und Designmöbeln sowie kompletten Küchenzeilen. Inklusive Justierung und Endkontrolle.</p>
+                        <a href="/services/moebel-kuechen.html" class="link">Details <i class="fas fa-arrow-right"></i></a>
+                    </article>
+                    <article class="service-card reveal">
+                        <div class="service-icon"><i class="fas fa-gem"></i></div>
+                        <h3>USM Haller</h3>
+                        <p>Spezialisierte Montage des Schweizer Systems. Jedes Gelenk, jede Ebene und jede Verbindung nach Herstellerstandard.</p>
+                        <a href="/services/usm-haller.html" class="link">Details <i class="fas fa-arrow-right"></i></a>
+                    </article>
+                    <article class="service-card reveal">
+                        <div class="service-icon"><i class="fas fa-tree"></i></div>
+                        <h3>Garten &amp; Outdoor</h3>
+                        <p>Wetterfeste Montage von Gartenhäusern, Terrassenmöbeln und Outdoor-Systemen. Materialgerechte Befestigung.</p>
+                        <a href="/services/garten-outdoor.html" class="link">Details <i class="fas fa-arrow-right"></i></a>
+                    </article>
+                    <article class="service-card reveal">
+                        <div class="service-icon"><i class="fas fa-truck"></i></div>
+                        <h3>Demontage &amp; Umzug</h3>
+                        <p>Schonende Demontage, Schutzverpackung und fachgerechter Wiederaufbau am neuen Standort.</p>
+                        <a href="/services/demontage-umzug.html" class="link">Details <i class="fas fa-arrow-right"></i></a>
+                    </article>
+                    <article class="service-card reveal">
+                        <div class="service-icon"><i class="fas fa-building"></i></div>
+                        <h3>Büro &amp; Objekt</h3>
+                        <p>Montage für Arbeitsplätze und gewerbliche Räume. Flexible Termine auch außerhalb der Kernzeiten.</p>
+                        <a href="/services/buero-objekt.html" class="link">Details <i class="fas fa-arrow-right"></i></a>
+                    </article>
+                    <article class="service-card featured reveal">
+                        <div class="service-icon"><i class="fas fa-crown"></i></div>
+                        <h3>Premium Pro</h3>
+                        <p>Erweiterter Service: 24 Monate Garantie, fotografische Dokumentation, persönliche Betreuung und Prioritäts-Termine.</p>
+                        <a href="/services/premium-pro.html" class="link">Details <i class="fas fa-arrow-right"></i></a>
+                    </article>
+                </div>
+                <div style="text-align:center; margin-top:40px;" class="reveal">
+                    <a href="/services.html" class="btn btn-secondary">
+                        <i class="fas fa-arrow-right"></i> Alle Leistungen im Überblick
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROCESS -->
+        <section class="section" id="process">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="eyebrow">Ablauf</span>
+                    <h2>In drei Schritten zur <span class="gold">fertigen Montage</span></h2>
+                    <p>Transparent von der ersten Anfrage bis zur dokumentierten Übergabe.</p>
+                </div>
+                <div class="process-list reveal">
+                    <div class="process-step">
+                        <div class="marker"></div>
+                        <div class="num">01</div>
+                        <h3>Abstimmung &amp; verbindliches Angebot</h3>
+                        <p>Sie beschreiben das Projekt – idealerweise mit Fotos, Maßen und Angaben zu Zugang und Parkmöglichkeit. Ich prüfe Umfang, Besonderheiten und Zugänglichkeit und sende ein festes Angebot ohne versteckte Positionen. Klärung von Etage, Aufzug und Strom gehört dazu.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="marker"></div>
+                        <div class="num">02</div>
+                        <h3>Montage vor Ort</h3>
+                        <p>Schutz von Böden und Wänden, staubarme Arbeitsweise, millimetergenaue Ausrichtung nach Herstellerangaben. Bei USM Haller arbeite ich mit dem richtigen Spezialwerkzeug für alle Generationen. Am Ende erfolgt eine gemeinsame Kontrolle aller Funktionen und Verbindungen.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="marker"></div>
+                        <div class="num">03</div>
+                        <h3>Übergabe &amp; Garantie</h3>
+                        <p>Dokumentierte Übergabe und 12 Monate persönliche Garantie auf die Montagearbeit. Bei berechtigter Beanstandung komme ich kostenlos nach und justiere oder korrigiere. Die Garantie gilt für die Ausführung, nicht für Materialfehler des Herstellers.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WHY -->
+        <section class="section section-alt">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="eyebrow">Grundlagen</span>
+                    <h2>Warum Auftraggeber mich <span class="gold">wählen</span></h2>
+                    <p>Messbare Standards statt Versprechen.</p>
+                </div>
+                <div class="why-grid reveal">
+                    <div class="why-card">
+                        <i class="fas fa-medal"></i>
+                        <h4>8+ Jahre Praxis</h4>
+                        <p>Über 1.200 dokumentierte Montagen an System- und Designmöbeln.</p>
+                    </div>
+                    <div class="why-card">
+                        <i class="fas fa-ruler-combined"></i>
+                        <h4>Präzisionsarbeit</h4>
+                        <p>Ausrichtung nach Herstellerangaben und sichtbarer Lot-/Wasserwaagenkontrolle.</p>
+                    </div>
+                    <div class="why-card">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                        <h4>Feste Preise</h4>
+                        <p>Angebot = Endpreis. Keine Nachforderungen bei korrekter Projektbeschreibung.</p>
+                    </div>
+                    <div class="why-card">
+                        <i class="fas fa-shield-alt"></i>
+                        <h4>5 Mio. € Versicherung</h4>
+                        <p>Betriebshaftpflicht für Sach- und Vermögensschäden – Absicherung Ihres Eigentums.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABSICHERUNG -->
+        <section class="section" id="absicherung">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="eyebrow">Ihre Absicherung</span>
+                    <h2>Weniger Risiko – <span class="gold">klare Regeln</span></h2>
+                    <p>Drei feste Zusagen, auf die Sie sich verlassen können.</p>
+                </div>
+                <div class="absicherung-grid reveal">
+                    <div class="absicherung-card">
+                        <div class="icon-wrap"><i class="fas fa-hand-holding-heart"></i></div>
+                        <h4>12 Monate Garantie</h4>
+                        <p>Persönliche Garantie auf die Montagearbeit. Bei berechtigter Beanstandung komme ich kostenlos nach und justiere oder korrigiere. Premium Pro: 24 Monate.</p>
+                    </div>
+                    <div class="absicherung-card">
+                        <div class="icon-wrap"><i class="fas fa-file-invoice-dollar"></i></div>
+                        <h4>Feste Preise</h4>
+                        <p>Angebot = Endpreis. Keine Nachforderungen, sofern der tatsächliche Umfang der Beschreibung entspricht. Änderungen nur nach Ihrer Zustimmung.</p>
+                    </div>
+                    <div class="absicherung-card">
+                        <div class="icon-wrap"><i class="fas fa-shield-alt"></i></div>
+                        <h4>5 Mio. € Haftpflicht</h4>
+                        <p>Betriebshaftpflicht für Sach- und Vermögensschäden. Ihr Eigentum und Ihre Räume sind während der Montage abgesichert.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SCOPE -->
+        <section class="section section-alt" id="scope">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="eyebrow">Leistungsumfang</span>
+                    <h2>Was enthalten ist – und was <span class="gold">nicht</span></h2>
+                    <p>Klare Abgrenzung, damit es keine Missverständnisse gibt.</p>
+                </div>
+                <div class="scope-grid reveal">
+                    <div class="scope-card included">
+                        <h3><i class="fas fa-check-circle"></i> In der Regel enthalten</h3>
+                        <ul>
+                            <li>Schutz von Böden und empfindlichen Flächen</li>
+                            <li>Staubarme Arbeitsweise und Endreinigung des Arbeitsbereichs</li>
+                            <li>Millimetergenaue Ausrichtung und Justierung</li>
+                            <li>Funktionsprüfung (Türen, Schubladen, Verbindungen)</li>
+                            <li>Gemeinsame Übergabe und Dokumentation auf Wunsch</li>
+                            <li>12 Monate persönliche Garantie auf die Montage</li>
+                        </ul>
+                    </div>
+                    <div class="scope-card excluded">
+                        <h3><i class="fas fa-info-circle"></i> Nicht enthalten (sofern nicht vereinbart)</h3>
+                        <ul>
+                            <li>Elektroarbeiten über den Geräteanschluss hinaus</li>
+                            <li>Sanitär- oder Gasarbeiten (nur nach expliziter Absprache)</li>
+                            <li>Transport der Möbel (kann separat organisiert werden)</li>
+                            <li>Entsorgung großer Altmöbel (außer Verpackungsmaterial)</li>
+                            <li>Material- und Herstellerfehler (Garantie des Herstellers)</li>
+                            <li>Bauliche Veränderungen an Wänden oder Böden</li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="payment-note reveal">
+                    <strong>Ablauf der Bezahlung:</strong> Sie erhalten ein festes Angebot. Nach Annahme und Terminbestätigung erfolgt die Montage. Die Rechnung wird nach Abnahme gestellt – transparent und nachvollziehbar.
+                </p>
+            </div>
+        </section>
+
+        <!-- PRICING ORIENTATION -->
+        <section class="section" id="preise">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="eyebrow">Orientierung</span>
+                    <h2>Preisrahmen zur <span class="gold">Einschätzung</span></h2>
+                    <p>Unverbindliche Orientierungswerte. Das verbindliche Angebot basiert auf Ihrer konkreten Beschreibung.</p>
+                </div>
+                <div class="price-orient reveal">
+                    <div class="price-orient-card">
+                        <div class="label">USM / Systemmöbel (klein–mittel)</div>
+                        <div class="price">ab ca. 180–450 €</div>
+                        <div class="note">z. B. Sideboard, Regal, 2–4 Std.</div>
+                    </div>
+                    <div class="price-orient-card">
+                        <div class="label">Küchen-Komplett (Demontage + Aufbau)</div>
+                        <div class="price">ab ca. 590 €</div>
+                        <div class="note">je nach Größe und Geräte</div>
+                    </div>
+                    <div class="price-orient-card">
+                        <div class="label">Umzug Premium (Demo + Aufbau)</div>
+                        <div class="price">ab ca. 420 €</div>
+                        <div class="note">abhängig von Menge und Komplexität</div>
+                    </div>
+                </div>
+                <p style="text-align:center;margin-top:20px;font-size:0.85rem;color:var(--rl-dim);" class="reveal">
+                    Alle Angaben zzgl. ggf. Anfahrt außerhalb des Kerngebiets. Fotos und Maße ermöglichen ein präziseres Angebot.
+                </p>
+            </div>
+        </section>
+
+        <!-- BRANDS -->
+        <section class="section section-alt" style="padding:36px 0;">
+            <div class="container">
+                <p style="text-align:center;font-size:0.78rem;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--rl-dim);margin-bottom:14px;" class="reveal">
+                    Systeme &amp; Marken, mit denen ich regelmäßig arbeite
+                </p>
+                <div class="brands-strip reveal">
+                    <span>USM Haller</span>
+                    <span>IKEA PAX</span>
+                    <span>IKEA Küchen</span>
+                    <span>Nolte</span>
+                    <span>Häcker</span>
+                    <span>Boxspringbetten</span>
+                    <span>Design-Systemmöbel</span>
+                    <span>Outdoor / Gartenhäuser</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS -->
+        <section class="section" id="projects">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="eyebrow">Referenzen</span>
+                    <h2>Ausgewählte <span class="gold">Projekte</span></h2>
+                    <p>Einblicke in realisierte Montagen – Präzision, die man sieht. Echte Fotos ersetzen diese Platzhalter.</p>
+                </div>
+                <div class="project-grid reveal">
+                    <article class="project-card">
+                        <div class="project-img"><i class="fas fa-gem"></i></div>
+                        <div class="project-info">
+                            <h4>USM Haller Bibliothek</h4>
+                            <p>München · Maßgeschneiderte Regallösung über zwei Ebenen</p>
+                        </div>
+                    </article>
+                    <article class="project-card">
+                        <div class="project-img"><i class="fas fa-utensils"></i></div>
+                        <div class="project-info">
+                            <h4>Küchen-Komplettmontage</h4>
+                            <p>Augsburg · Demontage Altküche, Aufbau Neuküche inkl. Geräte</p>
+                        </div>
+                    </article>
+                    <article class="project-card">
+                        <div class="project-img"><i class="fas fa-tree"></i></div>
+                        <div class="project-info">
+                            <h4>Outdoor-Terrasse</h4>
+                            <p>München · Komplettmontage Gartenmöbel und Schattenelemente</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- BUNDLES -->
+        <section class="section section-alt" id="bundles">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="eyebrow">Pakete</span>
+                    <h2>Kombinierte Leistungen mit <span class="gold">klarem Umfang</span></h2>
+                    <p>Alles aus einer Hand – abgestimmte Abläufe statt Einzelbuchungen.</p>
+                </div>
+                <div class="bundles-grid reveal">
+                    <article class="bundle-card">
+                        <div class="bundle-badge">Beliebt</div>
+                        <h3>Küchen-Komplett</h3>
+                        <p class="bundle-desc">Alte Küche heraus, neue Küche hinein – durchgängig organisiert.</p>
+                        <ul class="bundle-list">
+                            <li>Demontage der bestehenden Küche</li>
+                            <li>Aufbau der neuen Küche</li>
+                            <li>Anschluss von Geräten (nach Vorgabe)</li>
+                            <li>Endreinigung des Arbeitsbereichs</li>
+                        </ul>
+                        <div class="bundle-price">ab 590 €</div>
+                        <a href="/bundles/kuechen-komplett.html" class="btn btn-primary btn-full">Paket ansehen</a>
+                    </article>
+                    <article class="bundle-card featured">
+                        <div class="bundle-badge">Premium</div>
+                        <h3>USM All-In</h3>
+                        <p class="bundle-desc">Von der Planung bis zur finalen Justierung – vollständig begleitet.</p>
+                        <ul class="bundle-list">
+                            <li>Beratung und Maßabstimmung</li>
+                            <li>Koordination der Anlieferung</li>
+                            <li>Professionelle Systemmontage</li>
+                            <li>Nachjustierung vor Ort</li>
+                        </ul>
+                        <div class="bundle-price">Individuell</div>
+                        <a href="/bundles/usm-all-in.html" class="btn btn-primary btn-full">Paket ansehen</a>
+                    </article>
+                    <article class="bundle-card">
+                        <div class="bundle-badge">Umzug</div>
+                        <h3>Umzug Premium</h3>
+                        <p class="bundle-desc">Demontage, Schutz und Wiederaufbau – ein durchgängiger Prozess.</p>
+                        <ul class="bundle-list">
+                            <li>Fachgerechte Demontage</li>
+                            <li>Schutzverpackung kritischer Teile</li>
+                            <li>Aufbau am neuen Standort</li>
+                            <li>Gemeinsame Endkontrolle</li>
+                        </ul>
+                        <div class="bundle-price">ab 420 €</div>
+                        <a href="/bundles/umzug-premium.html" class="btn btn-primary btn-full">Paket ansehen</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- REVIEWS -->
+        <section class="section" id="reviews">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="eyebrow">Stimmen</span>
+                    <h2>Was Auftraggeber <span class="gold">berichten</span></h2>
+                    <p>Direkte Rückmeldungen aus abgeschlossenen Projekten.</p>
+                </div>
+                <div class="reviews-grid reveal">
+                    <article class="review-card">
+                        <div class="review-stars">★★★★★</div>
+                        <p class="review-text">„Absolut professionell und pünktlich. Die USM-Montage war millimetergenau. Dokumentation und Übergabe waren vorbildlich.“</p>
+                        <div class="review-author">
+                            <strong>Thomas M.</strong>
+                            <span>München</span>
+                        </div>
+                    </article>
+                    <article class="review-card">
+                        <div class="review-stars">★★★★★</div>
+                        <p class="review-text">„Sehr saubere Arbeit und klare Kommunikation. Die Küche steht exakt, alle Türen und Schubladen laufen einwandfrei.“</p>
+                        <div class="review-author">
+                            <strong>Sandra K.</strong>
+                            <span>Augsburg</span>
+                        </div>
+                    </article>
+                    <article class="review-card">
+                        <div class="review-stars">★★★★★</div>
+                        <p class="review-text">„Endlich jemand, der sich Zeit nimmt und Details ernst nimmt. Man merkt die Erfahrung mit hochwertigen Systemen.“</p>
+                        <div class="review-author">
+                            <strong>Michael R.</strong>
+                            <span>München</span>
+                        </div>
+                    </article>
+                </div>
+                <div style="text-align:center; margin-top:36px;" class="reveal">
+                    <a href="/reviews.html" class="btn btn-secondary">
+                        <i class="fas fa-star"></i> Weitere Referenzen
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="section section-alt" id="faq">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="eyebrow">Häufige Fragen</span>
+                    <h2>Klare Antworten auf <span class="gold">wesentliche Punkte</span></h2>
+                    <p>Die wichtigsten Fragen zu Dauer, Umfang, Haftung und Vorbereitung.</p>
+                </div>
+                <div class="faq-list reveal">
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false">
+                            <span>Wie lange dauert eine typische USM Haller Montage?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-a">
+                            Abhängig von Größe und Komplexität zwischen 2 und 8 Stunden. Kleinere Konfigurationen sind oft in einem halben Tag abgeschlossen; größere Bibliotheken oder Raumteiler benötigen entsprechend mehr Zeit. Im Angebot erhalten Sie eine realistische Einschätzung.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false">
+                            <span>Bieten Sie Demontage und Wiederaufbau an?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-a">
+                            Ja. Fachgerechte Demontage, Kennzeichnung der Teile, Schutzverpackung und Aufbau am neuen Ort gehören zum Leistungsspektrum – sowohl für Umzüge als auch für Entsorgungs- oder Umbau-Projekte.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false">
+                            <span>Wie ist die Garantie geregelt?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-a">
+                            Auf die Montagearbeit gebe ich 12 Monate persönliche Garantie. Bei berechtigter Beanstandung komme ich kostenlos nach und justiere oder korrigiere. Die Garantie bezieht sich auf die Montageleistung, nicht auf Materialfehler des Herstellers.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false">
+                            <span>Was muss ich vor dem Termin vorbereiten?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-a">
+                            Freier Zugang zum Montageort, ausreichend Bewegungsfläche, Stromversorgung und – bei Bedarf – Parkmöglichkeit in der Nähe. Empfindliche Böden können vorab abgedeckt werden; ich bringe Schutzmaterial mit. Details klären wir im Vorfeld.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false">
+                            <span>Wie läuft die Preisgestaltung?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-a">
+                            Sie erhalten ein festes Angebot auf Basis Ihrer Beschreibung und ggf. Fotos. Der vereinbarte Preis ist Endpreis, sofern der tatsächliche Umfang dem beschriebenen entspricht. Änderungen vor Ort werden transparent besprochen.
+                        </div>
+                    </div>
+                </div>
+                <div style="text-align:center; margin-top:32px;" class="reveal">
+                    <a href="/faq.html" class="btn btn-secondary">
+                        <i class="fas fa-question-circle"></i> Vollständige FAQ
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="section" style="padding-top:20px; padding-bottom:40px;">
+            <div class="container">
+                <div class="cta-banner reveal">
+                    <h2>Bereit für eine präzise Montage?</h2>
+                    <p>Schildern Sie kurz Ihr Projekt – Sie erhalten ein klares, verbindliches Angebot.</p>
+                    <a href="/anfrage/" class="btn">
+                        <i class="fas fa-calendar-check"></i> Unverbindliche Anfrage senden
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-top">
+                <div>
+                    <div class="footer-logo">
+                        <span class="logo-mark">L</span>
+                        <span>
+                            <span style="font-weight:800;">Lezius</span><br>
+                            <span style="font-size:0.7rem;color:var(--rl-primary);letter-spacing:0.8px;text-transform:uppercase;">Möbelmontage</span>
+                        </span>
+                    </div>
+                    <p class="footer-desc">
+                        Professionelle Möbel- und Systemmontage in München und Augsburg.
+                        Präzise, staubarm und mit dokumentierter Übergabe.
+                    </p>
+                    <div class="footer-trust">
+                        <span><i class="fas fa-shield-alt"></i> 5 Mio. € versichert</span>
+                        <span><i class="fas fa-star"></i> 5,0 ★ (110+)</span>
+                        <span><i class="fas fa-clock"></i> Antwort &lt; 24 h</span>
+                        <span><i class="fas fa-hand-holding-heart"></i> 12 Monate Garantie</span>
+                    </div>
+                </div>
+                <div class="footer-newsletter">
+                    <h4>Projekt-Updates</h4>
+                    <p>Gelegentliche Hinweise zu Terminen und Leistungen – nur bei Interesse.</p>
+                    <form class="footer-form" id="newsletterForm">
+                        <input type="email" id="newsletterEmail" placeholder="Ihre E-Mail-Adresse" required aria-label="E-Mail-Adresse" />
+                        <button type="submit"><i class="fas fa-paper-plane"></i> Anmelden</button>
+                    </form>
+                    <div class="footer-consent">
+                        <input type="checkbox" id="consentFooter" required />
+                        <label for="consentFooter">Ich stimme der <a href="/legal/datenschutz.html">Datenschutzerklärung</a> zu.</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h5>Leistungen</h5>
+                    <a href="/services.html">Alle Leistungen</a>
+                    <a href="/services/moebel-kuechen.html">Möbel &amp; Küchen</a>
+                    <a href="/services/usm-haller.html">USM Haller</a>
+                    <a href="/services/garten-outdoor.html">Garten &amp; Outdoor</a>
+                    <a href="/services/demontage-umzug.html">Demontage &amp; Umzug</a>
+                    <a href="/services/premium-pro.html">Premium Pro</a>
+                </div>
+                <div class="footer-col">
+                    <h5>Pakete</h5>
+                    <a href="/bundles/">Alle Pakete</a>
+                    <a href="/bundles/kuechen-komplett.html">Küchen-Komplett</a>
+                    <a href="/bundles/usm-all-in.html">USM All-In</a>
+                    <a href="/bundles/umzug-premium.html">Umzug Premium</a>
+                    <h5 style="margin-top:18px;">Hilfe</h5>
+                    <a href="/faq.html">FAQ</a>
+                    <a href="/contact.html">Kontakt</a>
+                </div>
+                <div class="footer-col">
+                    <h5>Über</h5>
+                    <a href="/about.html">Über mich</a>
+                    <a href="/reviews.html">Referenzen</a>
+                    <a href="/anfrage/">Anfrage stellen</a>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h5>Kontakt</h5>
+                    <ul class="footer-contact">
+                        <li><i class="fas fa-phone-alt"></i> <a href="tel:+491608194018">+49 160 8194018</a></li>
+                        <li><i class="fab fa-whatsapp"></i> <a href="https://wa.me/491608194018" target="_blank" rel="noopener">WhatsApp</a></li>
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:info@raphael-lezius.de">info@raphael-lezius.de</a></li>
+                    </ul>
+                    <h5 style="margin-top:18px;">Rechtliches</h5>
+                    <a href="/legal/impressum.html">Impressum</a>
+                    <a href="/legal/datenschutz.html">Datenschutz</a>
+                    <a href="/legal/agb.html">AGB</a>
+                    <a href="/legal/widerruf.html">Widerruf</a>
+                    <a href="/legal/cookie.html">Cookie-Richtlinie</a>
+                </div>
+            </div>
+
+            <div class="footer-trustbar">
+                <div class="trust-item">
+                    <i class="fas fa-users"></i>
+                    <div>
+                        <span class="label">Kunden</span>
+                        <span class="value">110+</span>
+                    </div>
+                </div>
+                <div class="trust-item">
+                    <i class="fas fa-star"></i>
+                    <div>
+                        <span class="label">Bewertung</span>
+                        <span class="value">5,0 ★</span>
+                    </div>
+                </div>
+                <div class="trust-item">
+                    <i class="fas fa-bolt"></i>
+                    <div>
+                        <span class="label">Reaktion</span>
+                        <span class="value">&lt; 24 h</span>
+                    </div>
+                </div>
+                <div class="trust-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <div>
+                        <span class="label">Versicherung</span>
+                        <span class="value">5 Mio. €</span>
+                    </div>
+                </div>
+                <div class="trust-item">
+                    <i class="fas fa-hand-holding-heart"></i>
+                    <div>
+                        <span class="label">Garantie</span>
+                        <span class="value">12 Monate</span>
+                    </div>
+                </div>
+                <div class="trust-item">
+                    <i class="fas fa-award"></i>
+                    <div>
+                        <span class="label">Erfahrung</span>
+                        <span class="value">8+ Jahre</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div>
+                    <p class="footer-copy">© <span id="year">2026</span> Lezius Möbelmontage · Augsburg &amp; München</p>
+                    <div class="footer-legal">
+                        <a href="/legal/impressum.html">Impressum</a>
+                        <span class="sep">·</span>
+                        <a href="/legal/datenschutz.html">Datenschutz</a>
+                        <span class="sep">·</span>
+                        <a href="/legal/agb.html">AGB</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-note">
+                Danke für Ihr Interesse. Eine präzise Montage beginnt mit einer klaren Abstimmung.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    (function () {
+        'use strict';
+
+        // Theme
+        const themeKey = 'rl-theme';
+        function getTheme() {
+            const stored = localStorage.getItem(themeKey);
+            if (stored) return stored;
+            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        function applyTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem(themeKey, theme);
+            const icon = document.getElementById('themeIcon');
+            if (icon) icon.className = theme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
+            const meta = document.getElementById('themeColorMeta');
+            if (meta) meta.content = theme === 'dark' ? '#0B0A09' : '#F9F7F2';
+        }
+        applyTheme(getTheme());
+        document.getElementById('themeToggle')?.addEventListener('click', () => {
+            const current = document.documentElement.getAttribute('data-theme') || 'dark';
+            applyTheme(current === 'dark' ? 'light' : 'dark');
+        });
+
+        // Mobile menu
+        const menu = document.getElementById('mobileMenu');
+        const backdrop = document.getElementById('navBackdrop');
+        const toggle = document.getElementById('navToggle');
+        const closeBtn = document.getElementById('mobileClose');
+
+        function openMenu() {
+            menu?.classList.add('open');
+            backdrop?.classList.add('active');
+            toggle?.setAttribute('aria-expanded', 'true');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeMenu() {
+            menu?.classList.remove('open');
+            backdrop?.classList.remove('active');
+            toggle?.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+        }
+        toggle?.addEventListener('click', () => menu?.classList.contains('open') ? closeMenu() : openMenu());
+        backdrop?.addEventListener('click', closeMenu);
+        closeBtn?.addEventListener('click', closeMenu);
+        menu?.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+
+        // Scroll progress + nav hide + back-to-top
+        const progress = document.getElementById('scrollProgress');
+        const nav = document.getElementById('mainNav');
+        const backTop = document.getElementById('backToTop');
+        let lastScroll = 0;
+
+        function onScroll() {
+            const scrollY = window.scrollY;
+            const docH = document.documentElement.scrollHeight - window.innerHeight;
+            if (progress) progress.style.width = (docH > 0 ? (scrollY / docH) * 100 : 0) + '%';
+
+            if (nav) {
+                if (scrollY > 80) {
+                    nav.classList.add('scrolled');
+                    if (scrollY > lastScroll && scrollY > 200) nav.classList.add('hidden');
+                    else nav.classList.remove('hidden');
+                } else {
+                    nav.classList.remove('scrolled', 'hidden');
+                }
+            }
+            lastScroll = scrollY;
+            if (backTop) backTop.classList.toggle('visible', scrollY > 400);
+        }
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+        backTop?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+        // FAQ accordion
+        document.querySelectorAll('.faq-item').forEach(item => {
+            const btn = item.querySelector('.faq-q');
+            btn?.addEventListener('click', () => {
+                const isOpen = item.classList.contains('open');
+                document.querySelectorAll('.faq-item').forEach(o => {
+                    if (o !== item) o.classList.remove('open');
+                });
+                item.classList.toggle('open', !isOpen);
+                btn.setAttribute('aria-expanded', String(!isOpen));
+            });
+        });
+
+        // Newsletter
+        document.getElementById('newsletterForm')?.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const btn = this.querySelector('button[type="submit"]');
+            const orig = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-check"></i> Angemeldet';
+            setTimeout(() => {
+                btn.innerHTML = orig;
+                this.reset();
+            }, 2200);
+        });
+
+        // Year
+        const yearEl = document.getElementById('year');
+        if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+        // Reveal on scroll
+        const reveals = document.querySelectorAll('.reveal');
+        if ('IntersectionObserver' in window) {
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) {
+                        e.target.classList.add('visible');
+                        io.unobserve(e.target);
+                    }
+                });
+            }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+            reveals.forEach(el => io.observe(el));
+        } else {
+            reveals.forEach(el => el.classList.add('visible'));
+        }
+
+        // Smooth anchor
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', function (e) {
+                const id = this.getAttribute('href');
+                if (id === '#') return;
+                const target = document.querySelector(id);
+                if (target) {
+                    e.preventDefault();
+                    const top = target.getBoundingClientRect().top + window.scrollY - 80;
+                    window.scrollTo({ top, behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Cookie consent
+        const cookieKey = 'rl-cookie-consent';
+        const banner = document.getElementById('cookieBanner');
+        function hideCookie() {
+            if (banner) banner.classList.remove('show');
+        }
+        function showCookie() {
+            if (banner && !localStorage.getItem(cookieKey)) {
+                setTimeout(() => banner.classList.add('show'), 800);
+            }
+        }
+        document.getElementById('cookieAccept')?.addEventListener('click', () => {
+            localStorage.setItem(cookieKey, 'all');
+            hideCookie();
+        });
+        document.getElementById('cookieReject')?.addEventListener('click', () => {
+            localStorage.setItem(cookieKey, 'necessary');
+            hideCookie();
+        });
+        showCookie();
+
+        // Simple starfield (optional, lightweight)
+        const canvas = document.getElementById('starCanvas');
+        if (canvas && window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+            const ctx = canvas.getContext('2d');
+            let stars = [];
+            function resize() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+                stars = Array.from({ length: 80 }, () => ({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    r: Math.random() * 1.2 + 0.3,
+                    a: Math.random() * 0.4 + 0.1
+                }));
+            }
+            function draw() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                stars.forEach(s => {
+                    ctx.beginPath();
+                    ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(212, 165, 116, ${s.a})`;
+                    ctx.fill();
+                });
+            }
+            resize();
+            draw();
+            window.addEventListener('resize', () => { resize(); draw(); }, { passive: true });
+        }
+    })();
+    </script>
+</body>
+</html>
